@@ -1,9 +1,7 @@
-@charset "UTF-8";
-
-#ftWrap {
+/* BASIC css start */
+#ft {
 	padding: 80px 0 0;
 }
-
 #footer {
 	width: 100%;
 }
@@ -239,3 +237,4 @@
 	width: 1240px;
 	margin: 0 auto;
 }
+/* BASIC css end */

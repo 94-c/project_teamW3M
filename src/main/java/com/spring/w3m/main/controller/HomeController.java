@@ -18,6 +18,7 @@ public class HomeController {
 		return "login/logout";
 	}
 <<<<<<< HEAD
+<<<<<<< HEAD
 	
 	@RequestMapping("/memberinsert.do")
 =======
@@ -26,5 +27,19 @@ public class HomeController {
 	public String memberinsert() {
 
 		return "login/memberInsert";
+=======
+	@RequestMapping("/insertMember.do")
+	public String memberinsert() {
+
+		return "login/insertMember";
+>>>>>>> 205f12ee40b231075fc62accdcf0e9f86e012fef
 	}
+	
+	//공지사항
+	@RequestMapping("/notification.do")
+	public String notification() {
+		System.out.println("---공지사항---");
+		return "list/notification";
+	}
+	
 }

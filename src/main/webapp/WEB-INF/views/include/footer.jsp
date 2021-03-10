@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 205f12ee40b231075fc62accdcf0e9f86e012fef
 <link href="resources/css/footer.css" rel="stylesheet" type="text/css">
-<div id="ftWrap">
+
+<div id="ft">
 	<div id="footer">
 		<div class="section0 cboth" style="display: none">
 			<div class="inner">

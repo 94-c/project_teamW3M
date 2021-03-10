@@ -15,6 +15,7 @@
 <meta property="og:url" content="http://www.welkeepsmall.com">
 
 <link rel="shortcut icon" href="resources/images/icons/favicon.ico" type="image/x-icon"><title>[웰킵스몰] 웰킵스 공식쇼핑몰</title>
+<<<<<<< HEAD
 <link href="resources/css/header.css" rel="stylesheet" type="text/css">
 <link href='http://fonts.googleapis.com/earlyaccess/nanumgothic.css' rel='stylesheet' type='text/css'>
 <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
@@ -46,6 +47,40 @@ document.addEventListener("DOMContentLoaded", function(){
 <link href="resources/css/login.css" rel="stylesheet" type="text/css">
 </head>
 
+=======
+<link href='http://fonts.googleapis.com/earlyaccess/nanumgothic.css' rel='stylesheet' type='text/css'>
+<link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700" rel="stylesheet">
+<script type="text/javascript" src="resources/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="resources/js/jquery.sliderkit.1.9.2.pack.js"></script>
+<script type="text/javascript" src="resources/images/js/index.js"></script> 	
+<script type="text/javascript" src="#"></script><!-- morenvy script -->
+<script type="text/javascript">
+document.addEventListener("DOMContentLoaded", function(){
+  console.log(navigator.userAgent);
+  if (navigator.userAgent.match('Byapps') && navigator.userAgent.match(/iPhone|iPad|iPod|Apple/i)) {
+    var snsSection = document.getElementsByClassName('sns-login')[0];
+    snsSection.style.visibility = 'hidden';
+  }
+
+  if (navigator.userAgent.match('Byapps') && navigator.userAgent.match(/iPhone|iPad|iPod|Apple/i)) {
+    var snsSection = document.getElementsByClassName('sns-join');
+    var snsUl = snsSection.getElementsByTagName('ul')[0];
+    var snsTitle = document.getElementsByClassName('sns-title')[0];
+
+    snsUl.style.visibility = 'hidden';
+    snsTitle.style.visibility = 'hidden';
+  }
+});
+</script>
+
+
+<!-- css -->
+<link href="resources/css/header.css" rel="stylesheet" type="text/css">
+<link href="resources/css/common.css" rel="stylesheet" type="text/css">
+</head>
+
+>>>>>>> 205f12ee40b231075fc62accdcf0e9f86e012fef
 <body>
 <div id="hdWrap">
 	<div class="top_space"></div>
@@ -63,7 +98,11 @@ document.addEventListener("DOMContentLoaded", function(){
 						<a href="logout.do">로그아웃</a>
 					</div>
 					<div class="top_btn_login01">
+<<<<<<< HEAD
 						<a href="memberInsert.do">회원가입</a>
+=======
+						<a href="insertMember.do">회원가입</a>
+>>>>>>> 205f12ee40b231075fc62accdcf0e9f86e012fef
 					</div>
 
 					<div class="top_btn_login02">
@@ -72,14 +111,12 @@ document.addEventListener("DOMContentLoaded", function(){
 					<div class="top_comm">
 						<ul class="fleft">
 							<li><a href="#">장바구니</a></li>
-							<li><a
-								href="#">개인정보</a></li>
-							<li><a
-								href="#">주문내역</a></li>
+							<li><a href="#">개인정보</a></li>
+							<li><a href="#">주문내역</a></li>
 						</ul>
 						<ul class="fright">
 							<!-- 상단 커뮤니티 링크 수정 -->
-							<li><a href="#">공지사항</a></li>
+							<li><a href="notification.do">공지사항</a></li>
 							<li><a href="#">상품후기</a></li>
 							<li><a href="#">문의게시판</a></li>
 						</ul>
@@ -90,14 +127,13 @@ document.addEventListener("DOMContentLoaded", function(){
 			
 			<!-- //btn_ham -->
 			<div class="top_logo">
-				<a href="main.jsp"><img src="resources/images/h_design/top_logo.gif"></a>
+				<a href="index.jsp"><img src="resources/images/h_design/top_logo.gif"></a>
 			</div>
 
 			<div class="section1">
 				<ul id="left_menu">
 					<!-- 카테고리 자동출력 -->
-					<li><a href="/shop/shopbrand.html?type=X&amp;xcode=023"
-						class="">웰킵스 미세먼지마스크</a>
+					<li><a href="/shop/shopbrand.html?type=X&amp;xcode=023"class="">웰킵스 미세먼지마스크</a>
 						<ul class="sub1" style="display: none;">
 							<li><a href="/shop/shopbrand.html?type=M&amp;xcode=023&amp;mcode=001" class="">- 프리미엄마스크</a></li>
 							<li><a href="/shop/shopbrand.html?type=M&amp;xcode=023&amp;mcode=002">- 스마트마스크</a></li>
@@ -136,13 +172,13 @@ document.addEventListener("DOMContentLoaded", function(){
 			</div>
 			<!-- //section1 -->
 			<ul class="top_cart">
-				<li><a href="#">로그인</a></li>
-				<li><a href="https://www.welkeepsmall.com/shop/idinfo.html" class="join">회원가입
+				<li><a href="login.do">로그인</a></li>
+				<li><a href="insertMember.do" class="join">회원가입
 						<div class="scroll" style="bottom: 2.97586px;">
 							<div>+1,000P</div>
 						</div>
 				</a></li>
-				<li><a href="/shop/basket.html">장바구니<span id="user_basket_quantity" class="user_basket_quantity">0</span></a></li>
+				<li><a href="#">장바구니<span id="user_basket_quantity" class="user_basket_quantity">0</span></a></li>
 			</ul>
 		</div>
 		<!-- #header -->
