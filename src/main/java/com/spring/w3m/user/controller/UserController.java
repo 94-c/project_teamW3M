@@ -12,7 +12,7 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
-	@RequestMapping("/insert_success")
+	@RequestMapping("/login_insert.do")
 	public String isert_success(UserVO vo) {
 		userService.insertUser(vo);
 		return "login/insert_success";
