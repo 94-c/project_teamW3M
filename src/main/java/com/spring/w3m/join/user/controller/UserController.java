@@ -1,11 +1,11 @@
-package com.spring.w3m.user.controller;
+package com.spring.w3m.join.user.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.spring.w3m.user.common.UserVO;
-import com.spring.w3m.user.service.UserService;
+import com.spring.w3m.join.user.service.UserService;
+import com.spring.w3m.join.user.vo.UserVO;
 
 @Controller
 public class UserController {

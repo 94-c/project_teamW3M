@@ -12,11 +12,6 @@ public class HomeController {
 		return "login/login";
 	}
 
-	@RequestMapping("/logout.do")
-	public String logout() {
-
-		return "login/logout";
-	}
 
 	@RequestMapping("/insertMember.do")
 	public String memberinsert() {

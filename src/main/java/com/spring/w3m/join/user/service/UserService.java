@@ -1,6 +1,6 @@
-package com.spring.w3m.user.service;
+package com.spring.w3m.join.user.service;
 
-import com.spring.w3m.user.common.UserVO;
+import com.spring.w3m.join.user.vo.UserVO;
 
 public interface UserService {
 	public UserVO getUser(UserVO vo);

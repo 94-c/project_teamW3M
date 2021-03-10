@@ -6,7 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.spring.w3m.user.common.UserVO;
+import com.spring.w3m.join.user.vo.UserVO;
 
 @Repository
 public class LoginDAO {

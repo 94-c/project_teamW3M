@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.spring.w3m.join.user.vo.UserVO;
 import com.spring.w3m.login.user.service.UserLoginService;
-import com.spring.w3m.user.common.UserVO;
 
 @Controller
 public class UserLoginController {

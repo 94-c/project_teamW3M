@@ -1,11 +1,10 @@
-package com.spring.w3m.user.service;
+package com.spring.w3m.join.user.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
-import com.spring.w3m.user.common.UserVO;
-import com.spring.w3m.user.dao.UserDAO;
+import com.spring.w3m.join.user.dao.UserDAO;
+import com.spring.w3m.join.user.vo.UserVO;
 
 @Service("UserService")
 public class UserServiceImpl implements UserService {

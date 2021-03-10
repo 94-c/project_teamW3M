@@ -5,8 +5,8 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.spring.w3m.join.user.vo.UserVO;
 import com.spring.w3m.login.user.dao.LoginDAO;
-import com.spring.w3m.user.common.UserVO;
 
 @Service("UserLoginService")
 public class UserLoginServiceImpl implements UserLoginService {
