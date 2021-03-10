@@ -18,7 +18,7 @@
 						<a href="logout.do">로그아웃</a>
 					</div>
 					<div class="top_btn_login01">
-						<a href="memberinsert.do">회원가입</a>
+						<a href="memberInsert.do">회원가입</a>
 					</div>
 
 					<div class="top_btn_login02">

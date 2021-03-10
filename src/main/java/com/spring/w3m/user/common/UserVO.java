@@ -109,7 +109,6 @@ public class UserVO {
 	}
 	public void setUser_seq(Long user_seq) {
 		this.user_seq = user_seq;
-	}
-	
+	}	
 	
 }
