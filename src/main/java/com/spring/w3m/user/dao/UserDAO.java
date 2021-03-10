@@ -9,12 +9,12 @@ import com.spring.w3m.user.common.UserVO;
 @Controller
 public class UserDAO {
 
-	@Autowired
-	private SqlSessionTemplate sqlSessionTemplate;
-	
-	public void memberInsert(UserVO vo) {
-		sqlSessionTemplate.insert("UserDAO.insertUser",vo);
-		System.out.println("회원가입 정보 입력");
-		
-	}
+   @Autowired
+   private SqlSessionTemplate sqlSessionTemplate;
+   
+   public void memberInsert(UserVO vo) {
+      sqlSessionTemplate.insert("UserDAO.insertUser",vo);
+      System.out.println("회원가입 정보 입력");
+      
+   }
 }
