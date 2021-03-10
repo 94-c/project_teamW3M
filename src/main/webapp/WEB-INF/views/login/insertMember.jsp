@@ -409,32 +409,7 @@
 											</div>
 										</td>
 									</tr>
-									<tr>
-										<th><div class="head-cell">회사전화</div></th>
-										<td>
-											<div class="col-cell">
-												<input type="text" name="ophone" id="ophone"
-													class="MS_input_tel normal-input" size="15" maxlength="30"
-													value="">
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<th><div class="head-cell">회사주소</div></th>
-										<td>
-											<div class="col-cell">
-												<ul>
-													<li style="margin-bottom: 13px;"><input type="text"
-														name="opost" id="opost" class="MS_input_txt small-input"
-														value="" size="7" maxlength="15" readonly=""> <a
-														href="javascript:post(2);" class="cbtn form">우편번호검색</a></li>
-													<li><input type="text" name="oaddress" id="oaddress"
-														class="MS_input_txt normal-input" value="" size="40"
-														maxlength="100"></li>
-												</ul>
-											</div>
-										</td>
-									</tr>
+									
 									<tr>
 										<th>
 											<div class="head-cell">휴대폰</div>
