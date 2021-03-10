@@ -17,20 +17,27 @@ public class HomeController {
 
 		return "login/logout";
 	}
+
 	@RequestMapping("/insertMember.do")
 	public String memberinsert() {
 
 		return "login/insertMember";
 	}
-	
-	//공지사항
+
+	@RequestMapping("/searchID.do")
+	public String searchID() {
+
+		return "login/searchID";
+	}
+
+	// 공지사항
 	@RequestMapping("/notice.do")
 	public String notification() {
 		System.out.println("---공지사항---");
 		return "list/notice";
 	}
-	
-	//관리자 페이지
+
+	// 관리자 페이지
 	@RequestMapping("/login.mdo")
 	public String adminLogin() {
 		return "login";

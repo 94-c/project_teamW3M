@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function(){
 					</div>
 
 					<div class="top_btn_login02">
-						<a href="#">아이디 찾기 / 비밀번호 찾기</a>
+						<a href="searchID.do">아이디 찾기 / 비밀번호 찾기</a>
 					</div>
 					<div class="top_comm">
 						<ul class="fleft">
