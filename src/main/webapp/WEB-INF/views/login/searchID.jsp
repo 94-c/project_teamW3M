@@ -45,26 +45,13 @@
 						<div class="find-info">
 							<ul class="frm-list">
 								<li>
-									<label>
-										이름
-									</label> 
-									<input type="text" id="name"name="user_name" class="MS_input_txt" 
-									value="" maxlength="30" title="이름" placeholder="">
+									<input type="text" name="user_name" placeholder="이름" onfocus="this.placeholder=''" onblur="this.placeholder='이름'" maxlength="20"/>
 								</li>
 								<li id="find_id_email_wrap">
-									<label>
-										이메일
-									</label> 
-									<input type="text" id="find_id_email" name="user_email"
-									class="MS_input_txt" value="" maxlength="80" title="이메일 주소"
-									placeholder="">
+									<input type="text" name="user_email" placeholder="이메일" onfocus="this.placeholder=''" onblur="this.placeholder='이메일'" maxlength="40"/>
 								</li>
 								<li id="find_id_mobile_wrap" style="display: none;">
-									<label>
-										휴대폰 번호
-									</label> 
-									<input type="text" id="find_id_mobile" name="user_phone" 
-									class="MS_input_txt" value="" maxlength="20" title="휴대폰번호">
+									<input type="text" name="user_phone" placeholder="휴대폰 번호" onfocus="this.placeholder=''" onblur="this.placeholder='휴대폰 번호'" maxlength="30"/>
 								</li>
 							</ul>
 							<div class="btn-area">
@@ -103,27 +90,16 @@
 							<div class="find-info">
 								<ul class="frm-list">
 									<li>
-										<label>
-											아이디
-										</label> 
-										<input type="text" name="user_id" id="user_id" value="" 
-										class="MS_input_txt" size="10" maxlength="12">
+										<input type="text" name="user_id" placeholder="아이디" onfocus="this.placeholder=''" onblur="this.placeholder='아이디'" maxlength="20"/>
 									</li>
+									
 									<li id="find_pw_email_wrap">
-										<label>
-											이메일
-										</label> 
-										<input type="text" id="email" name="user_email" class="MS_input_txt"
-										value="" maxlength="80" title="이메일 주소" placeholder=""
-										onfocus="document.form1.focus_ok.value='yes'">
+										<input type="text" name="user_email" placeholder="이메일" onfocus="this.placeholder=''" onblur="this.placeholder='이메일'" maxlength="40"/>
 									</li>
-									<li id="find_pw_mobile_wrap" style="display: none;">
-										<label>
-											휴대폰 번호
-										</label> 
-										<input type="text" id="mobile" name="user_phone"
-										class="MS_input_txt" value="" maxlength="20" title="휴대폰번호">
-								</li>
+									
+									<li id="find_id_mobile_wrap" style="display: none;">
+										<input type="text" name="user_phone" placeholder="휴대폰 번호" onfocus="this.placeholder=''" onblur="this.placeholder='휴대폰 번호'" maxlength="30"/>
+									</li>
 							</ul>
 								<div class="btn-area">
 									<a href="javascript:find_type('find_pw');" class="CSSbuttonWhite info-confirm">
