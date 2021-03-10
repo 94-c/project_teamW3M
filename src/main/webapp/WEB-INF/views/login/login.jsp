@@ -2,20 +2,11 @@
 	pageEncoding="UTF-8"%>
 <head>
 <meta charset="UTF-8">
-<<<<<<< HEAD
-
-<link rel="shortcut icon" href="resources/images/icons/favicon.ico" type="image/x-icon">
-<title>회원 로그인</title>
-</head>
-<body>
-<%@include file="/WEB-INF/views/include/header.jsp"%>
-=======
 <link rel="shortcut icon" href="resources/images/icons/favicon.ico" type="image/x-icon">
 <title>회원로그인</title>
 </head>
 <%@include file="/WEB-INF/views/include/header.jsp"%>
 <link href="resources/css/login.css" rel="stylesheet" type="text/css">
->>>>>>> 205f12ee40b231075fc62accdcf0e9f86e012fef
 <div id="contentWrapper">
 <div id="contentWrap">
  <div id="content">
@@ -63,10 +54,4 @@
                     </div><!-- #content -->
                     </div><!-- #contentWrap -->
         </div><!-- #contentWrapper-->
-<<<<<<< HEAD
  	<%@include file="/WEB-INF/views/include/footer.jsp"%>
-</body>
-</html>
-=======
- 	<%@include file="/WEB-INF/views/include/footer.jsp"%>
->>>>>>> 205f12ee40b231075fc62accdcf0e9f86e012fef

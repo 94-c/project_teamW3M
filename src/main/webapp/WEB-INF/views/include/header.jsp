@@ -15,39 +15,6 @@
 <meta property="og:url" content="http://www.welkeepsmall.com">
 
 <link rel="shortcut icon" href="resources/images/icons/favicon.ico" type="image/x-icon"><title>[웰킵스몰] 웰킵스 공식쇼핑몰</title>
-<<<<<<< HEAD
-<link href="resources/css/header.css" rel="stylesheet" type="text/css">
-<link href='http://fonts.googleapis.com/earlyaccess/nanumgothic.css' rel='stylesheet' type='text/css'>
-<link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700" rel="stylesheet">
-<link type="text/css" rel="stylesheet" href="resources/css/common.css" /><link rel="canonical" href="http://www.welkeepsmall.com">
-<link type="text/css" rel="stylesheet" href="resources/css/slider.css" />
-<script type="text/javascript" src="resources/js/jquery-1.7.2.min.js"></script>
-<script type="text/javascript" src="resources/js/jquery.sliderkit.1.9.2.pack.js"></script>
-<script type="text/javascript" src="resources/images/js/index.js"></script>
-<script type="text/javascript" src="#"></script><!-- morenvy script -->
-<script type="text/javascript">
-document.addEventListener("DOMContentLoaded", function(){
-  console.log(navigator.userAgent);
-  if (navigator.userAgent.match('Byapps') && navigator.userAgent.match(/iPhone|iPad|iPod|Apple/i)) {
-    var snsSection = document.getElementsByClassName('sns-login')[0];
-    snsSection.style.visibility = 'hidden';
-  }
-
-  if (navigator.userAgent.match('Byapps') && navigator.userAgent.match(/iPhone|iPad|iPod|Apple/i)) {
-    var snsSection = document.getElementsByClassName('sns-join');
-    var snsUl = snsSection.getElementsByTagName('ul')[0];
-    var snsTitle = document.getElementsByClassName('sns-title')[0];
-
-    snsUl.style.visibility = 'hidden';
-    snsTitle.style.visibility = 'hidden';
-  }
-});
-</script>
-<link href="resources/css/login.css" rel="stylesheet" type="text/css">
-</head>
-
-=======
 <link href='http://fonts.googleapis.com/earlyaccess/nanumgothic.css' rel='stylesheet' type='text/css'>
 <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700" rel="stylesheet">
@@ -80,7 +47,6 @@ document.addEventListener("DOMContentLoaded", function(){
 <link href="resources/css/common.css" rel="stylesheet" type="text/css">
 </head>
 
->>>>>>> 205f12ee40b231075fc62accdcf0e9f86e012fef
 <body>
 <div id="hdWrap">
 	<div class="top_space"></div>
@@ -98,11 +64,7 @@ document.addEventListener("DOMContentLoaded", function(){
 						<a href="logout.do">로그아웃</a>
 					</div>
 					<div class="top_btn_login01">
-<<<<<<< HEAD
-						<a href="memberInsert.do">회원가입</a>
-=======
 						<a href="insertMember.do">회원가입</a>
->>>>>>> 205f12ee40b231075fc62accdcf0e9f86e012fef
 					</div>
 
 					<div class="top_btn_login02">
