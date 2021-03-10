@@ -1,13 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <head>
 <meta charset="UTF-8">
-<link rel="shortcut icon" href="resources/images/icons/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="resources/images/icons/favicon.ico"
+	type="image/x-icon">
 <title>회원가입</title>
 </head>
 <%@include file="/WEB-INF/views/include/header.jsp"%>
-<link href="resources/css/insertMember.css" rel="stylesheet" type="text/css">
+<link href="resources/css/insertMember.css" rel="stylesheet"
+	type="text/css">
 <div id="contentWrapper">
 	<div id="contentWrap">
 		<div id="content">
@@ -17,8 +20,8 @@
 				</div>
 				<div class="page-body">
 					<form name="iddupop" method="post" action="/shop/iddup.html">
-						<input name="id" type="hidden" value=""> 
-						<input name="mode" type="hidden" value="">
+						<input name="id" type="hidden" value=""> <input
+							name="mode" type="hidden" value="">
 					</form>
 					<form name="ipinInForm" method="post">
 						<input type="hidden" name="IDPCODE" value=""> <input
@@ -31,7 +34,8 @@
 							type="hidden" name="FILLER01" value=""> <input
 							type="hidden" name="FILLER02" value="JOIN">
 					</form>
-					<form name="ipinOutForm" method="post" action="/ssllogin/idinfo.html">
+					<form name="ipinOutForm" method="post"
+						action="/ssllogin/idinfo.html">
 						<input type="hidden" name="popup" value=""> <input
 							type="hidden" name="cur_page" value=""> <input
 							type="hidden" name="type" value="ok"> <input
@@ -48,41 +52,41 @@
 					<form name="form1" method="post" id="join_form"
 						action="/shop/idinfo.html" enctype="multipart/form-data"
 						autocomplete="off">
-						<input type="hidden" name="resno" value=""> 
-						<input type="hidden" name="cur_page" value=""> 
-						<input type="hidden" name="brandcode" value=""> 
-						<input type="hidden" name="sslid" value="pgreen1364"> 
-						<input type="hidden" name="sslip" value="www.welkeepsmall.com">
+						<input type="hidden" name="resno" value=""> <input
+							type="hidden" name="cur_page" value=""> <input
+							type="hidden" name="brandcode" value=""> <input
+							type="hidden" name="sslid" value="pgreen1364"> <input
+							type="hidden" name="sslip" value="www.welkeepsmall.com">
 						<input type="hidden" name="haddress" id="haddress" value="">
-						<input type="hidden" name="msecure_key" value=""> 
-						<input type="hidden" name="loginkeyid" value=""> 
-						<input type="hidden" name="idcheck" value=""> 
-						<input type="hidden" name="emailcheck"> 
-						<input type="hidden" name="junk_member_ok" value=""> 
-						<input type="hidden" name="hiddenres" value=""> 
-						<input type="hidden" name="mem_type" value="SIMPLE"> 
-						<input type="hidden" name="member_join_type" value="NEW"> 
-						<input type="hidden" name="member_join_minor" value="N"> 
-						<input type="hidden" name="use_company_num" value="Y"> 
-						<input type="hidden" name="company_num_modify" value="N"> 
-						<input type="hidden" name="admin_type" value="N"> 
-						<input type="hidden" name="old_company_num1" value=""> 
-						<input type="hidden" name="old_company_num2" value=""> 
-						<input type="hidden" name="old_company_num3" value=""> 
-						<input type="hidden" name="old_email" id="old_email" value=""> 
-						<input type="hidden" name="etc_phone" id="etc_phone" value=""> 
-						<input type="hidden" name="simple_login" value=""> 
-						<input type="hidden" name="app_os" value=""> 
-						<input type="hidden" name="return_url" value=""> 
-						<input type="hidden" name="smscheck" form="join_form"> 
-						<input type="hidden" name="sms_auth_chk" form="join_form" value="N">
-						<input type="hidden" name="type" value="ins">
-						<input type="hidden" name="first" value=""> 
-						<input type="hidden" name="join_type" value="">
-						<input type="hidden" name="data_third_party_agree" value="">
-						<input type="hidden" name="data_trust_agree" value=""> 
-						<input type="hidden" name="data_privacy_agree" value="">
-						<input type="hidden" name="original_mem_type" value="PERSON">
+						<input type="hidden" name="msecure_key" value=""> <input
+							type="hidden" name="loginkeyid" value=""> <input
+							type="hidden" name="idcheck" value=""> <input
+							type="hidden" name="emailcheck"> <input type="hidden"
+							name="junk_member_ok" value=""> <input type="hidden"
+							name="hiddenres" value=""> <input type="hidden"
+							name="mem_type" value="SIMPLE"> <input type="hidden"
+							name="member_join_type" value="NEW"> <input type="hidden"
+							name="member_join_minor" value="N"> <input type="hidden"
+							name="use_company_num" value="Y"> <input type="hidden"
+							name="company_num_modify" value="N"> <input type="hidden"
+							name="admin_type" value="N"> <input type="hidden"
+							name="old_company_num1" value=""> <input type="hidden"
+							name="old_company_num2" value=""> <input type="hidden"
+							name="old_company_num3" value=""> <input type="hidden"
+							name="old_email" id="old_email" value=""> <input
+							type="hidden" name="etc_phone" id="etc_phone" value=""> <input
+							type="hidden" name="simple_login" value=""> <input
+							type="hidden" name="app_os" value=""> <input
+							type="hidden" name="return_url" value=""> <input
+							type="hidden" name="smscheck" form="join_form"> <input
+							type="hidden" name="sms_auth_chk" form="join_form" value="N">
+						<input type="hidden" name="type" value="ins"> <input
+							type="hidden" name="first" value=""> <input type="hidden"
+							name="join_type" value=""> <input type="hidden"
+							name="data_third_party_agree" value=""> <input
+							type="hidden" name="data_trust_agree" value=""> <input
+							type="hidden" name="data_privacy_agree" value=""> <input
+							type="hidden" name="original_mem_type" value="PERSON">
 
 						<div id="personInfo">
 							<table class="person-tb">
@@ -160,156 +164,27 @@
 											<div class="col-cell social">
 												<select name="birthyear" class="MS_select MS_birthday">
 													<option value="">선택</option>
-													<option value="2021">2021</option>
-													<option value="2020">2020</option>
-													<option value="2019">2019</option>
-													<option value="2018">2018</option>
-													<option value="2017">2017</option>
-													<option value="2016">2016</option>
-													<option value="2015">2015</option>
-													<option value="2014">2014</option>
-													<option value="2013">2013</option>
-													<option value="2012">2012</option>
-													<option value="2011">2011</option>
-													<option value="2010">2010</option>
-													<option value="2009">2009</option>
-													<option value="2008">2008</option>
-													<option value="2007">2007</option>
-													<option value="2006">2006</option>
-													<option value="2005">2005</option>
-													<option value="2004">2004</option>
-													<option value="2003">2003</option>
-													<option value="2002">2002</option>
-													<option value="2001">2001</option>
-													<option value="2000">2000</option>
-													<option value="1999">1999</option>
-													<option value="1998">1998</option>
-													<option value="1997">1997</option>
-													<option value="1996">1996</option>
-													<option value="1995">1995</option>
-													<option value="1994">1994</option>
-													<option value="1993">1993</option>
-													<option value="1992">1992</option>
-													<option value="1991">1991</option>
-													<option value="1990">1990</option>
-													<option value="1989">1989</option>
-													<option value="1988">1988</option>
-													<option value="1987">1987</option>
-													<option value="1986">1986</option>
-													<option value="1985">1985</option>
-													<option value="1984">1984</option>
-													<option value="1983">1983</option>
-													<option value="1982">1982</option>
-													<option value="1981">1981</option>
-													<option value="1980">1980</option>
-													<option value="1979">1979</option>
-													<option value="1978">1978</option>
-													<option value="1977">1977</option>
-													<option value="1976">1976</option>
-													<option value="1975">1975</option>
-													<option value="1974">1974</option>
-													<option value="1973">1973</option>
-													<option value="1972">1972</option>
-													<option value="1971">1971</option>
-													<option value="1970">1970</option>
-													<option value="1969">1969</option>
-													<option value="1968">1968</option>
-													<option value="1967">1967</option>
-													<option value="1966">1966</option>
-													<option value="1965">1965</option>
-													<option value="1964">1964</option>
-													<option value="1963">1963</option>
-													<option value="1962">1962</option>
-													<option value="1961">1961</option>
-													<option value="1960">1960</option>
-													<option value="1959">1959</option>
-													<option value="1958">1958</option>
-													<option value="1957">1957</option>
-													<option value="1956">1956</option>
-													<option value="1955">1955</option>
-													<option value="1954">1954</option>
-													<option value="1953">1953</option>
-													<option value="1952">1952</option>
-													<option value="1951">1951</option>
-													<option value="1950">1950</option>
-													<option value="1949">1949</option>
-													<option value="1948">1948</option>
-													<option value="1947">1947</option>
-													<option value="1946">1946</option>
-													<option value="1945">1945</option>
-													<option value="1944">1944</option>
-													<option value="1943">1943</option>
-													<option value="1942">1942</option>
-													<option value="1941">1941</option>
-													<option value="1940">1940</option>
-													<option value="1939">1939</option>
-													<option value="1938">1938</option>
-													<option value="1937">1937</option>
-													<option value="1936">1936</option>
-													<option value="1935">1935</option>
-													<option value="1934">1934</option>
-													<option value="1933">1933</option>
-													<option value="1932">1932</option>
-													<option value="1931">1931</option>
-													<option value="1930">1930</option>
-													<option value="1929">1929</option>
-													<option value="1928">1928</option>
-													<option value="1927">1927</option>
-													<option value="1926">1926</option>
-													<option value="1925">1925</option>
-													<option value="1924">1924</option>
-													<option value="1923">1923</option>
-													<option value="1922">1922</option>
-													<option value="1921">1921</option>
-													<option value="1920">1920</option>
+													<c:set var="today" value="<%=new java.util.Date()%>" />
+													<fmt:formatDate value="${today}" pattern="yyyy"
+														var="sysYear" />
+													<c:forEach begin="0" end="80" var="idx" step="1">
+														<option value="<c:out value="${sysYear - idx}" />"><c:out
+																value="${sysYear - idx}" /></option>
+													</c:forEach>
 												</select>년<select name="birthmonth" class="MS_select MS_birthday">
 													<option value="">선택</option>
-													<option value="01">1</option>
-													<option value="02">2</option>
-													<option value="03">3</option>
-													<option value="04">4</option>
-													<option value="05">5</option>
-													<option value="06">6</option>
-													<option value="07">7</option>
-													<option value="08">8</option>
-													<option value="09">9</option>
-													<option value="10">10</option>
-													<option value="11">11</option>
-													<option value="12">12</option>
+													<c:forEach begin="01" end="12" step="1" var="month">
+														<option value="<c:out value="${month}"/>"><c:out
+																value="${month}" /></option>
+													</c:forEach>
+
 												</select>월<select name="birthdate" class="MS_select MS_birthday">
 													<option value="">선택</option>
-													<option value="01">1</option>
-													<option value="02">2</option>
-													<option value="03">3</option>
-													<option value="04">4</option>
-													<option value="05">5</option>
-													<option value="06">6</option>
-													<option value="07">7</option>
-													<option value="08">8</option>
-													<option value="09">9</option>
-													<option value="10">10</option>
-													<option value="11">11</option>
-													<option value="12">12</option>
-													<option value="13">13</option>
-													<option value="14">14</option>
-													<option value="15">15</option>
-													<option value="16">16</option>
-													<option value="17">17</option>
-													<option value="18">18</option>
-													<option value="19">19</option>
-													<option value="20">20</option>
-													<option value="21">21</option>
-													<option value="22">22</option>
-													<option value="23">23</option>
-													<option value="24">24</option>
-													<option value="25">25</option>
-													<option value="26">26</option>
-													<option value="27">27</option>
-													<option value="28">28</option>
-													<option value="29">29</option>
-													<option value="30">30</option>
-													<option value="31">31</option>
-												</select>일&nbsp;&nbsp;<input type="radio" name="sex" value="1"
+													<c:forEach begin="01" end="31" step="1" var="day">
+														<option value="<c:out value="${day}"/>"><c:out
+																value="${day}" /></option>
+													</c:forEach>
+												</select>일&nbsp;&nbsp; <input type="radio" name="sex" value="1"
 													class="MS_radio">남 <input type="radio" name="sex"
 													value="2" class="MS_radio" checked="">여
 											</div>
@@ -362,14 +237,14 @@
 									<tr>
 										<th>
 											<div class="head-cell">
-												<span class="empha">*</span>연락처
+												<span class="empha">*</span>휴대폰
 											</div>
 										</th>
 										<td>
 											<div class="col-cell">
 												<input type="text" name="hphone" form="join_form"
-													id="hphone" class="MS_input_tel normal-input" size="15"
-													maxlength="30" value="">
+													id="hphone" class="MS_input_tel normal-input" size="4"
+													maxlength="4" value="">
 											</div>
 										</td>
 									</tr>
@@ -384,16 +259,16 @@
 												<input type="hidden" name="oldemail" id="oldemail" value="">
 												<input type="hidden" name="email" id="email" value="">
 												<input type="text" name="email1" id="email1"
-													onchange="this.form.emailcheck.value=''"
 													class="MS_input_txt normal-input" size="10" maxlength="20"
-													value=""> <span>@</span> <span id="direct_email"
-													style="margin-top: 3px; display: inline-block"> <input
-													type="text" name="email3" id="email3"
-													class="MS_input_txt normal-input" value="" size="15"
-													maxlength="25" onchange="this.form.emailcheck.value=''">
-												</span> <select name="email2" id="email2"
-													class="MS_select MS_email" style="margin-right: 5px;"
-													onchange="viewdirect()">
+													value=""> 
+													<span>@</span> 
+													<span id="direct_email"
+													style="margin-top: 3px; display: inline-block"> 
+													<input type="text" name="email3" id="email3"
+													class="MS_input_txt normal-input" value="" size="15" maxlength="25">
+												</span> 
+												<select name="email2" id="email2"
+													class="MS_select MS_email" style="margin-right: 5px;">
 													<option value="direct">직접입력</option>
 													<option value="naver.com">naver.com</option>
 													<option value="hotmail.com">hotmail.com</option>
@@ -404,65 +279,67 @@
 													<option value="chol.com">chol.com</option>
 													<option value="gmail.com">gmail.com</option>
 													<option value="netian.com">netian.com</option>
-												</select> <a href="javascript:emailcheck('Y', 'N');"
-													class="cbtn form">이메일 중복확인</a>
-											</div>
-										</td>
-									</tr>
-									
-									<tr>
-										<th>
-											<div class="head-cell">휴대폰</div>
-										</th>
-										<td>
-											<div class="col-cell">
-												<input type="text" name="etcphone" form="join_form"
-													id="etcphone" class="MS_input_tel normal-input" size="15"
-													maxlength="30" value="">
+												</select>
 											</div>
 										</td>
 									</tr>
 								</tbody>
 							</table>
 						</div>
-						
-						
-							<fieldset>
-								<legend>약관 동의 폼</legend>
-								<div class="new-privercy-contract">
-									<div id="chkwrap">
-										<div class="all-chk">
-											<label><input type="checkbox" name="every_agree" id="every_agree" value="all" class="input-cbox new_every_agree"> 전체동의</label> 
-											<input type="hidden" name="allnew_agree" id="allnew_agree" value="Y">
-										</div>
-										<div class="cont p10">
-											<ul>
-												<li class="ml-30 pt-10"><label><input type="checkbox" name="yaok2" id="yaok2" value="Y" class="input-cbox every_agree"> 이용약관</label> 
-												<a href="#chk_cont1">내용보기</a></li>
-												<li class="ml-30 pt-10"><label><input type="checkbox" name="privacy1" id="privacy1" value="agree_uidB" class="input-cbox every_agree"> 개인정보 수집 및 이용 안내</label> <a href="#chk_cont2">내용보기</a></li>
 
 
-											</ul>
-											<div class="marketing pb-10">
-												<div class="mk-wrap">
-													<label class="mk-all"><input type="checkbox" name="ad_every_agree" id="ad_every_agree" 
-													value="ad_all" class="input-cbox every_agree new_every_agree"> <strong>마케팅 수신동의</strong></label>&nbsp; 
-														( <label><input type="checkbox" 	name="ADemail_" id="ADemail_" value="ADemail_" class="input-cbox every_agree ad_every_agree"> 이메일</label>
-													<label class="pl-30"><input type="checkbox" name="ADsms_" id="ADsms_" value="ADsms_" class="input-cbox every_agree ad_every_agree"> SMS</label>
-													<label class="pl-30"><input type="checkbox" name="ADpush_" id="ADpush_" value="ADpush_" class="input-cbox every_agree ad_every_agree"> 앱Push알림</label>)
-												</div>
-												쇼핑몰에서 제공하는 신상품 소식/ 할인쿠폰을 무상으로 보내드립니다!<br> 
-												단, 상품 구매 정보는 수신동의 여부 관계없이 발송됩니다.<br> 
-												<strong>제공 동의를 하지 않으셔도 서비스 이용에는 문제가 없습니다.</strong>
+						<fieldset>
+							<legend>약관 동의 폼</legend>
+							<div class="new-privercy-contract">
+								<div id="chkwrap">
+									<div class="all-chk">
+										<label><input type="checkbox" name="every_agree"
+											id="every_agree" value="all"
+											class="input-cbox new_every_agree"> 전체동의</label> <input
+											type="hidden" name="allnew_agree" id="allnew_agree" value="Y">
+									</div>
+									<div class="cont p10">
+										<ul>
+											<li class="ml-30 pt-10"><label><input
+													type="checkbox" name="yaok2" id="yaok2" value="Y"
+													class="input-cbox every_agree"> 이용약관</label> <a
+												href="#chk_cont1">내용보기</a></li>
+											<li class="ml-30 pt-10"><label><input
+													type="checkbox" name="privacy1" id="privacy1"
+													value="agree_uidB" class="input-cbox every_agree">
+													개인정보 수집 및 이용 안내</label> <a href="#chk_cont2">내용보기</a></li>
+
+
+										</ul>
+										<div class="marketing pb-10">
+											<div class="mk-wrap">
+												<label class="mk-all"><input type="checkbox"
+													name="ad_every_agree" id="ad_every_agree" value="ad_all"
+													class="input-cbox every_agree new_every_agree"> <strong>마케팅
+														수신동의</strong></label>&nbsp; ( <label><input type="checkbox"
+													name="ADemail_" id="ADemail_" value="ADemail_"
+													class="input-cbox every_agree ad_every_agree"> 이메일</label>
+												<label class="pl-30"><input type="checkbox"
+													name="ADsms_" id="ADsms_" value="ADsms_"
+													class="input-cbox every_agree ad_every_agree"> SMS</label>
+												<label class="pl-30"><input type="checkbox"
+													name="ADpush_" id="ADpush_" value="ADpush_"
+													class="input-cbox every_agree ad_every_agree">
+													앱Push알림</label>)
 											</div>
+											쇼핑몰에서 제공하는 신상품 소식/ 할인쿠폰을 무상으로 보내드립니다!<br> 단, 상품 구매 정보는
+											수신동의 여부 관계없이 발송됩니다.<br> <strong>제공 동의를 하지 않으셔도
+												서비스 이용에는 문제가 없습니다.</strong>
 										</div>
 									</div>
-									<div class="new-btn-area">
-										<a href="javascript:send();">동의하고 가입완료</a>
-									</div>
-									<h4 class="tit" id="chk_cont1">이용약관</h4>
-									<div class="privercy-contract">
-									<textarea cols="200" wrap="off" rows="10" readonly=""style="margin: 0px; width: 1245.5px; height: 188px;">인터넷 쇼핑몰 『 웰킵스(주) 사이버 몰』회원 약관
+								</div>
+								<div class="new-btn-area">
+									<a href="javascript:send();">동의하고 가입완료</a>
+								</div>
+								<h4 class="tit" id="chk_cont1">이용약관</h4>
+								<div class="privercy-contract">
+									<textarea cols="200" wrap="off" rows="10" readonly=""
+										style="margin: 0px; width: 1245.5px; height: 188px;">인터넷 쇼핑몰 『 웰킵스(주) 사이버 몰』회원 약관
 
 			
 			제1조(목적)
@@ -807,69 +684,73 @@
 			
 			본 약관은 2013년04월01일부터 적용됩니다.
                                                                                                                                                                                                </textarea>
-									</div>
-									
-									<h4 class="tit" id="chk_cont2">개인정보 수집·이용</h4>
-									<table border="0" summary="구분, 목적, 항목, 보유기간, 필수정보, 선택정보"
-										class="contract-tbl">
-										<caption>개인정보 수집·이용</caption>
-										<colgroup>
-											<col width="100">
-											<col width="33%">
-											<col width="33%">
-											<col width="33%">
-										</colgroup>
-										<thead>
-											<tr>
-												<th scope="col"><div>구분</div></th>
-												<th scope="col"><div>목적</div></th>
-												<th scope="col"><div>항목</div></th>
-												<th scope="col"><div>보유기간</div></th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr>
-												<th scope="row" rowspan="1"><div>필수정보</div></th>
-												<td><div class="p10 purposeY">회원제 서비스 이용 / 본인확인</div></td>
-												<td><div class="p10 itemsY">이름, 아이디, 비밀번호, 이메일, 휴대폰</div></td>
-												<td><div class="p10 holdingY">회원탈퇴 후 5일까지</div></td>
-											</tr>
-										</tbody>
-									</table>
-									<input type="hidden" name="agree_uidB" id="agree_uidB" value="1_5_">
-									<table border="0" summary="구분, 목적, 항목, 보유기간, 필수정보, 선택정보" class="contract-tbl">
-										<caption>개인정보 수집·이용</caption>
-										<colgroup>
-											<col width="100">
-											<col width="33%">
-											<col width="33%">
-											<col width="33%">
-										</colgroup>
-										<tbody>
-											<tr>
-												<th scope="row" rowspan="2"><div>선택정보</div></th>
-												<td><div class="p10 purpose1">마케팅 활용(이벤트, 맞춤형 광고)</div></td>
-												<td><div class="p10 items1">휴대폰, 이메일</div></td>
-												<td><div class="p10 holding1">회원탈퇴 후 5일까지</div></td>
-											</tr>
-											<tr>
-
-												<td><div class="p10 purpose5">마케팅 활용(이벤트, 맞춤형 광고)</div></td>
-												<td><div class="p10 items5">휴대폰, 이메일, 쿠키정보</div></td>
-												<td><div class="p10 holding5">수신동의를 받는 날로부터 1년마다 자동갱신</div></td>
-											</tr>
-										</tbody>
-									</table>
-									<p class="pl-6 btm-msg">
-										귀하께서는 쇼핑몰에서 위와 같이 수집하는 개인정보에 대해, 동의하지 않거나 개인정보를 기재하지 않음으로써 거부할
-										수 있습니다.<br> 다만, 이때 회원에게 제공되는 서비스가 제한될 수 있습니다.
-									</p>
 								</div>
-							</fieldset>
-							<!-- use_contract -->
-						</div>
+
+								<h4 class="tit" id="chk_cont2">개인정보 수집·이용</h4>
+								<table border="0" summary="구분, 목적, 항목, 보유기간, 필수정보, 선택정보"
+									class="contract-tbl">
+									<caption>개인정보 수집·이용</caption>
+									<colgroup>
+										<col width="100">
+										<col width="33%">
+										<col width="33%">
+										<col width="33%">
+									</colgroup>
+									<thead>
+										<tr>
+											<th scope="col"><div>구분</div></th>
+											<th scope="col"><div>목적</div></th>
+											<th scope="col"><div>항목</div></th>
+											<th scope="col"><div>보유기간</div></th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<th scope="row" rowspan="1"><div>필수정보</div></th>
+											<td><div class="p10 purposeY">회원제 서비스 이용 / 본인확인</div></td>
+											<td><div class="p10 itemsY">이름, 아이디, 비밀번호, 이메일,
+													휴대폰</div></td>
+											<td><div class="p10 holdingY">회원탈퇴 후 5일까지</div></td>
+										</tr>
+									</tbody>
+								</table>
+								<input type="hidden" name="agree_uidB" id="agree_uidB"
+									value="1_5_">
+								<table border="0" summary="구분, 목적, 항목, 보유기간, 필수정보, 선택정보"
+									class="contract-tbl">
+									<caption>개인정보 수집·이용</caption>
+									<colgroup>
+										<col width="100">
+										<col width="33%">
+										<col width="33%">
+										<col width="33%">
+									</colgroup>
+									<tbody>
+										<tr>
+											<th scope="row" rowspan="2"><div>선택정보</div></th>
+											<td><div class="p10 purpose1">마케팅 활용(이벤트, 맞춤형 광고)</div></td>
+											<td><div class="p10 items1">휴대폰, 이메일</div></td>
+											<td><div class="p10 holding1">회원탈퇴 후 5일까지</div></td>
+										</tr>
+										<tr>
+
+											<td><div class="p10 purpose5">마케팅 활용(이벤트, 맞춤형 광고)</div></td>
+											<td><div class="p10 items5">휴대폰, 이메일, 쿠키정보</div></td>
+											<td><div class="p10 holding5">수신동의를 받는 날로부터 1년마다
+													자동갱신</div></td>
+										</tr>
+									</tbody>
+								</table>
+								<p class="pl-6 btm-msg">
+									귀하께서는 쇼핑몰에서 위와 같이 수집하는 개인정보에 대해, 동의하지 않거나 개인정보를 기재하지 않음으로써 거부할
+									수 있습니다.<br> 다만, 이때 회원에게 제공되는 서비스가 제한될 수 있습니다.
+								</p>
+							</div>
+						</fieldset>
+						<!-- use_contract -->
 				</div>
 			</div>
 		</div>
-		</div>
-		<%@include file="/WEB-INF/views/include/footer.jsp"%>
+	</div>
+</div>
+<%@include file="/WEB-INF/views/include/footer.jsp"%>
