@@ -17,10 +17,14 @@ public class HomeController {
 
 		return "login/logout";
 	}
+<<<<<<< HEAD
 	
 	@RequestMapping("/memberinsert.do")
+=======
+	@RequestMapping("/memberInsert.do")
+>>>>>>> bc4f3a36a10e20dead2773626760a73de66e7694
 	public String memberinsert() {
 
-		return "login/memberinsert";
+		return "login/memberInsert";
 	}
 }
