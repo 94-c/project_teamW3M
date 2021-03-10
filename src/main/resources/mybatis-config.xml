@@ -7,7 +7,10 @@
      <typeAlias type="com.spring.w3m.user.common.UserVO"  alias="UserVO" />
  </typeAliases>
 	<mappers>
-		<mapper resource="Mapper1.xml" />
-		<mapper resource="Mapper2.xml" />
+		<mapper resource="mapper/joe_Mapper.xml" />
+		<mapper resource="mapper/woong_Mapper.xml" />
+		<mapper resource="mapper/sw_Mapper.xml" />
+		<mapper resource="mapper/soo_Mapper.xml" />
+		<mapper resource="mapper/hyeong_Mapper.xml" />
 	</mappers>
 </configuration>
