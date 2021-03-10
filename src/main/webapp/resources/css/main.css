@@ -1,4 +1,6 @@
 @charset "UTF-8";
+
+/* BASIC css start */
 .sliderkit {position:relative; }
 .sliderkit a,
 .sliderkit a:hover {text-decoration:none;}
@@ -134,4 +136,5 @@
 .promoBanner { position:relative; overflow:hidden; text-align:center; background:white; }
 .promoBanner .bannerLink { display:block; }
 
+/* BASIC css end */
 

@@ -1,0 +1,61 @@
+@charset "UTF-8";
+
+bbs-hd { padding:65px 0 20px; border-bottom:1px dashed #e9e9e9 }
+.bbs-hd .link { text-align: center }
+.bbs-hd .link li { display: inline; }
+.bbs-hd .link li a { padding: 0 10px; color: #b7b7b7; background: url(/images/d3/modern_simple/common/bull_bbs_hd_link.gif) no-repeat left 2px; }
+.bbs-hd .link li.last a { background-image: none; }
+
+/* 타이틀 */
+.bbs-tit { margin-top:60px; *zoom:1 }
+.bbs-tit:after { display:block; clear:both; content:'' }
+.bbs-tit h3 { float:left; font-size:16px; color:#000; font-weight:bold; line-height:30px }
+
+/* 검색 */
+.bbs-sch { float:right }
+.bbs-sch label { margin-right:10px; font-size:11px }
+.bbs-sch label input { margin-top:-3px; vertical-align:middle }
+.bbs-sch .key-wrap { font-size: 0; line-height: 0; }
+.bbs-sch .key-wrap,
+.bbs-sch .keyword,
+.bbs-sch img { vertical-align: middle; }
+.bbs-sch .key-wrap a { margin-left:-1px; vertical-align:top }
+.bbs-sch img { *margin-top:1px; *margin-left:-1px; vertical-align:top }
+.bbs-sch .MS_input_txt { margin:0; padding:0 0 0 5px; width:178px; height:28px; border:1px solid #c3c3c3 }
+.bbs-sch .keyword { width: 125px; height: 14px; padding: 2px 0 0 2px; margin-right: 3px; line-height: 14px; border: 1px solid #ededed; }
+
+/* 게시판 글쓰기, 목록 이동 링크 */
+.bbs-btm { padding:15px 0; position:relative; *zoom:1 }
+.bbs-btm:after { display:block; clear:both; content:'' }
+.bbs-btm .bbs-link { float:right }
+.bbs-btm .bbs-link a { margin-left:3px; width:108px; height:38px; font-size:13px; line-height:38px }
+.bbs-btm .bbs-paging .paging { margin:0 130px; padding:10px 0 }
+
+/* 게시판 한줄공지 */
+.bbs-online-notice { margin-top: 10px; margin-bottom: -10px; padding: 7px 10px; color: #9d9d9d; border-top: 1px solid #e5e5e5; border-bottom: 1px solid #e5e5e5; }
+
+/* 게시판 타입 - 리스트 */
+.bbs-table-list { margin-top:10px }
+.bbs-table-list thead th,
+.bbs-table-list tbody td  { padding:15px 0 } 
+.bbs-table-list thead th { font-size:13px; color: #000; font-weight:normal; font-family:Verdana; border-top:1px solid #000; border-bottom: 1px solid #e9e9e9 }
+.bbs-table-list tbody td { color:#343434; border-bottom: 1px solid #e9e9e9 }
+.bbs-table-list tbody td a {  }
+
+/* 게시판 타입 - 보기 */
+.bbs-table-view { margin-top:10px }
+.bbs-table-view thead th,
+.bbs-table-view tbody td  { padding:15px 0 } 
+.bbs-table-view thead th { color: #000; font-size:15px; font-weight:normal;  border-top: 1px solid #000; border-bottom: 1px solid #e9e9e9 }
+.bbs-table-view .btn-dwn { margin-top:15px;}
+.bbs-table-view .privercy-agree label { vertical-align:-2px \0/IE8+9; *vertical-align:bottom }
+.bbs-table-view .privercy-agree label input { vertical-align:top; *vertical-align:top }
+
+/* 팝업 타이틀 (1:1고객게시판) */
+.tit-pop { position:relative }
+.tit-pop h1 { font-size:18px; color:#000; font-weight:bold; line-height:18px }
+.tit-pop .txt { position:absolute; top:5px; right:0; font-size:12px; color:#343434 }
+
+#page-body2 {
+	padding: 80px 0 0;
+}

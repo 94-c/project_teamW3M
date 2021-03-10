@@ -17,9 +17,17 @@ public class HomeController {
 
 		return "login/logout";
 	}
-	@RequestMapping("/memberinsert.do")
+	@RequestMapping("/insertMember.do")
 	public String memberinsert() {
 
-		return "login/memberinsert";
+		return "login/insertMember";
 	}
+	
+	//공지사항
+	@RequestMapping("/notification.do")
+	public String notification() {
+		System.out.println("---공지사항---");
+		return "list/notification";
+	}
+	
 }
