@@ -24,10 +24,10 @@ public class HomeController {
 	}
 	
 	//공지사항
-	@RequestMapping("/notification.do")
+	@RequestMapping("/notice.do")
 	public String notification() {
 		System.out.println("---공지사항---");
-		return "list/notification";
+		return "list/notice";
 	}
 	
 	//관리자 페이지
