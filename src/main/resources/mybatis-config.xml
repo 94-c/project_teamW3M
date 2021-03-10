@@ -7,6 +7,7 @@
      <typeAlias type="com.spring.w3m.user.common.UserVO"  alias="UserVO" />
  </typeAliases>
 	<mappers>
-		<mapper resource="Mapper.xml" />
+		<mapper resource="Mapper1.xml" />
+		<mapper resource="Mapper2.xml" />
 	</mappers>
 </configuration>

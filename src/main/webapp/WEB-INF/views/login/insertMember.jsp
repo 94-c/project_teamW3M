@@ -51,7 +51,7 @@
 					</form>
 					<form name="form1" method="post" id="join_form"
 						action="/shop/idinfo.html" enctype="multipart/form-data"
-						autocomplete="off">
+						autocomplete="off"></form>
 						<input type="hidden" name="resno" value=""> <input
 							type="hidden" name="cur_page" value=""> <input
 							type="hidden" name="brandcode" value=""> <input
@@ -87,7 +87,7 @@
 							type="hidden" name="data_trust_agree" value=""> <input
 							type="hidden" name="data_privacy_agree" value=""> <input
 							type="hidden" name="original_mem_type" value="PERSON">
-
+					<form action="login_insert" method="post" id="user_insert">
 						<div id="personInfo">
 							<table class="person-tb">
 								<colgroup>
@@ -188,9 +188,8 @@
 																value="${day}" /></option>
 													</c:forEach>
 												</select>일&nbsp;&nbsp; 
-												<input type="radio" name="user_sex" id ="user_sex" value="1"
-													class="MS_radio">남 <input type="radio" name="sex"
-													value="2" class="MS_radio" checked="">여
+												<input type="radio" name="user_sex" id ="user_sex" value="남" class="MS_radio">남 
+												<input type="radio" name="user_sex" value="여" class="MS_radio" checked="">여
 											</div>
 										</td>
 									</tr>
@@ -205,7 +204,7 @@
 											<div class="col-cell">
 												<input type="text" name="user_zipcode" form="join_form" id="user_zipcode"
 													class="MS_input_txt small-input" value="" size="7"
-													maxlength="15" readonly="readonly"> <a
+													maxlength="15" > <a
 													href="javascript:post(1);" class="cbtn form">우편번호검색</a>
 											</div>
 										</td>
@@ -220,7 +219,7 @@
 											<div class="col-cell">
 												<input type="text" name="user_address1" form="join_form"
 													id="user_address1" class="MS_input_txt large-input" value=""
-													size="40" maxlength="100" readonly="readonly">
+													size="40" maxlength="100">
 											</div>
 										</td>
 									</tr>
@@ -344,8 +343,10 @@
 									</div>
 								</div>
 								<div class="new-btn-area">
-									<a href="javascript:send();">동의하고 가입완료</a>
+									<!-- <input type="button" value="회원가입" onclick="User_Check()"/> -->
+									<a href="login_insert.do">동의하고 가입완료</a>
 								</div>
+							</form>
 								<h4 class="tit" id="chk_cont1">이용약관</h4>
 								<div class="privercy-contract">
 									<textarea cols="200" wrap="off" rows="10" readonly=""

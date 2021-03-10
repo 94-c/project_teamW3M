@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="UserDAO">
+
+	<insert id="insertUser" parameterType="UserVO">
+	INSERT INTO user_member (user_seq, user_id, user_name, user_password, user_birthday, user_gender, user_email, user_zipcode, user_address1, user_address2, user_phone, user_marketing_mail, user_marketing_sms)
+	VALUES (nextval('user_member_seq'), #{user_id}, #{user_name}, #{user_password}, #{user_birthday}, #{user_gender}, #{user_email}, #{user_zipcode}, #{user_address1}, #{user_address2}, #{user_phone}, #{user_marketing_mail}, #{user_marketing_sms})
+	</insert>
+
+</mapper>

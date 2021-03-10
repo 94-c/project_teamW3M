@@ -5,7 +5,7 @@ public class UserVO {
 	private String user_password; //패스워드
 	private String user_name; //이름
 	private String user_birthday; //생년월일
-	private String user_sex; //성별
+	private String user_gender; //성별
 	private String user_email; //이메일 주소
 	private String user_zipcode; //우편번호
 	private String user_address1; //주소
@@ -19,15 +19,13 @@ public class UserVO {
 	private String user_level; //등급 DEFAULT 'Bronze', -- 회원등급 //Bronze , silver, gold, Platinum,dia
 	private int user_state; //1 : 정상 2 : 휴먼 3: 삭제(3개월 보관) 0: 어드민
 	private Long user_seq; // 회원 번호
-	@Override
-	public String toString() {
-		return "UserVO [user_id=" + user_id + ", user_password=" + user_password + ", user_name=" + user_name
-				+ ", user_birthday=" + user_birthday + ", user_sex=" + user_sex + ", user_email=" + user_email
-				+ ", user_zipcode=" + user_zipcode + ", user_address1=" + user_address1 + ", user_address2="
-				+ user_address2 + ", user_join_date=" + user_join_date + ", user_last_login=" + user_last_login
-				+ ", user_phone=" + user_phone + ", user_point=" + user_point + ", user_marketing_mail="
-				+ user_marketing_mail + ", user_marketing_sms=" + user_marketing_sms + ", user_level=" + user_level
-				+ ", user_state=" + user_state + ", user_seq=" + user_seq + "]";
+
+	
+	public String getUser_gender() {
+		return user_gender;
+	}
+	public void setUser_gender(String user_gender) {
+		this.user_gender = user_gender;
 	}
 	public String getUser_id() {
 		return user_id;
@@ -53,12 +51,7 @@ public class UserVO {
 	public void setUser_birthday(String user_birthday) {
 		this.user_birthday = user_birthday;
 	}
-	public String getUser_sex() {
-		return user_sex;
-	}
-	public void setUser_sex(String user_sex) {
-		this.user_sex = user_sex;
-	}
+
 	public String getUser_email() {
 		return user_email;
 	}
@@ -136,6 +129,16 @@ public class UserVO {
 	}
 	public void setUser_seq(Long user_seq) {
 		this.user_seq = user_seq;
+	}
+	@Override
+	public String toString() {
+		return "UserVO [user_id=" + user_id + ", user_password=" + user_password + ", user_name=" + user_name
+				+ ", user_birthday=" + user_birthday + ", user_gender=" + user_gender + ", user_email=" + user_email
+				+ ", user_zipcode=" + user_zipcode + ", user_address1=" + user_address1 + ", user_address2="
+				+ user_address2 + ", user_join_date=" + user_join_date + ", user_last_login=" + user_last_login
+				+ ", user_phone=" + user_phone + ", user_point=" + user_point + ", user_marketing_mail="
+				+ user_marketing_mail + ", user_marketing_sms=" + user_marketing_sms + ", user_level=" + user_level
+				+ ", user_state=" + user_state + ", user_seq=" + user_seq + "]";
 	}
 	
 	
