@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /*
 ========================================================================
 RESET
@@ -25,7 +24,7 @@ input, textarea, select, button, a {
     font-size: 12px;
     color: #1c1c1c;
     line-height: 1.25;
-    font-family: Dotum, "µ¸¿ò", DotumChe, "µ¸¿òÃ¼", Verdana, monospace, Corbel, AppleGothic, Helvetica, sans-serif;
+    font-family: Dotum, "돋움", DotumChe, "돋움체", Verdana, monospace, Corbel, AppleGothic, Helvetica, sans-serif;
 }
 h1, h2, h3, h4, h5, h6 {
     font-weight: normal;
@@ -100,11 +99,11 @@ input[type=text]::-ms-clear {
     display:none;
 }
 
-#preview_wrap { display:none !important } /* ¹Ì¸®º¸±â ¼û±è */
+#preview_wrap { display:none !important } /* 미리보기 숨김 */
 
 /*
 ========================================================================
-Æ÷ÀÎÆ® »ö»ó class
+포인트 색상 class
 ========================================================================
 */
 
@@ -113,7 +112,7 @@ input[type=text]::-ms-clear {
 
 /*
 ========================================================================
-°øÅë class
+공통 class
 ========================================================================
 */
 /* image replace, hidden text */
@@ -131,7 +130,7 @@ input[type=text]::-ms-clear {
 .chk-rdo { width: 13px; height: 13px; vertical-align: middle; }
 .txt-area1 { overflow-y: scroll; padding: 2px 0 0 2px; line-height: 17px; border: 1px solid #e2e9ef; border-top: 1px solid #aaadb2; }
 /* file add trick */
-.file-wrap { display: inline-block; overflow: hidden; position: relative; height: 23px; width: 280px; vertical-align: middle; background: url(/images/btn/h20_trick_fileadd.gif) no-repeat right 0; }
+.file-wrap { display: inline-block; overflow: hidden; position: relative; height: 23px; width: 280px; vertical-align: middle; background: url(../../../images/btn/h20_trick_fileadd.html) no-repeat right 0; }
 .file-wrap .file-txt { float: left; border: 0 none; height: 18px; font-size: 12px; line-height: 18px; width: 198px; border: 1px solid #ccc; }
 .file-wrap .file-trick { cursor: pointer; position: absolute; right: 0px; top: 0; right: 0; width: 100px; height: 20px; background: none; border: 0 none; opacity: 0; filter: alpha(opacity=0); }
 /* en-font */
@@ -198,7 +197,7 @@ table img { vertical-align: middle; }
 /* table-type-1 */
 .table-type-1 { border-top: 1px solid #b7b7b7; border-bottom: 1px solid #b7b7b7; }
 .table-type-1 th,
-.table-type-1 td { padding: 8px 0 8px; background: url(/images/d3/modern_simple/common/dot_h1_w10.gif) repeat-x 0 bottom; }
+.table-type-1 td { padding: 8px 0 8px; background: url(../../../images/d3/modern_simple/common/dot_h1_w10.gif) repeat-x 0 bottom; }
 .table-type-1 tr.nbg th,
 .table-type-1 tr.nbg td { background-image: none; }
 .table-type-1 tr.bg th,
@@ -216,7 +215,7 @@ table img { vertical-align: middle; }
 .table-type-2 td.nodata { padding:15px 0; text-align:center }
 .table-type-2 tr.nbg th,
 .table-type-2 tr.nbg td { background-image: none; }
-/* »óÇ°¸®½ºÆ® (¸ÞÀÎ/°Ë»ö/»óÇ°¸®½ºÆ®) */
+/* 상품리스트 (메인/검색/상품리스트) */
 .prd-list { margin-top: 10px; }
 .prd-list table td { border: 0; }
 .prd-list table .tb-center { padding: 0 10px; }
@@ -226,7 +225,7 @@ table img { vertical-align: middle; }
 .prd-list .thumb img { display: block; width: 100%; height: 100%; }
 .prd-list .dsc { margin-top: 15px; font-weight: bold; }
 .prd-list .price { margin-top: 5px; font-weight: bold; color: #333; }
-/* Àå¹Ù±¸´Ï ¸®½ºÆ®, ÁÖ¹®»óÇ° ¸®½ºÆ® */
+/* 장바구니 리스트, 주문상품 리스트 */
 .table-cart { border-bottom:1px solid #e9e9e9 }
 .table-cart thead th { padding:15px 0; font-size:13px; color:#101010; font-weight:bold; border-bottom:1px solid #e9e9e9 }
 .table-cart tbody td { padding:10px 0; border-top:1px solid #e9e9e9 }
@@ -243,17 +242,17 @@ table img { vertical-align: middle; }
 .table-cart tfoot td { padding:15px 0; font-weight:bold; line-height:20px; border-top:1px solid #e9e9e9 }
 .table-cart tfoot strong { color: #fe3333 }
 
-/* ÀÏ¹ÝÇü ÁÖ¹®¼­ ÀÛ¼º */
+/* 일반형 주문서 작성 */
 .table-order-prd { border-top:1px solid #000 }
 
-/* ¼ö·® ÄÁÆ®·Ñ */
+/* 수량 컨트롤 */
 .table-cart .opt-spin { position: relative; width:50px; height:21px; margin-left: auto; margin-right: auto; padding-bottom:6px }
 .table-cart .opt-spin .txt-spin,
 .table-cart .opt-spin .btns { float: left; }
 .table-cart .opt-spin .txt-spin { margin-right:3px; width:31px; height:21px; border: 1px solid #acacac; font-size: 11px; text-align:center }
 .table-cart .opt-spin .btns { width: 12px; height: 20px; margin-top:4px; }
 .table-cart .opt-spin .btns img { overflow: hidden; float: left; text-indent: -999px; background: none; }
-/* ÁÖ¹® - ÁÖ¹®Á¤º¸ Å×ÀÌºí */
+/* 주문 - 주문정보 테이블 */
 .table-order-info { margin-top: 10px; border-top:1px solid #000 }
 .table-order-info tbody th,
 .table-order-info tbody td { padding:12px 0 11px 0; border-bottom: 1px solid #e9e9e9 }
@@ -263,7 +262,7 @@ table img { vertical-align: middle; }
 .table-order-info tbody th .d-block { font-weight: normal; letter-spacing: 0; }
 .table-order-info tbody tr.nbg th,
 .table-order-info tbody tr.nbg td { background-image: none; }
-/* ¸¶ÀÌÆäÀÌÁö µðÀÚÀÎ Å¸ÀÔ2 Å×ÀÌºí ¸®½ºÆ®, Å¸ÀÌÆ² */
+/* 마이페이지 디자인 타입2 테이블 리스트, 타이틀 */
 .tit-tb-list { margin-top:40px; font-size:18px; color:#2e2e2e; font-weight:bold }
 .table-d2-list { border-top:1px solid #000 }
 .table-d2-list thead th { padding:15px 0; font-size:13px; color:#000; font-weight:bold; border-bottom:1px solid #e9e9e9 }
@@ -272,7 +271,7 @@ table img { vertical-align: middle; }
 .table-d2-list tbody td .replyYes { display:inline-block; padding:4px 3px 3px; font-size:11px; color:#fff; text-align:center; border:1px solid #231f20; background: #231f20 }
 .table-d2-list tbody td .replyNo { display:inline-block; padding:4px 3px 3px; font-size:11px; color:#231f20; text-align:center; border:1px solid #231f20; background: #fff }
 
-/* ¸¶ÀÌÆäÀÌÁö µðÀÚÀÎ Å¸ÀÔ2 Å×ÀÌºí ºä */
+/* 마이페이지 디자인 타입2 테이블 뷰 */
 .table-d2-view { margin-top:10px; border-top:1px solid #000 }
 .table-d2-view th, 
 .table-d2-view td { padding:15px 0; border-bottom:1px solid #e9e9e9 }
@@ -293,23 +292,23 @@ table img { vertical-align: middle; }
 .paging a.first,
 .paging a.last { letter-spacing:-4px }
 
-/* ÇöÀçÀ§Ä¡ */
+/* 현재위치 */
 .loc-navi { height:46px; text-align:right; overflow:hidden }
 .loc-navi, .loc-navi a { color: #878787; text-transform: capitalize; vertical-align:top; line-height:46px }
-/* ÆäÀÌÁö Å¸ÀÌÆ² */
-/* Å¸ÀÔ 1*/
+/* 페이지 타이틀 */
+/* 타입 1*/
 #content .tit-page { padding-bottom:10px; position: relative; font-size:18px; color:#202020; line-height:18px; font-weight:bold; border-bottom: 1px solid #000 }
 #content .tit-page .dsc { position: absolute; right: 0px; top: 15px; font-size: 11px; color: #a5a5a5; letter-spacing: -1px; }
 #content .tit-page .dsc em { color:#333; }
-/* Å¸ÀÔ 2 */
+/* 타입 2 */
 #content .tit-page-2 { margin-top:40px; position: relative }
 #content .tit-page-2 h2 { font-size:18px; color:#2e2e2e; font-weight:bold }
 #content .tit-page-2 .dsc { position:absolute; top:8px; right:0 }
-/* Å¸ÀÔ 3 */
+/* 타입 3 */
 #content .page-hd { padding-bottom:5px; border-bottom:1px solid #e3e3e3 }
 #content .page-hd h2 { color: #202020; font-size:18px; font-weight:bold; text-transform: uppercase }
 
-/* »óÇ° total/Á¤·Ä */
+/* 상품 total/정렬 */
 .total-sort { zoom: 1; overflow: hidden; padding-bottom: 5px; border-bottom: 1px solid #e5e5e5; }
 /* total */
 .total-sort .total { float: left; width: auto; }
@@ -322,12 +321,12 @@ table img { vertical-align: middle; }
 .total-sort .sort li,
 .total-sort .sort li a { float: left; width: auto; }
 .total-sort .sort li { display: inline; margin-left: 10px; }
-/* °Ô½ÃÆÇ ÃÑ°Ô½Ã±Û,PAGE */
+/* 게시판 총게시글,PAGE */
 .total-page { zoom: 1; overflow: hidden; }
 .total-page .total { float: left; width: auto; }
 .total-page .page { float: right; width: auto;}
-/* È¸¿ø µî±Þ Ç¥½Ã */
-/* Å¸ÀÔ 1 */
+/* 회원 등급 표시 */
+/* 타입 1 */
 .mem-lvl { *zoom:1; overflow: hidden; padding:25px 0 25px 350px; width:753px; margin:0 auto; border-bottom:1px dashed #e9e9e9 }
 .mem-lvl:after { display:block; clear:both; content:'' }
 .mem-lvl .lvl-img,
@@ -340,7 +339,7 @@ table img { vertical-align: middle; }
     color:#F26622;
 }
 
-/* Å¸ÀÔ 2 */
+/* 타입 2 */
 .mem-lvl-2 { zoom: 1; overflow: hidden; padding: 15px 50px 15px 150px; border: 5px solid #ededed; }
 .mem-lvl-2 .lvl-img,
 .mem-lvl-2 p { position: relative; float: left; }
@@ -352,13 +351,13 @@ table img { vertical-align: middle; }
     color:#F26622;
 }
 
-/* ¸¶ÀÌÆäÀÌÁö »ó´Ü ¸Þ½ÃÁö ¹Ú½º */
+/* 마이페이지 상단 메시지 박스 */
 .t-box-msg { padding: 10px 20px; border: 5px solid #ededed; }
 .t-box-msg strong { color: #0178d3; }
 
 /*
 ========================================================================
-°øÅë - ·¹ÀÌ¾î
+공통 - 레이어
 ========================================================================
 */
 
@@ -366,7 +365,7 @@ table img { vertical-align: middle; }
 
 /*
 ========================================================================
-°øÅë - ¹öÆ°Å¸ÀÔ
+공통 - 버튼타입
 ========================================================================
 */
 
@@ -386,7 +385,7 @@ table img { vertical-align: middle; }
 
 /*
 ========================================================================
-°øÅë - ·¹ÀÌ¾Æ¿ô
+공통 - 레이아웃
 ========================================================================
 */
 /* z-index */
@@ -405,13 +404,13 @@ table img { vertical-align: middle; }
 #content { min-height:400px }
 
 
-/* »óÇ° ¹Ì¸®º¸±â ·¹ÀÌ¾î */
+/* 상품 미리보기 레이어 */
 #detailpage { position: absolute; top: 100px; display: block; width:936px; padding:43px; border:1px solid #838897; background-color: #fff; }
 #detailpage .detail { zoom: 1; overflow: hidden; padding-left:526px }
 #detailpage .detail:after { display:inline-block; clear:both; content:'' }
 #detailpage .thumb-wrap,
 #detailpage .txt-wrap { position: relative; float: left; }
-#detailpage .close-layer { position: absolute; top:19px; right:19px; width:26px; height:26px; text-indent:-9999em; background:url(//image.makeshop.co.kr/makeshop/d3/basic_simple/common/btn_close_layer.gif) 0 0 no-repeat }
+#detailpage .close-layer { position: absolute; top:19px; right:19px; width:26px; height:26px; text-indent:-9999em; background:url(../../../../image.makeshop.co.kr/makeshop/d3/basic_simple/common/btn_close_layer.gif) 0 0 no-repeat }
 /* thumb-wrap */
 #detailpage .thumb-wrap { width:486px; height:auto; left:-526px; margin-right:-526px; text-align: center }
 #detailpage .thumb-wrap .btns { margin-top: 10px; font-size: 0; line-height: 0;}
@@ -448,18 +447,18 @@ table img { vertical-align: middle; }
 #detailpage .thumb-wrap .btns { margin-top: 10px; font-size: 0; line-height: 0;}
 #detailpage .thumb-wrap .btns a { margin-left: 5px; }
 
-/* °Ô½ÃÆÇ °øÅë - ÀÏ¹Ý, °Ö·¯¸®, ÄÁÅÙÃ÷¸µÅ©, ÀÚ·á½Ç, ¹Ì´ÏÈ¨ÇÇ, ¹æ¸í·Ï, µ¿¿µ»ó */
-/* »ó´Ü */
+/* 게시판 공통 - 일반, 겔러리, 컨텐츠링크, 자료실, 미니홈피, 방명록, 동영상 */
+/* 상단 */
 .bbs-hd { padding:65px 0 20px; border-bottom:1px dashed #e9e9e9 }
 .bbs-hd .link { text-align: center }
 .bbs-hd .link li { display: inline; }
-.bbs-hd .link li a { padding: 0 10px; color: #b7b7b7; background: url(/images/d3/modern_simple/common/bull_bbs_hd_link.gif) no-repeat left 2px; }
+.bbs-hd .link li a { padding: 0 10px; color: #b7b7b7; background: url(../../../images/d3/modern_simple/common/bull_bbs_hd_link.gif) no-repeat left 2px; }
 .bbs-hd .link li.last a { background-image: none; }
-/* Å¸ÀÌÆ² */
+/* 타이틀 */
 .bbs-tit { margin-top:60px; *zoom:1 }
 .bbs-tit:after { display:block; clear:both; content:'' }
 .bbs-tit h3 { float:left; font-size:16px; color:#000; font-weight:bold; line-height:30px }
-/* °Ë»ö */
+/* 검색 */
 .bbs-sch { float:right }
 .bbs-sch label { margin-right:10px; font-size:11px }
 .bbs-sch label input { margin-top:-3px; vertical-align:middle }
@@ -471,22 +470,22 @@ table img { vertical-align: middle; }
 .bbs-sch img { *margin-top:1px; *margin-left:-1px; vertical-align:top }
 .bbs-sch .MS_input_txt { margin:0; padding:0 0 0 5px; width:178px; height:28px; border:1px solid #c3c3c3 }
 .bbs-sch .keyword { width: 125px; height: 14px; padding: 2px 0 0 2px; margin-right: 3px; line-height: 14px; border: 1px solid #ededed; }
-/* °Ô½ÃÆÇ ±Û¾²±â, ¸ñ·Ï ÀÌµ¿ ¸µÅ© */
+/* 게시판 글쓰기, 목록 이동 링크 */
 .bbs-btm { padding:15px 0; position:relative; *zoom:1 }
 .bbs-btm:after { display:block; clear:both; content:'' }
 .bbs-btm .bbs-link { float:right }
 .bbs-btm .bbs-link a { margin-left:3px; width:108px; height:38px; font-size:13px; line-height:38px }
 .bbs-btm .bbs-paging .paging { margin:0 130px; padding:10px 0 }
-/* °Ô½ÃÆÇ ÇÑÁÙ°øÁö */
+/* 게시판 한줄공지 */
 .bbs-online-notice { margin-top: 10px; margin-bottom: -10px; padding: 7px 10px; color: #9d9d9d; border-top: 1px solid #e5e5e5; border-bottom: 1px solid #e5e5e5; }
-/* °Ô½ÃÆÇ Å¸ÀÔ - ¸®½ºÆ® */
+/* 게시판 타입 - 리스트 */
 .bbs-table-list { margin-top:10px }
 .bbs-table-list thead th,
 .bbs-table-list tbody td  { padding:15px 0 } 
 .bbs-table-list thead th { font-size:13px; color: #000; font-weight:normal; font-family:Verdana; border-top:1px solid #000; border-bottom: 1px solid #e9e9e9 }
 .bbs-table-list tbody td { color:#343434; border-bottom: 1px solid #e9e9e9 }
 .bbs-table-list tbody td a {  }
-/* °Ô½ÃÆÇ Å¸ÀÔ - º¸±â */
+/* 게시판 타입 - 보기 */
 .bbs-table-view { margin-top:10px }
 .bbs-table-view thead th,
 .bbs-table-view tbody td  { padding:15px 0 } 
@@ -494,18 +493,18 @@ table img { vertical-align: middle; }
 .bbs-table-view .btn-dwn { margin-top:15px;}
 .bbs-table-view .privercy-agree label { vertical-align:-2px \0/IE8+9; *vertical-align:bottom }
 .bbs-table-view .privercy-agree label input { vertical-align:top; *vertical-align:top }
-/* ÆË¾÷ Å¸ÀÌÆ² (1:1°í°´°Ô½ÃÆÇ) */
+/* 팝업 타이틀 (1:1고객게시판) */
 .tit-pop { position:relative }
 .tit-pop h1 { font-size:18px; color:#000; font-weight:bold; line-height:18px }
 .tit-pop .txt { position:absolute; top:5px; right:0; font-size:12px; color:#343434 }
 
-/* ¹Ì´ÏÈ¨ÇÇ, ¹æ¸í·Ï °Ô½Ã±Û ºä */
-/* »ó´Ü */
+/* 미니홈피, 방명록 게시글 뷰 */
+/* 상단 */
 .visit-vhd { margin-top: 10px; border-top: 1px solid #000 }
 .visit-vhd th,
 .visit-vhd td { padding:15px 0; border-bottom: 1px solid #e9e9e9; font-size:15px; color:#000 } 
 .visit-vhd .tb-left{ padding:0 10px }
-/* ³»¿ë*/
+/* 내용*/
 .visit-vcont th,
 .visit-vcont td { padding:15px 0; color: #000 } 
 .visit-vcont .info em { font-weight:bold }
@@ -518,20 +517,20 @@ table img { vertical-align: middle; }
 .visit-vcont .tb-left{ padding: 0 3px; }
 .visit-vcont td .tb-cont { padding:15px 0; min-height:250px; color:#8d8d8d }
 .visit-vcont td .tb-cont img { max-width: 100%; }
-/* ÄÚ¸àÆ® */
+/* 코멘트 */
 .visit-vcmt { border-top:1px solid #000 }
 .visit-vcmt td { padding:20px 0 15px; border-bottom:1px dashed #e9e9e9; vertical-align:top }
 .visit-vcmt .com-name { margin-right:20px; font-weight:bold; color:#000 }
 .visit-vcmt .com-date { font-size:11px; color:#aeaeae }
 .visit-vcmt .com-cont { padding:10px 20px 0 0; color:#828282; line-height:20px }
-/* ÀÛ¼º */
+/* 작성 */
 .vist-vcmt-reg { margin-top: 10px; border-bottom: 1px solid #e5e5e5; }
 .vist-vcmt-reg th,
 .vist-vcmt-reg td ,#comment_reply_input th { padding: 6px 0;}
 .vist-vcmt-reg th ,#comment_reply_input th { font-weight: normal; color: #9d9d9d; }
 .vist-vcmt-reg .tb-left ,#comment_reply_input .tb-left{ padding: 0 3px; }
-.vist-vcmt-reg th .tb-left { padding-left: 10px; background: url('/images/d3/modern_simple/common/bull_join_required.gif') no-repeat 0 45%; }
-/* °Ô½ÃÆÇ Å¸ÀÔ - ¾²±â */
+.vist-vcmt-reg th .tb-left { padding-left: 10px; background: url('../../../images/d3/modern_simple/common/bull_join_required.gif') no-repeat 0 45%; }
+/* 게시판 타입 - 쓰기 */
 .bbs-table-write { margin-top:10px; border-top:1px solid #000 }
 .bbs-table-write tbody th,
 .bbs-table-write tbody td { padding:13px 0; text-align:left; border-bottom:1px solid #e9e9e9 } 
@@ -540,7 +539,7 @@ table img { vertical-align: middle; }
 .bbs-table-write .privercy-agree label { vertical-align:-2px \0/IE8+9; *vertical-align:bottom }
 .bbs-table-write .privercy-agree label input { vertical-align:top; *vertical-align:top }
 
-/* °Ô½ÃÆÇ Å¸ÀÔ - ºñ¹Ð¹øÈ£Ã£±â */
+/* 게시판 타입 - 비밀번호찾기 */
 .bbs-table-pwd { margin-top:10px; padding:60px 0; border-top:1px solid #e5e5e5; border-bottom:1px solid #e5e5e5; }
 .bbs-table-pwd table { width:475px; margin:0 auto }
 .bbs-table-pwd tbody th,
@@ -550,7 +549,7 @@ table img { vertical-align: middle; }
 .pwd-link { padding:40px 0 100px; text-align:center }
 .pwd-link a { margin:0 3px; width:188px; height:58px; font-size:16px; line-height:58px }
 
-/* °øÅëÀ¸·Î ¾²´Â°Å */
+/* 공통으로 쓰는거 */
 textarea { width:600px; height:47px; padding:2px; border:1px solid #EDEDED;}        
 .input-style { padding:2px; height:14px; line-height:14px; border:1px solid #EDEDED;}
 
@@ -567,7 +566,7 @@ textarea { width:600px; height:47px; padding:2px; border:1px solid #EDEDED;}
 .comment-box .com-date { font-size:11px; color:#aeaeae }
 .comment-box .com-cont { padding:10px 20px 0 0; color:#828282; line-height:20px }
 .bbs-table-view td.com-wrt-box { border:0;}
-.com-wrt-box label { padding-left:12px; font-size:14px; color:#000; background: url('//image.makeshop.co.kr/makeshop/d3/basic_simple/common/bu_4x4.gif') no-repeat 0 50%;}
+.com-wrt-box label { padding-left:12px; font-size:14px; color:#000; background: url('../../../../image.makeshop.co.kr/makeshop/d3/basic_simple/common/bu_4x4.gif') no-repeat 0 50%;}
 .com-wrt-box .input-style { margin:0 10px 0 7px; padding:0 0 0 5px; width:212px; height:27px; line-height:27px; border:1px solid #ddd }
 .com-wrt-box .wrt { margin-top:7px }
 .com-wrt-box .wrt span { margin:0 10px; font-size:14px; color:#828282 }
@@ -577,24 +576,10 @@ textarea { width:600px; height:47px; padding:2px; border:1px solid #EDEDED;}
 .view-link { padding:20px 0; text-align:right }
 .view-link a { width:108px; height:38px; font-size:13px; line-height:38px }
 
-/* °Ô½ÃÆÇ È¸¿ø °Ô½Ã±Û °Ë»ö */
+/* 게시판 회원 게시글 검색 */
 .search_id { background: none repeat scroll 0 0 #FFFFFF; border: 1px solid #DADADA; display: block; padding: 3px; position: absolute; width: 90px; }
 
-/* °³ÀÎÁ¤º¸º¸È£Á¤Ã¥ µ¿ÀÇ */
-.new-privercy-contract { text-align: left }
-.new-privercy-contract p { font-weight: bold; margin: 0; margin-bottom: 10px; margin-top: 20px; text-align: left; }
-.new-privercy-contract .privercy-agree label { vertical-align:-2px \0/IE8+9; *vertical-align:bottom }
-.new-privercy-contract .privercy-agree label input { vertical-align:top; *vertical-align:top }
-.privercy-contract-tap { position: relative; height:40px; }
-.privercy-contract-tap ul { list-style: none; margin: 0; padding: 0; position: absolute; bottom: -1px; *bottom: -2px; }
-.privercy-contract-tap li { border: 1px solid #ccc; border-right: none; background: #F4F4F4; float:left; display: inline-block; }
-.privercy-contract-tap li a { display: block; padding: 10px 10px; text-decoration: none; }
-.privercy-contract-tap li.end { border-right: 1px solid #ccc; }
-.privercy-contract-tap li.sel { background: #FFFFFF; border-bottom: 1px solid #FFFFFF; }
-.privercy-contract { clear: both; }
-.privercy-contract textarea { clear: both; border: 1px solid #CCC; height: 60px; background: #FFFFFF; padding: 10px; width: 660px; }
-.privercy-agree { margin: 10px 0; }
-.privercy-agree label{ margin-right: 10px }
+
 
 /*
 ========================================================================
@@ -630,7 +615,7 @@ hot issue common class
 .item-wrap .item-cont .item-list .prd-price .price { color:#1c1c1c }
 .item-wrap .item-cont .item-list .prd-color { padding-top:5px }
 .item-wrap .item-cont .item-list .prd-preview { padding-top:5px }
-.item-wrap .item-cont .item-list .prd-preview .btn-preview { display:inline-block; width:69px; height:17px; text-indent:-9999em; background:url(//image.makeshop.co.kr/makeshop/d3/basic_simple/common/btn_preview.gif) 0 0 no-repeat }
+.item-wrap .item-cont .item-list .prd-preview .btn-preview { display:inline-block; width:69px; height:17px; text-indent:-9999em; background:url(../../../../image.makeshop.co.kr/makeshop/d3/basic_simple/common/btn_preview.gif) 0 0 no-repeat }
 .item-wrap .item-cont .item-list .prd-subname { margin-top:15px; padding-top:15px; color:#8b8b8b; text-align:left; border-top:1px dashed #c6c6c6 }
 .item-wrap .item-cont .item-list .MK-product-icons img { vertical-align: middle }
 .item-wrap .item-cont .nomg { padding-right: 0px }
@@ -638,16 +623,9 @@ hot issue common class
 .item-wrap .item-page a { padding: 0 5px }
 .item-wrap .item-page a:hover, .item-wrap .item-page a.now { color: #111; font-weight: bold; letter-spacing: -1px; }
 
-/* Å¸ÀÌÆ² */
+/* 타이틀 */
 .cateTit { padding-top:60px; position:relative; text-align:center }
 .cateTit h3 { font-size:20px; color:#1c1c1c; font-weight:bold; font-family:Verdana; line-height:20px }
 .cateTit .line { margin:20px auto; width:10px; height:2px; background:#1c1c1c }
 
 
-/* Å¸ÀÌÆ² - È¸¿ø°¡ÀÔ µîÀÇ ÆäÀÌÁö */
-.cateTit_v2 { *zoom:1 }
-.cateTit_v2:after{content:"";display:block;clear:both;}
-.cateTit_v2 .right{float:right;}
-.cateTit_v2 .title{font-size:18px;line-height:1;font-weight:bold;display:inline-block;*float:left;*line-height:20px}
-.cateTit_v2 .subTxt{font-size:12px;line-height:1.5;}
-.cateTit_v2.join{margin:88px 0 20px;padding:14px 0;border-bottom:1px solid #000;color:#000;}
