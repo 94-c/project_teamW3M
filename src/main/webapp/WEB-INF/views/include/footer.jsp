@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <link href="resources/css/footer.css" rel="stylesheet" type="text/css">
 <div id="ftWrap">
 	<div id="footer">
@@ -113,3 +112,5 @@
 		<!-- //section2 -->
 	</div><!-- //footer -->
 </div>
+</body>
+</html>

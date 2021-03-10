@@ -4,13 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="resources/css/login.css">
-<link rel="stylesheet" type="text/css" href="resources/css/common.css">
+
 <link rel="shortcut icon" href="resources/images/icons/favicon.ico" type="image/x-icon">
 <title>회원 로그인</title>
 </head>
 <body>
-<jsp:include page="/WEB-INF/views/include/header.jsp" />
+<%@include file="/WEB-INF/views/include/header.jsp"%>
 <div id="contentWrapper">
 <div id="contentWrap">
  <div id="content">
@@ -33,9 +32,7 @@
                                                     <input type="password" name="passwd" placeholder="비밀번호" onfocus="this.placeholder=''" onblur="this.placeholder='비밀번호'"  maxlength="20"/>                                                </li>
                                             </ul>
                                             <div class="btn-mlog">
-                                            <!-- 
-                                                <a href="javascript:check();" class="CSSbuttonBlack fe">로그인</a>
-                                             --> 
+                                       
                                              	<a href="javascript:check();" class="CSSbuttonBlack fe">로그인</a>
                                             </div>
                                             <p class="se-log">
@@ -60,6 +57,6 @@
                     </div><!-- #content -->
                     </div><!-- #contentWrap -->
         </div><!-- #contentWrapper-->
-        <jsp:include page="/WEB-INF/views/include/footer.jsp" />
+ 	<%@include file="/WEB-INF/views/include/footer.jsp"%>
 </body>
 </html>
