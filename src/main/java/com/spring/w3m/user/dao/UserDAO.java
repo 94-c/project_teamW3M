@@ -1,4 +1,4 @@
-package com.spring.w3m.user.DAO;
+package com.spring.w3m.user.dao;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
