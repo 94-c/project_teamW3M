@@ -1,29 +1,32 @@
 package com.spring.w3m.user.common;
 
 public class UserVO {
-	private String user_id;
-	private String user_password;
-	private String user_password2;
-	private String user_name;
-	private String user_zipcode;
-	private String user_address;
-	private String user_birthday;
-	private String user_sex;
-	private String user_phone;
-	private String receive_phone;
-	private String user_email;
-	private String user_level;
-	private int user_state;
-	private Long user_seq;
-	
-	
-	
+	private String user_id; // 아이디 PK
+	private String user_password; //패스워드
+	private String user_name; //이름
+	private String user_birthday; //생년월일
+	private String user_sex; //성별
+	private String user_email; //이메일 주소
+	private String user_zipcode; //우편번호
+	private String user_address1; //주소
+	private String user_address2; //상세주소
+	private String user_join_date; //가입 날짜
+	private String user_last_login; //마지막 접속 날짜
+	private String user_phone; //폰번호
+	private String user_point; //포인트
+	private Boolean user_marketing_mail; //마케팅 메일 동의
+	private Boolean user_marketing_sms; //마케팅 문자 동의
+	private String user_level; //등급 DEFAULT 'Bronze', -- 회원등급 //Bronze , silver, gold, Platinum,dia
+	private int user_state; //1 : 정상 2 : 휴먼 3: 삭제(3개월 보관) 0: 어드민
+	private Long user_seq; // 회원 번호
 	@Override
 	public String toString() {
-		return "userVO [user_id=" + user_id + ", user_password=" + user_password + ", user_password2=" + user_password2
-				+ ", user_name=" + user_name + ", user_zipcode=" + user_zipcode + ", user_address=" + user_address
-				+ ", user_birthday=" + user_birthday + ", user_sex=" + user_sex + ", user_phone=" + user_phone
-				+ ", receive_phone=" + receive_phone + ", user_email=" + user_email + ", user_level=" + user_level
+		return "UserVO [user_id=" + user_id + ", user_password=" + user_password + ", user_name=" + user_name
+				+ ", user_birthday=" + user_birthday + ", user_sex=" + user_sex + ", user_email=" + user_email
+				+ ", user_zipcode=" + user_zipcode + ", user_address1=" + user_address1 + ", user_address2="
+				+ user_address2 + ", user_join_date=" + user_join_date + ", user_last_login=" + user_last_login
+				+ ", user_phone=" + user_phone + ", user_point=" + user_point + ", user_marketing_mail="
+				+ user_marketing_mail + ", user_marketing_sms=" + user_marketing_sms + ", user_level=" + user_level
 				+ ", user_state=" + user_state + ", user_seq=" + user_seq + "]";
 	}
 	public String getUser_id() {
@@ -38,29 +41,11 @@ public class UserVO {
 	public void setUser_password(String user_password) {
 		this.user_password = user_password;
 	}
-	public String getUser_password2() {
-		return user_password2;
-	}
-	public void setUser_password2(String user_password2) {
-		this.user_password2 = user_password2;
-	}
 	public String getUser_name() {
 		return user_name;
 	}
 	public void setUser_name(String user_name) {
 		this.user_name = user_name;
-	}
-	public String getUser_zipcode() {
-		return user_zipcode;
-	}
-	public void setUser_zipcode(String user_zipcode) {
-		this.user_zipcode = user_zipcode;
-	}
-	public String getUser_address() {
-		return user_address;
-	}
-	public void setUser_address(String user_address) {
-		this.user_address = user_address;
 	}
 	public String getUser_birthday() {
 		return user_birthday;
@@ -74,23 +59,65 @@ public class UserVO {
 	public void setUser_sex(String user_sex) {
 		this.user_sex = user_sex;
 	}
+	public String getUser_email() {
+		return user_email;
+	}
+	public void setUser_email(String user_email) {
+		this.user_email = user_email;
+	}
+	public String getUser_zipcode() {
+		return user_zipcode;
+	}
+	public void setUser_zipcode(String user_zipcode) {
+		this.user_zipcode = user_zipcode;
+	}
+	public String getUser_address1() {
+		return user_address1;
+	}
+	public void setUser_address1(String user_address1) {
+		this.user_address1 = user_address1;
+	}
+	public String getUser_address2() {
+		return user_address2;
+	}
+	public void setUser_address2(String user_address2) {
+		this.user_address2 = user_address2;
+	}
+	public String getUser_join_date() {
+		return user_join_date;
+	}
+	public void setUser_join_date(String user_join_date) {
+		this.user_join_date = user_join_date;
+	}
+	public String getUser_last_login() {
+		return user_last_login;
+	}
+	public void setUser_last_login(String user_last_login) {
+		this.user_last_login = user_last_login;
+	}
 	public String getUser_phone() {
 		return user_phone;
 	}
 	public void setUser_phone(String user_phone) {
 		this.user_phone = user_phone;
 	}
-	public String getReceive_phone() {
-		return receive_phone;
+	public String getUser_point() {
+		return user_point;
 	}
-	public void setReceive_phone(String receive_phone) {
-		this.receive_phone = receive_phone;
+	public void setUser_point(String user_point) {
+		this.user_point = user_point;
 	}
-	public String getUser_email() {
-		return user_email;
+	public Boolean getUser_marketing_mail() {
+		return user_marketing_mail;
 	}
-	public void setUser_email(String user_email) {
-		this.user_email = user_email;
+	public void setUser_marketing_mail(Boolean user_marketing_mail) {
+		this.user_marketing_mail = user_marketing_mail;
+	}
+	public Boolean getUser_marketing_sms() {
+		return user_marketing_sms;
+	}
+	public void setUser_marketing_sms(Boolean user_marketing_sms) {
+		this.user_marketing_sms = user_marketing_sms;
 	}
 	public String getUser_level() {
 		return user_level;
