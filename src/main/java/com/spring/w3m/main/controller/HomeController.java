@@ -32,9 +32,5 @@ public class HomeController {
 		return "list/notice";
 	}
 
-	// 관리자 페이지
-	@RequestMapping("/login.mdo")
-	public String adminLogin() {
-		return "login";
-	}
+
 }

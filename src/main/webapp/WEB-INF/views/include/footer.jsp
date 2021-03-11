@@ -19,7 +19,7 @@
 				<li><a href="#">회사소개</a></li>
 				<li><a href="#">이용약관</a></li>
 				<li><a href="#" class="black">개인정보처리방침</a></li>
-				<li><a href="/html/info.html">이용안내</a></li>
+				<li><a href="#">이용안내</a></li>
 				<li><a href="login.mdo">관리자</a></li>
 			</ul>
 		</div>
@@ -93,7 +93,7 @@
 				<div class="ft_comm">
 					<ul>
 						<!-- 하단 커뮤니티 링크 수정 -->
-						<li><a href="#" style="text-align: center;">공지사항</a></li>
+						<li><a href="notice.do" style="text-align: center;">공지사항</a></li>
 						<li><a href="#" style="text-align: center;">문의게시판</a></li>
 						<li><a href="#" style="text-align: center;">상품후기</a></li>
 						<li><a href="#" style="text-align: center;">이벤트</a></li>

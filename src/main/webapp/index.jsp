@@ -1,18 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-
-<!--
-<div class="promoBanner">
-    <a href="#" class="bannerLink">	
-        <img src="resources/images/m_mask/m_mask/top_banner.jpg" width=100%>
-    </a>
-</div>
--->
-
 <%@include file="/WEB-INF/views/include/header.jsp"%>
 <br><br>
 
-<link href="resources/css/slider.css" rel="stylesheet" type="text/css">
+<link href="resources/css/main.css" rel="stylesheet" type="text/css">
 	<div id="wrap">
 		<div id="contentWrapper">
 			<div class = "cboth main_img">
@@ -38,7 +29,7 @@
 	<div class="cboth main_section02">
 	<!-- 좌측 2단 배너 -->
 		<div class="fleft main_ban01">
-			<div class="cboth"><a href="#"><IMG SRC="resources/images/m_mask/center_left1.jpg"></a></div>
+			<div class="cboth"><a href="notice.do"><IMG SRC="resources/images/m_mask/center_left1.jpg"></a></div>
 			<div class="cboth"><a href="#"><IMG SRC="resources/images/m_mask/center_left2.jpg"></a></div>
 		</div>
 		

@@ -3,18 +3,10 @@
 <html>
 <head>
 <meta http-equiv="CONTENT-TYPE" content="text/html;charset=UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="naver-site-verification" content="bd290280815ba86132c708c10def12239cd80f34" />
-<meta name="title" content="[웰킵스몰]웰킵스 공식쇼핑몰">
-<meta name="description" content="위생,건강,안전을 대표하는 라이프케어 전문몰! 당신이 머무는 건강한 삶, 그곁에 언제나 웰킵스"> 
-<meta name="robots" content="index,follow">
-<meta property="og:type" content="website"> 
-<meta property="og:image" content="resources/images/og_image">
-<meta property="og:title" content="[웰킵스몰]웰킵스 공식쇼핑몰">
-<meta property="og:description" content="위생,건강,안전을 대표하는 라이프케어 전문몰! 당신이 머무는 건강한 삶, 그곁에 언제나 웰킵스">
-<meta property="og:url" content="http://www.welkeepsmall.com">
 
-<link rel="shortcut icon" href="resources/images/icons/favicon.ico" type="image/x-icon"><title>[웰킵스몰] 웰킵스 공식쇼핑몰</title>
+<link rel="shortcut icon" href="resources/images/icons/favicon.ico" type="image/x-icon">
+<title>[웰킵스몰] 웰킵스 공식쇼핑몰</title>
+<link href="resources/css/common.css" rel="stylesheet" type="text/css">
 <link href='http://fonts.googleapis.com/earlyaccess/nanumgothic.css' rel='stylesheet' type='text/css'>
 <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700" rel="stylesheet">
@@ -44,13 +36,11 @@ document.addEventListener("DOMContentLoaded", function(){
 
 <!-- css -->
 <link href="resources/css/header.css" rel="stylesheet" type="text/css">
-<link href="resources/css/common.css" rel="stylesheet" type="text/css">
 </head>
-
 <body>
-<div id="hdWrap">
-	<div class="top_space"></div>
-	<div id="comment_top" class="fixed">
+	<div id="hdWrap">
+		<div class="top_space"></div>
+		<div id="comment_top">
 		<div id="header">
 
 			<div class="btn_ham">
@@ -95,43 +85,42 @@ document.addEventListener("DOMContentLoaded", function(){
 			<div class="section1">
 				<ul id="left_menu">
 					<!-- 카테고리 자동출력 -->
-					<li><a href="/shop/shopbrand.html?type=X&amp;xcode=023"class="">웰킵스 미세먼지마스크</a>
+					<li><a href="#"class="">웰킵스 미세먼지마스크</a>
 						<ul class="sub1" style="display: none;">
-							<li><a href="/shop/shopbrand.html?type=M&amp;xcode=023&amp;mcode=001" class="">- 프리미엄마스크</a></li>
-							<li><a href="/shop/shopbrand.html?type=M&amp;xcode=023&amp;mcode=002">- 스마트마스크</a></li>
-							<li><a href="/shop/shopbrand.html?type=M&amp;xcode=023&amp;mcode=003">- 리얼블랙마스크</a></li>
+							<li><a href="#" class="">- 프리미엄마스크</a></li>
+							<li><a href="#">- 스마트마스크</a></li>
+							<li><a href="#">- 리얼블랙마스크</a></li>
 						</ul>
 						<!-- //sub1 --></li>
-					<li><a href="/shop/shopbrand.html?type=X&amp;xcode=028" class="">웰킵스 비말차단마스크</a>
+					<li><a href="#" class="">웰킵스 비말차단마스크</a>
 						<ul class="sub1" style="display: none;">
-							<li><a href="/shop/shopbrand.html?type=M&amp;xcode=028&amp;mcode=001"> -웰킵스언택트마스크</a></li>
+							<li><a href="#"> -웰킵스언택트마스크</a></li>
 						</ul>
 						<!-- //sub1 --></li>
-					<li><a href="/shop/shopbrand.html?type=X&amp;xcode=026"
-						class="">퓨렐손소독제</a>
+					<li><a href="#" class="">퓨렐손소독제</a>
 						<ul class="sub1" style="display: none;">
-							<li><a href="/shop/shopbrand.html?type=M&amp;xcode=026&amp;mcode=001" class="">- 퓨렐손소독제</a></li>
+							<li><a href="#" class="">- 퓨렐손소독제</a></li>
 						</ul>
 						<!-- //sub1 --></li>
-					<li><a href="/shop/shopbrand.html?type=X&amp;xcode=007"
-						class="">원더블루 쿨패치</a>
+					<li><a href="#" class="">원더블루 쿨패치</a>
 						<ul class="sub1" style="display: none;">
-							<li><a href="/shop/shopbrand.html?type=M&amp;xcode=007&amp;mcode=001">- 원더블루 쿨패치</a></li>
+							<li><a href="#">- 원더블루 쿨패치</a></li>
 						</ul>
 						<!-- //sub1 --></li>
-					<li><a href="/shop/shopbrand.html?type=X&amp;xcode=002" class="">원더핫 핫팩</a>
+					<li><a href="#" class="">원더핫 핫팩</a>
 						<ul class="sub1" style="display: none;">
-							<li><a href="/shop/shopbrand.html?type=M&amp;xcode=002&amp;mcode=003">-원더핫 핫팩</a></li>
+							<li><a href="#">-원더핫 핫팩</a></li>
 						</ul>
 						<!-- //sub1 --></li>
-					<li><a href="/shop/shopbrand.html?type=X&amp;xcode=027">체온계</a>
+					<li><a href="#">체온계</a>
 						<ul class="sub1">
-							<li><a href="/shop/shopbrand.html?type=M&amp;xcode=027&amp;mcode=001">- 체온계</a></li>
+							<li><a href="#">- 체온계</a></li>
 						</ul>
 						<!-- //sub1 --></li>
 				</ul>
 				<!-- //left_menu -->
 			</div>
+			
 			<!-- //section1 -->
 			<ul class="top_cart">
 				<li><a href="login.do">로그인</a></li>
