@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-<link href="resources/css/footer.css" rel="stylesheet" type="text/css">
-
 <div id="ft">
 	<div id="footer">
 		<div class="section0 cboth" style="display: none">
@@ -116,4 +114,5 @@
 	</div><!-- //footer -->
 </div>
 </body>
+<!-- body 끝 -->
 </html>

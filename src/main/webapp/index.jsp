@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%@include file="/WEB-INF/views/include/header.jsp"%>
-<br><br>
 
-<link href="resources/css/main.css" rel="stylesheet" type="text/css">
 	<div id="wrap">
 		<div id="contentWrapper">
 			<div class = "cboth main_img">
@@ -306,6 +304,4 @@
 	</div>	
 	<!-- //main_section03 -->	
 
-<br><br>
-<br><br>
 <%@include file="/WEB-INF/views/include/footer.jsp"%>

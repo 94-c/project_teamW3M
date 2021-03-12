@@ -133,7 +133,7 @@ a:hover img.menuoff {display:none;}
 /* 상단 영역 02 : 적립금 아이콘 관련 */
 #header .top_cart .join {position:relative;}
 #header .top_cart .scroll {position:absolute; bottom:0px; left:0px; z-index:100; background:url("../../../../../design/pgreen1364/0728from/icon_top.gif");  background-repeat:no-repeat;  background-position:top center; }
-#header .top_cart .scroll div { background-color:#3d3d3d; border-radius:4px; margin-top:4px; line-height:19px; height:19px; color:#fff; font-size:10px;  font-family:'Poppins', 'Noto Sans KR', sans-serif; text-align:center; width:50px;}
+#header .top_cart .scroll span { display:block; background-color:#3d3d3d; border-radius:4px; margin-top:4px; line-height:19px; height:19px; color:#fff; font-size:10px;  font-family:'Poppins', 'Noto Sans KR', sans-serif; text-align:center; width:50px;}
 /* 상단 영역 02 : 적립금 아이콘 관련 */
 
 #header .top_cart a {float:right; line-height:78px;  font-size:11px; color:#555; font-family: 'Roboto', sans-serif; }

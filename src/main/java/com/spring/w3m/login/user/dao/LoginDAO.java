@@ -14,15 +14,16 @@ public class LoginDAO {
 	private SqlSessionTemplate sqlSessionTemplate;
 	
 	public boolean loginCheck(UserVO vo) {
-		String name = sqlSessionTemplate.selectOne("UserDAO.loginCheck", vo);
+		String name = sqlSessionTemplate.selectOne("user.loginCheck", vo);
 		return (name == null) ? false : true;
 	}
 	
 	public UserVO viewUser(UserVO vo) {
-		return sqlSessionTemplate.selectOne("userDAO.viewMember", vo);
+		return sqlSessionTemplate.selectOne("user.viewUser", vo);
 	}
 	
 	public void logout(HttpSession session) {
 		
 	}
+	
 }
