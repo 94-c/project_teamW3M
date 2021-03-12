@@ -4,7 +4,9 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 <typeAliases>
-     <typeAlias type="com.spring.w3m.join.user.vo.UserVO"  alias="UserVO" />
+     <typeAlias type="com.spring.w3m.join.user.vo.UserVO" alias="UserVO" />
+     <typeAlias type="com.spring.w3m.inquiry.user.vo.InquiryVO" alias="inquiry"  />
+     <typeAlias type="com.spring.w3m.notice.admin.vo.NoticeVO" alias="NoticeVO" />
  </typeAliases>
 	<mappers>
 		<mapper resource="mapper/joe_Mapper.xml" />

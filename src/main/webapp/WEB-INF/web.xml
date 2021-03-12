@@ -7,8 +7,7 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
 			/WEB-INF/spring/MainApplicationContext.xml 
-			/WEB-INF/spring/Sub1ApplicationContext.xml 
-			/WEB-INF/spring/Sub2ApplicationContext.xml 
+
 			<!-- 아래처럼 추가적으로 사용할 컨텍스트를 등록하면 됩니다. /WEB-INF/spring/commonContext.xml -->
 		</param-value>
 	</context-param>
