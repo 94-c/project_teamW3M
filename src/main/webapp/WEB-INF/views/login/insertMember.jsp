@@ -11,6 +11,69 @@
 <%@include file="/WEB-INF/views/include/header.jsp"%>
 <link href="resources/css/insertMember.css" rel="stylesheet"
 	type="text/css">
+<script type="text/javascript" src=""></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script>
+	$(document).ready(function() {
+
+		$("#user_email3").change(function() {
+			var text = $("#user_email3").val();
+			$("#user_email2").val(text);
+		});
+
+	});
+
+	$(document).ready(function(){
+
+		$("#user_id").blur(function(){
+			var user_id = $("#user_id").val();
+			
+			$.ajax({
+				async : true,
+				url : "${pageContext.request.contextPath}/user_id_check.do?user_id="+user_id,
+				type : "GET",
+				data : user_id,
+		//		dataType : "json",
+		//		contentType: "application/json; charset=UTF-8",
+				success  : function(data){
+					if(data == 1){
+						$("#id_check").text("사용중인 아이디 입니다 .");
+						$("#id_check").css("color","red");
+						$("#user_id").focus();
+					}
+					else{
+						$("#id_check").text("사용가능한 아이디 입니다.");
+						$("#id_check").css("color","blue");
+						$("#user_password").focus();
+					}
+				}
+			});
+		});
+		
+		$("#every_agree").click(function() {
+			if($("#every_agree").prop("checked")){
+				$("input[type=checkbox]").prop("checked",true);
+				
+			}else{
+				$("input[type=checkbox]").prop("checked",false);
+				;
+			}
+			
+		});
+		
+		$("input[type=checkbox]").click(function(){
+			if($("input[type=checkbox]:checked").length == 5){
+				$("#every_agree").prop("checked",true);
+			}else{
+				$("#every_agree").prop("checked",false);
+			}
+		});
+		
+	});
+	
+
+	
+</script>
 <div id="contentWrapper">
 	<div id="contentWrap">
 		<div id="content">
@@ -52,42 +115,42 @@
 					<form name="form1" method="post" id="join_form"
 						action="/shop/idinfo.html" enctype="multipart/form-data"
 						autocomplete="off"></form>
-						<input type="hidden" name="resno" value=""> <input
-							type="hidden" name="cur_page" value=""> <input
-							type="hidden" name="brandcode" value=""> <input
-							type="hidden" name="sslid" value="pgreen1364"> <input
-							type="hidden" name="sslip" value="www.welkeepsmall.com">
-						<input type="hidden" name="haddress" id="haddress" value="">
-						<input type="hidden" name="msecure_key" value=""> <input
-							type="hidden" name="loginkeyid" value=""> <input
-							type="hidden" name="idcheck" value=""> <input
-							type="hidden" name="emailcheck"> <input type="hidden"
-							name="junk_member_ok" value=""> <input type="hidden"
-							name="hiddenres" value=""> <input type="hidden"
-							name="mem_type" value="SIMPLE"> <input type="hidden"
-							name="member_join_type" value="NEW"> <input type="hidden"
-							name="member_join_minor" value="N"> <input type="hidden"
-							name="use_company_num" value="Y"> <input type="hidden"
-							name="company_num_modify" value="N"> <input type="hidden"
-							name="admin_type" value="N"> <input type="hidden"
-							name="old_company_num1" value=""> <input type="hidden"
-							name="old_company_num2" value=""> <input type="hidden"
-							name="old_company_num3" value=""> <input type="hidden"
-							name="old_email" id="old_email" value=""> <input
-							type="hidden" name="etc_phone" id="etc_phone" value=""> <input
-							type="hidden" name="simple_login" value=""> <input
-							type="hidden" name="app_os" value=""> <input
-							type="hidden" name="return_url" value=""> <input
-							type="hidden" name="smscheck" form="join_form"> <input
-							type="hidden" name="sms_auth_chk" form="join_form" value="N">
-						<input type="hidden" name="type" value="ins"> <input
-							type="hidden" name="first" value=""> <input type="hidden"
-							name="join_type" value=""> <input type="hidden"
-							name="data_third_party_agree" value=""> <input
-							type="hidden" name="data_trust_agree" value=""> <input
-							type="hidden" name="data_privacy_agree" value=""> <input
-							type="hidden" name="original_mem_type" value="PERSON">
-					<form action="login_insert" method="post" id="user_insert">
+					<input type="hidden" name="resno" value=""> <input
+						type="hidden" name="cur_page" value=""> <input
+						type="hidden" name="brandcode" value=""> <input
+						type="hidden" name="sslid" value="pgreen1364"> <input
+						type="hidden" name="sslip" value="www.welkeepsmall.com"> <input
+						type="hidden" name="haddress" id="haddress" value=""> <input
+						type="hidden" name="msecure_key" value=""> <input
+						type="hidden" name="loginkeyid" value=""> <input
+						type="hidden" name="idcheck" value=""> <input
+						type="hidden" name="emailcheck"> <input type="hidden"
+						name="junk_member_ok" value=""> <input type="hidden"
+						name="hiddenres" value=""> <input type="hidden"
+						name="mem_type" value="SIMPLE"> <input type="hidden"
+						name="member_join_type" value="NEW"> <input type="hidden"
+						name="member_join_minor" value="N"> <input type="hidden"
+						name="use_company_num" value="Y"> <input type="hidden"
+						name="company_num_modify" value="N"> <input type="hidden"
+						name="admin_type" value="N"> <input type="hidden"
+						name="old_company_num1" value=""> <input type="hidden"
+						name="old_company_num2" value=""> <input type="hidden"
+						name="old_company_num3" value=""> <input type="hidden"
+						name="old_email" id="old_email" value=""> <input
+						type="hidden" name="etc_phone" id="etc_phone" value=""> <input
+						type="hidden" name="simple_login" value=""> <input
+						type="hidden" name="app_os" value=""> <input type="hidden"
+						name="return_url" value=""> <input type="hidden"
+						name="smscheck" form="join_form"> <input type="hidden"
+						name="sms_auth_chk" form="join_form" value="N"> <input
+						type="hidden" name="type" value="ins"> <input
+						type="hidden" name="first" value=""> <input type="hidden"
+						name="join_type" value=""> <input type="hidden"
+						name="data_third_party_agree" value=""> <input
+						type="hidden" name="data_trust_agree" value=""> <input
+						type="hidden" name="data_privacy_agree" value=""> <input
+						type="hidden" name="original_mem_type" value="PERSON">
+					<form action="login_insert.do" method="post" id="user_insert">
 						<div id="personInfo">
 							<table class="person-tb">
 								<colgroup>
@@ -116,9 +179,7 @@
 										</th>
 										<td>
 											<div class="col-cell">
-												<input type="text" name="user_id" id="user_id" value=""
-													class="MS_input_txt normal-input" size="10" maxlength="12">
-												<a href="javascript:userid_check('id');" class="cbtn form">중복확인</a>
+												<input type="text" name="user_id" id="user_id" class="MS_input_txt normal-input" size="10" maxlength="12"><span class="check_font" id ="id_check"></span>
 											</div>
 										</td>
 									</tr>
@@ -187,9 +248,10 @@
 														<option value="<c:out value="${day}"/>"><c:out
 																value="${day}" /></option>
 													</c:forEach>
-												</select>일&nbsp;&nbsp; 
-												<input type="radio" name="user_sex" id ="user_sex" value="남" class="MS_radio">남 
-												<input type="radio" name="user_sex" value="여" class="MS_radio" checked="">여
+												</select>일&nbsp;&nbsp; <input type="radio" name="user_gender"
+													id="user_gender" value="남자" class="MS_radio">남 <input
+													type="radio" name="user_gender" value="여자" class="MS_radio"
+													checked>여
 											</div>
 										</td>
 									</tr>
@@ -202,10 +264,9 @@
 										</th>
 										<td>
 											<div class="col-cell">
-												<input type="text" name="user_zipcode" form="join_form" id="user_zipcode"
-													class="MS_input_txt small-input" value="" size="7"
-													maxlength="15" > <a
-													href="javascript:post(1);" class="cbtn form">우편번호검색</a>
+												<input type="text" name="user_zipcode" id="user_zipcode"
+													class="MS_input_txt small-input" size="7" maxlength="15">
+												<a href="javascript:post(1);" class="cbtn form">우편번호검색</a>
 											</div>
 										</td>
 									</tr>
@@ -217,9 +278,8 @@
 										</th>
 										<td>
 											<div class="col-cell">
-												<input type="text" name="user_address1" form="join_form"
-													id="user_address1" class="MS_input_txt large-input" value=""
-													size="40" maxlength="100">
+												<input type="text" name="user_address1" id="user_address1"
+													class="MS_input_txt large-input" size="40" maxlength="100">
 											</div>
 										</td>
 									</tr>
@@ -231,9 +291,8 @@
 										</th>
 										<td>
 											<div class="col-cell">
-												<input type="text" name="user_address2" form="join_form"
-													id="user_address2" class="MS_input_txt large-input" value=""
-													size="40" maxlength="100">
+												<input type="text" name="user_address2" id="user_address2"
+													class="MS_input_txt large-input" size="40" maxlength="100">
 											</div>
 										</td>
 									</tr>
@@ -245,7 +304,7 @@
 										</th>
 										<td>
 											<div class="col-cell">
-												<select name="user_phone" form="join_form" id="user_phone"
+												<select name="user_phone" id="user_phone"
 													class="MS_input_tel normal-input">
 													<option value="010">010</option>
 													<option value="011">011</option>
@@ -253,13 +312,11 @@
 													<option value="017">017</option>
 													<option value="018">018</option>
 													<option value="019">019</option>
-												</select>- <input type="text" name="user_phone" form="join_form"
-													id="user_phone" class="MS_input_tel normal-input" size="4"
-													maxlength="4" value="">- <input type="text"
-													name="user_phone" form="join_form" id="user_phone"
-													class="MS_input_tel normal-input" size="4" maxlength="4"
-													value=""> <a href="#" class="cbtn form">휴대폰
-													인증하기</a>
+												</select>- <input type="text" name="user_phone" id="user_phone"
+													class="MS_input_tel normal-input" size="4" maxlength="4">-
+												<input type="text" name="user_phone" id="user_phone"
+													class="MS_input_tel normal-input" size="4" maxlength="4">
+												<a href="#" class="cbtn form">휴대폰 인증하기</a>
 											</div>
 										</td>
 									</tr>
@@ -273,16 +330,16 @@
 											<div class="col-cell email-area">
 												<input type="hidden" name="oldemail" id="oldemail" value="">
 												<input type="hidden" name="email" id="email" value="">
-												<input type="text" name="user_email" id="user_email"
+												<input type="text" name="user_email" id="user_email1"
 													class="MS_input_txt normal-input" size="10" maxlength="20"
 													value=""> <span>@</span> <span id="direct_email"
 													style="margin-top: 3px; display: inline-block"> <input
-													type="text" name="email3" id="email3"
+													type="text" name="user_email" id="user_email2"
 													class="MS_input_txt normal-input" value="" size="15"
 													maxlength="25">
-												</span> <select name="user_email" id="user_email"
+												</span> <select name="user_email3" id="user_email3"
 													class="MS_select MS_email" style="margin-right: 5px;">
-													<option value="direct">직접입력</option>
+													<option value="">직접입력</option>
 													<option value="naver.com">naver.com</option>
 													<option value="hotmail.com">hotmail.com</option>
 													<option value="hanmail.net">hanmail.net</option>
@@ -307,34 +364,29 @@
 								<div id="chkwrap">
 									<div class="all-chk">
 										<label><input type="checkbox" name="every_agree"
-											id="every_agree" value="all"
-											class="input-cbox new_every_agree"> 전체동의</label> <input
-											type="hidden" name="allnew_agree" id="allnew_agree" value="Y">
+											id="every_agree" class="input-cbox new_every_agree" checked> 전체동의</label>
 									</div>
 									<div class="cont p10">
 										<ul>
-											<li class="ml-30 pt-10"><label><input
-													type="checkbox" name="user_yaok" id="user_yaok" value="Y"
-													class="input-cbox every_agree"> 이용약관</label> <a
+											<li class="ml-30 pt-10"><label><input type="checkbox" name="user_yaok" id="user_yaok" value="Y"
+													class="input-cbox every_agree" checked> 이용약관</label> <a
 												href="#chk_cont1">내용보기</a></li>
 											<li class="ml-30 pt-10"><label><input
 													type="checkbox" name="user_privacy" id="user_privacy"
-													value="agree_uidB" class="input-cbox every_agree">
+													value="agree_uidB" class="input-cbox every_agree" checked>
 													개인정보 수집 및 이용 안내</label> <a href="#chk_cont2">내용보기</a></li>
 
 
 										</ul>
 										<div class="marketing pb-10">
 											<div class="mk-wrap">
-												<label class="mk-all"><input type="checkbox"
-													name="ad_every_agree" id="ad_every_agree" value="ad_all"
-													class="input-cbox every_agree new_every_agree"> <strong>마케팅
-														수신동의</strong></label>&nbsp; ( <label><input type="checkbox"
-													name="user_marketing_mail" id="user_marketing_mail" value="ADemail_"
-													class="input-cbox every_agree ad_every_agree"> 이메일</label>
+												<label class="mk-all"><strong>마케팅
+														수신동의 </strong></label>&nbsp; ( <label><input type="checkbox"
+													name="user_marketing_mail" id="user_marketing_mail"
+													class="input-cbox every_agree ad_every_agree" checked> 이메일</label>
 												<label class="pl-30"><input type="checkbox"
-													name="user_marketing_sms" id="user_marketing_sms" value="ADsms_"
-													class="input-cbox every_agree ad_every_agree"> SMS</label>)
+													name="user_marketing_sms" id="user_marketing_sms"
+													class="input-cbox every_agree ad_every_agree" checked> SMS</label>)
 											</div>
 											쇼핑몰에서 제공하는 신상품 소식/ 할인쿠폰을 무상으로 보내드립니다!<br> 단, 상품 구매 정보는
 											수신동의 여부 관계없이 발송됩니다.<br> <strong>제공 동의를 하지 않으셔도
@@ -343,14 +395,14 @@
 									</div>
 								</div>
 								<div class="new-btn-area">
-									<!-- <input type="button" value="회원가입" onclick="User_Check()"/> -->
-									<a href="login_insert.do">동의하고 가입완료</a>
+									<button type="submit">
+										동의하고 가입완료</a>
 								</div>
-							</form>
-								<h4 class="tit" id="chk_cont1">이용약관</h4>
-								<div class="privercy-contract">
-									<textarea cols="200" wrap="off" rows="10" readonly=""
-										style="margin: 0px; width: 1245.5px; height: 188px;">인터넷 쇼핑몰 『 웰킵스(주) 사이버 몰』회원 약관
+					</form>
+					<h4 class="tit" id="chk_cont1">이용약관</h4>
+					<div class="privercy-contract">
+						<textarea cols="200" wrap="off" rows="10" readonly=""
+							style="margin: 0px; width: 1245.5px; height: 188px;">인터넷 쇼핑몰 『 웰킵스(주) 사이버 몰』회원 약관
 
          
          제1조(목적)
@@ -695,73 +747,70 @@
          
          본 약관은 2013년04월01일부터 적용됩니다.
                                                                                                                                                                                                </textarea>
-								</div>
+					</div>
 
-								<h4 class="tit" id="chk_cont2">개인정보 수집·이용</h4>
-								<table border="0" summary="구분, 목적, 항목, 보유기간, 필수정보, 선택정보"
-									class="contract-tbl">
-									<caption>개인정보 수집·이용</caption>
-									<colgroup>
-										<col width="100">
-										<col width="33%">
-										<col width="33%">
-										<col width="33%">
-									</colgroup>
-									<thead>
-										<tr>
-											<th scope="col"><div>구분</div></th>
-											<th scope="col"><div>목적</div></th>
-											<th scope="col"><div>항목</div></th>
-											<th scope="col"><div>보유기간</div></th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<th scope="row" rowspan="1"><div>필수정보</div></th>
-											<td><div class="p10 purposeY">회원제 서비스 이용 / 본인확인</div></td>
-											<td><div class="p10 itemsY">이름, 아이디, 비밀번호, 이메일,
-													휴대폰</div></td>
-											<td><div class="p10 holdingY">회원탈퇴 후 5일까지</div></td>
-										</tr>
-									</tbody>
-								</table>
-								<input type="hidden" name="agree_uidB" id="agree_uidB"
-									value="1_5_">
-								<table border="0" summary="구분, 목적, 항목, 보유기간, 필수정보, 선택정보"
-									class="contract-tbl">
-									<caption>개인정보 수집·이용</caption>
-									<colgroup>
-										<col width="100">
-										<col width="33%">
-										<col width="33%">
-										<col width="33%">
-									</colgroup>
-									<tbody>
-										<tr>
-											<th scope="row" rowspan="2"><div>선택정보</div></th>
-											<td><div class="p10 purpose1">마케팅 활용(이벤트, 맞춤형 광고)</div></td>
-											<td><div class="p10 items1">휴대폰, 이메일</div></td>
-											<td><div class="p10 holding1">회원탈퇴 후 5일까지</div></td>
-										</tr>
-										<tr>
+					<h4 class="tit" id="chk_cont2">개인정보 수집·이용</h4>
+					<table border="0" summary="구분, 목적, 항목, 보유기간, 필수정보, 선택정보"
+						class="contract-tbl">
+						<caption>개인정보 수집·이용</caption>
+						<colgroup>
+							<col width="100">
+							<col width="33%">
+							<col width="33%">
+							<col width="33%">
+						</colgroup>
+						<thead>
+							<tr>
+								<th scope="col"><div>구분</div></th>
+								<th scope="col"><div>목적</div></th>
+								<th scope="col"><div>항목</div></th>
+								<th scope="col"><div>보유기간</div></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th scope="row" rowspan="1"><div>필수정보</div></th>
+								<td><div class="p10 purposeY">회원제 서비스 이용 / 본인확인</div></td>
+								<td><div class="p10 itemsY">이름, 아이디, 비밀번호, 이메일, 휴대폰</div></td>
+								<td><div class="p10 holdingY">회원탈퇴 후 5일까지</div></td>
+							</tr>
+						</tbody>
+					</table>
+					<input type="hidden" name="agree_uidB" id="agree_uidB" value="1_5_">
+					<table border="0" summary="구분, 목적, 항목, 보유기간, 필수정보, 선택정보"
+						class="contract-tbl">
+						<caption>개인정보 수집·이용</caption>
+						<colgroup>
+							<col width="100">
+							<col width="33%">
+							<col width="33%">
+							<col width="33%">
+						</colgroup>
+						<tbody>
+							<tr>
+								<th scope="row" rowspan="2"><div>선택정보</div></th>
+								<td><div class="p10 purpose1">마케팅 활용(이벤트, 맞춤형 광고)</div></td>
+								<td><div class="p10 items1">휴대폰, 이메일</div></td>
+								<td><div class="p10 holding1">회원탈퇴 후 5일까지</div></td>
+							</tr>
+							<tr>
 
-											<td><div class="p10 purpose5">마케팅 활용(이벤트, 맞춤형 광고)</div></td>
-											<td><div class="p10 items5">휴대폰, 이메일, 쿠키정보</div></td>
-											<td><div class="p10 holding5">수신동의를 받는 날로부터 1년마다
-													자동갱신</div></td>
-										</tr>
-									</tbody>
-								</table>
-								<p class="pl-6 btm-msg">
-									귀하께서는 쇼핑몰에서 위와 같이 수집하는 개인정보에 대해, 동의하지 않거나 개인정보를 기재하지 않음으로써 거부할
-									수 있습니다.<br> 다만, 이때 회원에게 제공되는 서비스가 제한될 수 있습니다.
-								</p>
-							</div>
-						</fieldset>
-						<!-- use_contract -->
+								<td><div class="p10 purpose5">마케팅 활용(이벤트, 맞춤형 광고)</div></td>
+								<td><div class="p10 items5">휴대폰, 이메일, 쿠키정보</div></td>
+								<td><div class="p10 holding5">수신동의를 받는 날로부터 1년마다 자동갱신</div></td>
+							</tr>
+						</tbody>
+					</table>
+					<p class="pl-6 btm-msg">
+						귀하께서는 쇼핑몰에서 위와 같이 수집하는 개인정보에 대해, 동의하지 않거나 개인정보를 기재하지 않음으로써 거부할 수
+						있습니다.<br> 다만, 이때 회원에게 제공되는 서비스가 제한될 수 있습니다.
+					</p>
 				</div>
+				</fieldset>
+				<!-- use_contract -->
 			</div>
 		</div>
 	</div>
+</div>
 </div>
 <%@include file="/WEB-INF/views/include/footer.jsp"%>

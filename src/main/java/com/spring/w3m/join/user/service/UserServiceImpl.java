@@ -12,9 +12,9 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserDAO dao;
 	@Override
-	public UserVO getUser(UserVO vo) {
-		// TODO Auto-generated method stub
-		return null;
+	public UserVO getUser() {
+		
+		return dao.getUser();
 	}
 
 	@Override
@@ -32,6 +32,12 @@ public class UserServiceImpl implements UserService {
 	public UserVO deleteUser(UserVO vo) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public int idCheck(String user_id) {
+		
+		return dao.idCheck(user_id);
 	}
 
 }

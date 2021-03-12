@@ -8,5 +8,11 @@
 	INSERT INTO user_member (user_seq, user_id, user_name, user_password, user_birthday, user_gender, user_email, user_zipcode, user_address1, user_address2, user_phone, user_marketing_mail, user_marketing_sms)
 	VALUES (nextval('user_member_seq'), #{user_id}, #{user_name}, #{user_password}, #{user_birthday}, #{user_gender}, #{user_email}, #{user_zipcode}, #{user_address1}, #{user_address2}, #{user_phone}, #{user_marketing_mail}, #{user_marketing_sms})
 	</insert>
-
+	<select id="getUser" parameterType="UserVO" resultType="UserVO">
+		SELECT * From user_member 
+	</select>
+	
+	<select id="idCheck" parameterType="string" resultType="int"> 
+	 select count(*) from user_member where user_id = #{user_id} 
+	</select>
 </mapper>
