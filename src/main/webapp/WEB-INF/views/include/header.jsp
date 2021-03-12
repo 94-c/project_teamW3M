@@ -66,7 +66,7 @@
 						</ul>
 						<ul class="fright">
 							<!-- 상단 커뮤니티 링크 수정 -->
-							<li><a href="notice.do">공지사항</a></li>
+							<li><a href="getNoticeList.do">공지사항</a></li>
 							<li><a href="#">상품후기</a></li>
 							<li><a href="#">문의게시판</a></li>
 						</ul>

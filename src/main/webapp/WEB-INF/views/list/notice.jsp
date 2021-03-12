@@ -81,7 +81,7 @@
 										<td>&nbsp;</td>
 										<td>${notice.nt_title }</td>
 										<td>${notice.nt_writer }</td>
-										<td><fmt:formatDate value="${notice.nt_date}" pattern="yyyy-MM-dd"/> </td>
+										<td><fmt:formatDate value="${notice.nt_date}" pattern="yyyy-MM-dd"/></td>
 										<td>${notice.nt_count }</td>
 									</tr>
 								</c:forEach>

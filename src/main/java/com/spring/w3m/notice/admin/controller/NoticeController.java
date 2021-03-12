@@ -17,7 +17,7 @@ public class NoticeController {
 	
 	@RequestMapping("/insertNotice.do")
 	public String insertNotice() {
-		return "list/notice";
+		return "list/noticeWrite";
 	}
 	
 	@RequestMapping("/updateNotice.do")
@@ -38,6 +38,7 @@ public class NoticeController {
 	
 	@RequestMapping("/getNoticeList.do")
 	public String getBoardList(NoticeVO vo, Model model) {
+		noticeService.insertNotice(vo);
 		System.out.println("글 목록 검색 처리");
 		// null 체크
 		if(vo.getSearchCondition() == null) vo.setSearchCondition("nt_title");
