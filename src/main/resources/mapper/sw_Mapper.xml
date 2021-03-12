@@ -2,7 +2,50 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="UserDAO">
+<mapper namespace="NoticeDAO">
 
+	<resultMap type="NoticeVO" id="noticeResult">
+		<id property="nt_seq" column="nt_seq" />
+		<result property="nt_title" column="nt_title" />
+		<result property="nt_writer" column="nt_writer" />
+		<result property="nt_content" column="nt_content" />
+		<result property="nt_date" column="nt_date" />
+		<result property="nt_count" column="nt_count" />
+	</resultMap>
+
+	<insert id="insertNotice" parameterType="NoticeVO">
+		INSERT INTO notice
+		(nt_seq, nt_title, nt_writer, nt_content, nt_date, nt_count)
+		VALUES((select nvl(max(nt_seq), 0)+1 from notice), #{nt_title},
+		#{nt_writer}, #{nt_content}, #{nt_date}, #{nt_count})
+	</insert>
+
+	<update id="updateNotice" parameterType="NoticeVO">
+		UPDATE notice
+		SET
+		nt_title=#{nt_title}, nt_content=#{nt_content}
+		WHERE nt_seq = #{nt_seq}
+	</update>
+
+	<delete id="deleteNotice" parameterType="NoticeVO">
+		DELETE FROM notice WHERE
+		nt_seq = #{nt_seq}
+	</delete>
+
+	<select id="getNotice" resultType="NoticeVO">
+		SELECT * FROM notice
+	</select>
+
+
+	<select id="getNoticeList" resultMap="noticeResult">
+		SELECT * FROM notice
+		WHERE 1=1
+		<if test="searchCondition=='TITLE'">
+			AND nt_title LIKE '%'||#{searchKeyword}||'%'
+		</if>
+		<if test="searchCondition=='CONTENT'">
+			AND nt_content LIKE '%'||#{searchKeyword}||'%'
+		</if>
+	</select>
 
 </mapper>
