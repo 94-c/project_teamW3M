@@ -23,7 +23,7 @@ public class UserLoginServiceImpl implements UserLoginService {
 			//세션 변수 등록
 			session.setAttribute("userId", user.getUser_id());
 			session.setAttribute("userName", user.getUser_name());
-			session.setAttribute("result", "success");
+			session.setAttribute("login_state", "login");
 		}
 		return result;
 	}
