@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 
@@ -120,19 +121,19 @@
 			
 
 			<ul class="top_cart">
-			<c:set var="result" value="${result }"/>
+			<c:set var="login_state" value="${login_state}"/>
 			<c:choose>
-				<c:when test="${result eq 'success' }">
-				<li><a href="logout.do">로그아웃</a></li>
-				<li><a href="insertMember.do" class="join">마이페이지</a></li>
+				<c:when test="${login_state eq 'login' }">
+					<li><a href="logout.do">로그아웃</a></li>
+					<li><a href="#" class="join">마이페이지</a></li>
 				</c:when>
-				<c:when test="${result ne 'success' }">	
-				<li><a href="login.do">로그인</a></li>
-				<li><a href="insertMember.do" class="join">회원가입
+				<c:when test="${login_state ne 'login' }">	
+					<li><a href="login.do">로그인</a></li>
+					<li><a href="insertMember.do" class="join">회원가입
 					<span class="scroll" style="bottom: 2.97586px;">
 							<span>+1,000P</span>
 					</span></a>
-				</li>
+					</li>
 				</c:when>	
 			</c:choose>				
 				<li><a href="#">장바구니<span id="user_basket_quantity" class="user_basket_quantity">0</span></a></li>

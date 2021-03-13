@@ -22,8 +22,7 @@ public class UserLoginController {
 		ModelAndView mav = new ModelAndView();
 		if(result == true) { //로그인 성공
 			mav.setViewName("redirect:/");
-			mav.addObject("msg", "success");
-			
+			mav.addObject("msg", "success");			
 		}else {				//로그인 실패
 			mav.setViewName("login/login");
 			mav.addObject("msg", "failure");
@@ -35,7 +34,7 @@ public class UserLoginController {
 	public ModelAndView userLogout(HttpSession session) {
 		userLoginService.logout(session);
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("redirect:/");
+		mav.setViewName("login/login");
 		mav.addObject("msg", "logout");
 		return mav;
 	}
