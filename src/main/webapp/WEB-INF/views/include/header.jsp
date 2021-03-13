@@ -77,7 +77,7 @@
 			
 			
 			<div class="top_logo">
-				<a href="index.jsp"><img src="resources/images/h_design/top_logo.gif"></a>
+				<a href="index.jsp"><img src="resources/images/h_design/top_w3m.gif"></a>
 			</div>
 			
 
