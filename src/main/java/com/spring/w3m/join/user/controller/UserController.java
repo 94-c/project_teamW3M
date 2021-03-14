@@ -1,7 +1,10 @@
 package com.spring.w3m.join.user.controller;
 
+import java.util.Random;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -9,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spring.w3m.join.user.dao.UserDAO;
 import com.spring.w3m.join.user.service.UserService;
+import com.spring.w3m.join.user.service.certificationSMS;
 import com.spring.w3m.join.user.vo.UserVO;
 
 @Controller
@@ -18,7 +22,7 @@ public class UserController {
 
 	@RequestMapping("/login_insert.do")
 	public String insert_success(UserVO vo) {
-	//	userService.insertUser(vo);
+		
 
 		if(vo.getUser_marketing_mail() == null) { // check box 가 Null 이면 false
 			vo.setUser_marketing_mail(false);
@@ -37,6 +41,7 @@ public class UserController {
 		vo.setUser_birthday(birthdayFormat.replace(",","-"));
 		
 		System.out.println(vo.toString());
+		userService.insertUser(vo);
 		return "login/insert_success";
 	}
 	@RequestMapping("")
@@ -46,13 +51,35 @@ public class UserController {
 		return null;
 		
 	}
-	@RequestMapping(value ="/user_id_check.do", method = RequestMethod.GET)
+	@RequestMapping(value ="/user_id_check.do", method = RequestMethod.POST)
 	@ResponseBody
-	public int idCheck(@RequestParam("user_id") String user_id) {
+	public int idCheck(@RequestBody String user_id) {
 		int check = userService.idCheck(user_id);
-		System.out.println(user_id);
-		System.out.println(check);
+		System.out.println("아이디 중복 확인 ");
+//		System.out.println(user_id);
+//		System.out.println(check);
 		return check;
+		
+	}
+	@ResponseBody
+	@RequestMapping("/send_sms.do")
+	public String sendSMS(@RequestBody String user_phoneAll) {
+		
+		 Random rand  = new Random();
+	        String numStr = "";
+	        for(int i=0; i<6; i++) {
+	            String ran = Integer.toString(rand.nextInt(10));
+	            numStr+=ran;
+	        }
+
+	        System.out.println("수신자 번호 : " + user_phoneAll);
+	        System.out.println("인증번호 : " + numStr);
+	        certificationSMS sms = new certificationSMS();
+	       //sms.certifiedPhone(user_phoneAll, numStr);
+	        return numStr;
+		
+		
+
 		
 	}
 }
