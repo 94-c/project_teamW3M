@@ -34,6 +34,7 @@
 	<p class="se-log">
 	<label><input type="checkbox" name="ssl" value="Y" class="MS_security_checkbox" /> 보안접속</label>
     </p>
+    <p align="center">${msg} 되었습니다!</p>
 </form>
 </div>
 <!-- 로그인 END -->

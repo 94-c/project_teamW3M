@@ -2,15 +2,19 @@ package com.spring.w3m.main.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
 public class HomeController {
 //header 부분
-	@RequestMapping("/login.do")
-	public String login() {
-
-		return "login/login";
+	
+	@RequestMapping(value = "/" , method = RequestMethod.GET)
+	public String index() {
+		
+		return "index";
 	}
+	
+	
 
 
 	@RequestMapping("/insertMember.do")

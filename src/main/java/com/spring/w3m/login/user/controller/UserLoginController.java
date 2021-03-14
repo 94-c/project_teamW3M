@@ -16,13 +16,19 @@ public class UserLoginController {
 	@Autowired
 	private UserLoginService userLoginService;
 	
+	@RequestMapping("/login.do")
+	public String loginView() {
+		
+		return "login/login";
+	}
+	
 	@RequestMapping("/loginCheck.do")
 	public ModelAndView userloginCheck(@ModelAttribute UserVO vo, HttpSession session) {
 		boolean result = userLoginService.loginCheck(vo, session);
 		ModelAndView mav = new ModelAndView();
 		if(result == true) { //로그인 성공
-			mav.setViewName("redirect:/");
-			mav.addObject("msg", "success");			
+			mav.setViewName("index");
+			mav.addObject("msg", "success");
 		}else {				//로그인 실패
 			mav.setViewName("login/login");
 			mav.addObject("msg", "failure");

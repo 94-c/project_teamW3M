@@ -125,14 +125,14 @@
 			<c:choose>
 				<c:when test="${login_state eq 'login' }">
 					<li><a href="logout.do">로그아웃</a></li>
-					<li><a href="#" class="join">마이페이지</a></li>
+					<li><a href="#" class="">마이페이지</a></li>
 				</c:when>
 				<c:when test="${login_state ne 'login' }">	
 					<li><a href="login.do">로그인</a></li>
 					<li><a href="insertMember.do" class="join">회원가입
-					<span class="scroll" style="bottom: 2.97586px;">
+						<span class="scroll" style="bottom: 2.97586px;">
 							<span>+1,000P</span>
-					</span></a>
+						</span></a>
 					</li>
 				</c:when>	
 			</c:choose>				
