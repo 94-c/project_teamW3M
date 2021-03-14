@@ -2,7 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="test">
+<mapper namespace="AdminDAO">
+	<select parameterType="AdminVO" resultType="AdminVO" id="getAdmin">
+	select * from admin_user 
+	</select>
 
-<select id="test"></select>
+
 </mapper>
