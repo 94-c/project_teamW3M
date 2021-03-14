@@ -20,8 +20,8 @@ public class AdminLoginController {
 		System.out.println("=== 관리자 로그인 ===");
 		return "login";
 	}
-	
-	// 관리자 메인 페이지
+
+	//관리자 페이지
 	@RequestMapping("/index.mdo")
 	public String index(AdminVO vo) {
 		AdminVO voo = adminService.getAdmin();
@@ -40,6 +40,7 @@ public class AdminLoginController {
 			System.out.println(" 틀림");
 			return "login";
 	}
+		
 	
 	// 고객 관리
 	@RequestMapping("/userMemberList.mdo")

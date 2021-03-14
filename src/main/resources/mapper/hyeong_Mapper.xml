@@ -4,8 +4,6 @@
 
 <mapper namespace="AdminDAO">
 	<select parameterType="AdminVO" resultType="AdminVO" id="getAdmin">
-	select * from admin_user 
+		select * from admin_user 
 	</select>
-
-
 </mapper>

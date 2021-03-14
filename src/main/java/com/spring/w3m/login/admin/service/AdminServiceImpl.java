@@ -16,5 +16,7 @@ public class AdminServiceImpl implements AdminService {
 	public AdminVO getAdmin() {
 		return dao.getAdmin();		
 	}
+	
+	
 
 }
