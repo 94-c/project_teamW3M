@@ -3,7 +3,6 @@ package com.spring.w3m.join.user.controller;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,12 +18,14 @@ import com.spring.w3m.join.user.vo.UserVO;
 public class UserController {
 	@Autowired
 	private UserService userService;
-	
-	@Autowired
-	private BCryptPasswordEncoder passwordEncoder = null;
-	
+
+	@RequestMapping("/insertMember.do")
+	public String insert_member() {
+		return "login/insertMember";
+		
+	}
 	@RequestMapping("/login_insert.do")
-	public String insert_success(UserVO vo) { // 회원가입
+	public String insert_success(UserVO vo) {
 		
 
 		if(vo.getUser_marketing_mail() == null) { // check box 가 Null 이면 false
@@ -43,9 +44,6 @@ public class UserController {
 		String birthdayFormat = vo.getUser_birthday();//폰 형식 '-'
 		vo.setUser_birthday(birthdayFormat.replace(",","-"));
 		
-		
-		vo.setUser_password(passwordEncoder.encode(vo.getUser_password()));
-		
 		System.out.println(vo.toString());
 		userService.insertUser(vo);
 		return "login/insert_success";
@@ -57,9 +55,9 @@ public class UserController {
 		return null;
 		
 	}
-	@RequestMapping(value ="/user_id_check.do", method = RequestMethod.POST) 
+	@RequestMapping(value ="/user_id_check.do", method = RequestMethod.POST)
 	@ResponseBody
-	public int idCheck(@RequestBody String user_id) { //아이디 중복확인
+	public int idCheck(@RequestBody String user_id) {
 		int check = userService.idCheck(user_id);
 		System.out.println("아이디 중복 확인 ");
 //		System.out.println(user_id);
@@ -69,11 +67,11 @@ public class UserController {
 	}
 	@ResponseBody
 	@RequestMapping("/send_sms.do")
-	public String sendSMS(@RequestBody String user_phoneAll) { // 인증번호 생성 (휴대폰 인증)
+	public String sendSMS(@RequestBody String user_phoneAll) {
 		
 		 Random rand  = new Random();
 	        String numStr = "";
-	        for(int i=0; i<6; i++) { // 인증번호 생성 6자리
+	        for(int i=0; i<6; i++) {
 	            String ran = Integer.toString(rand.nextInt(10));
 	            numStr+=ran;
 	        }

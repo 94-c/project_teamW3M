@@ -47,6 +47,13 @@
 										<td>
 											<div class="data-bd-cont">${inquiryVO.inq_content }</div></td>
 									</tr>
+									<tr>
+										<td colspan="6">
+											<input type="button" value="글 수정" onclick="location.href='./inquiry_update_view.do?inq_seq=${inquiryVO.inq_seq}'"/>
+											<input type="button" value="글 삭제" onclick="location.href='./deleteInquiry.do?inq_seq=${inquiryVO.inq_seq}'"/>
+											<input type="button" value="글 목록" onclick="location.href='./inquiry.do'"/>
+										</td>
+									</tr>
 								</tbody>
 							</table>
 							<hr size="1" color="#E5E5E5" />

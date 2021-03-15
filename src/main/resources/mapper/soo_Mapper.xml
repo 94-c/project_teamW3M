@@ -9,7 +9,7 @@
 		VALUES(nextval('inq_user_seq'), #{inq_title}, #{inq_writer}, #{inq_content})
 	</insert>
 
-<!-- 게시글 보기 -->
+<!-- 리스트 보기 -->
 	<select id="getInquiryList" resultMap="inquiryResult">
 		SELECT inq_seq, inq_title, inq_writer, inq_date, inq_cnt FROM inquiry ORDER BY inq_seq DESC
 	</select>
@@ -27,4 +27,16 @@
 	<select id="getInquiry" resultType="InquiryVO">
 		SELECT * FROM inquiry WHERE inq_seq = #{inq_seq}
 	</select>
+	
+<!-- 조회수 증가 -->
+	<update id="inquiryCntUpdate" parameterType="InquiryVO"> update inquiry set inq_cnt=inq_cnt+1 WHERE inq_seq=#{inq_seq} </update>
+
+<!-- 게시글 수정하기 -->
+	<update id="updateInquiry" parameterType="InquiryVO">
+		UPDATE inquiry SET inq_title = #{inq_title}, inq_content = #{inq_content} WHERE inq_seq=#{inq_seq}
+	</update>
+<!-- 게시글 삭제하기 -->
+	<delete id="deleteInquiry" parameterType="InquiryVO">
+		DELETE FROM inquiry WHERE inq_seq = #{inq_seq} 
+	</delete>	
 </mapper>

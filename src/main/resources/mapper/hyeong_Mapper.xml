@@ -8,5 +8,8 @@
 		select * from admin_user 
 	</select>
 	
+	<select resultType="UserVO" id="userList">
+		SELECT * FROM user_member	
+	</select>
 		
 </mapper>
