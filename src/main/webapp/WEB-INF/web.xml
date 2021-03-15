@@ -7,13 +7,13 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
 			/WEB-INF/spring/MainApplicationContext.xml 
-
-			<!-- 아래처럼 추가적으로 사용할 컨텍스트를 등록하면 됩니다. /WEB-INF/spring/commonContext.xml -->
+		
+			
 		</param-value>
 	</context-param>
 
 	<listener>
-		<listener-class>
+		<listener-class>	
 			org.springframework.web.context.ContextLoaderListener
 		</listener-class>
 	</listener>
@@ -32,6 +32,7 @@
 				/WEB-INF/spring/customContext/hyeongSpring-servlet.xml 
 				/WEB-INF/spring/customContext/WoongSpring-servlet.xml
 				<!-- 아래처럼 각 팀원들이 만들 컨텍스트를  등록하면 됩니다. /WEB-INF/spring/customContext/indexContext.xml -->
+				/WEB-INF/spring/spring-security.xml
 			</param-value>
 		</init-param>
 		<load-on-startup>0</load-on-startup>

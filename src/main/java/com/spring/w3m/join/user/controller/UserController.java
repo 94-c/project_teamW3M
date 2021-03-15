@@ -3,6 +3,7 @@ package com.spring.w3m.join.user.controller;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spring.w3m.join.user.dao.UserDAO;
+import com.spring.w3m.join.user.service.EncoderPassword;
 import com.spring.w3m.join.user.service.UserService;
 import com.spring.w3m.join.user.service.certificationSMS;
 import com.spring.w3m.join.user.vo.UserVO;
@@ -19,9 +21,12 @@ import com.spring.w3m.join.user.vo.UserVO;
 public class UserController {
 	@Autowired
 	private UserService userService;
-
+	
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder = null;
+	
 	@RequestMapping("/login_insert.do")
-	public String insert_success(UserVO vo) {
+	public String insert_success(UserVO vo) { // 회원가입
 		
 
 		if(vo.getUser_marketing_mail() == null) { // check box 가 Null 이면 false
@@ -40,6 +45,9 @@ public class UserController {
 		String birthdayFormat = vo.getUser_birthday();//폰 형식 '-'
 		vo.setUser_birthday(birthdayFormat.replace(",","-"));
 		
+		
+		vo.setUser_password(passwordEncoder.encode(vo.getUser_password()));
+		
 		System.out.println(vo.toString());
 		userService.insertUser(vo);
 		return "login/insert_success";
@@ -51,9 +59,9 @@ public class UserController {
 		return null;
 		
 	}
-	@RequestMapping(value ="/user_id_check.do", method = RequestMethod.POST)
+	@RequestMapping(value ="/user_id_check.do", method = RequestMethod.POST) 
 	@ResponseBody
-	public int idCheck(@RequestBody String user_id) {
+	public int idCheck(@RequestBody String user_id) { //아이디 중복확인
 		int check = userService.idCheck(user_id);
 		System.out.println("아이디 중복 확인 ");
 //		System.out.println(user_id);
@@ -63,11 +71,11 @@ public class UserController {
 	}
 	@ResponseBody
 	@RequestMapping("/send_sms.do")
-	public String sendSMS(@RequestBody String user_phoneAll) {
+	public String sendSMS(@RequestBody String user_phoneAll) { // 인증번호 생성 (휴대폰 인증)
 		
 		 Random rand  = new Random();
 	        String numStr = "";
-	        for(int i=0; i<6; i++) {
+	        for(int i=0; i<6; i++) { // 인증번호 생성 6자리
 	            String ran = Integer.toString(rand.nextInt(10));
 	            numStr+=ran;
 	        }
