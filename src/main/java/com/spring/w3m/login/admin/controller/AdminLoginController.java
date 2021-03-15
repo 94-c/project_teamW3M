@@ -1,7 +1,9 @@
 package com.spring.w3m.login.admin.controller;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -44,7 +46,7 @@ public class AdminLoginController {
 	
 	// 고객 관리
 	@RequestMapping("/userMemberList.mdo")
-	public String userMembeList()  {
+	public String userMembeList(Model model)  {
 		System.out.println("=== 고객관리 ===");
 		return "page/userMemberList";
 	}

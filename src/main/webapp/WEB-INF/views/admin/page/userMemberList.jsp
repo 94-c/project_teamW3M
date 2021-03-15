@@ -1,4 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="com.spring.w3m.join.user.vo.UserVO" %>
+<%@ page import="com.spring.w3m.login.admin.dao.AdminDAO" %>
+<%@ page import="java.util.List" %>
 
      <head>
        <link rel="shortcut icon" href="resources/images/icons/favicon.ico" type="image/x-icon">
@@ -120,11 +123,6 @@
                             <li class="breadcrumb-item active">고객 관리</li>
                         </ol>
                         <div class="card mb-4">
-                            <div class="card-body">
-                                DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the
-                                <a target="_blank" href="https://datatables.net/">official DataTables documentation</a>
-                                .
-                            </div>
                         </div>
                         <div class="card mb-4">
                             <div class="card-header">
@@ -149,17 +147,19 @@
                                         </thead>
                                    
                                         <tbody>
+                                        	<c:forEach var="user" items="${UserList}">
                                       		<tr>
-                                      			<td class="text-center">아이디</td>
-												<td class="text-center">비밀번호</td>
-												<td class="text-center">이름</td>
-												<td class="text-center">생년월일</td>
-												<td class="text-center">성별</td>
-												<td class="text-center">주소(상세주소)</td>
-												<td class="text-center">휴대폰번호</td>
-												<td class="text-center">가입날짜</td>
-												<td class="text-center">회원상태</td>
+                                      			<td class="text-center">${user.user_id }</td>
+												<td class="text-center">${user.user_password }</td>
+												<td class="text-center">${user.user_name }</td>
+												<td class="text-center">${user.user_birthday }</td>
+												<td class="text-center">${user.user_gender }</td>
+												<td class="text-center">${user.user_address1 }</td>
+												<td class="text-center">${user.user_phone }</td>
+												<td class="text-center">${user.user_join_date }</td>
+												<td class="text-center">${user.user_state }</td>
                                       		</tr>
+                                      		</c:forEach>
                                         </tbody>
                                     </table>
                                 </div>

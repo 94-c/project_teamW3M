@@ -19,7 +19,7 @@ public class UserDAO { // DB 왔다갔다
    }
    public UserVO getUser() {
    
-	return (UserVO) sqlSessionTemplate.selectOne("UserDAO.getUser");
+	return sqlSessionTemplate.selectOne("UserDAO.getUser");
 	   
    }
    public int idCheck(String user_id) {
