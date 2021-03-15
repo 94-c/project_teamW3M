@@ -83,7 +83,7 @@
 			</div>
 			
 			<div class="top_logo">
-				<a href="index.jsp"><img src="resources/images/h_design/top_w3m.gif"></a>
+				<a href="index"><img src="resources/images/h_design/top_w3m.gif"></a>
 			</div>			
 
 			<div class="section1">
@@ -129,7 +129,7 @@
 			<c:choose>
 				<c:when test="${login eq 'login' }">
 					<li><a href="logout.do">로그아웃</a></li>
-					<li><a href="#" class="">마이페이지</a></li>
+					<li><a href="" class="">마이페이지</a></li>
 					<li><a href="#">장바구니<span id="user_basket_quantity" class="user_basket_quantity">0</span></a></li>
 				</c:when>
 				<c:when test="${login ne 'login'}">
