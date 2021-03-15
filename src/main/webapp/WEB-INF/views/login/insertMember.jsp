@@ -408,7 +408,7 @@ var email_ck = -1;
 																value="${month}" /></option>
 													</c:forEach>
 
-												</select>월<select name="user_birthday3" id="user_birthday3"
+												</select>월<select name="user_birthday" id="user_birthday3"
 													class="MS_select MS_birthday">
 													<option value="">선택</option>
 													<c:forEach begin="01" end="31" step="1" var="day">

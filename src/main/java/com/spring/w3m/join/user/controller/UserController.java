@@ -77,9 +77,6 @@ public class UserController {
 	        certificationSMS sms = new certificationSMS();
 	       //sms.certifiedPhone(user_phoneAll, numStr);
 	        return numStr;
-		
-		
-
-		
+	
 	}
 }
