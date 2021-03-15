@@ -14,7 +14,13 @@
         <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
         <script src="assets/demo/datatables-demo.js"></script>
-        
+		<script>
+		window.onload = function(){
+		    console.log('checkedBox is ' + document.getElementById('checked').checked);
+		    console.log('uncheckedBox is ' + document.getElementById('unchecked').checked);
+		};
+		</script>
+
     </head>
 
 <body class="sb-nav-fixed">
@@ -158,8 +164,13 @@
 						<textarea class="form-control" id="nt_content"
 							name="nt_content" rows="10"></textarea>
 					</div>
-					<button type="submit" class="btn btn-info" onclick = "location.href = 'insertNotice.do' ">등록하기</button>
+					 <label for="checked">중요</label>
+   						 <input type="checkbox" id="nt_imp" name="nt_imp" value="1" />
+    			
+					
+					<button type="submit" class="btn btn-info " onclick = "location.href = 'insertNotice.do' ">등록하기</button>
 					<button type="button" class="btn btn-secondary" onclick = "location.href = 'getNoticeList.do' ">목록으로</button>
+   					 
    		</div>
 		</form>
 		<!-- 푸터 -->

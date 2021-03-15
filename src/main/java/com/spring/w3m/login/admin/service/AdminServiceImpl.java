@@ -24,7 +24,6 @@ public class AdminServiceImpl implements AdminService {
 	public List<UserVO> getUserList() {
 		return dao.getUseList();
 	}
-
 	
 
 }
