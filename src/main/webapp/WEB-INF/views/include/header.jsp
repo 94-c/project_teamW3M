@@ -83,7 +83,7 @@
 			</div>
 			
 			<div class="top_logo">
-				<a href="index"><img src="resources/images/h_design/top_w3m.gif"></a>
+				<a href="/"><img src="resources/images/h_design/top_w3m.gif"></a>
 			</div>			
 
 			<div class="section1">
