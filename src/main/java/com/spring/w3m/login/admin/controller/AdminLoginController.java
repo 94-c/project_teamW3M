@@ -25,9 +25,9 @@ public class AdminLoginController {
 
 	//관리자 페이지
 	@RequestMapping("/index.mdo")
-	public String index(AdminVO vo) {
+	public String index(AdminVO vo, Model model) {
 		AdminVO voo = adminService.getAdmin();
-		
+		model.addAttribute("userList", adminService.getUserList());
 		System.out.println("사이트-"+vo.getAdmin_id());
 		System.out.println("db-"+voo.getAdmin_id());
 		
@@ -48,6 +48,7 @@ public class AdminLoginController {
 	@RequestMapping("/userMemberList.mdo")
 	public String userMembeList(Model model)  {
 		System.out.println("=== 고객관리 ===");
+		model.addAttribute("userList", adminService.getUserList());
 		return "page/userMemberList";
 	}
 	
