@@ -7,6 +7,7 @@
         <script type="text/javascript" src="resources/js/adminlogin.js"></script>
 		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     </head>
+    
     <body class="bg-primary">
         <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">

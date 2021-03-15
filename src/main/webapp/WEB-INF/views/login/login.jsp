@@ -46,7 +46,7 @@
 			아직 회원이 아니신가요? <br />회원가입을 하시면 다양한 혜택을 편리하게 이용하실 수 있습니다.
 		</dt>
 		<dd>
-			<a href="/shop/idinfo.html?type=new&first="	class="CSSbuttonWhite fe">회원가입</a>
+			<a href="insertMember.do"	class="CSSbuttonWhite fe">회원가입</a>
 		</dd>
 	</dl>
 	<dl>
@@ -54,7 +54,7 @@
 			아이디 혹은 비밀번호를 잊으셨나요?<br />간단한 정보를 입력 후 잃어버린 정보를 찾으실 수 있습니다.
 		</dt>
 		<dd>
-			<a href="/shop/lostpass.html" class="CSSbuttonWhite fe">아이디/비밀번호	찾기</a>
+			<a href="searchID.do" class="CSSbuttonWhite fe">아이디/비밀번호	찾기</a>
 		</dd>
 	</dl>
 </div>

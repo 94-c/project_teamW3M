@@ -1,11 +1,54 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%@include file="/WEB-INF/views/include/header.jsp"%>
+<link href="resources/css/slider.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="resources/js/main.js" ></script> 
 
 	<!-- 메인 배너 슬라이드 -->
 	<div id="wrap">
-		<div id="contentWrapper"></div>
+	<div id="contentWrapper">
+		<div class="cboth main_img">
+			<div class="sliderkit contentslider-main" style="display: block;">
+				<div class="main_img_arrow">
+					<div class="sliderkit-btn sliderkit-go-btn sliderkit-go-prev">
+						<a href="#"></a>
+					</div>
+					<div class="sliderkit-btn sliderkit-go-btn sliderkit-go-next">
+						<a href="#"></a>
+					</div>
+				</div>
+				<div class="sliderkit-nav">
+					<div class="sliderkit-nav-clip" style="width: 42px; height: 8px;">
+						<ul style="width: 42px;">
+							<li class="" style="width: 14px; height: 8px;"><a></a></li>
+							<li style="width: 14px; height: 8px;" class="sliderkit-selected"><a></a></li>
+							<li style="width: 14px; height: 8px;" class=""><a></a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="sliderkit-panels">
+					<!-- 메인 배너 스크립트 링크 수정하는곳 -->
+
+					<div class="sliderkit-panel sliderkit-panel-old"
+						style="display: block;">
+						<a href="/shop/shopbrand.html?type=X&amp;xcode=023">
+						<div style="background-image: url(resources/images/m_mask/main_visual_mask.jpg)"></div></a>
+					</div>
+					<div class="sliderkit-panel sliderkit-panel-active"
+						style="display: block; opacity: 0.00640887;">
+						<a href="/shop/shopbrand.html?type=X&amp;xcode=026">
+						<div style="background-image: url(resources/images/m_mask/main_visual_purell.jpg)"></div></a>
+					</div>
+					<div class="sliderkit-panel" style="display: block;">
+						<a href="http://www.welkeepsmall.com/shop/shopdetail.html?branduid=1007223&amp;xcode=026&amp;mcode=001&amp;scode=&amp;type=X&amp;sort=manual&amp;cur_code=026&amp;GfDT=bm9%2FW1k%3D">
+						<div style="background-image: url(resources/images/m_mask/main_visual_wondercheck.jpg)"></div></a>
+					</div>
+
+				</div>
+			</div>
+		</div>
 	</div>
+</div>
 
 	
 	<!-- 좌측 2단 배너 -->
