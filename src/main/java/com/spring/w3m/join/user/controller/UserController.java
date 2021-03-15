@@ -3,6 +3,7 @@ package com.spring.w3m.join.user.controller;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,8 @@ import com.spring.w3m.join.user.vo.UserVO;
 public class UserController {
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private BCryptPasswordEncoder passEncoder;
 
 	@RequestMapping("/insertMember.do")
 	public String insert_member() {
@@ -43,6 +46,8 @@ public class UserController {
 		
 		String birthdayFormat = vo.getUser_birthday();//폰 형식 '-'
 		vo.setUser_birthday(birthdayFormat.replace(",","-"));
+		
+		vo.setUser_password(passEncoder.encode(vo.getUser_password()));
 		
 		System.out.println(vo.toString());
 		userService.insertUser(vo);
@@ -79,7 +84,7 @@ public class UserController {
 	        System.out.println("수신자 번호 : " + user_phoneAll);
 	        System.out.println("인증번호 : " + numStr);
 	        certificationSMS sms = new certificationSMS();
-	       //sms.certifiedPhone(user_phoneAll, numStr);
+	        sms.certifiedPhone(user_phoneAll, numStr);
 	        return numStr;
 	
 	}
