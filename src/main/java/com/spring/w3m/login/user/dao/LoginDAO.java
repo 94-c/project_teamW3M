@@ -1,7 +1,5 @@
 package com.spring.w3m.login.user.dao;
 
-import javax.servlet.http.HttpSession;
-
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -20,10 +18,6 @@ public class LoginDAO {
 	
 	public UserVO viewUser(UserVO vo) {
 		return sqlSessionTemplate.selectOne("user.viewUser", vo);
-	}
-	
-	public void logout(HttpSession session) {
-		
 	}
 	
 }

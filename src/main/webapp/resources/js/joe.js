@@ -20,3 +20,9 @@ $(document).ready(function(){
 		$("form:first").submit();
 		});
 });
+$(document).ready(function(){
+	$("#haveSession").click(function(){
+		alert("이미 로그인중입니다.");
+		return;
+	});
+});

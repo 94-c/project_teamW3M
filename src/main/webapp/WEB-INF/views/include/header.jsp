@@ -37,6 +37,14 @@
 <!-- head태그 끝 -->
 <!-- body태그 시작(끝은 footer.jsp)에 있다. -->
 <body>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#haveSession").click(function(){
+			alert("이미 로그인중입니다.");
+			return;
+		});
+	});
+</script>
 	<div id="hdWrap">
 		<div class="top_space"></div>
 		<div id="comment_top">
@@ -46,8 +54,13 @@
 				<img src="resources/images/icons/side_slide_menu.png">
 				<div class="top_login_area">
 
-					<div class="top_btn_login01">
-						<a href="login.do">로그인</a>
+					<div class="top_btn_login01" >
+						<c:if test="${login_state eq 'login' }">						
+							<a id="haveSession" href="/">로그인</a>							
+						</c:if>
+						<c:if test="${login_state ne 'login' }">
+							<a href="login.do">로그인</a>
+						</c:if>						
 					</div>
 					<div class="top_btn_login01">
 						<a href="logout.do">로그아웃</a>
@@ -62,7 +75,7 @@
 					<div class="top_comm">
 						<ul class="fleft">
 							<li><a href="#">장바구니</a></li>
-							<li><a href="#">개인정보</a></li>
+							<li><a href="#">마이페이지</a></li>
 							<li><a href="#">주문내역</a></li>
 						</ul>
 						<ul class="fright">
@@ -73,13 +86,11 @@
 						</ul>
 					</div>
 				</div>
-			</div>			
-			
+			</div>
 			
 			<div class="top_logo">
 				<a href="index.jsp"><img src="resources/images/h_design/top_w3m.gif"></a>
-			</div>
-			
+			</div>			
 
 			<div class="section1">
 				<ul id="left_menu">
@@ -119,25 +130,26 @@
 				</ul>
 			</div>
 			
-
 			<ul class="top_cart">
-			<c:set var="login_state" value="${login_state}"/>
+			<c:set var="login" value="${login_state}"/>
 			<c:choose>
-				<c:when test="${login_state eq 'login' }">
+				<c:when test="${login eq 'login' }">
 					<li><a href="logout.do">로그아웃</a></li>
-					<li><a href="#" class="join">마이페이지</a></li>
+					<li><a href="#" class="">마이페이지</a></li>
+					<li><a href="#">장바구니<span id="user_basket_quantity" class="user_basket_quantity">0</span></a></li>
 				</c:when>
-				<c:when test="${login_state ne 'login' }">	
+				<c:when test="${login ne 'login'}">
 					<li><a href="login.do">로그인</a></li>
 					<li><a href="insertMember.do" class="join">회원가입
-					<span class="scroll" style="bottom: 2.97586px;">
+						<span class="scroll" style="bottom: 2.97586px;">
 							<span>+1,000P</span>
-					</span></a>
+						</span></a>
 					</li>
-				</c:when>	
-			</c:choose>				
-				<li><a href="#">장바구니<span id="user_basket_quantity" class="user_basket_quantity">0</span></a></li>
+					<li><a href="#">장바구니<span id="user_basket_quantity" class="user_basket_quantity">0</span></a></li>
+				</c:when>
+			</c:choose>
 			</ul>
+			
 		</div>
 	</div>
 </div>

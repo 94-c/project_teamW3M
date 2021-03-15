@@ -27,11 +27,13 @@ public class UserLoginServiceImpl implements UserLoginService {
 		}
 		return result;
 	}
+	
 	//회원 로그인 정보
 	@Override
 	public UserVO viewUser(UserVO vo) {
 		return dao.viewUser(vo);
 	}
+	
 	//회원 로그아웃
 	@Override
 	public void logout(HttpSession session) {

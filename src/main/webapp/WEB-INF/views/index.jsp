@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
 <%@include file="/WEB-INF/views/include/header.jsp"%>
 <link href="resources/css/slider.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="resources/js/main.js" ></script> 
@@ -81,7 +80,7 @@
 	
 	
 	<div class="cboth main_section03">
-		<div class="cboth main_title">웰킵스 마스크 BEST</div>
+		<div class="cboth main_title">웰킵스 마스크 BEST${msg } ${login_state} ${userInfo.user_name }</div>
 		<div class="cboth prd-list">
 		<table summary="상품이미지, 상품 설명, 가격">
 			<colgroup>
