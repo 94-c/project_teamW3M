@@ -25,11 +25,13 @@
 <link href="resources/css/header.css" rel="stylesheet" type="text/css">
 <link href="resources/css/footer.css" rel="stylesheet" type="text/css">
 <link href="resources/css/login.css" rel="stylesheet" type="text/css">
+<link href="resources/css/slider.css" rel="stylesheet" type="text/css">
 
 <!-- JS -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="resources/js/jquery.sliderkit.1.9.2.pack.js"></script>
 <script type="text/javascript" src="resources/js/index.js"></script>
+<script type="text/javascript" src="resources/js/main.js" ></script> 
 <!-- 각자 JS 파일만들어서 링크로 넣기 -->
 <script type="text/javascript" src="resources/js/joe.js"></script>
 
@@ -37,14 +39,6 @@
 <!-- head태그 끝 -->
 <!-- body태그 시작(끝은 footer.jsp)에 있다. -->
 <body>
-<script type="text/javascript">
-	$(document).ready(function(){
-		$("#haveSession").click(function(){
-			alert("이미 로그인중입니다.");
-			return;
-		});
-	});
-</script>
 	<div id="hdWrap">
 		<div class="top_space"></div>
 		<div id="comment_top">
