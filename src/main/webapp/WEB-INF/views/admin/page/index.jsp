@@ -1,4 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.util.List" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
     <head>
        <link rel="shortcut icon" href="resources/images/icons/favicon.ico" type="image/x-icon">
         <title>관리자 페이지</title>
@@ -183,10 +186,9 @@
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                        <thead>
+                                       <thead>
                                             <tr>
                                                 <th class="text-center">아이디</th>
-                                                <th class="text-center">비밀번호</th>
                                                 <th class="text-center">이름</th>
                                                 <th class="text-center">생년월일</th>
                                                 <th class="text-center">성별</th>
@@ -198,17 +200,18 @@
                                         </thead>
                                    
                                         <tbody>
+                                        	<c:forEach var="user" items="${userList}">
                                       		<tr>
-                                      			<td class="text-center">아이디</td>
-												<td class="text-center">비밀번호</td>
-												<td class="text-center">이름</td>
-												<td class="text-center">생년월일</td>
-												<td class="text-center">성별</td>
-												<td class="text-center">주소(상세주소)</td>
-												<td class="text-center">휴대폰번호</td>
-												<td class="text-center">가입날짜</td>
-												<td class="text-center">회원상태</td>
+                                      			<td class="text-center">${user.user_id }</td>
+												<td class="text-center">${user.user_name }</td>
+												<td class="text-center">${user.user_birthday }</td>
+												<td class="text-center">${user.user_gender }</td>
+												<td class="text-center">${user.user_address1 }</td>
+												<td class="text-center">${user.user_phone }</td>
+												<td class="text-center">${user.user_join_date }</td>
+												<td class="text-center">${user.user_state }</td>
                                       		</tr>
+                                      		</c:forEach>
                                         </tbody>
                                     </table>
                                 </div>
