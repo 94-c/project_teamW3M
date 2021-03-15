@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="com.spring.w3m.join.user.vo.UserVO" %>
-<%@ page import="com.spring.w3m.login.admin.dao.AdminDAO" %>
 <%@ page import="java.util.List" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
      <head>
        <link rel="shortcut icon" href="resources/images/icons/favicon.ico" type="image/x-icon">
@@ -135,7 +134,6 @@
                                         <thead>
                                             <tr>
                                                 <th class="text-center">아이디</th>
-                                                <th class="text-center">비밀번호</th>
                                                 <th class="text-center">이름</th>
                                                 <th class="text-center">생년월일</th>
                                                 <th class="text-center">성별</th>
@@ -147,10 +145,9 @@
                                         </thead>
                                    
                                         <tbody>
-                                        	<c:forEach var="user" items="${UserList}">
+                                        	<c:forEach var="user" items="${userList}">
                                       		<tr>
                                       			<td class="text-center">${user.user_id }</td>
-												<td class="text-center">${user.user_password }</td>
 												<td class="text-center">${user.user_name }</td>
 												<td class="text-center">${user.user_birthday }</td>
 												<td class="text-center">${user.user_gender }</td>

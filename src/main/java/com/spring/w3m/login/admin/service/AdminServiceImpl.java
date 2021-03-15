@@ -1,8 +1,11 @@
 package com.spring.w3m.login.admin.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.spring.w3m.join.user.vo.UserVO;
 import com.spring.w3m.login.admin.dao.AdminDAO;
 import com.spring.w3m.login.admin.vo.AdminVO;
 
@@ -17,5 +20,11 @@ public class AdminServiceImpl implements AdminService {
 		return dao.getAdmin();		
 	}
 
+	@Override
+	public List<UserVO> getUserList() {
+		return dao.getUseList();
+	}
+
+	
 
 }
