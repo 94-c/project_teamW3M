@@ -1,0 +1,108 @@
+@charset "UTF-8";
+#blk_scroll_wings, #cherrypicker_scroll {
+    position: absolute;
+    visibility: hidden;
+    z-index: 999;
+}
+
+/* BASIC css start */
+/* aside */
+#aside { width: 177px; margin-right: 20px; } 
+#aside { position:relative; overflow:hidden;display: inline-block;  width: 100%; }
+#aside .aside-tit { padding:120px 0 30px; font-size:24px; color:#000; font-weight:bold; text-align:center; line-height:24px }
+/* lnb */
+#aside .lnb-wrap { padding:19px 0; border:1px solid #000;; overflow:hidden; *zoom:1 }
+#aside .lnb-wrap:after { display:block; clear:both; content:'' }
+#aside .lnb-wrap .lnb-bx { margin-left:-1px; padding-left:39px; float:left; width:327px; min-height:130px; border-left:1px solid #e2e2e2; overflow:hidden }
+#aside .lnb-wrap .lnb-bx .txt { margin-top:14px; padding-left:27px; height:18px; font-size:14px; font-weight:bold; line-height:18px; background:url(//image.makeshop.co.kr/makeshop/d3/basic_simple/common/sp_mypage_aside.gif) 0 0 no-repeat }
+#aside .lnb-wrap .lnb-bx .txt1 { background-position:0 0 }
+#aside .lnb-wrap .lnb-bx .txt2 { background-position:0 -18px }
+#aside .lnb-wrap .lnb-bx .txt3 { background-position:0 -36px }
+#aside .lnb-wrap .lnb { overflow:hidden }
+#aside .lnb-wrap .lnb ul { margin-left:-10px; padding-top:20px;  *zoom:1 }
+#aside .lnb-wrap .lnb ul:after { display:block; clear:both; content:'' }
+#aside .lnb-wrap .lnb ul li { padding:5px 0; float:left; white-space:nowrap }
+#aside .lnb-wrap .lnb ul li a { padding:0 10px; font-size:12px; color:#8d8d8d; background:url(//image.makeshop.co.kr/makeshop/d3/basic_simple/common/bu_2x8.gif) 0 2px no-repeat }
+
+/* lnb */
+#aside .lnb-wrap h2 { font-size: 0; line-height: 0; }
+#aside h2.txt { padding-right: 15px; background: url(resources/images/aside/bull_h13_dw_arw.gif) no-repeat right 45%; }
+#aside h2.txt span { border-bottom: 1px solid #999999; color: #333333; display: block; font-size: 12px; font-weight: bold; line-height: 14px; padding-bottom: 3px; } 
+#aside .lnb { zoom: 1; padding-bottom: 25px; padding-left: 2px; }
+#aside .lnb:after{ content: ""; display: block; clear: both; }
+#aside .lnb li,
+#aside .lnb a { float: left; width: 100%; }
+#aside .lnb li { margin-top: 10px;  word-wrap:break-word;}
+#aside .lnb li.now a { font-weight: bold; }
+#aside .lnb a:hover { font-weight: bold; }
+#aside .lnb li a { color: #767676; }
+/* ��ǥ�ϱ� */
+#aside .research .txt-1 { margin-top: 10px; font-weight: bold; text-align: center; }
+#aside .research .list { margin-top: 10px; }
+#aside .research .list li { margin-top: 5px; }
+#aside .research .list li.li-center { text-align: center; }
+/* info */
+#aside .info { margin-bottom: 15px; background: url(resources/images/aside/aside_info_mdl.gif) repeat-y 0 0; }
+#aside .info .cnt,
+#aside .info .cnt a { color: #616161; }
+#aside .info .cnt { zoom: 1; padding: 0 13px 7px; text-align: center; color: #616161; background: url(resources/images/aside/aside_info_btm.gif) no-repeat 0 bottom; }
+#aside .info .cnt dd { padding: 10px 0; background: url(resources/images/aside/aside_info_dot.gif) repeat-x 0 0; }
+#aside .info .cnt dd.first { background-image: none; }
+#aside .info .cnt dd li { padding: 2px 0; }
+/* cs-center */
+#aside .info-cs .ph { font-size: 14px; font-weight: bold; }
+#aside .info-cs .qna { font-weight: bold; }
+#aside .info-cs .qna img { vertical-align: middle; }
+/* BASIC css end */
+/* BASIC css start */
+#mypage { position: relative; margin: 0 auto; margin-bottom: 100px; }
+#mypage .page-body { padding-top:60px }
+
+/* È¸¿ø Á¤º¸ */
+#mypage .info { border:1px solid #e9e9e9; *zoom:1; overflow:hidden }
+#mypage .info:after { display:block; clear:both; content:'' }
+#mypage .info .user, 
+#mypage .info .order { margin:25px 0; float: left; min-height:155px }
+#mypage .info .user { margin-left:35px; position:relative; width:720px; border-right:1px dashed #e9e9e9 }
+#mypage .info .user .user-img { position:absolute; top:7px; left:0; width:140px; height:140px; background:url(#) 0 0 no-repeat }
+#mypage .info .user .user-img img { width:140px; height:140px }
+#mypage .info .user .user-info { padding:15px 0 0 170px }
+#mypage .info .user .user-info p { font-size:15px; color:#202020 }
+#mypage .info .user .user-info .box { padding-top:10px }
+#mypage .info .user .user-info .box dl { padding-top:10px; *zoom:1 }
+#mypage .info .user .user-info .box dl:after { display:block; clear:both; content:'' }
+#mypage .info .user .user-info .box dl dt { float:left; width:90px; font-size:14px }
+#mypage .info .user .user-info .box dl dd { float:left; font-size:14px; color:#8d8d8d }
+#mypage .info .order { padding:10px 0 0 49px; float:left; width:243px }
+#mypage .info .order dt, 
+#mypage .info .order dd { padding-top:8px; float: left; font-size:14px }
+#mypage .info .order dt { width: 45%; clear: both; }
+#mypage .info .order dd { width: 50%; text-align:right; }
+#mypage .info .order dd a { font-size:14px; color:#8d8d8d }
+#mypage .info .order dd a:hover { text-decoration: underline; }
+#mypage .info .order .tot { margin-bottom:10px; font-size:15px; font-weight: bold; }
+
+/* È¸¿ø ±×·ì Á¤º¸ */
+#mypage .grp { margin-top:40px; font-size:16px; color:#2e2e2e; text-align: center; line-height:30px }
+#mypage .grp span { font-weight:bold }
+
+/* Å¸ÀÌÆ² */
+#mypage .hd { position: relative; margin-top:80px }
+#mypage .hd h3 { font-size:18px; color:#2e2e2e; font-weight:bold; line-height:18px }
+#mypage .hd .view { position: absolute; top:0; right:0; color:#8c8b8b }
+
+/* ÁÖ¹®Á¤º¸ & µî·Ï °Ô½Ã±Û */
+#mypage .tbl { margin-top:10px }
+#mypage .tbl th { padding:15px 0; font-size:13px; color:#000; font-family:Verdana; font-weight:normal; border-top:1px solid #000; border-bottom:1px solid #e9e9e9 }
+#mypage .tbl td { padding:15px 0; color:#343434; border-bottom:1px solid #e9e9e9 }
+
+/* °ü½É»óÇ° Á¤º¸ */
+#mypage .lst { margin-top:10px; padding-top:28px; border-top:1px solid #000 }
+#mypage .lst .item-wrap .item-cont { width:1128px }
+#mypage .lst .item-wrap .item-cont .item-list { padding-right:28px; width:254px }
+#mypage .lst .item-wrap .item-cont .item-list .thumb { width:254px; height:254px }
+#mypage .lst .item-wrap .item-cont .item-list .thumb img { width:254px; height:254px }
+#mypage .lst .item-wrap .item-cont .item-list .prd-info { padding-top:13px }
+/* BASIC css end */
+
+

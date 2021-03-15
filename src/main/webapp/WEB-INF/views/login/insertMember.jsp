@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
+<title>회원 가입</title>	
 <%@include file="/WEB-INF/views/include/header.jsp"%>
 <link href="resources/css/insertMember.css" rel="stylesheet"
 	type="text/css">
