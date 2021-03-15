@@ -2,12 +2,29 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
+<!-- 글 등록하기 -->
 <mapper namespace="InquiryDAO">
-	<insert id="insertInquiry" parameterType="inquiry">
+	<insert id="insertInquiry" parameterType="InquiryVO">
 		INSERT INTO inquiry (inq_seq, inq_title, inq_writer, inq_content)
 		VALUES(nextval('inq_user_seq'), #{inq_title}, #{inq_writer}, #{inq_content})
 	</insert>
-	<select id="getInquiryList" resultType="com.spring.w3m.inquiry.user.vo.InquiryVO">
-		SELECT inq_seq, inq_title, inq_writer, inq_cnt FROM inquiry ORDERED BY inq_seq DESC
-	</select>	
+
+<!-- 게시글 보기 -->
+	<select id="getInquiryList" resultMap="inquiryResult">
+		SELECT inq_seq, inq_title, inq_writer, inq_date, inq_cnt FROM inquiry ORDER BY inq_seq DESC
+	</select>
+	
+	<resultMap type="InquiryVO" id="inquiryResult">
+		<id property="inq_seq" column="inq_seq" />
+		<result property="inq_title" column="inq_title" />
+		<result property="inq_writer" column="inq_writer" />
+		<result property="inq_content" column="inq_content" />
+		<result property="inq_date" column="inq_date" />
+		<result property="inq_cnt" column="inq_cnt" />
+	</resultMap>
+
+<!-- 게시글 상세보기 -->
+	<select id="getInquiry" resultType="InquiryVO">
+		SELECT * FROM inquiry WHERE inq_seq = #{inq_seq}
+	</select>
 </mapper>
