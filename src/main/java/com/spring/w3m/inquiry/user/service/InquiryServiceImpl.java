@@ -22,8 +22,7 @@ public class InquiryServiceImpl implements InquiryService {
 
 	@Override
 	public void updateInquiry(InquiryVO vo) {
-		inquiryDAO.updateInquiry(vo);
-		
+		inquiryDAO.updateInquiry(vo);		
 	}
 
 	@Override

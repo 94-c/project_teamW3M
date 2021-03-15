@@ -33,6 +33,8 @@ public class InquiryDAO {
 	   
 	   public InquiryVO getInquiry(InquiryVO vo) {
 		   	  System.out.println("문의게시판 글 상세보기");
+		   	  //조회수 증가
+		   	  sqlSessionTemplate.update("inquiryCntUpdate", vo);
 		      return sqlSessionTemplate.selectOne("InquiryDAO.getInquiry",vo);		          
 		   }
 	   
