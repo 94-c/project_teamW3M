@@ -38,9 +38,6 @@ public class NoticeController {
 	
 	@RequestMapping("/getNoticeList.do")
 	public String getBoardList(NoticeVO vo, Model model) {
-		noticeService.insertNotice(vo);
-		System.out.println("글 목록 검색 처리");
-		// null 체크
 		if(vo.getSearchCondition() == null) vo.setSearchCondition("nt_title");
 		if(vo.getSearchKeyword() == null) vo.setSearchKeyword("");
 		System.out.println("검색 조건 : " + vo.getSearchCondition());
