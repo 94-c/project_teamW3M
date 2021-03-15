@@ -8,5 +8,16 @@
 		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
 	
+	<!-- js, css, img 등 파일을 넘기고 필요할 때 꺼내 쓸수 잇게 매핑 해준다. -->
+	<annotation-driven/>
+	<resources location="/resources/" mapping="/resources/**"></resources>
 	
+	
+	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="prefix" value="/WEB-INF/views/list/" />
+		<beans:property name="suffix" value=".jsp" />
+	</beans:bean>
+	
+	<!-- 홈 컨트롤러 -->
+	<context:component-scan base-package="com.spring.w3m.login" />
 </beans:beans>

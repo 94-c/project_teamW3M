@@ -27,7 +27,8 @@ public class NoticeDAO {
 	}
 
 	public NoticeVO getNotice(NoticeVO vo) {
-		return (NoticeVO) sqlSessionTemplate.selectOne("NoticeDAO.getNotice", vo);
+		sqlSessionTemplate.update("NoticeCntUpdate", vo);
+		return sqlSessionTemplate.selectOne("NoticeDAO.getNotice", vo);
 	}
 
 	public List<NoticeVO> getNoticeList(NoticeVO vo) {

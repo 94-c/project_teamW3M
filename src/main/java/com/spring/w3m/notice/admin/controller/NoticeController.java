@@ -16,8 +16,10 @@ public class NoticeController {
 	private NoticeService noticeService;
 	
 	@RequestMapping("/insertNotice.do")
-	public String insertNotice() {
-		return "list/noticeWrite";
+	public String insertNotice(NoticeVO vo, Model model) {
+		noticeService.insertNotice(vo);
+		model.addAttribute("noticeList", noticeService.getNoticeList(vo));
+		return "list/notice";
 	}
 	
 	@RequestMapping("/updateNotice.do")
@@ -33,7 +35,7 @@ public class NoticeController {
 	@RequestMapping("/getNotice.do")
 	public String getNotice(NoticeVO vo, Model model) {
 		model.addAttribute("notice", noticeService.getNotice(vo));
-		return "list/notice"; 
+		return "list/noticeContent"; 
 	}
 	
 	@RequestMapping("/getNoticeList.do")

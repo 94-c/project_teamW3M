@@ -143,24 +143,25 @@
                         </ol>
 					</div>
 				</main>
+		<form role="form" method="post" action="insertNotice.do">
 		<div class="card-body">
 					<div class="form-group">
 						<label for="exampleFormControlInput1">제목</label> 
-						<input type="text" class="form-control" id="exampleFormControlInput1" name="title" placeholder="제목을 작성해주세요.">
+						<input type="text" class="form-control" id="nt_title" name="nt_title" placeholder="제목을 작성해주세요.">
 					</div>
 					<div class="form-group">
 						<label for="exampleFormControlInput1">작성자</label> 
-						<input type="text" class="form-control" id="exampleFormControlInput1" name="crea_id" placeholder="이름을 적어주세요.">
+						<input type="text" class="form-control" id="nt_writer" name="nt_writer" value="관리자" readonly>
 					</div>
 					<div class="form-group">
 						<label for="exampleFormControlTextarea1">내용</label>
-						<textarea class="form-control" id="exampleFormControlTextarea1"
-							name="contents" rows="10"></textarea>
+						<textarea class="form-control" id="nt_content"
+							name="nt_content" rows="10"></textarea>
 					</div>
-					<button type="submit" class="btn btn-info" href="#">등록하기</button>
-					<button type="button" class="btn btn-secondary" href="#">목록으로</button>
+					<button type="submit" class="btn btn-info" onclick = "location.href = 'insertNotice.do' ">등록하기</button>
+					<button type="button" class="btn btn-secondary" onclick = "location.href = 'getNoticeList.do' ">목록으로</button>
    		</div>
-	
+		</form>
 		<!-- 푸터 -->
 		<footer class="py-4 bg-light mt-auto">
 			<div class="container-fluid">
