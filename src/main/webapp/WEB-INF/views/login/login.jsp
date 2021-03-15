@@ -32,8 +32,11 @@
 		<a href="#" class="CSSbuttonBlack fe" id="login_btn">로그인</a>
 	</div>
 	<p class="se-log">
-	<label><input type="checkbox" name="ssl" value="Y" class="MS_security_checkbox" /> 보안접속</label>
+	<label><input type="checkbox" name="ssl" value="Y" class="MS_security_checkbox" checked/> 보안접속</label>
     </p>
+    <c:if test="${msg eq 'failure' }">
+    	<p style="color:red; font-size: 14px" align="right">아이디 또는 비밀번호가 일치하지 않습니다. 다시 입력해주세요.</p>
+    </c:if>
 </form>
 </div>
 <!-- 로그인 END -->
@@ -46,7 +49,7 @@
 			아직 회원이 아니신가요? <br />회원가입을 하시면 다양한 혜택을 편리하게 이용하실 수 있습니다.
 		</dt>
 		<dd>
-			<a href="insertMember.do"	class="CSSbuttonWhite fe">회원가입</a>
+			<a href="insertMember.do" class="CSSbuttonWhite fe">회원가입</a>
 		</dd>
 	</dl>
 	<dl>

@@ -25,7 +25,6 @@
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
 			<param-value>
-				/WEB-INF/spring/customContext/spring-servlet.xml 
 				/WEB-INF/spring/customContext/JoeSpring-servlet.xml 
 				/WEB-INF/spring/customContext/SooSpring-servlet.xml 
 				/WEB-INF/spring/customContext/SwSpring-servlet.xml 
@@ -35,7 +34,7 @@
 				/WEB-INF/spring/spring-security.xml
 			</param-value>
 		</init-param>
-		<load-on-startup>0</load-on-startup>
+		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>spring</servlet-name>
@@ -55,11 +54,27 @@
 				<!-- 아래와 같이 각 팀원들이 만들 컨텍스트를  등록하면 됩니다. /WEB-INF/spring/adminContext/adminPageContext.xml -->
 			</param-value>
 		</init-param>
-		<load-on-startup>1</load-on-startup>
+		<load-on-startup>2</load-on-startup>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>admin</servlet-name>
 		<url-pattern>*.mdo</url-pattern>
+	</servlet-mapping>
+	<!-- 임시로 만든것 -->
+	<!-- Processes application requests -->
+	<servlet>
+		<servlet-name>index</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/spring/customContext/spring-servlet.xml</param-value>
+		</init-param>
+		<load-on-startup>0</load-on-startup>
+	</servlet>
+		
+	<servlet-mapping>
+		<servlet-name>index</servlet-name>
+		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 
  <!-- utf-8 인코딩  -->
