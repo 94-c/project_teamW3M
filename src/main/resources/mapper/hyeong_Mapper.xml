@@ -28,4 +28,8 @@
 	<select id="pwCheck" resultType="String">
 		SELECT admin_password FROM admin_user WHERE admin_id = #{admin_id}
 	</select>
+	
+	
+
+	
 </mapper>
