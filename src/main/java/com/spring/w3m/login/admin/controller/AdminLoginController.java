@@ -29,10 +29,10 @@ public class AdminLoginController {
 
 	//관리자 페이지
 	@RequestMapping("/index.mdo")
-	public String index(AdminVO vo, Model model) {
+	public String index(AdminVO vo, Model model, HttpSession session) {
 		//회원관리 리스트
 		model.addAttribute("userList", adminService.getUserList());
-		
+		boolean result = adminService.loginCheck(vo, session);
 		//관리자 로그인 유효성
 		AdminVO voo = adminService.getAdmin();
 		System.out.println("사이트-"+vo.getAdmin_id());
@@ -65,6 +65,15 @@ public class AdminLoginController {
 	public String userNotice() {
 		System.out.println("=== 공지사항 ===");
 		return "page/userNotice";
+	}
+	
+	@RequestMapping("/adminLogout.mdo")
+	public ModelAndView userLogout(HttpSession session) {
+		adminService.logout(session);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("login");
+		mav.addObject("msg", "logout");
+		return mav;
 	}
 
 }

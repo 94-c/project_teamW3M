@@ -26,4 +26,17 @@ public class AdminDAO {
 	}
 	
 	
+	public boolean loginCheck(AdminVO vo) {
+		String name = sqlSessionTemplate.selectOne("AdminDAO.loginCheck", vo);
+		return (name == null) ? false : true;
+	}
+	
+	public String pwCheck(AdminVO vo) {
+		return sqlSessionTemplate.selectOne("AdminDAO.pwCheck", vo);
+	}
+	
+	public AdminVO viewAdmin(AdminVO vo) {
+		return sqlSessionTemplate.selectOne("AdminDAO.viewUser", vo);
+	}
+	
 }

@@ -12,5 +12,20 @@
 		SELECT * FROM user_member	
 	</select>
 	
+	<select id="loginCheck" resultType="String">
+		SELECT admin_name FROM admin_user 
+		WHERE admin_id = #{admin_id} AND admin_password = #{admin_password}
+	</select>
 		
+	<select id="viewUser" resultType="AdminVO">
+		SELECT
+			admin_id,
+			admin_name
+		From admin_user
+		WHERE admin_id = #{admin_id} AND admin_password = #{admin_password}
+	</select>
+	
+	<select id="pwCheck" resultType="String">
+		SELECT admin_password FROM admin_user WHERE admin_id = #{admin_id}
+	</select>
 </mapper>

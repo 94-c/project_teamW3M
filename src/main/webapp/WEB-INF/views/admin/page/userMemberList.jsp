@@ -53,7 +53,7 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                               	  홈
                             </a>
-                            <a class="nav-link" href="login.mdo">
+                            <a class="nav-link" href="adminLogout.mdo">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                               	  로그아웃
                             </a>

@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.spring.w3m.inquiry.user.vo.InquiryVO;
 import com.spring.w3m.notice.admin.dao.NoticeDAO;
 import com.spring.w3m.notice.admin.service.NoticeService;
 import com.spring.w3m.notice.admin.vo.NoticeVO;
@@ -23,12 +24,22 @@ public class NoticeController {
 	}
 	
 	@RequestMapping("/updateNotice.do")
-	public String updateNotice() {
+	public String updateNotice(NoticeVO vo, Model model) {
+		noticeService.updateNotice(vo);
+		model.addAttribute("noticeList",noticeService.getNoticeList(vo));
 		return "list/notice";
 	}
 	
+	@RequestMapping("/updateNotice_view.do")
+	public String inquiryUpdateView(NoticeVO vo, Model model) {
+		model.addAttribute("getNotice", noticeService.getNotice(vo));
+		return "admin/page/updateNotice";
+	}
+	
 	@RequestMapping("/deleteNotice.do")
-	public String deleteNotice() {
+	public String deleteNotice(NoticeVO vo, Model model) {
+		noticeService.deleteNotice(vo);
+		model.addAttribute("noticeList",noticeService.getNoticeList(vo));
 		return "list/notice";
 	}
 	
