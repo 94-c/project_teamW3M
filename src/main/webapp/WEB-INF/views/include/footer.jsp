@@ -1,3 +1,7 @@
+<%@page import="java.util.List"%>
+<%@page import="com.spring.w3m.login.admin.dao.AdminDAO"%>
+<%@page import="com.spring.w3m.login.admin.vo.AdminVO"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <div id="ft">
@@ -13,12 +17,24 @@
 		<!-- //section0 -->
 
 		<div class="section cboth">
+		<c:set var="login" value="${adminLogin_state }"/>
 			<ul>
-				<li><a href="#">회사소개</a></li>
-				<li><a href="#">이용약관</a></li>
-				<li><a href="#" class="black">개인정보처리방침</a></li>
-				<li><a href="#">이용안내</a></li>
-				<li><a href="login.mdo">관리자</a></li>
+					<c:choose>
+						<c:when test="${login eq 'adminLogin'}">
+							<li><a href="#">회사소개</a></li>
+							<li><a href="#">이용약관</a></li>
+							<li><a href="#" class="black">개인정보처리방침</a></li>
+							<li><a href="#">이용안내</a></li>
+							<li><a href="loginIndex.mdo">관리자</a></li>
+						</c:when>
+						<c:when test="${login ne 'adminLogin'}">
+							<li><a href="#">회사소개</a></li>
+							<li><a href="#">이용약관</a></li>
+							<li><a href="#" class="black">개인정보처리방침</a></li>
+							<li><a href="#">이용안내</a></li>
+							<li><a href="login.mdo">관리자</a></li>
+						</c:when>
+				</c:choose>
 			</ul>
 		</div>
 		<!-- //section -->

@@ -32,8 +32,7 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public boolean loginCheck(AdminVO vo, HttpSession session) {
 		String dbPw = dao.pwCheck(vo);
-		BCryptPasswordEncoder passEncoder = new BCryptPasswordEncoder();
-		boolean pwResult = passEncoder.matches(vo.getAdmin_password(), dbPw);
+		boolean pwResult = vo.getAdmin_password().equals(dbPw);
 		
 		if(pwResult) {
 			System.out.println("비번 일치");
