@@ -32,10 +32,9 @@ public class UserLoginServiceImpl implements UserLoginService {
 		boolean result = dao.loginCheck(vo);
 		if(result) { //true일 경우 세션에 등록
 			UserVO user = viewUser(vo);
-			//세션 변수 등록
-			session.setAttribute("userId", user.getUser_id());
-			session.setAttribute("userName", user.getUser_name());
+			session.setMaxInactiveInterval(60*30); //1800초 = 30분 (아무것도 안건드리면 세션만료)
 			session.setAttribute("login_state", "login");
+			session.setAttribute("userVO", user);			
 		}
 		return result;
 	}

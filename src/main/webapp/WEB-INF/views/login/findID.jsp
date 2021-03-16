@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <title>아이디/패스워드 찾기</title>
 <%@include file="/WEB-INF/views/include/header.jsp"%>
+
 <script>
 	$(document).ready(function(){
 		var rd_email = $("input[type='radio'][value='email']");
@@ -9,17 +10,50 @@
 		var in_email = $("#find_id_email_wrap");
 		var in_phone = $("#find_id_mobile_wrap");
 		
+		var in_name_c = $("#find_id_name_wrap").children();
+		var in_email_c = $("#find_id_email_wrap").children();
+		var in_phone_c = $("#find_id_mobile_wrap").children();
+		
 		rd_email.click(function(){
 			in_email.css("display","block");
 			in_phone.css("display","none");
+			
+			
 		});
+		
 		rd_phone.click(function(){
 			in_email.css("display","none");
 			in_phone.css("display","block");
-		});		
-		
-	});
+			
+			
+		});
+		$(".findID").click(function(){
+			if(input_name_c.val() == ""){
+				alert("이름을 입력해주세요");
+				input_name.focus();
+				return;
+			}
+			if(input_phone_c.val() == ""){
+				alert("핸드폰번호를 입력해주세요");
+				input_phone().focus();
+				return;
+			}
+		});
+		$(".findID").click(function(){
+			if(input_name_c.val() == ""){
+				alert("이름을 입력해주세요");
+				input_name.focus();
+				return;
+			}
+			if(input_email_c.val() == ""){
+				alert("이메일을 입력해주세요");
+				input_email.focus();
+				return;
+			}
+		});
+	});//제이쿼리 end
 </script>
+
 <div id="contentWrapper">
 	<div id="contentWrap">
 		<div id="content">
@@ -54,7 +88,7 @@
 						</div>
 						<div class="find-info">
 							<ul class="frm-list">
-								<li>
+								<li id="find_id_name_wrap">
 									<input type="text" name="user_name" placeholder="이름" onfocus="this.placeholder=''" onblur="this.placeholder='이름'" maxlength="20"/>
 								</li>
 								<li id="find_id_email_wrap">
@@ -65,7 +99,7 @@
 								</li>
 							</ul>
 							<div class="btn-area">
-								<a class="CSSbuttonWhite" href="javascript:find_type('find_id');">
+								<a class="CSSbuttonWhite findID" href="findID.do">
 									아이디 찾기
 								</a> 
 								<a class="CSSbuttonBlack" href="login.do">
