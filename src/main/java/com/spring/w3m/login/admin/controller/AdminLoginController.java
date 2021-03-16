@@ -6,19 +6,11 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-<<<<<<< HEAD
-=======
-import org.springframework.web.bind.annotation.GetMapping;
->>>>>>> choi06
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.spring.w3m.common.paging.vo.Pagination;
-import com.spring.w3m.join.user.vo.UserVO;
 import com.spring.w3m.login.admin.service.AdminService;
-import com.spring.w3m.login.admin.service.AdminServiceImpl;
 import com.spring.w3m.login.admin.vo.AdminVO;
 
 @Controller
