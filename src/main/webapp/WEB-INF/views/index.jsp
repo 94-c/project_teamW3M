@@ -9,12 +9,7 @@
 		<div class="cboth main_img">
 			<div class="sliderkit contentslider-main" style="display: block;">
 				<div class="main_img_arrow">
-					<div class="sliderkit-btn sliderkit-go-btn sliderkit-go-prev">
-						<a href="#"></a>
-					</div>
-					<div class="sliderkit-btn sliderkit-go-btn sliderkit-go-next">
-						<a href="#"></a>
-					</div>
+				
 				</div>
 				<div class="sliderkit-nav">
 					<div class="sliderkit-nav-clip" style="width: 42px; height: 8px;">
@@ -60,8 +55,7 @@
 	<!-- 중앙 배너 슬라이드  -->
 	<div class="fleft">
 			<div class="sliderkit contentslider-look">
-				<div class="sliderkit-btn sliderkit-go-btn sliderkit-go-prev"><a href="#none"></a></div>
-				<div class="sliderkit-btn sliderkit-go-btn sliderkit-go-next"><a href="#none"></a></div>
+				
 				<div class="sliderkit-panels">
                         <div class="sliderkit-panel"><a href="#"><img src="resources/images/m_mask/center_center1.jpg"></a></div>
                         <div class="sliderkit-panel"><a href="#"><img src="resources/images/m_mask/center_center2.jpg"></a></div>

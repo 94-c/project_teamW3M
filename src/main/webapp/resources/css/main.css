@@ -20,8 +20,7 @@
 .contentslider-main .sliderkit-go-btn {position:absolute;top:0px;z-index:10; }
 .contentslider-main .sliderkit-go-prev {left:-45px;}
 .contentslider-main .sliderkit-go-next {right:-45px;}
-.contentslider-main .sliderkit-go-prev a{position:absolute;width:22px;height:40px;cursor:pointer;background:url("/design/pgreen1364/0728from/main_left.png") no-repeat; margin-top:380px; left:-80px;  opacity:0;-webkit-transition: all 0.3s; -moz-transition: all 0.3s; -ms-transition: all 0.3s; -o-transition: all 0.3s;  transition: all 0.3s; }
-.contentslider-main .sliderkit-go-next a{position:absolute; width:22px;height:40px;cursor:pointer;background:url("/design/pgreen1364/0728from/main_right.png") no-repeat; margin-top:380px; right:-45px; opacity:0;-webkit-transition: all 0.3s; -moz-transition: all 0.3s; -ms-transition: all 0.3s; -o-transition: all 0.3s;  transition: all 0.3s;}
+
 .contentslider-main:hover .sliderkit-go-prev a{opacity:1; -webkit-transition: all 0.5s; -moz-transition: all 0.5s; -ms-transition: all 0.5s; -o-transition: all 0.5s;  transition: all 0.5s; margin-top:380px; left:0px;}
 .contentslider-main:hover .sliderkit-go-next a{opacity:1; -webkit-transition: all 0.5s; -moz-transition: all 0.5s; -ms-transition: all 0.5s; -o-transition: all 0.5s;  transition: all 0.5s; margin-top:380px; right:0px;}
 .contentslider-main .sliderkit-nav {position:absolute;width:1260px; top:410px;left:50%;margin-left:-630px; text-align:center; }
@@ -53,8 +52,7 @@
 .contentslider-look .sliderkit-go-prev{left:0px;}
 .contentslider-look .sliderkit-go-next{right:75px;}
 .contentslider-look .sliderkit-go-btn a{}
-.contentslider-look .sliderkit-go-prev a {position:absolute;width:75px;height:75px;cursor:pointer;background:url("/design/pgreen1364/0728from/look_left.gif") no-repeat; margin-top:360px;}
-.contentslider-look .sliderkit-go-next a {position:absolute; width:75px;height:75px;cursor:pointer;background:url("/design/pgreen1364/0728from/look_right.gif") no-repeat; margin-top:360px;}
+
 .contentslider-look .sliderkit-go-prev a:hover {background:url("/design/pgreen1364/0728from/look_left_on.gif") no-repeat;}
 .contentslider-look .sliderkit-go-next a:hover {background:url("/design/pgreen1364/0728from/look_right_on.gif") no-repeat;}
 

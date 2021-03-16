@@ -20,6 +20,7 @@ public class AdminServiceImpl implements AdminService {
 		return dao.getAdmin();		
 	}
 
+	// 회원 데이터 가져오기
 	@Override
 	public List<UserVO> getUserList() {
 		return dao.getUseList();
