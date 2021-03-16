@@ -6,12 +6,16 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.spring.w3m.common.paging.vo.Pagination;
+import com.spring.w3m.join.user.vo.UserVO;
 import com.spring.w3m.login.admin.service.AdminService;
+import com.spring.w3m.login.admin.service.AdminServiceImpl;
 import com.spring.w3m.login.admin.vo.AdminVO;
 
 @Controller
@@ -19,6 +23,8 @@ public class AdminLoginController {
 	
 	@Autowired
 	private AdminService adminService;
+	
+	
 	
 	// 관리자 페이지
 	@RequestMapping(value = "/login.mdo", method=RequestMethod.GET)
@@ -56,8 +62,8 @@ public class AdminLoginController {
 	@RequestMapping("/userMemberList.mdo")
 	public String userMembeList(Model model)  {
 		System.out.println("=== 고객관리 ===");
-		model.addAttribute("userList", adminService.getUserList());
-		return "page/userMemberList";
+	model.addAttribute("userList", adminService.getUserList());
+	return "page/userMemberList";
 	}
 	
 	//공지 사항
@@ -66,6 +72,8 @@ public class AdminLoginController {
 		System.out.println("=== 공지사항 ===");
 		return "page/userNotice";
 	}
+	
+
 	
 	@RequestMapping("/adminLogout.mdo")
 	public ModelAndView userLogout(HttpSession session) {
