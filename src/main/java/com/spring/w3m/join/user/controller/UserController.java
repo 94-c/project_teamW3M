@@ -2,7 +2,11 @@ package com.spring.w3m.join.user.controller;
 
 import java.util.Random;
 
+import javax.mail.internet.MimeMessage;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,10 +25,13 @@ public class UserController {
 	private UserService userService;
 	@Autowired
 	private BCryptPasswordEncoder passEncoder;
+	@Autowired
+	private JavaMailSenderImpl mailSender;
+	
 
 	@RequestMapping("/insertMember.do")
 	public String insert_member() {
-		return "login/insertMember";
+		return "join/insertMember";
 
 	}
 
@@ -32,7 +39,7 @@ public class UserController {
 	public String myPage() {
 		System.out.println("마이페이지 진입");
 
-		return "login/myPage";
+		return "mypage/myPage";
 
 	}
 
@@ -40,7 +47,7 @@ public class UserController {
 	public String memberInfoUpdate() {
 		System.out.println("회원 정보 변경 진입");
 
-		return "login/memberInfo";
+		return "join/memberInfo";
 	}
 
 	@RequestMapping("/login_insert.do")
@@ -66,7 +73,33 @@ public class UserController {
 
 		System.out.println(vo.toString());
 		userService.insertUser(vo);
-		return "login/insert_success";
+		
+		
+		// 이메일 보내기
+		
+		String setfrom = "w3mmask@gmail.com";         
+	    String tomail  = vo.getUser_email();     // 받는 사람 이메일
+	    String title   = "w3m에 가입해 주셔서 감사합니다.";      // 제목
+	    String content =  vo.getUser_name()+ "님 w3m에 가입해 주셔서 감사합니다.";    // 내용
+	    
+	    
+	   
+	    try {
+	      MimeMessage message = mailSender.createMimeMessage();
+	      MimeMessageHelper messageHelper 
+	                        = new MimeMessageHelper(message, true, "UTF-8");
+	 
+	      messageHelper.setFrom(setfrom);  // 보내는사람 생략하거나 하면 정상작동을 안함
+	      messageHelper.setTo(tomail);     // 받는사람 이메일
+	      messageHelper.setSubject(title); // 메일제목은 생략이 가능하다
+	      messageHelper.setText(content);  // 메일 내용
+	     
+	      mailSender.send(message);
+	    } catch(Exception e){
+	      System.out.println(e);
+	    }
+		
+		return "join/insert_success";
 	}
 
 	@RequestMapping("")

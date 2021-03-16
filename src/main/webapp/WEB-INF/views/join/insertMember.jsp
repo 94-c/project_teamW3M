@@ -5,7 +5,7 @@
 <%@include file="/WEB-INF/views/include/header.jsp"%>
 <link href="resources/css/insertMember.css" rel="stylesheet"
 	type="text/css">
-<script type="text/javascript" src="resources/js/insertmember.js"></script>
+<script type="text/javascript" src="resources/js/insertmember.js?v=3"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 
 <div id="contentWrapper">
@@ -193,14 +193,13 @@
 										</th>
 										<td>
 											<div class="col-cell email-area">
-												<input type="hidden" name="oldemail" id="oldemail" value="">
-												<input type="hidden" name="email" id="email" value="">
+											
 												<input type="text" name="user_email" id="user_email1"
 													class="MS_input_txt normal-input" size="10" maxlength="20"
 													value=""> <span>@</span> <span id="direct_email"
 													style="margin-top: 3px; display: inline-block"> <input
 													type="text" name="user_email" id="user_email2"
-													class="MS_input_txt normal-input" value="" size="15"
+													class="MS_input_txt normal-input" size="15"
 													maxlength="25">
 												</span> <select name="user_email3" id="user_email3"
 													class="MS_select MS_email" style="margin-right: 5px;">
