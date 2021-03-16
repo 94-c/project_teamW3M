@@ -9,5 +9,8 @@ public interface AdminService {
 	
 	public AdminVO getAdmin();
 	
+	//회원 목록 리스트
 	List<UserVO> getUserList();
+	
+	
 }
