@@ -22,7 +22,7 @@
 							<h3>문의게시판</h3>
 						</div>
 						<div class="bbs-table-view">
-							<table summary="게시글 보기">
+							<table summary="게시글 보기">	
 								<caption>게시글 보기</caption>
 								<thead>
 									<tr>

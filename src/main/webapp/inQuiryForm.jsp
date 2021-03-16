@@ -8,23 +8,6 @@
 		<div id="content">
 			<div id="bbsData">
 				<div class="page-body">
-					<!-- 게시판 리스트 -->
-					<div class="bbs-hd">
-						<ul class="link">
-							<li class="last"><a href="#">공지사항</a>
-							</li>
-							<li><a href="#">문의게시판</a></li>
-							<li><a href="#">상품후기</a></li>
-							<li><a href="#">이벤트</a></li>
-							<li><a href="#">웰콤의 드림랜드</a>
-							</li>
-							<li><a href="#">웰키의 다이어리</a>
-							</li>
-							<li><a href="#">미디어룸</a></li>
-						</ul>
-					</div>
-					<!-- .bbs-hd -->
-					<!-- //게시판 리스트 -->
 					<div class="bbs-tit">
 						<h3>문의게시판</h3>
 					</div>
