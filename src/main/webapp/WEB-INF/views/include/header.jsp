@@ -20,12 +20,13 @@
 <link rel="shortcut icon" href="resources/images/icons/favicon.ico" type="image/x-icon">
 
 <!-- CSS -->
+<link href="resources/css/slider.css" rel="stylesheet" type="text/css">
 <link href="resources/css/common.css" rel="stylesheet" type="text/css">
 <link href="resources/css/main.css" rel="stylesheet" type="text/css">
 <link href="resources/css/header.css" rel="stylesheet" type="text/css">
 <link href="resources/css/footer.css" rel="stylesheet" type="text/css">
 <link href="resources/css/login.css" rel="stylesheet" type="text/css">
-<link href="resources/css/slider.css" rel="stylesheet" type="text/css">
+<link href="resources/css/searchID.css" rel="stylesheet" type="text/css">
 
 <!-- JS -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

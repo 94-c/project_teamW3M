@@ -1,14 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<head>
-<meta charset="UTF-8">
-<link rel="shortcut icon" href="resources/images/icons/favicon.ico"
-	type="image/x-icon">
 <title>아이디/패스워드 찾기</title>
-</head>
-<%@include file="/WEB-INF/views/include/header.jsp"%>
 
-<link href="resources/css/searchID.css" rel="stylesheet" type="text/css">
+<%@include file="/WEB-INF/views/include/header.jsp"%>
 
 <div id="contentWrapper">
 	<div id="contentWrap">
@@ -16,19 +10,19 @@
 			<div id="findWrap">
 
 				<form name="form1" method="post" action="#" target="loginiframe">
-					<input type="hidden" name="focus_ok"> <input type="hidden" name="msecure_key"> 
-					<input type="hidden" name="sslid" value="pgreen1364"> 
-					<input type="hidden" name="sslip" value="www.welkeepsmall.com"> 
-					<input type="hidden" name="mail"> 
+					<input type="hidden" name="focus_ok"> <input type="hidden" name="msecure_key">
+					<input type="hidden" name="sslid" value="pgreen1364">
+					<input type="hidden" name="sslip" value="www.welkeepsmall.com">
+					<input type="hidden" name="mail">
 					<input type="hidden" name="authtext" value="">
-					<input type="hidden" name="authid"> 
+					<input type="hidden" name="authid">
 					<input type="hidden" name="find_type" value="find_pw">
 					<div id="find_id" class="find_idpw">
 						<h1 class="tit">아이디 찾기</h1>
 						<p class="sub-tit">
 							회원가입 시, 입력하신 이름 + 이메일 또는 휴대폰 번호로<br> 아이디를 확인하실 수 있습니다.<br>
-							<br> nh@, ka@ fa@와 같은 '@'가 포함된 아이디는<br> 
-							네이버, 카카오, 페이스북 등 타 사이트 연동 가입시<br> 
+							<br> nh@, ka@ fa@와 같은 '@'가 포함된 아이디는<br>
+							네이버, 카카오, 페이스북 등 타 사이트 연동 가입시<br>
 							임의로 생성되는 회원번호입니다. '네이버로 로그인' 등<br>
 							연동 로그인 버튼으로 접속 부탁드립니다.<br>
 						</p>
@@ -58,7 +52,7 @@
 								<a class="CSSbuttonWhite" href="javascript:find_type('find_id');">
 									아이디 찾기
 								</a> 
-								<a class="CSSbuttonBlack" href="/shop/member.html?type=login&amp;returnurl=%2Fhtml%2Fmainm.html">
+								<a class="CSSbuttonBlack" href="login.do">
 									로그인
 								</a>
 							</div>
@@ -121,4 +115,5 @@
 	</div>
 	<!-- #contentWrap -->
 </div>
+
 <%@include file="/WEB-INF/views/include/footer.jsp"%>
