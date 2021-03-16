@@ -26,7 +26,7 @@
 <link href="resources/css/header.css" rel="stylesheet" type="text/css">
 <link href="resources/css/footer.css" rel="stylesheet" type="text/css">
 <link href="resources/css/login.css" rel="stylesheet" type="text/css">
-<link href="resources/css/findID.css" rel="stylesheet" type="text/css"><!-- searchID -> findID로 이름 변경했습니다 -->
+<link href="resources/css/findID.css" rel="stylesheet" type="text/css">
 <link href="resources/css/soo.css" rel="stylesheet" type="text/css">
 <link href="resources/css/insertMember.css" rel="stylesheet" type="text/css">
 
@@ -36,9 +36,10 @@
 <script type="text/javascript" src="resources/js/index.js"></script>
 <script type="text/javascript" src="resources/js/main.js" ></script> 
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<!-- 각자 JS 파일만들어서 링크로 넣기 -->
+<!-- 아래처럼 각자 JS파일 만들어서 링크 삽입하기 -->
 <script type="text/javascript" src="resources/js/joe.js"></script>
 <script type="text/javascript" src="resources/js/insertmember.js?v=3"></script>
+
 </head>
 <!-- head태그 끝 -->
 <!-- body태그 시작(끝은 footer.jsp)에 있다. -->
@@ -51,35 +52,39 @@
 			<div class="btn_ham">
 				<img src="resources/images/icons/side_slide_menu.png">
 				<div class="top_login_area">
-
+				
 					<div class="top_btn_login01" >
-						<c:if test="${login_state eq 'login' }">						
-							<a id="haveSession" href="/">로그인</a>							
+						<c:if test="${login_state eq 'login' }">
+							<a id="haveSession" href="#" onclick="window.location.reload()">로그인</a>
 						</c:if>
 						<c:if test="${login_state ne 'login' }">
-							<a href="login.do">로그인</a>
-						</c:if>						
+							<a href="loginForm.do">로그인</a>
+						</c:if>
 					</div>
 					<div class="top_btn_login01">
-						<a href="logout.do">로그아웃</a>
+						<c:if test="${login_state eq 'login' }">
+							<a href="logout.do">로그아웃</a>
+						</c:if>
+						<c:if test="${login_state ne 'login' }">
+							<a id="haveNoSession" href="loginForm.do">로그아웃</a>
+						</c:if>
 					</div>
 					<div class="top_btn_login01">
 						<a href="insertMember.do">회원가입</a>
 					</div>
 
 					<div class="top_btn_login02">
-						<a href="searchID.do">아이디 찾기 / 비밀번호 찾기</a>
+						<a href="findIDForm.do">아이디 찾기 / 비밀번호 찾기</a>
 					</div>
 					<div class="top_comm">
 						<ul class="fleft">
 							<li><a href="#">장바구니</a></li>
-							<c:if test="${login_state eq 'login' }">						
+						<c:if test="${login_state eq 'login' }">
 							<li><a href="mypage.do">마이페이지</a></li>							
 						</c:if>
 						<c:if test="${login_state ne 'login' }">
-							<li><a href="login.do">마이페이지</a></li>
-						</c:if>			
-							
+							<li><a href="loginForm.do">마이페이지</a></li>
+						</c:if>						
 							<li><a href="#">주문내역</a></li>
 						</ul>
 						<ul class="fright">
@@ -94,7 +99,7 @@
 			
 			<div class="top_logo">
 				<a href="/"><img src="resources/images/h_design/top_w3m.gif"></a>
-			</div>			
+			</div>
 
 			<div class="section1">
 				<ul id="left_menu">
@@ -143,7 +148,7 @@
 					<li><a href="#">장바구니<span id="user_basket_quantity" class="user_basket_quantity">0</span></a></li>
 				</c:when>
 				<c:when test="${login ne 'login'}">
-					<li><a href="login.do">로그인</a></li>
+					<li><a href="loginForm.do">로그인</a></li>
 					<li><a href="insertMember.do" class="join">회원가입
 						<span class="scroll" style="bottom: 2.97586px;">
 							<span>+1,000P</span>

@@ -17,7 +17,7 @@
 비밀번호는 대소문자를 구분합니다.<br>
 </p>
 
-<form action="/loginCheck.do" name="form1" method="post">
+<form action="/login.do" name="form1" method="post">
 	<ul class="frm-list">
 		<li class="id">
 		<input type="text" name="user_id" id="user_id" placeholder="아이디" onfocus="this.placeholder=''" onblur="this.placeholder='아이디'" maxlength="20" />

@@ -3,28 +3,6 @@
 <title>아이디/패스워드 찾기</title>
 <%@include file="/WEB-INF/views/include/header.jsp"%>
 
-<script>
-	$(document).ready(function(){		
-		var input_name = $("#find_id_name_wrap").children();		
-		var input_phone = $("#find_id_mobile_wrap").children();
-
-		$(".findID").click(function(e){
-			e.preventDefault();
-			if(input_name.val() == ""){
-				alert("이름을 입력해주세요");
-				input_name.focus();
-				return;
-			}
-			if(input_phone.val() == ""){
-				alert("휴대폰 번호를 입력해주세요");
-				input_phone.focus();
-				return;
-			}
-		});
-		
-	});//제이쿼리 end
-</script>
-
 <div id="contentWrapper">
 	<div id="contentWrap">
 		<div id="content">

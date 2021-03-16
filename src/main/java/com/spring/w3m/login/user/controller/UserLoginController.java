@@ -16,13 +16,13 @@ public class UserLoginController {
 	@Autowired
 	private UserLoginService userLoginService;
 	
-	@RequestMapping("/login.do")
+	@RequestMapping("/loginForm.do")
 	public String loginView() {
 		System.out.println("로그인 폼으로 이동...");
 		return "login/login";
 	}
 	
-	@RequestMapping("/loginCheck.do")
+	@RequestMapping("/login.do")
 	public ModelAndView userloginCheck(@ModelAttribute UserVO vo, HttpSession session) {
 		boolean result = userLoginService.loginCheck(vo, session);
 		ModelAndView mav = new ModelAndView();

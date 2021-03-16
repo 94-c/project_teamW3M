@@ -1,8 +1,8 @@
-<%@page import="java.util.List"%>
-<%@page import="com.spring.w3m.login.admin.dao.AdminDAO"%>
-<%@page import="com.spring.w3m.login.admin.vo.AdminVO"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.util.List"%>
+<%@ page import="com.spring.w3m.login.admin.dao.AdminDAO"%>
+<%@ page import="com.spring.w3m.login.admin.vo.AdminVO"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <div id="ft">
 	<div id="footer">
