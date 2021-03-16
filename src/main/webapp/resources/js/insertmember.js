@@ -6,6 +6,9 @@ var pwJ = RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^*()\-_=+\\\|\[\]
 var nameJ = RegExp(/^[가-힣]{2,6}$/);
 //숫자만 
 var phoneJ= RegExp(/^([0-9]{4})$/);
+//이메일
+var emailJ = RegExp(/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i);
+
 
 var name_ck = -1;
 var id_ck = -1;
@@ -64,23 +67,37 @@ var email_ck = -1;
 	});
 
 	$(document).ready(function() {
-
-		$("#user_email3").change(function() { // email검사
-			var text = $("#user_email3").val();
-			$("#user_email2").val(text);
-			if($("#user_phone2").val() == ""){
-				email_ck = 1;
-				return;
+	$("#user_email2").blur(function(){
+		if($("#user_email3").val() == ""){
+			console.log("이메일 직접 입력");
+			var emailCheck =  $("#user_email1").val() +"@"+$("#user_email2").val();
+			console.log(emailCheck);
+			if (emailJ.test(emailCheck)){
+			console.log("email형식  OK");
+			email_ck = 0;
 			}
-			else if($("#user_phone3").val() == ""){
+			else{
+				console.log("email형식  NO");
 				email_ck = 1;
-				return;
-			}else {
-				email_ck = 0;
 			}
-		});
-
+		}
 	});
+	$("#user_email3").change(function() { // email검사
+		var text = $("#user_email3").val();
+		$("#user_email2").val(text);
+		if($("#user_email2").val() == ""){
+			email_ck = 1;
+			return;
+		}
+		else if($("#user_email1").val() == ""){
+			email_ck = 1;
+			return;
+		}else {
+			email_ck = 0;
+		}
+	});
+
+});
 	
 	$(document).ready(function(){ 
 

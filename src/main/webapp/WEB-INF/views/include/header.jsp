@@ -71,7 +71,7 @@
 					<div class="top_comm">
 						<ul class="fleft">
 							<li><a href="#">장바구니</a></li>
-							<li><a href="#">마이페이지</a></li>
+							<li><a href="mypage.do">마이페이지</a></li>
 							<li><a href="#">주문내역</a></li>
 						</ul>
 						<ul class="fright">
@@ -131,7 +131,7 @@
 			<c:choose>
 				<c:when test="${login eq 'login' }">
 					<li><a href="logout.do">로그아웃</a></li>
-					<li><a href="" class="">마이페이지</a></li>
+					<li><a href="mypage.do" class="">마이페이지</a></li>
 					<li><a href="#">장바구니<span id="user_basket_quantity" class="user_basket_quantity">0</span></a></li>
 				</c:when>
 				<c:when test="${login ne 'login'}">

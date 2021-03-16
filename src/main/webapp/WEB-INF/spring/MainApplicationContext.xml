@@ -16,7 +16,9 @@
 		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
-	
+
+
+
 	<!-- dataSource (db 주입) -->
 	<context:property-placeholder
 		location="classpath:db.properties" />
@@ -38,5 +40,20 @@
 		class="org.mybatis.spring.SqlSessionTemplate">
 		<constructor-arg ref="sessionFactory" />
 	</bean>
-
+	<!-- email 인증 관련 -->
+	<bean id="mailSender"
+		class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.gmail.com" />
+		<property name="port" value="587" />
+		<property name="username" value="w3mmask@gmail.com" />
+		<property name="password" value="!@1qw23er4" />
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.transport.protocol">smtp</prop>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+				<prop key="mail.debug">true</prop>
+			</props>
+		</property>
+	</bean>
 </beans>

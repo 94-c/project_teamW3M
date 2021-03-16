@@ -15,4 +15,8 @@
 	<select id="idCheck" parameterType="string" resultType="int"> 
 	 select count(*) from user_member where user_id = #{user_id} 
 	</select>
+	
+	<select id="passCheck" parameterType="String" resultType="String">
+		SELECT user_password From user_member where user_id = #{user_id}
+	</select>
 </mapper>

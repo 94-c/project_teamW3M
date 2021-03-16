@@ -65,8 +65,8 @@ function userexit(){
 					<div class="lnb">
 						<ul>
 							<li class="first"><a
-								href="#">회원정보변경</a></li>
-							<li><a href="javascript:userexit();">회원정보탈퇴신청</a></li>
+								href="memberInfoUpdate.do">회원정보변경</a></li>
+							<li><a href="">회원정보탈퇴신청</a></li>
 						</ul>
 					</div>
 				</div>
@@ -85,7 +85,7 @@ function userexit(){
 							<div class="user-info">
 								<p>
 									<!-- 이런식으로 나와야 한다. 최형우[hyeognwoo26]님  -->
-									<a href="#" class="CSSbuttonWhite CSSbuttonMin">수정</a>
+									<a href="memberInfoUpdate.do" class="CSSbuttonWhite CSSbuttonMin">수정</a>
 								</p>
 								<div class="box">
 									<dl>
