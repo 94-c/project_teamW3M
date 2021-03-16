@@ -23,18 +23,18 @@ public class UserLoginServiceImpl implements UserLoginService {
 		boolean pwResult = passEncoder.matches(vo.getUser_password(), dbPw);
 		
 		if(pwResult) {
-			System.out.println("비번 일치");
+			System.out.println("암호화된 비번과 입력하신 비번이 일치합니다.");
 			vo.setUser_password(dbPw);
 		}else {
-			System.out.println("비번 불일치");
+			System.out.println("암호화된 비번과 입력하신 비번이 일치하지않습니다.");
 		}
 		
 		boolean result = dao.loginCheck(vo);
 		if(result) { //true일 경우 세션에 등록
 			UserVO user = viewUser(vo);
-			session.setMaxInactiveInterval(60*30); //1800초 = 30분 (아무것도 안건드리면 세션만료)
+			session.setMaxInactiveInterval(60*5); //세션만료시간 설정(초단위)
 			session.setAttribute("login_state", "login");
-			session.setAttribute("userVO", user);			
+			session.setAttribute("userVO", user);
 		}
 		return result;
 	}
