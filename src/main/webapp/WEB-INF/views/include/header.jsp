@@ -26,7 +26,7 @@
 <link href="resources/css/header.css" rel="stylesheet" type="text/css">
 <link href="resources/css/footer.css" rel="stylesheet" type="text/css">
 <link href="resources/css/login.css" rel="stylesheet" type="text/css">
-<link href="resources/css/searchID.css" rel="stylesheet" type="text/css">
+<link href="resources/css/findID.css" rel="stylesheet" type="text/css"><!-- searchID -> findID로 이름 변경했습니다 -->
 <link href="resources/css/soo.css" rel="stylesheet" type="text/css">
 
 <!-- JS -->
