@@ -1,58 +1,97 @@
-<%@page import="java.util.List"%>
-<%@page import="com.spring.w3m.inquiry.user.dao.InquiryDAO"%>
-<%@page import="com.spring.w3m.inquiry.user.vo.InquiryVO"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"   pageEncoding="UTF-8"%>
+<title>문의 게시판</title>
 <%@include file="/WEB-INF/views/include/header.jsp"%>
-
-
+<link type="text/css" rel="stylesheet" href="resources/css/main.css">
+<link type="text/css" rel="stylesheet" href="resources/css/border.css">
+<link type="text/css" rel="stylesheet" href="resources/css/soo.css">
 <div id="contentWrapper">
 	<div id="contentWrap">
-		<link href="resources/css/notification.css" rel="stylesheet"
-			type="text/css">
 		<div id="content">
 			<div id="bbsData">
 				<div class="page-body">
-					<!-- //게시판 리스트 -->
 					<div class="bbs-tit">
 						<h3>문의게시판</h3>
 					</div>
 					<div class="bbs-table-write">
 						<form role="form" method="post" action="inquiry_write.do">
-							<table border="1">
-								<tbody>
-									<tr>
-										<div class="title">
-											<td><label for="title">제목</label><input type="text"
-												id="bw_input_writer" name="inq_title"
-												class="MS_input_txt input_style1" /></td>
-									</tr>
-									<tr>
-										<td><label for="writer">작성자</label><input type="text"
-											id="bw_input_writer" name="inq_writer"
-											class="MS_input_txt input_style1" /></td>
-									</tr>
+							<input type="hidden" name="lock" value="Y">
+							<fieldset>
+								<legend>일반게시판 쓰기</legend>
+								<table summary="">
+									<caption>게시판 글쓰기</caption>
+									<colgroup>
+										<col width="135">
+										<col width="395">
+										<col width="155">
+										<col width="*">
+									</colgroup>
+									<tbody>
+										<tr>
+											<th><div>이름</div></th>
+											<td><div>
+													<input id="bw_input_writer" type="text" name="inq_writer" class="MS_input_txt input_style1">
+												</div></td>
+											<th><div>비밀번호</div></th>
+											<td>
+												<div>
+													<input id="bw_input_passwd" type="password" name="inq_pass" class="MS_input_txt input_style"> 
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th><div>이메일</div></th>
+											<td colspan="3"><div>
+													<input id="bw_input_email" type="text" class="MS_input_txt input_style1" name="inq_email">
+												</div></td>
+										</tr>
+										<tr>
+											<th><div>제목</div></th>
+											<td colspan="3"><div>
+												<input id="bw_input_title" type="text" class="MS_input_txt input_style1" name="inq_title">
+												</div></td>
+										</tr>
+										<tr>
+											<th><div>내용</div></th>
+											<td colspan="3" class="text_content">
+												<div>
+													<textarea id="MS_text_content" name="inq_content" wrap="off" onfocus="clear_content()" class="MS_input_txt" style="font-family: 굴림체;">
+													</textarea>
+													<input type="hidden" name="mobile_content_type" value="">
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th><div>파일</div></th>
+											<td colspan="3">
+												<div>
+													<input id="bw_input_file" type="text" class="MS_input_txt input_style2" name="file_name1" value="" onfocus="this.blur();upalert()"> 
+													<a href="javascript:upload('file_name1');" class="btn_file">첨부</a>
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</fieldset>
+							<!-- //게시판 글쓰기 -->
 
-									<tr>
-										<td><label for="content">내용</label> <textarea
-												id="content" name="inq_content"></textarea></td>
-									</tr>
-									<tr>
-										<td>
-											<button type="submit">등록하기</button>
-										</td>
-									</tr>
-								</tbody>
-							</table>
+							<!-- 하단 버튼 -->
+							<dl class="bbs-link bbs-link-btm">
+								<dt></dt>
+								<dd>
+									<button type="submit" class="CSSbuttonBlack" id="submitbutton">등록하기</button>
+								<!-- 	<a href= "#" class="CSSbuttonWhite">목록보기</a> -->
+								</dd>
+							</dl>
+							<!-- //하단 버튼 -->
 						</form>
 					</div>
 				</div>
+				<!-- .page-body -->
 			</div>
+			<!-- #bbsData -->
 		</div>
+		<!-- #content -->
 	</div>
+	<!-- #contentWrap -->
 </div>
-</body>
-</html>
+<%@include file="/WEB-INF/views/include/footer.jsp"%>

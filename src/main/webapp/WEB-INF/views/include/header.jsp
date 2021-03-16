@@ -27,6 +27,7 @@
 <link href="resources/css/footer.css" rel="stylesheet" type="text/css">
 <link href="resources/css/login.css" rel="stylesheet" type="text/css">
 <link href="resources/css/searchID.css" rel="stylesheet" type="text/css">
+<link href="resources/css/soo.css" rel="stylesheet" type="text/css">
 
 <!-- JS -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

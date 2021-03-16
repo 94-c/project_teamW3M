@@ -83,7 +83,7 @@
 									</tr>
 									</c:forEach>
 									<tr>
-										<td colspan="6" align="right"><button type="submit">글쓰기</button></td>
+										<td colspan="6" align="right"><button type="submit" class="CSSbuttonBlack" id="submitbutton">글쓰기</button></td>
 									</tr>
 							</tbody>
 						</table>
