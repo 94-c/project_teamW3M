@@ -3,11 +3,6 @@
 	
 <title>회원 가입</title>	
 <%@include file="/WEB-INF/views/include/header.jsp"%>
-<link href="resources/css/insertMember.css" rel="stylesheet"
-	type="text/css">
-<script type="text/javascript" src="resources/js/insertmember.js?v=3"></script>
-<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-
 <div id="contentWrapper">
 	<div id="contentWrap">
 		<div id="content">

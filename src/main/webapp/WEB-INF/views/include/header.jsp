@@ -28,15 +28,17 @@
 <link href="resources/css/login.css" rel="stylesheet" type="text/css">
 <link href="resources/css/findID.css" rel="stylesheet" type="text/css"><!-- searchID -> findID로 이름 변경했습니다 -->
 <link href="resources/css/soo.css" rel="stylesheet" type="text/css">
+<link href="resources/css/insertMember.css" rel="stylesheet" type="text/css">
 
 <!-- JS -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="resources/js/jquery.sliderkit.1.9.2.pack.js"></script>
 <script type="text/javascript" src="resources/js/index.js"></script>
 <script type="text/javascript" src="resources/js/main.js" ></script> 
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <!-- 각자 JS 파일만들어서 링크로 넣기 -->
 <script type="text/javascript" src="resources/js/joe.js"></script>
-
+<script type="text/javascript" src="resources/js/insertmember.js?v=3"></script>
 </head>
 <!-- head태그 끝 -->
 <!-- body태그 시작(끝은 footer.jsp)에 있다. -->
@@ -71,7 +73,13 @@
 					<div class="top_comm">
 						<ul class="fleft">
 							<li><a href="#">장바구니</a></li>
-							<li><a href="mypage.do">마이페이지</a></li>
+							<c:if test="${login_state eq 'login' }">						
+							<li><a href="mypage.do">마이페이지</a></li>							
+						</c:if>
+						<c:if test="${login_state ne 'login' }">
+							<li><a href="login.do">마이페이지</a></li>
+						</c:if>			
+							
 							<li><a href="#">주문내역</a></li>
 						</ul>
 						<ul class="fright">
