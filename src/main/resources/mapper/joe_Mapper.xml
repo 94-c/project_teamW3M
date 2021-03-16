@@ -10,12 +10,7 @@
 	</select>
 	
 	<select id="viewUser" resultType="com.spring.w3m.join.user.vo.UserVO">
-		SELECT
-			user_name,
-			user_id,
-			user_email
-			user_join_date
-		From user_member
+		SELECT * FROM user_member
 		WHERE user_id = #{user_id} AND user_password = #{user_password}
 	</select>
 	
