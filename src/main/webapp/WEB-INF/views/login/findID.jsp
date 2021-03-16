@@ -1,9 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <title>아이디/패스워드 찾기</title>
-
 <%@include file="/WEB-INF/views/include/header.jsp"%>
-
+<script>
+	$(document).ready(function(){
+		var rd_email = $("input[type='radio'][value='email']");
+		var rd_phone = $("input[type='radio'][value='mobile']");
+		var in_email = $("#find_id_email_wrap");
+		var in_phone = $("#find_id_mobile_wrap");
+		
+		rd_email.click(function(){
+			in_email.css("display","block");
+			in_phone.css("display","none");
+		});
+		rd_phone.click(function(){
+			in_email.css("display","none");
+			in_phone.css("display","block");
+		});		
+		
+	});
+</script>
 <div id="contentWrapper">
 	<div id="contentWrap">
 		<div id="content">
