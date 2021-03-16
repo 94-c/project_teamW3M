@@ -19,4 +19,7 @@
 		WHERE user_id = #{user_id} AND user_password = #{user_password}
 	</select>
 	
+	<select id="pwCheck" resultType="String">
+		SELECT user_password FROM user_member WHERE user_id = #{user_id}
+	</select>
 </mapper>

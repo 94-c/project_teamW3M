@@ -3,6 +3,7 @@ package com.spring.w3m.login.user.service;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.spring.w3m.join.user.vo.UserVO;
@@ -17,6 +18,17 @@ public class UserLoginServiceImpl implements UserLoginService {
 	//회원 로그인 체크
 	@Override
 	public boolean loginCheck(UserVO vo, HttpSession session) {
+		String dbPw = dao.pwCheck(vo);
+		BCryptPasswordEncoder passEncoder = new BCryptPasswordEncoder();
+		boolean pwResult = passEncoder.matches(vo.getUser_password(), dbPw);
+		
+		if(pwResult) {
+			System.out.println("비번 일치");
+			vo.setUser_password(dbPw);
+		}else {
+			System.out.println("비번 불일치");
+		}
+		
 		boolean result = dao.loginCheck(vo);
 		if(result) { //true일 경우 세션에 등록
 			UserVO user = viewUser(vo);
