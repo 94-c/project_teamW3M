@@ -20,4 +20,7 @@ public class LoginDAO {
 		return sqlSessionTemplate.selectOne("user.viewUser", vo);
 	}
 	
+	public String pwCheck(UserVO vo) {
+		return sqlSessionTemplate.selectOne("user.pwCheck", vo);
+	}
 }
