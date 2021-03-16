@@ -18,7 +18,7 @@ public class UserLoginController {
 	
 	@RequestMapping("/login.do")
 	public String loginView() {
-		System.out.println("로그인 폼으로 이동");
+		System.out.println("로그인 폼으로 이동...");
 		return "login/login";
 	}
 	

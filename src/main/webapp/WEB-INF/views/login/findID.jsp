@@ -4,53 +4,24 @@
 <%@include file="/WEB-INF/views/include/header.jsp"%>
 
 <script>
-	$(document).ready(function(){
-		var rd_email = $("input[type='radio'][value='email']");
-		var rd_phone = $("input[type='radio'][value='mobile']");
-		var in_email = $("#find_id_email_wrap");
-		var in_phone = $("#find_id_mobile_wrap");
-		
-		var in_name_c = $("#find_id_name_wrap").children();
-		var in_email_c = $("#find_id_email_wrap").children();
-		var in_phone_c = $("#find_id_mobile_wrap").children();
-		
-		rd_email.click(function(){
-			in_email.css("display","block");
-			in_phone.css("display","none");
-			
-			
-		});
-		
-		rd_phone.click(function(){
-			in_email.css("display","none");
-			in_phone.css("display","block");
-			
-			
-		});
-		$(".findID").click(function(){
-			if(input_name_c.val() == ""){
+	$(document).ready(function(){		
+		var input_name = $("#find_id_name_wrap").children();		
+		var input_phone = $("#find_id_mobile_wrap").children();
+
+		$(".findID").click(function(e){
+			e.preventDefault();
+			if(input_name.val() == ""){
 				alert("이름을 입력해주세요");
 				input_name.focus();
 				return;
 			}
-			if(input_phone_c.val() == ""){
-				alert("핸드폰번호를 입력해주세요");
-				input_phone().focus();
+			if(input_phone.val() == ""){
+				alert("휴대폰 번호를 입력해주세요");
+				input_phone.focus();
 				return;
 			}
 		});
-		$(".findID").click(function(){
-			if(input_name_c.val() == ""){
-				alert("이름을 입력해주세요");
-				input_name.focus();
-				return;
-			}
-			if(input_email_c.val() == ""){
-				alert("이메일을 입력해주세요");
-				input_email.focus();
-				return;
-			}
-		});
+		
 	});//제이쿼리 end
 </script>
 
@@ -78,28 +49,28 @@
 						</p>
 						<div class="radio-wrap">
 							<label> 
-								<input type="radio" name="find_id_type" value="email" checked="checked">
-									 이메일로 찾기
+								<input type="radio" name="find_id_type" value="mobile" checked="checked">
+									 휴대폰 번호로 찾기
 							</label> 
-							<label> 
-								<input type="radio" name="find_id_type" value="mobile"> 
-									휴대폰 번호로 찾기
-							</label>
+							<!-- <label> 
+								<input type="radio" name="find_id_type" value="email"> 
+									이메일로 찾기
+							</label> -->
 						</div>
 						<div class="find-info">
 							<ul class="frm-list">
 								<li id="find_id_name_wrap">
 									<input type="text" name="user_name" placeholder="이름" onfocus="this.placeholder=''" onblur="this.placeholder='이름'" maxlength="20"/>
 								</li>
-								<li id="find_id_email_wrap">
+								<!-- <li id="find_id_email_wrap">
 									<input type="text" name="user_email" placeholder="이메일" onfocus="this.placeholder=''" onblur="this.placeholder='이메일'" maxlength="40"/>
-								</li>
-								<li id="find_id_mobile_wrap" style="display: none;">
+								</li> -->
+								<li id="find_id_mobile_wrap">
 									<input type="text" name="user_phone" placeholder="휴대폰 번호" onfocus="this.placeholder=''" onblur="this.placeholder='휴대폰 번호'" maxlength="30"/>
 								</li>
 							</ul>
 							<div class="btn-area">
-								<a class="CSSbuttonWhite findID" href="findID.do">
+								<a class="CSSbuttonWhite findID" href="/">
 									아이디 찾기
 								</a> 
 								<a class="CSSbuttonBlack" href="login.do">
