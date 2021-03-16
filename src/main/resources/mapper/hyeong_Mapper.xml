@@ -11,5 +11,6 @@
 	<select resultType="UserVO" id="userList">
 		SELECT * FROM user_member	
 	</select>
+	
 		
 </mapper>
