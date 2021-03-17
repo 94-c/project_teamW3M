@@ -155,19 +155,18 @@
 						<label for="exampleFormControlInput1">제목</label> 
 						<input type="text" class="form-control" id="nt_title" name="nt_title" placeholder="제목을 작성해주세요.">
 					</div>
+					
 					<div class="form-group">
 						<label for="exampleFormControlInput1">작성자</label> 
 						<input type="text" class="form-control" id="nt_writer" name="nt_writer" value="관리자" readonly>
 					</div>
+					
 					<div class="form-group">
 						<label for="exampleFormControlTextarea1">내용</label>
 						<textarea class="form-control" id="nt_content"
 							name="nt_content" rows="10"></textarea>
 					</div>
-					 <label for="checked">중요</label>
-   						 <input type="checkbox" id="nt_imp" name="nt_imp" value="1" />
-    			
-					
+					 
 					<button type="submit" class="btn btn-info " onclick = "location.href = 'insertNotice.do' ">등록하기</button>
 					<button type="button" class="btn btn-secondary" onclick = "location.href = 'getNoticeList.do' ">목록으로</button>
    					 

@@ -5,9 +5,9 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.spring.w3m.com.paging.Criteria;
 import com.spring.w3m.join.user.vo.UserVO;
 import com.spring.w3m.login.admin.dao.AdminDAO;
 import com.spring.w3m.login.admin.vo.AdminVO;
@@ -25,8 +25,8 @@ public class AdminServiceImpl implements AdminService {
 
 	// 회원 데이터 가져오기
 	@Override
-	public List<UserVO> getUserList() {
-		return dao.getUseList();
+	public List<UserVO> getUserList(Criteria cri) {
+		return dao.getUseList(cri);
 	}
 
 	@Override

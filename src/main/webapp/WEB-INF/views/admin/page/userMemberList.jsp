@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.List" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
      <head>
        <link rel="shortcut icon" href="resources/images/icons/favicon.ico" type="image/x-icon">
@@ -148,19 +149,19 @@
                                         <tbody>
                                         	<c:forEach var="user" items="${userList}">
                                       		<tr>
-                                      			<td class="text-center">${user.user_id }</td>
-												<td class="text-center">${user.user_name }</td>
-												<td class="text-center">${user.user_birthday }</td>
-												<td class="text-center">${user.user_gender }</td>
-												<td class="text-center">${user.user_address1 }</td>
-												<td class="text-center">${user.user_phone }</td>
-												<td class="text-center">${user.user_join_date }</td>
-												<td class="text-center">${user.user_state }</td>
+                                      			<td class="text-center"><c:out value="${user.user_id }"/></td>
+												<td class="text-center"><c:out value="${user.user_id }"/></td>
+												<td class="text-center"><c:out value="${user.user_id }"/></td>
+												<td class="text-center"><c:out value="${user.user_id }"/></td>
+												<td class="text-center"><c:out value="${user.user_id }"/></td>
+												<td class="text-center"><c:out value="${user.user_id }"/></td>
+												<td class="text-center"><c:out value="${user.user_id }"/></td>
+												<td class="text-center"><c:out value="${user.user_id }"/></td>
                                       		</tr>
                                       		</c:forEach>
                                         </tbody>
                                     </table>
-	                                </div>
+	                             </div>
 							</div>
                         </div>
                     </div>
