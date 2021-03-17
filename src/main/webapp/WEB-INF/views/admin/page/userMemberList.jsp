@@ -12,17 +12,13 @@
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-        <script src="assets/demo/chart-area-demo.js"></script>
-        <script src="assets/demo/chart-bar-demo.js"></script>
         <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
-        <script src="assets/demo/datatables-demo.js"></script>
-        
     </head>
     
        <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-            <a class="navbar-brand" href="index.mdo"><img src="resources/images/h_design/top_w3m.gif"></a>
+            <a class="navbar-brand" href="loginIndex.mdo"><img src="resources/images/h_design/top_w3m.gif"></a>
             
             <!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
@@ -149,14 +145,14 @@
                                         <tbody>
                                         	<c:forEach var="user" items="${userList}">
                                       		<tr>
-                                      			<td class="text-center"><c:out value="${user.user_id }"/></td>
-												<td class="text-center"><c:out value="${user.user_id }"/></td>
-												<td class="text-center"><c:out value="${user.user_id }"/></td>
-												<td class="text-center"><c:out value="${user.user_id }"/></td>
-												<td class="text-center"><c:out value="${user.user_id }"/></td>
-												<td class="text-center"><c:out value="${user.user_id }"/></td>
-												<td class="text-center"><c:out value="${user.user_id }"/></td>
-												<td class="text-center"><c:out value="${user.user_id }"/></td>
+                                      			<td class="text-center">${user.user_id }</td>
+												<td class="text-center">${user.user_name }</td>
+												<td class="text-center">${user.user_birthday }</td>
+												<td class="text-center">${user.user_gender }</td>
+												<td class="text-center">${user.user_address1 }</td>
+												<td class="text-center">${user.user_phone }</td>
+												<td class="text-center">${user.user_join_date }</td>
+												<td class="text-center">${user.user_state }</td>
                                       		</tr>
                                       		</c:forEach>
                                         </tbody>

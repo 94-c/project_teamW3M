@@ -1,4 +1,4 @@
-package com.spring.w3m.com.paging;
+package com.spring.w3m.paging.common;
 
 public class PageVO {
 	

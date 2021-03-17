@@ -6,9 +6,9 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import com.spring.w3m.com.paging.Criteria;
 import com.spring.w3m.join.user.vo.UserVO;
 import com.spring.w3m.login.admin.vo.AdminVO;
+import com.spring.w3m.paging.common.Criteria;
 
 @Controller
 public class AdminDAO {
@@ -22,7 +22,7 @@ public class AdminDAO {
 	}
 	
 
-	public List<UserVO> getUseList(Criteria cri) {
+	public List<UserVO> getUseList() {
 		return sqlSessionTemplate.selectList("AdminDAO.userList");
 	}
 	
