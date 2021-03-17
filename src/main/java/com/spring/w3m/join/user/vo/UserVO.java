@@ -19,7 +19,7 @@ public class UserVO {
 	private Boolean user_marketing_mail; //마케팅 메일 동의
 	private Boolean user_marketing_sms; //마케팅 문자 동의
 	private String user_level; //등급 DEFAULT 'Bronze', -- 회원등급 //Bronze , silver, gold, Platinum,dia
-	private String user_state; //1 : 정상 2 : 휴먼 3: 삭제(3개월 보관) 0: 어드민
+	private String user_state; //"일반", "탈퇴", "정지"
 	private Long user_seq; // 회원 번호
 	public String getUser_id() {
 		return user_id;

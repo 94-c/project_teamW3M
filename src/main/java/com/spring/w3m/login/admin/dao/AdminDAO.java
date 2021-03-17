@@ -8,7 +8,6 @@ import org.springframework.stereotype.Controller;
 
 import com.spring.w3m.join.user.vo.UserVO;
 import com.spring.w3m.login.admin.vo.AdminVO;
-import com.spring.w3m.paging.common.Criteria;
 
 @Controller
 public class AdminDAO {

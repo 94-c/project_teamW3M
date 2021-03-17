@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import com.spring.w3m.join.user.vo.UserVO;
 import com.spring.w3m.login.admin.dao.AdminDAO;
 import com.spring.w3m.login.admin.vo.AdminVO;
-import com.spring.w3m.paging.common.Criteria;
 
 @Service("AdminSerivce")
 public class AdminServiceImpl implements AdminService {

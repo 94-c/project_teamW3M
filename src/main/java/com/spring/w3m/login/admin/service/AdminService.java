@@ -6,7 +6,6 @@ import javax.servlet.http.HttpSession;
 
 import com.spring.w3m.join.user.vo.UserVO;
 import com.spring.w3m.login.admin.vo.AdminVO;
-import com.spring.w3m.paging.common.Criteria;
 
 public interface AdminService {
 	
