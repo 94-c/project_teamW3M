@@ -10,7 +10,7 @@
                     <div class="findIdPwd_result">
                     <div id="find_Success">
                                 <dl>
-                                    <dt><!-- 아이디 --></dt>
+                                    <dt>${userId}</dt>
                                     <dd>전체 아이디는 고객센터로 문의해 주세요.</dd>
                                 </dl>
                     </div>

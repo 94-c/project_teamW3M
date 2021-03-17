@@ -65,6 +65,6 @@ $(document).ready(function(){
 				input_phone.focus();
 				return;
 			}
-			location.href="/findID.do";
+			$(".findIdForm").submit();
 		});		
 });

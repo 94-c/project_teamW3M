@@ -46,7 +46,7 @@ public class UserLoginServiceImpl implements UserLoginService {
 		
 		return 0; // 0 로그인 실패
 	}
-	
+
 	//회원 로그인 정보
 	@Override
 	public UserVO viewUser(UserVO vo) {
