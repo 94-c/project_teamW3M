@@ -2,8 +2,6 @@ package com.spring.w3m.inquiry.user.vo;
 
 import java.util.Date;
 
-import org.springframework.web.multipart.MultipartFile;
-
 public class InquiryVO {
 	private int inq_seq;
 	private String inq_title;
@@ -13,7 +11,22 @@ public class InquiryVO {
 	private Date inq_date;
 	private int inq_pass;
 	private int inq_cnt;
+	private String SearchCondition;
+	private String SearchKeyword;
 	
+	
+	public String getSearchCondition() {
+		return SearchCondition;
+	}
+	public void setSearchCondition(String searchCondition) {
+		SearchCondition = searchCondition.substring(1);
+	}
+	public String getSearchKeyword() {
+		return SearchKeyword;
+	}
+	public void setSearchKeyword(String searchKeyword) {
+		SearchKeyword = searchKeyword;
+	}
 	public String getInq_email() {
 		return inq_email;
 	}
@@ -66,7 +79,8 @@ public class InquiryVO {
 	public String toString() {
 		return "InquiryVO [inq_seq=" + inq_seq + ", inq_title=" + inq_title + ", inq_writer=" + inq_writer
 				+ ", inq_content=" + inq_content + ", inq_email=" + inq_email + ", inq_date=" + inq_date + ", inq_pass="
-				+ inq_pass + ", inq_cnt=" + inq_cnt + "]";
+				+ inq_pass + ", inq_cnt=" + inq_cnt + ", SearchCondition=" + SearchCondition + ", SearchKeyword="
+				+ SearchKeyword + "]";
 	}
 	
 

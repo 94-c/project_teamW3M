@@ -11,7 +11,17 @@
 
 <!-- 리스트 보기 -->
 	<select id="getInquiryList" resultMap="inquiryResult">
-		SELECT inq_seq, inq_title, inq_writer, inq_date, inq_cnt FROM inquiry ORDER BY inq_seq DESC
+<!-- SELECT inq_seq, inq_title, inq_writer, inq_date, inq_cnt FROM inquiry ORDER BY inq_seq DESC  -->		
+		
+		SELECT * FROM inquiry
+		WHERE 1=1
+		<if test="searchCondition=='inq_title'">
+			AND inq_title LIKE '%'||#{searchKeyword}||'%'
+		</if>
+		<if test="searchCondition=='inq_content'">
+			AND inq_content LIKE '%'||#{searchKeyword}||'%'
+		</if>
+		order by inq_seq desc
 	</select>
 	
 	<resultMap type="InquiryVO" id="inquiryResult">

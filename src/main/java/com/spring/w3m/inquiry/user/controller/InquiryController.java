@@ -49,7 +49,10 @@ public class InquiryController {
 	// 게시글 목록 보기
 	@RequestMapping("/getInquiryList.do")
 	public String getInquiryList(InquiryVO vo, Model model) {
-		System.out.println("글 목록 검색 처리");
+		if(vo.getSearchCondition() == null) vo.setSearchCondition("nt_title");
+		if(vo.getSearchKeyword() == null) vo.setSearchKeyword("");
+		System.out.println("검색 조건 : " + vo.getSearchCondition());
+		System.out.println("검색 단어 : " + vo.getSearchKeyword());
 		model.addAttribute("inquiryList", inquiryService.getInquiryList(vo));
 		return "list/inquiry";
 	}
