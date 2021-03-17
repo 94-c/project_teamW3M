@@ -8,7 +8,7 @@
 		<div id="content">
 			<div id="findWrap">
 
-				<form name="form1" method="post" action="#" target="loginiframe">
+				<form class="findIdForm" name="form1" method="post" action="/findID.do" target="loginiframe">
 					<input type="hidden" name="focus_ok"> <input type="hidden" name="msecure_key">
 					<input type="hidden" name="sslid" value="pgreen1364">
 					<input type="hidden" name="sslip" value="www.welkeepsmall.com">
@@ -48,10 +48,10 @@
 								</li>
 							</ul>
 							<div class="btn-area">
-								<a class="CSSbuttonWhite findID" href="/">
+								<a class="CSSbuttonWhite findID" href="">
 									아이디 찾기
 								</a> 
-								<a class="CSSbuttonBlack" href="login.do">
+								<a class="CSSbuttonBlack" href="loginForm.do">
 									로그인
 								</a>
 							</div>
@@ -70,12 +70,12 @@
 							<br>
 						</p>
 						<div class="radio-wrap">
-							<label> 
-								<input type="radio" name="find_pw_type" value="email" checked="checked"> 
+							<!-- <label> 
+								<input type="radio" name="find_pw_type" value="email"> 
 									이메일로 찾기
-							</label> 
+							</label>  -->
 							<label> 
-								<input type="radio" name="find_pw_type" value="mobile"> 
+								<input type="radio" name="find_pw_type" value="mobile" checked="checked"> 
 									휴대폰 번호로 찾기
 							</label>
 						</div>
@@ -86,15 +86,15 @@
 										<input type="text" name="user_id" placeholder="아이디" onfocus="this.placeholder=''" onblur="this.placeholder='아이디'" maxlength="20"/>
 									</li>
 									
-									<li id="find_pw_email_wrap">
-										<input type="text" name="user_email" placeholder="이메일" onfocus="this.placeholder=''" onblur="this.placeholder='이메일'" maxlength="40"/>
-									</li>
+									<!-- <li id="find_pw_email_wrap">
+										<input type="text" name="user_email2" placeholder="이메일" onfocus="this.placeholder=''" onblur="this.placeholder='이메일'" maxlength="40"/>
+									</li> -->
 									
-									<li id="find_id_mobile_wrap" style="display: none;">
+									<li id="find_id_mobile_wrap">
 										<input type="text" name="user_phone" placeholder="휴대폰 번호" onfocus="this.placeholder=''" onblur="this.placeholder='휴대폰 번호'" maxlength="30"/>
 									</li>
-							</ul>
-								<div class="btn-area">
+								</ul>
+							<div class="btn-area">
 									<a href="javascript:find_type('find_pw');" class="CSSbuttonWhite info-confirm">
 										임시 비밀번호 발급
 									</a> 
