@@ -10,6 +10,7 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -30,27 +31,29 @@ public class UserController {
 	private JavaMailSenderImpl mailSender;
 	
 
-	@RequestMapping("/insertMember.do")
+	@RequestMapping("/insertMember.do") //회원가입 페이지 진입
 	public String insert_member() {
 		return "join/insertMember";
 
 	}
 
 	@RequestMapping("/mypage.do")
-	public String myPage() {
+	public String myPage() { //마이페이지 진입
 		System.out.println("마이페이지 진입");
 		return "mypage/myPage";
 	}
 
-	@RequestMapping("/memberInfoUpdate.do")
-	public String memberInfoUpdate() {
+	@RequestMapping("/memberInfoUpdate.do") 
+	public String memberInfoUpdate(HttpSession session,Model model) { //회원 정보 변경 페이지 진입
 		System.out.println("회원 정보 변경 진입");
-
+		System.out.println(session.getAttribute("userId"));
+		
+		System.out.println();
 		return "join/memberInfo";
 	}
 
 	@RequestMapping("/login_insert.do")
-	public String insert_success(UserVO vo) {
+	public String insert_success(UserVO vo) { // insert member
 
 		if (vo.getUser_marketing_mail() == null) { // check box 가 Null 이면 false
 			vo.setUser_marketing_mail(false);
@@ -111,7 +114,7 @@ public class UserController {
 
 	@RequestMapping(value = "/user_id_check.do", method = RequestMethod.POST)
 	@ResponseBody
-	public int idCheck(@RequestBody String user_id) {
+	public int idCheck(@RequestBody String user_id) { //아이디 중복 확인
 		int check = userService.idCheck(user_id);
 		System.out.println("아이디 중복 확인 ");
 //		System.out.println(user_id);
@@ -122,7 +125,7 @@ public class UserController {
 
 	@ResponseBody
 	@RequestMapping("/send_sms.do")
-	public String sendSMS(@RequestBody String user_phoneAll) {
+	public String sendSMS(@RequestBody String user_phoneAll) { //핸드폰 인증
 
 		Random rand = new Random();
 		String numStr = "";

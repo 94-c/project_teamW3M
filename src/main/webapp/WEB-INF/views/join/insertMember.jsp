@@ -1,14 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	
-<title>회원 가입</title>	
+<title>회원 정보 수정</title>	
 <%@include file="/WEB-INF/views/include/header.jsp"%>
 <div id="contentWrapper">
 	<div id="contentWrap">
 		<div id="content">
 			<div id="join_test">
 				<div class="cateTit_v2 join">
-					<em class="title">회원정보 입력</em>
+					<em class="title">회원 정보 수정</em>
 				</div>
 				<div class="page-body">
 					
@@ -40,7 +40,7 @@
 										</th>
 										<td>
 											<div class="col-cell">
-												<input type="text" name="user_id" id="user_id" class="MS_input_txt normal-input" size="10" maxlength="12"><span class="check_font" id ="id_check"></span>
+												<input type="text" name="user_id" id="user_id" class="MS_input_txt normal-input" size="10" maxlength="12" ><span class="check_font" id ="id_check"></span>
 											</div>
 										</td>
 									</tr>
