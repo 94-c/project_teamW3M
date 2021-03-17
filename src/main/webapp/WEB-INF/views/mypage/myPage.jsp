@@ -9,29 +9,18 @@
 <script type="text/javascript"> //회원탈퇴 js
 function userexit(){
     
-            if (confirm('회원탈퇴를 하시겠습니까?')) location.href = 'https://www.welkeepsmall.com/shop/mypage.html?mypage_type=myexituser';
+            if (confirm('회원탈퇴를 하시겠습니까?')) {
+            	location.href = 'memberInfoDelete.do';	
+            	console.log("yes");
+            	}
+            else{
+            	location.href = 'mypage.do';
+            	console.log("no");
+            }
         
 }
 </script>
-<script type="text/javascript">
 
-    banner_position_type = 'LEFT';
-    BannerHandler('blk_scroll_wings//160||1187||G');
-    if( window.addEventListener ) {
-        window.addEventListener("load",function() {
-                BannerHandler('blk_scroll_wings//160||1187||G');
-        },false);
-    } else if( document.addEventListener ) {
-        document.addEventListener("load",function() {
-            BannerHandler('blk_scroll_wings//160||1187||G');
-        },false);
-    } else if( window.attachEvent ) {
-        window.attachEvent("onload",function() {
-            BannerHandler('blk_scroll_wings//160||1187||G');
-        });
-    }
-
-</script>
 
 <div id="contentWrapper">
 	<div id="contentWrap">
@@ -66,7 +55,7 @@ function userexit(){
 						<ul>
 							<li class="first"><a
 								href="memberInfoUpdate.do">회원정보변경</a></li>
-							<li><a href="">회원정보탈퇴신청</a></li>
+							<li><a href="javascript:userexit();" >회원정보탈퇴신청</a></li>
 						</ul>
 					</div>
 				</div>
@@ -85,21 +74,24 @@ function userexit(){
 							<div class="user-info">
 								<p>
 									<!-- 이런식으로 나와야 한다. 최형우[hyeognwoo26]님  -->
+									
+									<label>${userVO.user_name }[${userVO.user_id}]님</label>
 									<a href="memberInfoUpdate.do" class="CSSbuttonWhite CSSbuttonMin">수정</a>
+									
 								</p>
 								<div class="box">
 									<dl>
 										<dt>전 &nbsp;&nbsp;&nbsp; 화</dt>
-										<dd></dd>
+										<dd>${userVO.user_phone }</dd>
 									</dl>
 									<dl>
-										<!-- 이메일 -->
+										<!-- 이메일 --> 
 										<dt>이 메 일</dt>
-										<dd>hyeongwoo26@naver.com</dd>
+										<dd>${userVO.user_email }</dd>
 									</dl>
 									<dl>
 										<dt>주 &nbsp;&nbsp;&nbsp; 소</dt>
-										<dd></dd>
+										<dd>${userVO.user_zipcode } ${userVO.user_address1 } ${userVO.user_address2 }</dd>
 									</dl>
 								</div>
 							</div>

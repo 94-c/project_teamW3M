@@ -17,16 +17,8 @@ public class UserVO {
 	private Boolean user_marketing_mail; //마케팅 메일 동의
 	private Boolean user_marketing_sms; //마케팅 문자 동의
 	private String user_level; //등급 DEFAULT 'Bronze', -- 회원등급 //Bronze , silver, gold, Platinum,dia
-	private int user_state; //1 : 정상 2 : 휴먼 3: 삭제(3개월 보관) 0: 어드민
+	private String user_state; //1 : 정상 2 : 휴먼 3: 삭제(3개월 보관) 0: 어드민
 	private Long user_seq; // 회원 번호
-
-	
-	public String getUser_gender() {
-		return user_gender;
-	}
-	public void setUser_gender(String user_gender) {
-		this.user_gender = user_gender;
-	}
 	public String getUser_id() {
 		return user_id;
 	}
@@ -51,7 +43,12 @@ public class UserVO {
 	public void setUser_birthday(String user_birthday) {
 		this.user_birthday = user_birthday;
 	}
-
+	public String getUser_gender() {
+		return user_gender;
+	}
+	public void setUser_gender(String user_gender) {
+		this.user_gender = user_gender;
+	}
 	public String getUser_email() {
 		return user_email;
 	}
@@ -118,10 +115,10 @@ public class UserVO {
 	public void setUser_level(String user_level) {
 		this.user_level = user_level;
 	}
-	public int getUser_state() {
+	public String getUser_state() {
 		return user_state;
 	}
-	public void setUser_state(int user_state) {
+	public void setUser_state(String user_state) {
 		this.user_state = user_state;
 	}
 	public Long getUser_seq() {
@@ -140,6 +137,6 @@ public class UserVO {
 				+ user_marketing_mail + ", user_marketing_sms=" + user_marketing_sms + ", user_level=" + user_level
 				+ ", user_state=" + user_state + ", user_seq=" + user_seq + "]";
 	}
-	
+
 	
 }

@@ -78,6 +78,14 @@ public class UserController {
 		return "index";
 		
 	}
+	
+	
+	@RequestMapping("/memberInfoDelete.do")
+	public String delete_success(UserVO vo) {
+		System.out.println("회원 삭제");
+		return "index";
+		
+	}
 	@RequestMapping("/login_insert.do")
 	public String insert_success(UserVO vo) { // insert member
 
