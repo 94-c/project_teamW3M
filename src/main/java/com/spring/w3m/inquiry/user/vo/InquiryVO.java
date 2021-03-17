@@ -2,13 +2,30 @@ package com.spring.w3m.inquiry.user.vo;
 
 import java.util.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class InquiryVO {
 	private int inq_seq;
 	private String inq_title;
 	private String inq_writer;
 	private String inq_content;
+	private String inq_email;
 	private Date inq_date;
+	private int inq_pass;
 	private int inq_cnt;
+	
+	public String getInq_email() {
+		return inq_email;
+	}
+	public void setInq_email(String inq_email) {
+		this.inq_email = inq_email;
+	}
+	public int getInq_pass() {
+		return inq_pass;
+	}
+	public void setInq_pass(int inq_pass) {
+		this.inq_pass = inq_pass;
+	}
 	public int getInq_seq() {
 		return inq_seq;
 	}
@@ -48,7 +65,8 @@ public class InquiryVO {
 	@Override
 	public String toString() {
 		return "InquiryVO [inq_seq=" + inq_seq + ", inq_title=" + inq_title + ", inq_writer=" + inq_writer
-				+ ", inq_content=" + inq_content + ", inq_date=" + inq_date + ", inq_cnt=" + inq_cnt + "]";
+				+ ", inq_content=" + inq_content + ", inq_email=" + inq_email + ", inq_date=" + inq_date + ", inq_pass="
+				+ inq_pass + ", inq_cnt=" + inq_cnt + "]";
 	}
 	
 

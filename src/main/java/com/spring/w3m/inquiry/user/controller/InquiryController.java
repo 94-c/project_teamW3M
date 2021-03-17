@@ -1,10 +1,11 @@
 package com.spring.w3m.inquiry.user.controller;
 
+import java.io.IOException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.spring.w3m.inquiry.user.service.InquiryService;
 import com.spring.w3m.inquiry.user.vo.InquiryVO;
@@ -19,13 +20,13 @@ public class InquiryController {
 		@RequestMapping("/inquiry.do")
 		public String getBoardList(InquiryVO vo, Model model) {
 			System.out.println("---문의사항---");
-			model.addAttribute("inquiryList", inquiryService.getInquiryList(vo));
+			model.addAttribute("inquiryList", inquiryService.getInquiryList(vo));		
 			return "list/inquiry";
 		}
 
 	// 게시판 글 작성하기(동작)
 	@RequestMapping("/inquiry_write.do")
-	public String inquiryWrite(InquiryVO vo, Model model) {
+	public String inquiryWrite(InquiryVO vo, Model model) throws IOException {
 		inquiryService.insertInquiry(vo);
 		model.addAttribute("inquiryList", inquiryService.getInquiryList(vo));
 		return "/list/inquiry";
@@ -76,4 +77,6 @@ public class InquiryController {
 		model.addAttribute("inquiryList", inquiryService.getInquiryList(vo));
 		return "/list/inquiry";
 	}
+
+
 }

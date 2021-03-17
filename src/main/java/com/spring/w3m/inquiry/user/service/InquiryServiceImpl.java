@@ -1,10 +1,12 @@
 package com.spring.w3m.inquiry.user.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.spring.w3m.common.paging.vo.Criteria;
 import com.spring.w3m.inquiry.user.dao.InquiryDAO;
 import com.spring.w3m.inquiry.user.vo.InquiryVO;
 
@@ -39,5 +41,5 @@ public class InquiryServiceImpl implements InquiryService {
 	public List<InquiryVO> getInquiryList(InquiryVO vo) {
 		return inquiryDAO.getInquiryList(vo);
 	}
-	
+
 }

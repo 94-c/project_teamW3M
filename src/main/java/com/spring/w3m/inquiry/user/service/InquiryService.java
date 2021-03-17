@@ -1,7 +1,9 @@
 package com.spring.w3m.inquiry.user.service;
 
 import java.util.List;
+import java.util.Map;
 
+import com.spring.w3m.common.paging.vo.Criteria;
 import com.spring.w3m.inquiry.user.vo.InquiryVO;
 
 public interface InquiryService {

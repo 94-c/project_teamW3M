@@ -91,7 +91,12 @@
 							<!-- 상단 커뮤니티 링크 수정 -->
 							<li><a href="getNoticeList.do">공지사항</a></li>
 							<li><a href="#">상품후기</a></li>
+							<c:if test="${login_state eq 'login' }">
 							<li><a href="inquiry.do">문의게시판</a></li>
+							</c:if>
+							<c:if test="${login_state ne 'login' }">
+							<li><a href="login.do" onClick="alert('로그인이 필요합니다.')">문의게시판</a></li>
+							</c:if>			
 						</ul>
 					</div>
 				</div>
