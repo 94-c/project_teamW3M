@@ -1,0 +1,13 @@
+@charset "UTF-8";
+/* BASIC css start */
+#findIdPwd_result { padding-top:85px }
+#findIdPwd_result .findIdPwd_result { height:548px; text-align:center; border:1px solid #e9e9e9; border-top:none }
+#findIdPwd_result .findIdPwd_result .sub-tit { padding-top:50px; font-size:11px; color:#8d8d8d; line-height:18px }
+ 
+#find_Success { padding-top:150px }
+#find_Success dt { margin-bottom:15px; font-size:24px; color:#000; text-decoration:underline }
+#find_Success dd { font-size:16px; color:#000 }
+
+#findIdPwd_result .btn-area { padding-top:35px; text-align: center }
+#findIdPwd_result .btn-area a { width:378px; height:58px; font-size:16px; line-height:58px }
+/* BASIC css end */
