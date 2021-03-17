@@ -20,7 +20,7 @@
     
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-            <a class="navbar-brand" href="index.mdo"><img src="resources/images/h_design/top_w3m.gif"></a>
+            <a class="navbar-brand" href="loginIndex.mdo"><img src="resources/images/h_design/top_w3m.gif"></a>
             
             <!-- Navbar Search-->
             <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
@@ -48,7 +48,7 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">홈</div>
-                            <a class="nav-link" href="index.mdo">
+                            <a class="nav-link" href="loginIndex.mdo">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                               	  홈
                             </a>

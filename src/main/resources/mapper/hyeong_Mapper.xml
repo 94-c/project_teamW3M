@@ -29,6 +29,26 @@
 		SELECT admin_password FROM admin_user WHERE admin_id = #{admin_id}
 	</select>
 	
+	<!-- <select id="userList" resultType="UserVO">
+	SELECT COUNT(*) FROM user_member
+	</select> -->
+
+	<!-- 페이징 처리 후 게시글 조회 -->
+	<select id="getUserList" resultType="UserVO">
+		<![CDATA[select
+			user_id,
+			user_name,
+			user_birthday,
+			user_gender,
+			user_address1,
+			user_phone,
+			user_join_date,
+			user_state
+		from user_member
+		order by user_id
+		OFFSET 0 limit 10;
+		]]>
+	</select> 
 	
 
 	

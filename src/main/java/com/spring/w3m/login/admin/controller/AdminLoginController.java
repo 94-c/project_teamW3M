@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.spring.w3m.com.paging.Criteria;
+import com.spring.w3m.com.paging.PageVO;
 import com.spring.w3m.login.admin.service.AdminService;
 import com.spring.w3m.login.admin.vo.AdminVO;
 
@@ -30,9 +32,9 @@ public class AdminLoginController {
 	
 	
 	@RequestMapping("/loginIndex.mdo")
-	public String loginIndex(AdminVO vo, Model model, HttpSession session) {
+	public String loginIndex(AdminVO vo, Model model, HttpSession session, Criteria cri) {
 		//회원관리 리스트
-		model.addAttribute("userList", adminService.getUserList());
+		model.addAttribute("userList", adminService.getUserList(cri));
 		return "page/index";
 			
 	}
@@ -40,9 +42,9 @@ public class AdminLoginController {
 	
 	//관리자 페이지
 	@RequestMapping("/index.mdo")
-	public String index(AdminVO vo, Model model, HttpSession session) {
+	public String index(AdminVO vo, Model model, HttpSession session, Criteria cri) {
 		//회원관리 리스트
-		model.addAttribute("userList", adminService.getUserList());
+		model.addAttribute("userList", adminService.getUserList(cri));
 		boolean result = adminService.loginCheck(vo, session);
 		//관리자 로그인 유효성
 		AdminVO voo = adminService.getAdmin();
@@ -65,9 +67,10 @@ public class AdminLoginController {
 	
 	// 고객 관리
 	@RequestMapping("/userMemberList.mdo")
-	public String userMembeList(Model model)  {
+	public String userMembeList(Criteria cri, Model model)  {
 		System.out.println("=== 고객관리 ===");
-	model.addAttribute("userList", adminService.getUserList());
+	model.addAttribute("userList", adminService.getUserList(cri));
+	model.addAttribute("pageMaker", new PageVO(cri, 123));
 	return "page/userMemberList";
 	}
 	
