@@ -51,7 +51,7 @@ public class NoticeVO {
 		return SearchCondition;
 	}
 	public void setSearchCondition(String searchCondition) {
-		SearchCondition = searchCondition;
+		SearchCondition = searchCondition.substring(1);
 	}
 	public String getSearchKeyword() {
 		return SearchKeyword;

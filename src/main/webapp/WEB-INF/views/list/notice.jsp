@@ -18,27 +18,23 @@
 					<div class="bbs-tit">
 						<h3>공지사항</h3>
 						<div class="bbs-sch">
-							<form action="board.html" name="form1">
-								<input type="hidden" name="s_id" value=""> 
-								<input type="hidden" name="code" value="pgreen1364_board1"> 
-								<input type="hidden" name="page" value="1"> 
-								<input type="hidden" name="type" value="s"> 
-								<input type="hidden" name="board_cate" value=""> 
-								<input type="hidden" name="review_type" value="">
+							<form action="getNoticeList.do" name="form1">
+								<input type="hidden" name="searchCondition" value="">  
+								<input type="hidden" name="seachKeyword" value=""> 
 								
 								<!-- .검색 폼시작 -->
 								<fieldset>
 									<legend>게시판 검색 폼</legend>
 									<label> 
-										<input type="radio" name="ssubject" value="ok" onclick="change(2);" 
+										<input type="radio" name="searchCondition" value="nt_title" onclick="checkOnlyOne(this)" 
 										checked="checked" class="MS_input_checkbox"> 제목
 									</label> 
 									<label> 
-										<input type="radio" name="scontent" value="ok" onclick="change(3);" 
+										<input type="radio" name="searchCondition" value="nt_content" onclick="checkOnlyOne(this)" 
 										class="MS_input_checkbox"> 내용
 									</label> 
 									<span class="key-wrap"> 
-										<input type="text" name="stext" value="" class="MS_input_txt"> 
+										<input type="text" name="searchKeyword" value="" class="MS_input_txt"> 
 										<a href="javascript:document.form1.submit();"> 
 											<img src="//image.makeshop.co.kr/makeshop/d3/basic_simple/bbs/btn_bbs_sch.gif"
 											alt="검색" title="검색">
@@ -94,4 +90,18 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+function checkOnlyOne(element) {
+	  
+	  const checkboxes 
+	      = document.getElementsByName("SearchCondition");
+	  
+	  checkboxes.forEach((cb){
+	    cb.checked = false;
+	  })
+	  
+	  element.checked = true;
+	}
+</script>
+
 <%@include file="/WEB-INF/views/include/footer.jsp"%>

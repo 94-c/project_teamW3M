@@ -38,10 +38,10 @@
 	<select id="getNoticeList" resultMap="noticeResult">
 		SELECT * FROM notice
 		WHERE 1=1
-		<if test="searchCondition=='TITLE'">
+		<if test="searchCondition=='nt_title'">
 			AND nt_title LIKE '%'||#{searchKeyword}||'%'
 		</if>
-		<if test="searchCondition=='CONTENT'">
+		<if test="searchCondition=='nt_content'">
 			AND nt_content LIKE '%'||#{searchKeyword}||'%'
 		</if>
 		order by nt_seq desc
@@ -49,23 +49,4 @@
 	
 	<update id="NoticeCntUpdate" parameterType="NoticeVO"> update notice set nt_count=nt_count+1 WHERE nt_seq=#{nt_seq} </update>
 	
-<!-- 	
-	<select id="countBoard" resultType="NoticeVO">
-		SELECT COUNT(*) FROM notice
-	</select>
-
-	
-	<select id="selectBoard" resultType="com.my.spring.domain.BoardVO">
-		SELECT * 
-			FROM (
-				SELECT ROWNUM RN, A.* 
-					FROM (
-							SELECT * 
-							FROM notice 
-							ORDER BY nt_seq DESC 
-							) A
-					)
-		WHERE RN BETWEEN #{start} AND #{end}
-</select>
- -->
 </mapper>
