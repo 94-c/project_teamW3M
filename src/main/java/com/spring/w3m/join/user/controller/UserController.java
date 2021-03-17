@@ -46,12 +46,38 @@ public class UserController {
 	@RequestMapping("/memberInfoUpdate.do") 
 	public String memberInfoUpdate(HttpSession session,Model model) { //회원 정보 변경 페이지 진입
 		System.out.println("회원 정보 변경 진입");
-		System.out.println(session.getAttribute("userId"));
 		
+			
 		System.out.println();
 		return "join/memberInfo";
 	}
+	@RequestMapping("/user_update.do")
+	public String update_success(UserVO vo) {
+		if (vo.getUser_marketing_mail() == null) { // check box 가 Null 이면 false
+			vo.setUser_marketing_mail(false);
+		}
+		if (vo.getUser_marketing_sms() == null) { // check box 가 Null 이면 false
+			vo.setUser_marketing_sms(false);
+		}
 
+		String emailFormat = vo.getUser_email(); // 이메일 형식 만들기 '@'
+		vo.setUser_email(emailFormat.replace(",", "@"));
+
+		String phoneFormat = vo.getUser_phone();// 폰 형식 '-'
+		vo.setUser_phone(phoneFormat.replace(",", "-"));
+
+		String birthdayFormat = vo.getUser_birthday();// 폰 형식 '-'
+		vo.setUser_birthday(birthdayFormat.replace(",", "-"));
+		String a = vo.getUser_password();
+		vo.setUser_password(passEncoder.encode(vo.getUser_password()));
+		System.out.println(vo.toString());
+		
+		userService.updateUser(vo);
+
+		
+		return "index";
+		
+	}
 	@RequestMapping("/login_insert.do")
 	public String insert_success(UserVO vo) { // insert member
 
@@ -71,7 +97,7 @@ public class UserController {
 		String birthdayFormat = vo.getUser_birthday();// 폰 형식 '-'
 		vo.setUser_birthday(birthdayFormat.replace(",", "-"));
 		String a = vo.getUser_password();
-		vo.setUser_password(passEncoder.encode(vo.getUser_password()));
+		vo.setUser_password(passEncoder.encode(vo.getUser_password())); //비밀번호 암호화
 
 		System.out.println(vo.toString());
 		userService.insertUser(vo);

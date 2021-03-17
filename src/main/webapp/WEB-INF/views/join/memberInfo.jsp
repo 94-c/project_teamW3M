@@ -1,14 +1,107 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
+
 <title>개인 정보 수정</title>
 <%@include file="/WEB-INF/views/include/header.jsp"%>
 
 
-<link href="resources/css/insertMember.css" rel="stylesheet" type="text/css">
+<link href="resources/css/insertMember.css" rel="stylesheet"
+	type="text/css">
 <script type="text/javascript" src="resources/js/insertmember.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script>
+	var name_ck = -1;
+	var id_ck = -1;
+	var pw_ck1 = -1;
+	var pw_ck2 = -1;
+	var birth_ck = -1;
+	var adress_ck = -1;
+	var phone_ck = -1;
+	var email_ck = -1;
+	$(document).ready(function() {
 
+		$("#update_success").click(function() { // 회원가입 버튼
+
+			console.log("이름 - " + name_ck);
+			console.log("아이디 - " + id_ck);
+			console.log("pw - " + pw_ck1);
+			console.log("repw - " + pw_ck2);
+			console.log("생일 - " + birth_ck);
+			console.log("주소 - " + adress_ck);
+			console.log("폰 - " + phone_ck);
+			console.log("이메일 - " + email_ck);
+
+			if (name_ck == 1) {
+				alert("이름을 확인해 주세요.")
+			} else if (id_ck == 1) {
+				alert("아이디를 확인해 주세요.")
+			} else if (pw_ck1 != 0) {
+				alert("비밀번호를 확인해 주세요.")
+			} else if (pw_ck2 != 0) {
+				alert("비밀번호 확인을 확인해 주세요.")
+			} else if (birth_ck == 1) {
+				alert("생일을 확인해 주세요.")
+			} else if (adress_ck == 1) {
+				alert("주소를 확인해 주세요.")
+			} else if (phone_ck == 1) {
+				alert("휴대폰을 확인해 주세요.")
+			} else if (email_ck == 1) {
+				alert("이메일을 확인해 주세요.")
+			} else {
+				alert("회원 정보 수정이 완료되었습니다.")
+				$("#user_update").submit();
+			}
+
+		});
+
+	});
+
+	$(document).ready(function() {
+		var birthday = $("#fullbirthday").val();
+		var sp = birthday.split('-');
+		var gender = $("#fullgender").val().trim();
+		var phone = $("#fullphone").val().trim();
+		var sp2 = phone.split('-');
+		var email = $("#fullemail").val().trim();
+		var sp3 = email.split('@');
+		var mmail = $("#user_marketing_m").val().trim();
+		var msms = $("#user_marketing_s").val().trim();
+
+		$("#user_birthday1").val(sp[0]);
+		$("#user_birthday2").val(sp[1]);
+		$("#user_birthday3").val(sp[2]);
+		console.log(sp);
+		if (gender == "남자") {
+			$("#user_gender").prop("checked", true);
+			console.log("남자이시네영");
+		} else {
+			$("#user_gender").prop("checked", false);
+			console.log("여자이시네영");
+		}
+		console.log(gender);
+		$("#user_phone1").val(sp2[0]);
+		$("#user_phone2").val(sp2[1]);
+		$("#user_phone3").val(sp2[2]);
+		console.log(phone);
+		$("#user_email1").val(sp3[0]);
+		$("#user_email2").val(sp3[1]);
+		console.log(email);
+		if (mmail == "true") {
+			$("#user_marketing_mail").prop("checked", true);
+			console.log("mail 승락");
+		}else{
+			$("#user_marketing_mail").prop("checked", false);
+			console.log("mail ㄴㄴㄴ");
+		} 
+		if (msms == "true") {
+			$("#user_marketing_sms").prop("checked", true);
+			console.log("sms 승락");
+		}else{
+			$("#user_marketing_sms").prop("checked", false);
+			console.log("sms ㄴㄴㄴ");
+		} 
+	});
+</script>
 <div id="contentWrapper">
 	<div id="contentWrap">
 		<div id="content">
@@ -17,8 +110,8 @@
 					<em class="title">회원정보 입력</em>
 				</div>
 				<div class="page-body">
-					
-					<form action="login_insert.do" method="post" id="user_insert">
+
+					<form action="user_update.do" method="post" id="user_update">
 						<div id="personInfo">
 							<table class="person-tb">
 								<colgroup>
@@ -34,7 +127,10 @@
 										</th>
 										<td>
 											<div class="col-cell">
-												<input type="text" name="user_name" id="user_name" class="MS_input_txt normal-input" size="15" maxlength="30"><span class="check_font" id ="name_check"></span>
+												<input type="text" name="user_name" id="user_name"
+													class="MS_input_txt normal-input" size="15" maxlength="30"
+													value="${userVO.user_name }"><span
+													class="check_font" id="name_check"></span>
 											</div>
 										</td>
 									</tr>
@@ -46,7 +142,9 @@
 										</th>
 										<td>
 											<div class="col-cell">
-												<input type="text" name="user_id" id="user_id" class="MS_input_txt normal-input" readonly="readonly" value="${userId }" size="10" maxlength="12">
+												<input type="text" name="user_id" id="user_id2"
+													class="MS_input_txt normal-input" readonly="readonly"
+													value="${userVO.user_id }" size="10" maxlength="12">
 											</div>
 										</td>
 									</tr>
@@ -60,8 +158,9 @@
 											<div class="col-cell">
 												<input type="password" name="user_password"
 													id="user_password1" class="MS_input_txt normal-input"
-													 size="15" maxlength="20"><span class="idpw-info" id="pw_check1"> * 영문 대문자와 소문자, 숫자, 특수문자를 하나 이상 포함하여 8~16자
-													 </span>
+													size="15" maxlength="20"><span class="idpw-info"
+													id="pw_check1"> * 영문 대문자와 소문자, 숫자, 특수문자를 하나 이상 포함하여
+													8~16자 </span>
 											</div>
 										</td>
 									</tr>
@@ -75,7 +174,8 @@
 											<div class="col-cell">
 												<input type="password" name="user_password2"
 													id="user_password2" class="MS_input_txt normal-input"
-													value="" size="15" maxlength="20"><span id= pw_check2></span>
+													value="" size="15" maxlength="20"><span
+													id=pw_check2></span>
 											</div>
 										</td>
 									</tr>
@@ -85,7 +185,8 @@
 												<span class="empha">*</span>생년월일
 											</div>
 										</th>
-										<td>
+										<td><input type="hidden" value="${userVO.user_birthday }"
+											id="fullbirthday">
 											<div class="col-cell social">
 												<select name="user_birthday" id="user_birthday1"
 													class="MS_select MS_birthday">
@@ -112,12 +213,13 @@
 														<option value="<c:out value="${day}"/>"><c:out
 																value="${day}" /></option>
 													</c:forEach>
-												</select>일&nbsp;&nbsp; <input type="radio" name="user_gender"
-													id="user_gender" value="남자" class="MS_radio">남 <input
-													type="radio" name="user_gender" value="여자" class="MS_radio"
-													checked>여
-											</div>
-										</td>
+
+												</select>일&nbsp;&nbsp; <input type="hidden"
+													value="${userVO.user_gender }" id="fullgender"> <input
+													type="radio" name="user_gender" id="user_gender" value="남자"
+													class="MS_radio">남 <input type="radio"
+													name="user_gender" value="여자" class="MS_radio" checked>여
+											</div></td>
 									</tr>
 
 									<tr>
@@ -128,9 +230,11 @@
 										</th>
 										<td>
 											<div class="col-cell">
-												<input type="text" name="user_zipcode" id="user_zipcode" readonly
-													class="MS_input_txt small-input" size="7" maxlength="15">
-												<input type="button" class="cbtn form" onclick="DaumPostcode();" value="우편번호 찾기"><br>
+												<input type="text" name="user_zipcode" id="user_zipcode"
+													readonly class="MS_input_txt small-input" size="7"
+													maxlength="15" value="${userVO.user_zipcode }"> <input
+													type="button" class="cbtn form" onclick="DaumPostcode();"
+													value="우편번호 찾기"><br>
 											</div>
 										</td>
 									</tr>
@@ -142,8 +246,9 @@
 										</th>
 										<td>
 											<div class="col-cell">
-												<input type="text" name="user_address1" id="user_address1" readonly
-													class="MS_input_txt large-input" size="40" maxlength="100">
+												<input type="text" name="user_address1" id="user_address1"
+													readonly class="MS_input_txt large-input" size="40"
+													maxlength="100" value="${userVO.user_address1 }">
 											</div>
 										</td>
 									</tr>
@@ -156,16 +261,17 @@
 										<td>
 											<div class="col-cell">
 												<input type="text" name="user_address2" id="user_address2"
-													class="MS_input_txt large-input" size="40" maxlength="100">
+													class="MS_input_txt large-input" size="40" maxlength="100"
+													value="${userVO.user_address2 }">
 											</div>
 										</td>
 									</tr>
 									<tr>
-										<th>
+										<th><input type="hidden" id="fullphone"
+											value="${userVO.user_phone }">
 											<div class="head-cell">
 												<span class="empha">*</span>휴대폰
-											</div>
-										</th>
+											</div></th>
 										<td>
 											<div class="col-cell">
 												<select name="user_phone" id="user_phone1"
@@ -180,16 +286,16 @@
 													class="MS_input_tel normal-input" size="4" maxlength="4">-
 												<input type="text" name="user_phone" id="user_phone3"
 													class="MS_input_tel normal-input" size="4" maxlength="4">
-												
+
 											</div>
 										</td>
 									</tr>
 									<tr>
-										<th>
+										<th><input type="hidden" id="fullemail"
+											value="${userVO.user_email }">
 											<div class="head-cell">
 												<span class="empha">*</span>이메일
-											</div>
-										</th>
+											</div></th>
 										<td>
 											<div class="col-cell email-area">
 												<input type="hidden" name="oldemail" id="oldemail" value="">
@@ -218,42 +324,37 @@
 										</td>
 									</tr>
 									<tr>
-                                        <th>
-                                            <div class="head-cell">뉴스메일</div>
-                                        </th>
-                                        <td>
-                                            <div class="col-cell">
-                                                <label style="margin-right:20px;">        
-                                                <input type="radio" name="emailreceive" value="Y"> 받습니다.</label>
-                                                <label>        
-                                                <input type="radio" name="emailreceive" value="N" checked=""> 받지 않습니다.</label>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th>
-                                            <div class="head-cell">SMS안내</div>
-                                        </th>
-                                        <td>
-                                            <div class="col-cell">
-                                                <label style="margin-right:20px;">        
-                                                <input type="radio" name="smsreceive" value="Y"> 받습니다.</label>
-                                                <label>        
-                                                <input type="radio" name="smsreceive" value="N" checked=""> 받지 않습니다.</label>
-                                            </div>
-                                        </td>
-                                    </tr>
+
+										<th>
+
+											<div class="head-cell">마케팅 수신동의</div>
+
+										</th>
+										<td>
+										<input type="hidden" value="${userVO.user_marketing_mail}" id = user_marketing_m>
+										<input type="hidden" value="${userVO.user_marketing_sms}" id = user_marketing_s>
+										<label><input type="checkbox"
+												name="user_marketing_mail" id="user_marketing_mail"
+												class="input-cbox every_agree ad_every_agree" checked>
+												이메일</label> <label class="pl-30"><input type="checkbox"
+												name="user_marketing_sms" id="user_marketing_sms"
+												class="input-cbox every_agree ad_every_agree" checked>
+												SMS</label></td>
+
+									</tr>
+									
 								</tbody>
 							</table>
 						</div>
 						<div class="btnArea join-footer">
-                        <a href=# class="cbtn form action">수정하기</a>
-                        <a href="#" class="cbtn form">취소하기</a>
-                    </div>
-				</form>
-						
+							<input type="button" class="cbtn form" id="update_success"
+								value="수정하기" onclick=""> <a href="mypage.do"
+								class="cbtn form">취소하기</a>
+						</div>
+					</form>
+
 				</div>
-				
+
 				<!-- use_contract -->
 			</div>
 		</div>

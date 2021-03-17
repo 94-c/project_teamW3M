@@ -19,4 +19,8 @@
 	<select id="passCheck" parameterType="String" resultType="String">
 		SELECT user_password From user_member where user_id = #{user_id}
 	</select>
+	<update id="updateUser" parameterType="UserVO">
+		UPDATE user_member SET user_name = #{user_name} , user_password = #{user_password}, user_birthday = #{user_birthday}, user_gender = #{user_gender}, user_email = #{user_email}, user_zipcode = #{user_zipcode}, user_address1 = #{user_address1}, user_address2 = #{user_address2}, user_phone =#{user_phone}, user_marketing_mail = #{user_marketing_mail}, user_marketing_sms = #{user_marketing_sms}
+		WHERE user_id = #{user_id}
+	</update>
 </mapper>
