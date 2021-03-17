@@ -16,13 +16,13 @@ public class UserLoginController {
 	@Autowired
 	private UserLoginService userLoginService;
 	
-	@RequestMapping("/loginForm.do")
+	@RequestMapping("/loginForm.do")//로그인 폼으로 이동
 	public String loginView() {
 		System.out.println("로그인 폼으로 이동...");
 		return "login/login";
 	}
 	
-	@RequestMapping("/login.do")
+	@RequestMapping("/login.do")//로그인 유효성 검증
 	public ModelAndView userloginCheck(@ModelAttribute UserVO vo, HttpSession session) {
 		boolean result = userLoginService.loginCheck(vo, session);
 		ModelAndView mav = new ModelAndView();
@@ -36,7 +36,7 @@ public class UserLoginController {
 		return mav;
 	}
 	
-	@RequestMapping("/logout.do")
+	@RequestMapping("/logout.do")//로그아웃
 	public ModelAndView userLogout(HttpSession session) {
 		userLoginService.logout(session);
 		ModelAndView mav = new ModelAndView();

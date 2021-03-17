@@ -20,11 +20,11 @@
 <form action="/login.do" name="form1" method="post">
 	<ul class="frm-list">
 		<li class="id">
-		<input type="text" name="user_id" id="user_id" placeholder="아이디" onfocus="this.placeholder=''" onblur="this.placeholder='아이디'" maxlength="20" />
+		<input onkeyup="enterkey();" type="text" name="user_id" id="user_id" placeholder="아이디" onfocus="this.placeholder=''" onblur="this.placeholder='아이디'" maxlength="20" />
 		</li>
 		
 		<li class="pwd">
-		<input type="password" name="user_password" id="user_password" placeholder="비밀번호" onfocus="this.placeholder=''" onblur="this.placeholder='비밀번호'" maxlength="20" />
+		<input onkeyup="enterkey();" type="password" name="user_password" id="user_password" placeholder="비밀번호" onfocus="this.placeholder=''" onblur="this.placeholder='비밀번호'" maxlength="20" />
 		</li>
 	</ul>
 	

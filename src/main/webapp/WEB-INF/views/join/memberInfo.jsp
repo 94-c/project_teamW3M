@@ -46,7 +46,7 @@
 										</th>
 										<td>
 											<div class="col-cell">
-												<input type="text" name="user_id" id="user_id" class="MS_input_txt normal-input" size="10" maxlength="12"><span class="check_font" id ="id_check"></span>
+												<input type="text" name="user_id" id="user_id" class="MS_input_txt normal-input" readonly="readonly" value="${userId }" size="10" maxlength="12">
 											</div>
 										</td>
 									</tr>
