@@ -151,7 +151,7 @@
 												<td class="text-center">${user.user_gender }</td>
 												<td class="text-center">${user.user_address1 }</td>
 												<td class="text-center">${user.user_phone }</td>
-												<td class="text-center">${user.user_join_date }</td>
+												<td class="text-center"><fmt:formatDate value="${user.user_join_date}" pattern="yyyy-MM-dd"/></td>
 												<td class="text-center">${user.user_state }</td>
                                       		</tr>
                                       		</c:forEach>

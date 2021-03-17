@@ -22,8 +22,8 @@
 
 <body class="sb-nav-fixed">
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-		<a class="navbar-brand" href="loginIndex.mdo"><img
-			src="resources/images/h_design/top_w3m.gif"></a>
+		<a class="navbar-brand" href="loginIndex.mdo">
+		<img src="resources/images/h_design/top_w3m.gif"></a>
 
 		<!-- Navbar Search-->
 		<form

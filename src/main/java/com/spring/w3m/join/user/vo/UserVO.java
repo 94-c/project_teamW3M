@@ -1,5 +1,7 @@
 package com.spring.w3m.join.user.vo;
 
+import java.util.Date;
+
 public class UserVO {
 	private String user_id; // 아이디 PK
 	private String user_password; //패스워드
@@ -10,8 +12,8 @@ public class UserVO {
 	private String user_zipcode; //우편번호
 	private String user_address1; //주소
 	private String user_address2; //상세주소
-	private String user_join_date; //가입 날짜
-	private String user_last_login; //마지막 접속 날짜
+	private Date user_join_date; //가입 날짜
+	private Date user_last_login; //마지막 접속 날짜
 	private String user_phone; //폰번호
 	private String user_point; //포인트
 	private Boolean user_marketing_mail; //마케팅 메일 동의
@@ -73,16 +75,18 @@ public class UserVO {
 	public void setUser_address2(String user_address2) {
 		this.user_address2 = user_address2;
 	}
-	public String getUser_join_date() {
+	
+	public Date getUser_join_date() {
 		return user_join_date;
 	}
-	public void setUser_join_date(String user_join_date) {
+	public void setUser_join_date(Date user_join_date) {
 		this.user_join_date = user_join_date;
 	}
-	public String getUser_last_login() {
+	
+	public Date getUser_last_login() {
 		return user_last_login;
 	}
-	public void setUser_last_login(String user_last_login) {
+	public void setUser_last_login(Date user_last_login) {
 		this.user_last_login = user_last_login;
 	}
 	public String getUser_phone() {
@@ -127,6 +131,7 @@ public class UserVO {
 	public void setUser_seq(Long user_seq) {
 		this.user_seq = user_seq;
 	}
+	
 	@Override
 	public String toString() {
 		return "UserVO [user_id=" + user_id + ", user_password=" + user_password + ", user_name=" + user_name
