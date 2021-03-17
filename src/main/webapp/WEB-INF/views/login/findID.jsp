@@ -98,10 +98,7 @@
 									<a href="javascript:find_type('find_pw');" class="CSSbuttonWhite info-confirm">
 										임시 비밀번호 발급
 									</a> 
-									<a href="/shop/member.html?type=login&amp;returnurl=%2Fhtml%2Fmainm.html"
-										class="CSSbuttonBlack info-confirm">
-										로그인
-									</a>
+									<a href="/loginForm.do" class="CSSbuttonBlack info-confirm">로그인</a>
 								</div>
 							</div>
 						</div>

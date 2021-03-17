@@ -10,8 +10,8 @@
                     <div class="findIdPwd_result">
                     <div id="find_Success">
                                 <dl>
-                                    <dt>${userId}</dt>
-                                    <dd>전체 아이디는 고객센터로 문의해 주세요.</dd>
+                                    <dt>${userIdList}</dt>
+                                    <dd>총 ${userIdList.size() }개의 아이디 보유중입니다.</dd>
                                 </dl>
                     </div>
                         <p class="sub-tit">

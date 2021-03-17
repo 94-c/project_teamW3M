@@ -1,5 +1,7 @@
 package com.spring.w3m.find.user.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,9 +27,10 @@ public class UserInfoFindController {
 	public String findIdByPhone(@ModelAttribute UserVO vo, Model model) {
 		System.out.println("아이디 찾기 결과창으로 이동...");
 		
-		String encodedId = service.findIdByPhone(vo);
+		List<String> encodedIdList = service.findIdByPhone(vo);
 		
-		model.addAttribute("userId", encodedId);
+		model.addAttribute("userIdList", encodedIdList); // 모델객체에 보유중인 아이디리스트 저장
+		System.out.println("검색된 아이디 개수 : "+ encodedIdList.size()+"개");
 		return "login/findID_result";
 	}
 	

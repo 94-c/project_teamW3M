@@ -1,5 +1,7 @@
 package com.spring.w3m.find.user.dao;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -11,8 +13,8 @@ public class UserInfoFindDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
 	
-	public String findIdByPhone(UserVO vo) {
-		return sqlSessionTemplate.selectOne("user.findIdByPhone", vo);
+	public List<String> findIdByPhone(UserVO vo) {
+		return sqlSessionTemplate.selectList("user.findIdByPhone", vo);
 	}
 	
 }

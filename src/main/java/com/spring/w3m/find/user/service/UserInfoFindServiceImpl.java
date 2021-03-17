@@ -1,5 +1,8 @@
 package com.spring.w3m.find.user.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,13 +15,16 @@ public class UserInfoFindServiceImpl implements UserInfoFindService {
 	private UserInfoFindDAO findDAO;
 
 	@Override //DB에 저장된 아이디 가져오는 메서드
-	public String findIdByPhone(UserVO vo) {
+	public List<String> findIdByPhone(UserVO vo) {
 		String barNumber = addBarToNumber(vo.getUser_phone());
 		vo.setUser_phone(barNumber);
-		String dbId = findDAO.findIdByPhone(vo);
-		String encodedId = encodedId(dbId);//아이디가공하는 메서드 호출
 		
-		return encodedId;
+		List<String> dbIdList = findDAO.findIdByPhone(vo);
+		List<String> encodedIdList = new ArrayList<String>();
+		for(int i=0; i<dbIdList.size(); i++) {
+				encodedIdList.add(encodedId(dbIdList.get(i))) ;//아이디 가공하는 메서드 호출
+		}
+		return encodedIdList;
 	}
 	
 	@Override //아이디 가공하는 메서드(순수 자바코드)
