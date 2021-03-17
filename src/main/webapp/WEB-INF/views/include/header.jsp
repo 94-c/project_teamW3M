@@ -29,6 +29,9 @@
 <link href="resources/css/findID.css" rel="stylesheet" type="text/css">
 <link href="resources/css/soo.css" rel="stylesheet" type="text/css">
 <link href="resources/css/insertMember.css" rel="stylesheet" type="text/css">
+<link type="text/css" rel="stylesheet" href="resources/css/border.css">
+<link type="text/css" rel="stylesheet" href="resources/css/menu.css">
+<link type="text/css" rel="stylesheet" href="resources/css/lost.css">
 
 <!-- JS -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -95,7 +98,7 @@
 							<li><a href="inquiry.do">문의게시판</a></li>
 							</c:if>
 							<c:if test="${login_state ne 'login' }">
-							<li><a href="login.do" onClick="alert('로그인이 필요합니다.')">문의게시판</a></li>
+							<li><a href="loginForm.do" onClick="alert('로그인이 필요합니다.')">문의게시판</a></li>
 							</c:if>			
 						</ul>
 					</div>
