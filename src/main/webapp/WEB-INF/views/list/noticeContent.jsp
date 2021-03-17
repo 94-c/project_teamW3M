@@ -71,6 +71,7 @@
 									<c:when test="${login eq 'adminLogin'}">
 											<input type="button" class="CSSbuttonBlack" id="submitbutton" value="글 목록" onclick="location.href='./getNoticeList.do'"/>
 											<input type="button" class="CSSbuttonBlack" id="submitbutton" value="수정하기" onclick="location.href='./updateNotice_view.do?nt_seq=${notice.nt_seq}'"/>
+											<input type="button" class="CSSbuttonBlack" id="submitbutton" value="삭제하기" onclick="location.href='./deleteNotice.do?nt_seq=${notice.nt_seq}'"/>
 									</c:when>
 									<c:when test="${login ne 'adminLogin'}">
 											<input type="button" class="CSSbuttonBlack" id="submitbutton" value="글 목록" onclick="location.href='./getNoticeList.do'"/>

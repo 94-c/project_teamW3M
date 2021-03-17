@@ -32,7 +32,6 @@
 					</div>
 					 
 					<button type="submit" class="btn btn-info ">수정하기</button>
-					<input type="button" value="삭제하기" class="btn btn-info" id="submitbutton" onclick="location.href='deleteNotice.do?nt_seq=${getNotice.nt_seq}'" />
 					<button type="button" class="btn btn-secondary" onclick = "location.href = 'getNoticeList.do' ">목록으로</button>
 					</form>
    		</div>
