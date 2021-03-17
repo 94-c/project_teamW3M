@@ -7,6 +7,8 @@
 	
 <%@include file="/WEB-INF/views/include/header.jsp"%>
 
+<link rel="shortcut icon" href="resources/images/icons/favicon.ico" type="image/x-icon">
+<title>공지사항</title>
 
 <div id="contentWrapper">
 	<div id="contentWrap">
@@ -76,7 +78,7 @@
 										<td scope="col"><div class="tb-center">${notice.nt_seq }</td>
 										<td scope="col"><div class="tb-center">&nbsp;</td>
 										<td scope="col"><div class="tb-center"><a href='<c:url value='/getNotice.do?nt_seq=${notice.nt_seq}'/>' class="text-dark">${notice.nt_title }</div></td>
-										<td scope="col"><div class="tb-center">${notice.nt_writer }</td>
+										<td scope="col"><div class="tb-center"><img src="resources/images/icons/neo_admin.gif"><!--${notice.nt_writer }--></td>
 										<td scope="col"><div class="tb-center"><fmt:formatDate value="${notice.nt_date}" pattern="yyyy-MM-dd"/></td>
 										<td scope="col"><div class="tb-center">${notice.nt_count }</td>
 									</tr>
