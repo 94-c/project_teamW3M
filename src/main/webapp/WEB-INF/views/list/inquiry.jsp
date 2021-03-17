@@ -1,7 +1,11 @@
 <%@page import="java.util.List"%>
 <%@page import="com.spring.w3m.inquiry.user.dao.InquiryDAO"%>
 <%@page import="com.spring.w3m.inquiry.user.vo.InquiryVO"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page import="com.spring.w3m.common.paging.vo.PageMaker"%>
+<%@page import="com.spring.w3m.common.paging.vo.Criteria"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -50,43 +54,54 @@
 
 					<!-- 게시판 목록 -->
 					<div class="bbs-table-list">
-					<form role="form" method="post" action="inquiry_write_view.do">
-						<table border="1" summary="No, content,Name,Date,Hits">
-							<caption>일반게시판 게시글</caption>
-							<colgroup>
-								<col width="70">
-								<col width="35">
-								<col width="*">
-								<col width="110">
-								<col width="110">
-								<col width="75">
-							</colgroup>
-							<thead>
-								<tr>
-									<th scope="col"><div class="tb-center">NO.</div></th>
-									<th scope="col"><div class="tb-center">&nbsp;</div></th>
-									<th scope="col"><div class="tb-center">문의</div></th>
-									<th scope="col"><div class="tb-center">작성자</div></th>
-									<th scope="col"><div class="tb-center">날짜</div></th>
-									<th scope="col"><div class="tb-center">조회수</div></th>
-								</tr>
-							</thead>
-							<tbody>
-									<c:forEach var="inquiryVO" items="${inquiryList}">
+						<form role="form" method="post" action="inquiry_write_view.do">
+							<table border="1" summary="No, content,Name,Date,Hits">
+								<caption>일반게시판 게시글</caption>
+								<colgroup>
+									<col width="70">
+									<col width="35">
+									<col width="*">
+									<col width="110">
+									<col width="110">
+									<col width="75">
+								</colgroup>
+								<thead>
 									<tr>
-									<td scope="col"><div class="tb-center">${inquiryVO.inq_seq}</div></td>
-									<td scope="col"><div class="tb-center">&nbsp;</div></td>
-									<td scope="col"><div class="tb-center"><a href='<c:url value='/inquiryContent.do?inq_seq=${inquiryVO.inq_seq}'/>' class="text-dark">${inquiryVO.inq_title}</div></td>
-									<td scope="col"><div class="tb-center">${inquiryVO.inq_writer}</div></td>
-									<td scope="col"><div class="tb-center"><fmt:formatDate value="${inquiryVO.inq_date}" pattern="yyyy-MM-dd"/></div></td>
-									<td scope="col"><div class="tb-center">${inquiryVO.inq_cnt}</div></td>
+										<th scope="col"><div class="tb-center">NO.</div></th>
+										<th scope="col"><div class="tb-center">&nbsp;</div></th>
+										<th scope="col"><div class="tb-center">문의</div></th>
+										<th scope="col"><div class="tb-center">작성자</div></th>
+										<th scope="col"><div class="tb-center">날짜</div></th>
+										<th scope="col"><div class="tb-center">조회수</div></th>
 									</tr>
+								</thead>
+								<tbody>
+									<c:forEach var="inquiryVO" items="${inquiryList}">
+										<tr>
+											<td scope="col"><div class="tb-center">${inquiryVO.inq_seq}</div></td>
+											<td scope="col"><div class="tb-center">&nbsp;</div></td>
+											<td scope="col"><div class="tb-center">
+													<a
+														href='<c:url value='/inquiryContent.do?inq_seq=${inquiryVO.inq_seq}'/>'
+														class="text-dark">${inquiryVO.inq_title}
+												</div></td>
+											<td scope="col"><div class="tb-center">
+													<c:if
+														test="${inquiryVO.inq_writer ne null && inquiryVO.inq_writer!=''}">${fn:substring(inquiryVO.inq_writer,0,fn:length(inquiryVO.inq_writer)-1)}*</c:if>
+												</div></td>
+											<td scope="col"><div class="tb-center">
+													<fmt:formatDate value="${inquiryVO.inq_date}"
+														pattern="yyyy-MM-dd" />
+												</div></td>
+											<td scope="col"><div class="tb-center">${inquiryVO.inq_cnt}</div></td>
+										</tr>
 									</c:forEach>
 									<tr>
-										<td colspan="6" align="right"><button type="submit" class="CSSbuttonBlack" id="submitbutton">글쓰기</button></td>
+										<td colspan="6" align="right"><button type="submit"
+												class="CSSbuttonBlack" id="submitbutton">글쓰기</button></td>
 									</tr>
-							</tbody>
-						</table>
+								</tbody>
+							</table>
 						</form>
 					</div>
 					<!-- //게시판 목록 -->

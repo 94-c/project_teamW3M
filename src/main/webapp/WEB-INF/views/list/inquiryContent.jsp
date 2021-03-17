@@ -1,6 +1,7 @@
 <%@page import="java.util.List"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 
@@ -36,7 +37,8 @@
                                     <span><em>Date :</em><fmt:formatDate value="${inquiryVO.inq_date }" pattern="yyyy-MM-dd HH:mm:ss"/></span>
                                  </div>
                                  <div>
-                                    <span><em>Name :</em> ${inquiryVO.inq_writer }</span> 
+                                    <span><em>Name :</em> <c:if test="${inquiryVO.inq_writer ne null && inquiryVO.inq_writer!=''}">${fn:substring(inquiryVO.inq_writer,0,fn:length(inquiryVO.inq_writer)-1)}*</c:if>
+                                    </span> 
                                     <span><em>Hits :</em> ${inquiryVO.inq_cnt }</span>
                                  </div>
                               </div>
@@ -61,7 +63,9 @@
                      <table summary="게시글 목록">
                         <caption>게시글 목록</caption>
                         <thead>
-                            
+                            <tr>
+                            	<td>비밀번호 : <input type="text"/></td>
+                            </tr>
                         </thead>
                      </table>
                   </div>

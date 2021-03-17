@@ -5,8 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.spring.w3m.inquiry.user.vo.InquiryVO;
-import com.spring.w3m.notice.admin.dao.NoticeDAO;
 import com.spring.w3m.notice.admin.service.NoticeService;
 import com.spring.w3m.notice.admin.vo.NoticeVO;
 

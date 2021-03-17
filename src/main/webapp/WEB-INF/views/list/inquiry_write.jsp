@@ -29,7 +29,7 @@
 										<tr>
 											<th><div>이름</div></th>
 											<td><div>
-													<input id="bw_input_writer" type="text" name="inq_writer" class="MS_input_txt input_style1">
+													<input id="bw_input_writer" type="text" name="inq_writer" class="MS_input_txt input_style1" value="${userVO.user_name}">
 												</div></td>
 											<th><div>비밀번호</div></th>
 											<td>
@@ -41,7 +41,7 @@
 										<tr>
 											<th><div>이메일</div></th>
 											<td colspan="3"><div>
-													<input id="bw_input_email" type="text" class="MS_input_txt input_style1" name="inq_email">
+													<input id="bw_input_email" type="text" class="MS_input_txt input_style1" name="inq_email" value="${userVO.user_email}">
 												</div></td>
 										</tr>
 										<tr>
@@ -64,8 +64,7 @@
 											<th><div>파일</div></th>
 											<td colspan="3">
 												<div>
-													<input id="bw_input_file" type="text" class="MS_input_txt input_style2" name="file_name1" value="" onfocus="this.blur();upalert()"> 
-													<a href="javascript:upload('file_name1');" class="btn_file">첨부</a>
+													<input type="file" name="uploadFile">
 												</div>
 											</td>
 										</tr>

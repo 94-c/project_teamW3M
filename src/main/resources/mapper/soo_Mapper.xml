@@ -5,8 +5,8 @@
 <!-- 글 등록하기 -->
 <mapper namespace="InquiryDAO">
 	<insert id="insertInquiry" parameterType="InquiryVO">
-		INSERT INTO inquiry (inq_seq, inq_title, inq_writer, inq_content)
-		VALUES(nextval('inq_user_seq'), #{inq_title}, #{inq_writer}, #{inq_content})
+		INSERT INTO inquiry (inq_seq, inq_title, inq_writer, inq_email, inq_content, inq_pass)
+		VALUES(nextval('inq_user_seq'), #{inq_title}, #{inq_writer}, #{inq_email}, #{inq_content}, #{inq_pass})
 	</insert>
 
 <!-- 리스트 보기 -->
@@ -19,7 +19,9 @@
 		<result property="inq_title" column="inq_title" />
 		<result property="inq_writer" column="inq_writer" />
 		<result property="inq_content" column="inq_content" />
+		<result property="inq_email" column="inq_email" />
 		<result property="inq_date" column="inq_date" />
+		<result property="inq_pass" column="inq_pass" />
 		<result property="inq_cnt" column="inq_cnt" />
 	</resultMap>
 
@@ -35,8 +37,10 @@
 	<update id="updateInquiry" parameterType="InquiryVO">
 		UPDATE inquiry SET inq_title = #{inq_title}, inq_content = #{inq_content} WHERE inq_seq=#{inq_seq}
 	</update>
+	
 <!-- 게시글 삭제하기 -->
 	<delete id="deleteInquiry" parameterType="InquiryVO">
 		DELETE FROM inquiry WHERE inq_seq = #{inq_seq} 
 	</delete>	
+
 </mapper>

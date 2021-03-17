@@ -29,7 +29,7 @@
 										<tr>
 											<th><div>이름</div></th>
 											<td><div>
-													<input id="bw_input_writer" type="text" name="inq_writer" class="MS_input_txt input_style1" value="${getInquiry.inq_writer}">
+													<input id="bw_input_writer" type="text" name="inq_writer" class="MS_input_txt input_style1" value="${getInquiry.inq_writer}" readonly="readonly">
 												</div></td>
 										</tr>
 										<tr>
