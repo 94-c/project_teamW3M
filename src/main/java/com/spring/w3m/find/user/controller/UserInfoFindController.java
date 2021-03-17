@@ -27,7 +27,7 @@ public class UserInfoFindController {
 		System.out.println("입력받은 유저폰넘버 : "+vo.getUser_phone());
 		String userId = service.findIdByPhone(vo);
 		System.out.println(userId);
-		return "index";
+		return "login/findID_result";
 	}
 	
 }
