@@ -87,11 +87,11 @@
 									</li>
 									
 									<!-- <li id="find_pw_email_wrap">
-										<input type="text" name="user_email2" placeholder="이메일" onfocus="this.placeholder=''" onblur="this.placeholder='이메일'" maxlength="40"/>
+										<input type="text" name="user_email" placeholder="이메일" onfocus="this.placeholder=''" onblur="this.placeholder='이메일'" maxlength="40"/>
 									</li> -->
 									
 									<li id="find_id_mobile_wrap">
-										<input type="text" name="user_phone" placeholder="휴대폰 번호" onfocus="this.placeholder=''" onblur="this.placeholder='휴대폰 번호'" maxlength="30"/>
+										<input type="text" name="user_phone2" placeholder="휴대폰 번호" onfocus="this.placeholder=''" onblur="this.placeholder='휴대폰 번호'" maxlength="30"/>
 									</li>
 								</ul>
 							<div class="btn-area">

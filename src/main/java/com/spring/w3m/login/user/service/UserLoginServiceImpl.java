@@ -23,29 +23,27 @@ public class UserLoginServiceImpl implements UserLoginService {
 		boolean pwResult = passEncoder.matches(vo.getUser_password(), dbPw);
 		
 		if(pwResult) {
-			System.out.println("암호화된 비번과 입력하신 비번이 일치합니다.");
+			System.out.println("입력받은 비번과 암호화된 비번이 일치합니다.");
 			vo.setUser_password(dbPw);
 		}else {
-			System.out.println("암호화된 비번과 입력하신 비번이 일치하지않습니다.");
+			System.out.println("입력받은 비번과 암호화된 비번이 일치하지 않습니다.");
 		}
 		
 		boolean result = dao.loginCheck(vo);
 		UserVO user = viewUser(vo);
 		
 		if(result) {
-			if(user.getUser_state().equals("일반")) { //true일 경우 세션에 등록
-				
+			if(user.getUser_state().equals("일반")) { //일반계정여부 검증
 				session.setMaxInactiveInterval(60*5); //세션만료시간 설정(초단위)
 				session.setAttribute("login_state", "login");
 				session.setAttribute("userVO", user);
-				return 1; // 1 성공
+				return 1; // 1 일반계정
 			}
-
-			return -1; // -1  회원 탈퇴
+			return -1; // -1  탈퇴계정
 		}
-		
 		return 0; // 0 로그인 실패
-	}
+		
+	}//end loginCheck
 
 	//회원 로그인 정보
 	@Override

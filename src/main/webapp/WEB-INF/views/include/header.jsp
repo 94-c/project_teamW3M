@@ -45,7 +45,8 @@
 
 </head>
 <!-- head태그 끝 -->
-<!-- body태그 시작(끝은 footer.jsp)에 있다. -->
+
+<!-- body태그 시작 (끝부분은 footer.jsp)에 있음. -->
 <body>
 	<div id="hdWrap">
 		<div class="top_space"></div>
@@ -66,7 +67,7 @@
 					</div>
 					<div class="top_btn_login01">
 						<c:if test="${login_state eq 'login' }">
-							<a href="logout.do">로그아웃</a>
+							<a onclick="logoutAlert();" href="logout.do">로그아웃</a>
 						</c:if>
 						<c:if test="${login_state ne 'login' }">
 							<a id="haveNoSession" href="loginForm.do">로그아웃</a>
@@ -151,7 +152,7 @@
 			<c:set var="login" value="${login_state}"/>
 			<c:choose>
 				<c:when test="${login eq 'login' }">
-					<li><a href="logout.do">로그아웃</a></li>
+					<li><a onclick="logoutAlert();" href="logout.do">로그아웃</a></li>
 					<li><a href="mypage.do" class="">마이페이지</a></li>
 					<li><a href="#">장바구니<span id="user_basket_quantity" class="user_basket_quantity">0</span></a></li>
 				</c:when>

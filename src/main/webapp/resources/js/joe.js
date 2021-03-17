@@ -48,6 +48,12 @@ $(document).ready(function(){
 	});
 });
 
+/* 로그아웃 관련 스크립트 */
+function logoutAlert(){
+		alert("로그아웃 되었습니다.");
+		return;
+	};
+	
 /* ID&PW찾기 관련 스크립트 */
 $(document).ready(function(){		
 		var input_name = $("#find_id_name_wrap").children();		
