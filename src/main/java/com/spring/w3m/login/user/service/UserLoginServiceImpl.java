@@ -17,7 +17,7 @@ public class UserLoginServiceImpl implements UserLoginService {
 	
 	//회원 로그인 체크
 	@Override
-	public boolean loginCheck(UserVO vo, HttpSession session) {
+	public int loginCheck(UserVO vo, HttpSession session) {
 		String dbPw = dao.pwCheck(vo);
 		BCryptPasswordEncoder passEncoder = new BCryptPasswordEncoder();
 		boolean pwResult = passEncoder.matches(vo.getUser_password(), dbPw);
@@ -30,13 +30,21 @@ public class UserLoginServiceImpl implements UserLoginService {
 		}
 		
 		boolean result = dao.loginCheck(vo);
-		if(result) { //true일 경우 세션에 등록
-			UserVO user = viewUser(vo);
-			session.setMaxInactiveInterval(60*5); //세션만료시간 설정(초단위)
-			session.setAttribute("login_state", "login");
-			session.setAttribute("userVO", user);
+		UserVO user = viewUser(vo);
+		
+		if(result) {
+			if(user.getUser_state().equals("일반")) { //true일 경우 세션에 등록
+				
+				session.setMaxInactiveInterval(60*5); //세션만료시간 설정(초단위)
+				session.setAttribute("login_state", "login");
+				session.setAttribute("userVO", user);
+				return 1; // 1 성공
+			}
+
+			return -1; // -1  회원 탈퇴
 		}
-		return result;
+		
+		return 0; // 0 로그인 실패
 	}
 	
 	//회원 로그인 정보

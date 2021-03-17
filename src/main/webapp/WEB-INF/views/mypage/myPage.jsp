@@ -9,12 +9,12 @@
 <script type="text/javascript"> //회원탈퇴 js
 function userexit(){
     
-            if (confirm('회원탈퇴를 하시겠습니까?')) {
-            	location.href = 'memberInfoDelete.do';	
+            if (confirm('정말로 회원탈퇴를 하시겠습니까 ? \n탈퇴 후 동일 아이디로 재가입이 불가합니다.')) {
+            	$("#deleteSuccess").submit();
             	console.log("yes");
             	}
             else{
-            	location.href = 'mypage.do';
+            	
             	console.log("no");
             }
         
@@ -55,7 +55,9 @@ function userexit(){
 						<ul>
 							<li class="first"><a
 								href="memberInfoUpdate.do">회원정보변경</a></li>
-							<li><a href="javascript:userexit();" >회원정보탈퇴신청</a></li>
+							<li><form action="memberInfoDelete.do" id = "deleteSuccess" method="POST">
+							<input type="hidden" name ="user_id" value="${userVO.user_id }">
+							<a href="javascript:userexit();" >회원정보탈퇴신청</a></form></li>
 						</ul>
 					</div>
 				</div>

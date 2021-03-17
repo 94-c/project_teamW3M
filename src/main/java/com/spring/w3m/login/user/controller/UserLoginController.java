@@ -24,12 +24,15 @@ public class UserLoginController {
 	
 	@RequestMapping("/login.do")//로그인 유효성 검증
 	public ModelAndView userloginCheck(@ModelAttribute UserVO vo, HttpSession session) {
-		boolean result = userLoginService.loginCheck(vo, session);
+		int result = userLoginService.loginCheck(vo, session);
 		ModelAndView mav = new ModelAndView();
-		if(result) { //로그인 성공
+		if(result == 1) { //1 로그인 성공
 			mav.setViewName("index");
 			mav.addObject("msg", "success");
-		}else {		//로그인 실패
+		}else if (result == -1) {		// 회원 탈퇴
+			mav.setViewName("login/login");
+			mav.addObject("msg", "delete");
+		}else if (result == 0) {		// 로그인 실패
 			mav.setViewName("login/login");
 			mav.addObject("msg", "failure");
 		}

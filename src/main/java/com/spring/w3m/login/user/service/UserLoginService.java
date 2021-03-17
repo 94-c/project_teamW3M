@@ -6,7 +6,7 @@ import com.spring.w3m.join.user.vo.UserVO;
 
 public interface UserLoginService {
 	//회원 로그인 체크
-	boolean loginCheck(UserVO vo, HttpSession session);
+	int loginCheck(UserVO vo, HttpSession session);
 	
 	//회원 로그인 정보
 	UserVO viewUser(UserVO vo);

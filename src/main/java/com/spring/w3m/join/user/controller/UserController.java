@@ -81,8 +81,11 @@ public class UserController {
 	
 	
 	@RequestMapping("/memberInfoDelete.do")
-	public String delete_success(UserVO vo) {
+	public String delete_success(UserVO vo,HttpSession session) {//회원삭제
 		System.out.println("회원 삭제");
+		System.out.println(vo.getUser_id());
+		userService.deleteUser(vo);
+		session.invalidate();//세션 초기화
 		return "index";
 		
 	}
