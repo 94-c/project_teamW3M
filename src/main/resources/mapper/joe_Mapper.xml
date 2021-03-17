@@ -17,4 +17,9 @@
 	<select id="pwCheck" resultType="String">
 		SELECT user_password FROM user_member WHERE user_id = #{user_id}
 	</select>
+	
+	<select id="findIdByPhone" resultType="String">
+		SELECT user_id FROM user_member 
+		WHERE user_name = #{user_name} AND user_phone = #{user_phone}
+	</select>
 </mapper>

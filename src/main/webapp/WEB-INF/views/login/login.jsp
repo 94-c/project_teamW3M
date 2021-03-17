@@ -57,7 +57,7 @@
 			아이디 혹은 비밀번호를 잊으셨나요?<br />간단한 정보를 입력 후 잃어버린 정보를 찾으실 수 있습니다.
 		</dt>
 		<dd>
-			<a href="findID.do" class="CSSbuttonWhite fe">아이디/비밀번호 찾기</a>
+			<a href="findIDForm.do" class="CSSbuttonWhite fe">아이디/비밀번호 찾기</a>
 		</dd>
 	</dl>
 </div>
