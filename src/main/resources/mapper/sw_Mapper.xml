@@ -49,4 +49,12 @@
 	
 	<update id="NoticeCntUpdate" parameterType="NoticeVO"> update notice set nt_count=nt_count+1 WHERE nt_seq=#{nt_seq} </update>
 	
+	<select id="getNoticeListCnt" resultType="int">
+		SELECT COUNT(*) from notice
+	</select>
+	
+	<select id="getPageList" resultType="NoticeVO">
+		SELECT * FROM notice ORDER BY nt_seq LIMIT #{listSize} OFFSET #{startList}
+	</select>
+	
 </mapper>
