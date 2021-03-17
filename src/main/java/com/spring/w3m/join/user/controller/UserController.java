@@ -68,7 +68,6 @@ public class UserController {
 
 		String birthdayFormat = vo.getUser_birthday();// 폰 형식 '-'
 		vo.setUser_birthday(birthdayFormat.replace(",", "-"));
-		String a = vo.getUser_password();
 		vo.setUser_password(passEncoder.encode(vo.getUser_password()));
 		System.out.println(vo.toString());
 		
@@ -107,7 +106,6 @@ public class UserController {
 
 		String birthdayFormat = vo.getUser_birthday();// 폰 형식 '-'
 		vo.setUser_birthday(birthdayFormat.replace(",", "-"));
-		String a = vo.getUser_password();
 		vo.setUser_password(passEncoder.encode(vo.getUser_password())); //비밀번호 암호화
 
 		System.out.println(vo.toString());

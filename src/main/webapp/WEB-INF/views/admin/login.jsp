@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"   pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<html>
     <head>
         <link rel="shortcut icon" href="resources/images/icons/favicon.ico" type="image/x-icon">
         <title>관리자 페이지 로그인</title>
@@ -87,7 +88,7 @@
                                         </form>
                                     </div>
                                     <div class="card-footer text-center">
-                                        <div class="small"><a href="/">홈으로</div>
+                                        <div class="small"><a href="/">홈으로</a></div>
                                     </div>
                                 </div>
                             </div>
