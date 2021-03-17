@@ -4,8 +4,19 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-	
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:url var="getNoticeList" value="getNoticeList.do">
+	<c:param name="page" value="${pagination.page }" />
+	<c:param name="range" value="${pagination.range }" />
+	<c:param name="rangeSize" value="${pagination.rangeSize }" />
+</c:url>
 <%@include file="/WEB-INF/views/include/header.jsp"%>
+
+
+<style type="text/css">
+	.page-item{list-style-type: none; display:inline; margin-left:20px;}
+</style>
+
 
 <link rel="shortcut icon" href="resources/images/icons/favicon.ico" type="image/x-icon">
 <title>공지사항</title>
@@ -89,6 +100,27 @@
 					<!-- //게시판 목록 -->
 				</div>
 			</div>
+			<div align="center">
+				<ul class="pagination">
+					<c:if test="${pagination.prev}">
+						<li class="page-item">
+							<a class="ppage-link" href="#" onclick="fn_prev('${pagination.page}','${pagination.range }','${pagination.rangeSize}')">Prev</a>
+						</li>
+					</c:if>
+						<c:forEach begin="${pagination.startPage }" end="${pagination.endPage }" var="idx">
+							<li
+								class="page-item <c:out value="${pagination.page == idx ? 'active' : ''}"/> ">
+							<a class="page-link" href="#" onClick="fn_pagination('${idx}','${pagination.page}','${pagination.range }','${pagination.rangeSize}')">
+								${idx}</a></li>				
+						</c:forEach>
+						
+						<c:if test="${pagination.next }">
+							<li class="page-item">
+								<a class="page-link" href="#" onClick="fn_next('${pagination.page}','${pagination.range }','${pagination.rangeSize}')">Next</a>
+							</li>
+					</c:if>
+				</ul>
+			</div>
 		</div>
 	</div>
 </div>
@@ -104,6 +136,35 @@ function checkOnlyOne(element) {
 	  
 	  element.checked = true;
 	}
+	
+function fn_prev(page, range, rangeSize){
+	var page = ((range - 2) * rangeSize ) + 1;
+	var range = range - 1;
+	var url = "getNotice.do";
+	url = url + "?page=" + page;
+	url = url + "&range=" + range;
+	location.href=url;
+}	
+
+function fn_pagination(page, range, rangeSize){
+	var url = "getNotice.do";
+	url = url + "?page=" + page;
+	url = url + "&range=" + range;
+	location.href=url;
+}	
+
+function fn_prev(page, range, rangeSize){
+	var page = parseInt((range * rangeSize)) + 1;
+	var range = parseInt(range) + 1;
+	var url = "getNotice.do";
+	url = url + "?page=" + page;
+	url = url + "&range=" + range;
+	location.href=url;
+}	
+
+
 </script>
+
+
 
 <%@include file="/WEB-INF/views/include/footer.jsp"%>

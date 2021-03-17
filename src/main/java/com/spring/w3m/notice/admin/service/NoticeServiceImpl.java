@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.spring.w3m.notice.admin.dao.NoticeDAO;
 import com.spring.w3m.notice.admin.vo.NoticeVO;
+import com.spring.w3m.paging.common.Pagination;
 
 @Service("NoticeService")
 public class NoticeServiceImpl implements NoticeService {
@@ -40,6 +41,16 @@ public class NoticeServiceImpl implements NoticeService {
 	@Override
 	public List<NoticeVO> getNoticeList(NoticeVO vo) {
 		return dao.getNoticeList(vo);
+	}
+
+	@Override
+	public int getNoticeListCnt() {
+		return dao.getNoticeListCnt();
+	}
+
+	@Override
+	public List<NoticeVO> getPageList(Pagination pagination) {
+		return dao.getPageList(pagination);
 	}
 
 }
