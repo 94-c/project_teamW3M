@@ -9,6 +9,7 @@ public class NoticeVO {
 	private String nt_content;	// 글 내용
 	private Date nt_date;	//작성날짜
 	private int nt_count;	// 조회수
+	private int nt_imp;
 	private String SearchCondition;
 	private String SearchKeyword;
 	public int getNt_seq() {
@@ -47,6 +48,12 @@ public class NoticeVO {
 	public void setNt_count(int nt_count) {
 		this.nt_count = nt_count;
 	}
+	public int getNt_imp() {
+		return nt_imp;
+	}
+	public void setNt_imp(int nt_imp) {
+		this.nt_imp = nt_imp;
+	}
 	public String getSearchCondition() {
 		return SearchCondition;
 	}
@@ -62,8 +69,8 @@ public class NoticeVO {
 	@Override
 	public String toString() {
 		return "NoticeVO [nt_seq=" + nt_seq + ", nt_title=" + nt_title + ", nt_writer=" + nt_writer + ", nt_content="
-				+ nt_content + ", nt_date=" + nt_date + ", nt_count=" + nt_count + ", SearchCondition="
-				+ SearchCondition + ", SearchKeyword=" + SearchKeyword + "]";
+				+ nt_content + ", nt_date=" + nt_date + ", nt_count=" + nt_count + ", nt_imp=" + nt_imp
+				+ ", SearchCondition=" + SearchCondition + ", SearchKeyword=" + SearchKeyword + "]";
 	}
 	
 }

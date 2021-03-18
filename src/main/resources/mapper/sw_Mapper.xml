@@ -14,8 +14,8 @@
 	</resultMap>
 
 	<insert id="insertNotice" parameterType="NoticeVO">
-		INSERT INTO notice (nt_seq, nt_title, nt_writer, nt_content)
-		VALUES(nextval('nt_seq'), #{nt_title}, #{nt_writer}, #{nt_content})
+		INSERT INTO notice (nt_seq, nt_title, nt_writer, nt_content,nt_imp)
+		VALUES(nextval('nt_seq'), #{nt_title}, #{nt_writer}, #{nt_content},#{nt_imp})
 	</insert>
 
 	<update id="updateNotice" parameterType="NoticeVO">
