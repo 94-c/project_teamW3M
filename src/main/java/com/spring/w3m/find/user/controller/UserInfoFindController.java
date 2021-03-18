@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.spring.w3m.find.user.service.UserInfoFindService;
 import com.spring.w3m.join.user.vo.UserVO;
@@ -29,9 +30,15 @@ public class UserInfoFindController {
 		
 		List<String> encodedIdList = service.findIdByPhone(vo);
 		
-		model.addAttribute("userIdList", encodedIdList); // 모델객체에 보유중인 아이디리스트 저장
+		model.addAttribute("userIdList", encodedIdList); // 모델객체에 보유중인 아이디리스트를 저장
 		System.out.println("검색된 아이디 개수 : "+ encodedIdList.size()+"개");
 		return "login/findID_result";
+	}
+	
+	@RequestMapping("/findPW.do")
+	public String findPwByPhone() {
+		
+		return "login/findPW_result";
 	}
 	
 }

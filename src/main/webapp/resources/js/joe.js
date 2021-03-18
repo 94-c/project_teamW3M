@@ -70,15 +70,15 @@ $(document).ready(function(){
 				input_name.focus();
 				return;
 			}
-			if(input_phone.val() == ""){
-				alert("휴대폰 번호를 입력해주세요");
-				input_phone.focus();
-				return;
-			}
 			if(!(name_ck.test($("#find_id_name_wrap").children().val()))){
 				alert("이름을 확인해주세요. 한글이름만 가능합니다.");
 				input_name.focus();
 				console.log($("#find_id_name_wrap").children().val());
+				return;
+			}
+			if(input_phone.val() == ""){
+				alert("휴대폰 번호를 입력해주세요");
+				input_phone.focus();
 				return;
 			}
 			if(!(phoneNumber_ck.test($("#find_id_mobile_wrap").children().val()))){

@@ -2,13 +2,48 @@
 	pageEncoding="UTF-8"%>
 <title>아이디/패스워드 찾기</title>
 <%@include file="/WEB-INF/views/include/header.jsp"%>
-
+<<script type="text/javascript">
+$(document).ready(function(){		
+	var input_name = $("#find_id_name_wrap").children();		
+	var input_phone = $("#find_id_mobile_wrap").children();
+	var phoneNumber = input_phone.val();
+	var name = input_name.val();
+	var phoneNumber_ck = RegExp(/^([0-9]{11})$/);
+	var name_ck = RegExp(/^[가-힣]{2,6}$/);
+	
+		$(".findID").click(function(e){
+			e.preventDefault();
+			if(input_name.val() == ""){
+				alert("이름을 입력해주세요");
+				input_name.focus();
+				return;
+			}
+			if(!(name_ck.test($("#find_id_name_wrap").children().val()))){
+				alert("이름을 확인해주세요. 한글이름만 가능합니다.");
+				input_name.focus();
+				console.log($("#find_id_name_wrap").children().val());
+				return;
+			}
+			if(input_phone.val() == ""){
+				alert("휴대폰 번호를 입력해주세요");
+				input_phone.focus();
+				return;
+			}
+			if(!(phoneNumber_ck.test($("#find_id_mobile_wrap").children().val()))){
+				alert("'-'(하이픈)을 제외한 11자리의 휴대폰 번호를 입력해 주세요.");
+				input_phone.focus();
+				return;
+			}
+			$(".findIdForm").submit();
+		});
+});
+</script>
 <div id="contentWrapper">
 	<div id="contentWrap">
 		<div id="content">
 			<div id="findWrap">
 
-				<form class="findIdForm" name="form1" method="post" action="/findID.do">
+				<form class="findIdForm" name="form1" method="post" action="findID.do">
 					<input type="hidden" name="focus_ok"> <input type="hidden" name="msecure_key">
 					<input type="hidden" name="sslid" value="pgreen1364">
 					<input type="hidden" name="sslip" value="www.welkeepsmall.com">
@@ -36,7 +71,7 @@
 							</label> -->
 						</div>
 						<div class="find-info">
-							<ul class="frm-list">
+							<ul class="frm-list find-id-input">
 								<li id="find_id_name_wrap">
 									<input type="text" name="user_name" placeholder="이름" onfocus="this.placeholder=''" onblur="this.placeholder='이름'" maxlength="20"/>
 								</li>
@@ -48,7 +83,7 @@
 								</li>
 							</ul>
 							<div class="btn-area">
-								<a class="CSSbuttonWhite findID" href="">
+								<a class="CSSbuttonWhite findID">
 									아이디 찾기
 								</a> 
 								<a class="CSSbuttonBlack" href="loginForm.do">
@@ -81,7 +116,7 @@
 						</div>
 						<div id="find_pw_input_wrap">
 							<div class="find-info">
-								<ul class="frm-list">
+								<ul class="frm-list find-pw-input">
 									<li>
 										<input type="text" name="user_id" placeholder="아이디" onfocus="this.placeholder=''" onblur="this.placeholder='아이디'" maxlength="20"/>
 									</li>
@@ -95,7 +130,7 @@
 									</li>
 								</ul>
 							<div class="btn-area">
-									<a href="javascript:find_type('find_pw');" class="CSSbuttonWhite info-confirm">
+									<a class="CSSbuttonWhite info-confirm findPW">
 										임시 비밀번호 발급
 									</a> 
 									<a href="/loginForm.do" class="CSSbuttonBlack info-confirm">로그인</a>

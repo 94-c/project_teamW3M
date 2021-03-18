@@ -25,6 +25,9 @@
                         </p>
                         <c:if test="${userIdList.size() == 0 }">
                         	<div class="btn-area">
+                            	<a href="javascript:history.back();" class="CSSbuttonBlack">뒤로 가기</a>
+                        	</div>
+                        	<div class="btn-area">
                             	<a href="insertMember.do" class="CSSbuttonBlack">회원가입</a>
                         	</div>
                         </c:if>
