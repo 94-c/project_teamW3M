@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>가입성공</title>
-<meta http-equiv="refresh" content="5; url=http://localhost:8080/">
+<meta http-equiv="refresh" content="3; url=http://localhost:8080/">
 </head>
 <body>
 <br><br><br><br>
