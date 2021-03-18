@@ -27,6 +27,7 @@ public class UserInfoFindController {
 	@RequestMapping("/findID.do") //아이디찾기 결과창으로 이동
 	public String findIdByPhone(@ModelAttribute UserVO vo, Model model) {
 		System.out.println("아이디 찾기 결과창으로 이동...");
+		String pn = vo.getUser_phone();
 		
 		List<String> encodedIdList = service.findIdByPhone(vo);
 		
@@ -35,10 +36,10 @@ public class UserInfoFindController {
 		return "login/findID_result";
 	}
 	
-	@RequestMapping("/findPW.do")
-	public String findPwByPhone() {
-		
-		return "login/findPW_result";
-	}
+//	@RequestMapping("/findPW.do")
+//	public String findPwByPhone() {
+//		
+//		return "login/findPW_result";
+//	}
 	
 }

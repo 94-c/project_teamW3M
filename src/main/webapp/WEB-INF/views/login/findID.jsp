@@ -4,16 +4,16 @@
 <%@include file="/WEB-INF/views/include/header.jsp"%>
 <<script type="text/javascript">
 $(document).ready(function(){		
-	var input_name = $("#find_id_name_wrap").children();		
-	var input_phone = $("#find_id_mobile_wrap").children();
-	var phoneNumber = input_phone.val();
-	var name = input_name.val();
+	//var input_name = $("#find_id_name_wrap").children();		
+	//var input_phone = $("#find_id_mobile_wrap").children();
+	//var phoneNumber = input_phone.val();
+	//var name = input_name.val();
 	var phoneNumber_ck = RegExp(/^([0-9]{11})$/);
-	var name_ck = RegExp(/^[가-힣]{2,6}$/);
+	// name_ck = RegExp(/^[가-힣]{2,6}$/);
 	
-		$(".findID").click(function(e){
+		$(".findPW").click(function(e){
 			e.preventDefault();
-			if(input_name.val() == ""){
+			/*if(input_name.val() == ""){
 				alert("이름을 입력해주세요");
 				input_name.focus();
 				return;
@@ -33,7 +33,7 @@ $(document).ready(function(){
 				alert("'-'(하이픈)을 제외한 11자리의 휴대폰 번호를 입력해 주세요.");
 				input_phone.focus();
 				return;
-			}
+			}*/
 			$(".findIdForm").submit();
 		});
 });
@@ -126,7 +126,7 @@ $(document).ready(function(){
 									</li> -->
 									
 									<li id="find_id_mobile_wrap">
-										<input type="text" name="user_phone2" placeholder="휴대폰 번호 (ex.01012345678)" onfocus="this.placeholder=''" onblur="this.placeholder='휴대폰 번호(ex.01012345678)'" maxlength="11"/>
+										<input type="text" name="user_phone" placeholder="휴대폰 번호 (ex.01012345678)" onfocus="this.placeholder=''" onblur="this.placeholder='휴대폰 번호(ex.01012345678)'" maxlength="11"/>
 									</li>
 								</ul>
 							<div class="btn-area">
