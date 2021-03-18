@@ -25,10 +25,10 @@ public class AdminServiceImpl implements AdminService {
 
 	// 회원 데이터 가져오기
 	@Override
-	public List<UserVO> getUserList() {
-		return dao.getUseList();
+	public List<UserVO> getUserList(UserVO vo) {
+		return dao.getUseList(vo);
 	}
-
+	
 	@Override
 	public boolean loginCheck(AdminVO vo, HttpSession session) {
 		String dbPw = dao.pwCheck(vo);

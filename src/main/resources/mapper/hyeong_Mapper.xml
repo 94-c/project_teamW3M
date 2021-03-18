@@ -4,12 +4,41 @@
 
 <mapper namespace="AdminDAO">
 
+	<resultMap type="UserVO" id="userResult">
+      <id property="user_seq" column="user_seq" />
+      <result property="user_name" column="user_name" />
+      <result property="user_id" column="user_id" />
+      <result property="user_password" column="user_password" />
+      <result property="user_birthday" column="user_birthday" />
+      <result property="user_gender" column="user_gender" />
+      <result property="user_email" column="user_email" />
+      <result property="user_zipcode" column="user_zipcode" />
+      <result property="user_address1" column="user_address1" />
+      <result property="user_address2" column="user_address2" />
+      <result property="user_join_date" column="user_join_date" />
+      <result property="user_last_login" column="user_last_login" />
+      <result property="user_phone" column="user_phone" />
+      <result property="user_level" column="user_level" />
+      <result property="user_point" column="user_point" />
+      <result property="user_marketing_mail" column="user_marketing_mail" />
+      <result property="user_marketing_sms" column="user_marketing_sms" />
+      <result property="user_state" column="user_state" />
+   </resultMap>
+
 	<select parameterType="AdminVO" resultType="AdminVO" id="getAdmin">
 		select * from admin_user 
 	</select>
-	
-	<select resultType="UserVO" id="userList">
-		SELECT * FROM user_member	
+		
+	<select resultMap="userResult" id="userList">
+		SELECT * FROM user_member where 1=1
+		<if test="searchCondition == 'user_id'">
+			AND user_id LIKE '%'||#{searchKeyword}||'%'
+		</if>
+		<if test="searchCondition == 'user_name'">
+			AND user_name LIKE '%'||#{searchKeyword}||'%'
+		</if>
+		order by user_seq desc
+			
 	</select>
 	
 	<select id="loginCheck" resultType="String">
@@ -29,9 +58,6 @@
 		SELECT admin_password FROM admin_user WHERE admin_id = #{admin_id}
 	</select>
 	
-	<!-- <select id="userList" resultType="UserVO">
-	SELECT COUNT(*) FROM user_member
-	</select> -->
 
 	<!-- 페이징 처리 후 게시글 조회 -->
 	<select id="getUserList" resultType="UserVO">

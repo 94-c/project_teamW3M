@@ -12,8 +12,7 @@
 
 <div id="contentWrapper">
 	<div id="contentWrap">
-		<link href="resources/css/notification.css" rel="stylesheet"
-			type="text/css">
+		<link href="resources/css/notification.css" rel="stylesheet" type="text/css">
 		<div id="content">
 			<div id="bbsData">
 				<div class="page-body">
