@@ -148,8 +148,11 @@
 				</main>
 		<form role="form" method="post" action="insertNotice.do">
 		<div class="card-body">
-					<label for="checked">중요</label>
+					<div class="form-group">
+					<label for="checked">중요
                             <input type="checkbox" id="nt_imp" name="nt_imp" value="1" />
+                            </label>
+                    </div>
 					<div class="form-group">
 						<label for="exampleFormControlInput1">제목</label> 
 						<input type="text" class="form-control" id="nt_title" name="nt_title" placeholder="제목을 작성해주세요.">

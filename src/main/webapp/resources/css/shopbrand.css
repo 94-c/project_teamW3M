@@ -1,0 +1,36 @@
+@charset "UTF-8";
+/* BASIC css start */
+#ftWrap {padding-top:0 !important;}
+
+/* prd-class-hd */
+#productClass .prd-class-hd { zoom: 1; overflow: hidden; padding:5px 0 5px 0;margin:10px auto;width:1260px;}
+#productClass .prd-class-hd .loc-navi { float: right; color: #999;   }
+#productClass .prd-class-hd .loc-navi a { color: #999; }
+#productClass .bcate {padding:0; margin: 0 auto 20px;text-align:center; color:#222; font-size:26px; font-weight:700;font-family:"Roboto","Nanum Gothic",sans-serif;}
+
+/* class-list */
+#productClass .class-list {width:1260px;margin:0 auto; zoom: 1;}
+#productClass .class-list ul { padding: 0; margin:0 auto;text-align:center;font-size:0;}
+#productClass .class-list li {display:inline-block; padding: 0 5px;text-align:center;margin:0 auto 10px;} 
+#productClass .class-list li a { display:block; height:35px; padding: 0px 10px; width:178px;text-align:left; color:#222; border:1px solid #dedede; line-height:35px; font-size: 12px;  font-weight: normal;font-family:"Roboto","Nanum Gothic",sans-serif;}
+#productClass .class-list li a:hover { border: 1px solid #333;}
+#productClass .class-list li .num { color: #777;}
+#productClass .class-list li a.sel { color:#000;}
+
+#productClass .page-body {width:100%;background-color:#f7f7f7; margin:50px 0px 0px;padding-top:20px;}
+#productClass .page-body .prd-list {width:1260px;margin:0 auto;}
+
+/* 盒幅其捞瘤 眠玫惑前 包访 胶鸥老 */
+.sub_best_title {font-size:26px; color:#191e21;font-family: 'Roboto Condensed','Nanum Gothic',sans-serif; font-weight:700; letter-spacing:5px; height:100px; line-height:100px;padding:20px 0px;text-align:center;}
+
+/* total-sort */
+#productClass .total-sort {width:1260px;height:33px;padding:0 10px 10px;border-bottom:1px solid #dedede;margin:30px auto 0;}
+#productClass .total-sort .total { font-size:12px;font-weight:normal;color:#333;line-height:33px;}
+#productClass .total-sort .total dd {color:#333;font-weight:bold;}
+#productClass .total-sort .sort {margin:0;}
+#productClass .total-sort .total img { line-height:11px;vertical-align:middle;}
+#productClass .total-sort li {color:#999;line-height:33px;}
+#productClass .total-sort li a { font-size:12px;color:#222;line-height:33px;border:1px solid #dedede;height:33px;line-height:33px;padding:0 10px;}
+#productClass .total-sort li a:hover {border:1px solid #333;}
+
+/* BASIC css end */
