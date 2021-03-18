@@ -63,7 +63,7 @@ $(document).ready(function(){
 	var phoneNumber_ck = RegExp(/^([0-9]{11})$/);
 	var name_ck = RegExp(/^[가-힣]{2,6}$/);
 	
-		$(".findID").click(function(e){
+		$(".findID_btn").click(function(e){
 			e.preventDefault();
 			if(input_name.val() == ""){
 				alert("이름을 입력해주세요");
