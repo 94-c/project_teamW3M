@@ -88,13 +88,6 @@
                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                                 <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                                 	공지사항
-<<<<<<< HEAD
-                            </a>
-                            <a class="nav-link" href="adminInquiry.mdo">
-                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                                	문의사항
-                            </a>                                   
-=======
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="collapsePages" aria-labelledby="headingThree" data-parent="#sidenavAccordion">
@@ -106,13 +99,17 @@
                                 	</nav>
                                 </nav>
                             </div>
+                            
+                            <a class="nav-link" href="adminInquiry.mdo">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                	문의사항
+                            </a>    
                                                         
->>>>>>> 6731ab24f6baf259fa05733d8d227267f719c5bd
                            	<a class="nav-link" href="userMemberList.mdo">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 	고객관리
                             </a>
-                            <a class="nav-link" href="adminInquiry.mdo">
+                            <a class="nav-link" href="#">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 	매출통계
                             </a>
@@ -129,7 +126,8 @@
                     </div>
                 </nav>
             </div>
-            <!-- 기본 버튼 -->
+            <!-- 메인 페이지 -->
+            
             
             <div id="layoutSidenav_content">
                 <main>
