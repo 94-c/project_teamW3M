@@ -88,7 +88,11 @@
                             <a class="nav-link" href="userNotice.mdo">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 	공지사항
-                            </a>                         
+                            </a>  
+                                                        <a class="nav-link" href="#">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                	문의사항
+                            </a>                           
                            	<a class="nav-link" href="userMemberList.mdo">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 	고객관리

@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import com.spring.w3m.inquiry.user.vo.InquiryVO;
 import com.spring.w3m.join.user.vo.UserVO;
 import com.spring.w3m.login.admin.vo.AdminVO;
 
@@ -37,6 +38,11 @@ public class AdminDAO {
 	
 	public AdminVO viewAdmin(AdminVO vo) {
 		return sqlSessionTemplate.selectOne("AdminDAO.viewUser", vo);
+	}
+	
+	// 문의사항 게시글 목록 가져오기
+	public List<InquiryVO> getInquiryList(InquiryVO vo) {
+		return sqlSessionTemplate.selectList("AdminDAO.getInquiryList");
 	}
 	
 }

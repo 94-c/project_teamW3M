@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.spring.w3m.inquiry.user.vo.InquiryVO;
 import com.spring.w3m.join.user.vo.UserVO;
 import com.spring.w3m.login.admin.service.AdminService;
 import com.spring.w3m.login.admin.vo.AdminVO;
@@ -19,7 +20,6 @@ public class AdminLoginController {
 	
 	@Autowired
 	private AdminService adminService;
-	
 	
 	
 	// 관리자 페이지
@@ -82,8 +82,14 @@ public class AdminLoginController {
 		return "page/userNotice";
 	}
 	
+	// 문의사항
+	@RequestMapping("/adminInquiry.mdo")
+	public String adminInquiry(InquiryVO vo, Model model) {
+		System.out.println("=== 문의사항 ===");
+		model.addAttribute("inquiryList", adminService.getInquiryList(vo));
+		return "page/adminInquiry";
+	}
 
-	
 	@RequestMapping("/adminLogout.mdo")
 	public ModelAndView userLogout(HttpSession session) {
 		adminService.logout(session);

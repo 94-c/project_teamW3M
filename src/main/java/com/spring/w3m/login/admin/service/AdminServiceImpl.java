@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.spring.w3m.inquiry.user.vo.InquiryVO;
 import com.spring.w3m.join.user.vo.UserVO;
 import com.spring.w3m.login.admin.dao.AdminDAO;
 import com.spring.w3m.login.admin.vo.AdminVO;
@@ -64,6 +65,12 @@ public class AdminServiceImpl implements AdminService {
 		
 		//세션 정보를 초기화 시킴
 		session.invalidate();
+	}
+	
+	// 문의사항 게시글 불러오기
+	@Override
+	public List<InquiryVO> getInquiryList(InquiryVO vo) {
+		return dao.getInquiryList(vo);
 	}
 
 }
