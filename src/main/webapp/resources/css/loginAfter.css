@@ -1,0 +1,21 @@
+@charset "UTF-8";
+#login_After { padding-top:85px }
+#login_After .login_After { height:548px; text-align:center; border:1px solid #e9e9e9; border-top:none }
+#login_After .login_After .sub-tit { padding-top:50px; font-size:11px; color:#8d8d8d; line-height:18px }
+ 
+#Login_Success { padding-top:150px }
+#Login_Success dt { margin-bottom:15px; font-size:24px; color:#000; text-decoration:underline }
+#Login_Success dd { font-size:42px; color:#000; text-align: center; font-weight: bold;}
+
+#login_After { padding-top:85px }
+#login_After .login_After { height:548px; text-align:center; border:1px solid #e9e9e9; border-top:none }
+#login_After .login_After .sub-tit { padding-top:50px; font-size:11px; color:#8d8d8d; line-height:18px }
+
+
+#Login_Success01 { padding-top:150px }
+#Login_Success01 dt { margin-bottom:15px; font-size:24px; color:#000; text-decoration:underline }
+/* #Login_Success01 dd { font-size:42px; color:#ff0000; text-align: center} */
+#Login_Success01 dd{  font-size:38px; color:#ff0000; text-align: center; font-family : TmonMonsori, "GodoB", "굴림"}
+
+#login_After .btn-area { padding-top:35px; text-align: center }
+#login_After .btn-area a { width:378px; height:58px; font-size:16px; line-height:58px }
