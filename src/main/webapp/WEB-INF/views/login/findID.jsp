@@ -8,7 +8,7 @@
 		<div id="content">
 			<div id="findWrap">
 
-				<form class="findIdForm" name="form1" method="post" action="/findID.do" target="loginiframe">
+				<form class="findIdForm" name="form1" method="post" action="/findID.do">
 					<input type="hidden" name="focus_ok"> <input type="hidden" name="msecure_key">
 					<input type="hidden" name="sslid" value="pgreen1364">
 					<input type="hidden" name="sslip" value="www.welkeepsmall.com">
@@ -44,7 +44,7 @@
 									<input type="text" name="user_email" placeholder="이메일" onfocus="this.placeholder=''" onblur="this.placeholder='이메일'" maxlength="40"/>
 								</li> -->
 								<li id="find_id_mobile_wrap">
-									<input type="text" name="user_phone" placeholder="휴대폰 번호" onfocus="this.placeholder=''" onblur="this.placeholder='휴대폰 번호'" maxlength="30"/>
+									<input type="text" name="user_phone" placeholder="휴대폰 번호(ex.01012345678)" onfocus="this.placeholder=''" onblur="this.placeholder='휴대폰 번호(ex.01012345678)'" maxlength="11"/>
 								</li>
 							</ul>
 							<div class="btn-area">
@@ -91,7 +91,7 @@
 									</li> -->
 									
 									<li id="find_id_mobile_wrap">
-										<input type="text" name="user_phone2" placeholder="휴대폰 번호" onfocus="this.placeholder=''" onblur="this.placeholder='휴대폰 번호'" maxlength="30"/>
+										<input type="text" name="user_phone2" placeholder="휴대폰 번호 (ex.01012345678)" onfocus="this.placeholder=''" onblur="this.placeholder='휴대폰 번호(ex.01012345678)'" maxlength="11"/>
 									</li>
 								</ul>
 							<div class="btn-area">

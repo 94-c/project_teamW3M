@@ -37,7 +37,7 @@ public class UserInfoFindServiceImpl implements UserInfoFindService {
 	public String addBarToNumber(String inputNumber) {
 		String first = inputNumber.substring(0, 3); //010
 		String second = inputNumber.substring(3, 7); //1234
-		String third = inputNumber.substring(7); //5678	
+		String third = inputNumber.substring(7); //5678
 		
 		StringBuilder sb = new StringBuilder();
 		sb = sb.append(first).append("-").append(second).append("-").append(third); //010-1234-5678
