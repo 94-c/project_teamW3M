@@ -8,4 +8,5 @@ public interface UserService {
 	public void updateUser(UserVO vo);
 	public void deleteUser(UserVO vo);
 	public int idCheck(String user_id);
+	public int phoneCheck(String user_phone);
 }

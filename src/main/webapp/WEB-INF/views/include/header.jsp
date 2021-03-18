@@ -41,7 +41,7 @@
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <!-- 아래처럼 각자 JS파일 만들어서 링크 삽입하기 -->
 <script type="text/javascript" src="resources/js/joe.js"></script>
-<script type="text/javascript" src="resources/js/insertmember.js?v=3"></script>
+<script type="text/javascript" src="resources/js/insertmember.js?v=7"></script>
 
 </head>
 <!-- head태그 끝 -->

@@ -39,4 +39,10 @@ public class UserServiceImpl implements UserService {
 		return dao.idCheck(user_id);
 	}
 
+	@Override
+	public int phoneCheck(String user_phone) {
+		
+		return dao.phoneCheck(user_phone);
+	}
+
 }

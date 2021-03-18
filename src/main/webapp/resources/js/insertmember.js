@@ -228,29 +228,52 @@ var email_ck = -1;
 				return;
 			}
 			
+		var allPhone2 = $("#user_phone1").val() +"-"+ $("#user_phone2").val() +"-"+ $("#user_phone3").val();
 		var allPhone = $("#user_phone1").val() + $("#user_phone2").val() + $("#user_phone3").val();
 		console.log("phone - "+allPhone);
-		alert("인증번호 전송 성공");
+		console.log("phone2 - "+allPhone2);
+		
 		$.ajax({
-			url: "/send_sms.do",
+			url: "/check_sms.do",
 			type: "post",
-			data: allPhone,
+			data: allPhone2,
 			dataType : "json",
 			contentType: "application/json; charset=UTF-8",
 			success: function(result){
-				$("#phone_certification").blur(function(){
-					if(result == $("#phone_certification").val()){
-						$("#phone_check1").text("인증 되었습니다.");
-						$("#phone_check1").css("color","blue");
-						phone_ck = 0;
-					}else{
-						$("#phone_check1").text("인증이 실패하였습니다. 다시 확인해 주세요");
-						$("#phone_check1").css("color","red");
-						phone_ck = 1;
-						}	
-					})
+				if(result != 0){
+				 alert("중복된 휴대폰 번호입니다.");
+				 phone_ck = 1;
+				 return;
+				}
+				else{
+				alert("인증번호 전송 성공");
+				$.ajax({
+					url: "/send_sms.do",
+					type: "post",
+					data: allPhone,
+					dataType : "json",
+					contentType: "application/json; charset=UTF-8",
+					success: function(result){
+						$("#phone_certification").blur(function(){
+							if(result == $("#phone_certification").val()){
+								$("#phone_check1").text("인증 되었습니다.");
+								$("#phone_check1").css("color","blue");
+								phone_ck = 0;
+							}else{
+								$("#phone_check1").text("인증이 실패하였습니다. 다시 확인해 주세요");
+								$("#phone_check1").css("color","red");
+								phone_ck = 1;
+								}	
+							})
+					}
+						})
+				
+				}
 			}
-				})
+		
+		});
+		
+		
 			
 			
 		});

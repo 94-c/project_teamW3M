@@ -11,6 +11,7 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -175,5 +176,17 @@ public class UserController {
 		sms.certifiedPhone(user_phoneAll, numStr);
 		return numStr;
 
+	}
+	@ResponseBody
+	@RequestMapping("/check_sms.do")
+	public int checkSMS(@RequestBody String user_phoneAll2) {
+		System.out.println(user_phoneAll2);
+		int check = userService.phoneCheck(user_phoneAll2);
+		System.out.println(check);
+		if(check==0) { //중복이 읍다
+			return 0;
+		}else { //중복이 이뜨아
+		return 1;
+		}
 	}
 }

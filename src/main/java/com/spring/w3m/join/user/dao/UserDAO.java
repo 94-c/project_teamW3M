@@ -27,6 +27,10 @@ public class UserDAO { // DB 왔다갔다
 	return sqlSessionTemplate.selectOne("UserDAO.idCheck",user_id);
 	   
    }
+   public int phoneCheck(String user_phone) {
+	   
+	   return sqlSessionTemplate.selectOne("UserDAO.phoneCheck",user_phone);
+   }
    public void updateUser(UserVO vo) {
 	   sqlSessionTemplate.update("UserDAO.updateUser",vo);
    }
