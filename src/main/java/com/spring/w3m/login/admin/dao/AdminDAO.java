@@ -21,7 +21,7 @@ public class AdminDAO {
 	}
 	
 
-	public List<UserVO> getUseList() {
+	public List<UserVO> getUseList(UserVO vo) {
 		return sqlSessionTemplate.selectList("AdminDAO.userList");
 	}
 	

@@ -21,6 +21,13 @@ public class UserVO {
 	private String user_level; //등급 DEFAULT 'Bronze', -- 회원등급 //Bronze , silver, gold, Platinum,dia
 	private String user_state; //"일반", "탈퇴", "정지"
 	private Long user_seq; // 회원 번호
+	
+	private String searchKeyword;
+	private String searchCondition;
+	
+	
+	
+	
 	public String getUser_id() {
 		return user_id;
 	}
@@ -132,6 +139,21 @@ public class UserVO {
 		this.user_seq = user_seq;
 	}
 	
+	
+	
+	public String getSearchKeyword() {
+		return searchKeyword;
+	}
+	public void setSearchKeyword(String searchKeyword) {
+		this.searchKeyword = searchKeyword;
+	}
+	public String getSearchCondition() {
+		return searchCondition;
+	}
+	public void setSearchCondition(String searchCondition) {
+		this.searchCondition = searchCondition.substring(1);
+	}
+	
 	@Override
 	public String toString() {
 		return "UserVO [user_id=" + user_id + ", user_password=" + user_password + ", user_name=" + user_name
@@ -140,7 +162,8 @@ public class UserVO {
 				+ user_address2 + ", user_join_date=" + user_join_date + ", user_last_login=" + user_last_login
 				+ ", user_phone=" + user_phone + ", user_point=" + user_point + ", user_marketing_mail="
 				+ user_marketing_mail + ", user_marketing_sms=" + user_marketing_sms + ", user_level=" + user_level
-				+ ", user_state=" + user_state + ", user_seq=" + user_seq + "]";
+				+ ", user_state=" + user_state + ", user_seq=" + user_seq + ", searchKeyword=" + searchKeyword
+				+ ", searchCondition=" + searchCondition + "]";
 	}
 
 	
