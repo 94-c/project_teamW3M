@@ -11,6 +11,7 @@
 				<div id="findIdPwd_result">
 					<div class="tit-page">아이디/비밀번호 찾기 결과</div>
 						<div class="findIdPwd_result">
+						<!-- 일치하는 정보를 찾았을 경우 -->
 						<c:if test="${findEmail =='success'}">
 							<div id="find_Success">
                                 <dl>
@@ -25,6 +26,7 @@
 						<a href="loginForm.do" class="CSSbuttonBlack">로그인</a>
 					</div>
 					</c:if>
+					<!-- 일치하는 정보를 못찾았을 경우 -->
 					<c:if test="${findEmail == 'fail'}">
 						<script>
 							alert("일치하는 회원정보가 없습니다.");

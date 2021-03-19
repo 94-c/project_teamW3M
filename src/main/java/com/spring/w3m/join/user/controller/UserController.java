@@ -11,7 +11,6 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -117,8 +116,8 @@ public class UserController {
 		
 		String setfrom = "w3mmask@gmail.com";         
 	    String tomail  = vo.getUser_email();     // 받는 사람 이메일
-	    String title   = "w3m에 가입해 주셔서 감사합니다.";      // 제목
-	    String content =  vo.getUser_name()+ "님 w3m에 가입해 주셔서 감사합니다.";    // 내용
+	    String title   = "W3M에 가입해 주셔서 감사합니다.";      // 제목
+	    String content =  vo.getUser_name()+ "님 W3M에 가입해 주셔서 감사합니다.";    // 내용
 	    
 	    
 	   
