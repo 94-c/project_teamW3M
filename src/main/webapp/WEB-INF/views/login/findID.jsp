@@ -8,14 +8,7 @@
 		<div id="content">
 			<div id="findWrap">
 
-				<form class="findIdForm" name="form1" method="post" action="/findID.do">
-					<input type="hidden" name="focus_ok"> <input type="hidden" name="msecure_key">
-					<input type="hidden" name="sslid" value="pgreen1364">
-					<input type="hidden" name="sslip" value="www.welkeepsmall.com">
-					<input type="hidden" name="mail">
-					<input type="hidden" name="authtext" value="">
-					<input type="hidden" name="authid">
-					<input type="hidden" name="find_type" value="find_pw">
+				<form class="findIdForm" method="post" action="findID.do">
 					<div id="find_id" class="find_idpw">
 						<h1 class="tit">아이디 찾기</h1>
 						<p class="sub-tit">
@@ -38,7 +31,7 @@
 						<div class="find-info">
 							<ul class="frm-list">
 								<li id="find_id_name_wrap">
-									<input type="text" name="user_name" placeholder="이름" onfocus="this.placeholder=''" onblur="this.placeholder='이름'" maxlength="20"/>
+									<input type="text" name="user_name" placeholder="이름" onfocus="this.placeholder=''" onblur="this.placeholder='이름'" maxlength="6"/>
 								</li>
 								<!-- <li id="find_id_email_wrap">
 									<input type="text" name="user_email" placeholder="이메일" onfocus="this.placeholder=''" onblur="this.placeholder='이메일'" maxlength="40"/>
@@ -48,7 +41,7 @@
 								</li>
 							</ul>
 							<div class="btn-area">
-								<a class="CSSbuttonWhite findID" href="">
+								<a class="CSSbuttonWhite findID_btn">
 									아이디 찾기
 								</a> 
 								<a class="CSSbuttonBlack" href="loginForm.do">
@@ -57,8 +50,9 @@
 							</div>
 						</div>
 					</div>
+				</form>
 					<!--/#find_id/-->
-
+				<form class="findPwForm" method="post" action="findPW.do">
 					<div id="find_pw" class="find_idpw">
 						<h1 class="tit">임시 비밀번호 발급</h1>
 						<p class="sub-tit">
@@ -82,7 +76,7 @@
 						<div id="find_pw_input_wrap">
 							<div class="find-info">
 								<ul class="frm-list">
-									<li>
+									<li id="find_pw_id_wrap">
 										<input type="text" name="user_id" placeholder="아이디" onfocus="this.placeholder=''" onblur="this.placeholder='아이디'" maxlength="20"/>
 									</li>
 									
@@ -90,12 +84,12 @@
 										<input type="text" name="user_email" placeholder="이메일" onfocus="this.placeholder=''" onblur="this.placeholder='이메일'" maxlength="40"/>
 									</li> -->
 									
-									<li id="find_id_mobile_wrap">
-										<input type="text" name="user_phone2" placeholder="휴대폰 번호 (ex.01012345678)" onfocus="this.placeholder=''" onblur="this.placeholder='휴대폰 번호(ex.01012345678)'" maxlength="11"/>
+									<li id="find_pw_mobile_wrap">
+										<input type="text" name="user_phone" placeholder="휴대폰 번호 (ex.01012345678)" onfocus="this.placeholder=''" onblur="this.placeholder='휴대폰 번호(ex.01012345678)'" maxlength="11"/>
 									</li>
 								</ul>
-							<div class="btn-area">
-									<a href="javascript:find_type('find_pw');" class="CSSbuttonWhite info-confirm">
+								<div class="btn-area">
+									<a class="CSSbuttonWhite info-confirm findPW_btn">
 										임시 비밀번호 발급
 									</a> 
 									<a href="/loginForm.do" class="CSSbuttonBlack info-confirm">로그인</a>
