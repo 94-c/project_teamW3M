@@ -64,7 +64,7 @@
         </script>
     </head>
     
-       <body class="sb-nav-fixed">
+       <<body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <a class="navbar-brand" href="loginIndex.mdo"><img src="resources/images/h_design/top_w3m.gif"></a>
             
@@ -82,8 +82,8 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                        <a class="dropdown-item" href="login.mdo">로그아웃</a>
-                        <a class="dropdown-item" href="/">홈으로 나가기</a>	
+                        <a class="dropdown-item" href="adminLogout.mdo">로그아웃</a>
+                        <a class="dropdown-item" href="/">메인 홈으로 나가기</a>	
                     </div>
                 </li>
             </ul>
@@ -94,7 +94,7 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">홈</div>
-                            <a class="nav-link" href="index.mdo">
+                            <a class="nav-link" href="loginIndex.mdo">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                               	  홈
                             </a>
@@ -104,12 +104,13 @@
                             </a>
                             
                             <div class="sb-sidenav-menu-heading">관리자</div>
-                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                            
+                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                                 	상품
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
-                            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                            <div class="collapse" id="collapsePages" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="#">상품 관리</a>
                                     <a class="nav-link" href="#">상품 재고 관리</a>
@@ -120,7 +121,7 @@
                             
                             
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
-                                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                                 	주문
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
@@ -132,7 +133,8 @@
                                 	</nav>
                                 </nav>
                             </div>   
-                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                            
+                           <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                                 <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                                 	공지사항
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
@@ -144,7 +146,13 @@
                                     <a class="nav-link" href="admin_notice_insert_view.mdo">글 등록</a>
                                 	</nav>
                                 </nav>
-                            </div>                        
+                            </div>
+                            
+                            <a class="nav-link" href="adminInquiry.mdo">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                	문의사항
+                            </a>    
+                                                        
                            	<a class="nav-link" href="userMemberList.mdo">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 	고객관리
@@ -166,7 +174,7 @@
                     </div>
                 </nav>
             </div>
-            <!-- 기본 버튼 -->
+            <!-- 메인 페이지 -->
             
             <div id="layoutSidenav_content">
                 <main>
