@@ -42,8 +42,6 @@ public class AdminDAO {
 		return sqlSessionTemplate.selectOne("AdminDAO.viewUser", vo);
 	}
 	
-<<<<<<< HEAD
-=======
 	
 	// 회원 목록 가져오기
 	public List<UserVO> getUseList() {
@@ -71,7 +69,6 @@ public class AdminDAO {
 	}
 	
 	
->>>>>>> choi01
 	// 문의사항 게시글 목록 가져오기
 	public List<InquiryVO> getInquiryList(InquiryVO vo) {
 		return sqlSessionTemplate.selectList("AdminDAO.getInquiryList");
