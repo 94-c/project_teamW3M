@@ -135,7 +135,6 @@
                                    <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="admin_notice_list.mdo">글 상세보기</a>
                                     <a class="nav-link" href="userNotice.mdo">글 등록</a>
-                                    <a class="nav-link" href="#">글 수정</a>
                                 	</nav>
                                 </nav>
                             </div>
@@ -176,7 +175,7 @@
 					</ol>
 				</div>
 			</main>
-			<form role="form" method="post" action="insertNotice.do">
+			<form role="form" method="post" action="admin_notice_insert.mdo">
 				<div class="card-body">
 					<div class="form-group">
 						<label for="checked">중요 <input type="checkbox" id="nt_imp"
@@ -202,9 +201,9 @@
 					</div>
 
 					<button type="submit" class="btn btn-info "
-						onclick="location.href = 'insertNotice.do' ">등록하기</button>
+						onclick="location.href = 'admin_notice_insert.mdo' ">등록하기</button>
 					<button type="button" class="btn btn-secondary"
-						onclick="location.href = 'getNoticeList.do' ">목록으로</button>
+						onclick="location.href = 'admin_notice_list.mdo' ">목록으로</button>
 
 				</div>
 			</form>

@@ -84,10 +84,19 @@
                                 	</nav>
                                 </nav>
                             </div>   
-                            <a class="nav-link" href="userNotice.mdo">
-                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                                 	공지사항
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
+                            <div class="collapse" id="collapsePages" aria-labelledby="headingThree" data-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav accordion" id="notice">
+                                   <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="admin_notice_list.mdo">글 상세보기</a>
+                                    <a class="nav-link" href="admin_notice_insert_view.mdo">글 등록</a>
+                                	</nav>
+                                </nav>
+                            </div>
                             <a class="nav-link" href="adminInquiry.mdo">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 	문의사항

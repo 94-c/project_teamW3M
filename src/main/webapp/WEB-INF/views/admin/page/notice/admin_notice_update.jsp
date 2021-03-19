@@ -93,9 +93,8 @@
                             <div class="collapse" id="collapsePages" aria-labelledby="headingThree" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav accordion" id="notice">
                                    <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="#">글 상세보기</a>
-                                    <a class="nav-link" href="userNotice.mdo">글 등록</a>
-                                    <a class="nav-link" href="#">글 수정</a>
+                                    <a class="nav-link" href="admin_notice_list.mdo">글 상세보기</a>
+                                    <a class="nav-link" href="admin_notice_insert_view.mdo">글 등록</a>
                                 	</nav>
                                 </nav>
                             </div>

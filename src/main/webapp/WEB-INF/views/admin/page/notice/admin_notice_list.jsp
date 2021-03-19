@@ -95,8 +95,7 @@
                                 <nav class="sb-sidenav-menu-nested nav accordion" id="notice">
                                    <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="admin_notice_list.mdo">글 상세보기</a>
-                                    <a class="nav-link" href="userNotice.mdo">글 등록</a>
-                                    <a class="nav-link" href="#">글 수정</a>
+                                    <a class="nav-link" href="admin_notice_insert_view.mdo">글 등록</a>
                                 	</nav>
                                 </nav>
                             </div>
@@ -182,7 +181,7 @@
                                         	<c:forEach var="Notice" items="${noticeList}">
                                       		<tr>
                                       			<td class="text-center">${Notice.nt_seq}</td>
-												<td class="text-center">${Notice.nt_title}</td>
+												<td class="text-center"><a href='<c:url value='/admin_notice_content.mdo?nt_seq=${Notice.nt_seq}'/>' class="text-dark">${Notice.nt_title }</a></td>
 												<td class="text-center">${Notice.nt_writer}</td>
 												<td class="text-center"><fmt:formatDate value="${Notice.nt_date}" pattern="yyyy-MM-dd" /></td>
 												<td class="text-center">${Notice.nt_count}</td>

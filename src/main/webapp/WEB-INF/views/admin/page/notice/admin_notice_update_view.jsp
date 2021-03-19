@@ -29,9 +29,6 @@
 <script
 	src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"
 	crossorigin="anonymous"></script>
-<link type="text/css" rel="stylesheet"
-	href="resources/css/menu.css?t=201912021906">
-<link type="text/css" rel="stylesheet" href="resources/css/soo.css">
 </head>
 
 <body class="sb-nav-fixed">
@@ -163,65 +160,51 @@
 		</div>
 
 		<!-- 메인 페이지 -->
-
 		<div id="layoutSidenav_content">
 			<main>
 				<div class="container-fluid">
-					<h1 class="mt-4">공지사항</h1>
+					<h1 class="mt-4">공지 사항</h1>
 					<ol class="breadcrumb mb-4">
-						<div class="bbs-table-view">
-							<table summary="게시글 보기">
-								<caption>게시글 보기</caption>
-								<thead>
-									<tr>
-										<th><div class="tb-center">
-												<font size="2"> ${notice.nt_title } </font>
-											</div></th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td class="line">
-											<div class="cont-sub-des">
-												<div>
-													<span><em>Date :</em>
-													<fmt:formatDate value="${notice.nt_date}"
-															pattern="yyyy-MM-dd HH:mm:ss" /></span>
-												</div>
-												<div>
-													<span><em>Name :</em> ${notice.nt_writer }</span> <span><em>Hits
-															:</em> ${notice.nt_count }</span>
-												</div>
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											<div class="data-bd-cont">${notice.nt_content }</div>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-							<button type="submit" class="btn btn-info "
-								onclick="location.href = 'admin_notice_update_view.mdo?nt_seq=${notice.nt_seq}' ">수정하기</button>
-							<button type="submit" class="btn btn-info "
-								onclick="location.href = 'admin_notice_delete.mdo?nt_seq=${notice.nt_seq}' ">삭제하기</button>
-						</div>
-				</main>
-				<!-- 푸터 -->
-				<footer class="py-4 bg-light mt-auto">
-					<div class="container-fluid">
-						<div
-							class="d-flex align-items-center justify-content-between small">
-							<div class="text-muted">Copyright &copy; Your Website 2020</div>
-							<div>
-								<a href="#">Privacy Policy</a> &middot; <a href="#">Terms
-									&amp; Conditions</a>
-							</div>
+					</ol>
+				</div>
+			</main>
+			<input name="nt_seq" type="hidden" value="${getNotice.nt_seq}" />
+			<div class="card-body">
+				<form role="form" method="post"
+					action="admin_notice_update.mdo?nt_seq=${getNotice.nt_seq}">
+					<div class="form-group">
+						<label for="exampleFormControlInput1">제목</label> 
+						<input type="text" class="form-control" id="nt_title" name="nt_title"
+							value="${getNotice.nt_title }">
+					</div>
+					<div class="form-group">
+						<label for="exampleFormControlInput1">작성자</label> 
+						<input type="text" class="form-control" id="nt_writer" name="nt_writer"
+							value="${getNotice.nt_writer }" readonly>
+					</div>
+					<div class="form-group">
+						<label for="exampleFormControlTextarea1">내용</label>
+						<textarea class="form-control" id="nt_content" name="nt_content" rows="10">${getNotice.nt_content }</textarea>
+					</div>
+
+					<button type="submit" class="btn btn-info ">수정하기</button>
+					<button type="button" class="btn btn-secondary"
+						onclick="location.href = 'admin_notice_list.mdo' ">목록으로</button>
+				</form>
+			</div>
+			<!-- 푸터 -->
+			<footer class="py-4 bg-light mt-auto">
+				<div class="container-fluid">
+					<div
+						class="d-flex align-items-center justify-content-between small">
+						<div class="text-muted">Copyright &copy; Your Website 2020</div>
+						<div>
+							<a href="#">Privacy Policy</a> &middot; <a href="#">Terms
+								&amp; Conditions</a>
 						</div>
 					</div>
-				</footer>
-			</div>
+				</div>
+			</footer>
 		</div>
-	</body>
+</body>
 </html>
