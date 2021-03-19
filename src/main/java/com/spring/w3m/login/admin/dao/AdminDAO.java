@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import com.spring.w3m.inquiry.user.vo.InquiryVO;
 import com.spring.w3m.join.user.vo.UserVO;
 import com.spring.w3m.login.admin.vo.AdminVO;
+import com.spring.w3m.notice.admin.vo.NoticeVO;
 
 @Controller
 public class AdminDAO {
@@ -44,5 +45,10 @@ public class AdminDAO {
 	public List<InquiryVO> getInquiryList(InquiryVO vo) {
 		return sqlSessionTemplate.selectList("AdminDAO.getInquiryList");
 	}
+	
+	public List<NoticeVO> getNoticeList(NoticeVO vo) {
+		return sqlSessionTemplate.selectList("AdminDAO.getNoticeList");
+	}
+	
 	
 }

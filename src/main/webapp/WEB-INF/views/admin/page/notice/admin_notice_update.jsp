@@ -123,23 +123,59 @@
             </div>
 
             <!-- 메인 페이지 -->
-            
+            <div id="layoutSidenav_content">
+			<main>
+				<div class="container-fluid">
+					<h1 class="mt-4">공지 사항</h1>
+					<ol class="breadcrumb mb-4">
+					</ol>
+				</div>
+			</main>
+			<form role="form" method="post" action="insertNotice.do">
+				<div class="card-body">
+					<div class="form-group">
+						<label for="checked">중요 <input type="checkbox" id="nt_imp"
+							name="nt_imp" value="1" />
+						</label>
+					</div>
+					<div class="form-group">
+						<label for="exampleFormControlInput1">제목</label> <input
+							type="text" class="form-control" id="nt_title" name="nt_title"
+							placeholder="제목을 작성해주세요.">
+					</div>
 
+					<div class="form-group">
+						<label for="exampleFormControlInput1">작성자</label> <input
+							type="text" class="form-control" id="nt_writer" name="nt_writer"
+							value="관리자" readonly>
+					</div>
 
-	   <!-- 푸터 -->
-                <footer class="py-4 bg-light mt-auto">
-                    <div class="container-fluid">
-                        <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2020</div>
-                            <div>
-                                <a href="#">Privacy Policy</a>
-                                &middot;
-                                <a href="#">Terms &amp; Conditions</a>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
-            </div>
-        </div>
+					<div class="form-group">
+						<label for="exampleFormControlTextarea1">내용</label>
+						<textarea class="form-control" id="nt_content" name="nt_content"
+							rows="10"></textarea>
+					</div>
+
+					<button type="submit" class="btn btn-info "
+						onclick="location.href = 'insertNotice.do' ">등록하기</button>
+					<button type="button" class="btn btn-secondary"
+						onclick="location.href = 'getNoticeList.do' ">목록으로</button>
+
+				</div>
+			</form>
+			<!-- 푸터 -->
+			<footer class="py-4 bg-light mt-auto">
+				<div class="container-fluid">
+					<div
+						class="d-flex align-items-center justify-content-between small">
+						<div class="text-muted">Copyright &copy; Your Website 2020</div>
+						<div>
+							<a href="#">Privacy Policy</a> &middot; <a href="#">Terms
+								&amp; Conditions</a>
+						</div>
+					</div>
+				</div>
+			</footer>
+		</div>
     </body>
 </html>

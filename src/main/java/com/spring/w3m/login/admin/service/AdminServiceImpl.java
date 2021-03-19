@@ -11,6 +11,7 @@ import com.spring.w3m.inquiry.user.vo.InquiryVO;
 import com.spring.w3m.join.user.vo.UserVO;
 import com.spring.w3m.login.admin.dao.AdminDAO;
 import com.spring.w3m.login.admin.vo.AdminVO;
+import com.spring.w3m.notice.admin.vo.NoticeVO;
 
 @Service("AdminSerivce")
 public class AdminServiceImpl implements AdminService {
@@ -71,6 +72,11 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public List<InquiryVO> getInquiryList(InquiryVO vo) {
 		return dao.getInquiryList(vo);
+	}
+
+	@Override
+	public List<NoticeVO> getNoticeList(NoticeVO vo) {
+		return dao.getNoticeList(vo);
 	}
 
 }

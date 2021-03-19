@@ -14,6 +14,7 @@ import com.spring.w3m.inquiry.user.vo.InquiryVO;
 import com.spring.w3m.join.user.vo.UserVO;
 import com.spring.w3m.login.admin.service.AdminService;
 import com.spring.w3m.login.admin.vo.AdminVO;
+import com.spring.w3m.notice.admin.vo.NoticeVO;
 
 @Controller
 public class AdminLoginController {
@@ -76,10 +77,15 @@ public class AdminLoginController {
 	}
 	
 	//공지 사항
-	@RequestMapping("/userNotice.mdo")
-	public String userNotice() {
+	@RequestMapping("/admin_notice_list.mdo")
+	public String getNoticeList(NoticeVO vo, Model model) {
 		System.out.println("=== 공지사항 ===");
-		return "page/userNotice";
+		if(vo.getSearchCondition() == null) vo.setSearchCondition("nt_title");
+		if(vo.getSearchKeyword() == null) vo.setSearchKeyword("");
+		System.out.println("검색 조건 : " + vo.getSearchCondition());
+		System.out.println("검색 단어 : " + vo.getSearchKeyword());
+		model.addAttribute("noticeList", adminService.getNoticeList(vo));
+		return "page/notice/admin_notice_list";
 	}
 	
 	// 문의사항

@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.List" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@page import="com.spring.w3m.notice.admin.vo.NoticeVO" %>
+<%@page import="com.spring.w3m.login.admin.dao.AdminDAO" %>
     <head>
        <link rel="shortcut icon" href="resources/images/icons/favicon.ico" type="image/x-icon">
         <title>관리자 페이지</title>
@@ -49,19 +52,18 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                               	  홈
                             </a>
-                            <a class="nav-link" href="adminLogout.mdo">
+                            <a class="nav-link" href="login.mdo">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                               	  로그아웃
                             </a>
                             
                             <div class="sb-sidenav-menu-heading">관리자</div>
-                            
-                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                                 	상품
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
-                            <div class="collapse" id="collapsePages" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="#">상품 관리</a>
                                     <a class="nav-link" href="#">상품 재고 관리</a>
@@ -72,7 +74,7 @@
                             
                             
                             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
-                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                                 	주문
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
@@ -84,8 +86,7 @@
                                 	</nav>
                                 </nav>
                             </div>   
-                            
-                           <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                                 <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                                 	공지사항
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
@@ -93,18 +94,21 @@
                             <div class="collapse" id="collapsePages" aria-labelledby="headingThree" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav accordion" id="notice">
                                    <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="#">글 상세보기</a>
+                                    <a class="nav-link" href="admin_notice_list.mdo">글 상세보기</a>
                                     <a class="nav-link" href="userNotice.mdo">글 등록</a>
                                     <a class="nav-link" href="#">글 수정</a>
                                 	</nav>
                                 </nav>
                             </div>
-                                                        
+                            <a class="nav-link" href="adminInquiry.mdo">
+                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                	문의사항
+                            </a>                                   
                            	<a class="nav-link" href="userMemberList.mdo">
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                                 	고객관리
                             </a>
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="adminInquiry.mdo">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 	매출통계
                             </a>
@@ -121,12 +125,78 @@
                     </div>
                 </nav>
             </div>
-
-            <!-- 메인 페이지 -->
+            <!-- 기본 버튼 -->
             
-
-
-	   <!-- 푸터 -->
+            <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid">
+                        <h1 class="mt-4">관리자 페이지</h1>
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item active">코로나 탈출!!!</li>
+                        </ol>
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-table mr-1"></i>
+                                	공지사항
+                            </div>
+                            <div class="bbs-sch">
+							<form action="admin_notice_list.mdo" name="form2">
+								<input type="hidden" name="searchCondition" value="">  
+								<input type="hidden" name="seachKeyword" value=""> 
+								
+								<!-- .검색 폼시작 -->
+								<fieldset>
+									<label> 
+										<input type="radio" name="searchCondition" value="nt_title" onclick="checkOnlyOne(this)" 
+										checked="checked" class="MS_input_checkbox"> 제목
+									</label> 
+									<label> 
+										<input type="radio" name="searchCondition" value="nt_content" onclick="checkOnlyOne(this)" 
+										class="MS_input_checkbox"> 내용
+									</label> 
+									<span class="key-wrap"> 
+										<input type="text" name="searchKeyword" value="" class="MS_input_txt"> 
+										<a href="javascript:document.form2.submit();"> 
+											<img src="//image.makeshop.co.kr/makeshop/d3/basic_simple/bbs/btn_bbs_sch.gif"
+											alt="검색" title="검색">
+										</a>
+									</span>
+								</fieldset>
+							</form>
+							<!-- .검색 폼 끝 -->
+						</div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                       <thead>
+                                            <tr>
+                                                <th class="text-center">NO.</th>
+                                                <th class="text-center">제목</th>
+                                                <th class="text-center">작성자</th>
+                                                <th class="text-center">날짜</th>
+                                                <th class="text-center">조회수</th>     
+                                            </tr>
+                                        </thead>
+                                   
+                                        <tbody>
+                                        	<c:forEach var="Notice" items="${noticeList}">
+                                      		<tr>
+                                      			<td class="text-center">${Notice.nt_seq}</td>
+												<td class="text-center">${Notice.nt_title}</td>
+												<td class="text-center">${Notice.nt_writer}</td>
+												<td class="text-center"><fmt:formatDate value="${Notice.nt_date}" pattern="yyyy-MM-dd" /></td>
+												<td class="text-center">${Notice.nt_count}</td>
+                                      		</tr>
+                                      		</c:forEach>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+                
+                <!-- 푸터 -->
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid">
                         <div class="d-flex align-items-center justify-content-between small">
@@ -142,4 +212,18 @@
             </div>
         </div>
     </body>
+<script type="text/javascript">
+function checkOnlyOne(element) {
+	  
+	  const checkboxes 
+	      = document.getElementsByName("searchCondition");
+	  
+	  checkboxes.forEach((cb){
+	    cb.checked = false;
+	  })
+	  
+	  element.checked = true;
+	}
+</script>
 </html>
+

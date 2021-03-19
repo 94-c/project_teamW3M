@@ -91,4 +91,29 @@
 		<result property="inq_pass" column="inq_pass" />
 		<result property="inq_cnt" column="inq_cnt" />
 	</resultMap>
+	
+	
+	<resultMap type="NoticeVO" id="noticeResult">
+		<id property="nt_seq" column="nt_seq" />
+		<result property="nt_title" column="nt_title" />
+		<result property="nt_writer" column="nt_writer" />
+		<result property="nt_content" column="nt_content" />
+		<result property="nt_date" column="nt_date" />
+		<result property="nt_count" column="nt_count" />
+	</resultMap>
+	
+	<select id="getNoticeList" resultMap="noticeResult">
+		SELECT * FROM notice
+		WHERE 1=1
+		<if test="searchCondition=='nt_title'">
+			AND nt_title LIKE '%'||#{searchKeyword}||'%'
+		</if>
+		<if test="searchCondition=='nt_content'">
+			AND nt_content LIKE '%'||#{searchKeyword}||'%'
+		</if>
+		order by nt_seq desc
+	</select>
+	
+	
+	
 </mapper>

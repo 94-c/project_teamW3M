@@ -49,12 +49,38 @@
 	
 	<update id="NoticeCntUpdate" parameterType="NoticeVO"> update notice set nt_count=nt_count+1 WHERE nt_seq=#{nt_seq} </update>
 	
+	
+	
 	<select id="getNoticeListCnt" resultType="int">
 		SELECT COUNT(*) from notice
 	</select>
 	
 	<select id="getPageList" resultType="NoticeVO">
 		SELECT * FROM notice ORDER BY nt_seq LIMIT #{listSize} OFFSET #{startList}
+	</select>
+	
+	<select id="getSearchPagingList" resultType="NoticeVO">
+		select * from notice
+		WHERE 1=1
+		<if test="searchCondition=='nt_title'">
+			AND nt_title LIKE '%'||#{searchKeyword}||'%'
+		</if>
+		<if test="searchCondition=='nt_content'">
+			AND nt_content LIKE '%'||#{searchKeyword}||'%'
+		</if>
+		ORDER BY nt_seq
+		LIMIT #{listSize} OFFSET#{startList} 
+	</select>
+	
+	<select id="getSearchCnt" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM notice 
+		WHERE 1=1
+		<if test="searchCondition=='nt_title'">
+			AND nt_title LIKE '%'||#{searchKeyword}||'%'
+		</if>
+		<if test="searchCondition=='nt_content'">
+			AND nt_content LIKE '%'||#{searchKeyword}||'%'
+		</if>
 	</select>
 	
 </mapper>

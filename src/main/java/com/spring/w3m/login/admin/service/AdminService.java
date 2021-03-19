@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 import com.spring.w3m.inquiry.user.vo.InquiryVO;
 import com.spring.w3m.join.user.vo.UserVO;
 import com.spring.w3m.login.admin.vo.AdminVO;
+import com.spring.w3m.notice.admin.vo.NoticeVO;
 
 public interface AdminService {
 	
@@ -23,4 +24,6 @@ public interface AdminService {
 	AdminVO viewAdmin(AdminVO vo);
 	
 	void logout(HttpSession session);
+	
+	List<NoticeVO> getNoticeList(NoticeVO vo);
 }
