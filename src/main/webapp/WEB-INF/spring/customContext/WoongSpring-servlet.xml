@@ -25,7 +25,8 @@
 	</beans:bean>
 
 	<!-- 홈 컨트롤러 -->
-	<context:component-scan
-		base-package="com.spring.w3m.join.*" />
+	<context:component-scan base-package="com.spring.w3m.join.*" />
+	<context:component-scan base-package="com.spring.w3m.product.user.*" />
+		
 
 </beans:beans>

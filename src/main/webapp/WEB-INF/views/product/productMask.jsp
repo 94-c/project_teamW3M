@@ -12,7 +12,7 @@
 			<dt class="blind">현재 위치</dt>
 			<dd>
 				<a href="/">홈</a> &gt; 
-				<a href="/shop/shopbrand.html?xcode=023&amp;type=X">웰킵스 미세먼지마스크</a>
+				<a href="/productMask.do">웰킵스 미세먼지마스크</a>
 			</dd>
 		</dl>
 	</div>

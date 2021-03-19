@@ -113,14 +113,14 @@
 			<div class="section1">
 				<ul id="left_menu">
 					<!-- 카테고리 자동출력 -->
-					<li><a href="#" class="">웰킵스 미세먼지마스크</a>
+					<li><a href="productMask.do" class="">W3M 미세먼지마스크</a>
 						<ul class="sub1" style="display: none;">
 							<li><a href="#" class="">- 프리미엄마스크</a></li>
 							<li><a href="#">- 스마트마스크</a></li>
 							<li><a href="#">- 리얼블랙마스크</a></li>
 						</ul>
 					</li>
-					<li><a href="#" class="">웰킵스 비말차단마스크</a>
+					<li><a href="#" class="">W3M 비말차단마스크</a>
 						<ul class="sub1" style="display: none;">
 							<li><a href="#">- 웰킵스언택트마스크</a></li>
 						</ul>
