@@ -35,7 +35,8 @@ public class UserInfoFindController {
 	}
 	
 	@RequestMapping("/findPW.do")
-	public String findPwByPhone() {
+	public String findPwByPhone(UserVO vo, Model model) {
+		
 		return "login/findPW_result";
 	}
 }

@@ -11,4 +11,6 @@ public interface UserInfoFindService {
 	public String encodedId(String dbId);
 	
 	public String addBarToNumber(String inputNumber);
+	
+	public String selectEmail(UserVO vo);
 }

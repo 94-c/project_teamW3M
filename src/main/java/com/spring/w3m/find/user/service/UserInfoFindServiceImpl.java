@@ -27,6 +27,14 @@ public class UserInfoFindServiceImpl implements UserInfoFindService {
 		return encodedIdList;
 	}
 	
+	@Override //ID와 폰번호 입력받아서 이메일주소 리턴하는 메서드
+	public String selectEmail(UserVO vo) {
+		String barNumber = addBarToNumber(vo.getUser_phone());
+		vo.setUser_phone(barNumber);
+		String email = findDAO.selectEmail(vo);
+		return null;
+	}
+	
 	@Override //아이디 가공하는 메서드(순수 자바코드)
 	public String encodedId(String dbId) {				
 		int idCount = dbId.length();
@@ -44,5 +52,5 @@ public class UserInfoFindServiceImpl implements UserInfoFindService {
 		String barNumber = new String(sb);
 		return barNumber;
 	}
-	
+
 }

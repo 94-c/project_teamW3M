@@ -17,4 +17,7 @@ public class UserInfoFindDAO {
 		return sqlSessionTemplate.selectList("user.findIdByPhone", vo);
 	}
 	
+	public String selectEmail(UserVO vo) {
+		return sqlSessionTemplate.selectOne("user.selectEmail", vo);
+	}
 }

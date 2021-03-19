@@ -22,4 +22,10 @@
 		SELECT user_id FROM user_member 
 		WHERE user_name = #{user_name} AND user_phone = #{user_phone}
 	</select>
+	
+	<select id="selectEmail" resultType="String">
+		SELECT user_email FROM user_member
+		WHERE user_id = #{user_id} AND user_phone = #{user_phone}
+	</select>
+	
 </mapper>
