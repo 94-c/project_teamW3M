@@ -11,7 +11,7 @@
                     <div id="find_Success">
                                 <dl>
                                 	<c:if test="${userIdList.size() == 0 }">
-                                	    <p style="color:red; font-size: 20px;">입력된 정보와 일치하는 아이디가 존재하지 않습니다.</p>
+                                	    <p style="color:red; font-size: 20px;">입력하신 정보와 일치하는 아이디가 존재하지 않습니다.</p>
                                     </c:if>
                                     <c:if test="${userIdList.size() != 0 }">
                                 	    <dt>${userIdList}</dt>

@@ -2,42 +2,7 @@
 	pageEncoding="UTF-8"%>
 <title>아이디/패스워드 찾기</title>
 <%@include file="/WEB-INF/views/include/header.jsp"%>
-<script type="text/javascript">
-$(document).ready(function(){		
-	//var input_name = $("#find_id_name_wrap").children();		
-	//var input_phone = $("#find_id_mobile_wrap").children();
-	//var phoneNumber = input_phone.val();
-	//var name = input_name.val();
-	//var phoneNumber_ck = RegExp(/^([0-9]{11})$/);
-	// name_ck = RegExp(/^[가-힣]{2,6}$/);
-	
-		$(".findPW_btn").click(function(e){
-			e.preventDefault();
-			/*if(input_name.val() == ""){
-				alert("이름을 입력해주세요");
-				input_name.focus();
-				return;
-			}
-			if(!(name_ck.test($("#find_id_name_wrap").children().val()))){
-				alert("이름을 확인해주세요. 한글이름만 가능합니다.");
-				input_name.focus();
-				console.log($("#find_id_name_wrap").children().val());
-				return;
-			}
-			if(input_phone.val() == ""){
-				alert("휴대폰 번호를 입력해주세요");
-				input_phone.focus();
-				return;
-			}
-			if(!(phoneNumber_ck.test($("#find_id_mobile_wrap").children().val()))){
-				alert("'-'(하이픈)을 제외한 11자리의 휴대폰 번호를 입력해 주세요.");
-				input_phone.focus();
-				return;
-			}*/
-			$(".findIdPwForm").submit();
-		});
-});
-</script>
+
 <div id="contentWrapper">
 	<div id="contentWrap">
 		<div id="content">
@@ -66,7 +31,7 @@ $(document).ready(function(){
 						<div class="find-info">
 							<ul class="frm-list">
 								<li id="find_id_name_wrap">
-									<input type="text" name="user_name" placeholder="이름" onfocus="this.placeholder=''" onblur="this.placeholder='이름'" maxlength="20"/>
+									<input type="text" name="user_name" placeholder="이름" onfocus="this.placeholder=''" onblur="this.placeholder='이름'" maxlength="6"/>
 								</li>
 								<!-- <li id="find_id_email_wrap">
 									<input type="text" name="user_email" placeholder="이메일" onfocus="this.placeholder=''" onblur="this.placeholder='이메일'" maxlength="40"/>
@@ -111,7 +76,7 @@ $(document).ready(function(){
 						<div id="find_pw_input_wrap">
 							<div class="find-info">
 								<ul class="frm-list">
-									<li>
+									<li id="find_pw_id_wrap">
 										<input type="text" name="user_id" placeholder="아이디" onfocus="this.placeholder=''" onblur="this.placeholder='아이디'" maxlength="20"/>
 									</li>
 									
@@ -119,7 +84,7 @@ $(document).ready(function(){
 										<input type="text" name="user_email" placeholder="이메일" onfocus="this.placeholder=''" onblur="this.placeholder='이메일'" maxlength="40"/>
 									</li> -->
 									
-									<li id="find_id_mobile_wrap">
+									<li id="find_pw_mobile_wrap">
 										<input type="text" name="user_phone" placeholder="휴대폰 번호 (ex.01012345678)" onfocus="this.placeholder=''" onblur="this.placeholder='휴대폰 번호(ex.01012345678)'" maxlength="11"/>
 									</li>
 								</ul>

@@ -55,13 +55,12 @@ function logoutAlert(){
 	};
 	
 /* ID&PW찾기 관련 스크립트 */
-$(document).ready(function(){		
+$(document).ready(function(){ //ID찾기
 	var input_name = $("#find_id_name_wrap").children();		
 	var input_phone = $("#find_id_mobile_wrap").children();
-	var phoneNumber = input_phone.val();
-	var name = input_name.val();
-	var phoneNumber_ck = RegExp(/^([0-9]{11})$/);
-	var name_ck = RegExp(/^[가-힣]{2,6}$/);
+
+	var phoneNum_ck = RegExp(/^([0-9]{11})$/); //폰번호형식 검사
+	var name_ck = RegExp(/^[가-힣]{2,6}$/); //이름형식 검사
 	
 		$(".findID_btn").click(function(e){
 			e.preventDefault();
@@ -70,10 +69,9 @@ $(document).ready(function(){
 				input_name.focus();
 				return;
 			}
-			if(!(name_ck.test($("#find_id_name_wrap").children().val()))){
-				alert("이름을 확인해주세요. 한글이름만 가능합니다.");
+			if(!name_ck.test(input_name.val())){
+				alert("2~6자 사이의 이름을 입력해주세요. 한글이름만 가능합니다.");
 				input_name.focus();
-				console.log($("#find_id_name_wrap").children().val());
 				return;
 			}
 			if(input_phone.val() == ""){
@@ -81,11 +79,43 @@ $(document).ready(function(){
 				input_phone.focus();
 				return;
 			}
-			if(!(phoneNumber_ck.test($("#find_id_mobile_wrap").children().val()))){
+			if(!phoneNum_ck.test(input_phone.val())){
 				alert("'-'(하이픈)을 제외한 11자리의 휴대폰 번호를 입력해 주세요.");
 				input_phone.focus();
 				return;
 			}
 			$(".findIdForm").submit();
+		});
+});
+$(document).ready(function(){ //PW찾기
+	var input_id = $("#find_pw_id_wrap").children();
+	var input_phone = $("#find_pw_mobile_wrap").children();
+
+	var id_ck = RegExp(/^[A-Za-z0-9_\-]{5,20}$/); //아이디형식 검사
+	var phoneNum_ck = RegExp(/^([0-9]{11})$/); //폰번호형식 검사
+	
+		$(".findPW_btn").click(function(e){
+			e.preventDefault();
+			if(input_id.val() == ""){
+				alert("ID를 입력해주세요");
+				input_id.focus();
+				return;
+			}
+			if(!id_ck.test(input_id.val())){
+				alert("5~20자 사이의 아이디를 입력해주세요.");
+				input_id.focus();
+				return;
+			}
+			if(input_phone.val() == ""){
+				alert("휴대폰 번호를 입력해주세요");
+				input_phone.focus();
+				return;
+			}
+			if(!phoneNum_ck.test(input_phone.val())){
+				alert("'-'(하이픈)을 제외한 11자리의 휴대폰 번호를 입력해 주세요.");
+				input_phone.focus();
+				return;
+			}
+			$(".findPwForm").submit();
 		});
 });
