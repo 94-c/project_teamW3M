@@ -17,18 +17,16 @@ function enterkey() {
         	}else{
         		return;
         	}      	
-        }        
+        }
 };
 function emptyCheck(){
-	var userId = $("#user_id").val();
-	var userPw = $("#user_password").val();
 	
-	if(userId == ""){
+	if($("#user_id").val() == ""){
 		alert("아이디를 입력하세요");
 		$("#user_id").focus();
 		return;
 	}
-	else if(userPw == ""){
+	else if($("#user_password").val() == ""){
 		alert("비밀번호를 입력하세요");
 		$("#user_password").focus();
 		return;
