@@ -10,6 +10,7 @@ import com.spring.w3m.inquiry.user.vo.InquiryVO;
 import com.spring.w3m.join.user.vo.UserVO;
 import com.spring.w3m.login.admin.vo.AdminVO;
 import com.spring.w3m.notice.admin.vo.NoticeVO;
+import com.spring.w3m.paging.common.Pagination;
 
 @Controller
 public class AdminDAO {
@@ -40,6 +41,27 @@ public class AdminDAO {
 	public List<UserVO> getUseList() {
 		return sqlSessionTemplate.selectList("AdminDAO.userList");
 	}
+	
+	public int getUserListCnt() {
+		System.out.println("getUserListCnt() 실행");
+		return sqlSessionTemplate.selectOne("AdminDAO.getUserListCnt");
+	}
+	
+	public List<UserVO> getPageList(Pagination pagination){
+		System.out.println("getPageList() 실행");
+		return sqlSessionTemplate.selectList("AdminDAO.getPageList", pagination);
+	}
+	
+	public int getSearchCnt(String searchKeyword) {
+		System.out.println("getSearchCnt() 실행");
+		return sqlSessionTemplate.selectOne("AdminDAO.getSearchKeyword");
+	}
+	
+	public List<UserVO> getSearchPagingList(Pagination pagination){
+		System.out.println("getSearchPagingList() 실행");
+		return sqlSessionTemplate.selectList("AdminDAO.getSearchPagingList");
+	}
+	
 	
 	// 문의사항 게시글 목록 가져오기
 	public List<InquiryVO> getInquiryList(InquiryVO vo) {
