@@ -198,10 +198,10 @@
                                 <i class="fas fa-table mr-1"></i>
                                 	고객 현황
                             </div>
-                            <div class="card-body">
+                         <div class="card-body">
                                 <div class="table-responsive">
-                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                       <thead>
+                                    <table class="table table-bordered" width="100%" cellspacing="0">
+                                        <thead>
                                             <tr>
                                                 <th class="text-center">아이디</th>
                                                 <th class="text-center">이름</th>

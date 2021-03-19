@@ -12,6 +12,8 @@ import com.spring.w3m.join.user.vo.UserVO;
 import com.spring.w3m.login.admin.dao.AdminDAO;
 import com.spring.w3m.login.admin.vo.AdminVO;
 import com.spring.w3m.notice.admin.vo.NoticeVO;
+import com.spring.w3m.paging.common.Pagination;
+import com.spring.w3m.paging.common.Search;
 
 @Service("AdminSerivce")
 public class AdminServiceImpl implements AdminService {
@@ -26,8 +28,8 @@ public class AdminServiceImpl implements AdminService {
 
 	// 회원 데이터 가져오기
 	@Override
-	public List<UserVO> getUserList(UserVO vo) {
-		return dao.getUseList(vo);
+	public List<UserVO> getUserList( ) {
+		return dao.getUserList();
 	}
 	
 	@Override
@@ -103,6 +105,26 @@ public class AdminServiceImpl implements AdminService {
 	public void admin_notice_insert(NoticeVO vo) {
 		dao.admin_notice_insert(vo);
 		
+	}
+
+	@Override
+	public int getUserListCnt(Search search) {
+		return dao.getUserListCnt(search);
+	}
+
+	@Override
+	public List<UserVO> getPageList(Search search) {
+		return dao.getPageList(search);
+	}
+
+	@Override
+	public int getSearchCnt(String searchKeyword) {
+		return dao.getSearchCnt(searchKeyword);
+	}
+
+	@Override
+	public List<UserVO> getSearchPagingList(Pagination pagination) {
+		return dao.getSearchPagingList(pagination);
 	}
 
 }

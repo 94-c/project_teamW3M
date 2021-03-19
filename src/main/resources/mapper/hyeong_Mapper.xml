@@ -28,15 +28,55 @@
 		select * from admin_user 
 	</select>
 	
+	
+	<select id="getUserList" resultType="UserVO">
+	select * from user_member 
+	</select> 
+	
+	
 	<select id="getUserListCnt" resultType="int">
 		select count(*) from user_member
 	</select>
 	
-	<select id="getPageList" resultType="user">
-		
+	<!-- 페이징 처리 후 게시글 조회 -->
+	<select id="getPageList" resultType="UserVO">
+		select
+			user_id,
+			user_name,
+			user_birthday,
+			user_gender,
+			user_address1,
+			user_phone,
+			user_join_date,
+			user_state
+		from user_member
+		where 1=1
+		<if test="searchType=='user_id' and keyword != null and keyword != '' ">
+			AND user_id like CONCAT('%', #{keyword}, '%')
+		</if>
+		<if test="searchType=='user_name' and keyword != null and keyword != '' ">
+			AND user_name like CONCAT('%', #{keyword}, '%')
+		</if>
+		order by user_id
+		limit #{listSize} offset #{startList}
 	</select>	
-		
-	<select resultMap="userResult" id="userList">
+	
+	<select id="getSearchCnt" parameterType="String" resultType="int">
+		select count(*) from user_member
+	<trim prefix="WHERE" prefixOverrides="AND|OR">
+	<if test="keyword != null and keyword != '' ">
+			<if test="searchType=='user_id'">
+				AND user_id like CONCAT('%', #{keyword}, '%')
+			</if>
+
+			<if test="searchType=='user_name'">
+				AND user_name like CONCAT('%', #{keyword}, '%')
+			</if>
+      </if>
+	</trim>
+	</select>
+	
+	<select id="getSearchPagingList" resultType="UserVO">
 		SELECT * FROM user_member where 1=1
 		<if test="searchCondition == 'user_id'">
 			AND user_id LIKE '%'||#{searchKeyword}||'%'
@@ -45,8 +85,8 @@
 			AND user_name LIKE '%'||#{searchKeyword}||'%'
 		</if>
 		order by user_seq desc
-			
 	</select>
+	<!-- 여기까지 페이징 처리 -->
 	
 	<select id="loginCheck" resultType="String">
 		SELECT admin_name FROM admin_user 
@@ -64,24 +104,6 @@
 	<select id="pwCheck" resultType="String">
 		SELECT admin_password FROM admin_user WHERE admin_id = #{admin_id}
 	</select>
-	
-
-	<!-- 페이징 처리 후 게시글 조회 -->
-	<select id="getUserList" resultType="UserVO">
-		<![CDATA[select
-			user_id,
-			user_name,
-			user_birthday,
-			user_gender,
-			user_address1,
-			user_phone,
-			user_join_date,
-			user_state
-		from user_member
-		order by user_id
-		OFFSET 0 limit 10;
-		]]>
-	</select> 
 	
 	<!-- 문의사항 리스트 보기 -->
 	<select id="getInquiryList" resultMap="inquiryResult">

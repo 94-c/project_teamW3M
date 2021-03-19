@@ -1,12 +1,17 @@
 package com.spring.w3m.login.admin.controller;
 
+import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
+import org.postgresql.util.PSQLException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.w3m.inquiry.user.vo.InquiryVO;
@@ -14,6 +19,8 @@ import com.spring.w3m.join.user.vo.UserVO;
 import com.spring.w3m.login.admin.service.AdminService;
 import com.spring.w3m.login.admin.vo.AdminVO;
 import com.spring.w3m.notice.admin.vo.NoticeVO;
+import com.spring.w3m.paging.common.Pagination;
+import com.spring.w3m.paging.common.Search;
 
 @Controller
 public class AdminLoginController {
@@ -29,17 +36,18 @@ public class AdminLoginController {
 	}
 
 	@RequestMapping("/loginIndex.mdo")
-	public String loginIndex(AdminVO vo, UserVO vo1, Model model, HttpSession session) {
-		model.addAttribute("userList", adminService.getUserList(vo1));
+	public String loginIndex(AdminVO vo, Model model, HttpSession session) {
+		model.addAttribute("userList", adminService.getUserList());
 		return "page/index";
 
 	}
 
 	// 관리자 페이지
 	@RequestMapping("/index.mdo")
-	public String index(AdminVO vo, UserVO vo1, Model model, HttpSession session) {
+	public String index(AdminVO vo,  Model model, HttpSession session) {
 		// 회원관리 리스트
-		model.addAttribute("userList", adminService.getUserList(vo1));
+		model.addAttribute("userList", adminService.getUserList());
+		
 		boolean result = adminService.loginCheck(vo, session);
 		// 관리자 로그인 유효성
 		AdminVO voo = adminService.getAdmin();
@@ -61,15 +69,31 @@ public class AdminLoginController {
 
 	// 고객 관리
 	@RequestMapping("/userMemberList.mdo")
-	public String userMembeList(UserVO vo, Model model) {
+	public String userMembeList(Model model,
+								@RequestParam(required = false, defaultValue = "1") int page,
+								@RequestParam(required = false, defaultValue = "1") int range,
+								@RequestParam(required = false, defaultValue = "title") String searchType,
+								@RequestParam(required = false) String keyword) throws PSQLException, IOException {
 		System.out.println("=== 고객관리 ===");
-		if (vo.getSearchCondition() == null)
-			vo.setSearchCondition("nt_title");
-		if (vo.getSearchKeyword() == null)
-			vo.setSearchKeyword("");
-		System.out.println("검색 조건 : " + vo.getSearchCondition());
-		System.out.println("검색 단어 : " + vo.getSearchKeyword());
-		model.addAttribute("userList", adminService.getUserList(vo));
+		
+		Search search = new Search();
+		search.setSearchType(searchType);
+		search.setKeyword(keyword);
+
+		int cnt = adminService.getUserListCnt(search);
+		
+		search.pageInfo(page, range, cnt);
+		
+		//Pagination
+		Pagination pagination = new Pagination();
+		pagination.pageInfo(page, range, cnt);
+		
+		List<UserVO> pageList = adminService.getPageList(search);
+		
+		model.addAttribute("pagination", search);
+		model.addAttribute("userList", pageList);
+		model.addAttribute("cnt", cnt);
+		
 		return "page/userMemberList";
 	}
 
