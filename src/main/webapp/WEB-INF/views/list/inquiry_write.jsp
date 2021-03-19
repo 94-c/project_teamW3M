@@ -63,7 +63,7 @@
 											<th><div>파일</div></th>
 											<td colspan="3">
 												<div>
-													<input type="file" name="uploadFile">
+													<input type="file" name="uploadFile" value="파일추가">
 												</div>
 											</td>
 										</tr>

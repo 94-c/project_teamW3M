@@ -78,9 +78,7 @@
 											<td scope="col"><div class="tb-center">${inquiryVO.inq_seq}</div></td>
 											<td scope="col"><div class="tb-center">&nbsp;</div></td>
 											<td scope="col"><div class="tb-center">
-													<a
-														href='<c:url value='/inquiryContent.do?inq_seq=${inquiryVO.inq_seq}'/>'
-														class="text-dark">${inquiryVO.inq_title}
+													<a href='<c:url value='/inquiryContent.do?inq_seq=${inquiryVO.inq_seq}'/>' class="text-dark">${inquiryVO.inq_title}
 												</div></td>
 											<td scope="col"><div class="tb-center">
 													<c:if
