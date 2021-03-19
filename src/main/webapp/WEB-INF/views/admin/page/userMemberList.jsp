@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.List" %>
-<%@page import="com.spring.w3m.join.user.vo.UserVO"%>
-<%@page import="com.spring.w3m.login.admin.dao.AdminDAO"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
@@ -128,28 +126,6 @@
                                	고객 관리
                             </div>
                             
-                            <form action="userMemberList.mdo" method="get">
-								<input type="hidden" name="searchCondition" value="">  
-								<input type="hidden" name="seachKeyword" value=""> 
-								
-								<!-- .검색 폼시작 -->
-								<fieldset>
-									<label> 
-										<input type="radio" name="searchCondition" value="user_id" onclick="checkOnlyOne(this)" 
-										checked="checked" class="MS_input_checkbox"> 아이디
-									</label> 
-									<label> 
-										<input type="radio" name="searchCondition" value="user_name" onclick="checkOnlyOne(this)" 
-										class="MS_input_checkbox"> 이름
-									</label> 
-									<span class="key-wrap"> 
-										<input type="text" name="searchKeyword" value="" class="MS_input_txt"> 
-										<a href="javascript:document.form1.submit();"> 
-											<img src="//image.makeshop.co.kr/makeshop/d3/basic_simple/bbs/btn_bbs_sch.gif"
-											alt="검색" title="검색">
-										</a>
-									</span>
-						
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table table-bordered" width="100%" cellspacing="0">
@@ -207,18 +183,4 @@
             </div>
         </div>
     </body>
-<script type="text/javascript">
-function checkOnlyOne(element) {
-	  
-	  const checkboxes 
-	      = document.getElementsByName("searchCondition");
-	  
-	  checkboxes.forEach((cb){
-	    cb.checked = false;
-	  })
-	  
-	  element.checked = true;
-	}
-</script>
-
 </html>

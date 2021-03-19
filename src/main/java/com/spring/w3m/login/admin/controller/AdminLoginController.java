@@ -32,18 +32,27 @@ public class AdminLoginController {
 	
 	
 	@RequestMapping("/loginIndex.mdo")
-	public String loginIndex(AdminVO vo, UserVO vo1, Model model, HttpSession session) {
-		model.addAttribute("userList", adminService.getUserList(vo1));
+	public String loginIndex(AdminVO vo, Model model, HttpSession session) {
+		model.addAttribute("userList", adminService.getUserList());
 		return "page/index";
-			
+	}
+	
+	// 관리자 로그아웃 세션
+	@RequestMapping("/adminLogout.mdo")
+	public ModelAndView userLogout(HttpSession session) {
+		adminService.logout(session);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("login");
+		mav.addObject("msg", "logout");
+		return mav;
 	}
 	
 	
 	//관리자 페이지
 	@RequestMapping("/index.mdo")
-	public String index(AdminVO vo, UserVO vo1, Model model, HttpSession session) {
+	public String index(AdminVO vo, Model model, HttpSession session) {
 		//회원관리 리스트
-		model.addAttribute("userList", adminService.getUserList(vo1));
+		model.addAttribute("userList", adminService.getUserList());
 		boolean result = adminService.loginCheck(vo, session);
 		//관리자 로그인 유효성
 		AdminVO voo = adminService.getAdmin();
@@ -66,13 +75,9 @@ public class AdminLoginController {
 	
 	// 고객 관리
 	@RequestMapping("/userMemberList.mdo")
-	public String userMembeList(UserVO vo, Model model)  {
+	public String userMembeList(Model model)  {
 	System.out.println("=== 고객관리 ===");
-	if(vo.getSearchCondition() == null) vo.setSearchCondition("nt_title");
-	if(vo.getSearchKeyword() == null) vo.setSearchKeyword("");
-	System.out.println("검색 조건 : " + vo.getSearchCondition());
-	System.out.println("검색 단어 : " + vo.getSearchKeyword());
-	model.addAttribute("userList", adminService.getUserList(vo));
+	model.addAttribute("userList", adminService.getUserList());
 	return "page/userMemberList";
 	}
 	
@@ -96,13 +101,6 @@ public class AdminLoginController {
 		return "page/adminInquiry";
 	}
 
-	@RequestMapping("/adminLogout.mdo")
-	public ModelAndView userLogout(HttpSession session) {
-		adminService.logout(session);
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("login");
-		mav.addObject("msg", "logout");
-		return mav;
-	}
+
 
 }

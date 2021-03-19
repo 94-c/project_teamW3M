@@ -23,25 +23,19 @@ public class AdminServiceImpl implements AdminService {
 	public AdminVO getAdmin() {
 		return dao.getAdmin();		
 	}
-
-	// 회원 데이터 가져오기
-	@Override
-	public List<UserVO> getUserList(UserVO vo) {
-		return dao.getUseList(vo);
-	}
 	
+	// 관리자 로그인 
 	@Override
 	public boolean loginCheck(AdminVO vo, HttpSession session) {
 		String dbPw = dao.pwCheck(vo);
 		boolean pwResult = vo.getAdmin_password().equals(dbPw);
-		
 		if(pwResult) {
 			System.out.println("비번 일치");
 			vo.setAdmin_password(dbPw);
 		}else {
 			System.out.println("비번 불일치");
 		}
-		
+			
 		boolean result = dao.loginCheck(vo);
 		if(result) { //true일 경우 세션에 등록
 			AdminVO admin = viewAdmin(vo);
@@ -52,7 +46,7 @@ public class AdminServiceImpl implements AdminService {
 		}
 		return result;
 	}
-
+	
 	@Override
 	public AdminVO viewAdmin(AdminVO vo) {
 		return dao.viewAdmin(vo);
@@ -68,12 +62,22 @@ public class AdminServiceImpl implements AdminService {
 		session.invalidate();
 	}
 	
+	
+	
+	// 회원 데이터 가져오기
+	@Override
+	public List<UserVO> getUserList() {
+		return dao.getUseList();
+	}
+	
+
 	// 문의사항 게시글 불러오기
 	@Override
 	public List<InquiryVO> getInquiryList(InquiryVO vo) {
 		return dao.getInquiryList(vo);
 	}
-
+	
+	// 공지사항 게시글 불러오기
 	@Override
 	public List<NoticeVO> getNoticeList(NoticeVO vo) {
 		return dao.getNoticeList(vo);

@@ -11,19 +11,21 @@ import com.spring.w3m.notice.admin.vo.NoticeVO;
 
 public interface AdminService {
 	
+	//관리자 계정
 	public AdminVO getAdmin();
+	//관리자 로그인 체크
+	boolean loginCheck(AdminVO vo, HttpSession session);
+	
+	AdminVO viewAdmin(AdminVO vo);
+	//관리자 로그아웃 체크
+	void logout(HttpSession session);
 	
 	//회원 목록 리스트
-	List<UserVO> getUserList(UserVO vo);
+	List<UserVO> getUserList();
 	
 	// 문의사항 게시글 리스트
 	List<InquiryVO> getInquiryList(InquiryVO vo);
 	
-	boolean loginCheck(AdminVO vo, HttpSession session);
-	
-	AdminVO viewAdmin(AdminVO vo);
-	
-	void logout(HttpSession session);
-	
+	// 공지사항 게시글 리스트
 	List<NoticeVO> getNoticeList(NoticeVO vo);
 }
