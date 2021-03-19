@@ -22,4 +22,15 @@
 		SELECT user_id FROM user_member 
 		WHERE user_name = #{user_name} AND user_phone = #{user_phone}
 	</select>
+	
+	<select id="selectEmail" resultType="com.spring.w3m.join.user.vo.UserVO">
+		SELECT * FROM user_member
+		WHERE user_id = #{user_id} AND user_phone = #{user_phone}
+	</select>
+	
+	<update id="updateTempPw">
+		UPDATE user_member SET user_password = #{user_password}
+		WHERE user_id = #{user_id} AND user_phone = #{user_phone} 
+	</update>
+	
 </mapper>

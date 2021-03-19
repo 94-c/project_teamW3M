@@ -11,4 +11,10 @@ public interface UserInfoFindService {
 	public String encodedId(String dbId);
 	
 	public String addBarToNumber(String inputNumber);
+	
+	public UserVO selectEmail(UserVO vo);
+	
+	public String getRamdomPassword(int size);
+	
+	public void updateTempPw(UserVO vo); //임시 비밀번호 DB에 넣어주기.
 }
