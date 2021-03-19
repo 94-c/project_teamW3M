@@ -12,5 +12,7 @@ public interface UserInfoFindService {
 	
 	public String addBarToNumber(String inputNumber);
 	
-	public String selectEmail(UserVO vo);
+	public UserVO selectEmail(UserVO vo);
+	
+	public String getRamdomPassword(int size);
 }

@@ -23,8 +23,8 @@
 		WHERE user_name = #{user_name} AND user_phone = #{user_phone}
 	</select>
 	
-	<select id="selectEmail" resultType="String">
-		SELECT user_email FROM user_member
+	<select id="selectEmail" resultType="com.spring.w3m.join.user.vo.UserVO">
+		SELECT user_email, user_name, user_password FROM user_member
 		WHERE user_id = #{user_id} AND user_phone = #{user_phone}
 	</select>
 	

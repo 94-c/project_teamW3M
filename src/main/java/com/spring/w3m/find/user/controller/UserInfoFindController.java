@@ -36,7 +36,12 @@ public class UserInfoFindController {
 	
 	@RequestMapping("/findPW.do")
 	public String findPwByPhone(UserVO vo, Model model) {
-		
+		UserVO userInfo = service.selectEmail(vo);
+		if(userInfo != null) {
+			model.addAttribute("findEmail","success");
+		}else {
+			model.addAttribute("findEmail","fail");
+		}		
 		return "login/findPW_result";
 	}
 }
