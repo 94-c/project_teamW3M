@@ -37,19 +37,21 @@ public class UserInfoFindServiceImpl implements UserInfoFindService {
 
 	@Override // ID와 폰번호 입력받아서 이메일주소 리턴하는 메서드
 	public UserVO selectEmail(UserVO vo) {
-		String barNumber = addBarToNumber(vo.getUser_phone());
+		String barNumber = addBarToNumber(vo.getUser_phone()); //010-1234-5678
 		vo.setUser_phone(barNumber);
 		UserVO userInfo = findDAO.selectEmail(vo);
+		
 		if (userInfo != null) {
 			userInfo.setUser_password(getRamdomPassword(10)); // 임시비밀번호를 생성한 후 생성한 비번을 유저의 비밀번호로 설정해줌.
-			updateTempPw(userInfo); //DB에 임시비밀번호 넣기(update 쿼리)
+			String starName = inputStarIntoName(userInfo.getUser_name()); //홍*동
+			updateTempPw(userInfo); // DB에 임시비밀번호 넣기(update 쿼리)
 			// 이메일 보내기
 			String from = "w3mmask@gmail.com";
 			String to = userInfo.getUser_email(); // 받는 사람 이메일
 			String title = "W3M에서 임시 비밀번호를 알려드립니다."; // 제목
-			String content = "안녕하세요. " + userInfo.getUser_name() + "님\n" + "고객님의 임시 비밀번호를 알려드립니다.\n"
-					+ "임시 비밀번호로 로그인하신 후 원하시는 비밀번호로 수정해서 이용하시기 바랍니다.\n" + "임시 비밀번호	: " + userInfo.getUser_password()
-					+ "\n\n※ 참고하세요!" + "임시 비밀번호로 로그인 하신 후, 반드시 비밀번호를 수정해 주세요.\n"
+			String content = "안녕하세요. " + starName + "님\n" + "고객님의 임시 비밀번호를 알려드립니다.\n"
+					+ "임시 비밀번호로 로그인하신 후 원하시는 비밀번호로 수정해서 이용하시기 바랍니다.\n" + "임시 비밀번호 : " + userInfo.getUser_password()
+					+ "\n\n ※ 참고하세요!\n" + "임시 비밀번호로 로그인 하신 후, 반드시 비밀번호를 수정해 주세요.\n"
 					+ "비밀번호는 쇼핑몰 로그인 > 마이페이지 > 회원정보수정 에서 수정하실 수 있습니다.\n" + "안전한 서비스 이용을 위해서 비밀번호는 정기적으로 변경해주는 것이 좋습니다."; // 내용
 			try {
 				MimeMessage message = mailSender.createMimeMessage();
@@ -67,7 +69,7 @@ public class UserInfoFindServiceImpl implements UserInfoFindService {
 			return userInfo;
 		}
 	}
-	
+
 	@Override
 	public void updateTempPw(UserVO vo) {
 		findDAO.updateTempPw(vo);
@@ -112,5 +114,24 @@ public class UserInfoFindServiceImpl implements UserInfoFindService {
 		}
 		return sb.toString();
 	}
-
+	
+	@Override //이름 중간에 * 넣기(개인정보보호)
+	public String inputStarIntoName(String name) {
+		int nameSize = name.length();
+		String first = name.substring(0, 1);
+		String last = name.substring(nameSize-1);
+		String star = "";
+		
+		switch (nameSize) { //이름글자수에 따라 *개수가 달라짐
+		case 3:	star = "*";	break;		
+		case 4:	star = "**"; break;
+		case 5:	star = "***"; break;
+		case 6: star = "****"; break;
+		default: star = "*"; last = ""; break; //이름이 2글자일때
+		}
+		
+		String starName = first + star + last;
+		return starName;
+	}
+	
 }

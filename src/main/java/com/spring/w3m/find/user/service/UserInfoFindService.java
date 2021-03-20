@@ -17,4 +17,6 @@ public interface UserInfoFindService {
 	public String getRamdomPassword(int size);
 	
 	public void updateTempPw(UserVO vo); //임시 비밀번호 DB에 넣어주기.
+	
+	public String inputStarIntoName(String name); //이름 중간에 * 넣기(개인정보보호)
 }
