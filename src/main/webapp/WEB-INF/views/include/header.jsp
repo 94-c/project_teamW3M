@@ -29,6 +29,7 @@
 <link href="resources/css/findID.css" rel="stylesheet" type="text/css">
 <link href="resources/css/soo.css" rel="stylesheet" type="text/css">
 <link href="resources/css/insertMember.css" rel="stylesheet" type="text/css">
+<link href="resources/css/join.css" rel="stylesheet" type="text/css">
 <link type="text/css" rel="stylesheet" href="resources/css/border.css">
 <link type="text/css" rel="stylesheet" href="resources/css/menu.css">
 <link type="text/css" rel="stylesheet" href="resources/css/lost.css">
