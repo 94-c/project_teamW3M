@@ -1,29 +1,24 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<html>
+<!-- 관리자 페이지 header파일입니다. -->
+
 <head>
-<title>상품 등록</title>
-<link rel="shortcut icon" href="resources/images/icons/favicon.ico"	type="image/x-icon">
+<!-- CSS -->
 <link href="resources/admin_css/styles.css" rel="stylesheet" type="text/css">
 <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
+
+<!-- JS -->
 <script	src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
-<script	src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
 <script	src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script	src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
 <script	src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
 <script	src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
-<style type="text/css">
-table {
-	margin: auto;
-}
 
-table, td, th {
-	border-collapse: collapse;
-	border: 1px solid black;
-}
-</style>
+<!-- Image -->
+<link rel="shortcut icon" href="resources/images/icons/favicon.ico"	type="image/x-icon">
+
 </head>
 
 <body class="sb-nav-fixed">
@@ -32,11 +27,9 @@ table, td, th {
 			src="resources/images/h_design/top_w3m.gif"></a>
 
 		<!-- Navbar Search-->
-		<form
-			class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+		<form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
 			<div class="input-group">
-				<input class="form-control" type="text" placeholder="검색창"
-					aria-label="Search" aria-describedby="basic-addon2" />
+				<input class="form-control" type="text" placeholder="검색창" aria-label="Search" aria-describedby="basic-addon2" />
 				<div class="input-group-append">
 					<button class="btn btn-primary" type="button">
 						<i class="fas fa-search"></i>
@@ -44,6 +37,7 @@ table, td, th {
 				</div>
 			</div>
 		</form>
+		
 		<!-- Navbar-->
 		<ul class="navbar-nav ml-auto ml-md-0">
 			<li class="nav-item dropdown"><a
@@ -54,7 +48,8 @@ table, td, th {
 					aria-labelledby="userDropdown">
 					<a class="dropdown-item" href="adminLogout.mdo">로그아웃</a> <a
 						class="dropdown-item" href="/">메인 홈으로 나가기</a>
-				</div></li>
+				</div>
+			</li>
 		</ul>
 	</nav>
 	<div id="layoutSidenav">
@@ -164,42 +159,5 @@ table, td, th {
 			</nav>
 		</div>
 		<!-- 메인 페이지 -->
-
 		<div id="layoutSidenav_content">
-			<!-- 메인부분만 바꿔치기하면 됨 -->
-			<main>
-				<table>
-					<tr>
-						<th>상품코드</th>
-						<th>상품이미지</th>
-						<th>상품명</th>
-						<th>가격</th>
-					</tr>
-					<c:forEach var="product" items="${productList }">
-					<tr>
-						<td>${product.prod_code }</td>
-						<td>${product.prod_image }</td>
-						<td>${product.prod_title }</td>
-						<td>${product.prod_price }</td>
-					</tr>
-					</c:forEach>
-				</table>
-			</main>
-
-			<!-- 푸터 -->
-			<footer class="py-4 bg-light mt-auto">
-				<div class="container-fluid">
-					<div
-						class="d-flex align-items-center justify-content-between small">
-						<div class="text-muted">Copyright &copy; Your Website 2020</div>
-						<div>
-							<a href="#">Privacy Policy</a> &middot; <a href="#">Terms
-								&amp; Conditions</a>
-						</div>
-					</div>
-				</div>
-			</footer>
-		</div>
-	</div>
-</body>
-</html>
+		<!-- 여기까지 헤더 -->
