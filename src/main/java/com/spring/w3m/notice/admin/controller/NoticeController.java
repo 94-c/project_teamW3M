@@ -35,7 +35,7 @@ public class NoticeController {
 			@RequestParam(required = false, defaultValue = "title") String searchType,
 			@RequestParam(required = false) String keyword) throws PSQLException, IOException {
 
-		Search search = new Search();
+	   Search search = new Search();
 		search.setSearchType(searchType);
 		search.setKeyword(keyword);
 
@@ -49,13 +49,48 @@ public class NoticeController {
 		List<NoticeVO> pageList = noticeService.getNoticePageList(search);
 		
 		model.addAttribute("pagination", search);
-		model.addAttribute("getNoticeList", pageList);
+		model.addAttribute("NoticeList", pageList);
 		model.addAttribute("cnt", cnt);
 
 		System.out.println(search.getKeyword());
 
 		return "list/notice";
    }
+   
+   
+   @RequestMapping("/search.do")
+	public String getUserNoticeSearchPagingList(Model model, NoticeVO vo,
+			@RequestParam(required = false, defaultValue = "1") int page,
+			@RequestParam(required = false, defaultValue = "1") int range,
+			@RequestParam(required = false, defaultValue = "title") String searchType,
+			@RequestParam(required = false) String keyword) throws PSQLException, IOException {
+
+		
+		Pagination pagination = new Pagination();
+		int cnt = noticeService.getNoticeSearchCnt(keyword);
+		System.out.println("cont Cnt : " + cnt);
+		System.out.println(page);
+		System.out.println(range);
+		System.out.println(keyword);
+		pagination.pageInfo(page, range, cnt, keyword);
+		
+		pagination.setKeyword(keyword);
+		pagination.setSearchType(searchType);
+		
+		List<NoticeVO> pageList = noticeService.getUserNoticeSearchPagingList(pagination);
+		
+		System.out.println("cont List " + pagination.getSearchType());
+		System.out.println("cont List " + pagination.getKeyword());
+		
+		model.addAttribute("pagination", pagination);
+		model.addAttribute("NoticeList", pageList);
+		
+
+		return "list/notice";
+	}
+   
+   
+   
    
 // 공지 사항
 	@RequestMapping("/admin_notice_list.mdo")
@@ -87,27 +122,32 @@ public class NoticeController {
 	}
 
 	@RequestMapping("/admin_search_notice_list.mdo")
-	public String getNoticeSearchPagingList(Model model, @RequestParam(required = false, defaultValue = "1") int page,
+	public String getNoticeSearchPagingList(Model model, NoticeVO vo,
+			@RequestParam(required = false, defaultValue = "1") int page,
 			@RequestParam(required = false, defaultValue = "1") int range,
 			@RequestParam(required = false, defaultValue = "title") String searchType,
 			@RequestParam(required = false) String keyword) throws PSQLException, IOException {
 
-		Search search = new Search();
-		search.setSearchType(searchType);
-		search.setKeyword(keyword);
 		
 		Pagination pagination = new Pagination();
 		int cnt = noticeService.getNoticeSearchCnt(keyword);
-		
+		System.out.println("cont Cnt : " + cnt);
+		System.out.println(page);
+		System.out.println(range);
+		System.out.println(keyword);
 		pagination.pageInfo(page, range, cnt, keyword);
+		
+		pagination.setKeyword(keyword);
+		pagination.setSearchType(searchType);
+		
 		List<NoticeVO> pageList = noticeService.getNoticeSearchPagingList(pagination);
+		
+		System.out.println("cont List " + pagination.getSearchType());
+		System.out.println("cont List " + pagination.getKeyword());
 		
 		model.addAttribute("pagination", pagination);
 		model.addAttribute("NoticeList", pageList);
-		model.addAttribute("cnt", cnt);
 		
-		System.out.println(searchType);
-		System.out.println(keyword);
 
 		return "page/notice/admin_notice_list";
 	}

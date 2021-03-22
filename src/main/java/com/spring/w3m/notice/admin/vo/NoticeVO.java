@@ -2,6 +2,9 @@ package com.spring.w3m.notice.admin.vo;
 
 import java.util.Date;
 
+import com.spring.w3m.paging.common.Pagination;
+
+
 public class NoticeVO {
 	private int nt_seq;	// 글 번호
 	private String nt_title;	// 제목
@@ -10,8 +13,12 @@ public class NoticeVO {
 	private Date nt_date;	//작성날짜
 	private int nt_count;	// 조회수
 	private int nt_imp;
-	private String SearchCondition;
-	private String SearchKeyword;
+	private String searchType;
+	private String keyword;
+	
+	Pagination p = new Pagination();
+	
+	
 	public int getNt_seq() {
 		return nt_seq;
 	}
@@ -54,23 +61,23 @@ public class NoticeVO {
 	public void setNt_imp(int nt_imp) {
 		this.nt_imp = nt_imp;
 	}
-	public String getSearchCondition() {
-		return SearchCondition;
+	public String getSearchType() {
+		return searchType;
 	}
-	public void setSearchCondition(String searchCondition) {
-		SearchCondition = searchCondition.substring(1);
+	public void setSearchType(String searchType) {
+		this.searchType = p.getSearchType();
 	}
-	public String getSearchKeyword() {
-		return SearchKeyword;
+	public String getKeyword() {
+		return keyword;
 	}
-	public void setSearchKeyword(String searchKeyword) {
-		SearchKeyword = searchKeyword;
+	public void setKeyword(String Keyword) {
+		this.keyword = p.getKeyword();
 	}
 	@Override
 	public String toString() {
 		return "NoticeVO [nt_seq=" + nt_seq + ", nt_title=" + nt_title + ", nt_writer=" + nt_writer + ", nt_content="
 				+ nt_content + ", nt_date=" + nt_date + ", nt_count=" + nt_count + ", nt_imp=" + nt_imp
-				+ ", SearchCondition=" + SearchCondition + ", SearchKeyword=" + SearchKeyword + "]";
+				+ ", searchType=" + searchType + ", keyword=" + keyword + "]";
 	}
 	
 }

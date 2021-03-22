@@ -108,15 +108,15 @@
 			nt_title,
 			nt_writer,
 			nt_content,
-			nt_date
-			nt_cnt
+			nt_date,
+			nt_count
 		from notice
 		where 1=1
-		<if test="searchType=='nt_title' and keyword != null and keyword != '' ">
-			AND nt_title like CONCAT('%', #{keyword}, '%')
+		<if test="searchType =='nt_title'">
+			AND nt_title LIKE '%'||#{keyword}||'%'
 		</if>
-		<if test="searchType=='nt_content' and keyword != null and keyword != '' ">
-			AND nt_content like CONCAT('%', #{keyword}, '%')
+		<if test="searchType =='nt_content'">
+			AND nt_content LIKE '%'||#{keyword}||'%'
 		</if>
 		order by nt_seq desc
 		limit #{listSize} offset #{startList}

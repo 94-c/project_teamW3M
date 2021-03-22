@@ -12,13 +12,14 @@ public interface NoticeService {
 
 	List<NoticeVO> getUserNoticeList(NoticeVO vo);
 
+	List<NoticeVO> getUserNoticeSearchPagingList(Pagination pagination);
 	
 	List<NoticeVO> getNoticeList(NoticeVO vo);
 
 	// 공지사항 페이징, 검색
 	int getNoticeListCnt(Search search);
 	
-	int getNoticeSearchCnt(String searchKeyword);
+	int getNoticeSearchCnt(String keyword);
 
 	List<NoticeVO> getNoticePageList(Search search);
 
