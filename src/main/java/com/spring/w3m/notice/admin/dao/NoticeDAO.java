@@ -24,14 +24,22 @@ public class NoticeDAO {
 	public List<NoticeVO> getUserNoticeList(NoticeVO vo) {
 		return sqlSessionTemplate.selectList("NoticeDAO.getUserNoticeList", vo);
 	}
+	
+	public List<NoticeVO> getUserNoticeSearchPagingList(Pagination pagination) {
+		System.out.println("getNoticeSearchPagingList() 실행");
+		System.out.println("dao List : " + pagination.getSearchType());
+		System.out.println("dao List : " + pagination.getKeyword());
+		return sqlSessionTemplate.selectList("NoticeDAO.getNoticeSearchPagingList", pagination);
+	}
 
 	// 공지사항 게시글 목록 가져오기
 	public List<NoticeVO> getNoticeList(NoticeVO vo) {
 		return sqlSessionTemplate.selectList("NoticeDAO.getNoticeList");
 	}
 
-	public int getNoticeSearchCnt(String searchKeyword) {
+	public int getNoticeSearchCnt(String keyword) {
 		System.out.println("getNoticeSearchCnt() 실행");
+		System.out.println("dao Cnt : " + keyword);
 		return sqlSessionTemplate.selectOne("NoticeDAO.getNoticeSearchCnt");
 	}
 
@@ -47,7 +55,9 @@ public class NoticeDAO {
 
 	public List<NoticeVO> getNoticeSearchPagingList(Pagination pagination) {
 		System.out.println("getNoticeSearchPagingList() 실행");
-		return sqlSessionTemplate.selectList("NoticeDAO.getNoticeSearchPagingList");
+		System.out.println("dao List : " + pagination.getSearchType());
+		System.out.println("dao List : " + pagination.getKeyword());
+		return sqlSessionTemplate.selectList("NoticeDAO.getNoticeSearchPagingList", pagination);
 	}
 
 	// 공지사항 글 등록

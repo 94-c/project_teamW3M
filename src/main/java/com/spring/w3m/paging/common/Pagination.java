@@ -17,6 +17,8 @@ public class Pagination {
 	private boolean prev;
 	private boolean next;
 	private String searchKeyword;
+	private String keyword;
+	private String searchType;
 	private boolean fix;
 	
 	//get,setter
@@ -105,6 +107,19 @@ public class Pagination {
 		this.fix = fix;
 	}
 	
+	
+	public String getKeyword() {
+		return keyword;
+	}
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+	public String getSearchType() {
+		return searchType;
+	}
+	public void setSearchType(String searchType) {
+		this.searchType = searchType;
+	}
 	public void pageInfo(int page, int range, int listCnt) {
 		this.page = page;
 		this.range = range;
@@ -165,6 +180,20 @@ public class Pagination {
 					this.endPage = this.pageCnt;
 					this.next = false;
 				}
+	}
+	@Override
+	public String toString() {
+		return "Pagination [rownum=" + rownum + ", listSize=" + listSize + ", rangeSize=" + rangeSize + ", page=" + page
+				+ ", range=" + range + ", listCnt=" + listCnt + ", pageCnt=" + pageCnt + ", startPage=" + startPage
+				+ ", startList=" + startList + ", endPage=" + endPage + ", prev=" + prev + ", next=" + next
+				+ ", searchKeyword=" + searchKeyword + ", keyword=" + keyword + ", searchType=" + searchType + ", fix="
+				+ fix + ", getRownum()=" + getRownum() + ", getListSize()=" + getListSize() + ", getRangeSize()="
+				+ getRangeSize() + ", getPage()=" + getPage() + ", getRange()=" + getRange() + ", getListCnt()="
+				+ getListCnt() + ", getPageCnt()=" + getPageCnt() + ", getStartPage()=" + getStartPage()
+				+ ", getStartList()=" + getStartList() + ", getEndPage()=" + getEndPage() + ", isPrev()=" + isPrev()
+				+ ", isNext()=" + isNext() + ", getSearchKeyword()=" + getSearchKeyword() + ", isFix()=" + isFix()
+				+ ", getKeyword()=" + getKeyword() + ", getSearchType()=" + getSearchType() + ", getClass()="
+				+ getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
 	}
 	
 }

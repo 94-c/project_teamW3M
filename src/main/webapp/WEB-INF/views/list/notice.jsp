@@ -49,7 +49,7 @@
         	
         	$(document).on('click', '#btnSearch', function(e){
         		e.preventDefault();
-        		var url = "${pageContext.request.contextPath}/getUserNoticeList.do";
+        		var url = "${pageContext.request.contextPath}/search.do";
         		url = url + "?searchType=" + $('#searchType').val();
         		url = url + "&keyword=" + $('#keyword').val();
         		location.href = url;
@@ -94,7 +94,7 @@
 			
 							</thead>
 							<tbody>
-								<c:forEach var="notice" items="${getNoticeList}">
+								<c:forEach var="notice" items="${NoticeList}">
 									<tr>
 										<td scope="col"><div class="tb-center">${notice.nt_seq }</td>
 										<td scope="col"><div class="tb-center">&nbsp;</td>
