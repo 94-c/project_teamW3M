@@ -70,9 +70,9 @@ public class AdminLoginController {
 	// 고객 관리
 	@RequestMapping("/userMemberList.mdo")
 	public String userMembeList(Model model, @RequestParam(required = false, defaultValue = "1") int page,
-			@RequestParam(required = false, defaultValue = "1") int range,
-			@RequestParam(required = false, defaultValue = "title") String searchType,
-			@RequestParam(required = false) String keyword) throws PSQLException, IOException {
+						@RequestParam(required = false, defaultValue = "1") int range,
+						@RequestParam(required = false, defaultValue = "title") String searchType,
+						@RequestParam(required = false) String keyword) throws PSQLException, IOException {
 		System.out.println("=== 고객관리 ===");
 
 		Search search = new Search();
