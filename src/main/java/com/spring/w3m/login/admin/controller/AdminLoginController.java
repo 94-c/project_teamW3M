@@ -44,10 +44,10 @@ public class AdminLoginController {
 
 	// 관리자 페이지
 	@RequestMapping("/index.mdo")
-	public String index(AdminVO vo,  Model model, HttpSession session) {
+	public String index(AdminVO vo, Model model, HttpSession session) {
 		// 회원관리 리스트
 		model.addAttribute("userList", adminService.getUserList());
-		
+
 		boolean result = adminService.loginCheck(vo, session);
 		// 관리자 로그인 유효성
 		AdminVO voo = adminService.getAdmin();
@@ -69,92 +69,33 @@ public class AdminLoginController {
 
 	// 고객 관리
 	@RequestMapping("/userMemberList.mdo")
-	public String userMembeList(Model model,
-								@RequestParam(required = false, defaultValue = "1") int page,
-								@RequestParam(required = false, defaultValue = "1") int range,
-								@RequestParam(required = false, defaultValue = "title") String searchType,
-								@RequestParam(required = false) String keyword) throws PSQLException, IOException {
+	public String userMembeList(Model model, @RequestParam(required = false, defaultValue = "1") int page,
+						@RequestParam(required = false, defaultValue = "1") int range,
+						@RequestParam(required = false, defaultValue = "title") String searchType,
+						@RequestParam(required = false) String keyword) throws PSQLException, IOException {
 		System.out.println("=== 고객관리 ===");
-		
+
 		Search search = new Search();
 		search.setSearchType(searchType);
 		search.setKeyword(keyword);
 
 		int cnt = adminService.getUserListCnt(search);
-		
+
 		search.pageInfo(page, range, cnt);
-		
-		//Pagination
+
+		// Pagination
 		Pagination pagination = new Pagination();
 		pagination.pageInfo(page, range, cnt);
-		
+
 		List<UserVO> pageList = adminService.getPageList(search);
-		
+
 		model.addAttribute("pagination", search);
 		model.addAttribute("userList", pageList);
 		model.addAttribute("cnt", cnt);
-		
+
 		return "page/userMemberList";
 	}
 
-	// 공지 사항
-	@RequestMapping("/admin_notice_list.mdo")
-	public String getNoticeList(NoticeVO vo, Model model) {
-		System.out.println("=== 공지사항 ===");
-		if (vo.getSearchCondition() == null)
-			vo.setSearchCondition("nt_title");
-		if (vo.getSearchKeyword() == null)
-			vo.setSearchKeyword("");
-		System.out.println("검색 조건 : " + vo.getSearchCondition());
-		System.out.println("검색 단어 : " + vo.getSearchKeyword());
-		model.addAttribute("noticeList", adminService.getNoticeList(vo));
-		return "page/notice/admin_notice_list";
-	}
-	
-	//공지사항 등록
-	@RequestMapping("/admin_notice_insert.mdo")
-	   public String admin_notice_insert(NoticeVO vo, Model model) {
-	     adminService.admin_notice_insert(vo);
-	      model.addAttribute("noticeList", adminService.getNoticeList(vo));
-	      return "page/notice/admin_notice_list";
-	   }
-	
-	//공지사항 등록 뷰 이동
-	@RequestMapping("/admin_notice_insert_view.mdo")
-	public String admin_notice_insert_view(NoticeVO vo, Model model) {
-		model.addAttribute("getNotice", adminService.getNotice(vo));
-		return "page/notice/admin_notice_insert_view";
-	}
-
-	// 공지사항 업데이트
-	@RequestMapping("/admin_notice_update.mdo")
-	public String admin_notice_update(NoticeVO vo, Model model) {
-		adminService.admin_notice_update(vo);
-		model.addAttribute("noticeList", adminService.getNoticeList(vo));
-		return "page/notice/admin_notice_list";
-	}
-	
-	//공지사항 업데이트 뷰 이동
-	@RequestMapping("/admin_notice_update_view.mdo")
-	public String admin_notice_update_View(NoticeVO vo, Model model) {
-		model.addAttribute("getNotice", adminService.getNotice(vo));
-		return "page/notice/admin_notice_update_view";
-	}
-	
-	//공지사항 삭제
-	@RequestMapping("/admin_notice_delete.mdo")
-	public String admin_notice_delete(NoticeVO vo, Model model) {
-		adminService.admin_notice_delete(vo);
-		model.addAttribute("noticeList", adminService.getNoticeList(vo));
-		return "page/notice/admin_notice_list";
-	}
-	
-	//공지사항 상세보기
-	@RequestMapping("/admin_notice_content.mdo")
-	public String getNotice(NoticeVO vo, Model model) {
-		model.addAttribute("notice", adminService.getNotice(vo));
-		return "page/notice/admin_notice_content";
-	}
 
 	// 문의사항
 	@RequestMapping("/adminInquiry.mdo")

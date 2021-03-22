@@ -76,37 +76,6 @@ public class AdminServiceImpl implements AdminService {
 		return dao.getInquiryList(vo);
 	}
 	
-	//공지사항 게시글 불러오기
-	@Override
-	public List<NoticeVO> getNoticeList(NoticeVO vo) {
-		return dao.getNoticeList(vo);
-	}
-	
-	//공지사항 업데이트
-	@Override
-	public void admin_notice_update(NoticeVO vo) {
-		dao.admin_notice_update(vo);
-	}
-
-	//공지사항 삭제
-	@Override
-	public void admin_notice_delete(NoticeVO vo) {
-		dao.admin_notice_delete(vo);
-	}
-	
-	//공지사항 상세보기
-	@Override
-	public NoticeVO getNotice(NoticeVO vo) {
-		return dao.getNotice(vo);
-	}
-
-	//공지사항 등록
-	@Override
-	public void admin_notice_insert(NoticeVO vo) {
-		dao.admin_notice_insert(vo);
-		
-	}
-
 	@Override
 	public int getUserListCnt(Search search) {
 		return dao.getUserListCnt(search);

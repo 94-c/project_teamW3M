@@ -4,19 +4,19 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%@include file="/WEB-INF/views/include/header.jsp"%>
-
+<title>문의 게시판</title>	
 
 <div id="contentWrapper">
 	<div id="contentWrap">
-		<link href="resources/css/notification.css" rel="stylesheet"
-			type="text/css">
+		<link href="resources/css/notification.css" rel="stylesheet" type="text/css">
 		<div id="content">
 			<div id="bbsData">
 				<div class="page-body">
+					<a href="getUserNoticeList.do">
+					<img src="resources/images/title/inquiry_titie.jpg"></a>
 					<div class="bbs-tit">
 						<h3>문의게시판</h3>
 						<div class="bbs-sch">

@@ -14,6 +14,7 @@
 
 		<link type="text/css" rel="stylesheet" href="resources/css/menu.css?t=201912021906">
 		<link type="text/css" rel="stylesheet" href="resources/css/soo.css">
+		<link type="text/css" rel="stylesheet" href="resources/css/notification.css">
 		<div id="content">
 			<div id="bbsData">
 				<div class="page-body">
@@ -36,10 +37,10 @@
 								<tr>
 									<td class="line">
 										<div class="cont-sub-des">
-											<div>
+											<div class align="right">
 												<span><em>Date :</em><fmt:formatDate value="${notice.nt_date}" pattern="yyyy-MM-dd HH:mm:ss"/></span>
 											</div>
-											<div>
+											<div class align="right">
 												<span><em>Name :</em> ${notice.nt_writer }</span> 
 												<span><em>Hits :</em> ${notice.nt_count }</span>
 											</div>
@@ -49,7 +50,11 @@
 								<tr>
 									<td>
 										<div class="data-bd-cont">
-											${notice.nt_content }
+											<div class align="center">
+											<p style="font-size:25px; Line-height:200%; align:left; color:#5f5f5f;">
+												${notice.nt_content }
+											</p>
+											</div>
 										</div>
 									</td>
 								</tr>
@@ -65,19 +70,7 @@
 							<table summary="게시글 목록">
 								<caption>게시글 목록</caption>
 								<thead>
-								<c:set var="login" value="${adminLogin_state }"/>
-								<ul>
-								<c:choose>
-									<c:when test="${login eq 'adminLogin'}">
-											<input type="button" class="CSSbuttonBlack" id="submitbutton" value="글 목록" onclick="location.href='./getNoticeList.do'"/>
-											<input type="button" class="CSSbuttonBlack" id="submitbutton" value="수정하기" onclick="location.href='./updateNotice_view.do?nt_seq=${notice.nt_seq}'"/>
-											<input type="button" class="CSSbuttonBlack" id="submitbutton" value="삭제하기" onclick="location.href='./deleteNotice.do?nt_seq=${notice.nt_seq}'"/>
-									</c:when>
-									<c:when test="${login ne 'adminLogin'}">
-											<input type="button" class="CSSbuttonBlack" id="submitbutton" value="글 목록" onclick="location.href='./getNoticeList.do'"/>
-									</c:when>
-								</c:choose>
-								</ul>
+											<input type="button" class="CSSbuttonBlack" id="submitbutton" value="글 목록" onclick="location.href='./getUserNoticeList.do'"/>
 								</thead>
 							</table>
 						</div>

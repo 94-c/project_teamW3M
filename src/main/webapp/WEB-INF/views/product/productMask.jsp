@@ -1,10 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@include file="/WEB-INF/views/include/header.jsp"%>
-<link rel="shortcut icon" href="resources/images/icons/favicon.ico" type="image/x-icon">
-<title>공지사항</title>
-
-<link href="resources/css/shopbrand.css" rel="stylesheet" type="text/css">	
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<title>W3M 미세먼지 마스크</title>
+<%@ include file="/WEB-INF/views/include/header.jsp"%>
 
 <div id="productClass">
 	<div class="prd-class-hd">
@@ -12,13 +8,13 @@
 			<dt class="blind">현재 위치</dt>
 			<dd>
 				<a href="/">홈</a> &gt; 
-				<a href="/productMask.do">웰킵스 미세먼지마스크</a>
+				<a href="/productMask.do">W3M 미세먼지마스크</a>
 			</dd>
 		</dl>
 	</div>
 	<!-- .prd-class-hd -->
 
-	<h2 class="cboth bcate">웰킵스 미세먼지마스크</h2>
+	<h2 class="cboth bcate">W3M 미세먼지마스크</h2>
 
 	<div class="class-list">
 		<ul class="cboth">

@@ -13,28 +13,29 @@
 		<result property="nt_count" column="nt_count" />
 	</resultMap>
 
-	<insert id="insertNotice" parameterType="NoticeVO">
-		INSERT INTO notice (nt_seq, nt_title, nt_writer, nt_content,nt_imp)
-		VALUES(nextval('nt_seq'), #{nt_title}, #{nt_writer}, #{nt_content},#{nt_imp})
-	</insert>
-
-	<update id="updateNotice" parameterType="NoticeVO">
-		UPDATE notice
-		SET
-		nt_title=#{nt_title}, nt_content=#{nt_content}
-		WHERE nt_seq = #{nt_seq}
-	</update>
-
-	<delete id="deleteNotice" parameterType="NoticeVO">
-		DELETE FROM notice WHERE
-		nt_seq = #{nt_seq}
-	</delete>
-
-	<select id="getNotice" resultType="NoticeVO">
+	<select id="getUserNotice" resultType="NoticeVO">
 		SELECT * FROM notice WHERE nt_seq = #{nt_seq}
 	</select>
 
 
+	<select id="getUserNoticeList" resultMap="noticeResult">
+		SELECT * FROM notice
+		WHERE 1=1
+		<if test="searchCondition=='nt_title'">
+			AND nt_title LIKE '%'||#{searchKeyword}||'%'
+		</if>
+		<if test="searchCondition=='nt_content'">
+			AND nt_content LIKE '%'||#{searchKeyword}||'%'
+		</if>
+		order by nt_seq desc
+	</select>
+	
+	<update id="NoticeCntUpdate" parameterType="NoticeVO"> 
+		update notice set nt_count=nt_count+1 WHERE nt_seq=#{nt_seq} 
+		</update>
+
+	<!-- 공지사항 리스트 sql -->
+	
 	<select id="getNoticeList" resultMap="noticeResult">
 		SELECT * FROM notice
 		WHERE 1=1
@@ -47,40 +48,82 @@
 		order by nt_seq desc
 	</select>
 	
-	<update id="NoticeCntUpdate" parameterType="NoticeVO"> update notice set nt_count=nt_count+1 WHERE nt_seq=#{nt_seq} </update>
+	<!-- 공지사항 등록 -->
+	<insert id="admin_notice_insert" parameterType="NoticeVO">
+		INSERT INTO notice (nt_seq, nt_title, nt_writer, nt_content,nt_imp)
+		VALUES(nextval('nt_seq'), #{nt_title}, #{nt_writer}, #{nt_content},#{nt_imp})
+	</insert>
+	
+	<!-- 공지사항 업데이트 -->
+	<update id="admin_notice_update" parameterType="NoticeVO">
+		UPDATE notice
+		SET
+		nt_title=#{nt_title}, nt_content=#{nt_content}
+		WHERE nt_seq = #{nt_seq}
+	</update>
+	
+	<!-- 공지사항 삭제 -->
+	<delete id="admin_notice_delete" parameterType="NoticeVO">
+		DELETE FROM notice WHERE
+		nt_seq = #{nt_seq}
+	</delete>
+	
+	<!-- 공지사항 상세보기 -->
+	<select id="getNotice" resultType="NoticeVO">
+		SELECT * FROM notice WHERE nt_seq = #{nt_seq}
+	</select>
 	
 	
+	
+	<select id="getNoticePageList" resultType="NoticeVO">
+		select * from 
+			(select * from notice where nt_imp = 1 order by nt_date desc) as one
+		union all
+		select * from 
+			(select * from (select * from notice where nt_imp = 0 order by nt_seq asc) as three
+			  order by nt_date desc, nt_seq desc limit #{listSize} offset #{startList} ) as two;
+	</select>	
+	
+	
+	
+	
+	<select id="getNoticeSearchCnt" parameterType="String" resultType="int">
+		select count(*) from notice
+	<trim prefix="WHERE" prefixOverrides="AND|OR">
+	<if test="keyword != null and keyword != '' ">
+			<if test="searchType=='nt_title'">
+				AND nt_title like CONCAT('%', #{keyword}, '%')
+			</if>
+
+			<if test="searchType=='nt_content'">
+				AND nt_content like CONCAT('%', #{keyword}, '%')
+			</if>
+      </if>
+	</trim>
+	</select>
+	
+	<select id="getNoticeSearchPagingList" resultType="NoticeVO">
+		select
+			nt_seq,
+			nt_title,
+			nt_writer,
+			nt_content,
+			nt_date,
+			nt_count
+		from notice
+		where 1=1
+		<if test="searchType =='nt_title'">
+			AND nt_title LIKE '%'||#{keyword}||'%'
+		</if>
+		<if test="searchType =='nt_content'">
+			AND nt_content LIKE '%'||#{keyword}||'%'
+		</if>
+		order by nt_seq desc
+		limit #{listSize} offset #{startList}
+	</select>
 	
 	<select id="getNoticeListCnt" resultType="int">
-		SELECT COUNT(*) from notice
-	</select>
-	
-	<select id="getPageList" resultType="NoticeVO">
-		SELECT * FROM notice ORDER BY nt_seq LIMIT #{listSize} OFFSET #{startList}
-	</select>
-	
-	<select id="getSearchPagingList" resultType="NoticeVO">
-		select * from notice
-		WHERE 1=1
-		<if test="searchCondition=='nt_title'">
-			AND nt_title LIKE '%'||#{searchKeyword}||'%'
-		</if>
-		<if test="searchCondition=='nt_content'">
-			AND nt_content LIKE '%'||#{searchKeyword}||'%'
-		</if>
-		ORDER BY nt_seq
-		LIMIT #{listSize} OFFSET#{startList} 
-	</select>
-	
-	<select id="getSearchCnt" parameterType="String" resultType="int">
-		SELECT COUNT(*) FROM notice 
-		WHERE 1=1
-		<if test="searchCondition=='nt_title'">
-			AND nt_title LIKE '%'||#{searchKeyword}||'%'
-		</if>
-		<if test="searchCondition=='nt_content'">
-			AND nt_content LIKE '%'||#{searchKeyword}||'%'
-		</if>
+		select count(*) from notice
 	</select>
 	
 </mapper>
