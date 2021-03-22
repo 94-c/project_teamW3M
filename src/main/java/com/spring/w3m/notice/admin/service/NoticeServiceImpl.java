@@ -26,6 +26,12 @@ public class NoticeServiceImpl implements NoticeService {
 		return dao.getUserNoticeList(vo);
 	}
 
+	@Override
+	public List<NoticeVO> getUserNoticeSearchPagingList(Pagination pagination) {
+		System.out.println("service List : " + pagination.getSearchType());
+		System.out.println("service List : " + pagination.getKeyword());
+		return dao.getUserNoticeSearchPagingList(pagination);
+	}
 
 	@Override
 	public List<NoticeVO> getNoticePageList(Search search) {
@@ -34,17 +40,20 @@ public class NoticeServiceImpl implements NoticeService {
 
 	@Override
 	public List<NoticeVO> getNoticeSearchPagingList(Pagination pagination) {
+		System.out.println("service List : " + pagination.getSearchType());
+		System.out.println("service List : " + pagination.getKeyword());
 		return dao.getNoticeSearchPagingList(pagination);
 	}
 
 	@Override
 	public int getNoticeListCnt(Search search) {
+		System.out.println("service cnt : " + search.getKeyword());
 		return dao.getNoticeListCnt(search);
 	}
 
 	@Override
-	public int getNoticeSearchCnt(String searchKeyword) {
-		return dao.getNoticeSearchCnt(searchKeyword);
+	public int getNoticeSearchCnt(String keyword) {
+		return dao.getNoticeSearchCnt(keyword);
 	}
 
 	// 공지사항 게시글 불러오기
