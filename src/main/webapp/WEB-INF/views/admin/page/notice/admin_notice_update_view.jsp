@@ -25,8 +25,7 @@
 		</div>
 		<div class="form-group">
 			<label for="exampleFormControlTextarea1">내용</label>
-			<textarea class="form-control" id="nt_content" name="nt_content"
-				rows="10">${getNotice.nt_content }</textarea>
+			<pre><textarea class="form-control" id="nt_content" name="nt_content" rows="10">${getNotice.nt_content }</textarea></pre>
 		</div>
 
 		<button type="submit" class="btn btn-info ">수정하기</button>

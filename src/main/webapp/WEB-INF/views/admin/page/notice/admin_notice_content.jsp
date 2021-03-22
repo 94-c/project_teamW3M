@@ -31,7 +31,7 @@
 						</tr>
 						<tr>
 							<td>
-								<div class="data-bd-cont">${notice.nt_content }</div>
+								<pre><div class="data-bd-cont">${notice.nt_content }</div></pre>
 							</td>
 						</tr>
 					</tbody>
@@ -40,6 +40,8 @@
 					onclick="location.href = 'admin_notice_update_view.mdo?nt_seq=${notice.nt_seq}' ">수정하기</button>
 				<button type="submit" class="btn btn-info "
 					onclick="location.href = 'admin_notice_delete.mdo?nt_seq=${notice.nt_seq}' ">삭제하기</button>
+				<button type="submit" class="btn btn-info "
+					onclick="location.href = 'admin_notice_list.mdo' ">목록으로</button>
 			</div>
 		</ol>
 		</div>

@@ -73,10 +73,11 @@
 					<!-- .page-body -->
 					<!-- snsLogin -->
 							<div id="simplogin">
-							<div class="sns-login">
+							<br>
+							<div class="sns-login" align="center">
 								 <a href="javascript:sns_login_log('kakao');">
 								 <img src="resources/images/sns/kakao_login.png" alt="카카오톡으로 로그인"></a> 
-								 <a href="javascript:sns_login_log('naver');">
+								 <a href="${url }">
 								 <img src="resources/images/sns/naver_login.png" alt="네이버로 로그인"></a>
 							</div>
 							<!-- .sns-login -->

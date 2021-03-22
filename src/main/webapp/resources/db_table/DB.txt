@@ -1,0 +1,164 @@
+-- 홈페이지관리자 테이블 --
+CREATE TABLE admin_member(
+    admin_id VARCHAR(20) not null, -- 홈페이지 관리자 아이디(PK)
+    admin_password VARCHAR(200) NOT NULL, -- 비밀번호
+    CONSTRAINT admin_member_admin_id_pk PRIMARY KEY(admin_id)
+  );
+
+--회원 테이블--
+CREATE TABLE user_member(
+	user_seq int NOT NULL, -- 시퀀스넘버
+	user_name VARCHAR(20) NOT NULL, -- 회원 이름
+ 	user_id VARCHAR(30) NOT NULL, -- 회원 아이디(PK)
+	user_password VARCHAR(200) NULL, -- 회원 비밀번호	
+	user_birthday VARCHAR(30) NOT NULL, -- 생년월일
+	user_gender CHAR(6) NOT NULL, -- 성별
+	user_email VARCHAR(70) NOT NULL, -- 이메일주소
+	user_zipcode varchar(20) NOT NULL,-- 우편번호
+	user_address1 VARCHAR(70) NOT NULL, -- 회원 주소
+	user_address2 VARCHAR(70), -- 회원 상세 주소
+	user_join_date TIMESTAMP WITH TIME ZONE DEFAULT current_timestamp, --가입 날짜
+	user_last_login TIMESTAMP WITH TIME ZONE DEFAULT current_timestamp, --마지막 로그인 날짜 // 
+	user_phone VARCHAR(30) NOT NULL, -- 휴대폰번호
+ 	user_level VARCHAR(20) DEFAULT 'Bronze', -- 회원등급 //Bronze , silver, gold, Platinum,dia
+	user_point VARCHAR(20) DEFAULT '1000',--포인트 (첫가입 시 1000 포인트)
+	user_marketing_mail BOOLEAN DEFAULT 'FALSE', -- 마케팅 동의 메일
+	user_marketing_sms BOOLEAN DEFAULT 'FALSE', -- 마케팅 동의 문자
+	user_state int DEFAULT '1', -- 0 :어드민 /1 : 정상 /2 : 휴먼 /3: 삭제(3개월 보관) 
+   	user_sns_naver VARCHAR(40),
+	user_sns_kakao VARCHAR(40), 
+	
+	CONSTRAINT user_member_user_id_pk PRIMARY KEY (user_id)
+);
+	CREATE SEQUENCE user_member_seq START WITH 1 INCREMENT BY 1; -- 시퀀스 생성
+
+--배송지 테이블--
+CREATE TABLE prod_destination(
+	user_id VARCHAR2(30), -- 회원 아이디(PK)(FK)
+	receiver VARCHAR2(20) NOT NULL,-- 받는사람
+	receiver_phone1 NOT NULL, -- 받는사람 폰번호 1
+	receiver_phone2, -- 받는사람 폰번호 2
+	receiver_post_num VARCHAR2(30) NOT NULL, -- 배송지 우편번호
+	receiver_address1 VARCHAR2(150) NOT NULL, -- 배송지 주소
+	receiver_address2 VARCHAR2(50), --배송지 상세
+	receiver_msg varchar(100), --주문 메세지
+    	ORDER_STATUS VARCHAR(50) NULL, -- 주문상태 // 결제완료  > 배송 준비중 > 배송중 > 배송 완료
+	
+	CONSTRAINT prod_destination_user_id_pk PRIMARY KEY (user_id),
+	CONSTRAINT prod_destination_user_id_fk_user_member_user_id FOREIGN KEY (user_id), REFERENCES user_member(user_id)
+);
+--최근 배송지 테이블--
+CREATE TABLE new_prod_destination(
+	user_id VARCHAR2(30), -- 회원 아이디(PK)
+	receiver VARCHAR2(20) NOT NULL,-- 받는사람
+	receiver_phone1 NOT NULL, -- 받는사람 폰번호 1
+	receiver_phone2, -- 받는사람 폰번호 2
+	receiver_post_num VARCHAR2(30) NOT NULL, -- 배송지 우편번호
+	receiver_address1 VARCHAR2(150) NOT NULL, -- 배송지 주소
+	receiver_address2 VARCHAR2(50), --배송지 상세
+	receiver_msg varchar(100), --주문 메세지
+	
+	CONSTRAINT new_prod_destination_user_id_pk PRIMARY KEY (user_id)
+);
+
+--상품  등록 테이블--
+CREATE TABLE PRODUCT(
+	prod_seq int NOT NULL, -- 시퀀스넘버
+  	prod_code varchar(30) NOT NULL, --  PK 제품코드 (ex 미세먼지 마스크(KF94) L 사이즈 - MM-P-L-94-1 )
+	prod_title varchar(200), -- 게시글 제목 (ex W3M 미세먼지 마스크 KF-94 대형 50개입) 
+	prod_title_image varchar(200), --게시글 이미지 
+	prod_category1 varchar(10) default 'MM', -- 대분류 카테고리 ex( 미세먼지 - MM / 비말 - BB)
+	prod_category2 varchar(10) default 'P', -- 소분류 카테고리 ex( 프리미얼 - P / 노말 - N / 블랙 - B )
+	prod_category3 varchar(10) default 'M', -- 사이즈 카테고리 ex( S/M/L )
+	prod_category4 varchar(10) default '94', -- 등급 카테고리 ex( 94 / 80 )
+	prod_price int default 0, -- 원가
+	prod_price_sale int default 0, -- 할인가
+	prod_amount int default 0, --수량 
+	prod_comment varchar(1000) default null, --설명
+	prod_image1 varchar(200), --이미지1
+	prod_image2 varchar(200), --이미지2
+	prod_image3 varchar(200), --이미지3
+	prod_image4 varchar(200), --이미지4
+	prod_image5 varchar(200), --이미지5
+	prod_image6 varchar(200), --이미지6
+	prod_state varchar(5) default 'y', -- 판매 : y, 판매중단 : n    
+	prod_regdate TIMESTAMP WITH TIME ZONE DEFAULT current_timestamp, --등록 날짜
+	prod_count int default '0', -- 조회수 ~
+	
+	CONSTRAINT product_prod_code_pk PRIMARY KEY (prod_code)
+);
+
+CREATE SEQUENCE product_seq START WITH 1 INCREMENT BY 1; -- 시퀀스 생성
+
+--장바구니--
+CREATE TABLE CART(
+	cart_id int, --카트번호 PK
+	user_id varchar2(20), -- usermember.userid 유저맴버의 FK
+	prod_code int, -- product.prodnum 제품의 FK
+	order_price int, -- 장바구니 가격 
+	order_cnt int defualt '1', -- 주문수량 기본 1개
+	in_date TIMESTAMP WITH TIME ZONE DEFAULT current_timestamp, -- 카트 담은 날짜
+
+	CONSTRAINT cart_id_pk PRIMARY KEY(cart_id),
+	CONSTRAINT cart_id_fk_usermember_user_id FOREIGN KEY(user_id) REFERENCES user_member(user_id),
+	CONSTRAINT cart_id_fk_product_prod_num FOREIGN KEY(prod_code) REFERENCES product(prod_code),
+	
+);
+    
+	create sequence cart_seq start with 1 increment by 1;
+
+
+
+CREATE SEQUENCE notice_seq START WITH 1 INCREMENT BY 1; -- 시퀀스 생성
+
+--주문 정보 테이블--
+CREATE TABLE ORDER_LIST(
+    ORDER_SEQ INT PRIMARY KEY, -- 주문번호 (PK) EX) 10001 등
+    USER_ID VARCHAR(30), -- 주문자 아이디 (FK)
+    ORDER_DATE TIMESTAMP WITH TIME ZONE DEFAULT current_timestamp, -- 주문날짜
+    USER_PHONE VARCHAR(30) NOT NULL, -- 전화번호
+    MENUS VARCHAR(100) NULL, -- 주문메뉴 (prod_code) 제품 코드
+    ORDER_PRICE INT NULL, -- 결제금액
+    TOTAL_PRICE NUMBER(8,0) NULL, -- 주문 총금액 (배송비 / 할인금액 / 추가금액을 포함)
+    ORDER_PAYTOOL VARCHAR(20) NULL, -- 결제수단
+    PAY_STATUS VARCHAR(50) default '정상' NULL, -- 결제상태 // 1 정상 / -1  결제 취소  
+    
+CONSTRAINT ORDER_LIST_FK FOREIGN KEY (USERID)
+    REFERENCES USERMEMBER(USERID)
+    );
+
+
+
+
+
+
+
+
+
+-- 1:1 문의사항 테이블
+CREATE TABLE QNABOARD(
+    SEQ NUMBER(7,0) PRIMARY KEY, -- 시퀀스 넘버 (PK)
+    WRITERID VARCHAR2(12) NOT NULL, -- 작성자 아이디 (FK)
+    TITLE VARCHAR2(100) NOT NULL, -- 제목
+    PHONE VARCHAR2(20) NOT NULL, -- 연락처
+    EMAIL VARCHAR2(30) NOT NULL, -- 이메일
+    QNATYPE VARCHAR2(40) NOT NULL, -- 질문 구분
+    REGDATE DATE NOT NULL, -- 작성일
+    CONTENT VARCHAR2(4000) NOT NULL, -- 내용
+    STOREREGION VARCHAR2(10) NOT NULL, -- 매장 지역구
+    STORENAME VARCHAR2(20) NOT NULL, -- 매장명
+    RESULT VARCHAR2(15) NOT NULL, -- 처리결과
+    REPLYCONTENT VARCHAR2(4000) NULL -- 답변 내용
+    );
+	--공지사항--
+CREATE TABLE notice(
+   	nt_seq int not null, ---공지사항 시퀸스 넘버
+   	nt_title varchar(200) not null, ---공지사항 제목
+  	 nt_write varchar(40) not null, ---공지사항 작성자
+  	 nt_content varchar(4000) not null, ---공지사항 내용
+ 	 nt_date TIMESTAMP WITH TIME ZONE DEFAULT current_timestamp+'-3hours' not null,  ---공지사항 작성 시간
+ 	 nt_count int default 0 ---공지사항 조회수
+	
+	CONSTRAINT notice_seq_pk PRIMARY KEY (notice)
+
+);
