@@ -4,7 +4,7 @@
 <title>상품 등록</title>
 
 <main>
-	<table>
+	<table border="1" align="center">
 		<tr>
 			<th>상품코드</th>
 			<th>상품이미지</th>

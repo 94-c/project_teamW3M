@@ -11,7 +11,7 @@ public class ProductController {
 	@RequestMapping("/getProductList.mdo")
 	public String getProductList(ProductVO vo) {
 		
-		return "admin/page/product/getProductList";
+		return "page/product/getProductList";
 	}
 	
 }
