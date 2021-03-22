@@ -78,7 +78,7 @@
                   </c:if>
                </div>
                <div class="top_btn_login01">
-                  <a href="insertMember.do">회원가입</a>
+                  <a href="selectJoin.do">회원가입</a>
                </div>
 
                <div class="top_btn_login02">
@@ -162,7 +162,7 @@
             </c:when>
             <c:when test="${login ne 'login'}">
                <li><a href="loginForm.do">로그인</a></li>
-               <li><a href="insertMember.do" class="join">회원가입
+               <li><a href="selectJoin.do" class="join">회원가입
                   <span class="scroll" style="bottom: 2.97586px;">
                      <span>+1,000P</span>
                   </span></a>
