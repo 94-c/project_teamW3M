@@ -8,7 +8,7 @@
 		</ol>
 	</div>
 </main>
-<form role="form" method="post" action="admin_notice_insert.mdo">
+<form role="form" method="post" name="writeform" action="admin_notice_insert.mdo" >
 	<div class="card-body">
 		<div class="form-group">
 			<label for="checked">중요 <input type="checkbox" id="nt_imp"
@@ -33,8 +33,7 @@
 				rows="10"></textarea>
 		</div>
 
-		<button type="submit" class="btn btn-info "
-			onclick="location.href = 'admin_notice_insert.mdo'">등록하기</button>
+		<button type="submit" class="btn btn-info" onclick="javascript:emptyCheck();">등록하기</button>
 		<button type="button" class="btn btn-secondary"
 			onclick="location.href = 'admin_notice_list.mdo'">목록으로</button>
 
@@ -44,6 +43,22 @@
 		window.onload = function(){
 		    console.log('checkedBox is ' + document.getElementById('checked').checked);
 		    console.log('uncheckedBox is ' + document.getElementById('unchecked').checked);
+		};
+		
+		function emptyCheck(){
+			
+			if($("#nt_title").val() == ""){
+				alert("제목을 입력하세요");
+				$("##nt_title").focus();
+				return;
+			}
+			else if($("#nt_content").val() == ""){
+				alert("내용을 입력하세요");
+				$("#nt_content").focus();
+				return;
+			}else{
+				return "finish";
+			}
 		};
 </script>
 <%@include file="/WEB-INF/views/admin/page/include/admin_footer.jsp"%>
