@@ -112,7 +112,7 @@
                             </a>
                             <div class="collapse" id="collapsePages" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="#">상품 관리</a>
+                                    <a class="nav-link" href="#">상품 등록</a>
                                     <a class="nav-link" href="#">상품 재고 관리</a>
                                     <a class="nav-link" href="#">상품평 관리</a>
                                     <a class="nav-link" href="#">상품 문의 관리</a>
