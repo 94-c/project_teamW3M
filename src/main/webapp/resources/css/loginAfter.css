@@ -16,6 +16,6 @@
 #Login_Success01 dt { margin-bottom:15px; font-size:24px; color:#000; text-decoration:underline }
 /* #Login_Success01 dd { font-size:42px; color:#ff0000; text-align: center} */
 #Login_Success01 dd{  font-size:38px; color:#ff0000; text-align: center; font-family : TmonMonsori, "GodoB", "굴림"}
-
+#Login_Success01 dd a{  font-size:38px; color:#ff0000; text-align: center; font-family : TmonMonsori, "GodoB", "굴림"}
 #login_After .btn-area { padding-top:35px; text-align: center }
 #login_After .btn-area a { width:378px; height:58px; font-size:16px; line-height:58px }

@@ -21,13 +21,22 @@ public class UserVO {
 	private String user_level; //등급 DEFAULT 'Bronze', -- 회원등급 //Bronze , silver, gold, Platinum,dia
 	private String user_state; //"일반", "탈퇴", "정지"
 	private Long user_seq; // 회원 번호
-	
+	private String user_sns_naver;//naver 회원가입
+	private String user_sns_kakao;//kakao 회원가입
 	private String searchKeyword;
 	private String searchCondition;
-	
-	
-	
-	
+	@Override
+	public String toString() {
+		return "UserVO [user_id=" + user_id + ", user_password=" + user_password + ", user_name=" + user_name
+				+ ", user_birthday=" + user_birthday + ", user_gender=" + user_gender + ", user_email=" + user_email
+				+ ", user_zipcode=" + user_zipcode + ", user_address1=" + user_address1 + ", user_address2="
+				+ user_address2 + ", user_join_date=" + user_join_date + ", user_last_login=" + user_last_login
+				+ ", user_phone=" + user_phone + ", user_point=" + user_point + ", user_marketing_mail="
+				+ user_marketing_mail + ", user_marketing_sms=" + user_marketing_sms + ", user_level=" + user_level
+				+ ", user_state=" + user_state + ", user_seq=" + user_seq + ", user_sns_naver=" + user_sns_naver
+				+ ", user_sns_kakao=" + user_sns_kakao + ", searchKeyword=" + searchKeyword + ", searchCondition="
+				+ searchCondition + "]";
+	}
 	public String getUser_id() {
 		return user_id;
 	}
@@ -82,14 +91,12 @@ public class UserVO {
 	public void setUser_address2(String user_address2) {
 		this.user_address2 = user_address2;
 	}
-	
 	public Date getUser_join_date() {
 		return user_join_date;
 	}
 	public void setUser_join_date(Date user_join_date) {
 		this.user_join_date = user_join_date;
 	}
-	
 	public Date getUser_last_login() {
 		return user_last_login;
 	}
@@ -138,9 +145,18 @@ public class UserVO {
 	public void setUser_seq(Long user_seq) {
 		this.user_seq = user_seq;
 	}
-	
-	
-	
+	public String getUser_sns_naver() {
+		return user_sns_naver;
+	}
+	public void setUser_sns_naver(String user_sns_naver) {
+		this.user_sns_naver = user_sns_naver;
+	}
+	public String getUser_sns_kakao() {
+		return user_sns_kakao;
+	}
+	public void setUser_sns_kakao(String user_sns_kakao) {
+		this.user_sns_kakao = user_sns_kakao;
+	}
 	public String getSearchKeyword() {
 		return searchKeyword;
 	}
@@ -151,20 +167,8 @@ public class UserVO {
 		return searchCondition;
 	}
 	public void setSearchCondition(String searchCondition) {
-		this.searchCondition = searchCondition.substring(1);
+		this.searchCondition = searchCondition;
 	}
 	
-	@Override
-	public String toString() {
-		return "UserVO [user_id=" + user_id + ", user_password=" + user_password + ", user_name=" + user_name
-				+ ", user_birthday=" + user_birthday + ", user_gender=" + user_gender + ", user_email=" + user_email
-				+ ", user_zipcode=" + user_zipcode + ", user_address1=" + user_address1 + ", user_address2="
-				+ user_address2 + ", user_join_date=" + user_join_date + ", user_last_login=" + user_last_login
-				+ ", user_phone=" + user_phone + ", user_point=" + user_point + ", user_marketing_mail="
-				+ user_marketing_mail + ", user_marketing_sms=" + user_marketing_sms + ", user_level=" + user_level
-				+ ", user_state=" + user_state + ", user_seq=" + user_seq + ", searchKeyword=" + searchKeyword
-				+ ", searchCondition=" + searchCondition + "]";
-	}
-
 	
-}
+	}

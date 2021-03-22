@@ -48,7 +48,8 @@
 			} else if (email_ck == 1) {
 				alert("이메일을 확인해 주세요.")
 			} else {
-				alert("회원 정보 수정이 완료되었습니다.")
+				alert("회원 정보 수정이 완료되었습니다.\n다시 로그인 해주십시오.")
+				
 				$("#user_update").submit();
 			}
 

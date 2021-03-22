@@ -23,7 +23,7 @@
 									<img src="resources/images/join/join_event.jpg" alt="웰컴혜택안내">
 								</div>
 																	
-								<a href="#" class="move-link">간편회원가입</a>
+								<a href="insertMember.do" class="move-link">간편회원가입</a>
 							</div>
 						</div>
 					</div>
@@ -33,7 +33,7 @@
 									<a href="/list/API/login_kakao.html" class="link kakao">
 									<img src="resources/images/sns/kakao_join.png" alt="카카오로 회원가입">
 								</a>
-									<a href="/list/API/login_naver.html" class="link naver">
+									<a href="${url }" class="link naver">
 									<img src="resources/images/sns/naver_join.png" alt="네이버로 회원가입">
 								</a>
 						</div>

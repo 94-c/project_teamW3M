@@ -5,20 +5,32 @@
 <mapper namespace="UserDAO">
 
 	<insert id="insertUser" parameterType="UserVO">
-	INSERT INTO user_member (user_seq, user_id, user_name, user_password, user_birthday, user_gender, user_email, user_zipcode, user_address1, user_address2, user_phone, user_marketing_mail, user_marketing_sms)
-	VALUES (nextval('user_member_seq'), #{user_id}, #{user_name}, #{user_password}, #{user_birthday}, #{user_gender}, #{user_email}, #{user_zipcode}, #{user_address1}, #{user_address2}, #{user_phone}, #{user_marketing_mail}, #{user_marketing_sms})
+	INSERT INTO user_member (user_seq, user_id, user_name, user_password, user_birthday, user_gender, user_email, user_zipcode, user_address1, user_address2, user_phone, user_marketing_mail, user_marketing_sms, user_sns_naver, user_sns_kakao)
+	VALUES (nextval('user_member_seq'), #{user_id}, #{user_name}, #{user_password}, #{user_birthday}, #{user_gender}, #{user_email}, #{user_zipcode}, #{user_address1}, #{user_address2}, #{user_phone}, #{user_marketing_mail}, #{user_marketing_sms}, #{user_sns_naver}, #{user_sns_kakao})
 	</insert>
-	<select id="getUser" parameterType="UserVO" resultType="UserVO">
-		SELECT * From user_member 
+	
+	<select id="getUser" resultType="UserVO">
+		SELECT * FROM user_member
+		WHERE user_id = #{user_id}
 	</select>
 	
+	
+	
 	<select id="idCheck" parameterType="string" resultType="int"> 
+	 select count(*) from user_member where user_id = #{user_id} 
+	</select>
+	
+	<select id="SNSidCheck" parameterType="string" resultType="int"> 
 	 select count(*) from user_member where user_id = #{user_id} 
 	</select>
 	
 	<select id="passCheck" parameterType="String" resultType="String">
 		SELECT user_password From user_member where user_id = #{user_id}
 	</select>
+	<update id="SNSupdate" parameterType="UserVO">
+		UPDATE user_member user_sns_naver = #{user_sns_naver}
+		WHERE user_id = #{user_id}
+	</update>
 	<select id="phoneCheck" parameterType="string" resultType="int">
 		SELECT count(*) From user_member where user_phone = #{user_phone}
 	</select>

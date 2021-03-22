@@ -24,6 +24,7 @@ public class UserLoginController {
 	
 	@RequestMapping("/login.do")//로그인 유효성 검증
 	public ModelAndView userloginCheck(@ModelAttribute UserVO vo, HttpSession session) {
+		
 		int result = userLoginService.loginCheck(vo, session);
 		ModelAndView mav = new ModelAndView();
 		

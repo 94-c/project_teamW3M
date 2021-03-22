@@ -31,11 +31,17 @@ public class UserController {
 	private JavaMailSenderImpl mailSender;
 	
 
+	@RequestMapping("/selectJoin.do") //회원가입 선택 페이지 진입
+	public String selectJoin() {
+		return "join/selectJoin";
+
+	}
 	@RequestMapping("/insertMember.do") //회원가입 페이지 진입
 	public String insert_member() {
 		return "join/insertMember";
 
 	}
+
 
 	@RequestMapping("/mypage.do")
 	public String myPage() { //마이페이지 진입
@@ -52,7 +58,7 @@ public class UserController {
 		return "join/memberInfo";
 	}
 	@RequestMapping("/user_update.do")
-	public String update_success(UserVO vo) {
+	public String update_success(UserVO vo,HttpSession session) {
 		if (vo.getUser_marketing_mail() == null) { // check box 가 Null 이면 false
 			vo.setUser_marketing_mail(false);
 		}
@@ -72,7 +78,7 @@ public class UserController {
 		System.out.println(vo.toString());
 		
 		userService.updateUser(vo);
-
+		session.invalidate();//세션 초기화
 		
 		return "index";
 		
@@ -138,13 +144,52 @@ public class UserController {
 		
 		return "join/insert_success";
 	}
+	
+	@RequestMapping("/login_insert_sns.do")
+	public String insert_success_sns(UserVO vo) { // SNS insert member
 
-	@RequestMapping("")
-	public String getUser(UserVO vo, UserDAO dao) {
-		vo = userService.getUser();
+		if (vo.getUser_marketing_mail() == null) { // check box 가 Null 이면 false
+			vo.setUser_marketing_mail(false);
+		}
+		if (vo.getUser_marketing_sms() == null) { // check box 가 Null 이면 false
+			vo.setUser_marketing_sms(false);
+		}
+
+
+		String phoneFormat = vo.getUser_phone();// 폰 형식 '-'
+		vo.setUser_phone(phoneFormat.replace(",", "-"));
+
+		vo.setUser_password(passEncoder.encode(vo.getUser_password())); //비밀번호 암호화
+
 		System.out.println(vo.toString());
-		return null;
-
+		userService.insertUser(vo);
+		
+		
+		// 이메일 보내기
+		
+		String setfrom = "w3mmask@gmail.com";         
+	    String tomail  = vo.getUser_email();     // 받는 사람 이메일
+	    String title   = "W3M에 가입해 주셔서 감사합니다.";      // 제목
+	    String content =  vo.getUser_name()+ "님 W3M에 가입해 주셔서 감사합니다.";    // 내용
+	    
+	    
+	   
+	    try {
+	      MimeMessage message = mailSender.createMimeMessage();
+	      MimeMessageHelper messageHelper 
+	                        = new MimeMessageHelper(message, true, "UTF-8");
+	 
+	      messageHelper.setFrom(setfrom);  // 보내는사람 생략하거나 하면 정상작동을 안함
+	      messageHelper.setTo(tomail);     // 받는사람 이메일
+	      messageHelper.setSubject(title); // 메일제목은 생략이 가능하다
+	      messageHelper.setText(content);  // 메일 내용
+	     
+	      mailSender.send(message);
+	    } catch(Exception e){
+	      System.out.println(e);
+	    }
+		
+		return "join/insert_success";
 	}
 
 	@RequestMapping(value = "/user_id_check.do", method = RequestMethod.POST)

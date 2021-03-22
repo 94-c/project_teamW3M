@@ -12,9 +12,9 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserDAO dao;
 	@Override
-	public UserVO getUser() {
+	public UserVO getUser(UserVO vo) {
 		
-		return dao.getUser();
+		return dao.getUser(vo);
 	}
 
 	@Override
@@ -43,6 +43,12 @@ public class UserServiceImpl implements UserService {
 	public int phoneCheck(String user_phone) {
 		
 		return dao.phoneCheck(user_phone);
+	}
+
+	@Override
+	public int SNSidCheck(String user_id) {
+		
+		return dao.SNSidCheck(user_id);
 	}
 
 }
