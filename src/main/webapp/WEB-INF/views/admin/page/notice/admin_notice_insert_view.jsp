@@ -32,7 +32,7 @@
 		    console.log('checkedBox is ' + document.getElementById('checked').checked);
 		    console.log('uncheckedBox is ' + document.getElementById('unchecked').checked);
 		};
-		</script>
+</script>
 
 </head>
 
@@ -201,9 +201,9 @@
 					</div>
 
 					<button type="submit" class="btn btn-info "
-						onclick="location.href = 'admin_notice_insert.mdo' ">등록하기</button>
+						onclick="location.href = 'admin_notice_insert.mdo'">등록하기</button>
 					<button type="button" class="btn btn-secondary"
-						onclick="location.href = 'admin_notice_list.mdo' ">목록으로</button>
+						onclick="location.href = 'admin_notice_list.mdo'">목록으로</button>
 
 				</div>
 			</form>

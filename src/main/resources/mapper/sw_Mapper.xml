@@ -13,23 +13,6 @@
 		<result property="nt_count" column="nt_count" />
 	</resultMap>
 
-	<insert id="insertNotice" parameterType="NoticeVO">
-		INSERT INTO notice (nt_seq, nt_title, nt_writer, nt_content,nt_imp)
-		VALUES(nextval('nt_seq'), #{nt_title}, #{nt_writer}, #{nt_content},#{nt_imp})
-	</insert>
-
-	<update id="updateNotice" parameterType="NoticeVO">
-		UPDATE notice
-		SET
-		nt_title=#{nt_title}, nt_content=#{nt_content}
-		WHERE nt_seq = #{nt_seq}
-	</update>
-
-	<delete id="deleteNotice" parameterType="NoticeVO">
-		DELETE FROM notice WHERE
-		nt_seq = #{nt_seq}
-	</delete>
-
 	<select id="getNotice" resultType="NoticeVO">
 		SELECT * FROM notice WHERE nt_seq = #{nt_seq}
 	</select>
@@ -47,40 +30,10 @@
 		order by nt_seq desc
 	</select>
 	
-	<update id="NoticeCntUpdate" parameterType="NoticeVO"> update notice set nt_count=nt_count+1 WHERE nt_seq=#{nt_seq} </update>
+	<update id="NoticeCntUpdate" parameterType="NoticeVO"> 
+		update notice set nt_count=nt_count+1 WHERE nt_seq=#{nt_seq} 
+	</update>
+
 	
-	
-	
-	<select id="getNoticeListCnt" resultType="int">
-		SELECT COUNT(*) from notice
-	</select>
-	
-	<select id="getPageList" resultType="NoticeVO">
-		SELECT * FROM notice ORDER BY nt_seq LIMIT #{listSize} OFFSET #{startList}
-	</select>
-	
-	<select id="getSearchPagingList" resultType="NoticeVO">
-		select * from notice
-		WHERE 1=1
-		<if test="searchCondition=='nt_title'">
-			AND nt_title LIKE '%'||#{searchKeyword}||'%'
-		</if>
-		<if test="searchCondition=='nt_content'">
-			AND nt_content LIKE '%'||#{searchKeyword}||'%'
-		</if>
-		ORDER BY nt_seq
-		LIMIT #{listSize} OFFSET#{startList} 
-	</select>
-	
-	<select id="getSearchCnt" parameterType="String" resultType="int">
-		SELECT COUNT(*) FROM notice 
-		WHERE 1=1
-		<if test="searchCondition=='nt_title'">
-			AND nt_title LIKE '%'||#{searchKeyword}||'%'
-		</if>
-		<if test="searchCondition=='nt_content'">
-			AND nt_content LIKE '%'||#{searchKeyword}||'%'
-		</if>
-	</select>
 	
 </mapper>

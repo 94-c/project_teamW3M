@@ -12,42 +12,53 @@ import com.spring.w3m.paging.common.Pagination;
 import com.spring.w3m.paging.common.Search;
 
 public interface AdminService {
-	
+
 	public AdminVO getAdmin();
-	
-	
-	 //회원 목록 리스트 
+
+	// 회원 목록 리스트
 	List<UserVO> getUserList();
-	
-	//회원 관리 - 검색 ,페이징
+
+	// 회원 관리 - 검색 ,페이징
 	int getUserListCnt(Search search);
+
 	List<UserVO> getPageList(Search search);
+
 	int getSearchCnt(String searchKeyword);
+
 	List<UserVO> getSearchPagingList(Pagination pagination);
-	
+
 	// 문의사항 게시글 리스트
 	List<InquiryVO> getInquiryList(InquiryVO vo);
-	
+
 	boolean loginCheck(AdminVO vo, HttpSession session);
-	
+
 	AdminVO viewAdmin(AdminVO vo);
-	
+
 	void logout(HttpSession session);
-	
-	//공지사항 게시글 리스트
+
+	// 공지사항 게시글 리스트
 	List<NoticeVO> getNoticeList(NoticeVO vo);
+
+	// 공지사항 페이징, 검색
+	int getNoticeListCnt(Search search);
 	
-	//공지사항 등록
+	int getNoticeSearchCnt(String searchKeyword);
+
+	List<NoticeVO> getNoticePageList(Search search);
+
+
+	List<NoticeVO> getNoticeSearchPagingList(Pagination pagination);
+
+	// 공지사항 등록
 	void admin_notice_insert(NoticeVO vo);
-	
-	//공지사항 업데이트
+
+	// 공지사항 업데이트
 	void admin_notice_update(NoticeVO vo);
-	
-	//공지사항 삭제
+
+	// 공지사항 삭제
 	void admin_notice_delete(NoticeVO vo);
-	
-	//공지사항 상세보기
+
+	// 공지사항 상세보기
 	NoticeVO getNotice(NoticeVO vo);
-	
-	
+
 }

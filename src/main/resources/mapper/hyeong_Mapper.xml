@@ -169,4 +169,57 @@
 		SELECT * FROM notice WHERE nt_seq = #{nt_seq}
 	</select>
 	
+	
+	
+	<select id="getNoticePageList" resultType="NoticeVO">
+		select * from 
+			(select * from notice where nt_imp = 1 order by nt_date desc) as one
+		union all
+		select * from 
+			(select * from (select * from notice where nt_imp = 0 order by nt_seq asc) as three
+			  order by nt_date desc, nt_seq desc limit #{listSize} offset #{startList} ) as two;
+	</select>	
+	
+	
+	
+	
+	<select id="getNoticeSearchCnt" parameterType="String" resultType="int">
+		select count(*) from notice
+	<trim prefix="WHERE" prefixOverrides="AND|OR">
+	<if test="keyword != null and keyword != '' ">
+			<if test="searchType=='nt_title'">
+				AND nt_title like CONCAT('%', #{keyword}, '%')
+			</if>
+
+			<if test="searchType=='nt_content'">
+				AND nt_content like CONCAT('%', #{keyword}, '%')
+			</if>
+      </if>
+	</trim>
+	</select>
+	
+	<select id="getNoticeSearchPagingList" resultType="NoticeVO">
+		select
+			nt_seq,
+			nt_title,
+			nt_writer,
+			nt_content,
+			nt_date
+			nt_cnt
+		from notice
+		where 1=1
+		<if test="searchType=='nt_title' and keyword != null and keyword != '' ">
+			AND nt_title like CONCAT('%', #{keyword}, '%')
+		</if>
+		<if test="searchType=='nt_content' and keyword != null and keyword != '' ">
+			AND nt_content like CONCAT('%', #{keyword}, '%')
+		</if>
+		order by nt_seq desc
+		limit #{listSize} offset #{startList}
+	</select>
+	
+	<select id="getNoticeListCnt" resultType="int">
+		select count(*) from notice
+	</select>
+	
 </mapper>

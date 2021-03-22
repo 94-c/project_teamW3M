@@ -7,31 +7,14 @@ import org.springframework.stereotype.Service;
 
 import com.spring.w3m.notice.admin.dao.NoticeDAO;
 import com.spring.w3m.notice.admin.vo.NoticeVO;
-
+import com.spring.w3m.paging.common.Pagination;
+import com.spring.w3m.paging.common.Search;
 
 @Service("NoticeService")
 public class NoticeServiceImpl implements NoticeService {
 
 	@Autowired
 	private NoticeDAO dao;
-
-	@Override
-	public void insertNotice(NoticeVO vo) {
-		dao.insertNotice(vo);
-		
-	}
-
-	@Override
-	public void updateNotice(NoticeVO vo) {
-		dao.updateNotice(vo);
-		
-	}
-
-	@Override
-	public void deleteNotice(NoticeVO vo) {
-		dao.deleteNotice(vo);
-		
-	}
 
 	@Override
 	public NoticeVO getNotice(NoticeVO vo) {
@@ -43,6 +26,24 @@ public class NoticeServiceImpl implements NoticeService {
 		return dao.getNoticeList(vo);
 	}
 
+	@Override
+	public List<NoticeVO> getNoticePageList(Search search) {
+		return dao.getNoticePageList(search);
+	}
 
+	@Override
+	public List<NoticeVO> getNoticeSearchPagingList(Pagination pagination) {
+		return dao.getNoticeSearchPagingList(pagination);
+	}
+
+	@Override
+	public int getNoticeListCnt(Search search) {
+		return dao.getNoticeListCnt(search);
+	}
+
+	@Override
+	public int getNoticeSearchCnt(String searchKeyword) {
+		return dao.getNoticeSearchCnt(searchKeyword);
+	}
 
 }

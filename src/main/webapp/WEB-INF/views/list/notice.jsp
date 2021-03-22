@@ -5,20 +5,57 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:url var="getNoticeList" value="getNoticeList.do">
-	<c:param name="page" value="${pagination.page }" />
-	<c:param name="range" value="${pagination.range }" />
-	<c:param name="rangeSize" value="${pagination.rangeSize }" />
-	<c:param name="searchCondition" value="${pagination.searchCondition }" />
-	<c:param name="searchKeyword" value="${pagination.searchKeyword }" />
-</c:url>
 <%@include file="/WEB-INF/views/include/header.jsp"%>
 
-
+<link href="resources/admin_css/pagination.css" rel="stylesheet" type="text/css">
+<link href="resources/admin_css/styles.css" rel="stylesheet"
+	type="text/css">
 <style type="text/css">
+
 	.page-item{list-style-type: none; display:inline; margin-left:20px;}
 </style>
-
+<script type="text/javascript">
+        	//이전 버튼 이벤트
+        	function fn_prev(page, range, rangSize, searchKeyword){
+        		var page = ((range - 2) * rangeSize) + 1;
+        		var range = range - 1;
+        		var url = "${pagContext.request.contextPath}/getNoticeList.do";
+        		url = url + "?page=" + page;
+        		url = url + "&range=" + range;
+        		url = url + "&searchKeyword" + searchKeyword;
+        		location.href = url;
+        	}
+        	
+        
+        	//페이지 번호 클릭
+        	function fn_pagination(page, range, rangSize, searchKeyword){
+        		var url = "${pagContext.request.contextPath}/getNoticeList.do";
+        		url = url + "?page=" + page;
+        		url = url + "&range=" + range;
+        		url = url + "&searchKeyword" + searchKeyword;
+        		location.href = url;
+        	}
+        	
+        	//다음 버튼 이벤트
+        	function fn_next(page, range, rangSize, searchKeyword){
+        		var page = parseInt((range  * rangeSize)) + 1;
+        		var range = parseInt(range) + 1;
+        		var url = "${pagContext.request.contextPath}/getNoticeList.do";
+        		url = url + "?page=" + page;
+        		url = url + "&range=" + range;
+        		url = url + "&searchKeyword" + searchKeyword;
+        		location.href = url;
+        	}
+        	
+        	$(document).on('click', '#btnSearch', function(e){
+        		e.preventDefault();
+        		var url = "${pageContext.request.contextPath}/getNoticeList.do";
+        		url = url + "?searchType=" + $('#searchType').val();
+        		url = url + "&keyword=" + $('#keyword').val();
+        		location.href = url;
+        		console.log(url);
+        	});
+        </script>
 
 <link rel="shortcut icon" href="resources/images/icons/favicon.ico" type="image/x-icon">
 <title>공지사항</title>
@@ -85,7 +122,7 @@
 			
 							</thead>
 							<tbody>
-								<c:forEach var="notice" items="${noticeList}">
+								<c:forEach var="notice" items="${getNoticeList}">
 									<tr>
 										<td scope="col"><div class="tb-center">${notice.nt_seq }</td>
 										<td scope="col"><div class="tb-center">&nbsp;</td>
@@ -97,30 +134,52 @@
 								</c:forEach>
 							</tbody>
 						</table>
+						<div id="paginationBox">
+									<ul class="pagination">
+										<c:if test="${pagination.prev}">
+											<li class="page-item"><a class="page-link" href="#"
+												onClick="fn_prev('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}')">Previous</a></li>
+										</c:if>
+
+										<c:forEach begin="${pagination.startPage}"
+											end="${pagination.endPage}" var="idx">
+											<li
+												class="page-item <c:out value="${pagination.page == idx ? 'active' : ''}"/> "><a
+												class="page-link" href="#"
+												onClick="fn_pagination('${idx}', '${pagination.range}', '${pagination.rangeSize}')">
+													${idx} </a></li>
+										</c:forEach>
+
+										<c:if test="${pagination.next}">
+											<li class="page-item"><a class="page-link" href="#"
+												onClick="fn_next('${pagination.range}', '${pagination.range}', '${pagination.rangeSize}')">Next</a></li>
+										</c:if>
+									</ul>
+								</div>
+								<!-- search{s} -->
+
+								<div class="searchText">
+									<div class="w100" style="padding-right: 10px">
+										<select class="form-control form-control-sm" name="searchType"
+											id="searchType">
+											<option value="nt_title">제목</option>
+											<option value="nt_content">내용</option>
+										</select>
+
+									</div>
+									<div class="w300" style="padding-right: 10px">
+										<input type="text" class="form-control form-control-sm"
+											name="keyword" id="keyword">
+									</div>
+
+									<div>
+										<button class="btn btn-sm btn-primary" name="btnSearch"
+											id="btnSearch">검색</button>
+									</div>
+								</div>
 					</div>
 					<!-- //게시판 목록 -->
 				</div>
-			</div>
-			<div align="center">
-				<ul class="pagination">
-					<c:if test="${pagination.prev}">
-						<li class="page-item">
-							<a class="ppage-link" href="#" onclick="fn_prev('${pagination.page}','${pagination.range }','${pagination.rangeSize}','${pagination.searchCondition }','${pagination.searchKeyword }')">Prev</a>
-						</li>
-					</c:if>
-						<c:forEach begin="${pagination.startPage }" end="${pagination.endPage }" var="idx">
-							<li
-								class="page-item <c:out value="${pagination.page == idx ? 'active' : ''}"/> ">
-							<input type="button" value="${idx}" return false; onClick="location.href='fn_pagination('${idx}','${pagination.page}','${pagination.range }','${pagination.rangeSize}','${pagination.searchCondition }','${pagination.searchKeyword }')'">
-							</li>				
-						</c:forEach>
-						
-						<c:if test="${pagination.next }">
-							<li class="page-item">
-								<a class="page-link" href="#" onClick="fn_next('${pagination.page}','${pagination.range }','${pagination.rangeSize}','${pagination.searchCondition }','${pagination.searchKeyword }')">Next</a>
-							</li>
-					</c:if>
-				</ul>
 			</div>
 		</div>
 	</div>
@@ -137,39 +196,6 @@ function checkOnlyOne(element) {
 	  
 	  element.checked = true;
 	}
-	
-function fn_prev(page, range, rangeSize, searchCondition,searchKeyword){
-	var page = ((range - 2) * rangeSize ) + 1;
-	var range = range - 1;
-	var url = "${pageContext.request.contextPath}/getNoticeList.do";
-	url = url + "?page=" + page;
-	url = url + "&range=" + range;
-	url = url + "&searchCondition=" + searchCondition;
-	url = url + "&searchKeyword=" + searchKeyword;
-	location.href=url;
-}	
-
-function fn_pagination(page, range, rangeSize, searchCondition, searchKeyword){
-	var url = "${pageContext.request.contextPath}/getNoticeList.do";
-	url = url + "?page=" + page;
-	url = url + "&range=" + range;
-	url = url + "&searchCondition=" + searchCondition;
-	url = url + "&searchKeyword=" + searchKeyword;
-	location.href=url;
-}	
-
-function fn_prev(page, range, rangeSize, searchCondition,searchKeyword){
-	var page = parseInt((range * rangeSize)) + 1;
-	var range = parseInt(range) + 1;
-	var url = "${pageContext.request.contextPath}/getNoticeList.do";
-	url = url + "?page=" + page;
-	url = url + "&range=" + range;
-	url = url + "&searchCondition=" + searchCondition;
-	url = url + "&searchKeyword=" + searchKeyword;
-	location.href=url;
-}	
-
-
 </script>
 
 

@@ -127,4 +127,24 @@ public class AdminServiceImpl implements AdminService {
 		return dao.getSearchPagingList(pagination);
 	}
 
+	@Override
+	public List<NoticeVO> getNoticePageList(Search search) {
+		return dao.getNoticePageList(search);
+	}
+
+	@Override
+	public List<NoticeVO> getNoticeSearchPagingList(Pagination pagination) {
+		return dao.getNoticeSearchPagingList(pagination);
+	}
+
+	@Override
+	public int getNoticeListCnt(Search search) {
+		return dao.getNoticeListCnt(search);
+	}
+
+	@Override
+	public int getNoticeSearchCnt(String searchKeyword) {
+		return dao.getNoticeSearchCnt(searchKeyword);
+	}
+
 }

@@ -65,19 +65,7 @@
 							<table summary="게시글 목록">
 								<caption>게시글 목록</caption>
 								<thead>
-								<c:set var="login" value="${adminLogin_state }"/>
-								<ul>
-								<c:choose>
-									<c:when test="${login eq 'adminLogin'}">
 											<input type="button" class="CSSbuttonBlack" id="submitbutton" value="글 목록" onclick="location.href='./getNoticeList.do'"/>
-											<input type="button" class="CSSbuttonBlack" id="submitbutton" value="수정하기" onclick="location.href='./updateNotice_view.do?nt_seq=${notice.nt_seq}'"/>
-											<input type="button" class="CSSbuttonBlack" id="submitbutton" value="삭제하기" onclick="location.href='./deleteNotice.do?nt_seq=${notice.nt_seq}'"/>
-									</c:when>
-									<c:when test="${login ne 'adminLogin'}">
-											<input type="button" class="CSSbuttonBlack" id="submitbutton" value="글 목록" onclick="location.href='./getNoticeList.do'"/>
-									</c:when>
-								</c:choose>
-								</ul>
 								</thead>
 							</table>
 						</div>
