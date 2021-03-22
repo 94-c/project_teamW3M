@@ -1,13 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ page import="java.util.List"%>
+<%@page import="com.spring.w3m.notice.admin.vo.NoticeVO"%>
+<%@page import="com.spring.w3m.login.admin.dao.AdminDAO"%>
 <!-- 관리자 페이지 header파일입니다. -->
 
 <head>
 <!-- CSS -->
 <link href="resources/admin_css/styles.css" rel="stylesheet" type="text/css">
 <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
-
+<link href="resources/admin_css/pagination.css" rel="stylesheet" type="text/css" />
+<link type="text/css" rel="stylesheet" href="resources/css/menu.css?t=201912021906">
+<link type="text/css" rel="stylesheet" href="resources/css/soo.css">
 <!-- JS -->
 <script	src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
