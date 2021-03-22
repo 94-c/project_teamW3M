@@ -29,8 +29,7 @@
 
 		<div class="form-group">
 			<label for="exampleFormControlTextarea1">내용</label>
-			<textarea class="form-control" id="nt_content" name="nt_content"
-				rows="10"></textarea>
+			<pre><textarea class="form-control" id="nt_content" name="nt_content" rows="10"></textarea></pre>
 		</div>
 
 		<button type="submit" class="btn btn-info" onclick="javascript:emptyCheck();">등록하기</button>
