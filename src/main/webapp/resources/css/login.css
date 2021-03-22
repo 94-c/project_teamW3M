@@ -28,7 +28,11 @@
 #loginWrap .mlog-sign .sign dl dd { padding-top:15px }
 #loginWrap .mlog-sign .sign dl dd a { width:384px; height:58px; font-size:15px; line-height:58px }
 
-
+/* simpleLogin */
+#simplogin { margin-top:10px }
+#simplogin .sns-login { font-size:0 }
+#simplogin .sns-login a { display:inline-block; vertical-align:top; position:relative; width:413px; margin-left:10px; *margin-left:9px }
+#simplogin .sns-login a:first-child { margin-left:220px; }
 
 
 

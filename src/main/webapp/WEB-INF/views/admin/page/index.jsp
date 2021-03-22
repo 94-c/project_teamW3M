@@ -2,6 +2,7 @@
 <%@ page import="java.util.List" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
     <head>
        <link rel="shortcut icon" href="resources/images/icons/favicon.ico" type="image/x-icon">
         <title>관리자 페이지</title>
