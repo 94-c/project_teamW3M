@@ -36,29 +36,5 @@ public interface AdminService {
 
 	void logout(HttpSession session);
 
-	// 공지사항 게시글 리스트
-	List<NoticeVO> getNoticeList(NoticeVO vo);
-
-	// 공지사항 페이징, 검색
-	int getNoticeListCnt(Search search);
-	
-	int getNoticeSearchCnt(String searchKeyword);
-
-	List<NoticeVO> getNoticePageList(Search search);
-
-
-	List<NoticeVO> getNoticeSearchPagingList(Pagination pagination);
-
-	// 공지사항 등록
-	void admin_notice_insert(NoticeVO vo);
-
-	// 공지사항 업데이트
-	void admin_notice_update(NoticeVO vo);
-
-	// 공지사항 삭제
-	void admin_notice_delete(NoticeVO vo);
-
-	// 공지사항 상세보기
-	NoticeVO getNotice(NoticeVO vo);
 
 }

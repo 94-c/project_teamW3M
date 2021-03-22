@@ -16,40 +16,40 @@
 </style>
 <script type="text/javascript">
         	//이전 버튼 이벤트
-        	function fn_prev(page, range, rangSize, searchKeyword){
+        	function fn_prev(page, range, rangSize, keyword){
         		var page = ((range - 2) * rangeSize) + 1;
         		var range = range - 1;
-        		var url = "${pagContext.request.contextPath}/getNoticeList.do";
+        		var url = "${pagContext.request.contextPath}/getUserNoticeList.do";
         		url = url + "?page=" + page;
         		url = url + "&range=" + range;
-        		url = url + "&searchKeyword" + searchKeyword;
+        		url = url + "&keyword" + keyword;
         		location.href = url;
         	}
         	
         
         	//페이지 번호 클릭
-        	function fn_pagination(page, range, rangSize, searchKeyword){
-        		var url = "${pagContext.request.contextPath}/getNoticeList.do";
+        	function fn_pagination(page, range, rangSize, keyword){
+        		var url = "${pagContext.request.contextPath}/getUserNoticeList.do";
         		url = url + "?page=" + page;
         		url = url + "&range=" + range;
-        		url = url + "&searchKeyword" + searchKeyword;
+        		url = url + "&keyword" + keyword;
         		location.href = url;
         	}
         	
         	//다음 버튼 이벤트
-        	function fn_next(page, range, rangSize, searchKeyword){
+        	function fn_next(page, range, rangSize, keyword){
         		var page = parseInt((range  * rangeSize)) + 1;
         		var range = parseInt(range) + 1;
-        		var url = "${pagContext.request.contextPath}/getNoticeList.do";
+        		var url = "${pagContext.request.contextPath}/getUserNoticeList.do";
         		url = url + "?page=" + page;
         		url = url + "&range=" + range;
-        		url = url + "&searchKeyword" + searchKeyword;
+        		url = url + "&keyword" + keyword;
         		location.href = url;
         	}
         	
         	$(document).on('click', '#btnSearch', function(e){
         		e.preventDefault();
-        		var url = "${pageContext.request.contextPath}/getNoticeList.do";
+        		var url = "${pageContext.request.contextPath}/getUserNoticeList.do";
         		url = url + "?searchType=" + $('#searchType').val();
         		url = url + "&keyword=" + $('#keyword').val();
         		location.href = url;
@@ -68,34 +68,6 @@
 				<div class="page-body">
 					<div class="bbs-tit">
 						<h3>공지사항</h3>
-						<div class="bbs-sch">
-							<form action="getNoticeList.do" name="form1">
-								<input type="hidden" name="searchCondition" value="">  
-								<input type="hidden" name="seachKeyword" value=""> 
-								
-								<!-- .검색 폼시작 -->
-								<fieldset>
-									<legend>게시판 검색 폼</legend>
-									<label> 
-										<input type="radio" name="searchCondition" value="nt_title" onclick="checkOnlyOne(this)" 
-										checked="checked" class="MS_input_checkbox"> 제목
-									</label> 
-									<label> 
-										<input type="radio" name="searchCondition" value="nt_content" onclick="checkOnlyOne(this)" 
-										class="MS_input_checkbox"> 내용
-									</label> 
-									<span class="key-wrap"> 
-										<input type="text" name="searchKeyword" value="" class="MS_input_txt"> 
-										<a href="javascript:document.form1.submit();"> 
-											<img src="//image.makeshop.co.kr/makeshop/d3/basic_simple/bbs/btn_bbs_sch.gif"
-											alt="검색" title="검색">
-										</a>
-									</span>
-								</fieldset>
-							</form>
-							<!-- .검색 폼 끝 -->
-						</div>
-						<!-- .bbs-sch -->
 					</div>
 
 					<!-- 게시판 목록 -->
@@ -126,7 +98,7 @@
 									<tr>
 										<td scope="col"><div class="tb-center">${notice.nt_seq }</td>
 										<td scope="col"><div class="tb-center">&nbsp;</td>
-										<td scope="col"><div class="tb-center"><a href='<c:url value='/getNotice.do?nt_seq=${notice.nt_seq}'/>' class="text-dark">${notice.nt_title }</a></div></td>
+										<td scope="col"><div class="tb-center"><a href='<c:url value='/getUserNotice.do?nt_seq=${notice.nt_seq}'/>' class="text-dark">${notice.nt_title }</a></div></td>
 										<td scope="col"><div class="tb-center"><img src="resources/images/icons/neo_admin.gif"><!--${notice.nt_writer }--></td>
 										<td scope="col"><div class="tb-center"><fmt:formatDate value="${notice.nt_date}" pattern="yyyy-MM-dd"/></td>
 										<td scope="col"><div class="tb-center">${notice.nt_count }</td>
@@ -188,7 +160,7 @@
 function checkOnlyOne(element) {
 	  
 	  const checkboxes 
-	      = document.getElementsByName("SearchCondition");
+	      = document.getElementsByName("searchType");
 	  
 	  checkboxes.forEach((cb){
 	    cb.checked = false;

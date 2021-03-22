@@ -17,14 +17,15 @@ public class NoticeServiceImpl implements NoticeService {
 	private NoticeDAO dao;
 
 	@Override
-	public NoticeVO getNotice(NoticeVO vo) {
-		return dao.getNotice(vo);
+	public NoticeVO getUserNotice(NoticeVO vo) {
+		return dao.getUserNotice(vo);
 	}
 
 	@Override
-	public List<NoticeVO> getNoticeList(NoticeVO vo) {
-		return dao.getNoticeList(vo);
+	public List<NoticeVO> getUserNoticeList(NoticeVO vo) {
+		return dao.getUserNoticeList(vo);
 	}
+
 
 	@Override
 	public List<NoticeVO> getNoticePageList(Search search) {
@@ -44,6 +45,37 @@ public class NoticeServiceImpl implements NoticeService {
 	@Override
 	public int getNoticeSearchCnt(String searchKeyword) {
 		return dao.getNoticeSearchCnt(searchKeyword);
+	}
+
+	// 공지사항 게시글 불러오기
+	@Override
+	public List<NoticeVO> getNoticeList(NoticeVO vo) {
+		return dao.getNoticeList(vo);
+	}
+
+	// 공지사항 업데이트
+	@Override
+	public void admin_notice_update(NoticeVO vo) {
+		dao.admin_notice_update(vo);
+	}
+
+	// 공지사항 삭제
+	@Override
+	public void admin_notice_delete(NoticeVO vo) {
+		dao.admin_notice_delete(vo);
+	}
+
+	// 공지사항 상세보기
+	@Override
+	public NoticeVO getNotice(NoticeVO vo) {
+		return dao.getNotice(vo);
+	}
+
+	// 공지사항 등록
+	@Override
+	public void admin_notice_insert(NoticeVO vo) {
+		dao.admin_notice_insert(vo);
+
 	}
 
 }

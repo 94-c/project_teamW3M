@@ -67,49 +67,5 @@ public class AdminDAO {
 		return sqlSessionTemplate.selectList("AdminDAO.getInquiryList");
 	}
 
-	// 공지사항 게시글 목록 가져오기
-	public List<NoticeVO> getNoticeList(NoticeVO vo) {
-		return sqlSessionTemplate.selectList("AdminDAO.getNoticeList");
-	}
-
-	public int getNoticeSearchCnt(String searchKeyword) {
-		System.out.println("getNoticeSearchCnt() 실행");
-		return sqlSessionTemplate.selectOne("AdminDAO.getNoticeSearchCnt");
-	}
-
-	public int getNoticeListCnt(Search search) {
-		System.out.println("getNoticeListCnt() 실행");
-		return sqlSessionTemplate.selectOne("AdminDAO.getNoticeListCnt");
-	}
-
-	public List<NoticeVO> getNoticePageList(Search search) {
-		System.out.println("getNoticePageList() 실행");
-		return sqlSessionTemplate.selectList("AdminDAO.getNoticePageList", search);
-	}
-
-	public List<NoticeVO> getNoticeSearchPagingList(Pagination pagination) {
-		System.out.println("getNoticeSearchPagingList() 실행");
-		return sqlSessionTemplate.selectList("AdminDAO.getNoticeSearchPagingList");
-	}
-
-	// 공지사항 글 등록
-	public void admin_notice_insert(NoticeVO vo) {
-		sqlSessionTemplate.insert("AdminDAO.admin_notice_insert", vo);
-	}
-
-	// 공지사항 수정
-	public void admin_notice_update(NoticeVO vo) {
-		sqlSessionTemplate.update("AdminDAO.admin_notice_update", vo);
-	}
-
-	// 공지사항 삭제
-	public void admin_notice_delete(NoticeVO vo) {
-		sqlSessionTemplate.delete("AdminDAO.admin_notice_delete", vo);
-	}
-
-	// 공지사항 상세보기
-	public NoticeVO getNotice(NoticeVO vo) {
-		return sqlSessionTemplate.selectOne("AdminDAO.getNotice", vo);
-	}
 
 }
