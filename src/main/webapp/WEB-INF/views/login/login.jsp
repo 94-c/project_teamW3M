@@ -75,7 +75,7 @@
 							<div id="simplogin">
 							<br>
 							<div class="sns-login" align="center">
-								 <a href="javascript:sns_login_log('kakao');">
+								 <a href="https://kauth.kakao.com/oauth/authorize?client_id=cd6fd139e4c5a14b7e6272d000e94c30&redirect_uri=http://localhost:8080/kakaoCallback.do&response_type=code">
 								 <img src="resources/images/sns/kakao_login.png" alt="카카오톡으로 로그인"></a> 
 								 <a href="${url }">
 								 <img src="resources/images/sns/naver_login.png" alt="네이버로 로그인"></a>
