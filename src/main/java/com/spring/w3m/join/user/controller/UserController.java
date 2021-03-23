@@ -146,7 +146,7 @@ public class UserController {
 	}
 	
 	@RequestMapping("/login_insert_sns.do")
-	public String insert_success_sns(UserVO vo) { // SNS insert member
+	public String insert_success_sns(UserVO vo) { // SNS naver insert member
 
 		if (vo.getUser_marketing_mail() == null) { // check box 가 Null 이면 false
 			vo.setUser_marketing_mail(false);
@@ -156,6 +156,54 @@ public class UserController {
 		}
 
 
+		String phoneFormat = vo.getUser_phone();// 폰 형식 '-'
+		vo.setUser_phone(phoneFormat.replace(",", "-"));
+
+		vo.setUser_password(passEncoder.encode(vo.getUser_password())); //비밀번호 암호화
+
+		System.out.println(vo.toString());
+		userService.insertUser(vo);
+		
+		
+		// 이메일 보내기
+		
+		String setfrom = "w3mmask@gmail.com";         
+	    String tomail  = vo.getUser_email();     // 받는 사람 이메일
+	    String title   = "W3M에 가입해 주셔서 감사합니다.";      // 제목
+	    String content =  vo.getUser_name()+ "님 W3M에 가입해 주셔서 감사합니다.";    // 내용
+	    
+	    
+	   
+	    try {
+	      MimeMessage message = mailSender.createMimeMessage();
+	      MimeMessageHelper messageHelper 
+	                        = new MimeMessageHelper(message, true, "UTF-8");
+	 
+	      messageHelper.setFrom(setfrom);  // 보내는사람 생략하거나 하면 정상작동을 안함
+	      messageHelper.setTo(tomail);     // 받는사람 이메일
+	      messageHelper.setSubject(title); // 메일제목은 생략이 가능하다
+	      messageHelper.setText(content);  // 메일 내용
+	     
+	      mailSender.send(message);
+	    } catch(Exception e){
+	      System.out.println(e);
+	    }
+		
+		return "join/insert_success";
+	}
+	@RequestMapping("/login_insert_kakao.do")
+	public String insert_success_kakao(UserVO vo) { // SNS kakao insert member
+
+		if (vo.getUser_marketing_mail() == null) { // check box 가 Null 이면 false
+			vo.setUser_marketing_mail(false);
+		}
+		if (vo.getUser_marketing_sms() == null) { // check box 가 Null 이면 false
+			vo.setUser_marketing_sms(false);
+		}
+
+
+		String birthdayFormat = vo.getUser_birthday();// 생일  형식 '-'
+		vo.setUser_birthday(birthdayFormat.replace(",", "-"));
 		String phoneFormat = vo.getUser_phone();// 폰 형식 '-'
 		vo.setUser_phone(phoneFormat.replace(",", "-"));
 

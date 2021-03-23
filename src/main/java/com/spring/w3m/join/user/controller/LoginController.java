@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import javax.servlet.http.HttpSession;
 
+import org.codehaus.jackson.JsonNode;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -15,10 +16,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.github.scribejava.core.model.OAuth2AccessToken;
+import com.spring.w3m.join.user.service.KakaoAccessToken;
+import com.spring.w3m.join.user.service.KakaoUserInfo;
 import com.spring.w3m.join.user.service.NaverLoginBO;
 import com.spring.w3m.join.user.service.UserService;
 import com.spring.w3m.join.user.vo.UserVO;
-import com.spring.w3m.login.user.dao.LoginDAO;
 
 @Controller
 public class LoginController {
@@ -26,8 +28,10 @@ public class LoginController {
 	private NaverLoginBO naverLoginBO;
 	private String apiResult = null;
 
+
 	@Autowired
 	private UserService userService;
+
 	@Autowired
 	private void setNaverLoginBO(NaverLoginBO naverLoginBO) {
 		this.naverLoginBO = naverLoginBO;
@@ -45,6 +49,7 @@ public class LoginController {
 		model.addAttribute("url", naverAuthUrl);
 		return "login/login";
 	}
+
 	@RequestMapping(value = "/selectJoin.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String login_insert(Model model, HttpSession session) {
 		/* 네이버아이디로 인증 URL을 생성하기 위하여 naverLoginBO클래스의 getAuthorizationUrl메소드 호출 */
@@ -77,8 +82,7 @@ public class LoginController {
 		// 3. 데이터 파싱
 		// Top레벨 단계 _response 파싱
 		JSONObject response_obj = (JSONObject) jsonObj.get("response");
-		
-	
+
 		System.out.println((String) response_obj.get("name"));
 		System.out.println((String) response_obj.get("id"));
 		System.out.println((String) response_obj.get("email"));
@@ -88,18 +92,6 @@ public class LoginController {
 		System.out.println((String) response_obj.get("birthyear"));
 		UserVO vo = new UserVO();
 		vo.setUser_id((String) response_obj.get("id"));
-		vo.setUser_name((String) response_obj.get("name"));
-		vo.setUser_email((String) response_obj.get("email"));
-		vo.setUser_sns_naver("true");
-		String gender = (String) response_obj.get("gender");
-		if(gender.equals("M")){
-			gender="남자";
-		}else {
-			gender="여자";
-		}
-		String fullBirthday = (String) response_obj.get("birthyear") +"-"+(String) response_obj.get("birthday");
-		vo.setUser_gender(gender);
-		vo.setUser_birthday(fullBirthday);
 		model.addAttribute("result", apiResult);
 		// 가입되어있는지 확인
 		int check = userService.SNSidCheck(vo.getUser_id());
@@ -109,18 +101,87 @@ public class LoginController {
 			System.out.println(user.toString());
 			session.setAttribute("userVO", user);
 			session.setAttribute("login_state", "login");
-			
+
 			return "login/loginSuccess";
-		}else {
+		} else {
+			
+			vo.setUser_name((String) response_obj.get("name"));
+			vo.setUser_email((String) response_obj.get("email"));
+			vo.setUser_sns_naver("true");
+			String gender = (String) response_obj.get("gender");
+			if (gender.equals("M")) {
+				gender = "남자";
+			} else {
+				gender = "여자";
+			}
+			String fullBirthday = (String) response_obj.get("birthyear") + "-" + (String) response_obj.get("birthday");
+			vo.setUser_gender(gender);
+			vo.setUser_birthday(fullBirthday);
 			System.out.println("naver 아이디 존재하지 않습니다.");
 			session.setAttribute("userVO", vo); // 세션 생성
 			return "join/insertSNS";
 		}
-		
-		// 4.vo 세션으로 저장
-		
-		
-		
-
 	}
+
+	@RequestMapping(value = "/kakaoCallback.do", produces = "application/json", method = {RequestMethod.GET , RequestMethod.POST} )
+	public String kakaoLogin(@RequestParam("code") String code, Model model, HttpSession session) {
+		JsonNode accessToken;
+		 
+        // JsonNode트리형태로 토큰받아온다
+        JsonNode jsonToken = KakaoAccessToken.getKakaoAccessToken(code);
+        // 여러 json객체 중 access_token을 가져온다
+        accessToken = jsonToken.get("access_token");
+        session.setAttribute("token", jsonToken);
+
+        System.out.println("access_token : " + accessToken);
+
+     // access_token을 통해 사용자 정보 요청
+        JsonNode userInfo = KakaoUserInfo.getKakaoUserInfo(accessToken);
+        UserVO vo = new UserVO();
+        // Get id
+        String id = userInfo.path("id").asText();
+        String name = null;
+        String email = null;
+        String gender = null;
+        vo.setUser_id(id);
+        // 유저정보 카카오에서 가져오기 Get properties
+        JsonNode properties = userInfo.path("properties");
+        JsonNode kakao_account = userInfo.path("kakao_account");
+ 
+        name = properties.path("nickname").asText();
+        email = kakao_account.path("email").asText();
+        gender = kakao_account.path("gender").asText();
+        if (gender.equals("male")) {
+        	gender = "남자";
+        }else
+        	gender = "여자";
+        System.out.println("id : " + id);
+        System.out.println("name : " + name);
+        System.out.println("email : " + email);
+        System.out.println("gender : " + gender);
+        
+        int check = userService.SNSidCheck(vo.getUser_id());
+		if (check > 0) {
+			System.out.println("kakao 아이디 존재합니다.");
+			UserVO user = userService.getUser(vo);
+			System.out.println(user.toString());
+			session.setAttribute("userVO", user);
+			session.setAttribute("login_state", "login");
+
+			return "login/loginSuccess";
+		} else {
+			vo.setUser_name(name);
+			
+			vo.setUser_email(email);
+			vo.setUser_gender(gender);
+			vo.setUser_sns_kakao("true");
+			System.out.println("kakao 아이디 존재하지 않습니다.");
+			session.setAttribute("userVO", vo); // 세션 생성
+			return "join/insertSNSkakao";
+		}
+	
+
+	
+	}
+
 }

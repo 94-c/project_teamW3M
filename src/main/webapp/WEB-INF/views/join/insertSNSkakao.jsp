@@ -1,85 +1,114 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-
-
 <title>회원 정보 수정</title>	
 <%@include file="/WEB-INF/views/include/header.jsp"%>
 <script>
 //아이디 정규식 영문 대.소문자, 숫자 _,-만 입력 가능하고 5에서 20자리를 입력했는지 체크한다 {}사이에는 n과 m을 입력하여 n과 m사이의 값을 입력했는지 체크한다. n만 입력했을 경우 n자리 수 만큼 입력했는지 체크
 var idJ = RegExp(/^[A-Za-z0-9_\-]{5,20}$/);
 // 비밀번호 정규식 패스워드 체크에서는 영문 대문자와 소문자, 숫자, 특수문자를 하나 이상 포함하여 8~16자
-var pwJ = RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^*()\-_=+\\\|\[\]{};:\'",.<>\/?]).{8,16}$/);
+var pwJ = RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^*()\-_=+\\\|\[\]{};:\'",.<>\/?]).{8,16}$/); 
+// 이름 정규식 한글만~
+var nameJ = RegExp(/^[가-힣]{2,6}$/);
 //숫자만 
 var phoneJ= RegExp(/^([0-9]{4})$/);
+//이메일
+var emailJ = RegExp(/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i);
+
+
 
 var pw_ck1 = -1;
 var pw_ck2 = -1;
+var birth_ck = -1;
 var adress_ck = -1;
 var phone_ck = -1;
 
+
 	$(document).ready(function() {
 		
-		$("#insert_success_sns").click(function() { // 회원가입 버튼
-			console.log("id - " + $("#userid").val() );
-			console.log("id - " + $("#username").val() );
-			console.log("id - " + $("#useremail").val() );
-			console.log("id - " + $("#usergender").val() );
-			console.log("id - " + $("#userbirthday").val() );
-			console.log("id - " + $("#usersnsnaver").val() );
+		$("#insert_success_kakao").click(function() { // 회원가입 버튼
+
+			
 			console.log("pw - " + pw_ck1 );
 			console.log("repw - " + pw_ck2 );
+			console.log("생일 - " + birth_ck );
 			console.log("주소 - " + adress_ck );
 			console.log("폰 - " + phone_ck );
-			console.log("약관 - " + $("#user_privacy_sns").val() );
-			console.log("개인정보 - " + $("#user_yaok_sns").val() );
+			console.log("약관 - " + $("#user_privacy_kakao").val() );
+			console.log("개인정보 - " + $("#user_yaok_kakao").val() );
 			
 		
-			if(!$("#user_yaok_sns").prop("checked")){
+			if(!$("#user_yaok_kakao").prop("checked")){
 				alert("약관 동의 확인해 주세요.")
-			}else if(!$("#user_privacy_sns").prop("checked")){
+			}else if(!$("#user_privacy_kakao").prop("checked")){
 				alert("개인정보 수집 및 이용 안내 동의 확인해 주세요.")
 			}else if(pw_ck1 != 0){
 				alert("비밀번호를 확인해 주세요.")
 			}else if(pw_ck2 != 0){
 				alert("비밀번호 확인을 확인해 주세요.")
+			}else if(birth_ck != 0){
+				alert("생일을 확인해 주세요.")
 			}else if(adress_ck != 0){
 				alert("주소를 확인해 주세요.")
 			}else if(phone_ck != 0){
 				alert("휴대폰을 확인해 주세요.")
 			}else{
 
-				  $("#user_insert_sns").submit();
+				  $("#user_insert_kakao").submit();
 			}
-		
-			
+					
 		});
 	
 	});
 
-$(document).ready(function(){ 
-			$("#user_password1_sns").blur(function() { // 비밀번호  확인
-				if (pwJ.test($("#user_password1_sns").val())) {
-						$("#pw_check1_sns").text(" OK");
-						$("#pw_check1_sns").css("color","blue");
+	
+	
+	
+	
+	$(document).ready(function(){ 
+
+		$("#user_birthday3_kakao").blur(function() { // 생일 확인
+			console.log("년 - " + $("#user_birthday1_kakao").val());
+			console.log("월 - " + $("#user_birthday2_kakao").val());
+			console.log("일 - " + $("#user_birthday3_kakao").val());
+			if($("#user_birthday1_kakao").val() == ""){
+				birth_ck = 1;
+			}else if ($("#user_birthday2_kakao").val() == ""){
+				birth_ck = 1;
+			}else if ($("#user_birthday3_kakao").val() == ""){
+				birth_ck = 1;
+			}else {
+				birth_ck = 0;
+			}
+				
+			
+		});
+	});
+	
+			
+		$(document).ready(function(){ 
+			$("#user_password1_kakao").blur(function() { // 비밀번호  확인
+				if (pwJ.test($("#user_password1_kakao").val())) {
+						$("#pw_check1_kakao").text(" OK");
+						$("#pw_check1_kakao").css("color","blue");
 						pw_ck1 = 0;
 				} else {
-					$("#pw_check1_sns").text("* 영문 대문자와 소문자, 숫자, 특수문자를 하나 이상 포함하여 8~16자");
-					$("#pw_check1_sns").css("color", "red");
+					$("#pw_check1_kakao").text("* 영문 대문자와 소문자, 숫자, 특수문자를 하나 이상 포함하여 8~16자");
+					$("#pw_check1_kakao").css("color", "red");
 					pw_ck1 =1;
 					return;
 				}
 			});
 		});
 		$(document).ready(function(){ 
-			$("#user_password2_sns").blur(function() { // 비밀번호  재 확인 
-				if (($("#user_password1_sns").val())==(($("#user_password2_sns"))).val()) {
-						$("#pw_check2_sns").text(" OK");
-						$("#pw_check2_sns").css("color","blue");
+			$("#user_password2_kakao").blur(function() { // 비밀번호  재 확인 
+				if (($("#user_password1_kakao").val())==(($("#user_password2_kakao"))).val()) {
+						$("#pw_check2_kakao").text(" OK");
+						$("#pw_check2_kakao").css("color","blue");
 						pw_ck2 = 0;
 				} else {
-					$("#pw_check2_sns").text("비밀번호가 일치하지 않습니다.");
-					$("#pw_check2_sns").css("color", "red");
+					$("#pw_check2_kakao").text("비밀번호가 일치하지 않습니다.");
+					$("#pw_check2_kakao").css("color", "red");
 					pw_ck2 =1;
 					return;
 				}
@@ -88,31 +117,31 @@ $(document).ready(function(){
 		
 		
 	$(document).ready(function(){ 	
-		$("#send_sms_sns").click(function(){
-			if (!phoneJ.test($("#user_phone2_sns").val())){
+		$("#send_sms_kakao").click(function(){
+			if (!phoneJ.test($("#user_phone2_kakao").val())){
 				alert("중간번호를 확인해 주세요")
 				phone_ck = 1;
 				return;
 			}
-			if (!phoneJ.test($("#user_phone3_sns").val())){
+			if (!phoneJ.test($("#user_phone3_kakao").val())){
 				alert("마지막번호를 확인해 주세요")
 				phone_ck = 1;
 				return;
 			}
 			
-			if($("#user_phone2_sns").val() == ""){
+			if($("#user_phone2_kakao").val() == ""){
 				alert("휴대폰 번호를 입력해 주세요.")
 				phone_ck = 1;
 				return;
 			}
-			if($("#user_phone3_sns").val() == ""){
+			if($("#user_phone3_kakao").val() == ""){
 				alert("휴대폰 번호를 입력해 주세요.")
 				phone_ck = 1;
 				return;
 			}
 			
-		var allPhone2 = $("#user_phone1_sns").val() +"-"+ $("#user_phone2_sns").val() +"-"+ $("#user_phone3_sns").val();
-		var allPhone = $("#user_phone1_sns").val() + $("#user_phone2_sns").val() + $("#user_phone3_sns").val();
+		var allPhone2 = $("#user_phone1_kakao").val() +"-"+ $("#user_phone2_kakao").val() +"-"+ $("#user_phone3_kakao").val();
+		var allPhone = $("#user_phone1_kakao").val() + $("#user_phone2_kakao").val() + $("#user_phone3_kakao").val();
 		console.log("phone - "+allPhone);
 		console.log("phone2 - "+allPhone2);
 		
@@ -137,29 +166,36 @@ $(document).ready(function(){
 					dataType : "json",
 					contentType: "application/json; charset=UTF-8",
 					success: function(result){
-						$("#phone_certification_sns").blur(function(){
-							if(result == $("#phone_certification_sns").val()){
-								$("#phone_check1_sns").text("인증 되었습니다.");
-								$("#phone_check1_sns").css("color","blue");
+						$("#phone_certification_kakao").blur(function(){
+							if(result == $("#phone_certification_kakao").val()){
+								$("#phone_check1_kakao").text("인증 되었습니다.");
+								$("#phone_check1_kakao").css("color","blue");
 								phone_ck = 0;
 							}else{
-								$("#phone_check1_sns").text("인증이 실패하였습니다. 다시 확인해 주세요");
-								$("#phone_check1_sns").css("color","red");
+								$("#phone_check1_kakao").text("인증이 실패하였습니다. 다시 확인해 주세요");
+								$("#phone_check1_kakao").css("color","red");
 								phone_ck = 1;
 								}	
 							})
 					}
 						})
+				
 				}
 			}
+		
 		});
-	});
-});
+		
+		
+			
+			
+		});
+	
+		});
 
 
-	$(document).ready(function(){ 
-		$("#every_agree_sns").click(function() {
-			if($("#every_agree_sns").prop("checked")){
+	
+		$("#every_agree_kakao").click(function() {
+			if($("#every_agree_kakao").prop("checked")){
 				$("input[type=checkbox]").prop("checked",true);
 				
 			}else{
@@ -168,20 +204,19 @@ $(document).ready(function(){
 			}
 			
 		});
-	});
-	$(document).ready(function(){ 
+		
 		$("input[type=checkbox]").click(function(){
 			if($("input[type=checkbox]:checked").length == 5){
-				$("#every_agree_sns").prop("checked",true);
+				$("#every_agree_kakao").prop("checked",true);
 			}else{
-				$("#every_agree_sns").prop("checked",false);
+				$("#every_agree_kakao").prop("checked",false);
 			}
 		});
-	});	
+		
+
 	
 	
-	
-		function DaumPostcode_sns() {
+		function DaumPostcode_kakao() {
 			new daum.Postcode({
 	             oncomplete: function(data) {
 	                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
@@ -208,9 +243,9 @@ $(document).ready(function(){
 	                if(fullRoadAddr !== ''){
 	                    fullRoadAddr += extraRoadAddr;
 	                }
-	                $("#user_zipcode_sns").val(data.zonecode);
-	                $("#user_address1_sns").val(fullRoadAddr);
-	                $("#user_address2_sns").focus();
+	                $("#user_zipcode_kakao").val(data.zonecode);
+	                $("#user_address1_kakao").val(fullRoadAddr);
+	                $("#user_address2_kakao").focus();
 	                adress_ck = 0;
 	
 	            }
@@ -228,13 +263,12 @@ $(document).ready(function(){
 				</div>
 				<div class="page-body">
 					
-					<form action="login_insert_sns.do" method="post" id="user_insert_sns">
+					<form action="login_insert_kakao.do" method="post" id="user_insert_kakao">
 					<input type ="hidden" name ="user_id" id = "userid" value="${userVO.user_id }" >
 					<input type ="hidden" name ="user_name" id = "username" value="${userVO.user_name }" >
 					<input type ="hidden" name ="user_email" id = "useremail" value="${userVO.user_email }" >
 					<input type ="hidden" name ="user_gender" id = "usergender" value="${userVO.user_gender }" >
-					<input type ="hidden" name ="user_birthday" id = "userbirthday" value="${userVO.user_birthday }" >
-					<input type ="hidden" name ="user_sns_naver" id = "usersnsnaver" value="${userVO.user_sns_naver }" >
+					<input type ="hidden" name ="user_sns_kakao" id = "usersnskakao" value="${userVO.user_sns_kakao }" >
 						<div id="personInfo">
 							<table class="person-tb">
 								<colgroup>
@@ -242,7 +276,7 @@ $(document).ready(function(){
 									<col style="width: auto;">
 								</colgroup>
 								<tbody>
-								
+									
 									<tr>
 										<th>
 											<div class="head-cell">
@@ -252,8 +286,8 @@ $(document).ready(function(){
 										<td>
 											<div class="col-cell">
 												<input type="password" name="user_password"
-													id="user_password1_sns" class="MS_input_txt normal-input"
-													 size="15" maxlength="20"><span class="idpw-info" id="pw_check1_sns"> * 영문 대문자와 소문자, 숫자, 특수문자를 하나 이상 포함하여 8~16자 / 지금 입력하시는 비밀번호는 문의 게시글 등록 확인 시 필요한 비밀번호 입니다.
+													id="user_password1_kakao" class="MS_input_txt normal-input"
+													 size="15" maxlength="20"><span class="idpw-info" id="pw_check1_kakao">* 영문 대문자와 소문자, 숫자, 특수문자를 하나 이상 포함하여 8~16자 / 지금 입력하시는 비밀번호는 문의 게시글 등록 확인 시 필요한 비밀번호 입니다.
 													 </span>
 											</div>
 										</td>
@@ -267,12 +301,49 @@ $(document).ready(function(){
 										<td>
 											<div class="col-cell">
 												<input type="password" name="user_password2"
-													id="user_password2_sns" class="MS_input_txt normal-input"
-													value="" size="15" maxlength="20"><span id= pw_check2_sns></span>
+													id="user_password2_kakao" class="MS_input_txt normal-input"
+													value="" size="15" maxlength="20"><span id= pw_check2_kakao></span>
 											</div>
 										</td>
 									</tr>
-									
+									<tr>
+										<th>
+											<div class="head-cell">
+												<span class="empha">*</span>생년월일
+											</div>
+										</th>
+										<td>
+											<div class="col-cell social">
+												<select name="user_birthday" id="user_birthday1_kakao"
+													class="MS_select MS_birthday">
+													<option value="">선택</option>
+													<c:set var="today" value="<%=new java.util.Date()%>" />
+													<fmt:formatDate value="${today}" pattern="yyyy"
+														var="sysYear" />
+													<c:forEach begin="0" end="80" var="idx" step="1">
+														<option value="<c:out value="${sysYear - idx}" />"><c:out
+																value="${sysYear - idx}" /></option>
+													</c:forEach>
+												</select>년<select name="user_birthday" id="user_birthday2_kakao"
+													class="MS_select MS_birthday">
+													<option value="">선택</option>
+													<c:forEach begin="01" end="12" step="1" var="month">
+														<option value="<c:out value="${month}"/>"><c:out
+																value="${month}" /></option>
+													</c:forEach>
+
+												</select>월<select name="user_birthday" id="user_birthday3_kakao"
+													class="MS_select MS_birthday">
+													<option value="">선택</option>
+													<c:forEach begin="01" end="31" step="1" var="day">
+														<option value="<c:out value="${day}"/>"><c:out
+																value="${day}" /></option>
+													</c:forEach>
+												</select>일&nbsp;&nbsp; 
+											</div>
+										</td>
+									</tr>
+
 									<tr>
 										<th>
 											<div class="head-cell">
@@ -281,9 +352,9 @@ $(document).ready(function(){
 										</th>
 										<td>
 											<div class="col-cell">
-												<input type="text" name="user_zipcode" id="user_zipcode_sns" readonly
+												<input type="text" name="user_zipcode" id="user_zipcode_kakao" readonly
 													class="MS_input_txt small-input" size="7" maxlength="15">
-												<input type="button" class="cbtn form" onclick="DaumPostcode_sns();" value="우편번호 찾기"><br>
+												<input type="button" class="cbtn form" onclick="DaumPostcode_kakao();" value="우편번호 찾기"><br>
 											</div>
 										</td>
 									</tr>
@@ -295,7 +366,7 @@ $(document).ready(function(){
 										</th>
 										<td>
 											<div class="col-cell">
-												<input type="text" name="user_address1" id="user_address1_sns" readonly
+												<input type="text" name="user_address1" id="user_address1_kakao" readonly
 													class="MS_input_txt large-input" size="40" maxlength="100">
 											</div>
 										</td>
@@ -308,7 +379,7 @@ $(document).ready(function(){
 										</th>
 										<td>
 											<div class="col-cell">
-												<input type="text" name="user_address2" id="user_address2_sns"
+												<input type="text" name="user_address2" id="user_address2_kakao"
 													class="MS_input_txt large-input" size="40" maxlength="100">
 											</div>
 										</td>
@@ -321,7 +392,7 @@ $(document).ready(function(){
 										</th>
 										<td>
 											<div class="col-cell">
-												<select name="user_phone" id="user_phone1_sns"
+												<select name="user_phone" id="user_phone1_kakao"
 													class="MS_input_tel normal-input">
 													<option value="010">010</option>
 													<option value="011">011</option>
@@ -329,13 +400,13 @@ $(document).ready(function(){
 													<option value="017">017</option>
 													<option value="018">018</option>
 													<option value="019">019</option>
-												</select>- <input type="text" name="user_phone" id="user_phone2_sns"
+												</select>- <input type="text" name="user_phone" id="user_phone2_kakao"
 													class="MS_input_tel normal-input" size="4" maxlength="4">-
-												<input type="text" name="user_phone" id="user_phone3_sns"
+												<input type="text" name="user_phone" id="user_phone3_kakao"
 													class="MS_input_tel normal-input" size="4" maxlength="4">
-												<input type="button" id ="send_sms_sns"class="cbtn form" value="휴대폰 인증하기"><span id= phone_check_sns></span>&nbsp;&nbsp;
-												<input type="text" name="phone_certification" id="phone_certification_sns" placeholder="인증번호"
-													class="MS_input_tel normal-input" size="4" maxlength="6"> <span id= phone_check1_sns></span>
+												<input type="button" id ="send_sms_kakao"class="cbtn form" value="휴대폰 인증하기"><span id= phone_check_kakao></span>&nbsp;&nbsp;
+												<input type="text" name="phone_certification" id="phone_certification_kakao" placeholder="인증번호"
+													class="MS_input_tel normal-input" size="4" maxlength="6"> <span id= phone_check1_kakao></span>
 											</div>
 										</td>
 									</tr>
@@ -351,14 +422,14 @@ $(document).ready(function(){
 								<div id="chkwrap">
 									<div class="all-chk">
 										<label><input type="checkbox" name="every_agree"
-											id="every_agree_sns" class="input-cbox new_every_agree" checked> 전체동의</label>
+											id="every_agree_kakao" class="input-cbox new_every_agree" checked> 전체동의</label>
 									</div>
 									<div class="cont p10">
 										<ul>
-											<li class="ml-30 pt-10"><label><input type="checkbox" name="user_yaok" id="user_yaok_sns" class="input-cbox every_agree" checked> 이용약관</label> <a
+											<li class="ml-30 pt-10"><label><input type="checkbox" name="user_yaok" id="user_yaok_kakao" class="input-cbox every_agree" checked> 이용약관</label> <a
 												href="#chk_cont1">내용보기</a></li>
 											<li class="ml-30 pt-10"><label><input
-													type="checkbox" name="user_privacy" id="user_privacy_sns"
+													type="checkbox" name="user_privacy" id="user_privacy_kakao"
 													value="agree_uidB" class="input-cbox every_agree" checked>
 													개인정보 수집 및 이용 안내</label> <a href="#chk_cont2">내용보기</a></li>
 
@@ -368,10 +439,10 @@ $(document).ready(function(){
 											<div class="mk-wrap">
 												<label class="mk-all"><strong>마케팅
 														수신동의 </strong></label>&nbsp; ( <label><input type="checkbox"
-													name="user_marketing_mail" id="user_marketing_mail_sns"
+													name="user_marketing_mail" id="user_marketing_mail_kakao"
 													class="input-cbox every_agree ad_every_agree" checked> 이메일</label>
 												<label class="pl-30"><input type="checkbox"
-													name="user_marketing_sms" id="user_marketing_sms_sns"
+													name="user_marketing_sms" id="user_marketing_sms_kakao"
 													class="input-cbox every_agree ad_every_agree" checked> SMS</label>)
 											</div>
 											쇼핑몰에서 제공하는 신상품 소식/ 할인쿠폰을 무상으로 보내드립니다!<br> 단, 상품 구매 정보는
@@ -381,7 +452,7 @@ $(document).ready(function(){
 									</div>
 								</div>
 								<div class="new-btn-area">
-									<input type="button" id ="insert_success_sns" value="동의하고 가입완료" onclick="" ></div>
+									<input type="button" id ="insert_success_kakao" value="동의하고 가입완료" onclick="" ></div>
 					</form>
 					<h4 class="tit" id="chk_cont1">이용약관</h4>
 					<div class="privercy-contract">

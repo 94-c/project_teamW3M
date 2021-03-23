@@ -8,11 +8,10 @@
 <%@include file="/WEB-INF/views/include/header.jsp"%>
 
 <link href="resources/admin_css/pagination.css" rel="stylesheet" type="text/css">
-<link href="resources/admin_css/styles.css" rel="stylesheet"
-	type="text/css">
+<link href="resources/admin_css/styles.css" rel="stylesheet" type="text/css">
 <style type="text/css">
-
-	.page-item{list-style-type: none; display:inline; margin-left:20px;}
+ .page-item{list-style-type: none; display:inline; margin-left:20px;}
+ paginationBox { padding:15px 0; position:relative; *zoom:1 }
 </style>
 <script type="text/javascript">
         	//이전 버튼 이벤트
@@ -106,6 +105,7 @@
 								</c:forEach>
 							</tbody>
 						</table>
+						<br>
 						<div id="paginationBox">
 									<ul class="pagination">
 										<c:if test="${pagination.prev}">
@@ -145,8 +145,7 @@
 									</div>
 
 									<div>
-										<button class="btn btn-sm btn-primary" name="btnSearch"
-											id="btnSearch">검색</button>
+										<button class="btn btn-sm btn-primary" name="btnSearch" id="btnSearch">검색</button>
 									</div>
 								</div>
 					</div>

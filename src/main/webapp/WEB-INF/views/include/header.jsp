@@ -8,7 +8,6 @@
 <!-- head태그 시작 -->
 <head>
 <meta http-equiv="CONTENT-TYPE" content="text/html;charset=UTF-8">
-<title>[Well3Mask] W3M 공식쇼핑몰</title>
 <!-- 파비콘 -->
 <link rel="shortcut icon" href="resources/images/icons/favicon.ico" type="image/x-icon">
 
@@ -35,13 +34,16 @@
 <link type="text/css" rel="stylesheet" href="resources/css/menu.css">
 <link type="text/css" rel="stylesheet" href="resources/css/lost.css">
 <link href="resources/css/shopbrand.css" rel="stylesheet" type="text/css">
+<link href="resources/css/basket.css" rel="stylesheet" type="text/css">
 
 <!-- JS -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="resources/js/jquery_option.js" ></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="resources/js/jquery.sliderkit.1.9.2.pack.js"></script>
 <script type="text/javascript" src="resources/js/index.js"></script>
 <script type="text/javascript" src="resources/js/main.js" ></script> 
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script type="text/javascript" src="resources/js/basket.js" ></script>  
 <!-- 아래처럼 각자 JS파일 만들어서 링크 삽입하기 -->
 <script type="text/javascript" src="resources/js/joe.js"></script>
 <script type="text/javascript" src="resources/js/insertmember.js?v=7"></script>
