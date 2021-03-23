@@ -2,13 +2,13 @@ package com.spring.w3m.product.admin.vo;
 /* 관련 테이블
 CREATE TABLE PRODUCT(
    prod_seq int NOT NULL, -- 시퀀스넘버
-   prod_code varchar(30) NOT NULL, --  PK 제품코드 (ex 미세먼지 마스크(KF94) L 사이즈 - MM-P-L-94-1 )
+   prod_code varchar(30) NOT NULL, --  PK 제품코드 (ex 미세먼지 마스크-프리미엄-사이즈-등급(형태)-수량 -> MM-P-L-94-25 )
    prod_title varchar(200), -- 게시글 제목 (ex W3M 미세먼지 마스크 KF-94 대형 50개입) 
    prod_title_image varchar(200), --게시글 이미지 
-   prod_category1 varchar(10) default 'MM', -- 대분류 카테고리 ex( 미세먼지 - MM / 비말 - BB)
-   prod_category2 varchar(10) default 'P', -- 소분류 카테고리 ex( 프리미얼 - P / 노말 - N / 블랙 - B )
-   prod_category3 varchar(10) default 'M', -- 사이즈 카테고리 ex( S/M/L )
-   prod_category4 varchar(10) default '94', -- 등급 카테고리 ex( 94 / 80 )
+   prod_category1 varchar(10) default 'MM', -- 대분류 카테고리 ex( 미세먼지 - MM / 비말 - BB / 손소독제 - SS)
+   prod_category2 varchar(10) default 'P', -- 소분류 카테고리 ex( 프리미얼 - P / 일반 - N / 블랙 - B )
+   prod_category3 varchar(10) default 'M', -- 사이즈 카테고리 ex( S/M/L)
+   prod_category4 varchar(10) default '94', -- 등급 카테고리 ex( 94 / 80 / AD )
    prod_price int default 0, -- 원가
    prod_price_sale int default 0, -- 할인가
    prod_amount int default 0, --수량 
@@ -19,7 +19,7 @@ CREATE TABLE PRODUCT(
    prod_image4 varchar(200), --이미지4
    prod_image5 varchar(200), --이미지5
    prod_image6 varchar(200), --이미지6
-   prod_state varchar(5) default 'y', -- 판매 : y, 판매중단 : n    
+   prod_state varchar(5) default 'y', -- 판매 : y, 판매중단 : n
    prod_regdate TIMESTAMP WITH TIME ZONE DEFAULT current_timestamp, --등록 날짜
    prod_count int default '0', -- 조회수 ~
    
