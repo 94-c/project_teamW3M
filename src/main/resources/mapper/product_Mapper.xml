@@ -9,4 +9,16 @@
 		VALUES (nextval('prod_seq'), #{prod_code}, #{prod_title}, #{prod_price}, #{prod_price_sale}, #{prod_amount}, #{prod_comment})
 	</insert>
 	
+	<select id="getProduct" resultType="ProductVO">
+		SELECT * FROM product WHERE prod_seq = #{prod_seq}
+	</select>
+	
+	<select id="getProductList" resultType="ProductVO">
+		SELECT * FROM product
+	</select>
+	
+	<delete id="delete">
+		DELETE FROM product WHERE
+		prod_seq = #{prod_seq}
+	</delete>
 </mapper>
