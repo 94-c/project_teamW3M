@@ -8,7 +8,7 @@
 		</ol>
 	</div>
 </main>
-<form role="form" method="post" name="writeform" action="admin_notice_insert.mdo" >
+<form role="form" method="post" name="writeform" action="admin_notice_insert.mdo" onsubmit="return emptyCheck()" >
 	<div class="card-body">
 		<div class="form-group">
 			<label for="checked">중요 <input type="checkbox" id="nt_imp"
@@ -32,7 +32,7 @@
 			<pre><textarea class="form-control" id="nt_content" name="nt_content" rows="10"></textarea></pre>
 		</div>
 
-		<button type="submit" class="btn btn-info" onclick="javascript:emptyCheck();">등록하기</button>
+		<button type="submit" class="btn btn-info">등록하기</button>
 		<button type="button" class="btn btn-secondary"
 			onclick="location.href = 'admin_notice_list.mdo'">목록으로</button>
 
@@ -46,17 +46,15 @@
 		
 		function emptyCheck(){
 			
-			if($("#nt_title").val() == ""){
+			if(document.writeform.nt_title.value==""){
 				alert("제목을 입력하세요");
-				$("##nt_title").focus();
-				return;
+				document.writeform.nt_title.focus();
+				return false;
 			}
-			else if($("#nt_content").val() == ""){
+			if(document.writeform.nt_content.value==""){
 				alert("내용을 입력하세요");
-				$("#nt_content").focus();
-				return;
-			}else{
-				return "finish";
+				document.writeform.nt_content.focus();
+				return false;
 			}
 		};
 </script>

@@ -3,7 +3,6 @@
 <title>관리자 메인페이지</title>
 <!-- 관리자 인덱스 페이지 입니다. -->
 
-
 <main>
 	<div class="container-fluid">
 		<h1 class="mt-4">관리자 페이지</h1>

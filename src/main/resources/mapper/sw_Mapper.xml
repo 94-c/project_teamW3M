@@ -58,7 +58,7 @@
 	<update id="admin_notice_update" parameterType="NoticeVO">
 		UPDATE notice
 		SET
-		nt_title=#{nt_title}, nt_content=#{nt_content}
+		nt_title=#{nt_title}, nt_content=#{nt_content}, nt_imp=#{nt_imp}
 		WHERE nt_seq = #{nt_seq}
 	</update>
 	

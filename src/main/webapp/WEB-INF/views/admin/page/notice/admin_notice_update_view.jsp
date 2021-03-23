@@ -10,9 +10,23 @@
 	</div>
 </main>
 <input name="nt_seq" type="hidden" value="${getNotice.nt_seq}" />
-<div class="card-body">
-	<form role="form" method="post"
-		action="admin_notice_update.mdo?nt_seq=${getNotice.nt_seq}">
+<form role="form" method="post" name="writeform"
+		action="admin_notice_update.mdo?nt_seq=${getNotice.nt_seq}" onsubmit="return emptyCheck()">
+	<div class="card-body">
+		<c:if test="${getNotice.nt_imp eq '1'}">
+			<div class="form-group">
+				<label for="checked">중요 <input type="checkbox" id="nt_imp"
+					name="nt_imp" value="1" checked="checked" />
+				</label>
+			</div>
+		</c:if>
+		<c:if test="${getNotice.nt_imp ne '1'}">
+			<div class="form-group">
+				<label for="checked">중요 <input type="checkbox" id="nt_imp"
+					name="nt_imp" value="1"/>
+				</label>
+			</div>
+		</c:if>
 		<div class="form-group">
 			<label for="exampleFormControlInput1">제목</label> <input type="text"
 				class="form-control" id="nt_title" name="nt_title"
@@ -31,6 +45,26 @@
 		<button type="submit" class="btn btn-info ">수정하기</button>
 		<button type="button" class="btn btn-secondary"
 			onclick="location.href = 'admin_notice_list.mdo' ">목록으로</button>
-	</form>
-</div>
+	</div>
+</form>
+
+<script>
+function emptyCheck(){
+	
+	if(document.writeform.nt_title.value==""){
+		alert("제목을 입력하세요");
+		document.writeform.nt_title.focus();
+		return false;
+	}
+	if(document.writeform.nt_content.value==""){
+		alert("내용을 입력하세요");
+		document.writeform.nt_content.focus();
+		return false;
+	}
+};
+</script>
+
+
+
+
 <%@include file="/WEB-INF/views/admin/page/include/admin_footer.jsp"%>
