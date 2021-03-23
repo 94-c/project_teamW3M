@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="/WEB-INF/views/include/header.jsp"%>
-
+<title>[Well3Mask] W3M 공식쇼핑물</title>
 	<!-- 메인 배너 슬라이드 -->
 	<div id="wrap">
 	<div id="contentWrapper">
