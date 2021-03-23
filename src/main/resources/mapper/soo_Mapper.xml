@@ -11,17 +11,8 @@
 
 <!-- 리스트 보기 -->
 	<select id="getInquiryList" resultMap="inquiryResult">
-<!-- SELECT inq_seq, inq_title, inq_writer, inq_date, inq_cnt FROM inquiry ORDER BY inq_seq DESC  -->		
-		
-		SELECT * FROM inquiry
-		WHERE 1=1
-		<if test="searchCondition=='inq_title'">
-			AND inq_title LIKE '%'||#{searchKeyword}||'%'
-		</if>
-		<if test="searchCondition=='inq_content'">
-			AND inq_content LIKE '%'||#{searchKeyword}||'%'
-		</if>
-		order by inq_seq desc
+<!-- SELECT inq_seq, inq_title, inq_writer, inq_date, inq_cnt FROM inquiry getInquiryListCnt -->		
+	select * from inquiry getInquiryListCnt order by inq_seq desc
 	</select>
 	
 	<resultMap type="InquiryVO" id="inquiryResult">
@@ -52,5 +43,61 @@
 	<delete id="deleteInquiry" parameterType="InquiryVO">
 		DELETE FROM inquiry WHERE inq_seq = #{inq_seq} 
 	</delete>	
+	
+	
+	<select id="getInquiryListCnt" resultType="int">
+		select count(*) from inquiry
+	</select>
+	
+	<!-- 페이징 처리 후 게시글 조회 -->
+	<select id="getPageList" resultType="InquiryVO">
+		select
+			inq_seq,
+			inq_title,
+			inq_writer,
+			inq_content,
+			inq_email,
+			inq_date,
+			inq_pass,
+			inq_cnt
+		from inquiry
+		where 1=1
+		<if test="searchType=='inq_title' and keyword != null and keyword != '' ">
+			AND inq_title like CONCAT('%', #{keyword}, '%')
+		</if>
+		<if test="searchType=='inq_content' and keyword != null and keyword != '' ">
+			AND inq_content like CONCAT('%', #{keyword}, '%')
+		</if>
+		order by inq_seq desc
+		limit #{listSize} offset #{startList}
+	</select>	
+	
+	<select id="getSearchCnt" parameterType="String" resultType="int">
+		select count(*) from inquiry
+	<trim prefix="WHERE" prefixOverrides="AND|OR">
+	<if test="keyword != null and keyword != '' ">
+			<if test="searchType=='inq_title'">
+				AND inq_title like CONCAT('%', #{keyword}, '%')
+			</if>
+
+			<if test="searchType=='inq_content'">
+				AND inq_content like CONCAT('%', #{keyword}, '%')
+			</if>
+      </if>
+	</trim>
+	</select>
+	
+	<select id="getSearchPagingList" resultType="InquiryVO">
+		SELECT * FROM inquiry where 1=1
+		<if test="searchCondition == 'inq_title'">
+			AND inq_title LIKE '%'||#{searchKeyword}||'%'
+		</if>
+		<if test="searchCondition == 'inq_content'">
+			AND inq_content LIKE '%'||#{searchKeyword}||'%'
+		</if>
+		order by inq_seq desc
+	</select>
+	<!-- 여기까지 페이징 처리 -->
+
 
 </mapper>

@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import com.spring.w3m.inquiry.user.dao.InquiryDAO;
 import com.spring.w3m.inquiry.user.vo.InquiryVO;
+import com.spring.w3m.paging.common.Pagination;
+import com.spring.w3m.paging.common.Search;
 
 @Service
 public class InquiryServiceImpl implements InquiryService {
@@ -38,6 +40,26 @@ public class InquiryServiceImpl implements InquiryService {
 	@Override
 	public List<InquiryVO> getInquiryList(InquiryVO vo) {
 		return inquiryDAO.getInquiryList(vo);
+	}
+
+	@Override
+	public int getInquiryListCnt(Search search) {
+		return inquiryDAO.getInquiryListCnt(search);
+	}
+
+	@Override
+	public List<InquiryVO> getPageList(Search search) {
+		return inquiryDAO.getPageList(search);
+	}
+
+	@Override
+	public int getSearchCnt(String searchKeyword) {
+		return inquiryDAO.getSearchCnt(searchKeyword);
+	}
+
+	@Override
+	public List<InquiryVO> getSearchPagingList(Pagination pagination) {
+		return inquiryDAO.getSearchPagingList(pagination);
 	}
 
 }

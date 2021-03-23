@@ -104,21 +104,5 @@
 	<select id="pwCheck" resultType="String">
 		SELECT admin_password FROM admin_user WHERE admin_id = #{admin_id}
 	</select>
-	
-	<!-- 문의사항 리스트 보기 -->
-	<select id="getInquiryList" resultMap="inquiryResult">
-	SELECT inq_seq, inq_title, inq_writer, inq_date, inq_cnt FROM inquiry ORDER BY inq_seq DESC
-	</select>
-	
-	<resultMap type="InquiryVO" id="inquiryResult">
-		<id property="inq_seq" column="inq_seq" />
-		<result property="inq_title" column="inq_title" />
-		<result property="inq_writer" column="inq_writer" />
-		<result property="inq_content" column="inq_content" />
-		<result property="inq_email" column="inq_email" />
-		<result property="inq_date" column="inq_date" />
-		<result property="inq_pass" column="inq_pass" />
-		<result property="inq_cnt" column="inq_cnt" />
-	</resultMap>
-	
+
 </mapper>

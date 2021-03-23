@@ -20,31 +20,6 @@
 					<div class="bbs-tit">
 						<h3>문의게시판</h3>
 						<div class="bbs-sch">
-							<form action="getInquiryList.do" name="form1">
-								<input type="hidden" name="searchCondition" value="">  
-								<input type="hidden" name="seachKeyword" value=""> 
-
-								<!-- .검색 폼시작 -->
-								<fieldset>
-									<legend>게시판 검색 폼</legend>
-									<label> 
-										<input type="radio" name="searchCondition" value="inq_title" onclick="checkOnlyOne(this)" 
-										checked="checked" class="MS_input_checkbox"> 제목
-									</label> 
-									<label> 
-										<input type="radio" name="searchCondition" value="inq_content" onclick="checkOnlyOne(this)" 
-										class="MS_input_checkbox"> 내용
-									</label> 
-									<span class="key-wrap"> 
-										<input type="text" name="searchKeyword" value="" class="MS_input_txt"> 
-										<a href="javascript:document.form1.submit();"> 
-											<img src="//image.makeshop.co.kr/makeshop/d3/basic_simple/bbs/btn_bbs_sch.gif"
-											alt="검색" title="검색">
-										</a>
-									</span>
-								</fieldset>
-							</form>
-							<!-- .검색 폼 끝 -->
 						</div>
 						<!-- .bbs-sch -->
 					</div>

@@ -1,20 +1,29 @@
 package com.spring.w3m.inquiry.user.controller;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.List;
 
+import org.postgresql.util.PSQLException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.spring.w3m.inquiry.user.service.InquiryService;
 import com.spring.w3m.inquiry.user.vo.InquiryVO;
+import com.spring.w3m.paging.common.Pagination;
+import com.spring.w3m.paging.common.Search;
+import com.spring.w3m.upload.user.AwsS3;
 
 @Controller
 public class InquiryController {
 
 	@Autowired
 	private InquiryService inquiryService;
+	public AwsS3 awsS3 = AwsS3.getInstance();
 	
 	// 문의사항
 		@RequestMapping("/inquiry.do")
@@ -29,7 +38,7 @@ public class InquiryController {
 	public String inquiryWrite(InquiryVO vo, Model model) throws IOException {
 		inquiryService.insertInquiry(vo);
 		model.addAttribute("inquiryList", inquiryService.getInquiryList(vo));
-		return "/list/inquiry";
+		return "redirect:/inquiry.do";
 	}
 	
 	// 게시판 글 작성하기(화면)
@@ -49,10 +58,6 @@ public class InquiryController {
 	// 게시글 목록 보기
 	@RequestMapping("/getInquiryList.do")
 	public String getInquiryList(InquiryVO vo, Model model) {
-		if(vo.getSearchCondition() == null) vo.setSearchCondition("nt_title");
-		if(vo.getSearchKeyword() == null) vo.setSearchKeyword("");
-		System.out.println("검색 조건 : " + vo.getSearchCondition());
-		System.out.println("검색 단어 : " + vo.getSearchKeyword());
 		model.addAttribute("inquiryList", inquiryService.getInquiryList(vo));
 		return "list/inquiry";
 	}
@@ -81,12 +86,63 @@ public class InquiryController {
 		return "/list/inquiry";
 	}
 	
-	// 문의사항
+	// 문의사항 리스트
 	@RequestMapping("/adminInquiry.mdo")
-	public String adminInquiry(InquiryVO vo, Model model) {
-		System.out.println("=== 문의사항 ===");
+	public String adminInquiry(Model model, @RequestParam(required=false, defaultValue="1") int page,
+											@RequestParam(required=false, defaultValue="1") int range,
+											@RequestParam(required=false, defaultValue="title") String searchType,
+											@RequestParam(required=false) String keyword) throws PSQLException, IOException{
+		System.out.println("문의사항 리스트");
+		
+		Search search = new Search();
+		search.setSearchType(searchType);
+		search.setKeyword(keyword);
+		
+		int cnt  = inquiryService.getInquiryListCnt(search);
+		
+		search.pageInfo(page, range, cnt);
+		
+		//Pagination
+		Pagination pagination = new Pagination();
+		pagination.pageInfo(page, range, cnt);
+		
+		List<InquiryVO> pageList = inquiryService.getPageList(search);
+		
+		model.addAttribute("pagination", search);
+		model.addAttribute("inquiryList", pageList);
+		model.addAttribute("cnt", cnt);
+		
+		return "page/inquiry/adminInquiry";
+	}
+	
+	// 관리자 문의사항 상세보기
+	@RequestMapping("/admin_inquiry_content.mdo")
+	public String getAdminInquiry(InquiryVO vo, Model model) {
+		model.addAttribute("inquiryVO", inquiryService.getInquiry(vo));
+		return "page/inquiry/admin_inquiry_content";
+	}
+	
+	// 관리자 문의사항 삭제
+	@RequestMapping("/deleteInquiry.mdo")
+	public String deleteAdminInquiry(InquiryVO vo, Model model) {
+		inquiryService.deleteInquiry(vo);
 		model.addAttribute("inquiryList", inquiryService.getInquiryList(vo));
 		return "page/inquiry/adminInquiry";
 	}
-
+	
+	@RequestMapping("/testUpload.do")
+    public String requestupload2(MultipartFile mask_image) throws IOException {
+		
+		InputStream ism = mask_image.getInputStream();
+		String maskKey = mask_image.getOriginalFilename();
+		String contentType = mask_image.getContentType();
+		long contentLength = mask_image.getSize();
+		
+		awsS3.upload(ism, maskKey, contentType, contentLength);
+		
+		
+		return "redirect:/testUpload.do";
+	}
 }
+	
+

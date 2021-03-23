@@ -27,9 +27,6 @@ public interface AdminService {
 
 	List<UserVO> getSearchPagingList(Pagination pagination);
 
-	// 문의사항 게시글 리스트
-	List<InquiryVO> getInquiryList(InquiryVO vo);
-
 	boolean loginCheck(AdminVO vo, HttpSession session);
 
 	AdminVO viewAdmin(AdminVO vo);

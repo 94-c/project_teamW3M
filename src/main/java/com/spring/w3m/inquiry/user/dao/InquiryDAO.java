@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import com.spring.w3m.inquiry.user.vo.InquiryVO;
+import com.spring.w3m.paging.common.Pagination;
+import com.spring.w3m.paging.common.Search;
 
 @Controller
 public class InquiryDAO {
@@ -42,6 +44,26 @@ public class InquiryDAO {
 	public List<InquiryVO> getInquiryList(InquiryVO vo) {
 		System.out.println("문의게시판 글목록 보기");
 		return sqlSessionTemplate.selectList("InquiryDAO.getInquiryList", vo);
+	}
+	
+	public int getInquiryListCnt(Search search) {
+		System.out.println("getInquiryListCnt() 실행");
+		return sqlSessionTemplate.selectOne("InquiryDAO.getInquiryListCnt");
+	}
+	
+	public List<InquiryVO> getPageList(Search search){
+		System.out.println("getPageList() 실행");
+		return sqlSessionTemplate.selectList("InquiryDAO.getPageList", search);
+	}
+	
+	public int getSearchCnt(String searchKeyword) {
+		System.out.println("getSearchCnt() 실헹");
+		return sqlSessionTemplate.selectOne("InquiryDAO.getSearchKeyword");
+	}
+	
+	public List<InquiryVO> getSearchPagingList(Pagination pagination){
+		System.out.println("getSearchPagingList() 실행");
+		return sqlSessionTemplate.selectList("InquiryDAO.getSearchPagingList");
 	}
 
 

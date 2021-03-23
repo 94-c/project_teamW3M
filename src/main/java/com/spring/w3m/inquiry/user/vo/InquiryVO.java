@@ -2,6 +2,8 @@ package com.spring.w3m.inquiry.user.vo;
 
 import java.util.Date;
 
+import com.spring.w3m.paging.common.Pagination;
+
 public class InquiryVO {
 	private int inq_seq;
 	private String inq_title;
@@ -11,22 +13,11 @@ public class InquiryVO {
 	private Date inq_date;
 	private int inq_pass;
 	private int inq_cnt;
-	private String SearchCondition;
-	private String SearchKeyword;
+	private String searchType;
+	private String keyword;
 	
+	Pagination p = new Pagination();
 	
-	public String getSearchCondition() {
-		return SearchCondition;
-	}
-	public void setSearchCondition(String searchCondition) {
-		SearchCondition = searchCondition.substring(1);
-	}
-	public String getSearchKeyword() {
-		return SearchKeyword;
-	}
-	public void setSearchKeyword(String searchKeyword) {
-		SearchKeyword = searchKeyword;
-	}
 	public String getInq_email() {
 		return inq_email;
 	}
@@ -75,12 +66,25 @@ public class InquiryVO {
 	public void setInq_cnt(int inq_cnt) {
 		this.inq_cnt = inq_cnt;
 	}
+	
+	public String getSearchType() {
+		return searchType;
+	}
+	public void setSearchType(String searchType) {
+		this.searchType = p.getSearchType();
+	}
+	public String getKeyword() {
+		return keyword;
+	}
+	public void setKeyword(String keyword) {
+		this.keyword = p.getKeyword();
+	}
+
 	@Override
 	public String toString() {
 		return "InquiryVO [inq_seq=" + inq_seq + ", inq_title=" + inq_title + ", inq_writer=" + inq_writer
 				+ ", inq_content=" + inq_content + ", inq_email=" + inq_email + ", inq_date=" + inq_date + ", inq_pass="
-				+ inq_pass + ", inq_cnt=" + inq_cnt + ", SearchCondition=" + SearchCondition + ", SearchKeyword="
-				+ SearchKeyword + "]";
+				+ inq_pass + ", inq_cnt=" + inq_cnt + ", searchType=" + searchType + ", keyword=" + keyword + "]";
 	}
 	
 

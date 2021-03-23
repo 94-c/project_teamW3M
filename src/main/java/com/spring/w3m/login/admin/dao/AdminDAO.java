@@ -62,10 +62,4 @@ public class AdminDAO {
 		return sqlSessionTemplate.selectList("AdminDAO.getSearchPagingList");
 	}
 
-	// 문의사항 게시글 목록 가져오기
-	public List<InquiryVO> getInquiryList(InquiryVO vo) {
-		return sqlSessionTemplate.selectList("AdminDAO.getInquiryList");
-	}
-
-
 }

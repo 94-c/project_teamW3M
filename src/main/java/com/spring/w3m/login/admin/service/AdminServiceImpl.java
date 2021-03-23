@@ -70,12 +70,6 @@ public class AdminServiceImpl implements AdminService {
 		session.invalidate();
 	}
 	
-	// 문의사항 게시글 불러오기
-	@Override
-	public List<InquiryVO> getInquiryList(InquiryVO vo) {
-		return dao.getInquiryList(vo);
-	}
-	
 	@Override
 	public int getUserListCnt(Search search) {
 		return dao.getUserListCnt(search);
