@@ -14,11 +14,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.spring.w3m.inquiry.user.vo.InquiryVO;
 import com.spring.w3m.join.user.vo.UserVO;
 import com.spring.w3m.login.admin.service.AdminService;
 import com.spring.w3m.login.admin.vo.AdminVO;
-import com.spring.w3m.notice.admin.vo.NoticeVO;
 import com.spring.w3m.paging.common.Pagination;
 import com.spring.w3m.paging.common.Search;
 
@@ -96,14 +94,6 @@ public class AdminLoginController {
 		return "page/userMemberList";
 	}
 
-
-	// 문의사항
-	@RequestMapping("/adminInquiry.mdo")
-	public String adminInquiry(InquiryVO vo, Model model) {
-		System.out.println("=== 문의사항 ===");
-		model.addAttribute("inquiryList", adminService.getInquiryList(vo));
-		return "page/adminInquiry";
-	}
 
 	@RequestMapping("/adminLogout.mdo")
 	public ModelAndView userLogout(HttpSession session) {

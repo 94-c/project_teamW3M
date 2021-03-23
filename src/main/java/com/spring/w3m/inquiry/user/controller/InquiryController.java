@@ -80,6 +80,13 @@ public class InquiryController {
 		model.addAttribute("inquiryList", inquiryService.getInquiryList(vo));
 		return "/list/inquiry";
 	}
-
+	
+	// 문의사항
+	@RequestMapping("/adminInquiry.mdo")
+	public String adminInquiry(InquiryVO vo, Model model) {
+		System.out.println("=== 문의사항 ===");
+		model.addAttribute("inquiryList", inquiryService.getInquiryList(vo));
+		return "page/inquiry/adminInquiry";
+	}
 
 }
