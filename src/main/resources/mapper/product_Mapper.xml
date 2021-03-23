@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="product">
+
+	<insert id="insert">
+		INSERT INTO product (prod_seq, prod_code, prod_title, prod_price, prod_price_sale, prod_amount, prod_comment) 
+		VALUES (nextval('prod_seq'), #{prod_code}, #{prod_title}, #{prod_price}, #{prod_price_sale}, #{prod_amount}, #{prod_comment})
+	</insert>
+	
+</mapper>

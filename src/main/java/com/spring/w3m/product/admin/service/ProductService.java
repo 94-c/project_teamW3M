@@ -1,5 +1,7 @@
 package com.spring.w3m.product.admin.service;
 
-public interface ProductService {
+import com.spring.w3m.product.admin.vo.ProductVO;
 
+public interface ProductService {
+	void insertProduct(ProductVO vo);
 }
