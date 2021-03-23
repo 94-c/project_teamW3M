@@ -47,7 +47,8 @@
                         <tr>
                            <td>
                               <div class="data-bd-cont">
-                                 ${inquiryVO.inq_content }
+                                 ${inquiryVO.inq_content } <br>
+                               <img src="${inquiryVO.inq_image }"/>
                               </div>
                            </td>
                         </tr>

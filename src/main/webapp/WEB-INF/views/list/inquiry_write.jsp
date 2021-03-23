@@ -13,7 +13,8 @@
 						<h3>문의게시판</h3>
 					</div>
 					<div class="bbs-table-write">
-						<form role="form" method="post" action="inquiry_write.do">
+<!-- 				<form role="form" method="post" action="inquiry_write.do">  -->		
+						    <form name="fileForm" action="inquiry_write.do" method="post" enctype="multipart/form-data">
 							<input type="hidden" name="lock" value="Y">
 							<fieldset>
 								<legend>일반게시판 쓰기</legend>
@@ -63,7 +64,7 @@
 											<th><div>파일</div></th>
 											<td colspan="3">
 												<div>
-													<input type="file" name="uploadFile" value="파일추가">
+													<input type="file" name="inq_mask" value="파일추가">
 												</div>
 											</td>
 										</tr>
@@ -71,6 +72,7 @@
 								</table>
 							</fieldset>
 							<!-- //게시판 글쓰기 -->
+							
 
 							<!-- 하단 버튼 -->
 							<dl class="bbs-link bbs-link-btm">

@@ -35,9 +35,24 @@ public class InquiryController {
 
 	// 게시판 글 작성하기(동작)
 	@RequestMapping("/inquiry_write.do")
-	public String inquiryWrite(InquiryVO vo, Model model) throws IOException {
-		inquiryService.insertInquiry(vo);
+	public String inquiryWrite(InquiryVO vo, Model model, MultipartFile inq_mask) throws IOException {
+		
+		InputStream ism = inq_mask.getInputStream();
+		String maskKey = inq_mask.getOriginalFilename();
+		System.out.println(maskKey);
+		String contentType = inq_mask.getContentType();
+		long contentLength = inq_mask.getSize();
+		
+		String path = "https://imageup.s3.ap-northeast-2.amazonaws.com/" + maskKey; 
+		
+		System.out.println("이미지 올라가라 제발 디비");
+		vo.setInq_image(path);
+		System.out.println("가만안둬 피바다....");
+		System.out.println(path);
+		System.out.println(vo.getInq_image());
+		awsS3.upload(ism, maskKey, contentType, contentLength);
 		model.addAttribute("inquiryList", inquiryService.getInquiryList(vo));
+		inquiryService.insertInquiry(vo);
 		return "redirect:/inquiry.do";
 	}
 	
@@ -129,10 +144,11 @@ public class InquiryController {
 		model.addAttribute("inquiryList", inquiryService.getInquiryList(vo));
 		return "page/inquiry/adminInquiry";
 	}
-	
+
+	/*
+	// 파일업로드
 	@RequestMapping("/testUpload.do")
-    public String requestupload2(MultipartFile mask_image) throws IOException {
-		
+    public String requestupload2(MultipartFile mask_image) throws Exception {
 		InputStream ism = mask_image.getInputStream();
 		String maskKey = mask_image.getOriginalFilename();
 		String contentType = mask_image.getContentType();
@@ -141,8 +157,9 @@ public class InquiryController {
 		awsS3.upload(ism, maskKey, contentType, contentLength);
 		
 		
-		return "redirect:/testUpload.do";
+		return "list/inquiry";
 	}
+*/
 }
 	
 

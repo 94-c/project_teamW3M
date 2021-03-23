@@ -8,8 +8,7 @@
 </head>
 <body>
     <form name="fileForm" action="testUpload.do" method="post" enctype="multipart/form-data">
-        <input type="file" name="mask_image" />
-        <input type="text" name="src" />
+        <input type="file" name="maskImage" />
         <input type="submit" value="전송" />
     </form>
 </body>
