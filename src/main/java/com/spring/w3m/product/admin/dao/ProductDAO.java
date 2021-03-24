@@ -26,6 +26,10 @@ public class ProductDAO {
 		template.delete("product.delete", vo);
 	}
 	
+	public void updateProduct(ProductVO vo) {
+		template.update("product.update", vo);
+	}
+	
 	public List<ProductVO> getProductList(ProductVO vo){
 		return template.selectList("product.getProductList", vo);
 	}

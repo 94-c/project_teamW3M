@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@include file="/WEB-INF/views/admin/page/include/admin_header.jsp"%>
 
-<title>상품 목록</title>
+<title>등록된 상품 목록</title>
 
 <style type="text/css">
 table {
@@ -45,7 +45,7 @@ table, td, th {
 							</thead>
 
 							<tbody>
-								<c:forEach var="prod" items="${getProductList}">
+								<c:forEach var="prod" items="${productList}">
 									<tr>
 										<td class="text-center">${prod.prod_seq}</td>
 										<td class="text-center">${prod.prod_code}</td>

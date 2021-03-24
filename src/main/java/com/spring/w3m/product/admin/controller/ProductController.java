@@ -18,33 +18,44 @@ public class ProductController {
 	@RequestMapping("/getProductList.mdo")
 	public String getProductList(ProductVO vo, Model model) {
 		List<ProductVO> productList = service.getProductList(vo);
-		model.addAttribute("getProductList", productList);
+		model.addAttribute("productList", productList);
 		return "page/product/getProductList";
 	}
 	
 	@RequestMapping("/getProduct.mdo")
 	public String getProduct(ProductVO vo, Model model) {
 		ProductVO product = service.getProduct(vo);
-		model.addAttribute("getProduct", product);
+		model.addAttribute("product", product);
 		return "page/product/getProduct";
 	}
 	
 	@RequestMapping("/insertProductForm.mdo")
-	public String insertProductForm(ProductVO vo) {
+	public String insertProductForm() {
 		
 		return "page/product/insertProduct";
 	}
 	
 	@RequestMapping("/insertProduct.mdo")
-	public String insertProduct(ProductVO vo, Model model) {
+	public String insertProduct(ProductVO vo) {
 		service.insertProduct(vo);
-		System.out.println("상품 등록후 상품목록 페이지로 이동...");
 		return "redirect:/getProductList.mdo";
 	}
 	
 	@RequestMapping("/deleteProduct.mdo")
-	public String deleteProduct(ProductVO vo, Model model) {
+	public String deleteProduct(ProductVO vo) {
 		service.deleteProduct(vo);
+		return "redirect:/getProductList.mdo";
+	}
+	
+	@RequestMapping("/updateProductForm.mdo")
+	public String updateProductForm(ProductVO vo, Model model) {
+		model.addAttribute("product", vo);
+		return "page/product/updateProduct";
+	}
+	
+	@RequestMapping("/updateProduct.mdo")
+	public String updateProductForm(ProductVO vo) {
+		service.updateProduct(vo);
 		return "redirect:/getProductList.mdo";
 	}
 }
