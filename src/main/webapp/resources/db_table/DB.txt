@@ -73,6 +73,7 @@ CREATE TABLE PRODUCT(
 	prod_category4 varchar(10) default '94', -- 등급 카테고리 ex( 94 / 80 )
 	prod_price int default 0, -- 원가
 	prod_price_sale int default 0, -- 할인가
+	prod_point int, -- 적립금
 	prod_amount int default 0, --수량 
 	prod_comment varchar(1000) default null, --설명
 	prod_image1 varchar(200), --이미지1
@@ -98,7 +99,8 @@ CREATE TABLE CART(
 	order_price int defualt '0', -- 장바구니 가격 
 	order_cnt int defualt '1', -- 주문수량 기본 1개
 	in_date TIMESTAMP WITH TIME ZONE DEFAULT current_timestamp, -- 카트 담은 날짜
-
+	
+	
 	CONSTRAINT cart_id_pk PRIMARY KEY(cart_id),
 	CONSTRAINT cart_id_fk_usermember_user_id FOREIGN KEY(user_id) REFERENCES user_member(user_id),
 	CONSTRAINT cart_id_fk_product_prod_num FOREIGN KEY(prod_code) REFERENCES product(prod_code),
