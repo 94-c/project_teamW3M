@@ -78,7 +78,7 @@
 							<dl class="bbs-link bbs-link-btm">
 								<dt></dt>
 								<dd>
-									<button type="submit" class="CSSbuttonBlack" id="submitbutton">등록하기</button>
+									<button type="submit" class="CSSbuttonBlack" id="contentbutton">등록하기</button>
 								<!-- 	<a href= "#" class="CSSbuttonWhite">목록보기</a> -->
 								</dd>
 							</dl>
@@ -94,4 +94,6 @@
 	</div>
 	<!-- #contentWrap -->
 </div>
+
+
 <%@include file="/WEB-INF/views/include/footer.jsp"%>

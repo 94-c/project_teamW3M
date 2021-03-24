@@ -24,12 +24,45 @@ public class InquiryController {
 	@Autowired
 	private InquiryService inquiryService;
 	public AwsS3 awsS3 = AwsS3.getInstance();
+
+/*	
 	
 	// 문의사항
 		@RequestMapping("/inquiry.do")
 		public String getBoardList(InquiryVO vo, Model model) {
 			System.out.println("---문의사항---");
 			model.addAttribute("inquiryList", inquiryService.getInquiryList(vo));		
+			return "list/inquiry";
+		}
+
+*/
+		
+		// 문의사항
+		@RequestMapping("/inquiry.do")
+		public String getInquiryList(Model model, @RequestParam(required = false, defaultValue = "1") int page,
+				@RequestParam(required = false, defaultValue = "1") int range,
+				@RequestParam(required = false, defaultValue = "title") String searchType,
+				@RequestParam(required = false) String keyword) throws PSQLException, IOException {
+			System.out.println("문의사항 리스트");
+		
+			Search search = new Search();
+			search.setSearchType(searchType);
+			search.setKeyword(keyword);
+		
+			int cnt = inquiryService.getInquiryListCnt(search);
+		
+			search.pageInfo(page, range, cnt);
+		
+		//Pagination
+			Pagination pagination = new Pagination();
+			pagination.pageInfo(page, range, cnt);
+		
+			List<InquiryVO> pageList = inquiryService.getPageList(search);
+		
+			model.addAttribute("pagination", search);
+			model.addAttribute("inquiryList", pageList);
+			model.addAttribute("cnt", cnt);
+		
 			return "list/inquiry";
 		}
 
@@ -98,7 +131,7 @@ public class InquiryController {
 	public String deleteInquiry(InquiryVO vo, Model model) {
 		inquiryService.deleteInquiry(vo);
 		model.addAttribute("inquiryList", inquiryService.getInquiryList(vo));
-		return "/list/inquiry";
+		return "redirect:/inquiry.do";
 	}
 	
 	// 문의사항 리스트
