@@ -13,8 +13,8 @@
 	</select>
 
 	<insert id="insert">
-		INSERT INTO product (prod_seq, prod_code, prod_title, prod_price, prod_price_sale, prod_amount, prod_comment, prod_point) 
-		VALUES (nextval('prod_seq'), #{prod_code}, #{prod_title}, #{prod_price}, #{prod_price_sale}, #{prod_amount}, #{prod_comment}, #{prod_point})
+		INSERT INTO product (prod_seq, prod_code, prod_title, prod_price, prod_price_sale, prod_amount, prod_comment, prod_point, prod_title_image) 
+		VALUES (nextval('prod_seq'), #{prod_code}, #{prod_title}, #{prod_price}, #{prod_price_sale}, #{prod_amount}, #{prod_comment}, #{prod_point}, #{prod_title_image})
 	</insert>
 	
 	<update id="update">

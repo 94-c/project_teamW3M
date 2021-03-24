@@ -12,7 +12,7 @@ public interface ProductService {
 	
 	ProductVO getProduct(ProductVO vo);
 	
-	void insertProduct(ProductVO vo, MultipartFile thumbnail) throws IOException;	
+	void insertProduct(ProductVO vo, MultipartFile img) throws IOException;	
 	
 	void updateProduct(ProductVO vo);
 	

@@ -7,11 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.spring.w3m.product.admin.service.ProductService;
 import com.spring.w3m.product.admin.vo.ProductVO;
-import com.spring.w3m.upload.user.AwsS3;
 
 @Controller
 public class ProductController {
@@ -39,7 +39,7 @@ public class ProductController {
 	}
 	
 	@RequestMapping("/insertProduct.mdo")
-	public String insertProduct(ProductVO vo, MultipartFile img) throws IOException {
+	public String insertProduct(ProductVO vo, @RequestParam("prod_title_image") MultipartFile img) throws IOException {
 		service.insertProduct(vo, img);
 		return "redirect:/getProductList.mdo";
 	}
