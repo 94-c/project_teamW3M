@@ -39,10 +39,6 @@ var phone_ck = -1;
 				alert("약관 동의 확인해 주세요.")
 			}else if(!$("#user_privacy_sns").prop("checked")){
 				alert("개인정보 수집 및 이용 안내 동의 확인해 주세요.")
-			}else if(pw_ck1 != 0){
-				alert("비밀번호를 확인해 주세요.")
-			}else if(pw_ck2 != 0){
-				alert("비밀번호 확인을 확인해 주세요.")
 			}else if(adress_ck != 0){
 				alert("주소를 확인해 주세요.")
 			}else if(phone_ck != 0){
@@ -57,34 +53,6 @@ var phone_ck = -1;
 	
 	});
 
-$(document).ready(function(){ 
-			$("#user_password1_sns").blur(function() { // 비밀번호  확인
-				if (pwJ.test($("#user_password1_sns").val())) {
-						$("#pw_check1_sns").text(" OK");
-						$("#pw_check1_sns").css("color","blue");
-						pw_ck1 = 0;
-				} else {
-					$("#pw_check1_sns").text("* 영문 대문자와 소문자, 숫자, 특수문자를 하나 이상 포함하여 8~16자");
-					$("#pw_check1_sns").css("color", "red");
-					pw_ck1 =1;
-					return;
-				}
-			});
-		});
-		$(document).ready(function(){ 
-			$("#user_password2_sns").blur(function() { // 비밀번호  재 확인 
-				if (($("#user_password1_sns").val())==(($("#user_password2_sns"))).val()) {
-						$("#pw_check2_sns").text(" OK");
-						$("#pw_check2_sns").css("color","blue");
-						pw_ck2 = 0;
-				} else {
-					$("#pw_check2_sns").text("비밀번호가 일치하지 않습니다.");
-					$("#pw_check2_sns").css("color", "red");
-					pw_ck2 =1;
-					return;
-				}
-			});
-		});
 		
 		
 	$(document).ready(function(){ 	
@@ -242,37 +210,6 @@ $(document).ready(function(){
 									<col style="width: auto;">
 								</colgroup>
 								<tbody>
-								
-									<tr>
-										<th>
-											<div class="head-cell">
-												<span class="empha">*</span>비밀번호
-											</div>
-										</th>
-										<td>
-											<div class="col-cell">
-												<input type="password" name="user_password"
-													id="user_password1_sns" class="MS_input_txt normal-input"
-													 size="15" maxlength="20"><span class="idpw-info" id="pw_check1_sns"> * 영문 대문자와 소문자, 숫자, 특수문자를 하나 이상 포함하여 8~16자 / 지금 입력하시는 비밀번호는 문의 게시글 등록 확인 시 필요한 비밀번호 입니다.
-													 </span>
-											</div>
-										</td>
-									</tr>
-									<tr>
-										<th>
-											<div class="head-cell">
-												<span class="empha">*</span>비밀번호 확인
-											</div>
-										</th>
-										<td>
-											<div class="col-cell">
-												<input type="password" name="user_password2"
-													id="user_password2_sns" class="MS_input_txt normal-input"
-													value="" size="15" maxlength="20"><span id= pw_check2_sns></span>
-											</div>
-										</td>
-									</tr>
-									
 									<tr>
 										<th>
 											<div class="head-cell">

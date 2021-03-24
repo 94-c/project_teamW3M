@@ -35,9 +35,9 @@
 				alert("이름을 확인해 주세요.")
 			} else if (id_ck == 1) {
 				alert("아이디를 확인해 주세요.")
-			} else if (pw_ck1 != 0) {
+			} else if (pw_ck1 == 1) {
 				alert("비밀번호를 확인해 주세요.")
-			} else if (pw_ck2 != 0) {
+			} else if (pw_ck2 == 1) {
 				alert("비밀번호 확인을 확인해 주세요.")
 			} else if (birth_ck == 1) {
 				alert("생일을 확인해 주세요.")
@@ -56,7 +56,43 @@
 		});
 
 	});
-
+	$(document).ready(function(){ 
+		$("#user_password1_uadate").blur(function() { // 비밀번호  확인
+			if($("#user_password1_uadate").val() ==""){
+				$("#pw_check1_uadate").text("");
+				pw_ck1 = 0;
+				return;
+			}
+			if (pwJ.test($("#user_password1_uadate").val())) {
+					$("#pw_check1_uadate").text(" OK");
+					$("#pw_check1_uadate").css("color","blue");
+					pw_ck1 = 0;
+			} else {
+				$("#pw_check1_uadate").text("* 영문 대문자와 소문자, 숫자, 특수문자를 하나 이상 포함하여 8~16자");
+				$("#pw_check1_uadate").css("color", "red");
+				pw_ck1 =1;
+				return;
+			}
+		});
+	});
+	$(document).ready(function(){ 
+		$("#user_password2_uadate").blur(function() { // 비밀번호  재 확인 
+			if($("#user_password2_uadate").val() ==""){
+				pw_ck1 = 0;
+				return;
+			}
+			if (($("#user_password1_uadate").val())==(($("#user_password2_uadate"))).val()) {
+					$("#pw_check2_uadate").text(" OK");
+					$("#pw_check2_uadate").css("color","blue");
+					pw_ck2 = 0;
+			} else {
+				$("#pw_check2_uadate").text("비밀번호가 일치하지 않습니다.");
+				$("#pw_check2_uadate").css("color", "red");
+				pw_ck2 =1;
+				return;
+			}
+		});
+	});
 	$(document).ready(function() {
 		var birthday = $("#fullbirthday").val();
 		var sp = birthday.split('-');
@@ -158,9 +194,9 @@
 										<td>
 											<div class="col-cell">
 												<input type="password" name="user_password"
-													id="user_password1" class="MS_input_txt normal-input"
+													id="user_password1_uadate" class="MS_input_txt normal-input"
 													size="15" maxlength="20"><span class="idpw-info"
-													id="pw_check1"> * 영문 대문자와 소문자, 숫자, 특수문자를 하나 이상 포함하여
+													id="pw_check1_uadate"> * 영문 대문자와 소문자, 숫자, 특수문자를 하나 이상 포함하여
 													8~16자 </span>
 											</div>
 										</td>
@@ -174,9 +210,9 @@
 										<td>
 											<div class="col-cell">
 												<input type="password" name="user_password2"
-													id="user_password2" class="MS_input_txt normal-input"
+													id="user_password2_uadate" class="MS_input_txt normal-input"
 													value="" size="15" maxlength="20"><span
-													id=pw_check2></span>
+													id=pw_check2_uadate></span>
 											</div>
 										</td>
 									</tr>

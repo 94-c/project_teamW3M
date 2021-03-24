@@ -74,10 +74,14 @@ public class UserController {
 
 		String birthdayFormat = vo.getUser_birthday();// 폰 형식 '-'
 		vo.setUser_birthday(birthdayFormat.replace(",", "-"));
-		vo.setUser_password(passEncoder.encode(vo.getUser_password()));
-		System.out.println(vo.toString());
 		
-		userService.updateUser(vo);
+		System.out.println(vo.toString());
+		if(vo.getUser_password().equals("")) {
+			userService.updateUserNoPass(vo);
+		}else {
+			vo.setUser_password(passEncoder.encode(vo.getUser_password()));
+			userService.updateUser(vo);
+		}
 		session.invalidate();//세션 초기화
 		
 		return "index";
@@ -159,7 +163,6 @@ public class UserController {
 		String phoneFormat = vo.getUser_phone();// 폰 형식 '-'
 		vo.setUser_phone(phoneFormat.replace(",", "-"));
 
-		vo.setUser_password(passEncoder.encode(vo.getUser_password())); //비밀번호 암호화
 
 		System.out.println(vo.toString());
 		userService.insertUser(vo);
@@ -207,7 +210,6 @@ public class UserController {
 		String phoneFormat = vo.getUser_phone();// 폰 형식 '-'
 		vo.setUser_phone(phoneFormat.replace(",", "-"));
 
-		vo.setUser_password(passEncoder.encode(vo.getUser_password())); //비밀번호 암호화
 
 		System.out.println(vo.toString());
 		userService.insertUser(vo);

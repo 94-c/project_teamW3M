@@ -51,4 +51,10 @@ public class UserServiceImpl implements UserService {
 		return dao.SNSidCheck(user_id);
 	}
 
+	@Override
+	public void updateUserNoPass(UserVO vo) {
+		dao.updateUserNoPass(vo);
+		
+	}
+
 }
