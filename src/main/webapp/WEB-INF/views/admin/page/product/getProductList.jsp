@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@include file="/WEB-INF/views/admin/page/include/admin_header.jsp"%>
 
-<title>상품 등록</title>
+<title>상품 목록</title>
 
 <style type="text/css">
 table {
@@ -16,30 +16,30 @@ table, td, th {
 </style>
 <main>
 	<div class="container-fluid">
-		<h1 class="mt-4">관리자 페이지</h1>
+		<h1 class="mt-4">상품 관리 페이지</h1>
 		<ol class="breadcrumb mb-4">
-			<li class="breadcrumb-item active">코로나 탈출!!!</li>
+			<li class="breadcrumb-item active">코로나 종식!!!</li>
 		</ol>
 		<div class="card mb-4">
 			<div class="card-header">
-				<i class="fas fa-table mr-1"></i> 공지사항
+				<i class="fas fa-table mr-1"></i> 상품 목록
 			</div>
-			<form action="admin_search_notice_list.mdo">
+			<form action="#">
 				<div class="card-body">
 					<div class="table-responsive">
-						<table class="table table-bordered" id="dataTable" width="100%"
-							cellspacing="0">
+						<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 							<thead>
 								<tr>
 									<th class="text-center">NO.</th>
 									<th class="text-center">상품코드</th>
 									<th class="text-center">상품명</th>
-									<th class="text-center">섬네일 이미지</th>
+									<th class="text-center">상품 이미지</th>
 									<th class="text-center">원가</th>
-									<th class="text-center">할인률</th>
+									<th class="text-center">할인가</th>
+									<th class="text-center">적립금</th>
 									<th class="text-center">수량</th>
 									<th class="text-center">등록일</th>
-									<th class="text-center">삭제</th>
+									<th class="text-center"></th>
 									
 								</tr>
 							</thead>
@@ -49,15 +49,15 @@ table, td, th {
 									<tr>
 										<td class="text-center">${prod.prod_seq}</td>
 										<td class="text-center">${prod.prod_code}</td>
-										<td class="text-center"><a
-											href='<c:url value='/getProduct.mdo?prod_seq=${prod.prod_seq }'/>'
-											class="text-dark">${prod.prod_title }</a></td>
-											<td>&nbsp;</td>
+										<td class="text-center">
+											<a href="/getProduct.mdo?prod_seq=${prod.prod_seq }" class="text-dark">${prod.prod_title }</a>
+										</td>
+										<td>섬네일</td>
 										<td class="text-center">${prod.prod_price}</td>
 										<td class="text-center">${prod.prod_price_sale}</td>
+										<td class="text-center">${prod.prod_point}</td>
 										<td class="text-center">${prod.prod_amount}</td>
-										<td class="text-center"><fmt:formatDate
-												value="${prod.prod_regdate}" pattern="yyyy-MM-dd" /></td>
+										<td class="text-center"><fmt:formatDate value="${prod.prod_regdate}" pattern="yyyy-MM-dd" /></td>
 										<td class="text-center"><a class="deleteProduct" href="deleteProduct.mdo?prod_seq=${prod.prod_seq }">삭제</a></td>
 									</tr>
 								</c:forEach>
