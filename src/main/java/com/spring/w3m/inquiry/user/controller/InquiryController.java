@@ -175,7 +175,7 @@ public class InquiryController {
 	public String deleteAdminInquiry(InquiryVO vo, Model model) {
 		inquiryService.deleteInquiry(vo);
 		model.addAttribute("inquiryList", inquiryService.getInquiryList(vo));
-		return "page/inquiry/adminInquiry";
+		return "redirect:/adminInquiry.mdo";
 	}
 
 	/*

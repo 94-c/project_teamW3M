@@ -34,17 +34,56 @@ public class AdminLoginController {
 	}
 
 	@RequestMapping("/loginIndex.mdo")
-	public String loginIndex(AdminVO vo, Model model, HttpSession session) {
-		model.addAttribute("userList", adminService.getUserList());
+	public String loginIndex(AdminVO vo, Model model, HttpSession session, @RequestParam(required = false, defaultValue = "1") int page,
+																		   @RequestParam(required = false, defaultValue = "1") int range,
+																		   @RequestParam(required = false, defaultValue = "title") String searchType,
+																		   @RequestParam(required = false) String keyword) throws PSQLException, IOException {
+		Search search = new Search();
+		search.setSearchType(searchType);
+		search.setKeyword(keyword);
+		
+		int cnt = adminService.getUserListCnt(search);
+		
+		search.pageInfo(page, range, cnt);
+		
+		//Pagination
+		Pagination pagination = new Pagination();
+		pagination.pageInfo(page, range, cnt);
+		
+		List<UserVO> pageList = adminService.getPageList(search);
+		
+		model.addAttribute("pagination", search);
+		model.addAttribute("userList", pageList);
+		model.addAttribute("cnt", cnt);		
 		return "page/index";
 
 	}
 
 	// 관리자 페이지
 	@RequestMapping("/index.mdo")
-	public String index(AdminVO vo, Model model, HttpSession session) {
-		// 회원관리 리스트
-		model.addAttribute("userList", adminService.getUserList());
+	public String index(AdminVO vo, Model model, HttpSession session, @RequestParam(required = false, defaultValue = "1") int page,
+																	  @RequestParam(required = false, defaultValue = "1") int range,
+																	  @RequestParam(required = false, defaultValue = "title") String searchType,
+																	  @RequestParam(required = false) String keyword) throws PSQLException, IOException {
+		// 회원관리 리스트	
+		Search search = new Search();
+		search.setSearchType(searchType);
+		search.setKeyword(keyword);
+		
+		int cnt = adminService.getUserListCnt(search);
+		
+		search.pageInfo(page, range, cnt);
+		
+		//Pagination
+		Pagination pagination = new Pagination();
+		pagination.pageInfo(page, range, cnt);
+		
+		List<UserVO> pageList = adminService.getPageList(search);
+		
+		model.addAttribute("pagination", search);
+		model.addAttribute("userList", pageList);
+		model.addAttribute("cnt", cnt);
+		/* model.addAttribute("userList", adminService.getUserList()); */
 
 		boolean result = adminService.loginCheck(vo, session);
 		// 관리자 로그인 유효성
