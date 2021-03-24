@@ -63,7 +63,7 @@ $(document).ready(function(){
 			<div class="card-header">
 				<i class="fas fa-table mr-1"></i> 상품 등록
 			</div>
-			<form role="form" method="post" name="writeform"
+			<form role="form" method="post" name="writeform" enctype="multipart/form-data"
 				action="insertProduct.mdo" onsubmit="return emptyCheck()">
 				<div class="card-body">
 
@@ -126,7 +126,7 @@ $(document).ready(function(){
 					</div>
 					<div class="form-group">
 						<label for="exampleFormControlInput1">상세 이미지</label><br> <input
-							type="file" id="prod_image" name="prod_image">
+							type="file" id="prod_image" name="prod_image1">
 					</div>
 					<br>
 					<button type="submit" class="btn btn-info">등록하기</button>
