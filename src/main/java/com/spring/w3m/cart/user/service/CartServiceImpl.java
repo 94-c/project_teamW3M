@@ -1,10 +1,10 @@
-package com.spring.w3m.user.cart.service;
+package com.spring.w3m.cart.user.service;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.spring.w3m.user.cart.vo.CartVO;
+import com.spring.w3m.cart.user.vo.CartVO;
 
 @Service
 public class CartServiceImpl implements CartService{

@@ -9,7 +9,7 @@
      <typeAlias type="com.spring.w3m.notice.admin.vo.NoticeVO" alias="NoticeVO" />
      <typeAlias type="com.spring.w3m.login.admin.vo.AdminVO" alias="AdminVO"/>
      <typeAlias type="com.spring.w3m.product.admin.vo.ProductVO" alias="ProductVO"/>
-     <typeAlias type="com.spring.w3m.user.cart.vo.CartVO" alias="CartVO"/>
+     <typeAlias type="com.spring.w3m.cart.user.vo.CartVO" alias="CartVO"/>
  </typeAliases>
 	<mappers>
 		<mapper resource="mapper/joe_Mapper.xml" />

@@ -1,8 +1,8 @@
-package com.spring.w3m.user.cart.service;
+package com.spring.w3m.cart.user.service;
 
 import java.util.List;
 
-import com.spring.w3m.user.cart.vo.CartVO;
+import com.spring.w3m.cart.user.vo.CartVO;
 
 public interface CartService {
 

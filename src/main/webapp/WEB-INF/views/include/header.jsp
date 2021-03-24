@@ -90,7 +90,12 @@
                </div>
                <div class="top_comm">
                   <ul class="fleft">
-                     <li><a href="#">장바구니</a></li>
+                  <c:if test="${login_state eq 'login' }" >
+                     <li><a href="GoCart.do">장바구니</a></li>
+                  </c:if>
+                   <c:if test="${login_state ne 'login' }" >
+                     <li><a href="#" onClick="alert('로그인이 필요합니다.')">장바구니</a></li>
+                  </c:if>
                   <c:if test="${login_state eq 'login' }">
                      <li><a href="mypage.do">마이페이지</a></li>                     
                   </c:if>
@@ -162,7 +167,7 @@
             <c:when test="${login eq 'login' }">
                <li><a onclick="logoutAlert();" href="logout.do">로그아웃</a></li>
                <li><a href="mypage.do" class="">마이페이지</a></li>
-               <li><a href="#">장바구니<span id="user_basket_quantity" class="user_basket_quantity">0</span></a></li>
+               <li><a href="GoCart.do">장바구니<span id="user_basket_quantity" class="user_basket_quantity">0</span></a></li>
             </c:when>
             <c:when test="${login ne 'login'}">
                <li><a href="loginForm.do">로그인</a></li>
@@ -171,7 +176,7 @@
                      <span>+1,000P</span>
                   </span></a>
                </li>
-               <li><a href="#">장바구니<span id="user_basket_quantity" class="user_basket_quantity">0</span></a></li>
+               <li><a href="#" onClick="alert('로그인이 필요합니다.')">장바구니<span id="user_basket_quantity" class="user_basket_quantity">0</span></a></li>
             </c:when>
          </c:choose>
          </ul>

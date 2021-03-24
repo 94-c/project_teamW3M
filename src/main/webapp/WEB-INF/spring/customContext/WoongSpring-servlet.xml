@@ -27,6 +27,7 @@
 	<!-- 홈 컨트롤러 -->
 	<context:component-scan base-package="com.spring.w3m.join.*" />
 	<context:component-scan base-package="com.spring.w3m.product.user.*" />
+	<context:component-scan base-package="com.spring.w3m.cart.user.*" />
 		
 	<!-- NaverLoginBO Class에 대한 Bean설정 추가 -->
 	<beans:bean class="com.spring.w3m.join.user.service.NaverLoginBO" id="naverLoginBO"/>

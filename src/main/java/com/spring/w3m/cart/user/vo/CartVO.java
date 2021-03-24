@@ -1,4 +1,4 @@
-package com.spring.w3m.user.cart.vo;
+package com.spring.w3m.cart.user.vo;
 
 public class CartVO {
 	

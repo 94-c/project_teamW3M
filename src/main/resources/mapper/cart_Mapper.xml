@@ -4,9 +4,15 @@
 
 <mapper namespace="CartDAO">
 
-	<select id="getUser" resultType="UserVO">
-		SELECT * FROM user_member
-		WHERE user_id = #{user_id}
+	<select id="getUser" parameterType="String" resultType="CartVO">
+		select (ROW_NUMBER() OVER()) AS ROWNUM, u.user_id,
+	 p.prod_code, prod_title_image, p.prod_title,
+	 c.order_cnt, TO_CHAR( p.prod_point , '999,999,999'),
+	 TO_CHAR( p.prod_price , '999,999,999'),
+	 TO_CHAR( prod_price_sale*order_cnt , '999,999,999') as total_price 
+	 from product p , user_member u , cart c 
+	 where c.user_id = u.user_id and c.prod_code = p.prod_code and u.user_id = #{user_id} order by prod_code;
+	 
 	</select>
 	
 
