@@ -9,6 +9,7 @@
      <typeAlias type="com.spring.w3m.notice.admin.vo.NoticeVO" alias="NoticeVO" />
      <typeAlias type="com.spring.w3m.login.admin.vo.AdminVO" alias="AdminVO"/>
      <typeAlias type="com.spring.w3m.product.admin.vo.ProductVO" alias="ProductVO"/>
+     <typeAlias type="com.spring.w3m.user.cart.vo.CartVO" alias="CartVO"/>
  </typeAliases>
 	<mappers>
 		<mapper resource="mapper/joe_Mapper.xml" />
@@ -17,5 +18,6 @@
 		<mapper resource="mapper/soo_Mapper.xml" />
 		<mapper resource="mapper/hyeong_Mapper.xml" />
 		<mapper resource="mapper/product_Mapper.xml" />	
+		<mapper resource="mapper/cart_Mapper.xml" />	
 	</mappers>
 </configuration>

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/WEB-INF/views/admin/page/include/admin_header.jsp"%>
-<title>관리자 메인페이지</title>
+<title>공지사항</title>
 <c:url var="Noticelist" value="admin_notice_List.mdo">
 	<c:param name="page" value="${pagination.page }" />
 	<c:param name="range" value="${pagination.range }" />

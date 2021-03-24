@@ -7,7 +7,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<title>공지사항</title>
 <%@include file="/WEB-INF/views/include/header.jsp"%>
 <div id="contentWrapper">
 	<div id="contentWrap">
@@ -48,10 +48,8 @@
 								<tr>
 									<td>
 										<div class="data-bd-cont">
-											<div class align="center">
-											<p style="font-size:25px; Line-height:200%; align:left; color:#5f5f5f;">
-												${notice.nt_content }
-											</p>
+											<div class align="left">
+											<pre><p style="font-size:8px; Line-height:200%; align:left; color:#5f5f5f;">${notice.nt_content } </p></pre>
 											</div>
 										</div>
 									</td>
