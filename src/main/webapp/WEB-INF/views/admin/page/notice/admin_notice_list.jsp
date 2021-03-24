@@ -39,7 +39,7 @@
 										<td class="text-center">${Notice.nt_seq}</td>
 										<td class="text-center"><a
 											href='<c:url value='/admin_notice_content.mdo?nt_seq=${Notice.nt_seq}'/>'
-											class="text-dark">${Notice.nt_title }</a></td>
+											class="text-dark"><strong><font size=2 ><font color="${Notice.nt_color }">${Notice.nt_title }</font></font></strong></a></td>
 										<td class="text-center">${Notice.nt_writer}</td>
 										<td class="text-center"><fmt:formatDate
 												value="${Notice.nt_date}" pattern="yyyy-MM-dd" /></td>

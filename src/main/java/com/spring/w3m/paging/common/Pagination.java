@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class Pagination {
 	private int rownum;
-	private int listSize = 10;                //초기값으로 목록개수를 5으로 셋팅
+	private int listSize = 15;                //초기값으로 목록개수를 15로 셋팅
 	private int rangeSize = 10;            //초기값으로 페이지범위를 10으로 셋팅
 	private int page;
 	private int range;

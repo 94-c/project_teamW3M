@@ -11,6 +11,7 @@
 		<result property="nt_content" column="nt_content" />
 		<result property="nt_date" column="nt_date" />
 		<result property="nt_count" column="nt_count" />
+		<result property="nt_color" column="nt_color"/>
 	</resultMap>
 
 	<select id="getUserNotice" resultType="NoticeVO">
@@ -50,15 +51,15 @@
 	
 	<!-- 공지사항 등록 -->
 	<insert id="admin_notice_insert" parameterType="NoticeVO">
-		INSERT INTO notice (nt_seq, nt_title, nt_writer, nt_content,nt_imp)
-		VALUES(nextval('nt_seq'), #{nt_title}, #{nt_writer}, #{nt_content},#{nt_imp})
+		INSERT INTO notice (nt_seq, nt_title, nt_writer, nt_content,nt_imp, nt_color)
+		VALUES(nextval('nt_seq'), #{nt_title}, #{nt_writer}, #{nt_content},#{nt_imp},#{nt_color})
 	</insert>
 	
 	<!-- 공지사항 업데이트 -->
 	<update id="admin_notice_update" parameterType="NoticeVO">
 		UPDATE notice
 		SET
-		nt_title=#{nt_title}, nt_content=#{nt_content}, nt_imp=#{nt_imp}
+		nt_title=#{nt_title}, nt_content=#{nt_content}, nt_imp=#{nt_imp}, nt_color=#{nt_color}
 		WHERE nt_seq = #{nt_seq}
 	</update>
 	
@@ -109,7 +110,8 @@
 			nt_writer,
 			nt_content,
 			nt_date,
-			nt_count
+			nt_count,
+			nt_color
 		from notice
 		where 1=1
 		<if test="searchType =='nt_title'">

@@ -15,10 +15,17 @@ public class NoticeVO {
 	private int nt_imp;
 	private String searchType;
 	private String keyword;
+	private String nt_color;
 	
 	Pagination p = new Pagination();
 	
 	
+	public String getnt_color() {
+		return nt_color;
+	}
+	public void setnt_color(String nt_color) {
+		this.nt_color = nt_color;
+	}
 	public int getNt_seq() {
 		return nt_seq;
 	}
@@ -77,7 +84,7 @@ public class NoticeVO {
 	public String toString() {
 		return "NoticeVO [nt_seq=" + nt_seq + ", nt_title=" + nt_title + ", nt_writer=" + nt_writer + ", nt_content="
 				+ nt_content + ", nt_date=" + nt_date + ", nt_count=" + nt_count + ", nt_imp=" + nt_imp
-				+ ", searchType=" + searchType + ", keyword=" + keyword + "]";
+				+ ", searchType=" + searchType + ", keyword=" + keyword + ", nt_color=" + nt_color + "]";
 	}
 	
 }

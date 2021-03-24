@@ -10,7 +10,7 @@
 					<thead>
 						<tr>
 							<th><div class="tb-center">
-									<font size="2"> ${notice.nt_title } </font>
+									<strong><font size=2 ><font color="${notice.nt_color}">${notice.nt_title }</font></font></strong>
 								</div></th>
 						</tr>
 					</thead>

@@ -18,6 +18,20 @@
 				<label for="checked">중요 <input type="checkbox" id="nt_imp"
 					name="nt_imp" value="1" checked="checked" />
 				</label>
+				<select id="nt_color" name="nt_color">
+				<optgroup label="색상을 선택하세요">
+					<option value="#000000">Black</option>
+					<option value="#FF0000">Red</option>
+					<option value="#FFA500">Orange</option>
+					<option value="#FFFF00">Yellow</option>
+					<option value="#008000">Green</option>
+					<option value="#0000FF">Blue</option>
+					<option value="#A52A2A">Brown</option>
+					<option value="#FF08A0">Pink</option>
+					<option value="#EE82EE">Violet</option>
+				</optgroup>
+			</select>
+
 			</div>
 		</c:if>
 		<c:if test="${getNotice.nt_imp ne '1'}">
@@ -25,6 +39,19 @@
 				<label for="checked">중요 <input type="checkbox" id="nt_imp"
 					name="nt_imp" value="1"/>
 				</label>
+				<select id="nt_color" name="nt_color">
+					<optgroup label="색상을 선택하세요">
+						<option value="#000000">Black</option>
+						<option value="#FF0000">Red</option>
+						<option value="#FFA500">Orange</option>
+						<option value="#FFFF00">Yellow</option>
+						<option value="#008000">Green</option>
+						<option value="#0000FF">Blue</option>
+						<option value="#A52A2A">Brown</option>
+						<option value="#FF08A0">Pink</option>
+						<option value="#EE82EE">Violet</option>
+					</optgroup>
+				</select>
 			</div>
 		</c:if>
 		<div class="form-group">
