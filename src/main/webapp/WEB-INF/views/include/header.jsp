@@ -27,7 +27,6 @@
 <link href="resources/css/footer.css" rel="stylesheet" type="text/css">
 <link href="resources/css/login.css" rel="stylesheet" type="text/css">
 <link href="resources/css/findID.css" rel="stylesheet" type="text/css">
-<link href="resources/css/soo.css" rel="stylesheet" type="text/css">
 <link href="resources/css/insertMember.css" rel="stylesheet" type="text/css">
 <link href="resources/css/join.css" rel="stylesheet" type="text/css">
 <link type="text/css" rel="stylesheet" href="resources/css/border.css">
@@ -35,6 +34,7 @@
 <link type="text/css" rel="stylesheet" href="resources/css/lost.css">
 <link href="resources/css/shopbrand.css" rel="stylesheet" type="text/css">
 <link href="resources/css/basket.css" rel="stylesheet" type="text/css">
+<link href="resources/css/soo.css" rel="stylesheet" type="text/css">
 
 <!-- JS -->
 <script type="text/javascript" src="resources/js/jquery_option.js" ></script>
@@ -47,6 +47,7 @@
 <!-- 아래처럼 각자 JS파일 만들어서 링크 삽입하기 -->
 <script type="text/javascript" src="resources/js/joe.js"></script>
 <script type="text/javascript" src="resources/js/insertmember.js?v=7"></script>
+
 
 </head>
 <!-- head태그 끝 -->

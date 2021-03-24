@@ -1,8 +1,15 @@
 @charset "UTF-8";
 
-#submitbutton{
-	width: 130px;
-	height: 35px;
-	margin: 5px;
-	align-items: center;
+#submitbutton{	
+	 float:right;
+	 margin-left:3px; 
+	 width:108px; height:38px; font-size:13px; line-height:38px
+}
+
+#contentbutton{	
+	 margin-top: 10px;
+	 float:center;
+	 margin-left:3px; 
+	 margin-right: auto;
+	 width:108px; height:38px; font-size:13px; line-height:38px
 }

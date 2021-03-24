@@ -35,7 +35,7 @@
 										<tr>
 											<th><div>이메일</div></th>
 											<td colspan="3"><div>
-													<input id="bw_input_email" type="text" class="MS_input_txt input_style1" name="inq_email">
+													<input id="bw_input_email" type="text" class="MS_input_txt input_style1" name="inq_email" value="${getInquiry.inq_email}">
 												</div></td>
 										</tr>
 										<tr>
@@ -71,7 +71,7 @@
 							<dl class="bbs-link bbs-link-btm">
 								<dt></dt>
 								<dd>
-									<button type="submit" class="CSSbuttonBlack" id="submitbutton">수정하기</button>
+									<button type="submit" class="CSSbuttonBlack" id="contentbutton">수정하기</button>
 								<!-- 	<a href= "#" class="CSSbuttonWhite">목록보기</a> -->
 								</dd>
 							</dl>
