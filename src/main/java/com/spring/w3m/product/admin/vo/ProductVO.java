@@ -40,6 +40,7 @@ public class ProductVO {
 	private String prod_category4;
 	private int prod_price;
 	private int prod_price_sale;
+	private int prod_point;
 	private int prod_amount;
 	private String prod_comment;
 	private String prod_image1;
@@ -113,6 +114,12 @@ public class ProductVO {
 	public void setProd_price_sale(int prod_price_sale) {
 		this.prod_price_sale = prod_price_sale;
 	}
+	public int getProd_point() {
+		return prod_point;
+	}
+	public void setProd_point(int prod_point) {
+		this.prod_point = prod_point;
+	}
 	public int getProd_amount() {
 		return prod_amount;
 	}
@@ -184,11 +191,11 @@ public class ProductVO {
 		return "ProductVO [prod_seq=" + prod_seq + ", prod_code=" + prod_code + ", prod_title=" + prod_title
 				+ ", prod_title_image=" + prod_title_image + ", prod_category1=" + prod_category1 + ", prod_category2="
 				+ prod_category2 + ", prod_category3=" + prod_category3 + ", prod_category4=" + prod_category4
-				+ ", prod_price=" + prod_price + ", prod_price_sale=" + prod_price_sale + ", prod_amount=" + prod_amount
-				+ ", prod_comment=" + prod_comment + ", prod_image1=" + prod_image1 + ", prod_image2=" + prod_image2
-				+ ", prod_image3=" + prod_image3 + ", prod_image4=" + prod_image4 + ", prod_image5=" + prod_image5
-				+ ", prod_image6=" + prod_image6 + ", prod_state=" + prod_state + ", prod_regdate=" + prod_regdate
-				+ ", prod_count=" + prod_count + "]";
-	}
+				+ ", prod_price=" + prod_price + ", prod_price_sale=" + prod_price_sale + ", prod_point=" + prod_point
+				+ ", prod_amount=" + prod_amount + ", prod_comment=" + prod_comment + ", prod_image1=" + prod_image1
+				+ ", prod_image2=" + prod_image2 + ", prod_image3=" + prod_image3 + ", prod_image4=" + prod_image4
+				+ ", prod_image5=" + prod_image5 + ", prod_image6=" + prod_image6 + ", prod_state=" + prod_state
+				+ ", prod_regdate=" + prod_regdate + ", prod_count=" + prod_count + "]";
+	}	
 	
 }
