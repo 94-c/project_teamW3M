@@ -1,6 +1,6 @@
 @charset "UTF-8";
 .pagination{
-	width:200px; left:0; right:0; margin-left:490px; margin-right:auto;
+	justify-content: center !important; width:200px; left:0; right:0; margin-left:auto; margin-right:auto;
 }
 
 .searchText {
@@ -8,7 +8,7 @@
 	margin-bottom: auto;
 	display: flex;
 	flex-wrap: wrap;
-	margin-right:220px;
+	margin-right:auto;
 	margin-left: auto;
 }
 

@@ -79,15 +79,16 @@
 				<div class="page-body">
 					<a href="getUserNoticeList.do"> <img
 						src="resources/images/title/inquiry_titie.jpg"></a>
+						<form role="form" method="post" action="inquiry_write_view.do">
 					<div class="bbs-tit">
 						<h3>문의게시판</h3>
-						<div class="bbs-sch"></div>
-						<!-- .bbs-sch -->
+						<td colspan="6" align="right">
+							<button type="submit" class="CSSbuttonBlack" id="submitbutton">글쓰기</button></td>
 					</div>
-
+					
 					<!-- 게시판 목록 -->
 					<div class="bbs-table-list">
-						<form role="form" method="post" action="inquiry_write_view.do">
+						
 							<table border="1" summary="No, content,Name,Date,Hits">
 								<caption>일반게시판 게시글</caption>
 								<colgroup>
@@ -125,8 +126,7 @@
 									</c:forEach>
 								</tbody>
 							</table>
-							<td colspan="6" align="right">
-							<button type="submit" class="CSSbuttonBlack" id="submitbutton">글쓰기</button></td>
+							
 							<br>
 							<!-- pagination -->
 							<div id="paginationBox">
