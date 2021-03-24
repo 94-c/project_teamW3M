@@ -35,7 +35,7 @@
 <link type="text/css" rel="stylesheet" href="resources/css/lost.css">
 <link href="resources/css/shopbrand.css" rel="stylesheet" type="text/css">
 <link href="resources/css/basket.css" rel="stylesheet" type="text/css">
-
+<link href="resources/css/shopdetail.css" rel="stylesheet" type="text/css">
 <!-- JS -->
 <script type="text/javascript" src="resources/js/jquery_option.js" ></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
