@@ -45,9 +45,27 @@
                            <td>
                               <div class="data-bd-cont">
                                  ${inquiryVO.inq_content } <br>
-                                <c:if test="${inquiryVO.inq_image } ne null && ${inquiryVO.inq_image }!=''}">
-                               <img src="${inquiryVO.inq_image }"/>
-                               </c:if>
+								 <c:set var="text" value="${inquiryVO.inq_image }" />
+                                 <c:if test="${fn:contains(text,'png') }">
+                                 	<img src="${inquiryVO.inq_image }">
+                                 </c:if>
+                                 <c:if test="${fn:contains(text,'PNG') }">
+                                 	<img src="${inquiryVO.inq_image }">
+                                 </c:if>
+                              </div>
+                              <c:if test="${fn:contains(text,'jpg') }">
+                                 	<img src="${inquiryVO.inq_image }">
+                                 </c:if>
+                                 <c:if test="${fn:contains(text,'JPG') }">
+                                 	<img src="${inquiryVO.inq_image }">
+                                 </c:if>
+                                 <c:if test="${fn:contains(text,'gif') }">
+                                 	<img src="${inquiryVO.inq_image }">
+                                 </c:if>
+                                 <c:if test="${fn:contains(text,'GIF') }">
+                                 	<img src="${inquiryVO.inq_image }">
+                                 </c:if>
+                              </div>
                               </div>
                            </td>
                         </tr>
@@ -69,7 +87,25 @@
                             </tr>
                         </thead>
                      </table>
-                  </div>
+							<!-- 댓글 -->
+							<br>
+							<div id="reply">
+							<b>-댓글-</b>
+								<ol class="replyList">
+									<c:forEach items="${replyList}" var="replyList">
+										<li>
+											<p>
+												작성자 : ${replyList.re_writer}<br /> 작성 날짜 :
+												<fmt:formatDate value="${replyList.re_date}"
+													pattern="yyyy-MM-dd" />
+											</p>
+
+											<p>${replyList.re_content}</p>
+										</li>
+									</c:forEach>
+								</ol>
+							</div>
+						</div>
                </div>
                				<input type="button" value="글 수정" class="CSSbuttonBlack" id="contentbutton" onclick="updateCheck();" />
                				<input type="button" value="글 삭제" class="CSSbuttonBlack" id="contentbutton" onclick="deleteCheck();" />
