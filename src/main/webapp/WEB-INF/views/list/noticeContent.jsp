@@ -48,10 +48,8 @@
 								<tr>
 									<td>
 										<div class="data-bd-cont">
-											<div class align="center">
-											<p style="font-size:25px; Line-height:200%; align:left; color:#5f5f5f;">
-												${notice.nt_content }
-											</p>
+											<div class align="left">
+											<pre><p style="font-size:8px; Line-height:200%; align:left; color:#5f5f5f;">${notice.nt_content } </p></pre>
 											</div>
 										</div>
 									</td>
