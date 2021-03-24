@@ -4,21 +4,28 @@
 
 <mapper namespace="product">
 
+	<select id="getProductList" resultType="ProductVO">
+		SELECT * FROM product ORDER BY prod_seq DESC
+	</select>
+	
+	<select id="getProduct" resultType="ProductVO">
+		SELECT * FROM product WHERE prod_seq = #{prod_seq}
+	</select>
+
 	<insert id="insert">
 		INSERT INTO product (prod_seq, prod_code, prod_title, prod_price, prod_price_sale, prod_amount, prod_comment, prod_point) 
 		VALUES (nextval('prod_seq'), #{prod_code}, #{prod_title}, #{prod_price}, #{prod_price_sale}, #{prod_amount}, #{prod_comment}, #{prod_point})
 	</insert>
 	
-	<select id="getProduct" resultType="ProductVO">
-		SELECT * FROM product WHERE prod_seq = #{prod_seq}
-	</select>
-	
-	<select id="getProductList" resultType="ProductVO">
-		SELECT * FROM product
-	</select>
+	<update id="update">
+		UPDATE product SET prod_code = #{prod_code}, prod_title = #{prod_title}, prod_price = #{prod_price}, prod_price_sale=#{prod_price_sale},
+						prod_amount = #{prod_amount}, prod_comment = #{prod_comment}, prod_point = #{prod_point}
+		WHERE prod_seq = #{prod_seq}
+	</update>	
 	
 	<delete id="delete">
 		DELETE FROM product WHERE
 		prod_seq = #{prod_seq}
 	</delete>
+	
 </mapper>
