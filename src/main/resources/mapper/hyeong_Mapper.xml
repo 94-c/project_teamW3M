@@ -22,6 +22,8 @@
       <result property="user_marketing_mail" column="user_marketing_mail" />
       <result property="user_marketing_sms" column="user_marketing_sms" />
       <result property="user_state" column="user_state" />
+      <result property="user_sns_naver" column="user_sns_naver" />
+      <result property="user_sns_kakao" column="user_sns_kakao"/>
    </resultMap>
 
 	<select parameterType="AdminVO" resultType="AdminVO" id="getAdmin">
@@ -48,7 +50,9 @@
 			user_address1,
 			user_phone,
 			user_join_date,
-			user_state
+			user_state,
+			user_sns_naver,
+			user_sns_kakao
 		from user_member
 		where 1=1
 		<if test="searchType=='user_id' and keyword != null and keyword != '' ">
