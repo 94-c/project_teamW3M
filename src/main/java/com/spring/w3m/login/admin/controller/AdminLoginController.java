@@ -72,7 +72,7 @@ public class AdminLoginController {
 						@RequestParam(required = false, defaultValue = "title") String searchType,
 						@RequestParam(required = false) String keyword) throws PSQLException, IOException {
 		System.out.println("=== 고객관리 ===");
-
+		
 		Search search = new Search();
 		search.setSearchType(searchType);
 		search.setKeyword(keyword);
@@ -84,9 +84,21 @@ public class AdminLoginController {
 		// Pagination
 		Pagination pagination = new Pagination();
 		pagination.pageInfo(page, range, cnt);
-
+		
 		List<UserVO> pageList = adminService.getPageList(search);
-
+		for( UserVO list : pageList) {
+			String kakao = list.getUser_sns_kakao();
+			String naver = list.getUser_sns_naver();
+			System.out.println(kakao);
+			System.out.println(naver);
+			if(kakao==null & naver==null) {
+				list.setUser_sns_naver("W3M");
+			}else if(kakao==null & naver!=null) {
+				list.setUser_sns_naver("NAVER");
+			}else {
+				list.setUser_sns_naver("KAKAO");
+			}
+		}
 		model.addAttribute("pagination", search);
 		model.addAttribute("userList", pageList);
 		model.addAttribute("cnt", cnt);
