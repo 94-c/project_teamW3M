@@ -45,27 +45,9 @@
                            <td>
                               <div class="data-bd-cont">
                                  ${inquiryVO.inq_content } <br>
-								 <c:set var="text" value="${inquiryVO.inq_image }" />
-                                 <c:if test="${fn:contains(text,'png') }">
-                                 	<img src="${inquiryVO.inq_image }">
-                                 </c:if>
-                                 <c:if test="${fn:contains(text,'PNG') }">
-                                 	<img src="${inquiryVO.inq_image }">
-                                 </c:if>
-                              </div>
-                              <c:if test="${fn:contains(text,'jpg') }">
-                                 	<img src="${inquiryVO.inq_image }">
-                                 </c:if>
-                                 <c:if test="${fn:contains(text,'JPG') }">
-                                 	<img src="${inquiryVO.inq_image }">
-                                 </c:if>
-                                 <c:if test="${fn:contains(text,'gif') }">
-                                 	<img src="${inquiryVO.inq_image }">
-                                 </c:if>
-                                 <c:if test="${fn:contains(text,'GIF') }">
-                                 	<img src="${inquiryVO.inq_image }">
-                                 </c:if>
-                              </div>
+                                 <c:if test="${inquiryVO.inq_image eq '파일없음'}"></c:if>
+								 <c:if test="${inquiryVO.inq_image ne '파일없음'}"><img src="${inquiryVO.inq_image }"/></c:if>
+								 
                               </div>
                            </td>
                         </tr>

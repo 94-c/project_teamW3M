@@ -108,7 +108,12 @@
 					<ul>
 						<!-- 하단 커뮤니티 링크 수정 -->
 						<li><a href="getNoticeList.do" style="text-align: center;">공지사항</a></li>
+						<c:if test="${login_state eq 'login' }">
 						<li><a href="inquiry.do" style="text-align: center;">문의게시판</a></li>
+						</c:if>                    
+                     	<c:if test="${login_state ne 'login' }">
+                     	<li><a href="loginForm.do" style="text-align: center;" onClick="alert('로그인이 필요합니다.')">문의게시판</a></li>
+                     	</c:if>         
 						<li><a href="#" style="text-align: center;">상품후기</a></li>
 						<li><a href="#" style="text-align: center;">이벤트</a></li>
 						<li><a href="#" style="text-align: center;">웰콤의 드림랜드</a></li>

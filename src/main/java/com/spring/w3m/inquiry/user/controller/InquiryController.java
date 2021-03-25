@@ -74,16 +74,22 @@ public class InquiryController {
 	// 게시판 글 작성하기(동작)
 	@RequestMapping("/inquiry_write.do")
 	public String inquiryWrite(InquiryVO vo, Model model, MultipartFile inq_mask) throws Exception {
-
 		InputStream ism = inq_mask.getInputStream();
 		String maskKey = inq_mask.getOriginalFilename();
 		System.out.println(maskKey);
 		String contentType = inq_mask.getContentType();
 		long contentLength = inq_mask.getSize();
+		System.out.println(maskKey);
+	
 		
-		String path = "https://imageup.s3.ap-northeast-2.amazonaws.com/" + maskKey; 
-		vo.setInq_image(path);
-
+		if(maskKey=="") {
+			vo.setInq_image("파일없음");
+		} else {
+			String path = "https://imageup.s3.ap-northeast-2.amazonaws.com/" + maskKey;
+			vo.setInq_image(path);
+		}
+		
+		
 		awsS3.upload(ism, maskKey, contentType, contentLength);
 		model.addAttribute("inquiryList", inquiryService.getInquiryList(vo));
 		inquiryService.insertInquiry(vo);
