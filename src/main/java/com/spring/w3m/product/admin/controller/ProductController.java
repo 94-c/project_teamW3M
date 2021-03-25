@@ -1,19 +1,24 @@
 package com.spring.w3m.product.admin.controller;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.spring.w3m.product.admin.service.ProductService;
 import com.spring.w3m.product.admin.vo.ProductVO;
+import com.spring.w3m.upload.user.AwsS3;
 
 @Controller
 public class ProductController {
 	@Autowired
 	private ProductService service;
+	public AwsS3 awsS3 = AwsS3.getInstance();
 	
 	@RequestMapping("/getProductList.mdo")
 	public String getProductList(ProductVO vo, Model model) {
@@ -36,7 +41,17 @@ public class ProductController {
 	}
 	
 	@RequestMapping("/insertProduct.mdo")
-	public String insertProduct(ProductVO vo) {
+	public String insertProduct(ProductVO vo, MultipartFile prod_title_image) throws IOException {
+		InputStream ism = prod_title_image.getInputStream();
+		String fileName = prod_title_image.getOriginalFilename();
+		String contentType = prod_title_image.getContentType();
+		long contentLength = prod_title_image.getSize();
+		
+		String path = "https://imageup.s3.ap-northeast-2.amazonaws.com/" + fileName; 
+		
+		vo.setProd_title_image(path);
+		System.out.println(vo.getProd_title_image());
+		awsS3.upload(ism, fileName, contentType, contentLength);
 		service.insertProduct(vo);
 		return "redirect:/getProductList.mdo";
 	}

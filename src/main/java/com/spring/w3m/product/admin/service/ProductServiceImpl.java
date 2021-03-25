@@ -12,7 +12,7 @@ import com.spring.w3m.product.admin.vo.ProductVO;
 public class ProductServiceImpl implements ProductService{
 	
 	@Autowired
-	private ProductDAO  dao;
+	private ProductDAO  dao;	
 	
 	@Override
 	public void insertProduct(ProductVO vo) {
