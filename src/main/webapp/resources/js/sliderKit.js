@@ -4,7 +4,8 @@
  *  
  *  Copyright (c) 2010-2012 Alan Frog
  *  Licensed under the GNU General Public License
- */ (function ($) {
+ */ 
+(function ($) {
     SliderKit = function () {
         var n = this;
         this._init = function (c, d) {
