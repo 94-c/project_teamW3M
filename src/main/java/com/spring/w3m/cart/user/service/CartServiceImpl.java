@@ -2,17 +2,22 @@ package com.spring.w3m.cart.user.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.spring.w3m.cart.user.dao.CartDAO;
 import com.spring.w3m.cart.user.vo.CartVO;
 
 @Service
 public class CartServiceImpl implements CartService{
 
+	@Autowired
+	private CartDAO dao ;
+	
 	@Override
 	public List<CartVO> CartList(String user_id) {
 		
-		return null;
+		return dao.CartList(user_id) ;
 	}
 
 }
