@@ -40,5 +40,9 @@
 	 
 	</select>
 	
+	<update id="Cart_Order_Cnt_Update" parameterType="CartVO">
+		UPDATE cart SET order_cnt = #{order_cnt} WHERE cart_id = #{cart_id} 
+	
+	</update>
 
 </mapper>
