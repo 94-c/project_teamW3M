@@ -1,4 +1,4 @@
-package com.spring.w3m.upload.user;
+package com.spring.w3m.upload.common;
 
 import java.io.File;
 import java.io.InputStream;
@@ -11,6 +11,7 @@ import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
+import com.amazonaws.services.s3.model.DeleteObjectRequest;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.PutObjectRequest;
 
@@ -66,6 +67,20 @@ public class AwsS3 {
 		} catch(SdkClientException e) {
 			e.printStackTrace();
 		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void delete(String key) {
+		try {
+			//Delete 객체 생성
+			DeleteObjectRequest deleteObjectRequest = new DeleteObjectRequest(this.bucket, key);
+			//Delete
+			this.s3Client.deleteObject(deleteObjectRequest);
+			System.out.println(String.format("[%s] deletion complete", key));
+		}catch(AmazonServiceException e) {
+			e.printStackTrace();
+		}catch (SdkClientException e) {
 			e.printStackTrace();
 		}
 	}

@@ -12,7 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.spring.w3m.product.admin.service.ProductService;
 import com.spring.w3m.product.admin.vo.ProductVO;
-import com.spring.w3m.upload.user.AwsS3;
+import com.spring.w3m.upload.common.AwsS3;
 
 @Controller
 public class ProductController {

@@ -18,7 +18,7 @@ import com.spring.w3m.inquiry.user.vo.InquiryVO;
 import com.spring.w3m.inquiry.user.vo.ReplyVO;
 import com.spring.w3m.paging.common.Pagination;
 import com.spring.w3m.paging.common.Search;
-import com.spring.w3m.upload.user.AwsS3;
+import com.spring.w3m.upload.common.AwsS3;
 
 @Controller
 public class InquiryController {
