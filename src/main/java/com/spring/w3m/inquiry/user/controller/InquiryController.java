@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.spring.w3m.inquiry.user.service.InquiryService;
+import com.spring.w3m.inquiry.user.service.ReplyService;
 import com.spring.w3m.inquiry.user.vo.InquiryVO;
+import com.spring.w3m.inquiry.user.vo.ReplyVO;
 import com.spring.w3m.paging.common.Pagination;
 import com.spring.w3m.paging.common.Search;
 import com.spring.w3m.upload.user.AwsS3;
@@ -24,6 +26,9 @@ public class InquiryController {
 	@Autowired
 	private InquiryService inquiryService;
 	public AwsS3 awsS3 = AwsS3.getInstance();
+	
+	@Autowired
+	private ReplyService replyService;
 
 /*	
 	
@@ -68,8 +73,8 @@ public class InquiryController {
 
 	// 게시판 글 작성하기(동작)
 	@RequestMapping("/inquiry_write.do")
-	public String inquiryWrite(InquiryVO vo, Model model, MultipartFile inq_mask) throws IOException {
-		
+	public String inquiryWrite(InquiryVO vo, Model model, MultipartFile inq_mask) throws Exception {
+
 		InputStream ism = inq_mask.getInputStream();
 		String maskKey = inq_mask.getOriginalFilename();
 		System.out.println(maskKey);
@@ -77,12 +82,8 @@ public class InquiryController {
 		long contentLength = inq_mask.getSize();
 		
 		String path = "https://imageup.s3.ap-northeast-2.amazonaws.com/" + maskKey; 
-		
-		System.out.println("이미지 올라가라 제발 디비");
 		vo.setInq_image(path);
-		System.out.println("가만안둬 피바다....");
-		System.out.println(path);
-		System.out.println(vo.getInq_image());
+
 		awsS3.upload(ism, maskKey, contentType, contentLength);
 		model.addAttribute("inquiryList", inquiryService.getInquiryList(vo));
 		inquiryService.insertInquiry(vo);
@@ -115,6 +116,10 @@ public class InquiryController {
 	public String getInquiry(InquiryVO vo, Model model) {
 		System.out.println("글 상세보기 처리");
 		model.addAttribute("inquiryVO", inquiryService.getInquiry(vo));
+		
+		List<ReplyVO> replyList = replyService.getReplyList(vo.getInq_seq());
+		model.addAttribute("replyList", replyList);
+		
 		return "list/inquiryContent";
 	}
 	
