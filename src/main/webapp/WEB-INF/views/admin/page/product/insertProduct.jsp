@@ -80,7 +80,7 @@ $(document).ready(function(){
 					</div>
 					<div class="form-group">
 						<label for="exampleFormControlInput1">상품 이미지</label><br> <input
-							type="file" id="prod_title_image" name="prod_title_image">
+							type="file" id="prod_thumb" name="prod_thumb">
 					</div>
 					<div class="form-group">
 						<label for="exampleFormControlInput1">원가(단위 :원)</label> <input
@@ -127,7 +127,7 @@ $(document).ready(function(){
 					<button id="addImage_btn">이미지 추가</button>
 					<div class="form-group">
 						<label for="exampleFormControlInput1">상세 이미지</label><br>
-						<input type="file" id="prod_image" name="prod_image">
+						<input type="file" id="prod_detail_img1" name="prod_detail_img1">
 					</div>
 					<br>
 					<button type="submit" class="btn btn-info">등록하기</button>

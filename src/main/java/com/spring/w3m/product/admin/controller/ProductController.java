@@ -41,11 +41,11 @@ public class ProductController {
 	}
 	
 	@RequestMapping("/insertProduct.mdo")
-	public String insertProduct(ProductVO vo, MultipartFile prod_title_image) throws IOException {
-		InputStream ism = prod_title_image.getInputStream();
-		String fileName = prod_title_image.getOriginalFilename();
-		String contentType = prod_title_image.getContentType();
-		long contentLength = prod_title_image.getSize();
+	public String insertProduct(ProductVO vo, MultipartFile prod_thumb) throws IOException{
+		InputStream ism = prod_thumb.getInputStream();
+		String fileName = prod_thumb.getOriginalFilename();
+		String contentType = prod_thumb.getContentType();
+		long contentLength = prod_thumb.getSize();
 		
 		String path = "https://imageup.s3.ap-northeast-2.amazonaws.com/" + fileName; 
 		

@@ -19,9 +19,9 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 
-	<!-- 컴포넌트 스캔 -->	
-		<context:component-scan base-package="com.spring.w3m.login.user" />
-		<context:component-scan base-package="com.spring.w3m.find.user"/>
+	<!-- 컴포넌트 스캔 -->
+	<context:component-scan	base-package="com.spring.w3m.login.user" />
+	<context:component-scan	base-package="com.spring.w3m.find.user" />
 
 </beans:beans>
 
