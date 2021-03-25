@@ -42,8 +42,9 @@ $(document).ready(function(){
 							placeholder="(상품명 예시: W3M 프리미엄 미세먼지마스크 KF94 대형 25개입)">
 					</div>
 					<div class="form-group">
-						<label for="exampleFormControlInput1">상품 이미지</label><br> <input
-							type="file" id="prod_title_image" name="prod_title_image">
+						<label for="exampleFormControlInput1">상품 대표 이미지</label><br>
+						<input type="file" id="prod_thumb" name="prod_thumb">
+						<input type="button" value="취소" onclick="removeFile();">
 					</div>
 					<div class="form-group">
 						<label for="exampleFormControlInput1">원가(단위 :원)</label> <input value="${product.prod_price}"
@@ -79,22 +80,23 @@ $(document).ready(function(){
 					</div>
 					<div class="form-group">
 						<label for="exampleFormControlTextarea1">상품 상세 설명</label> 
-						<pre>
-							<textarea class="form-control" id="prod_comment" name="prod_comment" rows="10"
+						<pre><textarea class="form-control" id="prod_comment" name="prod_comment" rows="3"
 								placeholder="※상품코드/상품명 입력시 참고용※
 (상품코드 예시: MM-P-L-94-50 / 미세먼지마스크-프리미엄-사이즈-등급-몇개입)
-(상품명 예시: W3M 프리미엄 미세먼지마스크 KF94 대형 25개입)">${product.prod_comment}</textarea>
-						</pre>
+(상품명 예시: W3M 프리미엄 미세먼지마스크 KF94 대형 25개입)">${product.prod_comment}</textarea></pre>
 					</div>
-					<div class="form-group">
-						<label for="exampleFormControlInput1">상세 이미지</label><br> <input
-							type="file" id="prod_image" name="prod_image">
-					</div>
+					<table id="example">
+						<tr>
+							<td><input type="button" value="업로드 추가" id="addItemBtn"></td>
+							<td><input type="button" value="업로드 삭제" id="deleteItemBtn"></td>
+						</tr>
+						<tr id="item1" style="display: none">
+							<td><input type="file" name="image1"/></td>
+						</tr>
+					</table>
 					<br>
 					<button type="submit" class="btn btn-info">수정하기</button>
-					<button type="button" class="btn btn-secondary"
-						onclick="location.href='getProductList.mdo'">목록으로</button>
-
+					<button type="button" class="btn btn-secondary" onclick="location.href='getProductList.mdo'">목록으로</button>
 				</div>
 			</form>
 		</div>
