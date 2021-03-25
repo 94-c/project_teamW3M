@@ -19,4 +19,10 @@ public class ReplyServiceImpl implements ReplyService {
 		return replyDAO.getReplyList(inq_seq);
 	}
 
+	@Override
+	public void insertReply(ReplyVO vo) {
+		replyDAO.insertReply(vo);
+		
+	}
+
 }
