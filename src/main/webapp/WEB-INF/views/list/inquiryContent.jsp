@@ -76,13 +76,11 @@
 								<ol class="replyList">
 									<c:forEach items="${replyList}" var="replyList">
 										<li>
-											<p>
-												작성자 : ${replyList.re_writer}<br /> 작성 날짜 :
+											
+												${replyList.re_writer}<br /> 
+												${replyList.re_content} <br/>
 												<fmt:formatDate value="${replyList.re_date}"
 													pattern="yyyy-MM-dd" />
-											</p>
-
-											<p>${replyList.re_content}</p>
 										</li>
 									</c:forEach>
 								</ol>

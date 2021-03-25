@@ -30,18 +30,6 @@ public class InquiryController {
 	@Autowired
 	private ReplyService replyService;
 
-/*	
-	
-	// 문의사항
-		@RequestMapping("/inquiry.do")
-		public String getBoardList(InquiryVO vo, Model model) {
-			System.out.println("---문의사항---");
-			model.addAttribute("inquiryList", inquiryService.getInquiryList(vo));		
-			return "list/inquiry";
-		}
-
-*/
-		
 		// 문의사항
 		@RequestMapping("/inquiry.do")
 		public String getInquiryList(Model model, @RequestParam(required = false, defaultValue = "1") int page,
@@ -58,7 +46,7 @@ public class InquiryController {
 		
 			search.pageInfo(page, range, cnt);
 		
-		//Pagination
+			//Pagination
 			Pagination pagination = new Pagination();
 			pagination.pageInfo(page, range, cnt);
 		
@@ -176,8 +164,13 @@ public class InquiryController {
 	
 	// 관리자 문의사항 상세보기
 	@RequestMapping("/admin_inquiry_content.mdo")
-	public String getAdminInquiry(InquiryVO vo, Model model) {
-		model.addAttribute("inquiryVO", inquiryService.getInquiry(vo));
+	public String getAdminInquiry(InquiryVO vo, Model model) {			
+		model.addAttribute("inquiryVO", inquiryService.getInquiry(vo));	
+		
+		// 댓글 조회
+		List<ReplyVO> replyList = replyService.getReplyList(vo.getInq_seq());
+		model.addAttribute("replyList", replyList);
+		
 		return "page/inquiry/admin_inquiry_content";
 	}
 	
@@ -188,22 +181,13 @@ public class InquiryController {
 		model.addAttribute("inquiryList", inquiryService.getInquiryList(vo));
 		return "redirect:/adminInquiry.mdo";
 	}
-
-	/*
-	// 파일업로드
-	@RequestMapping("/testUpload.do")
-    public String requestupload2(MultipartFile mask_image) throws Exception {
-		InputStream ism = mask_image.getInputStream();
-		String maskKey = mask_image.getOriginalFilename();
-		String contentType = mask_image.getContentType();
-		long contentLength = mask_image.getSize();
-		
-		awsS3.upload(ism, maskKey, contentType, contentLength);
-		
-		
-		return "list/inquiry";
+	
+	//댓글 쓰기
+	@RequestMapping("/insertReply.mdo")
+	public String insetReply(ReplyVO rvo, InquiryVO vo, Model model) {
+		replyService.insertReply(rvo);
+		return "redirect:/admin_inquiry_content.mdo?inq_seq="+vo.getInq_seq();
 	}
-*/
 }
 	
 

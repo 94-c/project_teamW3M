@@ -13,3 +13,20 @@
 	 margin-right: auto;
 	 width:108px; height:38px; font-size:13px; line-height:38px
 }
+
+#replybutton{
+  width: 40px;
+  height: 20px;
+  display: inline-block;
+  font-weight: 400;
+  color: #212529;
+  text-align: center;
+  color: #000000;
+  background-color: #f0f0f7;
+  border: 1px solid transparent;
+  font-size: 10px;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  margin-bottom: 10px;
+  float: right;
+}

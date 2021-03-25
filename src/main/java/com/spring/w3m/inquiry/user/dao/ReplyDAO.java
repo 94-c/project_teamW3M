@@ -18,4 +18,10 @@ public class ReplyDAO {
 		System.out.println("댓글 목록 보기");
 		return sqlSessionTemplate.selectList("ReplyDAO.getReplyList", inq_seq);
 	}
+	
+	// 댓글 등록
+	public void insertReply(ReplyVO vo) {
+		sqlSessionTemplate.insert("ReplyDAO.insertReply", vo);
+		System.out.println("댓글 등록");
+	}
 }

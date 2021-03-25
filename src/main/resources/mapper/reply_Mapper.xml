@@ -9,4 +9,8 @@
 		SELECT re_seq, re_content, re_writer, re_date FROM reply WHERE inq_seq = #{inq_seq}
 	</select>
 
+<!-- 댓글 작성 -->
+	<insert id="insertReply">
+		INSERT INTO reply (inq_seq, re_seq, re_content, re_writer) values(#{inq_seq}, nextval('re_inq_seq'), #{re_content}, #{re_writer})
+	</insert>
 </mapper>
