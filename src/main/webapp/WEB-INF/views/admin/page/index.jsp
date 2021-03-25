@@ -142,6 +142,23 @@
 			</div>
 			<div class="card-body">
 				<div class="table-responsive">
+
+				<div class="searchText" style = "float: right">
+					<div class="w100" style="padding-right: 10px" >
+							<select class="form-control form-control-sm" name="searchType" id="searchType">
+									<option value="user_id">아이디</option>
+									<option value="user_name">이름</option>
+							</select>
+					</div>
+					<div class="w300" style="padding-right: 10px">
+						<input type="text" class="form-control form-control-sm" name="keyword" id="keyword">
+					</div>
+					<div>
+						<button class="btn btn-sm btn-primary" name="btnSearch" id="btnSearch">검색</button>
+					</div>
+				 </div>	<!-- search{e} -->
+							
+					<br><br>
 					<table class="table table-bordered" width="100%" cellspacing="0">
 						<thead>
 							<tr>
@@ -198,26 +215,6 @@
 										</c:if>
 										</ul>
 									</div>
-									<!-- search{s} -->
-
-										<div class="searchText">
-											<div class="w100" style="padding-right: 10px">
-												<select class="form-control form-control-sm" name="searchType" id="searchType">
-													<option value="user_name">이름</option>
-													<option value="user_id">아이디</option>
-												</select>
-
-											</div>
-											<div class="w300" style="padding-right: 10px">
-												<input type="text" class="form-control form-control-sm" name="keyword" id="keyword">
-											</div>
-
-											<div>
-												<button class="btn btn-sm btn-primary" name="btnSearch" id="btnSearch">검색</button>
-											</div>
-
-										</div>
-								<!-- search{e} -->
 				</div>
 			</div>
 		</div>

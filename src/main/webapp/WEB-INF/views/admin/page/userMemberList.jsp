@@ -101,7 +101,8 @@
                                                 <th class="text-center">주소(상세주소)</th>
                                             	<th class="text-center">휴대폰번호</th><!-- user_phone -->
                                             	<th class="text-center">가입날짜</th> <!-- user_join_date -->
-                                            	<th class="text-center">회원상태</th> <!-- user_state -->
+                                            	<th class="text-center">회원등급</th> <!-- user_state -->
+                                            	<th class="text-center">회원상태</th>
                                             	<th class="text-center">가입사이트</th>
                                             </tr>
                                         </thead>
@@ -119,6 +120,7 @@
 												<td class="text-center">${user.user_phone }</td>
 												<td class="text-center"><fmt:formatDate value="${user.user_join_date}" pattern="yyyy-MM-dd"/></td>
 												<td class="text-center">${user.user_state }</td>
+												<td class="text-center"><input type=button value="정지"></td>
 												<c:if test="${user.user_sns_naver eq 'NAVER'}">
 													<td class="text-center"><strong><font color ="#00ff00">${user.user_sns_naver}</font></strong></td>
 												</c:if>
