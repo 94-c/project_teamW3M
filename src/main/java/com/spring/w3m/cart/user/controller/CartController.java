@@ -6,7 +6,10 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.spring.w3m.cart.user.service.CartService;
@@ -25,14 +28,23 @@ public class CartController {
 		//vo = (UserVO) session.getAttribute("userVO");
 		List<CartVO> cartList = cartService.CartList(vo.getUser_id());
 		System.out.println(vo.getUser_id());
-		System.out.println(cartList.toString());
 		for(CartVO list : cartList) {
 			System.out.println(list.toString());
 		}
 		session.setAttribute("cartList", cartList);
-		
+			
 		
 		return "cart/cart";
+		
+	}
+	
+	@RequestMapping(value = "/send_order_cnt.do", method=RequestMethod.POST)
+	@ResponseBody
+	public String Send_order_cnt_update(@RequestBody CartVO cartvo) {
+		System.out.println("주문수량 변경했습니까? 개 : "+ cartvo.getOrder_cnt());
+		System.out.println("장바구니 id는? : "+ cartvo.getCart_id());
+		
+		return "99999";
 		
 	}
 }

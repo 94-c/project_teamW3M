@@ -20,8 +20,10 @@
 	select 
 	(ROW_NUMBER() OVER()) AS ROWNUM,
 	 u.user_id,
+	 cart_id,
 	 p.prod_code,
 	 prod_title_image,
+	 prod_url,
 	 p.prod_title,
 	 c.order_cnt,
 	 p.prod_point,
