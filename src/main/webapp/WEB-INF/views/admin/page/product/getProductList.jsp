@@ -23,6 +23,7 @@ table, td, th {
 		<div class="card mb-4">
 			<div class="card-header">
 				<i class="fas fa-table mr-1"></i> 상품 목록
+				
 			</div>
 			<form action="#">
 				<div class="card-body">
@@ -33,7 +34,7 @@ table, td, th {
 									<th class="text-center">NO.</th>
 									<th class="text-center">상품코드</th>
 									<th class="text-center">상품명</th>
-									<th class="text-center">상품 이미지</th>
+									<th class="text-center">상품 대표 이미지</th>
 									<th class="text-center">원가</th>
 									<th class="text-center">할인가</th>
 									<th class="text-center">적립금</th>
@@ -52,13 +53,15 @@ table, td, th {
 										<td class="text-center">
 											<a href="/getProduct.mdo?prod_seq=${prod.prod_seq }" class="text-dark">${prod.prod_title }</a>
 										</td>
-										<td>섬네일</td>
+										<td>						
+											<img src="${prod.prod_title_image}" width="50" height="50">
+										</td>
 										<td class="text-center">${prod.prod_price}</td>
 										<td class="text-center">${prod.prod_price_sale}</td>
 										<td class="text-center">${prod.prod_point}</td>
 										<td class="text-center">${prod.prod_amount}</td>
 										<td class="text-center"><fmt:formatDate value="${prod.prod_regdate}" pattern="yyyy-MM-dd" /></td>
-										<td class="text-center"><a class="deleteProduct" href="deleteProduct.mdo?prod_seq=${prod.prod_seq }">삭제</a></td>
+										<td class="text-center"><a class="deleteProduct" href="deleteProduct.mdo?prod_seq=${prod.prod_seq}" onclick="return confirm('정말로 삭제하시겠습니까?');">삭제</a></td>
 									</tr>
 								</c:forEach>
 							</tbody>
@@ -78,8 +81,7 @@ table, td, th {
 							</div>
 
 							<div>
-								<button class="btn btn-sm btn-primary" name="btnSearch"
-									id="btnSearch">검색</button>
+								<button class="btn btn-sm btn-primary" name="btnSearch" id="btnSearch">검색</button>
 							</div>
 						</div>
 					</div>

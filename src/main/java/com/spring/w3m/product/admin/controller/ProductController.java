@@ -20,57 +20,65 @@ public class ProductController {
 	private ProductService service;
 	public AwsS3 awsS3 = AwsS3.getInstance();
 	
-	@RequestMapping("/getProductList.mdo")
+	@RequestMapping("/getProductList.mdo") //등록상품 목록보기
 	public String getProductList(ProductVO vo, Model model) {
 		List<ProductVO> productList = service.getProductList(vo);
 		model.addAttribute("productList", productList);
 		return "page/product/getProductList";
 	}
 	
-	@RequestMapping("/getProduct.mdo")
+	@RequestMapping("/getProduct.mdo") //등록상품 상세보기
 	public String getProduct(ProductVO vo, Model model) {
 		ProductVO product = service.getProduct(vo);
 		model.addAttribute("product", product);
 		return "page/product/getProduct";
 	}
 	
-	@RequestMapping("/insertProductForm.mdo")
+	@RequestMapping("/insertProductForm.mdo") //상품등록하기 폼
 	public String insertProductForm() {
-		
+		System.out.println("상품등록 폼으로 이동...");
 		return "page/product/insertProduct";
 	}
 	
-	@RequestMapping("/insertProduct.mdo")
+	@RequestMapping("/insertProduct.mdo") //상품등록하기
 	public String insertProduct(ProductVO vo, MultipartFile prod_thumb) throws IOException{
 		InputStream ism = prod_thumb.getInputStream();
 		String fileName = prod_thumb.getOriginalFilename();
 		String contentType = prod_thumb.getContentType();
 		long contentLength = prod_thumb.getSize();
+		//업로드
+		awsS3.upload(ism, fileName, contentType, contentLength);
 		
-		String path = "https://imageup.s3.ap-northeast-2.amazonaws.com/" + fileName; 
-		
+		String path = "";
+		if(fileName != null) { //이미지 첨부 했을 경우
+			path = "https://imageup.s3.ap-northeast-2.amazonaws.com/" + fileName;
+		}else { //이미지 첨부 안했을 경우
+			path = "이미지없음";
+		}		
 		vo.setProd_title_image(path);
 		System.out.println(vo.getProd_title_image());
-		awsS3.upload(ism, fileName, contentType, contentLength);
+		
 		service.insertProduct(vo);
 		return "redirect:/getProductList.mdo";
 	}
 	
-	@RequestMapping("/deleteProduct.mdo")
+	@RequestMapping("/deleteProduct.mdo") //등록상품 삭제하기
 	public String deleteProduct(ProductVO vo) {
 		service.deleteProduct(vo);
 		return "redirect:/getProductList.mdo";
 	}
 	
-	@RequestMapping("/updateProductForm.mdo")
+	@RequestMapping("/updateProductForm.mdo") //등록상품 수정폼
 	public String updateProductForm(ProductVO vo, Model model) {
+		System.out.println("등록상품 수정폼으로 이동...");
 		model.addAttribute("product", vo);
 		return "page/product/updateProduct";
 	}
 	
-	@RequestMapping("/updateProduct.mdo")
+	@RequestMapping("/updateProduct.mdo") //등록상품 수정하기
 	public String updateProductForm(ProductVO vo) {
 		service.updateProduct(vo);
 		return "redirect:/getProductList.mdo";
 	}
+	
 }
