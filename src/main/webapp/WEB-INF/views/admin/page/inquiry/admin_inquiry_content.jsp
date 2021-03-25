@@ -54,7 +54,7 @@
 							<table id="re_table">
 									<c:forEach items="${replyList}" var="replyList">
 											<fmt:formatDate value="${replyList.re_date}" pattern="yyyy-MM-dd" /><br>									
-											${replyList.re_content} <br/>
+											<pre>${replyList.re_content}</pre><br/>
 									</c:forEach>
 						  </table>
 							</div>
@@ -77,5 +77,6 @@
 		</div>
 		</div>
 		</form>
+		
 </main>
 <%@include file="/WEB-INF/views/admin/page/include/admin_footer.jsp"%>
