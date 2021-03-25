@@ -20,4 +20,10 @@ public class CartServiceImpl implements CartService{
 		return dao.CartList(user_id) ;
 	}
 
+	@Override
+	public void Cart_Order_Cnt_Update(CartVO vo) {
+		dao.Cart_Order_Cnt_Update(vo);
+		
+	}
+
 }

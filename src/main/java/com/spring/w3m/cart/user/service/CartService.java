@@ -6,5 +6,6 @@ import com.spring.w3m.cart.user.vo.CartVO;
 
 public interface CartService {
 
-	List<CartVO> CartList(String user_id); // 카트 리스트
+	public List<CartVO> CartList(String user_id); // 카트 리스트
+	public void Cart_Order_Cnt_Update(CartVO vo); // 주문수량 변경
 }
