@@ -4,14 +4,37 @@
 
 <mapper namespace="CartDAO">
 
-	<select id="getUser" parameterType="String" resultType="CartVO">
-		select (ROW_NUMBER() OVER()) AS ROWNUM, u.user_id,
-	 p.prod_code, prod_title_image, p.prod_title,
-	 c.order_cnt, TO_CHAR( p.prod_point , '999,999,999'),
-	 TO_CHAR( p.prod_price , '999,999,999'),
-	 TO_CHAR( prod_price_sale*order_cnt , '999,999,999') as total_price 
-	 from product p , user_member u , cart c 
-	 where c.user_id = u.user_id and c.prod_code = p.prod_code and u.user_id = #{user_id} order by prod_code;
+<resultMap type="CartVO" id="CartResult">
+		<id property="cart_id" column="cart_id" />
+		<result property="user_id" column="user_id" />
+		<result property="prod_code" column="prod_code" />
+		<result property="prod_title" column="prod_title" />
+		<result property="prod_title_image" column="prod_title_image" />
+		<result property="order_cnt" column="order_cnt" />
+		<result property="prod_point" column="prod_point" />
+		<result property="prod_price" column="prod_price" />
+		<result property="total_price" column="total_price" />
+	</resultMap>
+	
+	<select id="CartList" parameterType="String" resultType="CartVO">
+	select 
+	(ROW_NUMBER() OVER()) AS ROWNUM,
+	 u.user_id,
+	 p.prod_code,
+	 prod_title_image,
+	 p.prod_title,
+	 c.order_cnt,
+	 p.prod_point,
+	 p.prod_price ,
+	 prod_price_sale*order_cnt as total_price 
+	 from 
+	 product p , user_member u , cart c 
+	 where 
+	 c.user_id = u.user_id and 
+	 c.prod_code = p.prod_code and 
+	 u.user_id = #{user_id} 
+	 order by 
+	 prod_code;
 	 
 	</select>
 	

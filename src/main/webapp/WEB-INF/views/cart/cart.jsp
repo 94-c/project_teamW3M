@@ -3,24 +3,25 @@
 <%@include file="/WEB-INF/views/include/header.jsp"%>
 <title>장바구니</title>
 <script type="text/javascript">
-var count = 1;
-var countEl = document.getElementById("count");
-var total_count = document.getElementById("tb-center tb-bold tb-price"); //추가
-var total_count_view = document.getElementById("tb-center tb-bold tb-price"); //추가
-function plus(){
-  count++;
-  countEl.value = count;
-  total_count_view.value = total_count.value * countEl.value; //추가
-}
-function minus(){
-  
-  if (count > 1) {
-    count--;
-    countEl.value = count;
-  total_count_view.value = total_count_view.value - total_count.value; //추가  
-  }  
-}
-//https://codepen.io/eond/pen/JKbaoO
+	var count = 1;
+	var countEl = document.getElementById("count");
+	var total_count = document.getElementById("tb-center tb-bold tb-price"); //추가
+	var total_count_view = document
+			.getElementById("tb-center tb-bold tb-price"); //추가
+	function plus() {
+		count++;
+		countEl.value = count;
+		total_count_view.value = total_count.value * countEl.value; //추가
+	}
+	function minus() {
+
+		if (count > 1) {
+			count--;
+			countEl.value = count;
+			total_count_view.value = total_count_view.value - total_count.value; //추가  
+		}
+	}
+	//https://codepen.io/eond/pen/JKbaoO
 </script>
 <body>
 	<div id="contentWrapper">
@@ -34,9 +35,8 @@ function minus(){
 						</dd>
 					</dl>
 					<!-- 공지사항 배너 -->
-					<a href="getUserNoticeList.do">
-					<img src="resources/images/title/bask_title.jpg"></a><br>
-					<br>
+					<a href="getUserNoticeList.do"> <img
+						src="resources/images/title/bask_title.jpg"></a><br> <br>
 
 					<h2 class="tit-page">장바구니</h2>
 					<div class="page-body">
@@ -65,44 +65,38 @@ function minus(){
 										<th scope="col"><div class="tb-center"></div></th>
 									</tr>
 								</thead>
-								
+
 								<!-- 총 구매 금액 -->
 								<tfoot>
 									<tr>
 										<td colspan="8">
 											<div class="tb-right">
-												<strong></strong> <!--(적립금 210원) -->
+												<strong></strong>
+												99999<!--(적립금 210원) -->
 											</div>
-										</td>
+									</td>
 									</tr>
 								</tfoot>
 								<tbody>
-									<form action="basket.html" method="post" name="forms" id="basket_form0"></form>
-									<input type="hidden" name="brandcode" value="023002000038">
-									<input type="hidden" name="branduid" value="1001500">
-									<input type="hidden" name="type">
-									<input type="hidden" name="orgamount" value="1">
-									<input type="hidden" name="cart_id" value="1">
-									<input type="hidden" name="cart_type" value="NORMAL">
-									<input type="hidden" name="min_add_amount" value="1"> <!-- seq -->
-									<input type="hidden" name="maxq" value="100">
-									<input type="hidden" name="pack_uid" value="">
-
+								<c:forEach var="CartVO" items="cartList" >
 									<tr class="nbg">
 										<!-- 상품 섬네일 -->
-										<td><div class="tb-center"><!-- 상품 번호 --></div></td>
+										<td><div class="tb-center">
+												1
+												<!-- 상품 번호 -->
+											</div></td>
 										<td>
 											<div class="tb-center">
-												<div class="thumb">
+												<div class="thumb"><a href="#">호롤로롤</a>
 													<!--  <a href=""> 여기 안에 상품 주소가 들어가 있었다.-->
 													<!--  <img alt="상품 섬네일" title="상품 섬네일"></a> -->
 												</div>
 											</div>
 										</td>
-										
+
 										<td>
 											<div class="tb-left">
-												<a href="#" class="#"><!-- 상품명 들어가야 한다. -->
+												<a href="#" class="#">호로로롤<!-- 상품명 들어가야 한다. -->
 												</a>
 												<div id="1001500_1" class="tb-opt"></div>
 											</div>
@@ -111,53 +105,65 @@ function minus(){
 											<div class="tb-center">
 												<div class="opt-spin">
 													<input type="text" name="amount" value="1" class="txt-spin">
-													<span class="btns"> 
-														<a href="javascript:count_change(0, 0)"><img class="btn-up" src="resources/images/basket/spin_up.gif"></a>
-														<a href="javascript:count_change(1, 0)"><img class="btn-dw" src="resources/images/basket/spin_dw.gif"></a>
+													<span class="btns"> <a
+														href="javascript:count_change(0, 0)"><img
+															class="btn-up" src="resources/images/basket/spin_up.gif"></a>
+														<a href="javascript:count_change(1, 0)"><img
+															class="btn-dw" src="resources/images/basket/spin_dw.gif"></a>
 													</span>
 												</div>
-												<a href="javascript:send_basket(0, 'upd')" class="CSSbuttonWhite btn_option">수정</a>
+												<a href="javascript:send_basket(0, 'upd')"
+													class="CSSbuttonWhite btn_option">수정</a>
 											</div>
 										</td>
-										<td><div class="tb-center"><!-- 적립금 --></div></td>
+										<td><div class="tb-center">
+												123
+												<!-- 적립금 -->
+											</div></td>
 										<td><div class="tb-center tb-bold tb-price">
+												4124124
 												<!-- 금액 -->
 											</div></td>
-											
+
 										<!-- 배송비 -->
 										<td><div class="tb-center tb-delivery">
 												<div class="MS_tb_delivery">
-													<span class="MS_deli_txt" onmouseover="overcase(this, '0')" onmouseout="outcase(this, '0')"> 
-													<span class="MS_deli_title MS_deli_block"></span>
-													<span class="MS_deli_desc MS_deli_block"></span>
+													<span class="MS_deli_txt" onmouseover="overcase(this, '0')"
+														onmouseout="outcase(this, '0')"> <span
+														class="MS_deli_title MS_deli_block"></span> <span
+														class="MS_deli_desc MS_deli_block"></span>
 													</span>
 													<div id="deliverycase0" class="MS_layer_delivery">
 														<dl>
 														</dl>
 														<span class="bull"></span>
-														<iframe id="deliverycase_iframe0" class="MS_layer_delivery_iframe" frameborder="no" border="0"></iframe>
+														<iframe id="deliverycase_iframe0"
+															class="MS_layer_delivery_iframe" frameborder="no"
+															border="0"></iframe>
 													</div>
 												</div>
 											</div></td>
 										<td>
 											<div class="tb-center">
-												<span class="d-block">
-												<a href="javascript:go_wish('1001500','1','','NORMAL');" class="CSSbuttonWhite btn_select">보관하기</a></span> 
-												<span class="d-block">
-												<a href="javascript:send_basket(0, 'del')" class="CSSbuttonWhite btn_select">삭제하기</a></span>
+												<span class="d-block"> <a
+													href="javascript:go_wish('1001500','1','','NORMAL');"
+													class="CSSbuttonWhite btn_select">보관하기</a></span> <span
+													class="d-block"> <a
+													href="javascript:send_basket(0, 'del')"
+													class="CSSbuttonWhite btn_select">삭제하기</a></span>
 											</div>
 										</td>
 									</tr>
+									</c:forEach>
 								</tbody>
 							</table>
 						</div>
 						<!-- .table-fill-prd -->
-
-
 						<div class="btn-order-ctrl">
 							<a href="javascript:multi_order()" class="CSSbuttonBlack">주문하기</a>
-							<a href="/" class="CSSbuttonWhite">계속 쇼핑하기</a> 
-							<a href="javascript:basket_clear();" class="CSSbuttonWhite">장바구니 비우기</a>
+							<a href="/" class="CSSbuttonWhite">계속 쇼핑하기</a> <a
+								href="javascript:basket_clear();" class="CSSbuttonWhite">장바구니
+								비우기</a>
 						</div>
 						<div class="cart-ft2"></div>
 

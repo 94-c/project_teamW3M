@@ -7,6 +7,7 @@ public class CartVO {
 	private String prod_code; //product 테이블에  prod_code -FK
 	private String prod_title; // product 테이블에 prod_title
 	private String prod_title_image; // product 테이블에 prod_title_image
+	private String prod_url; // 제품 페이지 URL
 	private int order_cnt; // 수문 수량
 	private int prod_point; // product 테이블에 prod_point
 	private int prod_price; // product 테이블에 prod_price
