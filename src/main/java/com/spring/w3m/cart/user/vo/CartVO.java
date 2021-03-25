@@ -13,11 +13,13 @@ public class CartVO {
 	private int prod_price; // product 테이블에 prod_price
 	private int total_price; // 가격 * 수량 
 	
+	
 	@Override
 	public String toString() {
 		return "CartVO [cart_id=" + cart_id + ", user_id=" + user_id + ", prod_code=" + prod_code + ", prod_title="
-				+ prod_title + ", prod_title_image=" + prod_title_image + ", order_cnt=" + order_cnt + ", prod_point="
-				+ prod_point + ", prod_price=" + prod_price + ", total_price=" + total_price + "]";
+				+ prod_title + ", prod_title_image=" + prod_title_image + ", prod_url=" + prod_url + ", order_cnt="
+				+ order_cnt + ", prod_point=" + prod_point + ", prod_price=" + prod_price + ", total_price="
+				+ total_price + "]";
 	}
 	public int getCart_id() {
 		return cart_id;
@@ -72,6 +74,12 @@ public class CartVO {
 	}
 	public void setTotal_price(int total_price) {
 		this.total_price = total_price;
+	}
+	public String getProd_url() {
+		return prod_url;
+	}
+	public void setProd_url(String prod_url) {
+		this.prod_url = prod_url;
 	}
 	
 	
