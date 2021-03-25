@@ -36,6 +36,7 @@
 <link href="resources/css/basket.css" rel="stylesheet" type="text/css">
 <link href="resources/css/shopdetail.css" rel="stylesheet" type="text/css">
 <link href="resources/css/soo.css" rel="stylesheet" type="text/css">
+<link href="resources/css/reply.css" rel="stylesheet" type="text/css">
 
 <!-- JS -->
 <script type="text/javascript" src="resources/js/jquery_option.js" ></script>

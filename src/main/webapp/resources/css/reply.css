@@ -12,3 +12,9 @@
 #re_table{
 	table-layout: inherit;
 }
+
+font#commentDate{
+	font-size: 5px;
+	color: gray;
+	margin-left: 5px;
+}

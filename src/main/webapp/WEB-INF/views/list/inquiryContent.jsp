@@ -12,7 +12,7 @@
          <div id="bbsData">
             <div class="page-body">
                <div class="bbs-tit">
-                  <h3>공지사항</h3>
+                  <h3>문의사항</h3>
                </div>
                <div class="bbs-table-view">
                   <table summary="게시글 보기">
@@ -71,26 +71,29 @@
                      </table>
 							<!-- 댓글 -->
 							<br>
-							<div id="reply">
-							<b>-댓글-</b>
-								<ol class="replyList">
-									<c:forEach items="${replyList}" var="replyList">
-										<li>
-											
-												${replyList.re_writer}<br /> 
-												${replyList.re_content} <br/>
-												<fmt:formatDate value="${replyList.re_date}"
-													pattern="yyyy-MM-dd" />
-										</li>
-									</c:forEach>
-								</ol>
-							</div>
 						</div>
                </div>
                				<input type="button" value="글 수정" class="CSSbuttonBlack" id="contentbutton" onclick="updateCheck();" />
                				<input type="button" value="글 삭제" class="CSSbuttonBlack" id="contentbutton" onclick="deleteCheck();" />
 		 					<input type="button" value="글 목록" class="CSSbuttonBlack" id="contentbutton" onclick="location.href='./inquiry.do'" />
+           	  <div class="page-body">
+               <div class="bbs-tit">
+                  <h3>댓글</h3><br>         
+               </div>
+               <div class="bbs-table-view">
+                   </div>				             
             </div>
+            <hr size="">
+            <div id="reply">
+									<c:forEach items="${replyList}" var="replyList">
+												<div style="height:auto; width:auto; border-bottom:1px solid gray;">${replyList.re_writer}
+												<font id="commentDate"><fmt:formatDate value="${inquiryVO.inq_date }" pattern="yyyy-MM-dd HH:mm:ss" /></font><br/> 
+												<br>
+												<pre><font id="content" size="4pt">${replyList.re_content}</font></pre><br/>
+												</div>											
+				
+									</c:forEach>
+							</div>            
             <!-- .page-body -->
          </div>
          <!-- #bbsData -->
@@ -100,7 +103,7 @@
    <!-- #contentWrap -->
 </div>
 
-<<script type="text/javascript">
+<script type="text/javascript">
 
 function deleteCheck()
 {
