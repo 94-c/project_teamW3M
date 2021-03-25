@@ -4,10 +4,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
-import com.spring.w3m.inquiry.user.vo.InquiryVO;
 import com.spring.w3m.join.user.vo.UserVO;
 import com.spring.w3m.login.admin.vo.AdminVO;
-import com.spring.w3m.notice.admin.vo.NoticeVO;
 import com.spring.w3m.paging.common.Pagination;
 import com.spring.w3m.paging.common.Search;
 
@@ -33,5 +31,5 @@ public interface AdminService {
 
 	void logout(HttpSession session);
 
-
+	void updateUserPause(UserVO vo);
 }

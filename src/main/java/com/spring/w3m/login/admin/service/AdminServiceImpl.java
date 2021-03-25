@@ -90,4 +90,10 @@ public class AdminServiceImpl implements AdminService {
 		return dao.getSearchPagingList(pagination);
 	}
 
+	@Override
+	public void updateUserPause(UserVO vo) {
+		System.out.println("impl"+vo.getUser_state());
+		dao.updateUserPause(vo);
+	}
+	
 }
