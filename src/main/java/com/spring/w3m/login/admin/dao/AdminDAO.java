@@ -6,10 +6,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import com.spring.w3m.inquiry.user.vo.InquiryVO;
 import com.spring.w3m.join.user.vo.UserVO;
 import com.spring.w3m.login.admin.vo.AdminVO;
-import com.spring.w3m.notice.admin.vo.NoticeVO;
 import com.spring.w3m.paging.common.Pagination;
 import com.spring.w3m.paging.common.Search;
 
@@ -61,5 +59,11 @@ public class AdminDAO {
 		System.out.println("getSearchPagingList() 실행");
 		return sqlSessionTemplate.selectList("AdminDAO.getSearchPagingList");
 	}
+	
 
+	public void updateUserPause(UserVO vo) {
+		System.out.println("UserPause() 실행");
+		System.out.println("dao"+vo.getUser_state());
+		sqlSessionTemplate.update("AdminDAO.updateUserPause", vo);
+	}
 }

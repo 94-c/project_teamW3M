@@ -145,6 +145,19 @@ public class AdminLoginController {
 		return "page/userMemberList";
 	}
 
+	
+	@RequestMapping("/updateUserPause.mdo")
+	public String updateUserPause(UserVO vo, Model model,@RequestParam("user_id")String user_id,
+			@RequestParam("user_state")String user_state) {
+		vo.setUser_id(user_id);
+		if(user_state.equals("휴면")) {
+			vo.setUser_state("일반");
+		}if(user_state.equals("일반")) {
+			vo.setUser_state("휴면");
+		}
+		adminService.updateUserPause(vo);
+		return "redirect:/userMemberList.mdo";
+	}
 
 	@RequestMapping("/adminLogout.mdo")
 	public ModelAndView userLogout(HttpSession session) {
@@ -154,5 +167,8 @@ public class AdminLoginController {
 		mav.addObject("msg", "logout");
 		return mav;
 	}
+	
+	
+	
 
 }

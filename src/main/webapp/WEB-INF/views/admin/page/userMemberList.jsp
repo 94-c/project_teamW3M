@@ -74,6 +74,7 @@
         </script>
         
                 <main>
+                
                     <div class="container-fluid">
                         <h1 class="mt-4">고객 관리</h1>
                         <ol class="breadcrumb mb-4">
@@ -90,8 +91,8 @@
                             
                             <div class="card-body">
                                 <div class="table-responsive">
+                                    <form method="post" >
                                     <table class="table table-bordered" width="100%" cellspacing="0">
-                                    
                                         <thead>
                                             <tr>
                                                 <th class="text-center">아이디</th>
@@ -111,6 +112,7 @@
                                         	<c:forEach var="user" items="${userList}">
                                       		<input type="hidden" id="user_sns_naver" value="${user.user_sns_naver}">
                                       		<input type="hidden" id="user_sns_kakao" value="${user.user_sns_kakao}">
+                                      		<input type="hidden" id="user_seq" value="${user.user_seq }">
                                       		<tr>
                                       			<td class="text-center">${user.user_id }</td>
 												<td class="text-center">${user.user_name }</td>
@@ -120,7 +122,17 @@
 												<td class="text-center">${user.user_phone }</td>
 												<td class="text-center"><fmt:formatDate value="${user.user_join_date}" pattern="yyyy-MM-dd"/></td>
 												<td class="text-center">${user.user_state }</td>
-												<td class="text-center"><input type=button value="정지"></td>
+												
+												<c:if test="${user.user_state eq '일반' }">
+													<td class="text-center"><input type="button" value="휴면" onclick="location.href='updateUserPause.mdo?user_id=${user.user_id}&user_state=${user.user_state }'"></td>
+												</c:if>
+												<c:if test="${user.user_state eq '휴면' }">
+													<td class="text-center"><input type="button" value="일반" onclick="location.href='updateUserPause.mdo?user_id=${user.user_id}&user_state=${user.user_state }'"></td>
+												</c:if>
+												<c:if test="${user.user_state eq '탈퇴' }">
+													<td class="text-center"><input type="button" value="x" onclick="location.href='updateUserPause.mdo?user_id=${user.user_id}'"></td>
+												</c:if>
+												
 												<c:if test="${user.user_sns_naver eq 'NAVER'}">
 													<td class="text-center"><strong><font color ="#00ff00">${user.user_sns_naver}</font></strong></td>
 												</c:if>
@@ -135,6 +147,7 @@
                                       		</c:forEach>
                                         </tbody>
                                     </table>
+                                    </form>
 								<!-- pagination -->
 								<div id="paginationBox" >
 									<ul class="pagination">
@@ -169,13 +182,12 @@
 
 											</div>
 											<div class="w300" style="padding-right: 10px">
-												<input type="text" class="form-control form-control-sm" name="keyword" id="keyword">
+												<input type="text" class="form-control -control-sm" name="keyword" id="keyword">
 											</div>
 
 											<div>
 												<button class="btn btn-sm btn-primary" name="btnSearch" id="btnSearch">검색</button>
 											</div>
-
 										</div>
 								<!-- search{e} -->
 								</div>
