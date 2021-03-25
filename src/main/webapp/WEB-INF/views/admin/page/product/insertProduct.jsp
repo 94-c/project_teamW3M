@@ -124,9 +124,10 @@ $(document).ready(function(){
 (상품명 예시: W3M 프리미엄 미세먼지마스크 KF94 대형 25개입)"></textarea>
 						</pre>
 					</div>
+					<button id="addImage_btn">이미지 추가</button>
 					<div class="form-group">
-						<label for="exampleFormControlInput1">상세 이미지</label><br> <input
-							type="file" id="prod_image" name="prod_image1">
+						<label for="exampleFormControlInput1">상세 이미지</label><br>
+						<input type="file" id="prod_image" name="prod_image">
 					</div>
 					<br>
 					<button type="submit" class="btn btn-info">등록하기</button>
