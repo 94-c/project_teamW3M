@@ -100,7 +100,7 @@ public class LoginController {
 			UserVO user = userService.getUser(vo);
 			System.out.println(user.toString());
 			if(vo.getUser_state().equals("정지")) {
-				session.setAttribute("login_state", "login");
+				session.setAttribute("login_state", "suspended");
 				return "login/login";
 			}else if(vo.getUser_state().equals("탈퇴")) {
 				session.setAttribute("login_state", "delete");
