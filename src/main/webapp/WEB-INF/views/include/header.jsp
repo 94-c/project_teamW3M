@@ -181,7 +181,31 @@
             </c:when>
          </c:choose>
          </ul>
-         
-      </div>
+
+				<div class="fixed_quick">
+					<ul>
+						<li><a href="#">
+							<img src="resources/images/sideBar/r_quick02_off.gif" class="menuoff">
+							<img src="resources/images/sideBar/r_quick02_on.gif" class="menuon" alt="배송조회"></a></li>
+						
+						<li><a href="GoCart.do">
+							<img src="resources/images/sideBar/r_quick03_off.gif" class="menuoff">
+							<img src="resources/images/sideBar/r_quick03_on.gif" class="menuon" alt="장바구니"></a></li>
+						
+						<li><a href="#">
+							<img src="resources/images/sideBar/r_quick04_off.gif" class="menuoff">
+							<img src="resources/images/sideBar/r_quick04_on.gif" class="menuon" alt="최근본상품"></a></li>
+							
+						<li><img src="resources/images/sideBar/r_quick05_on.gif" 
+						onclick="javascript:window.open('https://lc1.lunasoft.co.kr/lunachat/api-connect/@welkeeps/main', 'lunachat', 'width=1024, height=800');"
+							style="cursor: pointer"></li>
+							
+						<li class="page_up">
+							<a href="#wrap" class="scroll" style="bottom: 1.63925px;">
+							<img src="resources/images/sideBar/r_quick_up.gif"></a></li>
+					</ul>
+				</div>
+
+			</div>
    </div>
 </div>

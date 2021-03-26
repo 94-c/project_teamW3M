@@ -20,6 +20,7 @@
 		<mapper resource="mapper/hyeong_Mapper.xml" />
 		<mapper resource="mapper/product_Mapper.xml" />	
 		<mapper resource="mapper/cart_Mapper.xml" />	
-		<mapper resource="mapper/reply_Mapper.xml" />	
+		<mapper resource="mapper/reply_Mapper.xml" />
+		<mapper resource="mapper/home_Mapper.xml" />	
 	</mappers>
 </configuration>
