@@ -38,8 +38,11 @@
 	    <c:if test="${msg eq 'failure' }">
 	    	<p style="color:red; font-size: 14px" align="right">아이디 또는 비밀번호가 일치하지 않습니다. 다시 입력해주세요.</p>
 	    </c:if>
+	    <c:if test="${msg eq 'suspended' }">
+	    	<p style="color:red; font-size: 14px" align="center">정지된 계정입니다.</p>
+	    </c:if>
 	     <c:if test="${msg eq 'delete' }">
-	    	<p style="color:red; font-size: 14px" align="center">회원 탈퇴한 계정입니다.</p>
+	    	<p style="color:red; font-size: 14px" align="center">탈퇴한 계정입니다.</p>
 	    </c:if>
 	    
 	</form>
