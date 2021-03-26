@@ -13,6 +13,7 @@
 		
 		$('#'+order_cnt).val(cnt);
 		
+		
 	};
 	function cntdown(aa){
 		console.log("index : "+ aa);
@@ -30,7 +31,10 @@
 		var send_cnt= $('#'+order_cntval).val();
 		var total_price1 = 'total_price'+index;
 		var alldata = {order_cnt : send_cnt, cart_id : cart_id};
-		
+		if(send_cnt > 199){
+			alert("200개는 구매하실 수 없습니다.")
+			return;
+		}
 		
 		$.ajax({
 			url : "/send_order_cnt.do",
@@ -40,7 +44,7 @@
 			contentType: "application/json; charset=UTF-8",
 			success:function(a){
 				
-				alert("수량이 수정되었습니다.");
+				alert("해당 물품의 수량이 수정되었습니다.");
 				history.go();
 			},
 			error:function(data){
@@ -49,6 +53,35 @@
 		
 		});
 	}
+	function send_basket_delete(index,cart_seq){
+		var cart_id = cart_seq;
+		$.ajax({
+			async : true,
+			url : "/send_cart_delete.do",
+			type:"POST",
+			data: JSON.stringify(cart_id),
+			dataType:"json",
+			contentType:"application/json; charset=UTF-8",
+			success:function(aa){
+				alert("해당 뭎품이 삭제되었습니다.");
+				history.go();
+			}
+		});
+	}
+		function send_basket_Alldelete(){
+				
+			if(confirm('장바구니를 비우시겠습니까?')){
+				location.href = "/send_cart_allDelete.do",
+				alert("장바구니가 비워졌습니다.");
+				history.go();
+					
+				
+			}else{
+				return;
+			}
+		}
+			
+			
 	
 
 
@@ -101,7 +134,8 @@
 									<tr>
 										<td colspan="8">
 											<div class="tb-right">
-												총 구매 금액 : <strong>99999</strong> 
+												총 구매 금액 : <strong><fmt:formatNumber value="${total_Price}" pattern="#,###" /></strong>
+												원 (적립금 : <fmt:formatNumber value="${total_Point}" pattern="#,###" />)
 												<!--(적립금 210원) -->
 											</div>
 										</td>
@@ -147,7 +181,7 @@
 												</div>
 											</td>
 											<td><div class="tb-center">
-													<fmt:formatNumber value="${CartVO.prod_point }" pattern="#,###" />
+													<fmt:formatNumber value="${CartVO.total_point }" pattern="#,###" />
 													<!-- 적립금 -->
 												</div></td>
 											<td><div class="tb-center tb-bold tb-price"  >
@@ -157,15 +191,13 @@
 
 											<!-- 배송비 -->
 											<td><div class="tb-center tb-delivery">
-													2,500
+													[기본 배송]
+													     조건
 												</div></td>
 											<td>
 												<div class="tb-center">
-													<span class="d-block"> <a
-														href="javascript:go_wish('1001500','1','','NORMAL');"
-														class="CSSbuttonWhite btn_select">보관하기</a></span> <span
-														class="d-block"> <a
-														href="javascript:send_basket(0, 'del')"
+													 <span class="d-block"> <a
+														href="javascript:send_basket_delete(${status.count},${CartVO.cart_id});"
 														class="CSSbuttonWhite btn_select">삭제하기</a></span>
 												</div>
 											</td>
@@ -178,7 +210,7 @@
 						<div class="btn-order-ctrl">
 							<a href="javascript:multi_order()" class="CSSbuttonBlack">주문하기</a>
 							<a href="/" class="CSSbuttonWhite">계속 쇼핑하기</a> <a
-								href="javascript:basket_clear();" class="CSSbuttonWhite">장바구니
+								href="javascript:send_basket_Alldelete();" class="CSSbuttonWhite">장바구니
 								비우기</a>
 						</div>
 						<div class="cart-ft2"></div>

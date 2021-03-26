@@ -2,7 +2,6 @@ package com.spring.w3m.cart.user.dao;
 
 import java.util.List;
 
-import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -29,5 +28,15 @@ public class CartDAO {
 	public int Cart_Cnt(CartVO vo) {
 		System.out.println("장바구니 수량 체크");
 		return sqlSessionTemplate.selectOne("CartDAO.Cart_Cnt",vo);
+	}
+
+	public int Cart_delete(int cart_id) {
+		System.out.println("장바구니 삭제");
+		return sqlSessionTemplate.delete("CartDAO.Cart_Delete",cart_id);
+	}
+
+	public int Cart_alldelete(String user_id) {
+		System.out.println("장바구니 비우기");
+		return sqlSessionTemplate.delete("CartDAO.Cart_AllDelete",user_id);
 	}
 }

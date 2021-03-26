@@ -11,15 +11,17 @@ public class CartVO {
 	private int order_cnt; // 수문 수량
 	private int prod_point; // product 테이블에 prod_point
 	private int prod_price; // product 테이블에 prod_price
+	private int total_point; // 적립금 * 수량 
 	private int total_price; // 가격 * 수량 
+	
 	
 	
 	@Override
 	public String toString() {
 		return "CartVO [cart_id=" + cart_id + ", user_id=" + user_id + ", prod_code=" + prod_code + ", prod_title="
 				+ prod_title + ", prod_title_image=" + prod_title_image + ", prod_url=" + prod_url + ", order_cnt="
-				+ order_cnt + ", prod_point=" + prod_point + ", prod_price=" + prod_price + ", total_price="
-				+ total_price + "]";
+				+ order_cnt + ", prod_point=" + prod_point + ", prod_price=" + prod_price + ", total_point="
+				+ total_point + ", total_price=" + total_price + "]";
 	}
 	public int getCart_id() {
 		return cart_id;
@@ -80,6 +82,12 @@ public class CartVO {
 	}
 	public void setProd_url(String prod_url) {
 		this.prod_url = prod_url;
+	}
+	public int getTotal_point() {
+		return total_point;
+	}
+	public void setTotal_point(int total_point) {
+		this.total_point = total_point;
 	}
 	
 	

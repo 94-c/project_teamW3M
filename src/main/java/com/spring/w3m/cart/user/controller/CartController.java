@@ -26,13 +26,20 @@ public class CartController {
 	@RequestMapping("/GoCart.do")
 	public String GoCart(@SessionAttribute("userVO") UserVO vo,HttpSession session) {
 		//vo = (UserVO) session.getAttribute("userVO");
+		int totalPrice = 0; 
+		int totalPoint = 0;
 		List<CartVO> cartList = cartService.CartList(vo.getUser_id());
 		System.out.println(vo.getUser_id());
 		for(CartVO list : cartList) {
 			System.out.println(list.toString());
+			totalPrice = totalPrice +list.getTotal_price();
+			totalPoint = totalPoint +list.getTotal_point();
 		}
+		System.out.println(totalPrice);
 		session.setAttribute("cartList", cartList);
-			
+		session.setAttribute("total_Price", totalPrice);
+		session.setAttribute("total_Point", totalPoint);
+		
 		
 		return "cart/cart";
 		
@@ -47,5 +54,18 @@ public class CartController {
 		System.out.println(a);
 		return a;
 		
+	}
+	@RequestMapping(value = "/send_cart_delete.do", method=RequestMethod.POST)
+	@ResponseBody
+	public int Send_cart_delete(@RequestBody int cart_id,HttpSession session) { // 장바구니 제거 적용 
+
+		int a = cartService.Send_cart_delete(cart_id);
+		System.out.println(a);
+		return a;
+		
+	}
+	@RequestMapping("/send_cart_allDelete.do")
+	public void Send_cart_Alldelete(HttpSession session,@SessionAttribute("userVO") UserVO vo) { // 장바구니 비우기 적용 
+		cartService.Send_cart_alldelete(vo.getUser_id());
 	}
 }

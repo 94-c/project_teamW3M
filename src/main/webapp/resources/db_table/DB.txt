@@ -75,6 +75,7 @@ CREATE TABLE PRODUCT(
 	prod_price_sale int default 0, -- 할인가
 	prod_discount_rate int default 0, -- 할인률
 	prod_point int, -- 적립금
+	prod_point_rate int, -- 적립률
 	prod_amount int default 0, --수량 
 	prod_comment varchar(1000) default null, --설명
 	prod_image1 varchar(200), --이미지1
@@ -83,10 +84,10 @@ CREATE TABLE PRODUCT(
 	prod_image4 varchar(200), --이미지4
 	prod_image5 varchar(200), --이미지5
 	prod_image6 varchar(200), --이미지6
-	prod_image6 varchar(200), --이미지7
-	prod_image6 varchar(200), --이미지8
-	prod_image6 varchar(200), --이미지9
-	prod_image6 varchar(200), --이미지10
+	prod_image7 varchar(200), --이미지7
+	prod_image8 varchar(200), --이미지8
+	prod_image9 varchar(200), --이미지9
+	prod_image10 varchar(200), --이미지10
 	prod_state varchar(5) default 'y', -- 판매 : y, 판매중단 : n    
 	prod_regdate TIMESTAMP WITH TIME ZONE DEFAULT current_timestamp, --등록 날짜
 	prod_count int default '0', -- 조회수 ~
