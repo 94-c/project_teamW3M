@@ -27,7 +27,8 @@
 	 p.prod_title,
 	 c.order_cnt,
 	 p.prod_point,
-	 p.prod_price ,
+	 prod_point*order_cnt as total_point,
+	 p.prod_price,
 	 prod_price_sale*order_cnt as total_price 
 	 from 
 	 product p , user_member u , cart c 
@@ -49,5 +50,12 @@
 	SELECT count(*) FROM cart WHERE user_id = #{user_id}
 	 
 	</select>
+	<delete id="Cart_Delete" parameterType="int">
+	Delete FROM cart where cart_id = #{cart_id}
+	</delete>
+	
+	<delete id="Cart_AllDelete" parameterType="String">
+	Delete FROM cart where user_id = #{user_id}
+	</delete>
 
 </mapper>

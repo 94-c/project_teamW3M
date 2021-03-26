@@ -33,4 +33,16 @@ public class CartServiceImpl implements CartService{
 		return dao.Cart_Cnt(vo);
 	}
 
+	@Override
+	public int Send_cart_delete(int cart_id) {
+		
+		return dao.Cart_delete(cart_id);
+	}
+
+	@Override
+	public int Send_cart_alldelete(String user_id) {
+
+		return dao.Cart_alldelete(user_id);
+	}
+
 }
