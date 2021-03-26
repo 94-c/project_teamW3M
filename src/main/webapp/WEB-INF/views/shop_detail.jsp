@@ -9,12 +9,8 @@
 				<div id="productDetail">
 					<!-- 배너 -->
 					<dl class="loc-navi">
-						<dt class="blind">현재 위치</dt>
-						<dd>
-							<a href="/">홈</a> &gt; 
-							<a href="#">웰킵스 미세먼지마스크</a> &gt; 
-							<a href="#">스마트마스크</a> &gt; 웰킵스 황사방역마스크<br>KF94-대형 50개입
-						</dd>
+						
+						
 					</dl>
 					
 					<!-- 메인 이미지 -->
@@ -169,9 +165,9 @@
 						<div class="detailTab">
 							<ul>
 								<li class="first"><a href="#detailGoodsInfo" class="active">상세정보</a></li>
-								<li><a href="#">관련상품</a></li>
-								<li><a href="#">구매후기</a></li>
-								<li><a href="#">문의</a></li>
+								<li><a href="#detailRelation" >관련상품</a></li>
+								<li><a href="#detailReview">구매후기</a></li>
+								<li><a href="#detailQna" >문의</a></li>
 							</ul>
 						</div>
 
@@ -188,16 +184,17 @@
 							<div id="videotalk_area"></div>
 							<!-- [OPENEDITOR] -->
 							<center>
-							<!-- 	<img src="http://ai.esmplus.com/purellmall/notice/delivery_notice.jpg">
-								<img src="http://ai.esmplus.com/purellmall/product/mask/Newsmart/50ea/KF94_L/KF94_L_50_detail_01.jpg">
-								<img src="http://ai.esmplus.com/purellmall/product/mask/Newsmart/50ea/KF94_L/KF94_L_50_detail_02.gif">
-								<img src="http://ai.esmplus.com/purellmall/product/mask/Newsmart/50ea/KF94_L/KF94_L_50_detail_03.jpg">
-								<img src="http://ai.esmplus.com/purellmall/product/mask/Newsmart/50ea/KF94_L/KF94_L_50_detail_05.jpg">
-								<img src="http://ai.esmplus.com/purellmall/product/mask/Newsmart/50ea/KF94_L/KF94_L_50_detail_06.jpg">
-								<img src="http://ai.esmplus.com/purellmall/product/mask/Newsmart/50ea/KF94_L/KF94_L_50_detail_07.jpg">
-								<img src="http://ai.esmplus.com/purellmall/product/mask/Newsmart/50ea/KF94_L/KF94_L_50_detail_08.jpg">
-								<img src="http://ai.esmplus.com/purellmall/notice/20200701.jpg">
-								<img src="http://ai.esmplus.com/purellmall/notice/delivery.jpg"> -->
+							<img src="${product.prod_image1}">
+							<img src="${product.prod_image2}">
+							<img src="${product.prod_image3}">
+							<img src="${product.prod_image4}">
+							<img src="${product.prod_image5}">
+							<img src="${product.prod_image6}">
+							<img src="${product.prod_image7}">
+							<img src="${product.prod_image8}">
+							<img src="${product.prod_image9}">
+							<img src="${product.prod_image10}">
+
 							</center>
 
 
@@ -281,7 +278,14 @@
 								<tbody>
 								</tbody>
 							</table>
-							
+							<div class="detailTab">
+							<ul>
+								<li class="first"><a href="#detailGoodsInfo">상세정보</a></li>
+								<li><a href="#detailRelation" >관련상품</a></li>
+								<li><a href="#detailReview" class="active">구매후기</a></li>
+								<li><a href="#detailQna">문의</a></li>
+							</ul>
+						</div>
 							
 							
 							<div class="list-btm">
@@ -341,6 +345,14 @@
 								</div>
 
 							</div>
+							<div class="detailTab">
+							<ul>
+								<li class="first"><a href="#detailGoodsInfo">상세정보</a></li>
+								<li><a href="#detailRelation" >관련상품</a></li>
+								<li><a href="#detailReview" >구매후기</a></li>
+								<li><a href="#detailQna" class="active">문의</a></li>
+							</ul>
+						</div>
 						</div>
 						<!-- .qna-list -->
 

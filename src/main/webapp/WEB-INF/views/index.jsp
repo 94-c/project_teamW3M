@@ -109,10 +109,12 @@
 					</td>
 				
 				<c:if test="${i%j==j-1}">
-				<c:set var="i" value="0" />
 					</tr>
 				</c:if>
 				<c:set var="i" value="${i+1 }" />
+				<c:if test="${i == 4 }">
+					<c:set var="i" value="0" />
+				</c:if>
 				</c:forEach>
 					
 					<tr></tr>
