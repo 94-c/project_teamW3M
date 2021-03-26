@@ -38,12 +38,15 @@
 			data : JSON.stringify(alldata),
 			dataType : "json",
 			contentType: "application/json; charset=UTF-8",
-			success: function(total_price){
-				console.log("total_price : " +total_price);
-				history.go();
+			success:function(a){
 				
+				alert("수량이 수정되었습니다.");
+				history.go();
+			},
+			error:function(data){
+				console.log(data+"에러?");
 			}
-			
+		
 		});
 	}
 	

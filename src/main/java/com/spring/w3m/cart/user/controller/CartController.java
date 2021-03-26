@@ -40,11 +40,12 @@ public class CartController {
 	
 	@RequestMapping(value = "/send_order_cnt.do", method=RequestMethod.POST)
 	@ResponseBody
-	public String Send_order_cnt_update(@RequestBody CartVO cartvo) { // 장바구니 제품 수량 수정 시 적용 
+	public int Send_order_cnt_update(@RequestBody CartVO cartvo) { // 장바구니 제품 수량 수정 시 적용 
 		System.out.println("주문수량 변경했습니까? 개 : "+ cartvo.getOrder_cnt());
 		System.out.println("장바구니 id는? : "+ cartvo.getCart_id());
-		
-		return "성공";
+		int a = cartService.Cart_Order_Cnt_Update(cartvo);
+		System.out.println(a);
+		return a;
 		
 	}
 }

@@ -20,9 +20,9 @@ public class CartDAO {
 		return sqlSessionTemplate.selectList("CartDAO.CartList",user_id);
 	}
 
-	public void Cart_Order_Cnt_Update(CartVO vo) {
+	public int Cart_Order_Cnt_Update(CartVO vo) {
 		System.out.println("물품 수량 변경");
-		sqlSessionTemplate.update("CartDAO.Cart_Order_Cnt_Update",vo);
+		return sqlSessionTemplate.update("CartDAO.Cart_Order_Cnt_Update",vo);
 		
 	}
 }
