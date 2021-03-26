@@ -19,7 +19,7 @@
 	
 	<update id="update">
 		UPDATE product SET prod_code = #{prod_code}, prod_title = #{prod_title}, prod_price = #{prod_price}, prod_price_sale=#{prod_price_sale},
-						prod_amount = #{prod_amount}, prod_comment = #{prod_comment}, prod_point = #{prod_point}
+						prod_amount = #{prod_amount}, prod_comment = #{prod_comment}, prod_point = #{prod_point}, prod_title_image = #{prod_title_image}
 		WHERE prod_seq = #{prod_seq}
 	</update>	
 	

@@ -1,30 +1,6 @@
 package com.spring.w3m.product.admin.vo;
 /* 관련 테이블
-CREATE TABLE PRODUCT(
-   prod_seq int NOT NULL, -- 시퀀스넘버
-   prod_code varchar(30) NOT NULL, --  PK 제품코드 (ex 미세먼지 마스크-프리미엄-사이즈-등급(형태)-수량 -> MM-P-L-94-25 )
-   prod_title varchar(200), -- 게시글 제목 (ex W3M 미세먼지 마스크 KF-94 대형 50개입) 
-   prod_title_image varchar(200), --게시글 이미지 
-   prod_category1 varchar(10) default 'MM', -- 대분류 카테고리 ex( 미세먼지 - MM / 비말 - BB / 손소독제 - SS)
-   prod_category2 varchar(10) default 'P', -- 소분류 카테고리 ex( 프리미얼 - P / 일반 - N / 블랙 - B )
-   prod_category3 varchar(10) default 'M', -- 사이즈 카테고리 ex( S/M/L)
-   prod_category4 varchar(10) default '94', -- 등급 카테고리 ex( 94 / 80 / AD )
-   prod_price int default 0, -- 원가
-   prod_price_sale int default 0, -- 할인가
-   prod_amount int default 0, --수량 
-   prod_comment varchar(1000) default null, --설명
-   prod_image1 varchar(200), --이미지1
-   prod_image2 varchar(200), --이미지2
-   prod_image3 varchar(200), --이미지3
-   prod_image4 varchar(200), --이미지4
-   prod_image5 varchar(200), --이미지5
-   prod_image6 varchar(200), --이미지6
-   prod_state varchar(5) default 'y', -- 판매 : y, 판매중단 : n
-   prod_regdate TIMESTAMP WITH TIME ZONE DEFAULT current_timestamp, --등록 날짜
-   prod_count int default '0', -- 조회수 ~
-   
-   CONSTRAINT product_prod_code_pk PRIMARY KEY (prod_code)
-); 
+
 */
 
 import java.util.Date;
@@ -40,6 +16,7 @@ public class ProductVO {
 	private String prod_category4;
 	private int prod_price;
 	private int prod_price_sale;
+	private int prod_discount_rate;
 	private int prod_point;
 	private int prod_amount;
 	private String prod_comment;
@@ -49,6 +26,10 @@ public class ProductVO {
 	private String prod_image4;
 	private String prod_image5;
 	private String prod_image6;
+	private String prod_image7;
+	private String prod_image8;
+	private String prod_image9;
+	private String prod_image10;
 	private String prod_state;
 	private Date prod_regdate;
 	private int prod_count;
@@ -114,6 +95,12 @@ public class ProductVO {
 	public void setProd_price_sale(int prod_price_sale) {
 		this.prod_price_sale = prod_price_sale;
 	}
+	public int getProd_discount_rate() {
+		return prod_discount_rate;
+	}
+	public void setProd_discount_rate(int prod_discount_rate) {
+		this.prod_discount_rate = prod_discount_rate;
+	}
 	public int getProd_point() {
 		return prod_point;
 	}
@@ -168,6 +155,30 @@ public class ProductVO {
 	public void setProd_image6(String prod_image6) {
 		this.prod_image6 = prod_image6;
 	}
+	public String getProd_image7() {
+		return prod_image7;
+	}
+	public void setProd_image7(String prod_image7) {
+		this.prod_image7 = prod_image7;
+	}
+	public String getProd_image8() {
+		return prod_image8;
+	}
+	public void setProd_image8(String prod_image8) {
+		this.prod_image8 = prod_image8;
+	}
+	public String getProd_image9() {
+		return prod_image9;
+	}
+	public void setProd_image9(String prod_image9) {
+		this.prod_image9 = prod_image9;
+	}
+	public String getProd_image10() {
+		return prod_image10;
+	}
+	public void setProd_image10(String prod_image10) {
+		this.prod_image10 = prod_image10;
+	}
 	public String getProd_state() {
 		return prod_state;
 	}
@@ -186,16 +197,19 @@ public class ProductVO {
 	public void setProd_count(int prod_count) {
 		this.prod_count = prod_count;
 	}
+	
 	@Override
 	public String toString() {
 		return "ProductVO [prod_seq=" + prod_seq + ", prod_code=" + prod_code + ", prod_title=" + prod_title
 				+ ", prod_title_image=" + prod_title_image + ", prod_category1=" + prod_category1 + ", prod_category2="
 				+ prod_category2 + ", prod_category3=" + prod_category3 + ", prod_category4=" + prod_category4
-				+ ", prod_price=" + prod_price + ", prod_price_sale=" + prod_price_sale + ", prod_point=" + prod_point
-				+ ", prod_amount=" + prod_amount + ", prod_comment=" + prod_comment + ", prod_image1=" + prod_image1
-				+ ", prod_image2=" + prod_image2 + ", prod_image3=" + prod_image3 + ", prod_image4=" + prod_image4
-				+ ", prod_image5=" + prod_image5 + ", prod_image6=" + prod_image6 + ", prod_state=" + prod_state
-				+ ", prod_regdate=" + prod_regdate + ", prod_count=" + prod_count + "]";
-	}	
+				+ ", prod_price=" + prod_price + ", prod_price_sale=" + prod_price_sale + ", prod_discount_rate="
+				+ prod_discount_rate + ", prod_point=" + prod_point + ", prod_amount=" + prod_amount + ", prod_comment="
+				+ prod_comment + ", prod_image1=" + prod_image1 + ", prod_image2=" + prod_image2 + ", prod_image3="
+				+ prod_image3 + ", prod_image4=" + prod_image4 + ", prod_image5=" + prod_image5 + ", prod_image6="
+				+ prod_image6 + ", prod_image7=" + prod_image7 + ", prod_image8=" + prod_image8 + ", prod_image9="
+				+ prod_image9 + ", prod_image10=" + prod_image10 + ", prod_state=" + prod_state + ", prod_regdate="
+				+ prod_regdate + ", prod_count=" + prod_count + "]";
+	}
 	
 }

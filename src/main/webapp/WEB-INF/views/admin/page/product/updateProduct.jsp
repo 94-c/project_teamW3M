@@ -28,7 +28,7 @@ $(document).ready(function(){
 			<div class="card-header">
 				<i class="fas fa-table mr-1"></i> 상품등록정보 수정
 			</div>
-			<form role="form" method="post" name="writeform" action="updateProduct.mdo?prod_seq=${product.prod_seq }">
+			<form role="form" method="post" name="writeform" action="updateProduct.mdo?prod_seq=${product.prod_seq }" enctype="multipart/form-data">
 				<div class="card-body">
 
 					<div class="form-group">
