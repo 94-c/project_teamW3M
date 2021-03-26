@@ -58,7 +58,7 @@ public class UserLoginController {
 	public ModelAndView userLogout(HttpSession session) {
 		userLoginService.logout(session);
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("index");
+		mav.setViewName("login/logoutSuccess");
 		mav.addObject("msg", "logout");
 		return mav;
 	}

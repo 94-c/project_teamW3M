@@ -101,7 +101,7 @@
 									<tr>
 										<td colspan="8">
 											<div class="tb-right">
-												<strong></strong> 99999
+												총 구매 금액 : <strong>99999</strong> 
 												<!--(적립금 210원) -->
 											</div>
 										</td>
