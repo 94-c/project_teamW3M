@@ -38,8 +38,11 @@ public class UserLoginServiceImpl implements UserLoginService {
 				session.setAttribute("login_state", "login");
 				session.setAttribute("userVO", user);
 				return 1; // 1 일반계정
+			}else if(user.getUser_state().equals("정지")) {
+				return -1; // -1 정지계정
+			}else{
+				return -2; // -2  탈퇴계정
 			}
-			return -1; // -1  탈퇴계정
 		}
 		return 0; // 0 로그인 실패
 		

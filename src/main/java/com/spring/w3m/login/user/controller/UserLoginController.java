@@ -32,7 +32,12 @@ public class UserLoginController {
 			mav.setViewName("index");
 			mav.addObject("msg", "success");
 			
-		}else if (result == -1) {		// 탈퇴한 계정
+		}else if(result == -1) {		// 정지된 계정
+			mav.setViewName("login/login");
+			mav.addObject("msg", "suspended");
+		}
+		
+		else if (result == -2) {		// 탈퇴한 계정
 			mav.setViewName("login/login");
 			mav.addObject("msg", "delete");
 			
