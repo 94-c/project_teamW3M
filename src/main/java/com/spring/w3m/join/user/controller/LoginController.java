@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.github.scribejava.core.model.OAuth2AccessToken;
+import com.spring.w3m.cart.user.service.CartService;
+import com.spring.w3m.cart.user.vo.CartVO;
 import com.spring.w3m.join.user.service.KakaoAccessToken;
 import com.spring.w3m.join.user.service.KakaoUserInfo;
 import com.spring.w3m.join.user.service.NaverLoginBO;
@@ -31,6 +33,8 @@ public class LoginController {
 
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private CartService cartSevice;
 
 	@Autowired
 	private void setNaverLoginBO(NaverLoginBO naverLoginBO) {
@@ -64,7 +68,7 @@ public class LoginController {
 
 	// 네이버 로그인 성공시 callback호출 메소드
 	@RequestMapping(value = "/callback.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public String callback(Model model, @RequestParam String code, @RequestParam String state, HttpSession session)
+	public String callback(Model model, @RequestParam String code, @RequestParam String state,CartVO cartVO ,HttpSession session)
 			throws IOException, ParseException {
 		System.out.println("여기는 callback");
 		OAuth2AccessToken oauthToken;
@@ -99,13 +103,16 @@ public class LoginController {
 			System.out.println("naver 아이디 존재합니다.");
 			UserVO user = userService.getUser(vo);
 			System.out.println(user.toString());
-			if(vo.getUser_state().equals("정지")) {
-				session.setAttribute("login_state", "suspended");
-				return "login/login";
-			}else if(vo.getUser_state().equals("탈퇴")) {
-				session.setAttribute("login_state", "delete");
+			if(user.getUser_state().equals("정지")) {
+				session.setAttribute("msg", "suspended");
 				return "login/login";
 			}
+			if(user.getUser_state().equals("탈퇴")) {
+				session.setAttribute("msg", "delete");
+				return "login/login";
+			}
+			
+			session.setAttribute("cart", cartSevice.cart_Cnt(cartVO));
 			session.setAttribute("userVO", user);
 			session.setAttribute("login_state", "login");
 			
@@ -131,7 +138,7 @@ public class LoginController {
 	}
 
 	@RequestMapping(value = "/kakaoCallback.do", produces = "application/json", method = {RequestMethod.GET , RequestMethod.POST} )
-	public String kakaoLogin(@RequestParam("code") String code, Model model, HttpSession session) {
+	public String kakaoLogin(@RequestParam("code") String code, Model model, HttpSession session,CartVO cartVO) {
 		JsonNode accessToken;
 		 
         // JsonNode트리형태로 토큰받아온다
@@ -172,9 +179,17 @@ public class LoginController {
 			System.out.println("kakao 아이디 존재합니다.");
 			UserVO user = userService.getUser(vo);
 			System.out.println(user.toString());
+			if(user.getUser_state().equals("정지")) {
+				session.setAttribute("msg", "suspended");
+				return "login/login";
+			}
+			if(user.getUser_state().equals("탈퇴")) {
+				session.setAttribute("msg", "delete");
+				return "login/login";
+			}
 			session.setAttribute("userVO", user);
 			session.setAttribute("login_state", "login");
-
+			session.setAttribute("cart", cartSevice.cart_Cnt(cartVO));
 			return "login/loginSuccess";
 		} else {
 			vo.setUser_name(name);

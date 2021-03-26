@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.spring.w3m.cart.user.service.CartService;
+import com.spring.w3m.cart.user.vo.CartVO;
 import com.spring.w3m.join.user.vo.UserVO;
 import com.spring.w3m.login.user.service.UserLoginService;
 
@@ -15,6 +17,8 @@ import com.spring.w3m.login.user.service.UserLoginService;
 public class UserLoginController {
 	@Autowired
 	private UserLoginService userLoginService;
+	@Autowired
+	private CartService cartService;
 	
 	@RequestMapping("/loginForm.do")//로그인 폼으로 이동
 	public String loginView() {
@@ -23,13 +27,15 @@ public class UserLoginController {
 	}
 	
 	@RequestMapping("/login.do")//로그인 유효성 검증
-	public ModelAndView userloginCheck(@ModelAttribute UserVO vo, HttpSession session) {
+	public ModelAndView userloginCheck(@ModelAttribute UserVO vo,CartVO cartvo, HttpSession session) {
 		
 		int result = userLoginService.loginCheck(vo, session);
 		ModelAndView mav = new ModelAndView();
 		
 		if(result == 1) {				// 로그인성공
-			mav.setViewName("index");
+			System.out.println("장바구니 갯수 : "+cartService.cart_Cnt(cartvo));
+			session.setAttribute("cart", cartService.cart_Cnt(cartvo));
+			mav.setViewName("login/loginSuccess");
 			mav.addObject("msg", "success");
 			
 		}else if(result == -1) {		// 정지된 계정
