@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/WEB-INF/views/include/header.jsp"%>
-<title><!-- 상품명 --></title>
+<title>${product.prod_title }</title>
 <body>
 	<div id="contentWrapper">
 		<div id="contentWrap">
@@ -22,7 +22,7 @@
 						<div class="thumb-info">
 							<div class="thumb-wrap">
 								<div class="thumb">
-									<!-- <img src="/shopimages/pgreen1364/0230020000502.jpg?1613553167" class="detail_image"> -->
+									<img src="${product.prod_title_image}" class="detail_image">
 								</div>
 							</div>
 							
@@ -67,7 +67,7 @@
 									
 									<!-- 제품명 -->
 									<h3 class="tit-prd">
-										<!-- 제품명 --><br><!--KF94-대형 50개입-->
+										${product.prod_title }
 									</h3>
 									
 									<div class="table-opt">
@@ -82,7 +82,7 @@
 													<th scope="row"><div class="tb-left">판매가격</div></th>
 													<td class="price sell_price">
 														<div class="tb-left">
-															<span id="pricevalue" class="price"><!-- 판매가격 --></span>원
+															<span id="pricevalue" class="price"><fmt:formatNumber value="${product.prod_price_sale}" pattern="#,###" /></span>원
 														</div>
 													</td>
 												</tr>
@@ -90,7 +90,7 @@
 													<th scope="row"><div class="tb-left">소비자가격</div></th>
 													<td class="price">
 														<div class="tb-left">
-															<strike><!-- 할인 가격 --></strike>
+															<strike><fmt:formatNumber value="${product.prod_price}" pattern="#,###" /></strike>
 														</div>
 													</td>
 												</tr>
@@ -211,7 +211,7 @@
 									<tbody>
 										<tr>
 											<th><span>품명 및 모델명</span></th>
-											<td><span><!-- 제품명 --></span></td>
+											<td><span>${product.prod_title }</span></td>
 										</tr>
 										<tr>
 											<th><span>인증.허가 사항</span></th>

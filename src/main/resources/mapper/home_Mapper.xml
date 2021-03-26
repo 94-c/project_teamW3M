@@ -12,4 +12,13 @@
   ORDER BY 
   	prod_seq
  </select>	
+ 
+ <select id="getProduct" resultType="com.spring.w3m.product.admin.vo.ProductVO">
+ SELECT
+ 	*
+  FROM
+  	product
+  WHERE
+   prod_seq=#{prod_seq}
+  </select>
  </mapper>

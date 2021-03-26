@@ -94,15 +94,15 @@
 						<div class="tb-center">
 						<div class="box">
 							<div class="thumb salebox">
-								<a href="list/shopdetail.jsp"><img class="MS_prod_img_m" src="${product.prod_title_image }" alt="상품 섬네일" /></a>
+								<a href="/getProduct?prod_seq=${product.prod_seq }"><img class="MS_prod_img_m" src="${product.prod_title_image }" alt="상품 섬네일" /></a>
 								<input type="hidden" name="custom_price" value="52400"/>
 								<input type="hidden" name="product_price" value="42000"/>
 							</div>
 							<ul class="info">
 								<li class="dsc">${product.prod_title }</li>
 								<li class="subname"></li>
-								<li class="consumer">${product.prod_price }</li>									
-								<li class="price">${product.prod_price_sale }</li>
+								<li class="consumer"><fmt:formatNumber value="${product.prod_price}" pattern="#,###" /></li>									
+								<li class="price"><fmt:formatNumber value="${product.prod_price_sale}" pattern="#,###" /></li>
 							</ul>
 						</div>
 						</div>
