@@ -18,13 +18,22 @@ public class HomeController {
 	private HomeService homeService;
 	
 	
-	@RequestMapping(value = "/" ,  method = {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping( value = "/" ,  method = {RequestMethod.GET, RequestMethod.POST})
 	public String index(Model model, ProductVO vo) {
 		System.out.println("메인홈으로 이동...");
 		List<ProductVO> product = homeService.selectProduct(vo);
 		model.addAttribute("product", product);
 		
 		return "index";
+	}
+	
+	
+	@RequestMapping("/getProduct")
+	   public String getProduct(ProductVO vo, Model model) {
+		System.out.println("shop");
+	      model.addAttribute("product", homeService.getProduct(vo));
+	      return "shop_detail"; 
+	   
 	}
 	
 }

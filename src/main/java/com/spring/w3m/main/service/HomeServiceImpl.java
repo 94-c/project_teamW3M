@@ -20,4 +20,10 @@ public class HomeServiceImpl implements HomeService {
 		return dao.selectProduct(vo);
 	}
 
+	@Override
+	public ProductVO getProduct(ProductVO vo) {
+		System.out.println("Impl실행");
+		return dao.getProduct(vo);
+	}
+
 }
