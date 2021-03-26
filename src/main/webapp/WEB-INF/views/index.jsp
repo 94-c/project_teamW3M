@@ -84,239 +84,38 @@
 			</colgroup>
 		<tbody>
 				<tr class="nopadding"><td></td><td></td><td></td><td></td></tr>
-				<tr>
+				<c:set var="i" value="0" />
+				<c:set var="j" value="4" />
+				<c:forEach var="product" items="${product }">
+				<c:if test="${i%j==0}">
+					<tr>
+				</c:if>
 					<td>
 						<div class="tb-center">
 						<div class="box">
 							<div class="thumb salebox">
-								<a href="list/shopdetail.jsp"><img class="MS_prod_img_m" src="resources/images/m_mask/mask1.jpg" alt="상품 섬네일" /></a>
+								<a href="list/shopdetail.jsp"><img class="MS_prod_img_m" src="${product.prod_title_image }" alt="상품 섬네일" /></a>
 								<input type="hidden" name="custom_price" value="52400"/>
 								<input type="hidden" name="product_price" value="42000"/>
-								<span class="sale_text"></span>
 							</div>
 							<ul class="info">
-								<li class="dsc">웰킵스 황사방역마스크<br>KF94-대형 50개입</li>
+								<li class="dsc">${product.prod_title }</li>
 								<li class="subname"></li>
-								<li class="consumer">52,400원</li>									
-								<li class="price">42,000원</li>
-								<li class="icon"><span class='MK-product-icons'><img src='resources/images/icons/new.jpg' class='MK-product-icon-1' /></span></li>
+								<li class="consumer">${product.prod_price }</li>									
+								<li class="price">${product.prod_price_sale }</li>
 							</ul>
 						</div>
 						</div>
 					</td>
-					<td>
-						<div class="tb-center">
-						<div class="box">
-							<div class="thumb salebox">
-								<a href="#"><img class="MS_prod_img_m" src="resources/images/m_mask/mask2.jpg" alt="상품 섬네일" /></a>
-								<input type="hidden" name="custom_price" value="51400"/>
-								<input type="hidden" name="product_price" value="40000"/>
-								<span class="sale_text"></span>
-							</div>
-							<ul class="info">
-								<li class="dsc">웰킵스 황사방역마스크<br>KF94-소형 50개입</li>
-								<li class="subname"></li>
-								<li class="consumer">51,400원</li>
-								<li class="price">40,000원</li>
-								<li class="icon"><span class='MK-product-icons'><img src='resources/images/icons/new.jpg' class='MK-product-icon-1' /></span></li>
-							</ul>
-						</div>
-						</div>
-					</td>
-						<td>
-						<div class="tb-center">
-						<div class="box">
-							<div class="thumb salebox">
-								<a href="#"><img class="MS_prod_img_m" src="resources/images/m_mask/mask3.jpg" alt="상품 섬네일" /></a>
-								<input type="hidden" name="custom_price" value="53000"/>
-								<input type="hidden" name="product_price" value="42000"/>
-								<span class="sale_text"></span>
-							</div>
-							<ul class="info">
-								<li class="dsc">웰킵스 황사방역마스크<br>KF94-초소형 50개입</li>
-								<li class="subname"></li>
-								<li class="consumer">53,000원</li>									
-								<li class="price">42,000원</li>
-								<li class="icon"><span class='MK-product-icons'><img src='resources/images/icons/new.jpg' class='MK-product-icon-1' /></span></li>
-							</ul>
-						</div>
-						</div>
-					</td>
-					<td>
-						<div class="tb-center">
-						<div class="box">
-							<div class="thumb salebox">
-								<a href="#"><img class="MS_prod_img_m" src="resources/images/m_mask/mask4.jpg" alt="상품 섬네일" /></a>
-								<input type="hidden" name="custom_price" value="53000"/>
-								<input type="hidden" name="product_price" value="45000"/>
-								<span class="sale_text"></span>
-							</div>
-							<ul class="info">
-								<li class="dsc">웰킵스 리얼블랙황사방역마스크<br>KF94-대형 50개입</li>
-								<li class="subname"></li>
-								<li class="consumer">53,000원</li>									
-								<li class="price">45,000원</li>															
-								<li class="icon"><span class='MK-product-icons'><img src='resources/images/icons/new.jpg' class='MK-product-icon-1' /></span></li>
-							</ul>
-						</div>
-						</div>
-					</td>
+				
+				<c:if test="${i%j==j-1}">
+				<c:set var="i" value="0" />
 					</tr>
+				</c:if>
+				<c:set var="i" value="${i+1 }" />
+				</c:forEach>
 					
-					<tr>
-						<td>
-						<div class="tb-center">
-						<div class="box">
-							<div class="thumb salebox">
-								<a href="#"><img class="MS_prod_img_m" src="resources/images/m_mask/mask5.jpg" alt="상품 섬네일" /></a>
-								<input type="hidden" name="custom_price" value="26200"/>
-								<input type="hidden" name="product_price" value="22300"/>
-								<span class="sale_text"></span>
-							</div>
-							<ul class="info">
-								<li class="dsc">웰킵스 황사방역마스크<br>KF94 대형 25개입</li>
-								<li class="subname"></li>
-								<li class="consumer">26,200원</li>
-								<li class="price">22,300원</li>
-								<li class="icon"><span class='MK-product-icons'></span></li>
-							</ul>
-						</div>
-						</div>
-					</td>
-					<td>
-						<div class="tb-center">
-						<div class="box">
-							<div class="thumb salebox">
-								<a href="#"><img class="MS_prod_img_m" src="resources/images/m_mask/mask6.jpg" alt="상품 섬네일" /></a>
-								<input type="hidden" name="custom_price" value="26200"/>
-								<input type="hidden" name="product_price" value="22300"/>
-								<span class="sale_text"></span>
-							</div>
-							<ul class="info">
-								<li class="dsc">웰킵스 황사방역마스크<br>KF94 중형 25개입</li>
-								<li class="subname"></li>
-								<li class="consumer">26,200원</li>									
-								<li class="price">22,300원</li>
-								<li class="icon"><span class='MK-product-icons'></span></li>
-							</ul>
-						</div>
-						</div>
-					</td>
-					<td>
-						<div class="tb-center">
-						<div class="box">
-							<div class="thumb salebox">
-								<a href="#"><img class="MS_prod_img_m" src="resources/images/m_mask/mask7.jpg" alt="상품 섬네일" /></a>
-								<input type="hidden" name="custom_price" value="25700"/>
-								<input type="hidden" name="product_price" value="21300"/>
-								<span class="sale_text"></span>
-							</div>
-							<ul class="info">
-								<li class="dsc">웰킵스 황사방역마스크<br>KF94 소형 25개입</li>
-								<li class="subname"></li>
-								<li class="consumer">25,700원</li>									
-								<li class="price">21,300원</li>
-								<li class="icon"><span class='MK-product-icons'></span></li>
-							</ul>
-						</div>
-						</div>
-					</td>
-					<td>
-						<div class="tb-center">
-						<div class="box">
-							<div class="thumb salebox">
-								<a href="#"><img class="MS_prod_img_m" src="resources/images/m_mask/mask8.jpg" alt="상품 섬네일" /></a>
-								<input type="hidden" name="custom_price" value="26500"/>
-								<input type="hidden" name="product_price" value="22300"/>
-								<span class="sale_text"></span>
-							</div>
-							<ul class="info">
-								<li class="dsc">웰킵스 황사방역마스크<br>KF94 초소형 25개입</li>
-								<li class="subname"></li>
-								<li class="consumer">26,500원</li>									
-								<li class="price">22,300원</li>
-								<li class="icon"><span class='MK-product-icons'></span></li>
-							</ul>
-						</div>
-						</div>
-					</td>
-					</tr><tr>
-					<td>
-						<div class="tb-center">
-						<div class="box">
-							<div class="thumb salebox">
-								<a href="#"><img class="MS_prod_img_m" src="resources/images/m_mask/mask9.jpg" alt="상품 섬네일" /></a>
-								<input type="hidden" name="custom_price" value="24500"/>
-								<input type="hidden" name="product_price" value="20000"/>
-								<span class="sale_text"></span>
-							</div>
-							<ul class="info">
-								<li class="dsc">웰킵스 미세먼지황사마스크<br>KF80 대형 25개입</li>
-								<li class="subname"></li>
-								<li class="consumer">24,500원</li>									
-								<li class="price">20,000원</li>
-								<li class="icon"><span class='MK-product-icons'></span></li>
-							</ul>
-						</div>
-						</div>
-					</td>
-					<td>
-						<div class="tb-center">
-						<div class="box">
-							<div class="thumb salebox">
-								<a href="#"><img class="MS_prod_img_m" src="resources/images/m_mask/mask10.jpg" alt="상품 섬네일" /></a>
-								<input type="hidden" name="custom_price" value="24000"/>
-								<input type="hidden" name="product_price" value="20000"/>
-								<span class="sale_text"></span>
-							</div>
-							<ul class="info">
-								<li class="dsc">웰킵스 미세먼지황사마스크<br>KF80 소형 25개입</li>
-								<li class="subname"></li>
-								<li class="soldout">SOLD OUT</li>	
-								<li class="price">입고 대기중</li>
-								<li class="icon"><span class='MK-product-icons'></span></li>
-							</ul>
-						</div>
-						</div>
-					</td>
-					<td>
-						<div class="tb-center">
-						<div class="box">
-							<div class="thumb salebox">
-								<a href="#"><img class="MS_prod_img_m" src="resources/images/m_mask/mask11.jpg" alt="상품 섬네일" /></a>
-								<input type="hidden" name="custom_price" value="28700"/>
-								<input type="hidden" name="product_price" value="23800"/>
-								<span class="sale_text"></span>
-							</div>
-							<ul class="info">
-								<li class="dsc">웰킵스 리얼블랙 황사마스크 <br>KF94 대형 25개입</li>
-								<li class="subname"></li>
-								<li class="consumer">28,700원</li>									
-								<li class="price">23,800원</li>
-								<li class="icon"><span class='MK-product-icons'></span></li>
-							</ul>
-						</div>
-						</div>
-					</td>
-					<td>
-						<div class="tb-center">
-						<div class="box">
-							<div class="thumb salebox">
-								<a href="#"><img class="MS_prod_img_m" src="resources/images/m_mask/mask12.jpg" alt="상품 섬네일" /></a>
-								<input type="hidden" name="custom_price" value="28700"/>
-								<input type="hidden" name="product_price" value="23800"/>
-								<span class="sale_text"></span>
-							</div>
-							<ul class="info">
-								<li class="dsc">웰킵스 리얼블랙 황사마스크 <br>KF94 중형 25개입</li>
-								<li class="subname"></li>
-								<li class="consumer">28,700원</li>									
-								<li class="price">23,800원</li>
-								<li class="icon"><span class='MK-product-icons'></span></li>
-							</ul>
-						</div>
-						</div>
-					</td></tr><tr></tr>
+					<tr></tr>
 			</tbody>
 			</table>
 		</div><!-- //prd-list -->
