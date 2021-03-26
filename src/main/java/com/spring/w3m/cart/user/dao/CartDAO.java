@@ -25,4 +25,9 @@ public class CartDAO {
 		return sqlSessionTemplate.update("CartDAO.Cart_Order_Cnt_Update",vo);
 		
 	}
+
+	public int Cart_Cnt(CartVO vo) {
+		System.out.println("장바구니 수량 체크");
+		return sqlSessionTemplate.selectOne("CartDAO.Cart_Cnt",vo);
+	}
 }

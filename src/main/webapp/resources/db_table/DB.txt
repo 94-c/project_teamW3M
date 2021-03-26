@@ -73,6 +73,7 @@ CREATE TABLE PRODUCT(
 	prod_category4 varchar(10), -- 등급 카테고리 ex( 94 / 80 )
 	prod_price int default 0, -- 원가
 	prod_price_sale int default 0, -- 할인가
+	prod_discount_rate int default 0, -- 할인률
 	prod_point int, -- 적립금
 	prod_amount int default 0, --수량 
 	prod_comment varchar(1000) default null, --설명

@@ -44,5 +44,10 @@
 		UPDATE cart SET order_cnt = #{order_cnt} WHERE cart_id = #{cart_id} 
 	
 	</update>
+	
+	<select id="Cart_Cnt" parameterType="String" resultType="int">
+	SELECT count(*) FROM cart WHERE user_id = #{user_id}
+	 
+	</select>
 
 </mapper>

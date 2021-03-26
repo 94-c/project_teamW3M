@@ -27,4 +27,10 @@ public class CartServiceImpl implements CartService{
 		
 	}
 
+	@Override
+	public int cart_Cnt(CartVO vo) {
+		
+		return dao.Cart_Cnt(vo);
+	}
+
 }
