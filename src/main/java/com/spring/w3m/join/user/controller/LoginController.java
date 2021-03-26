@@ -99,9 +99,16 @@ public class LoginController {
 			System.out.println("naver 아이디 존재합니다.");
 			UserVO user = userService.getUser(vo);
 			System.out.println(user.toString());
+			if(vo.getUser_state().equals("정지")) {
+				session.setAttribute("login_state", "login");
+				return "login/login";
+			}else if(vo.getUser_state().equals("탈퇴")) {
+				session.setAttribute("login_state", "delete");
+				return "login/login";
+			}
 			session.setAttribute("userVO", user);
 			session.setAttribute("login_state", "login");
-
+			
 			return "login/loginSuccess";
 		} else {
 			
