@@ -47,11 +47,11 @@ public class ProductController {
 		String contentType = prod_thumb.getContentType();
 		long contentLength = prod_thumb.getSize();
 		//업로드
-		awsS3.upload(ism, fileName, contentType, contentLength);
+		awsS3.uploadProduct(ism, fileName, contentType, contentLength);
 		
 		String path = "";
 		if(fileName != null) { //이미지 첨부 했을 경우
-			path = "https://imageup.s3.ap-northeast-2.amazonaws.com/" + fileName;
+			path = "https://imageup.s3.ap-northeast-2.amazonaws.com/product/" + fileName;
 		}else { //이미지 첨부 안했을 경우
 			path = "이미지없음";
 		}		
