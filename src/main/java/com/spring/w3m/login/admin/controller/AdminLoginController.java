@@ -150,10 +150,10 @@ public class AdminLoginController {
 	public String updateUserPause(UserVO vo, Model model,@RequestParam("user_id")String user_id,
 			@RequestParam("user_state")String user_state) {
 		vo.setUser_id(user_id);
-		if(user_state.equals("휴면")) {
+		if(user_state.equals("정지")) {
 			vo.setUser_state("일반");
 		}if(user_state.equals("일반")) {
-			vo.setUser_state("휴면");
+			vo.setUser_state("정지");
 		}
 		adminService.updateUserPause(vo);
 		return "redirect:/userMemberList.mdo";

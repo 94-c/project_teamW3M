@@ -21,7 +21,8 @@ public class AwsS3 {
 	final private String accessKey = "AKIART7SB7DNWUHH3SNH";
 	final private String secretKey = "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";
 	private Regions clientRegion = Regions.AP_NORTHEAST_2;
-	private String bucket = "imageup";
+	private String bucket_inquiry = "imageup"+"/inquiry";
+	private String bucket_product = "imageup"+"/product";
 	
 	private AwsS3() {
 		createS3Client();
@@ -45,16 +46,26 @@ public class AwsS3 {
 		this.s3Client = AmazonS3ClientBuilder.standard().withCredentials(new AWSStaticCredentialsProvider(credentials)).withRegion(clientRegion).build();
 	}
 	
-	public void upload(File file, String key) {
-		uploadToS3(new PutObjectRequest(this.bucket, key, file));
+	public void uploadInquiry(File file, String key) {
+		uploadToS3(new PutObjectRequest(this.bucket_inquiry, key, file));
+	}
+	public void uploadProduct(File file, String key) {
+		uploadToS3(new PutObjectRequest(this.bucket_product, key, file));
 	}
 	
-	public void upload(InputStream is, String key, String contentType, long contentLength) {
+	public void uploadInquiry(InputStream is, String key, String contentType, long contentLength) {
 		ObjectMetadata objectMetadata = new ObjectMetadata();
 		objectMetadata.setContentType(contentType);
 		objectMetadata.setContentLength(contentLength);
 		
-		uploadToS3(new PutObjectRequest(this.bucket, key, is, objectMetadata));
+		uploadToS3(new PutObjectRequest(this.bucket_inquiry, key, is, objectMetadata));
+	}
+	public void uploadProduct(InputStream is, String key, String contentType, long contentLength) {
+		ObjectMetadata objectMetadata = new ObjectMetadata();
+		objectMetadata.setContentType(contentType);
+		objectMetadata.setContentLength(contentLength);
+		
+		uploadToS3(new PutObjectRequest(this.bucket_product, key, is, objectMetadata));
 	}
 	
 	// PutObjectRequest는 Aws S3 버킷에 업로드 할 객체 메타 데이터와 파일 데이터로 이루어져있음
@@ -71,10 +82,23 @@ public class AwsS3 {
 		}
 	}
 	
-	public void delete(String key) {
+	public void deleteInquiry(String key) {
 		try {
 			//Delete 객체 생성
-			DeleteObjectRequest deleteObjectRequest = new DeleteObjectRequest(this.bucket, key);
+			DeleteObjectRequest deleteObjectRequest = new DeleteObjectRequest(this.bucket_inquiry, key);
+			//Delete
+			this.s3Client.deleteObject(deleteObjectRequest);
+			System.out.println(String.format("[%s] deletion complete", key));
+		}catch(AmazonServiceException e) {
+			e.printStackTrace();
+		}catch (SdkClientException e) {
+			e.printStackTrace();
+		}
+	}
+	public void deleteProduct(String key) {
+		try {
+			//Delete 객체 생성
+			DeleteObjectRequest deleteObjectRequest = new DeleteObjectRequest(this.bucket_product, key);
 			//Delete
 			this.s3Client.deleteObject(deleteObjectRequest);
 			System.out.println(String.format("[%s] deletion complete", key));

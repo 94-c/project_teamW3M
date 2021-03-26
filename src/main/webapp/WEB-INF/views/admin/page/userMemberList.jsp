@@ -124,9 +124,9 @@
 												<td class="text-center">${user.user_state }</td>
 												
 												<c:if test="${user.user_state eq '일반' }">
-													<td class="text-center"><input type="button" value="휴면" onclick="location.href='updateUserPause.mdo?user_id=${user.user_id}&user_state=${user.user_state }'"></td>
+													<td class="text-center"><input type="button" value="정지" onclick="location.href='updateUserPause.mdo?user_id=${user.user_id}&user_state=${user.user_state }'"></td>
 												</c:if>
-												<c:if test="${user.user_state eq '휴면' }">
+												<c:if test="${user.user_state eq '정지' }">
 													<td class="text-center"><input type="button" value="일반" onclick="location.href='updateUserPause.mdo?user_id=${user.user_id}&user_state=${user.user_state }'"></td>
 												</c:if>
 												<c:if test="${user.user_state eq '탈퇴' }">

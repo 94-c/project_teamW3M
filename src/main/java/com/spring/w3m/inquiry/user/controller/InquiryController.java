@@ -73,12 +73,12 @@ public class InquiryController {
 		if(maskKey=="") {
 			vo.setInq_image("파일없음");
 		} else {
-			String path = "https://imageup.s3.ap-northeast-2.amazonaws.com/" + maskKey;
+			String path = "https://imageup.s3.ap-northeast-2.amazonaws.com/inquiry/" + maskKey;
 			vo.setInq_image(path);
 		}
 		
 		
-		awsS3.upload(ism, maskKey, contentType, contentLength);
+		awsS3.uploadInquiry(ism, maskKey, contentType, contentLength);
 		model.addAttribute("inquiryList", inquiryService.getInquiryList(vo));
 		inquiryService.insertInquiry(vo);
 		return "redirect:/inquiry.do";

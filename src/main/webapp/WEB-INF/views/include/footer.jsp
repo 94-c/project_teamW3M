@@ -107,7 +107,7 @@
 				<div class="ft_comm">
 					<ul>
 						<!-- 하단 커뮤니티 링크 수정 -->
-						<li><a href="getNoticeList.do" style="text-align: center;">공지사항</a></li>
+						<li><a href="getUserNoticeList.do" style="text-align: center;">공지사항</a></li>
 						<c:if test="${login_state eq 'login' }">
 						<li><a href="inquiry.do" style="text-align: center;">문의게시판</a></li>
 						</c:if>                    
@@ -128,7 +128,7 @@
 
 		<div class="section2 cboth">
 			<div class="inner">
-				Copyright by 웰킵스(주). All rights reserved. <span>designed by welkeepsmall.com</span>
+				Copyright by W3MASK(주). All rights reserved. <span>designed by W3M.com</span>
 			</div>
 		</div>
 		<!-- //section2 -->

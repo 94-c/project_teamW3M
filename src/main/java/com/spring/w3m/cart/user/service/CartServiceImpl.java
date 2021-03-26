@@ -21,8 +21,9 @@ public class CartServiceImpl implements CartService{
 	}
 
 	@Override
-	public void Cart_Order_Cnt_Update(CartVO vo) {
-		dao.Cart_Order_Cnt_Update(vo);
+	public int Cart_Order_Cnt_Update(CartVO vo) {
+		
+		return dao.Cart_Order_Cnt_Update(vo);
 		
 	}
 
