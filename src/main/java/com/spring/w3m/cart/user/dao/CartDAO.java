@@ -45,7 +45,7 @@ public class CartDAO {
 		
 	}
 	public int Cart_distinct(CartVO vo) {
-		return sqlSessionTemplate.insert("CartDAO.Cart_distinct",vo);
+		return sqlSessionTemplate.selectOne("CartDAO.Cart_distinct",vo);
 		
 	}
 }

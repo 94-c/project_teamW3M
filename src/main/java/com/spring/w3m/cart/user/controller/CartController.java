@@ -36,8 +36,10 @@ public class CartController {
 		cartvo.setProd_code(productvo.getProd_code());
 		cartvo.setOrder_cnt(productvo.getProd_amount());
 		int check = cartService.Cart_distinct(cartvo); // 장바구니 중복 확인
-		
-		if(check == 0) {
+		System.out.println(check);
+		if(check > 0) {
+			check=99;
+		}else {
 			cartService.Cart_insert(cartvo);
 		}
 		
