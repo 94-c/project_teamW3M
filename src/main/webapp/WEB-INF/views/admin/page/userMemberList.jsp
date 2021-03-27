@@ -67,10 +67,10 @@
         			$("#usersns").val("W3M")
         		}
         		console.log($("#user_sns_naver").val());
-        		console.log($("#user_sns_kakao").val());
-        		
+        		console.log($("#user_sns_kakao").val());       		
         		
         	});
+        	
         </script>
         
                 <main>
@@ -124,13 +124,13 @@
 												<td class="text-center">${user.user_state }</td>
 												
 												<c:if test="${user.user_state eq '일반' }">
-													<td class="text-center"><input type="button" value="정지" onclick="location.href='updateUserPause.mdo?user_id=${user.user_id}&user_state=${user.user_state }'"></td>
+													<td class="text-center"><input type="button" value="정지" onclick="location.href='updateUserPause.mdo?user_id=${user.user_id}&user_state=${user.user_state }'" style="color:red"></td>
 												</c:if>
 												<c:if test="${user.user_state eq '정지' }">
 													<td class="text-center"><input type="button" value="일반" onclick="location.href='updateUserPause.mdo?user_id=${user.user_id}&user_state=${user.user_state }'"></td>
 												</c:if>
 												<c:if test="${user.user_state eq '탈퇴' }">
-													<td class="text-center"><input type="button" value="x" onclick="location.href='updateUserPause.mdo?user_id=${user.user_id}'"></td>
+													<td class="text-center"><input type="button" value="x"></td>
 												</c:if>
 												
 												<c:if test="${user.user_sns_naver eq 'NAVER'}">

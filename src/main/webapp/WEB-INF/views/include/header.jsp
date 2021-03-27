@@ -108,7 +108,7 @@
                   <ul class="fright">
                      <!-- 상단 커뮤니티 링크 수정 -->
                      <li><a href="getUserNoticeList.do">공지사항</a></li>
-                     <li><a href="#">상품후기</a></li>
+                     <li><a href="review.do">상품후기</a></li>
                      <c:if test="${login_state eq 'login' }">
                      <li><a href="inquiry.do">문의게시판</a></li>
                      </c:if>
