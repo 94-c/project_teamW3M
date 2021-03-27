@@ -18,7 +18,6 @@ import com.spring.w3m.upload.common.AwsS3;
 public class ProductController {
 	@Autowired
 	private ProductService service;
-	public AwsS3 awsS3 = AwsS3.getInstance();
 	
 	@RequestMapping("/getProductList.mdo") //등록상품 목록보기
 	public String getProductList(ProductVO vo, Model model) {
@@ -41,20 +40,12 @@ public class ProductController {
 	}
 	
 	@RequestMapping("/insertProduct.mdo") //상품등록하기
-	public String insertProduct(ProductVO vo, MultipartFile prod_thumb) throws IOException{
-		System.out.println(prod_thumb);
-		InputStream ism = prod_thumb.getInputStream();
-		String fileName = prod_thumb.getOriginalFilename();
-		String contentType = prod_thumb.getContentType();
-		long contentLength = prod_thumb.getSize();
+	public String insertProduct(ProductVO vo, MultipartFile prod_thumb, MultipartFile image1, MultipartFile image2, MultipartFile image3, 
+			MultipartFile image4, MultipartFile image5, MultipartFile image6, MultipartFile image7, MultipartFile image8, MultipartFile image9, 
+			MultipartFile image10) throws IOException{
 		
-		awsS3.uploadProduct(ism, fileName, contentType, contentLength); //상품이미지 업로드
+		service.insertProduct(vo, prod_thumb, image1, image2, image3, image4, image5, image6, image7, image8, image9, image10);
 		
-		String path = "https://imageup.s3.ap-northeast-2.amazonaws.com/product/" + fileName;		
-		vo.setProd_title_image(path);
-		System.out.println(vo.getProd_title_image());
-		
-		service.insertProduct(vo);
 		return "redirect:/getProductList.mdo";
 	}
 	
@@ -72,19 +63,21 @@ public class ProductController {
 	}
 	
 	@RequestMapping("/updateProduct.mdo") //등록상품 수정하기
-	public String updateProduct(ProductVO vo, MultipartFile prod_thumb) throws IOException {
-		System.out.println(prod_thumb);
-		InputStream ism = prod_thumb.getInputStream();
-		String fileName = prod_thumb.getOriginalFilename();
-		String contentType = prod_thumb.getContentType();
-		long contentLength = prod_thumb.getSize();
+	public String updateProduct(ProductVO vo, MultipartFile prod_thumb, MultipartFile image1, MultipartFile image2, MultipartFile image3, 
+			MultipartFile image4, MultipartFile image5, MultipartFile image6, MultipartFile image7, MultipartFile image8, MultipartFile image9, 
+			MultipartFile image10) throws IOException {
+//		System.out.println(prod_thumb);
+//		InputStream ism = prod_thumb.getInputStream();
+//		String fileName = prod_thumb.getOriginalFilename();
+//		String contentType = prod_thumb.getContentType();
+//		long contentLength = prod_thumb.getSize();
+//		
+//		awsS3.uploadProduct(ism, fileName, contentType, contentLength); //상품이미지 업로드
+//		String path = "https://imageup.s3.ap-northeast-2.amazonaws.com/product/" + fileName;
+//		vo.setProd_title_image(path);
+//		System.out.println(vo.getProd_title_image());
 		
-		awsS3.uploadProduct(ism, fileName, contentType, contentLength); //상품이미지 업로드
-		String path = "https://imageup.s3.ap-northeast-2.amazonaws.com/product/" + fileName;
-		vo.setProd_title_image(path);
-		System.out.println(vo.getProd_title_image());
-		
-		service.updateProduct(vo);
+		service.updateProduct(vo, prod_thumb, image1, image2, image3, image4, image5, image6, image7, image8, image9, image10);
 		return "redirect:/getProductList.mdo";
 	}
 	
