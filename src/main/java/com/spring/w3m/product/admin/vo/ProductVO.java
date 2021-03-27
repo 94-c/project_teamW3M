@@ -1,7 +1,4 @@
 package com.spring.w3m.product.admin.vo;
-/* 관련 테이블
-
-*/
 
 import java.util.Date;
 
@@ -18,6 +15,7 @@ public class ProductVO {
 	private int prod_price_sale;
 	private int prod_discount_rate;
 	private int prod_point;
+	private int prod_point_rate;
 	private int prod_amount;
 	private String prod_comment;
 	private String prod_image1;
@@ -33,7 +31,6 @@ public class ProductVO {
 	private String prod_state;
 	private Date prod_regdate;
 	private int prod_count;
-	
 	
 	public int getProd_seq() {
 		return prod_seq;
@@ -106,6 +103,12 @@ public class ProductVO {
 	}
 	public void setProd_point(int prod_point) {
 		this.prod_point = prod_point;
+	}
+	public int getProd_point_rate() {
+		return prod_point_rate;
+	}
+	public void setProd_point_rate(int prod_point_rate) {
+		this.prod_point_rate = prod_point_rate;
 	}
 	public int getProd_amount() {
 		return prod_amount;
@@ -197,19 +200,18 @@ public class ProductVO {
 	public void setProd_count(int prod_count) {
 		this.prod_count = prod_count;
 	}
-	
 	@Override
 	public String toString() {
 		return "ProductVO [prod_seq=" + prod_seq + ", prod_code=" + prod_code + ", prod_title=" + prod_title
 				+ ", prod_title_image=" + prod_title_image + ", prod_category1=" + prod_category1 + ", prod_category2="
 				+ prod_category2 + ", prod_category3=" + prod_category3 + ", prod_category4=" + prod_category4
 				+ ", prod_price=" + prod_price + ", prod_price_sale=" + prod_price_sale + ", prod_discount_rate="
-				+ prod_discount_rate + ", prod_point=" + prod_point + ", prod_amount=" + prod_amount + ", prod_comment="
-				+ prod_comment + ", prod_image1=" + prod_image1 + ", prod_image2=" + prod_image2 + ", prod_image3="
-				+ prod_image3 + ", prod_image4=" + prod_image4 + ", prod_image5=" + prod_image5 + ", prod_image6="
-				+ prod_image6 + ", prod_image7=" + prod_image7 + ", prod_image8=" + prod_image8 + ", prod_image9="
-				+ prod_image9 + ", prod_image10=" + prod_image10 + ", prod_state=" + prod_state + ", prod_regdate="
-				+ prod_regdate + ", prod_count=" + prod_count + "]";
+				+ prod_discount_rate + ", prod_point=" + prod_point + ", prod_point_rate=" + prod_point_rate
+				+ ", prod_amount=" + prod_amount + ", prod_comment=" + prod_comment + ", prod_image1=" + prod_image1
+				+ ", prod_image2=" + prod_image2 + ", prod_image3=" + prod_image3 + ", prod_image4=" + prod_image4
+				+ ", prod_image5=" + prod_image5 + ", prod_image6=" + prod_image6 + ", prod_image7=" + prod_image7
+				+ ", prod_image8=" + prod_image8 + ", prod_image9=" + prod_image9 + ", prod_image10=" + prod_image10
+				+ ", prod_state=" + prod_state + ", prod_regdate=" + prod_regdate + ", prod_count=" + prod_count + "]";
 	}
 	
 }

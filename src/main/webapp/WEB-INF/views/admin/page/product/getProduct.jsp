@@ -38,12 +38,12 @@
 							name="prod_price" placeholder="원가를 입력해주세요. (숫자만 입력)">
 					</div>
 					<div class="form-group">
-						<label for="exampleFormControlInput1">할인율(단위 :%)</label> <input readonly="readonly"
+						<label for="exampleFormControlInput1">할인율(단위 :%)</label> <input readonly="readonly" value="${product.prod_discount_rate}"
 							type="text" class="form-control" id="discount_rate"
 							name="discount_rate" placeholder="할인율을 입력해주세요. (숫자만 입력)">
 					</div>
 					<div class="form-group">
-						<label for="exampleFormControlInput1">적립률(단위 :%)</label> <input readonly="readonly"
+						<label for="exampleFormControlInput1">적립률(단위 :%)</label> <input readonly="readonly" value="${product.prod_point_rate}"
 							type="text" class="form-control" id="point_rate"
 							name="point_rate" placeholder="적립률을 입력해주세요. (숫자만 입력)">
 					</div>

@@ -13,13 +13,16 @@
 	</select>
 
 	<insert id="insert">
-		INSERT INTO product (prod_seq, prod_code, prod_title, prod_price, prod_price_sale, prod_amount, prod_comment, prod_point, prod_title_image) 
-		VALUES (nextval('prod_seq'), #{prod_code}, #{prod_title}, #{prod_price}, #{prod_price_sale}, #{prod_amount}, #{prod_comment}, #{prod_point}, #{prod_title_image})
+		INSERT INTO product (prod_seq, prod_code, prod_title, prod_price, prod_price_sale, prod_amount, prod_comment, prod_point, prod_title_image,
+							prod_discount_rate, prod_point_rate) 
+		VALUES (nextval('prod_seq'), #{prod_code}, #{prod_title}, #{prod_price}, #{prod_price_sale}, #{prod_amount}, #{prod_comment}, #{prod_point}, #{prod_title_image},
+				#{prod_discount_rate}, #{prod_point_rate})
 	</insert>
 	
 	<update id="update">
 		UPDATE product SET prod_code = #{prod_code}, prod_title = #{prod_title}, prod_price = #{prod_price}, prod_price_sale=#{prod_price_sale},
-						prod_amount = #{prod_amount}, prod_comment = #{prod_comment}, prod_point = #{prod_point}, prod_title_image = #{prod_title_image}
+						prod_amount = #{prod_amount}, prod_comment = #{prod_comment}, prod_point = #{prod_point}, prod_title_image = #{prod_title_image},
+						prod_discount_rate = #{prod_discount_rate}, prod_point_rate = #{prod_point_rate}
 		WHERE prod_seq = #{prod_seq}
 	</update>	
 	

@@ -20,7 +20,7 @@
 	<form action="/login.do" name="form1" method="post">
 		<ul class="frm-list">
 			<li class="id">
-			<input onkeyup="enterkey();" type="text" name="user_id" id="user_id" placeholder="아이디" onfocus="this.placeholder=''" onblur="this.placeholder='아이디'" maxlength="20" />
+			<input onkeyup="enterkey();" type="text" name="user_id" id="user_id" placeholder="아이디" onfocus="this.placeholder=''" onblur="this.placeholder='아이디'" maxlength="20" autofocus="autofocus"/>
 			</li>
 			
 			<li class="pwd">
