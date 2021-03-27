@@ -19,4 +19,5 @@
 	
 	<!-- 홈 컨트롤러 -->
 	<context:component-scan base-package="com.spring.w3m.login.user" />
+	<context:component-scan base-package="com.spring.w3m.review.user" />
 </beans:beans>
