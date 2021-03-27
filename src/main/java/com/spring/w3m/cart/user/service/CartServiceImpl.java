@@ -45,4 +45,16 @@ public class CartServiceImpl implements CartService{
 		return dao.Cart_alldelete(user_id);
 	}
 
+	@Override
+	public void Cart_insert(CartVO vo) {
+		dao.Cart_insert(vo);
+		
+	}
+
+	@Override
+	public int Cart_distinct(CartVO vo) {
+		
+		return dao.Cart_distinct(vo);
+	}
+
 }

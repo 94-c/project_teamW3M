@@ -39,4 +39,13 @@ public class CartDAO {
 		System.out.println("장바구니 비우기");
 		return sqlSessionTemplate.delete("CartDAO.Cart_AllDelete",user_id);
 	}
+
+	public void Cart_insert(CartVO vo) {
+		sqlSessionTemplate.insert("CartDAO.Cart_insert",vo);
+		
+	}
+	public int Cart_distinct(CartVO vo) {
+		return sqlSessionTemplate.insert("CartDAO.Cart_distinct",vo);
+		
+	}
 }

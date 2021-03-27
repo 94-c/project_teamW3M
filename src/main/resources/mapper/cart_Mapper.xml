@@ -23,7 +23,7 @@
 	 cart_id,
 	 p.prod_code,
 	 prod_title_image,
-	 prod_url,
+	 p.prod_seq,
 	 p.prod_title,
 	 c.order_cnt,
 	 p.prod_point,
@@ -57,5 +57,13 @@
 	<delete id="Cart_AllDelete" parameterType="String">
 	Delete FROM cart where user_id = #{user_id}
 	</delete>
+	
+	<insert id="Cart_insert" parameterType="CartVO">
+	INSERT INTO cart (cart_id, user_id, prod_code, order_cnt) values(nextval('cart_seq'),#{user_id},#{prod_code},#{order_cnt}) 
+	</insert>
+	
+	<select id="Cart_distinct" parameterType="CartVO" resultType="int">
+		SELECT count(*) FROM cart WHERE user_id=#{user_id} AND prod_code = #{prod_code}
+	</select>
 
 </mapper>

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import com.spring.w3m.cart.user.service.CartService;
 import com.spring.w3m.cart.user.vo.CartVO;
 import com.spring.w3m.join.user.vo.UserVO;
+import com.spring.w3m.product.admin.vo.ProductVO;
 
 @Controller
 public class CartController {
@@ -23,6 +24,31 @@ public class CartController {
 	private CartService cartService;
 	
 	
+	@RequestMapping("/send_cart.do")
+	@ResponseBody
+	public int send_Cart(@RequestBody ProductVO productvo, @SessionAttribute("userVO") UserVO vo,HttpSession session) {
+		System.out.println(productvo.getProd_amount());
+		System.out.println(productvo.getProd_code());
+		System.out.println(vo.getUser_id());
+		CartVO cartvo = new CartVO();
+		
+		cartvo.setUser_id(vo.getUser_id());
+		cartvo.setProd_code(productvo.getProd_code());
+		cartvo.setOrder_cnt(productvo.getProd_amount());
+		int check = cartService.Cart_distinct(cartvo); // 장바구니 중복 확인
+		
+		if(check == 0) {
+			cartService.Cart_insert(cartvo);
+		}
+		
+		
+		
+		
+		
+		
+		return check;
+		
+	}
 	@RequestMapping("/GoCart.do")
 	public String GoCart(@SessionAttribute("userVO") UserVO vo,HttpSession session) {
 		//vo = (UserVO) session.getAttribute("userVO");

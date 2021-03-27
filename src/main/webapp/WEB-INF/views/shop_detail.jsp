@@ -2,6 +2,87 @@
 	pageEncoding="UTF-8"%>
 <%@include file="/WEB-INF/views/include/header.jsp"%>
 <title>${product.prod_title }</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+<script type="text/javascript">
+
+
+function cnt_amount(button){
+	
+	var title=$("#prod_title").val();
+	var amount=$("#prod_amount").val();
+	var count=$("#amount_val").val();
+	var totalprice = $("#prod_price_sale").val();
+	console.log("button:"+ button);
+	console.log("title:"+title);
+	console.log("amount:"+amount);
+	console.log("count:"+count);
+	if(button =='text'){
+		if(count-amount > 0 ){
+		console.log("텍스트필드amoun "+amount);
+			alert("1("+title+ ") 상품의 재고가 현재"+amount+"개 입니다.\n수량/상품 체크를 다시하시기 바랍니다.\n\n감사합니다.");
+			count = amount;
+			$("#amount_val").val(count);
+			return;
+		}
+		$("#amount_val").val(count);
+	}
+	if(button =='up'){
+		count++;
+		if(count > amount){
+			alert("2("+title+ ") 상품의 재고가 현재"+amount+"개 입니다.\n수량/상품 체크를 다시하시기 바랍니다.\n\n감사합니다.");
+			count--;
+			return;
+		}
+		$("#amount_val").val(count);
+	}
+	if(button =='down'){
+		count--;
+		if(count <= 0){
+			alert("해당 상품은 최소구매 수량이 1개 입니다.");
+			count++;
+			return;
+		}
+		$("#amount_val").val(count);
+	} 
+	
+	var aaa = count*totalprice;
+	var bbb = aaa.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	console.log(aaa);
+	console.log(bbb);
+	$("#totalPlace1").text(bbb);
+	$("#totalPlace2").text(bbb);
+	
+}
+function send_cart(code){
+	var prod_code = code;
+	var prod_amount = $("#amount_val").val();
+	console.log("code :" +code);
+	console.log("prod_amount :" +prod_amount);
+	alldata={prod_code:prod_code , prod_amount: prod_amount};
+	$.ajax({
+		url : "/send_cart.do",
+		type : "POST",
+		data : JSON.stringify(alldata),
+		dataType : "json",
+		contentType: "application/json; charset=UTF-8",
+		success:function(aa){
+			if (aa==1){//실패 중복 물품
+			console.log("해당 물품은 이미 장바구니에 존재합니다.");
+			}
+			
+			
+		},
+		error:function(data){
+			console.log(data+"에러?");
+		}
+	
+	});
+}
+
+
+
+</script>
 <body>
 	<div id="contentWrapper">
 		<div id="contentWrap">
@@ -24,36 +105,9 @@
 							
 							<!-- .thumb-wrap -->
 							<form name="form1" method="post" id="form1" action="/shop/basket.html">
-								<input type="hidden" name="brandcode" value="023002000050">
-								<input type="hidden" name="branduid" value="1007246"> 
-								<input type="hidden" name="xcode" value="023"> 
-								<input type="hidden" name="mcode" value="002"> 
-								<input type="hidden" name="typep" value="X"> 
-								<input type="hidden" name="ordertype"> 
-								<input type="hidden" name="opts"> 
-								<input type="hidden" name="mode">
-								<input type="hidden" name="optioncode"> 
-								<input type="hidden" name="optiontype"> 
-								<input type="hidden" name="optslist"> 
-								<input type="hidden" id="price" name="price" value="42,000"> 
-								<input type="hidden" id="disprice" name="disprice" value=""> 
-								<input type="hidden" id="price_wh" name="price_wh" value="42,000">
-								<input type="hidden" id="disprice_wh" name="disprice_wh" value=""> 
-								<input type="hidden" id="option_type_wh" name="option_type_wh" value="NO"> 
-								<input type="hidden" id="prd_hybrid_min" name="prd_hybrid_min" value="1"> 
-								<input type="hidden" name="MOBILE_USE" value="NO"> 
-								<input type="hidden" name="product_type" id="product_type" value="NORMAL"> 
-								<input type="hidden" name="multiopt_direct" value=""> 
-								<input type="hidden" name="collbasket_type" value="Y"> 
-								<input type="hidden" name="package_chk_val" value="0"> 
-								<input type="hidden" name="miniq" id="miniq" value="1"> 
-								<input type="hidden" name="maxq" id="maxq" value="2147483647"> 
-								<input type="hidden" name="cart_free" value=""> 
-								<input type="hidden" name="opt_type" value="NO"> 
-								<input type="hidden" name="hybrid_op_price" id="hybrid_op_price" value=""> 
-								<input type="hidden" name="basket_use" id="basket_use" value="Y"> 
-								<input type="hidden" name="spcode">
-								<input type="hidden" name="spcode2">
+								<input type="hidden" name="prod_amount" id="prod_amount" value="${product.prod_amount }">
+								<input type="hidden" name="prod_title" id="prod_title" value="${product.prod_title }">
+								<input type="hidden" name="prod_price_sale" id="prod_price_sale" value="${product.prod_price_sale}">
 								<div class="info">
 
 									<p class="prd-icon">
@@ -102,15 +156,15 @@
 																			id="MS_keys_basic_0" value="0:0" class="basic_option"><span
 																			class="MK_p-name"><!-- 상품명 --></span>
 																		<div class="MK_qty-ctrl">
-																				<input type="text" id="MS_amount_basic_0" name="amount[]" value="1" onfocusout="set_amount(this, 'basic');" size="4" style="text-align: right; float: left;"
+																				<input type="text" name="amount" id="amount_val" value="1" onfocusout="cnt_amount('text');" size="4" style="text-align: right; float: left;"
 																					class="basic_option" maxlength="">
-																					<a href="javascript:set_amount('MS_amount_basic_0', 'basic', 'up');" class="MK_btn-up">
+																					<a href="javascript:cnt_amount('up');" class="MK_btn-up">
 																					<img src="/images/common/basket_up.gif" alt="수량증가" border="0"></a>
-																					<a href="javascript:set_amount('MS_amount_basic_0', 'basic', 'down');" class="MK_btn-dw">
+																					<a href="javascript:cnt_amount('down');" class="MK_btn-dw">
 																					<img src="/images/common/basket_down.gif" alt="수량감소" ㄴborder="0"></a>
 																			</div>
 																			<strong class="MK_price">
-																				<span id="MK_p_price_basic_0"><!-- 42,000 --></span>원</strong></li>
+																				<span id="totalPlace1"><fmt:formatNumber value="${product.prod_price_sale}" pattern="#,###" /></span>원</strong></li>
 																	</ul>
 																	<ul id="MK_innerOpt_02" class="MK_inner-opt-cm"></ul>
 																</div>
@@ -120,8 +174,8 @@
 																	</p>
 																	<!-- 총 상품금액 -->
 																	<p class="totalRight">
-																		<strong class="MK_total" id="MK_p_total"><!-- 42,000 --></strong>
-																		<span class="MK_txt-won">원</span>
+																		<strong class="MK_total" id="totalPlace2" ><fmt:formatNumber value="${product.prod_price_sale}" pattern="#,###" /></strong>
+																		<span class="MK_txt-won" >원</span>
 																	</p>
 																</div>
 																<div id="MK_innerOptPrice">
@@ -150,9 +204,20 @@
 									<div class="prd-btns">
 										<a href="javascript:send_multi('', 'baro', '');"
 											class="btn_buy fe">바로 구매하기</a> 
-											<a href="javascript:send_multi('', '');" class="btn_cart fe">장바구니 담기</a>
+											<c:if test="${login_state eq 'login' }" >
+											<a href="#cart_modal" rel ="modal:open" onclick="send_cart('${product.prod_code}');" class="btn_cart fe">장바구니 담기</a>
+											</c:if>
+											<c:if test="${login_state ne 'login' }" >
+					                  		<a href="loginForm.do" onClick="alert('로그인이 필요합니다.')" class="btn_cart fe">장바구니 담기</a>
+					              		    </c:if>
 									</div>
-
+									
+									<div id="cart_modal" class="modal">
+									<p align="center">1개의 (${product.prod_title})장바구니에 담겼습니다. 같은 상품을 중복선택 하는 경우에는 적용되지 않습니다.<br><b>지금 확인하시겠습니까?</b><br><br>  
+									</p>
+									<a href="GoCart.do" rel="" "><button>이동</button></a>&nbsp;&nbsp;&nbsp;
+									<a href="#" rel="modal:close"><button>계속쇼핑하기</button> </a>
+									</div>
 									<div class="barotalk"></div>
 
 								</div>

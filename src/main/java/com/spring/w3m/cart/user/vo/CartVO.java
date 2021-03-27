@@ -4,6 +4,7 @@ public class CartVO {
 	
 	private int cart_id; //cart 번호 seq
 	private String user_id; // user_member 테이블에 user_id -FK
+	private int prod_seq;//제품의 시퀀스
 	private String prod_code; //product 테이블에  prod_code -FK
 	private String prod_title; // product 테이블에 prod_title
 	private String prod_title_image; // product 테이블에 prod_title_image
@@ -16,12 +17,13 @@ public class CartVO {
 	
 	
 	
+	
 	@Override
 	public String toString() {
-		return "CartVO [cart_id=" + cart_id + ", user_id=" + user_id + ", prod_code=" + prod_code + ", prod_title="
-				+ prod_title + ", prod_title_image=" + prod_title_image + ", prod_url=" + prod_url + ", order_cnt="
-				+ order_cnt + ", prod_point=" + prod_point + ", prod_price=" + prod_price + ", total_point="
-				+ total_point + ", total_price=" + total_price + "]";
+		return "CartVO [cart_id=" + cart_id + ", user_id=" + user_id + ", prod_seq=" + prod_seq + ", prod_code="
+				+ prod_code + ", prod_title=" + prod_title + ", prod_title_image=" + prod_title_image + ", prod_url="
+				+ prod_url + ", order_cnt=" + order_cnt + ", prod_point=" + prod_point + ", prod_price=" + prod_price
+				+ ", total_point=" + total_point + ", total_price=" + total_price + "]";
 	}
 	public int getCart_id() {
 		return cart_id;
@@ -88,6 +90,12 @@ public class CartVO {
 	}
 	public void setTotal_point(int total_point) {
 		this.total_point = total_point;
+	}
+	public int getProd_seq() {
+		return prod_seq;
+	}
+	public void setProd_seq(int prod_seq) {
+		this.prod_seq = prod_seq;
 	}
 	
 	
