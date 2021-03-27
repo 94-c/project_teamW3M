@@ -58,7 +58,7 @@
 										<div class="form-group">
 											<label class="small mb-1" for="inputAddress">아이디</label> <input
 												class="form-control py-4" onkeyup="enterkey();" type="text"
-												name="admin_id" id="admin_id" />
+												name="admin_id" id="admin_id" autofocus="autofocus"/>
 										</div>
 
 										<div class="form-group">

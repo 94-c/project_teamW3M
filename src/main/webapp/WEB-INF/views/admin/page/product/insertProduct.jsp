@@ -21,7 +21,7 @@
 
 					<div class="form-group">
 						<label for="exampleFormControlInput1">상품코드</label> <input
-							type="text" class="form-control" id="prod_code" name="prod_code"
+							type="text" class="form-control" id="prod_code" name="prod_code" autofocus="autofocus"
 							placeholder="(상품코드 예시: MM-P-L-94-50 / 미세먼지마스크-프리미엄-사이즈-등급-몇개입)">
 					</div>
 					<div class="form-group">
