@@ -11,6 +11,7 @@
      <typeAlias type="com.spring.w3m.product.admin.vo.ProductVO" alias="ProductVO"/>
      <typeAlias type="com.spring.w3m.cart.user.vo.CartVO" alias="CartVO"/>
      <typeAlias type="com.spring.w3m.inquiry.user.vo.ReplyVO" alias="ReplyVO"  />
+     <typeAlias type="com.spring.w3m.review.user.vo.ReviewVO" alias="ReviewVO"/>
  </typeAliases>
 	<mappers>
 		<mapper resource="mapper/joe_Mapper.xml" />
@@ -21,5 +22,6 @@
 		<mapper resource="mapper/product_Mapper.xml" />	
 		<mapper resource="mapper/cart_Mapper.xml" />	
 		<mapper resource="mapper/reply_Mapper.xml" />	
+		<mapper resource="mapper/review.xml" />
 	</mappers>
 </configuration>
