@@ -30,7 +30,6 @@ public class ReviewController {
 	// 게시판 글 작성하기(화면)
 		@RequestMapping("/review_write_view.do")
 		public String reviewWrite(ReviewVO vo, Model model) {
-			/* model.addAttribute("reviewList", reviewService.getReviewList(vo)); */
 			return "review/review_write";
 		}
 		
