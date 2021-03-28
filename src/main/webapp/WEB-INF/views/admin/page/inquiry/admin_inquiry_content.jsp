@@ -65,7 +65,7 @@
 	</div>
 </main>
 <%@include file="/WEB-INF/views/admin/page/include/admin_footer.jsp"%>
-<<script type="text/javascript">
+<script type="text/javascript">
 function insert()
 {
 	var insertform = document.insertform;
