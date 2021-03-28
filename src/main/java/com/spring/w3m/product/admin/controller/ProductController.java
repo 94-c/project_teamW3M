@@ -1,7 +1,6 @@
 package com.spring.w3m.product.admin.controller;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +11,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.spring.w3m.product.admin.service.ProductService;
 import com.spring.w3m.product.admin.vo.ProductVO;
-import com.spring.w3m.upload.common.AwsS3;
 
 @Controller
 public class ProductController {
@@ -66,18 +64,9 @@ public class ProductController {
 	public String updateProduct(ProductVO vo, MultipartFile prod_thumb, MultipartFile image1, MultipartFile image2, MultipartFile image3, 
 			MultipartFile image4, MultipartFile image5, MultipartFile image6, MultipartFile image7, MultipartFile image8, MultipartFile image9, 
 			MultipartFile image10) throws IOException {
-//		System.out.println(prod_thumb);
-//		InputStream ism = prod_thumb.getInputStream();
-//		String fileName = prod_thumb.getOriginalFilename();
-//		String contentType = prod_thumb.getContentType();
-//		long contentLength = prod_thumb.getSize();
-//		
-//		awsS3.uploadProduct(ism, fileName, contentType, contentLength); //상품이미지 업로드
-//		String path = "https://imageup.s3.ap-northeast-2.amazonaws.com/product/" + fileName;
-//		vo.setProd_title_image(path);
-//		System.out.println(vo.getProd_title_image());
 		
 		service.updateProduct(vo, prod_thumb, image1, image2, image3, image4, image5, image6, image7, image8, image9, image10);
+		
 		return "redirect:/getProductList.mdo";
 	}
 	

@@ -46,15 +46,17 @@
 
 	$(document).ready(function() {
 			/*할인가,적립금 계산*/
-			$("#prod_price_sale").click(function() {
-				var discount = (100 - $("#prod_discount_rate").val()) / 100;
-				var salePrice = $("#prod_price").val() * discount;
-				$("#prod_price_sale").val(salePrice);
-			});
-			$("#prod_point").click(function() {
-				var pointRate = $("#prod_point_rate").val() / 100;
-				var point = $("#prod_price").val() * pointRate;
-				$("#prod_point").val(point);
+			$(document).ready(function(){
+				$("#prod_price_sale").click(function(){
+					var discount = (100-$("#prod_discount_rate").val())/100;
+					var salePrice = $("#prod_price").val() * discount;
+					$("#prod_price_sale").val(salePrice);
+				});
+				$("#prod_point").click(function(){
+					var pointRate = $("#prod_point_rate").val()/100;
+					var point = $("#prod_price").val() * pointRate;
+					$("#prod_point").val(point); 
+				});
 			});
 
 			/*파일업로드 추가*/

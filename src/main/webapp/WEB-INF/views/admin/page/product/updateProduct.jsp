@@ -6,12 +6,12 @@
 <script>
 $(document).ready(function(){
 	$("#prod_price_sale").click(function(){
-		var discount = (100-$("#discount_rate").val())/100;
+		var discount = (100-$("#prod_discount_rate").val())/100;
 		var salePrice = $("#prod_price").val() * discount;
 		$("#prod_price_sale").val(salePrice);
 	});
 	$("#prod_point").click(function(){
-		var pointRate = $("#point_rate").val()/100;
+		var pointRate = $("#prod_point_rate").val()/100;
 		var point = $("#prod_price").val() * pointRate;
 		$("#prod_point").val(point); 
 	});
@@ -53,13 +53,13 @@ $(document).ready(function(){
 					</div>
 					<div class="form-group">
 						<label for="exampleFormControlInput1">할인율(단위 :%)</label> <input value="${product.prod_discount_rate}"
-							type="text" class="form-control" id="discount_rate"
-							name="discount_rate" placeholder="할인율을 입력해주세요. (숫자만 입력)">
+							type="text" class="form-control" id="prod_discount_rate"
+							name="prod_discount_rate" placeholder="할인율을 입력해주세요. (숫자만 입력)">
 					</div>
 					<div class="form-group">
 						<label for="exampleFormControlInput1">적립률(단위 :%)</label> <input value="${product.prod_point_rate}"
-							type="text" class="form-control" id="point_rate"
-							name="point_rate" placeholder="적립률을 입력해주세요. (숫자만 입력)">
+							type="text" class="form-control" id="prod_point_rate"
+							name="prod_point_rate" placeholder="적립률을 입력해주세요. (숫자만 입력)">
 					</div>
 					<div class="form-group">
 						<label for="exampleFormControlInput1">할인가</label> <input value="${product.prod_price_sale}"

@@ -17,7 +17,22 @@ public class ProductServiceImpl implements ProductService{
 	
 	@Autowired
 	private ProductDAO  dao;	
-	public AwsS3 awsS3 = AwsS3.getInstance();
+	public AwsS3 awsS3 = AwsS3.getInstance();	
+
+	@Override
+	public List<ProductVO> getProductList(ProductVO vo) {		
+		return dao.getProductList(vo);
+	}
+	
+	@Override
+	public ProductVO getProduct(ProductVO vo) {		
+		return dao.getProduct(vo);
+	}
+
+	@Override
+	public void deleteProduct(ProductVO vo) {
+		dao.deleteProduct(vo);
+	}
 	
 	@Override
 	public void insertProduct(ProductVO vo, MultipartFile prod_thumb, MultipartFile image1, MultipartFile image2, MultipartFile image3, 
@@ -36,26 +51,9 @@ public class ProductServiceImpl implements ProductService{
 			vo.setProd_image9(singleUpload(image9));
 			vo.setProd_image10(singleUpload(image10));
 			
-			dao.insertProduct(vo);			
+			dao.insertProduct(vo);
 	}
-
-	@Override
-	public List<ProductVO> getProductList(ProductVO vo) {
-		
-		return dao.getProductList(vo);
-	}
-
-	@Override
-	public void deleteProduct(ProductVO vo) {
-		dao.deleteProduct(vo);
-	}
-
-	@Override
-	public ProductVO getProduct(ProductVO vo) {
-		
-		return dao.getProduct(vo);
-	}
-
+	
 	@Override
 	public void updateProduct(ProductVO vo, MultipartFile prod_thumb, MultipartFile image1, MultipartFile image2, MultipartFile image3, 
 			MultipartFile image4, MultipartFile image5, MultipartFile image6, MultipartFile image7, MultipartFile image8,
@@ -76,15 +74,19 @@ public class ProductServiceImpl implements ProductService{
 		dao.updateProduct(vo);
 	}
 	
-	public String singleUpload(MultipartFile file) throws IOException {
-		InputStream ism = file.getInputStream();
-		String fileName = file.getOriginalFilename();
-		String contentType = file.getContentType();
-		long contentLength = file.getSize();
+	public String singleUpload(MultipartFile file) throws IOException {	
 		
-		awsS3.uploadProduct(ism, fileName, contentType, contentLength); //상품이미지 업로드
-		
-		return "https://imageup.s3.ap-northeast-2.amazonaws.com/product/" + fileName;
+		if(file == null) { //업로드한 파일이 없을 경우
+			return "";
+		}else {
+			InputStream ism = file.getInputStream();
+			String fileName = file.getOriginalFilename();
+			String contentType = file.getContentType();
+			long contentLength = file.getSize();
+			
+			awsS3.uploadProduct(ism, fileName, contentType, contentLength); //상품이미지 업로드
+			return "https://imageup.s3.ap-northeast-2.amazonaws.com/product/" + fileName;
+		}
 	}
 	
 }
