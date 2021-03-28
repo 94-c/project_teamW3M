@@ -6,6 +6,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.spring.w3m.inquiry.user.vo.InquiryVO;
+import com.spring.w3m.paging.common.Search;
 import com.spring.w3m.product.admin.vo.ProductVO;
 
 @Repository
@@ -21,5 +23,15 @@ public class HomeDAO {
 	public ProductVO getProduct(ProductVO vo) {
 		System.out.println("DAO 실행");
 		return sqlSessionTemplate.selectOne("HomeDAO.getProduct", vo);
+	}
+	
+	public List<InquiryVO> productInq(Search search){
+		System.out.println("inq dao");
+		return sqlSessionTemplate.selectList("HomeDAO.productInq",search);
+	}
+	
+	public int getInquiryListCnt(Search search) {
+		System.out.println("getInquiryListCnt() 실행");
+		return sqlSessionTemplate.selectOne("HomeDAO.getInquiryListCnt");
 	}
 }

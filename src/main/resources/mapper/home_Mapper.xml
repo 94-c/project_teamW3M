@@ -21,4 +21,24 @@
   WHERE
    prod_seq=#{prod_seq}
   </select>
+  
+  <select id="productInq" resultType="com.spring.w3m.inquiry.user.vo.InquiryVO">
+  select
+	*
+  from 
+  	inquiry
+  where 1=1
+	<if test="searchType=='inq_title' and keyword != null and keyword != '' ">
+		AND inq_title like CONCAT('%', #{keyword}, '%')
+	</if>
+	<if test="searchType=='inq_content' and keyword != null and keyword != '' ">
+		AND inq_content like CONCAT('%', #{keyword}, '%')
+	</if>
+	order by inq_seq desc
+	limit #{listSize} offset #{startList}
+  </select>
+  
+  <select id="getInquiryListCnt" resultType="int">
+		select count(*) from inquiry
+	</select>
  </mapper>

@@ -1,12 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/WEB-INF/views/include/header.jsp"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <title>${product.prod_title }</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+<link href="resources/admin_css/pagination.css" rel="stylesheet" type="text/css">
+<link href="resources/admin_css/styles.css" rel="stylesheet" type="text/css">
+<link href="resources/css/notification.css" rel="stylesheet" 	type="text/css">
+
 <script type="text/javascript">
-
-
 function cnt_amount(button){
 	
 	var title=$("#prod_title").val();
@@ -372,7 +375,7 @@ function send_cart(code){
 						<div class="tit-detail">
 							<h3 class="fe">제품문의</h3>
 							<p class="more fe">
-								<a href="#">+ 더보기</a>
+								<a href="inquiry.do">+ 더보기</a>
 							</p>
 						</div>
 						<div class="table-slide qna-list">
@@ -397,16 +400,62 @@ function send_cart(code){
 									</tr>
 								</thead>
 								<tbody>
-									
+									<c:forEach var="inquiryVO" items="${inquiry}">
+										<tr>
+											<td scope="col"><div class="tb-center">${inquiryVO.inq_seq}</div></td>
+											<td scope="col"><div class="tb-center">&nbsp;</div></td>
+											<td scope="col"><div class="tb-center">
+													<a
+														href='<c:url value='/inquiryContent.do?inq_seq=${inquiryVO.inq_seq}'/>'
+														class="text-dark">${inquiryVO.inq_title}</a>
+												</div></td>
+											<td scope="col"><div class="tb-center">
+													<c:if
+														test="${inquiryVO.inq_writer ne null && inquiryVO.inq_writer!=''}">${fn:substring(inquiryVO.inq_writer,0,fn:length(inquiryVO.inq_writer)-1)}*</c:if>
+												</div></td>
+											<td scope="col"><div class="tb-center">
+													<fmt:formatDate value="${inquiryVO.inq_date}"
+														pattern="yyyy-MM-dd" />
+												</div></td>
+											<td scope="col"><div class="tb-center">${inquiryVO.inq_cnt}</div></td>
+										</tr>
+									</c:forEach>
 								</tbody>
 							</table>
+							<div id="paginationBox">
+								<ul class="pagination">
+									<c:if test="${pagination.prev}">
+										<li class="page-item"><a class="page-link" href="#"
+											onClick="fn_prev('${product.prod_seq }','${pagination.page}', '${pagination.range}', '${pagination.rangeSize}')">Previous</a></li>
+									</c:if>
+
+									<c:forEach begin="${pagination.startPage}"
+										end="${pagination.endPage}" var="idx">
+										<li
+											class="page-item <c:out value="${pagination.page == idx ? 'active' : ''}"/> "><a
+											class="page-link" href="#"
+											onClick="fn_pagination('${product.prod_seq }','${idx}', '${pagination.range}', '${pagination.rangeSize}')">
+												${idx} </a></li>
+									</c:forEach>
+
+									<c:if test="${pagination.next}">
+										<li class="page-item"><a class="page-link" href="#"
+											onClick="fn_next('${product.prod_seq }','${pagination.range}', '${pagination.range}', '${pagination.rangeSize}')">Next</a></li>
+									</c:if>
+								</ul>
+							</div>
 							<div class="list-btm">
 								<div class="paging-wrap">
 									<div class="paging">
 									</div>
 								</div>
 								<div class="btm_write">
-									<a href="#">문의하기</a>
+									 <c:if test="${login_state eq 'login' }">
+                    					 <li><a href="inquiry_write_view.do">문의하기</a></li>
+                    				 </c:if>
+                   					 <c:if test="${login_state ne 'login' }">
+                    					 <li><a href="loginForm.do" onClick="alert('로그인이 필요합니다.')">문의하기</a></li>
+                     				</c:if> 
 								</div>
 
 							</div>
@@ -432,4 +481,51 @@ function send_cart(code){
 	</div>
 
 </body>
+<script type="text/javascript">
+	//이전 버튼 이벤트
+	function fn_prev(prod_seq,page, range, rangSize, searchKeyword) {
+		var page = ((range - 2) * rangeSize) + 1;
+		var range = range - 1;
+		var url = "${pagContext.request.contextPath}/getProduct";
+		url = url + "?prod_seq=" + prod_seq;
+		url = url + "&page=" + page;
+		url = url + "&range=" + range;
+		url = url + "&searchKeyword" + searchKeyword;
+		url = url + "#detailQna";
+		location.href = url;
+	}
+
+	//페이지 번호 클릭
+	function fn_pagination(prod_seq,page, range, rangSize, searchKeyword) {
+		var url = "${pagContext.request.contextPath}/getProduct";
+		url = url + "?prod_seq=" + prod_seq;
+		url = url + "&page=" + page;
+		url = url + "&range=" + range;
+		url = url + "&searchKeyword" + searchKeyword;
+		url = url + "#detailQna";
+		location.href = url;
+	}
+
+	//다음 버튼 이벤트
+	function fn_next(prod_seq,page, range, rangSize, searchKeyword) {
+		var page = parseInt((range * rangeSize)) + 1;
+		var range = parseInt(range) + 1;
+		var url = "${pagContext.request.contextPath}/getProduct";
+		url = url + "?prod_seq=" + prod_seq;
+		url = url + "&page=" + page;
+		url = url + "&range=" + range;
+		url = url + "&searchKeyword" + searchKeyword;
+		url = url + "#detailQna";
+		location.href = url;
+	}
+
+	$(document).on('click', '#btnSearch', function(e) {
+		e.preventDefault();
+		var url = "${pageContext.request.contextPath}/getProduct";
+		url = url + "&searchType=" + $('#searchType').val();
+		url = url + "&keyword=" + $('#keyword').val();
+		location.href = url;
+		console.log(url);
+	});
+</script>
 <%@include file="/WEB-INF/views/include/footer.jsp"%>
