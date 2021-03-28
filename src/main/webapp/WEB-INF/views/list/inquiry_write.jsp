@@ -14,7 +14,7 @@
 					</div>
 					<div class="bbs-table-write">
 <!-- 				<form role="form" method="post" action="inquiry_write.do">  -->		
-						    <form name="fileForm" action="inquiry_write.do" method="post" enctype="multipart/form-data">
+						    <form name="writeform" action="inquiry_write.do" method="post" enctype="multipart/form-data">
 							<input type="hidden" name="lock" value="Y">
 							<fieldset>
 								<legend>일반게시판 쓰기</legend>
@@ -30,32 +30,32 @@
 										<tr>
 											<th><div>이름</div></th>
 											<td><div>
-													<input id="bw_input_writer" type="text" name="inq_writer" class="MS_input_txt input_style1" value="${userVO.user_name}">
+													<input id="writer_check" type="text" name="inq_writer" class="MS_input_txt input_style1" value="${userVO.user_name}">
 												</div></td>
 											<th><div>비밀번호</div></th>
 											<td>
 												<div>
-													<input id="bw_input_passwd" type="password" name="inq_pass" class="MS_input_txt input_style"> 
+													<input id="pass_check" type="password" name="inq_pass" class="MS_input_txt input_style"> 
 												</div>
 											</td>
 										</tr>
 										<tr>
 											<th><div>이메일</div></th>
 											<td colspan="3"><div>
-													<input id="bw_input_email" type="text" class="MS_input_txt input_style1" name="inq_email" value="${userVO.user_email}">
+													<input id="email_check" type="text" class="MS_input_txt input_style1" name="inq_email" value="${userVO.user_email}">
 												</div></td>
 										</tr>
 										<tr>
 											<th><div>제목</div></th>
 											<td colspan="3"><div>
-												<input id="bw_input_title" type="text" class="MS_input_txt input_style1" name="inq_title">
+												<input id="title_check" type="text" class="MS_input_txt input_style1" name="inq_title">
 												</div></td>
 										</tr>
 										<tr>
 											<th><div>내용</div></th>
 											<td colspan="3" class="text_content">
 												<div>
-													<textarea id="MS_text_content" name="inq_content" wrap="off" onfocus="clear_content()" class="MS_input_txt" style="font-family: 굴림체;"></textarea>
+													<textarea id="content_check" name="inq_content" wrap="off" onfocus="clear_content()" class="MS_input_txt" style="font-family: 굴림체;"></textarea>
 													<input type="hidden" name="mobile_content_type" value="">
 												</div>
 											</td>
@@ -78,7 +78,7 @@
 							<dl class="bbs-link bbs-link-btm">
 								<dt></dt>
 								<dd>
-									<button type="submit" class="CSSbuttonBlack" id="contentbutton">등록하기</button>
+									<button type="button" class="CSSbuttonBlack" id="contentbutton" onclick="blankCheck()">등록하기</button>
 								<!-- 	<a href= "#" class="CSSbuttonWhite">목록보기</a> -->
 								</dd>
 							</dl>
@@ -94,6 +94,28 @@
 	</div>
 	<!-- #contentWrap -->
 </div>
+<script type="text/javascript">
 
+function blankCheck()
+{
+	var writeform = document.writeform;
+	var pass = writeform.pass_check.value;
+	var title = writeform.title_check.value;
+	
+	if(!pass){
+		alert("비밀번호를 입력해주세요.")
+		document.getElementById('pass_check').focus();
+		} else if(!title){
+			document.getElementById('title_check').value = '제목없음';
+			writeform.submit();
+		}
+		else{
+			writeform.submit();
+
+	}
+}
+
+
+</script>
 
 <%@include file="/WEB-INF/views/include/footer.jsp"%>

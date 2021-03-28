@@ -89,7 +89,7 @@
 												<div style="height:auto; width:auto; border-bottom:1px solid gray;">${replyList.re_writer}
 												<font id="commentDate"><fmt:formatDate value="${inquiryVO.inq_date }" pattern="yyyy-MM-dd HH:mm:ss" /></font><br/> 
 												<br>
-												<pre><font id="content" size="4pt">${replyList.re_content}</font></pre><br/>
+												<pre><font id="commentContent">${replyList.re_content}</font></pre><br/>
 												</div>											
 				
 									</c:forEach>

@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.postgresql.util.PSQLException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -184,10 +186,29 @@ public class InquiryController {
 	
 	//댓글 쓰기
 	@RequestMapping("/insertReply.mdo")
-	public String insetReply(ReplyVO rvo, InquiryVO vo, Model model) {
+	public String insetReply(ReplyVO rvo, @RequestParam("reply_text") String re_content) {
+		rvo.setRe_content(re_content);
 		replyService.insertReply(rvo);
-		return "redirect:/admin_inquiry_content.mdo?inq_seq="+vo.getInq_seq();
+		return "redirect:/admin_inquiry_content.mdo?inq_seq="+rvo.getInq_seq();
 	}
+	
+	//댓글 삭제
+	@RequestMapping("/deleteReply.mdo")
+	public String deleteReply(ReplyVO rvo) {
+		int seq = rvo.getInq_seq();
+		replyService.deleteReply(rvo);
+		return "redirect:/admin_inquiry_content.mdo?inq_seq="+seq;
+	}
+	
+	//댓글 수정
+	@RequestMapping("/updateReply.mdo")
+	public String updateReply(ReplyVO rvo, @RequestParam("re_content_up") String re_content) {
+		int seq = rvo.getInq_seq();
+		rvo.setRe_content(re_content);
+		replyService.updateReply(rvo);
+		return "redirect:/admin_inquiry_content.mdo?inq_seq="+seq;
+	}
+		
 }
 	
 
