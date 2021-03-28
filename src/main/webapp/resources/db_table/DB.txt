@@ -64,16 +64,16 @@ CREATE TABLE new_prod_destination(
 --상품  등록 테이블--
 CREATE TABLE PRODUCT(
 	prod_seq int NOT NULL, -- 시퀀스넘버
-  	prod_code varchar(30) NOT NULL, --  PK 제품코드 (ex 미세먼지 마스크(KF94) L 사이즈 - MM-P-L-94-1 )
-	prod_title varchar(200), -- 게시글 제목 (ex W3M 미세먼지 마스크 KF-94 대형 50개입) 
-	prod_title_image varchar(200), --게시글 이미지 
+  	prod_code varchar(30) NOT NULL, -- PK 제품코드 (ex 프리미엄 미세먼지 마스크(KF94) L사이즈 25개입 : MM-P-L-94-25 )
+	prod_title varchar(200), -- 게시글 제목 (ex W3M 프리미엄 미세먼지 마스크 KF-94 대형 50개입) 
+	prod_title_image varchar(200), --상품 등록 대표이미지 
 	prod_category1 varchar(10), -- 대분류 카테고리 ex( 미세먼지 - MM / 비말 - BB)
 	prod_category2 varchar(10), -- 소분류 카테고리 ex( 프리미얼 - P / 노말 - N / 블랙 - B )
 	prod_category3 varchar(10), -- 사이즈 카테고리 ex( S/M/L )
 	prod_category4 varchar(10), -- 등급 카테고리 ex( 94 / 80 )
 	prod_price int default 0, -- 원가
 	prod_price_sale int default 0, -- 할인가
-	prod_discount_rate int default 0, -- 할인률
+	prod_discount_rate int default 0, -- 할인율
 	prod_point int, -- 적립금
 	prod_point_rate int, -- 적립률
 	prod_amount int default 0, --수량 
@@ -88,9 +88,9 @@ CREATE TABLE PRODUCT(
 	prod_image8 varchar(200), --이미지8
 	prod_image9 varchar(200), --이미지9
 	prod_image10 varchar(200), --이미지10
-	prod_state varchar(5) default 'y', -- 판매 : y, 판매중단 : n    
+	prod_state varchar(5) default 'y', -- 판매 : y, 판매중단 : n
 	prod_regdate TIMESTAMP WITH TIME ZONE DEFAULT current_timestamp, --등록 날짜
-	prod_count int default '0', -- 조회수 ~
+	prod_count int default '0', -- 조회수
 	
 	CONSTRAINT product_prod_code_pk PRIMARY KEY (prod_code)
 );

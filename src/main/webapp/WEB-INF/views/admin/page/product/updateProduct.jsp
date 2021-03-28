@@ -3,26 +3,18 @@
 <%@include file="/WEB-INF/views/admin/page/include/admin_header.jsp"%>
 
 <title>상품등록정보 수정</title>
-<script>
-$(document).ready(function(){
-	$("#prod_price_sale").click(function(){
-		var discount = (100-$("#prod_discount_rate").val())/100;
-		var salePrice = $("#prod_price").val() * discount;
-		$("#prod_price_sale").val(salePrice);
-	});
-	$("#prod_point").click(function(){
-		var pointRate = $("#prod_point_rate").val()/100;
-		var point = $("#prod_price").val() * pointRate;
-		$("#prod_point").val(point); 
-	});
-});
-</script>
+
 <main>
 	<div class="container-fluid">
 		<h1 class="mt-4">상품 관리 페이지</h1>
-		<ol class="breadcrumb mb-4">
-			<li>상품코드/상품명 작성법 들어갈 곳</li>
-		</ol>
+		<p>※ 상품코드 작성법<p>
+			<p>1단계 : MM:미세먼지마스크 / BB:비말차단마스크 / SS:손소독제</p>
+			<p>2단계 : P:프리미엄 / N:일반 / B:블랙</p>
+			<p>3단계 : L:대형 / M:중형 / S:소형 / XS:초소형</p>
+			<p>4단계 : 94:KF-94 / 80:KF-80 / AD:KF-AD(비말차단) / ETH:손소독제</p>
+			<p>5단계 : 50:50개입 / 25:25개입 / 30:30개입(비말차단) / 1:손소독제</p>
+			<p>※ 상품명 작성법</p>
+			<p>W3M -> 2 -> 1 -> 4 -> 3 -> 5 순으로 작성 / 예시: W3M 일반 비말차단마스크 KF-AD 대형 30개입</p>
 		
 		<div class="card mb-4">
 			<div class="card-header">

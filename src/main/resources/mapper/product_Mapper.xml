@@ -15,10 +15,10 @@
 	<insert id="insert">
 		INSERT INTO product (prod_seq, prod_code, prod_title, prod_price, prod_price_sale, prod_amount, prod_comment, prod_point, prod_title_image,
 							prod_discount_rate, prod_point_rate, prod_image1, prod_image2, prod_image3, prod_image4, prod_image5, prod_image6, 
-							prod_image7, prod_image8, prod_image9, prod_image10) 
+							prod_image7, prod_image8, prod_image9, prod_image10, prod_category1, prod_category2, prod_category3, prod_category4) 
 		VALUES (nextval('prod_seq'), #{prod_code}, #{prod_title}, #{prod_price}, #{prod_price_sale}, #{prod_amount}, #{prod_comment}, #{prod_point}, #{prod_title_image},
 				#{prod_discount_rate}, #{prod_point_rate}, #{prod_image1}, #{prod_image2}, #{prod_image3}, #{prod_image4}, #{prod_image5}, #{prod_image6},
-				#{prod_image7}, #{prod_image8}, #{prod_image9}, #{prod_image10})
+				#{prod_image7}, #{prod_image8}, #{prod_image9}, #{prod_image10}, #{prod_category1}, #{prod_category2}, #{prod_category3}, #{prod_category4})
 	</insert>
 	
 	<update id="update">
@@ -26,7 +26,8 @@
 						prod_amount = #{prod_amount}, prod_comment = #{prod_comment}, prod_point = #{prod_point}, prod_title_image = #{prod_title_image},
 						prod_discount_rate = #{prod_discount_rate}, prod_point_rate = #{prod_point_rate}, prod_image1 = #{prod_image1}, prod_image2 = #{prod_image2},
 						prod_image3 = #{prod_image3}, prod_image4 = #{prod_image4}, prod_image5 = #{prod_image5}, prod_image6 = #{prod_image6},
-						prod_image7 = #{prod_image7}, prod_image8 = #{prod_image8}, prod_image9 = #{prod_image9}, prod_image10 = #{prod_image10}
+						prod_image7 = #{prod_image7}, prod_image8 = #{prod_image8}, prod_image9 = #{prod_image9}, prod_image10 = #{prod_image10},
+						prod_category1 = #{prod_category1}, prod_category2 = #{prod_category2}, prod_category3 = #{prod_category3}, prod_category4 = #{prod_category4}
 		WHERE prod_seq = #{prod_seq}
 	</update>	
 	

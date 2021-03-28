@@ -51,6 +51,9 @@ public class ProductServiceImpl implements ProductService{
 			vo.setProd_image9(singleUpload(image9));
 			vo.setProd_image10(singleUpload(image10));
 			
+			String prod_code = vo.getProd_code(); //상품코드 받아서 카테고리분류하는 작업
+			sortCategory(vo, prod_code);
+			
 			dao.insertProduct(vo);
 	}
 	
@@ -71,6 +74,9 @@ public class ProductServiceImpl implements ProductService{
 		vo.setProd_image9(singleUpload(image9));
 		vo.setProd_image10(singleUpload(image10));
 		
+		String prod_code = vo.getProd_code(); //상품코드 받아서 카테고리분류하는 작업
+		sortCategory(vo, prod_code);
+		
 		dao.updateProduct(vo);
 	}
 	
@@ -89,4 +95,12 @@ public class ProductServiceImpl implements ProductService{
 		}
 	}
 	
+	public void sortCategory(ProductVO vo, String prod_code) { //카테고리분류작업
+		String[] category = prod_code.split("-");
+		vo.setProd_category1(category[0]); //MM
+		vo.setProd_category2(category[1]); //P
+		vo.setProd_category3(category[2]); //L
+		vo.setProd_category4(category[3]); //94
+	}
+
 }

@@ -13,13 +13,13 @@ public class HomeDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
 
-		public List<ProductVO> selectProduct(ProductVO vo) {
-			System.out.println("DAO 실행");
-			return sqlSessionTemplate.selectList("HomeDAO.selectProduct", vo);
-		}
-		
-		public ProductVO getProduct(ProductVO vo) {
-			System.out.println("DAO 실행");
-			return sqlSessionTemplate.selectOne("HomeDAO.getProduct", vo);
-		}
+	public List<ProductVO> selectProduct(ProductVO vo) {
+		System.out.println("DAO 실행");
+		return sqlSessionTemplate.selectList("HomeDAO.selectProduct", vo);
+	}
+
+	public ProductVO getProduct(ProductVO vo) {
+		System.out.println("DAO 실행");
+		return sqlSessionTemplate.selectOne("HomeDAO.getProduct", vo);
+	}
 }

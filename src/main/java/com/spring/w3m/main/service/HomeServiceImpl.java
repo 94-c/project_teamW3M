@@ -13,7 +13,7 @@ public class HomeServiceImpl implements HomeService {
 
 	@Autowired
 	private HomeDAO dao;
-	
+
 	@Override
 	public List<ProductVO> selectProduct(ProductVO vo) {
 		System.out.println("Impl 실행");
@@ -22,7 +22,7 @@ public class HomeServiceImpl implements HomeService {
 
 	@Override
 	public ProductVO getProduct(ProductVO vo) {
-		System.out.println("Impl실행");
+		System.out.println("Impl 실행");
 		return dao.getProduct(vo);
 	}
 
