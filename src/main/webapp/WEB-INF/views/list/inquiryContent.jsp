@@ -67,54 +67,46 @@
 								<caption>게시글 목록</caption>
 								<thead>
 									<tr>
-										<td>비밀번호 : <input type="password" name="content_pass"
-											id="pass1" /></td>
-										<input type="hidden" name="inq_pass" id="pass2"
-											value="${inquiryVO.inq_pass}" />
+										<td>비밀번호 : 
+										<input type="password" name="content_pass" id="pass1" />
+										<input type="hidden" name="inq_pass" id="pass2" value="${inquiryVO.inq_pass}" />
+										</td>
 									</tr>
 								</thead>
 							</table>
 							<!-- 댓글 -->
 							<br>
 						</div>
-					</div>
-					<input type="button" value="글 수정" class="CSSbuttonBlack"
-						id="contentbutton" onclick="updateCheck();" /> <input
-						type="button" value="글 삭제" class="CSSbuttonBlack"
-						id="contentbutton" onclick="deleteCheck();" /> <input
-						type="button" value="글 목록" class="CSSbuttonBlack"
-						id="contentbutton" onclick="location.href='./inquiry.do'" />
-					<div class="page-body">
-						<div class="bbs-tit">
-							<h3>댓글</h3>
-							<br>
-						</div>
-						<div class="bbs-table-view"></div>
-					</div>
-					<hr size="">
-					<div id="reply">
-						<c:forEach items="${replyList}" var="replyList">
-							<div
-								style="height: auto; width: auto; border-bottom: 1px solid gray;">${replyList.re_writer}
-								<font id="commentDate"><fmt:formatDate
-										value="${inquiryVO.inq_date }" pattern="yyyy-MM-dd HH:mm:ss" /></font><br />
-								<br>
-								<pre>
-									<font id="content" size="4pt">${replyList.re_content}</font>
-								</pre>
-								<br />
-							</div>
 
-						</c:forEach>
-					</div>
-					<!-- .page-body -->
-				</div>
-				<!-- #bbsData -->
-			</div>
-			<!-- #content -->
-		</div>
-		<!-- #contentWrap -->
-	</div>
+               </div>
+               				<input type="button" value="글 수정" class="CSSbuttonBlack" id="contentbutton" onclick="updateCheck();" />
+               				<input type="button" value="글 삭제" class="CSSbuttonBlack" id="contentbutton" onclick="deleteCheck();" />
+		 					<input type="button" value="글 목록" class="CSSbuttonBlack" id="contentbutton" onclick="location.href='./inquiry.do'" />
+           	  <div class="page-body">
+               <div class="bbs-tit">
+                  <h3>댓글</h3><br>         
+               </div>
+               <div class="bbs-table-view">
+                   </div>				             
+            </div>
+            <hr size="">
+            <div id="reply">
+									<c:forEach items="${replyList}" var="replyList">
+												<div style="height:auto; width:auto; border-bottom:1px solid gray;">${replyList.re_writer}
+												<font id="commentDate"><fmt:formatDate value="${inquiryVO.inq_date }" pattern="yyyy-MM-dd HH:mm:ss" /></font><br/> 
+												<br>
+												<pre><font id="commentContent">${replyList.re_content}</font></pre><br/>
+												</div>											
+				
+									</c:forEach>
+							</div>            
+            <!-- .page-body -->
+         </div>
+         <!-- #bbsData -->
+      </div>
+      <!-- #content -->
+   </div>
+   <!-- #contentWrap -->
 </div>
 <script type="text/javascript">
 

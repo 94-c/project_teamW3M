@@ -13,4 +13,14 @@
 	<insert id="insertReply">
 		INSERT INTO reply (inq_seq, re_seq, re_content, re_writer) values(#{inq_seq}, nextval('re_inq_seq'), #{re_content}, #{re_writer})
 	</insert>
+	
+<!-- 댓글 삭제 -->
+	<delete id="deleteReply">
+		DELETE FROM reply WHERE re_seq = #{re_seq} 
+	</delete>	
+
+<!-- 댓글 수정 -->
+	<update id="updateReply">
+		UPDATE reply SET re_content = #{re_content} WHERE re_seq=#{re_seq}
+	</update>
 </mapper>
