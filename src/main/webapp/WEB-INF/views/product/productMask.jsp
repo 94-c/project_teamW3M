@@ -33,8 +33,7 @@
 		<h3 class="blind">상품 정보, 정렬</h3>
 		<div class="cboth total-sort">
 			<dl class="total">
-				<dd>16</dd>
-				개의 상품이 있습니다.
+				<dd>16개의 상품이 있습니다.</dd>				
 			</dl>
 			<dl class="sort">
 				<dt class="blind">검색결과 정렬</dt>

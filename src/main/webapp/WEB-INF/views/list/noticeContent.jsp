@@ -7,14 +7,16 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<title>공지사항</title>
-<%@include file="/WEB-INF/views/include/header.jsp"%>
-<div id="contentWrapper">
-	<div id="contentWrap">
+<link type="text/css" rel="stylesheet" href="resources/css/menu.css?t=201912021906">
+<link type="text/css" rel="stylesheet" href="resources/css/soo.css">
+<link type="text/css" rel="stylesheet" href="resources/css/notification.css">
 
-		<link type="text/css" rel="stylesheet" href="resources/css/menu.css?t=201912021906">
-		<link type="text/css" rel="stylesheet" href="resources/css/soo.css">
-		<link type="text/css" rel="stylesheet" href="resources/css/notification.css">
+<title>공지사항</title>
+
+<%@include file="/WEB-INF/views/include/header.jsp"%>
+
+<div id="contentWrapper">
+	<div id="contentWrap">		
 		<div id="content">
 			<div id="bbsData">
 				<div class="page-body">
@@ -35,10 +37,10 @@
 								<tr>
 									<td class="line">
 										<div class="cont-sub-des">
-											<div class align="right">
+											<div align="right">
 												<span><em>Date :</em><fmt:formatDate value="${notice.nt_date}" pattern="yyyy-MM-dd HH:mm:ss"/></span>
 											</div>
-											<div class align="right">
+											<div align="right">
 												<span><em>Name :</em> ${notice.nt_writer }</span> 
 												<span><em>Hits :</em> ${notice.nt_count }</span>
 											</div>
@@ -48,8 +50,8 @@
 								<tr>
 									<td>
 										<div class="data-bd-cont">
-											<div class align="left">
-											<pre><p style="font-size:8px; Line-height:200%; align:left; color:#5f5f5f;">${notice.nt_content } </p></pre>
+											<div align="left">
+											<pre><p style="font-size:8px; Line-height:200%; align:left; color:#5f5f5f;">${notice.nt_content }</p></pre>
 											</div>
 										</div>
 									</td>

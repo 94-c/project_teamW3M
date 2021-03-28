@@ -5,6 +5,18 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<style>
+.comment-edit,
+.comment-edit-enabled .comment-show {
+  display:none;
+}
+
+.comment-edit-enabled .comment-edit {
+  display:inherit;
+}
+</style>
+
 </head>
 <body>
 <div id="comment-111" class=""> <!-- 첫번째 댓글 -->
@@ -17,15 +29,5 @@
     <a onclick="$('#comment-111').removeClass('comment-edit-enabled')">Cancel</a>
   </div>
 </div>
-<style>
-.comment-edit,
-.comment-edit-enabled .comment-show {
-  display:none;
-}
-
-.comment-edit-enabled .comment-edit {
-  display:inherit;
-}
-</style>
 </body>
 </html>

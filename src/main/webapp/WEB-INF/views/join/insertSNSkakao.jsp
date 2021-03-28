@@ -1,8 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <title>회원 정보 수정</title>	
 <%@include file="/WEB-INF/views/include/header.jsp"%>
+
 <script>
 //아이디 정규식 영문 대.소문자, 숫자 _,-만 입력 가능하고 5에서 20자리를 입력했는지 체크한다 {}사이에는 n과 m을 입력하여 n과 m사이의 값을 입력했는지 체크한다. n만 입력했을 경우 n자리 수 만큼 입력했는지 체크
 var idJ = RegExp(/^[A-Za-z0-9_\-]{5,20}$/);
@@ -14,8 +14,6 @@ var nameJ = RegExp(/^[가-힣]{2,6}$/);
 var phoneJ= RegExp(/^([0-9]{4})$/);
 //이메일
 var emailJ = RegExp(/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i);
-
-
 
 var pw_ck1 = -1;
 var pw_ck2 = -1;
@@ -55,11 +53,7 @@ var phone_ck = -1;
 					
 		});
 	
-	});
-
-	
-	
-	
+	});	
 	
 	$(document).ready(function(){ 
 
@@ -148,9 +142,7 @@ var phone_ck = -1;
 				}
 			}
 		
-		});
-		
-		
+		});		
 			
 			
 		});
@@ -216,9 +208,8 @@ var phone_ck = -1;
 	            }
 	        }).open();
 	    }
-
-
 </script>
+
 <div id="contentWrapper">
 	<div id="contentWrap">
 		<div id="content">
@@ -227,13 +218,17 @@ var phone_ck = -1;
 					<em class="title">회원 정보 수정</em>
 				</div>
 				<div class="page-body">
-					
-					<form action="login_insert_kakao.do" method="post" id="user_insert_kakao">
-					<input type ="hidden" name ="user_id" id = "userid" value="${userVO.user_id }" >
-					<input type ="hidden" name ="user_name" id = "username" value="${userVO.user_name }" >
-					<input type ="hidden" name ="user_email" id = "useremail" value="${userVO.user_email }" >
-					<input type ="hidden" name ="user_gender" id = "usergender" value="${userVO.user_gender }" >
-					<input type ="hidden" name ="user_sns_kakao" id = "usersnskakao" value="${userVO.user_sns_kakao }" >
+
+					<form action="login_insert_kakao.do" method="post"
+						id="user_insert_kakao">
+						<input type="hidden" name="user_id" id="userid"
+							value="${userVO.user_id }"> <input type="hidden"
+							name="user_name" id="username" value="${userVO.user_name }">
+						<input type="hidden" name="user_email" id="useremail"
+							value="${userVO.user_email }"> <input type="hidden"
+							name="user_gender" id="usergender" value="${userVO.user_gender }">
+						<input type="hidden" name="user_sns_kakao" id="usersnskakao"
+							value="${userVO.user_sns_kakao }">
 						<div id="personInfo">
 							<table class="person-tb">
 								<colgroup>
@@ -274,7 +269,7 @@ var phone_ck = -1;
 														<option value="<c:out value="${day}"/>"><c:out
 																value="${day}" /></option>
 													</c:forEach>
-												</select>일&nbsp;&nbsp; 
+												</select>일&nbsp;&nbsp;
 											</div>
 										</td>
 									</tr>
@@ -287,9 +282,11 @@ var phone_ck = -1;
 										</th>
 										<td>
 											<div class="col-cell">
-												<input type="text" name="user_zipcode" id="user_zipcode_kakao" readonly
+												<input type="text" name="user_zipcode"
+													id="user_zipcode_kakao" readonly
 													class="MS_input_txt small-input" size="7" maxlength="15">
-												<input type="button" class="cbtn form" onclick="DaumPostcode_kakao();" value="우편번호 찾기"><br>
+												<input type="button" class="cbtn form"
+													onclick="DaumPostcode_kakao();" value="우편번호 찾기"><br>
 											</div>
 										</td>
 									</tr>
@@ -301,7 +298,8 @@ var phone_ck = -1;
 										</th>
 										<td>
 											<div class="col-cell">
-												<input type="text" name="user_address1" id="user_address1_kakao" readonly
+												<input type="text" name="user_address1"
+													id="user_address1_kakao" readonly
 													class="MS_input_txt large-input" size="40" maxlength="100">
 											</div>
 										</td>
@@ -314,8 +312,9 @@ var phone_ck = -1;
 										</th>
 										<td>
 											<div class="col-cell">
-												<input type="text" name="user_address2" id="user_address2_kakao"
-													class="MS_input_txt large-input" size="40" maxlength="100">
+												<input type="text" name="user_address2"
+													id="user_address2_kakao" class="MS_input_txt large-input"
+													size="40" maxlength="100">
 											</div>
 										</td>
 									</tr>
@@ -335,63 +334,74 @@ var phone_ck = -1;
 													<option value="017">017</option>
 													<option value="018">018</option>
 													<option value="019">019</option>
-												</select>- <input type="text" name="user_phone" id="user_phone2_kakao"
-													class="MS_input_tel normal-input" size="4" maxlength="4">-
-												<input type="text" name="user_phone" id="user_phone3_kakao"
+												</select>- <input type="text" name="user_phone"
+													id="user_phone2_kakao" class="MS_input_tel normal-input"
+													size="4" maxlength="4">- <input type="text"
+													name="user_phone" id="user_phone3_kakao"
 													class="MS_input_tel normal-input" size="4" maxlength="4">
-												<input type="button" id ="send_sms_kakao"class="cbtn form" value="휴대폰 인증하기"><span id= phone_check_kakao></span>&nbsp;&nbsp;
-												<input type="text" name="phone_certification" id="phone_certification_kakao" placeholder="인증번호"
-													class="MS_input_tel normal-input" size="4" maxlength="6"> <span id= phone_check1_kakao></span>
+												<input type="button" id="send_sms_kakao" class="cbtn form"
+													value="휴대폰 인증하기"><span id=phone_check_kakao></span>&nbsp;&nbsp;
+												<input type="text" name="phone_certification"
+													id="phone_certification_kakao" placeholder="인증번호"
+													class="MS_input_tel normal-input" size="4" maxlength="6">
+												<span id=phone_check1_kakao></span>
 											</div>
 										</td>
 									</tr>
-									
+
 								</tbody>
 							</table>
 						</div>
 
-
 						<fieldset>
 							<legend>약관 동의 폼</legend>
-							<div class="new-privercy-contract">
-								<div id="chkwrap">
-									<div class="all-chk">
-										<label><input type="checkbox" name="every_agree"
-											id="every_agree_kakao" class="input-cbox new_every_agree" checked> 전체동의</label>
-									</div>
-									<div class="cont p10">
-										<ul>
-											<li class="ml-30 pt-10"><label><input type="checkbox" name="user_yaok" id="user_yaok_kakao" class="input-cbox every_agree" checked> 이용약관</label> <a
-												href="#chk_cont1">내용보기</a></li>
-											<li class="ml-30 pt-10"><label><input
-													type="checkbox" name="user_privacy" id="user_privacy_kakao"
-													value="agree_uidB" class="input-cbox every_agree" checked>
-													개인정보 수집 및 이용 안내</label> <a href="#chk_cont2">내용보기</a></li>
+						</fieldset>
+						<div class="new-privercy-contract">
+							<div id="chkwrap">
+								<div class="all-chk">
+									<label><input type="checkbox" name="every_agree"
+										id="every_agree_kakao" class="input-cbox new_every_agree"
+										checked> 전체동의</label>
+								</div>
+								<div class="cont p10">
+									<ul>
+										<li class="ml-30 pt-10"><label><input
+												type="checkbox" name="user_yaok" id="user_yaok_kakao"
+												class="input-cbox every_agree" checked> 이용약관</label> <a
+											href="#chk_cont1">내용보기</a></li>
+										<li class="ml-30 pt-10"><label><input
+												type="checkbox" name="user_privacy" id="user_privacy_kakao"
+												value="agree_uidB" class="input-cbox every_agree" checked>
+												개인정보 수집 및 이용 안내</label> <a href="#chk_cont2">내용보기</a></li>
 
 
-										</ul>
-										<div class="marketing pb-10">
-											<div class="mk-wrap">
-												<label class="mk-all"><strong>마케팅
-														수신동의 </strong></label>&nbsp; ( <label><input type="checkbox"
-													name="user_marketing_mail" id="user_marketing_mail_kakao"
-													class="input-cbox every_agree ad_every_agree" checked> 이메일</label>
-												<label class="pl-30"><input type="checkbox"
-													name="user_marketing_sms" id="user_marketing_sms_kakao"
-													class="input-cbox every_agree ad_every_agree" checked> SMS</label>)
-											</div>
-											쇼핑몰에서 제공하는 신상품 소식/ 할인쿠폰을 무상으로 보내드립니다!<br> 단, 상품 구매 정보는
-											수신동의 여부 관계없이 발송됩니다.<br> <strong>제공 동의를 하지 않으셔도
-												서비스 이용에는 문제가 없습니다.</strong>
+									</ul>
+									<div class="marketing pb-10">
+										<div class="mk-wrap">
+											<label class="mk-all"><strong>마케팅 수신동의 </strong></label>&nbsp;
+											( <label><input type="checkbox"
+												name="user_marketing_mail" id="user_marketing_mail_kakao"
+												class="input-cbox every_agree ad_every_agree" checked>
+												이메일</label> <label class="pl-30"><input type="checkbox"
+												name="user_marketing_sms" id="user_marketing_sms_kakao"
+												class="input-cbox every_agree ad_every_agree" checked>
+												SMS</label>)
 										</div>
+										쇼핑몰에서 제공하는 신상품 소식/ 할인쿠폰을 무상으로 보내드립니다!<br> 단, 상품 구매 정보는
+										수신동의 여부 관계없이 발송됩니다.<br> <strong>제공 동의를 하지 않으셔도
+											서비스 이용에는 문제가 없습니다.</strong>
 									</div>
 								</div>
-								<div class="new-btn-area">
-									<input type="button" id ="insert_success_kakao" value="동의하고 가입완료" onclick="" ></div>
+							</div>
+							<div class="new-btn-area">
+								<input type="button" id="insert_success_kakao" value="동의하고 가입완료"
+									onclick="">
+							</div>
+						</div>
 					</form>
 					<h4 class="tit" id="chk_cont1">이용약관</h4>
 					<div class="privercy-contract">
-						<textarea cols="200" wrap="off" rows="10" readonly=""
+						<textarea cols="200" wrap="soft" rows="10" readonly="readonly"
 							style="margin: 0px; width: 1245.5px; height: 188px;">인터넷 쇼핑몰 『 웰킵스(주) 사이버 몰』회원 약관
 
          
@@ -796,11 +806,11 @@ var phone_ck = -1;
 						있습니다.<br> 다만, 이때 회원에게 제공되는 서비스가 제한될 수 있습니다.
 					</p>
 				</div>
-				</fieldset>
+
 				<!-- use_contract -->
 			</div>
 		</div>
 	</div>
 </div>
-</div>
+
 <%@include file="/WEB-INF/views/include/footer.jsp"%>

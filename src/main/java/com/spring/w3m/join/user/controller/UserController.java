@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.spring.w3m.join.user.dao.UserDAO;
 import com.spring.w3m.join.user.service.UserService;
 import com.spring.w3m.join.user.service.certificationSMS;
 import com.spring.w3m.join.user.vo.UserVO;

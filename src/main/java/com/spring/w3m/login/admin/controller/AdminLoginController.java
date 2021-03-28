@@ -85,7 +85,6 @@ public class AdminLoginController {
 		model.addAttribute("cnt", cnt);
 		/* model.addAttribute("userList", adminService.getUserList()); */
 
-		boolean result = adminService.loginCheck(vo, session);
 		// 관리자 로그인 유효성
 		AdminVO voo = adminService.getAdmin();
 		System.out.println("사이트-" + vo.getAdmin_id());

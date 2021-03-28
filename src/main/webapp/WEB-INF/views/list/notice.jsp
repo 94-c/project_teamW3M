@@ -9,6 +9,7 @@
 <title>공지사항</title>
 <link href="resources/admin_css/pagination.css" rel="stylesheet" type="text/css">
 <link href="resources/admin_css/styles.css" rel="stylesheet" type="text/css">
+<link href="resources/css/notification.css" rel="stylesheet" type="text/css">
 <style type="text/css">
  .page-item{list-style-type: none; display:inline; margin-left:20px;}
  paginationBox { padding:15px 0; position:relative; *zoom:1 }
@@ -61,7 +62,7 @@
 
 <div id="contentWrapper">
 	<div id="contentWrap">
-		<link href="resources/css/notification.css" rel="stylesheet" type="text/css">
+		
 		<div id="content">
 			<div id="bbsData">
 				<div class="page-body">
@@ -95,12 +96,12 @@
 							<tbody>
 								<c:forEach var="notice" items="${NoticeList}">
 									<tr>
-										<td scope="col"><div class="tb-center">${notice.nt_seq }</td>
-										<td scope="col"><div class="tb-center">&nbsp;</td>
+										<td scope="col"><div class="tb-center">${notice.nt_seq }</div></td>
+										<td scope="col"><div class="tb-center">&nbsp;</div></td>
 										<td scope="col"><div class="tb-center"><a href='<c:url value='/getUserNotice.do?nt_seq=${notice.nt_seq}'/>' class="text-dark"><strong><font size=2 ><font color="${notice.nt_color }">${notice.nt_title }</font></font></strong></a></div></td>
-										<td scope="col"><div class="tb-center"><img src="resources/images/icons/neo_admin.gif"><!--${notice.nt_writer }--></td>
-										<td scope="col"><div class="tb-center"><fmt:formatDate value="${notice.nt_date}" pattern="yyyy-MM-dd"/></td>
-										<td scope="col"><div class="tb-center">${notice.nt_count }</td>
+										<td scope="col"><div class="tb-center"><img src="resources/images/icons/neo_admin.gif"><!--${notice.nt_writer }--></div></td>
+										<td scope="col"><div class="tb-center"><fmt:formatDate value="${notice.nt_date}" pattern="yyyy-MM-dd"/></div></td>
+										<td scope="col"><div class="tb-center">${notice.nt_count }</div></td>
 									</tr>
 								</c:forEach>
 							</tbody>

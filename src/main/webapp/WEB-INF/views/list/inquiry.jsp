@@ -7,58 +7,64 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/WEB-INF/views/include/header.jsp"%>
-<link href="resources/admin_css/pagination.css" rel="stylesheet" type="text/css">
-<link href="resources/admin_css/styles.css" rel="stylesheet" type="text/css">
+<link href="resources/admin_css/pagination.css" rel="stylesheet"
+	type="text/css">
+<link href="resources/admin_css/styles.css" rel="stylesheet"
+	type="text/css">
+<link href="resources/css/notification.css" rel="stylesheet"
+	type="text/css">
 <style type="text/css">
-#submitbutton{
-	 margin: 10px;
-	 float:right;
-	 margin-left:3px; 
-	 width:108px; height:38px; font-size:13px; line-height:38px
+#submitbutton {
+	margin: 10px;
+	float: right;
+	margin-left: 3px;
+	width: 108px;
+	height: 38px;
+	font-size: 13px;
+	line-height: 38px
 }
 </style>
 <script type="text/javascript">
-        	//이전 버튼 이벤트
-        	function fn_prev(page, range, rangSize, searchKeyword){
-        		var page = ((range - 2) * rangeSize) + 1;
-        		var range = range - 1;
-        		var url = "${pagContext.request.contextPath}/inquiry.do";
-        		url = url + "?page=" + page;
-        		url = url + "&range=" + range;
-        		url = url + "&searchKeyword" + searchKeyword;
-        		location.href = url;
-        	}
-        	
-        
-        	//페이지 번호 클릭
-        	function fn_pagination(page, range, rangSize, searchKeyword){
-        		var url = "${pagContext.request.contextPath}/inquiry.do";
-        		url = url + "?page=" + page;
-        		url = url + "&range=" + range;
-        		url = url + "&searchKeyword" + searchKeyword;
-        		location.href = url;
-        	}
-        	
-        	//다음 버튼 이벤트
-        	function fn_next(page, range, rangSize, searchKeyword){
-        		var page = parseInt((range  * rangeSize)) + 1;
-        		var range = parseInt(range) + 1;
-        		var url = "${pagContext.request.contextPath}/inquiry.do";
-        		url = url + "?page=" + page;
-        		url = url + "&range=" + range;
-        		url = url + "&searchKeyword" + searchKeyword;
-        		location.href = url;
-        	}
-        	
-        	$(document).on('click', '#btnSearch', function(e){
-        		e.preventDefault();
-        		var url = "${pageContext.request.contextPath}/inquiry.do";
-        		url = url + "?searchType=" + $('#searchType').val();
-        		url = url + "&keyword=" + $('#keyword').val();
-        		location.href = url;
-        		console.log(url);
-        	});
-        </script>
+	//이전 버튼 이벤트
+	function fn_prev(page, range, rangSize, searchKeyword) {
+		var page = ((range - 2) * rangeSize) + 1;
+		var range = range - 1;
+		var url = "${pagContext.request.contextPath}/inquiry.do";
+		url = url + "?page=" + page;
+		url = url + "&range=" + range;
+		url = url + "&searchKeyword" + searchKeyword;
+		location.href = url;
+	}
+
+	//페이지 번호 클릭
+	function fn_pagination(page, range, rangSize, searchKeyword) {
+		var url = "${pagContext.request.contextPath}/inquiry.do";
+		url = url + "?page=" + page;
+		url = url + "&range=" + range;
+		url = url + "&searchKeyword" + searchKeyword;
+		location.href = url;
+	}
+
+	//다음 버튼 이벤트
+	function fn_next(page, range, rangSize, searchKeyword) {
+		var page = parseInt((range * rangeSize)) + 1;
+		var range = parseInt(range) + 1;
+		var url = "${pagContext.request.contextPath}/inquiry.do";
+		url = url + "?page=" + page;
+		url = url + "&range=" + range;
+		url = url + "&searchKeyword" + searchKeyword;
+		location.href = url;
+	}
+
+	$(document).on('click', '#btnSearch', function(e) {
+		e.preventDefault();
+		var url = "${pageContext.request.contextPath}/inquiry.do";
+		url = url + "?searchType=" + $('#searchType').val();
+		url = url + "&keyword=" + $('#keyword').val();
+		location.href = url;
+		console.log(url);
+	});
+</script>
 
 
 <c:url var="getInquirylist" value="inquiry.do">
@@ -72,23 +78,23 @@
 
 <div id="contentWrapper">
 	<div id="contentWrap">
-		<link href="resources/css/notification.css" rel="stylesheet"
-			type="text/css">
+
 		<div id="content">
 			<div id="bbsData">
 				<div class="page-body">
 					<a href="getUserNoticeList.do"> <img
 						src="resources/images/title/inquiry_titie.jpg"></a>
-						<form role="form" method="post" action="inquiry_write_view.do">
-					<div class="bbs-tit">
-						<h3>문의게시판</h3>
-						<td colspan="6" align="right">
-							<button type="submit" class="CSSbuttonBlack" id="submitbutton">글쓰기</button></td>
-					</div>
-					
-					<!-- 게시판 목록 -->
-					<div class="bbs-table-list">
-						
+					<form role="form" method="post" action="inquiry_write_view.do">
+						<div class="bbs-tit">
+							<h3>문의게시판</h3>
+							
+								<button type="submit" class="CSSbuttonBlack" id="submitbutton">글쓰기</button>
+							
+						</div>
+
+						<!-- 게시판 목록 -->
+						<div class="bbs-table-list">
+
 							<table border="1" summary="No, content,Name,Date,Hits">
 								<caption>일반게시판 게시글</caption>
 								<colgroup>
@@ -114,19 +120,25 @@
 										<tr>
 											<td scope="col"><div class="tb-center">${inquiryVO.inq_seq}</div></td>
 											<td scope="col"><div class="tb-center">&nbsp;</div></td>
-											<td scope="col"><div class="tb-center"><a href='<c:url value='/inquiryContent.do?inq_seq=${inquiryVO.inq_seq}'/>' class="text-dark">${inquiryVO.inq_title}</div></td>
 											<td scope="col"><div class="tb-center">
-													<c:if test="${inquiryVO.inq_writer ne null && inquiryVO.inq_writer!=''}">${fn:substring(inquiryVO.inq_writer,0,fn:length(inquiryVO.inq_writer)-1)}*</c:if>
+													<a
+														href='<c:url value='/inquiryContent.do?inq_seq=${inquiryVO.inq_seq}'/>'
+														class="text-dark">${inquiryVO.inq_title}</a>
 												</div></td>
 											<td scope="col"><div class="tb-center">
-													<fmt:formatDate value="${inquiryVO.inq_date}" pattern="yyyy-MM-dd" />
+													<c:if
+														test="${inquiryVO.inq_writer ne null && inquiryVO.inq_writer!=''}">${fn:substring(inquiryVO.inq_writer,0,fn:length(inquiryVO.inq_writer)-1)}*</c:if>
+												</div></td>
+											<td scope="col"><div class="tb-center">
+													<fmt:formatDate value="${inquiryVO.inq_date}"
+														pattern="yyyy-MM-dd" />
 												</div></td>
 											<td scope="col"><div class="tb-center">${inquiryVO.inq_cnt}</div></td>
 										</tr>
 									</c:forEach>
 								</tbody>
 							</table>
-							
+
 							<br>
 							<!-- pagination -->
 							<div id="paginationBox">
@@ -174,13 +186,13 @@
 
 							</div>
 							<!-- search{e} -->
-						</form>
-					</div>
-					<!-- //게시판 목록 -->
+						</div>
+					</form>
+
 				</div>
+				<!-- //게시판 목록 -->
 			</div>
 		</div>
 	</div>
 </div>
-
 <%@include file="/WEB-INF/views/include/footer.jsp"%>

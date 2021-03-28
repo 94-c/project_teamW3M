@@ -206,7 +206,7 @@
                                         	<c:forEach var="list" items="${inquiryList}">
                                       		<tr>
                                       			<td class="text-center">${list.inq_seq}</td>
-												<td class="text-center"><a href='<c:url value='/admin_inquiry_content.mdo?inq_seq=${list.inq_seq}'/>' class="text-dark">${list.inq_title}</td>
+												<td class="text-center"><a href='<c:url value='/admin_inquiry_content.mdo?inq_seq=${list.inq_seq}'/>' class="text-dark">${list.inq_title}</a></td>
 												<td class="text-center">${list.inq_writer}</td>
 												<td class="text-center"><fmt:formatDate value="${list.inq_date}" pattern="yyyy-MM-dd" /></td>
 												<td class="text-center">${list.inq_cnt}</td>

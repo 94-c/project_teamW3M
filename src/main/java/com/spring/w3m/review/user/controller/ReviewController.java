@@ -7,8 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.spring.w3m.inquiry.user.vo.InquiryVO;
-import com.spring.w3m.inquiry.user.vo.ReplyVO;
 import com.spring.w3m.review.user.service.ReviewService;
 import com.spring.w3m.review.user.vo.ReviewVO;
 

@@ -6,24 +6,26 @@
 <%@include file="/WEB-INF/views/include/header.jsp"%>
 <link href="resources/admin_css/pagination.css" rel="stylesheet" type="text/css">
 <link href="resources/admin_css/styles.css" rel="stylesheet" type="text/css">
+<link href="resources/css/notification.css" rel="stylesheet" type="text/css">
+
 <div id="contentWrapper">
 	<div id="contentWrap">
-		<link href="resources/css/notification.css" rel="stylesheet" type="text/css">
 		<div id="content">
 			<div id="bbsData">
 				<div class="page-body">
 					<a href="getUserNoticeList.do"> <img
 						src="resources/images/title/review_title.jpg"></a>
-						<form role="form" method="post" action="review_write_view.do">
-					<div class="bbs-tit">
-						<h3>후기게시판</h3>
-						<td colspan="6" align="right">
-							<button type="submit" class="CSSbuttonBlack" id="submitbutton">글쓰기</button></td>
-					</div>
-					
-					<!-- 게시판 목록 -->
-					<div class="bbs-table-list">
-						
+					<form role="form" method="post" action="review_write_view.do">
+						<div class="bbs-tit">
+							<h3>후기게시판</h3>
+							
+								<button type="submit" class="CSSbuttonBlack" id="submitbutton">글쓰기</button>
+							
+						</div>
+
+						<!-- 게시판 목록 -->
+						<div class="bbs-table-list">
+
 							<table border="1" summary="No, content,Name,Date,Hits">
 								<caption>일반게시판 게시글</caption>
 								<colgroup>
@@ -49,19 +51,25 @@
 										<tr>
 											<td scope="col"><div class="tb-center">${inquiryVO.inq_seq}</div></td>
 											<td scope="col"><div class="tb-center">&nbsp;</div></td>
-											<td scope="col"><div class="tb-center"><a href='<c:url value='/inquiryContent.do?inq_seq=${inquiryVO.inq_seq}'/>' class="text-dark">${inquiryVO.inq_title}</div></td>
 											<td scope="col"><div class="tb-center">
-													<c:if test="${inquiryVO.inq_writer ne null && inquiryVO.inq_writer!=''}"></c:if>
+													<a
+														href='<c:url value='/inquiryContent.do?inq_seq=${inquiryVO.inq_seq}'/>'
+														class="text-dark">${inquiryVO.inq_title}</a>
 												</div></td>
 											<td scope="col"><div class="tb-center">
-													<fmt:formatDate value="${inquiryVO.inq_date}" pattern="yyyy-MM-dd" />
+													<c:if
+														test="${inquiryVO.inq_writer ne null && inquiryVO.inq_writer!=''}"></c:if>
+												</div></td>
+											<td scope="col"><div class="tb-center">
+													<fmt:formatDate value="${inquiryVO.inq_date}"
+														pattern="yyyy-MM-dd" />
 												</div></td>
 											<td scope="col"><div class="tb-center">${inquiryVO.inq_cnt}</div></td>
 										</tr>
 									</c:forEach>
 								</tbody>
 							</table>
-							
+
 							<br>
 							<!-- pagination -->
 							<div id="paginationBox">
@@ -109,10 +117,10 @@
 
 							</div>
 							<!-- search{e} -->
-						</form>
-					</div>
-					<!-- //게시판 목록 -->
+						</div>
+					</form>
 				</div>
+				<!-- //게시판 목록 -->
 			</div>
 		</div>
 	</div>

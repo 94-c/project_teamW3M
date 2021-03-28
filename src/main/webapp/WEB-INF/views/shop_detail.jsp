@@ -161,7 +161,7 @@ function send_cart(code){
 																					<a href="javascript:cnt_amount('up');" class="MK_btn-up">
 																					<img src="/images/common/basket_up.gif" alt="수량증가" border="0"></a>
 																					<a href="javascript:cnt_amount('down');" class="MK_btn-dw">
-																					<img src="/images/common/basket_down.gif" alt="수량감소" ㄴborder="0"></a>
+																					<img src="/images/common/basket_down.gif" alt="수량감소" border="0"></a>
 																			</div>
 																			<strong class="MK_price">
 																				<span id="totalPlace1"><fmt:formatNumber value="${product.prod_price_sale}" pattern="#,###" /></span>원</strong></li>
@@ -215,7 +215,7 @@ function send_cart(code){
 									<div id="cart_modal" class="modal">
 									<p align="center">1개의 (${product.prod_title})장바구니에 담겼습니다. 같은 상품을 중복선택 하는 경우에는 적용되지 않습니다.<br><b>지금 확인하시겠습니까?</b><br><br>  
 									</p>
-									<a href="GoCart.do" rel="" "><button>이동</button></a>&nbsp;&nbsp;&nbsp;
+									<a href="GoCart.do" rel=""><button>이동</button></a>&nbsp;&nbsp;&nbsp;
 									<a href="#" rel="modal:close"><button>계속쇼핑하기</button> </a>
 									</div>
 									<div class="barotalk"></div>
