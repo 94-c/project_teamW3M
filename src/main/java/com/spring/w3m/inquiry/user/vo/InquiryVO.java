@@ -14,12 +14,19 @@ public class InquiryVO {
 	private int inq_pass;
 	private int inq_cnt;
 	private String inq_image;
+	private String prod_code;
 	private String searchType;
 	private String keyword;
 	
 	Pagination p = new Pagination();
 	
 	
+	public String getProd_code() {
+		return prod_code;
+	}
+	public void setProd_code(String prod_code) {
+		this.prod_code = prod_code;
+	}
 	public String getInq_image() {
 		return inq_image;
 	}
@@ -92,8 +99,8 @@ public class InquiryVO {
 	public String toString() {
 		return "InquiryVO [inq_seq=" + inq_seq + ", inq_title=" + inq_title + ", inq_writer=" + inq_writer
 				+ ", inq_content=" + inq_content + ", inq_email=" + inq_email + ", inq_date=" + inq_date + ", inq_pass="
-				+ inq_pass + ", inq_cnt=" + inq_cnt + ", inq_image=" + inq_image + ", searchType=" + searchType
-				+ ", keyword=" + keyword + "]";
+				+ inq_pass + ", inq_cnt=" + inq_cnt + ", inq_image=" + inq_image + ", prod_code=" + prod_code
+				+ ", searchType=" + searchType + ", keyword=" + keyword + "]";
 	}
 	
 

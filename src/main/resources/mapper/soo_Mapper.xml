@@ -5,8 +5,8 @@
 <!-- 글 등록하기 -->
 <mapper namespace="InquiryDAO">
 	<insert id="insertInquiry" parameterType="InquiryVO">
-		INSERT INTO inquiry (inq_seq, inq_title, inq_writer, inq_email, inq_content, inq_pass, inq_cnt, inq_image)
-		VALUES(nextval('inq_user_seq'), #{inq_title}, #{inq_writer}, #{inq_email}, #{inq_content}, #{inq_pass}, #{inq_cnt}, #{inq_image})
+		INSERT INTO inquiry (inq_seq, inq_title, inq_writer, inq_email, inq_content, inq_pass, inq_cnt, inq_image, prod_code)
+		VALUES(nextval('inq_user_seq'), #{inq_title}, #{inq_writer}, #{inq_email}, #{inq_content}, #{inq_pass}, #{inq_cnt}, #{inq_image}, #{prod_code})
 	</insert>
 
 <!-- 리스트 보기 -->
