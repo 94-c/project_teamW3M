@@ -94,7 +94,7 @@
 						<div class="tb-center">
 						<div class="box">
 							<div class="thumb salebox">
-								<a href="/getProduct?prod_seq=${product.prod_seq }"><img class="MS_prod_img_m" src="${product.prod_title_image }" alt="상품 섬네일" /></a>
+								<a href="/getProduct?prod_code=${product.prod_code }"><img class="MS_prod_img_m" src="${product.prod_title_image }" alt="상품 섬네일" /></a>
 								<input type="hidden" name="custom_price" value="52400"/>
 								<input type="hidden" name="product_price" value="42000"/>
 							</div>

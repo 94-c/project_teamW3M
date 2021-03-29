@@ -9,6 +9,7 @@ import com.spring.w3m.inquiry.user.dao.InquiryDAO;
 import com.spring.w3m.inquiry.user.vo.InquiryVO;
 import com.spring.w3m.paging.common.Pagination;
 import com.spring.w3m.paging.common.Search;
+import com.spring.w3m.product.admin.vo.ProductVO;
 
 @Service
 public class InquiryServiceImpl implements InquiryService {
@@ -60,6 +61,11 @@ public class InquiryServiceImpl implements InquiryService {
 	@Override
 	public List<InquiryVO> getSearchPagingList(Pagination pagination) {
 		return inquiryDAO.getSearchPagingList(pagination);
+	}
+
+	@Override
+	public ProductVO getProduct(ProductVO vo) {
+		return inquiryDAO.getProduct(vo);
 	}
 
 }

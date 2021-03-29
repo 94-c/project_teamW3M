@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import com.spring.w3m.inquiry.user.vo.InquiryVO;
 import com.spring.w3m.paging.common.Pagination;
 import com.spring.w3m.paging.common.Search;
+import com.spring.w3m.product.admin.vo.ProductVO;
 
 @Controller
 public class InquiryDAO {
@@ -66,5 +67,8 @@ public class InquiryDAO {
 		return sqlSessionTemplate.selectList("InquiryDAO.getSearchPagingList");
 	}
 
+	public ProductVO getProduct(ProductVO vo) {
+		return sqlSessionTemplate.selectOne("InquiryDAO.getProduct", vo);
+	}
 
 }

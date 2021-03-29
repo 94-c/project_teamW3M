@@ -25,6 +25,10 @@
 		<result property="inq_pass" column="inq_pass" />
 		<result property="inq_cnt" column="inq_cnt" />
 	</resultMap>
+	
+	<select id="getProduct" resultType="com.spring.w3m.product.admin.vo.ProductVO">
+		SELECT * FROM product WHERE prod_code = #{prod_code}
+	</select>
 
 <!-- 게시글 상세보기 -->
 	<select id="getInquiry" resultType="InquiryVO">
