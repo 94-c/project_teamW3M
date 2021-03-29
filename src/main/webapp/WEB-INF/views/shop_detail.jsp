@@ -451,7 +451,7 @@ function send_cart(code){
 								</div>
 								<div class="btm_write">
 									 <c:if test="${login_state eq 'login' }">
-                    					 <li><a href="inquiry_write_view.do">문의하기</a></li>
+                    					 <li><a href="inquiry_write_view.do?prod_seq=${product.prod_seq }">문의하기</a></li>
                     				 </c:if>
                    					 <c:if test="${login_state ne 'login' }">
                     					 <li><a href="loginForm.do" onClick="alert('로그인이 필요합니다.')">문의하기</a></li>
