@@ -10,7 +10,7 @@ public class OrderDAO {
 	@Autowired
 	SqlSessionTemplate sqlSessionTemplate;
 	public void order_inser_prod(OrderVO vo) {
-		sqlSessionTemplate.insert("");
+		sqlSessionTemplate.insert("OrderDAO.order_inser_prod",vo);
 		
 	}
 
