@@ -112,19 +112,14 @@ public class ReviewController {
 	// 게시글 수정 하기
 	@RequestMapping("/updateReview.do")
 	public String updateReview(ReviewVO vo, Model model) {
-		System.out.println(vo.toString() + "1번");
 		reviewService.updateReview(vo);
-		System.out.println(vo.toString() + "2번");
 		model.addAttribute("reviewList", reviewService.getReviewList(vo));
-		System.out.println(vo.toString() + "3번");
 		return "/review/review";
 	}
 	
 	@RequestMapping("/review_update_view.do")
 	public String reviewUpdateView(ReviewVO vo, Model model) {
-		System.out.println(vo.toString() + "4번");
 		model.addAttribute("getReview", reviewService.getReview(vo));
-		System.out.println(vo.toString() + "5번");
 		return "/review/reivew_update";
 	}
 
@@ -185,7 +180,9 @@ public class ReviewController {
 	 * deleteAdminInquiry(InquiryVO vo, Model model) {
 	 * inquiryService.deleteInquiry(vo); model.addAttribute("inquiryList",
 	 * inquiryService.getInquiryList(vo)); return "redirect:/adminInquiry.mdo"; }
+	 *
 	 */
+	
 	/*
 	 * // 댓글 쓰기
 	 * 
