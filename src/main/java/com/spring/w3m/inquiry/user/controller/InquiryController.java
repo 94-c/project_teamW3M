@@ -184,7 +184,7 @@ public class InquiryController {
 	
 	//댓글 쓰기
 	@RequestMapping("/insertReply.mdo")
-	public String insetReply(ReplyVO rvo, @RequestParam("reply_text") String re_content) {
+	public String insetReply(ReplyVO rvo, @RequestParam("reply_txt") String re_content) {
 		rvo.setRe_content(re_content);
 		replyService.insertReply(rvo);
 		return "redirect:/admin_inquiry_content.mdo?inq_seq="+rvo.getInq_seq();
@@ -200,13 +200,14 @@ public class InquiryController {
 	
 	//댓글 수정
 	@RequestMapping("/updateReply.mdo")
-	public String updateReply(ReplyVO rvo, @RequestParam("re_content_up") String re_content) {
+	public String updateReply(ReplyVO rvo, @RequestParam("re_content_up") String re_content, @RequestParam("re_seq") int num) {
 		int seq = rvo.getInq_seq();
 		rvo.setRe_content(re_content);
+		System.out.println(re_content);
 		replyService.updateReply(rvo);
 		return "redirect:/admin_inquiry_content.mdo?inq_seq="+seq;
-	}
 		
+	}
 }
 	
 
