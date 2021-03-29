@@ -34,6 +34,6 @@
   </select>
   
   <select id="getInquiryListCnt" resultType="int">
-		select count(*) from inquiry where prod_code= #{prod_code}
+		select count(*) from inquiry where prod_code = #{prod_code}
 	</select>
  </mapper>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="myPageDAO">
+	<select id="myPageList" resultType="com.spring.w3m.inquiry.user.vo.InquiryVO">
+		select
+			*
+		from
+			inquiry
+		where
+			inq_writer = #{user_name}
+		order by inq_date desc
+	</select>
+	<select id="myPageListcnt" resultType="int">
+		select
+			count(*)
+		from
+			inquiry
+		where
+			inq_writer = #{user_name}
+	</select>
+	
+	<select id="myUser" resultType="com.spring.w3m.join.user.vo.UserVO">
+		select 
+			*
+		from
+			user_member
+		where
+			user_seq = #{user_seq}
+	</select>
+</mapper>

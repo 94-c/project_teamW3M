@@ -7,7 +7,17 @@ public class Search extends Pagination {
 	private String keyword;	
 	
 	private String prod_code;
+	
+	private String user_name;
 			
+	public String getUser_name() {
+		return user_name;
+	}
+
+	public void setUser_name(String user_name) {
+		this.user_name = user_name;
+	}
+
 	public String getProd_code() {
 		return prod_code;
 	}
