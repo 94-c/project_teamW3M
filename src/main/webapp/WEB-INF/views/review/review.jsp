@@ -16,16 +16,10 @@
 		<div id="content">
 			<div id="bbsData">
 				<div class="page-body">
-					<a href="getUserNoticeList.do"> <img
-						src="resources/images/title/review_title.jpg"></a>
-					<form role="form" method="post" action="review_write_view.do">
 						<div class="bbs-tit">
 							<h3>후기게시판</h3>
-							
 								<button type="submit" class="CSSbuttonBlack" id="submitbutton">글쓰기</button>
-							
 						</div>
-
 						<!-- 게시판 목록 -->
 						<div class="bbs-table-list">
 					<a href="review.do"> 
