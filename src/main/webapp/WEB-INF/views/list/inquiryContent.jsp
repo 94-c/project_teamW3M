@@ -45,7 +45,7 @@
 								<tr>
 									<td>
 										<div class="data-bd-cont">
-											${inquiryVO.inq_content } <br>
+											<pre>${inquiryVO.inq_content } <br></pre>
 											<c:if test="${inquiryVO.inq_image eq '파일없음'}"></c:if>
 											<c:if test="${inquiryVO.inq_image ne '파일없음'}">
 												<img src="${inquiryVO.inq_image }" />
