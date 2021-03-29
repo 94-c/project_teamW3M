@@ -3,9 +3,9 @@
 <%@include file="/WEB-INF/views/include/header.jsp"%>
 <title>고급형 주문서 작성</title>
 
+<link href="resources/css/order.css" rel="stylesheet" type="text/css">
 <div id="contentWrap">
 
-	<link href="resources/css/order.css" rel="stylesheet" type="text/css">
 	<div id="content">
 		<div id="order">
 			<dl class="loc-navi">
