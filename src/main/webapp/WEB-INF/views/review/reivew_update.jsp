@@ -13,8 +13,8 @@
 						<h3>후기게시판</h3>
 					</div>
 					<div class="bbs-table-write">
-						<form role="form" method="post" action="reviewUpdate.do">
-						<input name="reivew_seq" type="hidden" value="${getReview.review_seq}" />
+						<form role="form" method="post" action="updateReview.do">
+						<input name="review_seq" type="hidden" value="${getReview.review_seq}" />
 							<fieldset>
 								<legend>일반게시판 쓰기</legend>
 								<table summary="">
@@ -26,10 +26,11 @@
 										<col width="*">
 									</colgroup>
 									<tbody>
+									
 										<tr>
 											<th><div>이름</div></th>
 											<td><div>
-													<input id="bw_input_writer" type="text" name="review_writer" class="MS_input_txt input_style1" value="${getReview.user_name}" readonly="readonly">
+													<input id="bw_input_writer" type="text" name="review_writer" class="MS_input_txt input_style1" value="${getReview.review_writer}" readonly="readonly">
 												</div></td>
 										</tr>
 										<tr>

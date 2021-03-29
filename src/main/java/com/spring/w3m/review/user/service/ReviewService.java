@@ -2,30 +2,32 @@ package com.spring.w3m.review.user.service;
 
 import java.util.List;
 
-import com.spring.w3m.join.user.vo.UserVO;
-import com.spring.w3m.product.admin.vo.ProductVO;
+import com.spring.w3m.paging.common.Pagination;
+import com.spring.w3m.paging.common.Search;
 import com.spring.w3m.review.user.vo.ReviewVO;
 
 public interface ReviewService {
 	
-	//후기 목록
+	void insertReview(ReviewVO vo);
+
+	void updateReview(ReviewVO vo);
+
+	void deleteReview(ReviewVO vo);
+
+	ReviewVO getReview(ReviewVO vo);
+
 	List<ReviewVO> getReviewList(ReviewVO vo);
 	
-	//후기 작성
-	void insertReview(ReviewVO vo);
+	/* ProductVO getProduct(ProductVO vo); */
 	
-	//후기 상세보기
-	ReviewVO getReview(ReviewVO vo);
 	
-	//후기  업데이트
-	void updateReview(ReviewVO vo);
+	// 검색 ,페이징
+	int getReviewListCnt(Search search);
+
+	List<ReviewVO> getPageList(Search search);
+
+	int getSearchCnt(String searchKeyword);
+
+	List<ReviewVO> getSearchPagingList(Pagination pagination);
 	
-	//후기 삭제하기
-	void deleteReview(ReviewVO vo);
-	
-	//상품 정보
-	ProductVO getProduct(ProductVO vo);
-	
-	//회원 정보
-	UserVO getUser(UserVO vo);
 }

@@ -23,6 +23,6 @@
 		<mapper resource="mapper/cart_Mapper.xml" />	
 		<mapper resource="mapper/reply_Mapper.xml" />
 		<mapper resource="mapper/home_Mapper.xml" />	
-		<mapper resource="mapper/review.xml" />
+		<mapper resource="mapper/review_Mapper.xml" />
 	</mappers>
 </configuration>
