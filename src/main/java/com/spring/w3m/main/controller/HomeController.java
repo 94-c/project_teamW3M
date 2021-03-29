@@ -44,6 +44,7 @@ public class HomeController {
 		Search search = new Search();
 		search.setSearchType(searchType);
 		search.setKeyword(keyword);
+		search.setProd_code(vo.getProd_code());
 		
 		int cnt = homeService.getInquiryListCnt(search);
 		search.pageInfo(page, range, cnt);

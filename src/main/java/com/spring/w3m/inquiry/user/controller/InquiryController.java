@@ -87,10 +87,10 @@ public class InquiryController {
 	// 게시판 글 작성하기(화면)
 	@RequestMapping("/inquiry_write_view.do")
 	public String inquiryWriteView(ProductVO vo, Model model) {
-		System.out.println(vo.getProd_seq());
+		System.out.println(vo.getProd_code());
 		model.addAttribute("product", inquiryService.getProduct(vo));
 		System.out.println("---");
-		System.out.println(vo.getProd_seq());
+		System.out.println(vo.getProd_code());
 		return "/list/inquiry_write";
 	}
 
