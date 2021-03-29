@@ -4,7 +4,6 @@
 <link href="resources/css/reply.css" rel="stylesheet" type="text/css">
 <main>
 <div class="container-fluid">
-<form name="insertform" action="insertReply.mdo" method="post">
      <h1 class="mt-4">관리자 페이지</h1>              
      <ol class="breadcrumb mb-4"><li class="breadcrumb-item active">문의사항</li></ol>
 		<div class="card mb-4">
@@ -25,43 +24,46 @@
 						</tr>
 					<tr>
 						<td><pre><div class="data-bd-cont">${inquiryVO.inq_content }</div></pre></td>
-					</tr>
+					</tr> 
 				</tbody>
 				</table>
 
 				<!-- 댓글 -->
 							<br>
 							<div id="reply">
+							<form name="updateform" action="updateReply.mdo?inq_seq=${inquiryVO.inq_seq}" method="post">
 							<h5>댓글</h5>
-							<table id="re_table">
+							<table id="re_table">							
 									<c:forEach items="${replyList}" var="replyList">
 											<input type="hidden" id="re_seq" name="re_seq" value="${replyList.re_seq}" />
 											<fmt:formatDate value="${replyList.re_date}" pattern="yyyy-MM-dd HH:mm" /><br>									
 											<pre>${replyList.re_content}</pre>
 											<div><a href="deleteReply.mdo?re_seq=${replyList.re_seq}&inq_seq=${inquiryVO.inq_seq}">삭제</a>
-											<a onclick="this.nextSibling.style.display=(this.nextSibling.style.display=='none')?'block':'none';" href="javascript:void(0)">수정</a><div style="DISPLAY: none">											
-											<%@include file="/WEB-INF/views/admin/page/reply/replyUpdate.jsp"%>
-											</div></div>	
+											<a onclick="this.nextSibling.style.display=(this.nextSibling.style.display=='none')?'block':'none';" href="#">수정</a><div style="DISPLAY: none">											
+											<input type="hidden" id="re_seq" name="re_seq" value="${replyList.re_seq}" />
+											<input type="hidden" id="inq_seq" name="inq_seq" value="${inquiryVO.inq_seq}" />
+											<textarea id="reply_text" name="re_content_up" style="font-family: 굴림체;">${replyList.re_content}</textarea>							
+											<input type="button" value="수정" class="CSSbuttonBlack" id="replybutton" onclick="update()"/>														
+											</div>							
+											</div>	
 									</c:forEach>
 						  </table>
-							</div>			 				
+						  </form>
+							</div>			 							 
 				  <div>
+				   <form name="insertform" action="insertReply.mdo" method="post">
+				    <input type="hidden" id="inq_seq" name="inq_seq" value="${inquiryVO.inq_seq}" />
 				    <input type="hidden" id="re_writer" name="re_writer" value="관리자" />
 				    <br/>
-				    <textarea id="reply_text" name="reply_text" placeholder="댓글을 입력하세요" onfocus="this.placeholder=''" onblur="this.placeholder='댓글을 입력하세요'" style="font-family: 굴림체;"></textarea><br>		  	
+				    <textarea id="reply_text" name="reply_txt" placeholder="댓글을 입력하세요" onfocus="this.placeholder=''" onblur="this.placeholder='댓글을 입력하세요'" style="font-family: 굴림체;"></textarea><br>		  	
 				 	<input type="button" value="등록" class="CSSbuttonBlack" id="replybutton" onclick="insert()"/>
-				  </div>
-				  			
-				<input type="hidden" id="inq_seq" name="inq_seq" value="${inquiryVO.inq_seq}" />
-				
-						<button type="button" class="btn btn-info "
-							onclick="location.href = 'deleteInquiry.mdo?inq_seq=${inquiryVO.inq_seq}' ">삭제하기</button>
-						<button type="button" class="btn btn-info "
-							onclick="location.href = 'inquiry.do' ">목록으로</button>
+				  </form>
+				  </div>							
+						<button type="button" class="btn btn-info " onclick="location.href = 'deleteInquiry.mdo?inq_seq=${inquiryVO.inq_seq}' ">삭제하기</button>
+						<button type="button" class="btn btn-info " onclick="location.href = 'inquiry.do' ">목록으로</button>
 					</div>
 				</div>
-			</div>
-		</form>
+			</div>		
 	</div>
 </main>
 <%@include file="/WEB-INF/views/admin/page/include/admin_footer.jsp"%>
@@ -73,5 +75,15 @@ function insert()
 	insertform.submit();
 
 	}
+	
+function update()
+{
+	var updateReply = document.updateform;
+	var content = document.re_content_up;
+	
+	if(content == document.re.content_up)
+	
+	updateReply.submit();
 
+	}
 </script>

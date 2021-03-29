@@ -103,7 +103,7 @@ public class ReviewController {
 		System.out.println("글 상세보기 처리");
 		model.addAttribute("reviewVO", reviewService.getReview(vo));
 
-		List<ReplyVO> replyList = replyService.getReplyList_review(vo.getReview_seq());
+		List<ReplyVO> replyList = replyService.getReplyList(vo.getReview_seq());
 		model.addAttribute("replyList", replyList);
 
 		return "review/reviewContent";
