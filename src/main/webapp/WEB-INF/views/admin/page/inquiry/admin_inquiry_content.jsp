@@ -74,11 +74,4 @@ function insert()
 
 	}
 
-function update()
-{
-	var updateform = document.updateform;
-
-	updateform.submit();
-
-	}
 </script>

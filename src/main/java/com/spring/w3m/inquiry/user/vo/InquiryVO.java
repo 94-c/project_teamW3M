@@ -14,6 +14,7 @@ public class InquiryVO {
 	private int inq_pass;
 	private int inq_cnt;
 	private String inq_image;
+	private String prod_code;
 	private String searchType;
 	private String keyword;
 	

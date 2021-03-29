@@ -12,5 +12,14 @@
 <textarea id="reply_text" name="re_content_up" style="font-family: 굴림체;">${replyList.re_content}</textarea>
 <input type="button" value="수정" class="CSSbuttonBlack" id="replybutton" onclick="update()"/>
 </form>
+<script type="text/javascript">
+function update()
+{
+	var updateform = document.updateform;
+
+	updateform.submit();
+
+	}
+</script>
 </body>
 </html>
