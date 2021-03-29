@@ -2,68 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="CartDAO">
+<mapper namespace="OrderDAO">
 
-<resultMap type="CartVO" id="CartResult">
-		<id property="cart_id" column="cart_id" />
-		<result property="user_id" column="user_id" />
-		<result property="prod_code" column="prod_code" />
-		<result property="prod_title" column="prod_title" />
-		<result property="prod_title_image" column="prod_title_image" />
-		<result property="order_cnt" column="order_cnt" />
-		<result property="prod_point" column="prod_point" />
-		<result property="prod_price" column="prod_price" />
-		<result property="total_price" column="total_price" />
-	</resultMap>
 	
-	<select id="CartList" parameterType="String" resultType="CartVO">
-	select 
-	(ROW_NUMBER() OVER()) AS ROWNUM,
-	 u.user_id,
-	 cart_id,
-	 p.prod_code,
-	 prod_title_image,
-	 p.prod_seq,
-	 p.prod_title,
-	 c.order_cnt,
-	 p.prod_point,
-	 prod_point*order_cnt as total_point,
-	 p.prod_price,
-	 prod_price_sale*order_cnt as total_price 
-	 from 
-	 product p , user_member u , cart c 
-	 where 
-	 c.user_id = u.user_id and 
-	 c.prod_code = p.prod_code and 
-	 u.user_id = #{user_id} 
-	 order by 
-	 prod_code;
-	 
-	</select>
-	
-	<update id="Cart_Order_Cnt_Update" parameterType="CartVO">
-		UPDATE cart SET order_cnt = #{order_cnt} WHERE cart_id = #{cart_id} 
-	
-	</update>
-	
-	<select id="Cart_Cnt" parameterType="String" resultType="int">
-	SELECT count(*) FROM cart WHERE user_id = #{user_id}
-	 
-	</select>
-	<delete id="Cart_Delete" parameterType="int">
-	Delete FROM cart where cart_id = #{cart_id}
-	</delete>
-	
-	<delete id="Cart_AllDelete" parameterType="String">
-	Delete FROM cart where user_id = #{user_id}
-	</delete>
-	
-	<insert id="Cart_insert" parameterType="CartVO">
-	INSERT INTO cart (cart_id, user_id, prod_code, order_cnt) values(nextval('cart_seq'),#{user_id},#{prod_code},#{order_cnt}) 
+	<insert id="order_inser_prod" parameterType="OrderVO">
+	INSERT INTO order_prod (order_prod_seq,user_id,prod_code,prod_amount ) values(nextval('order_prod_seq'),#{user_id},#{prod_code},#{prod_amount})
 	</insert>
 	
-	<select id="Cart_distinct" parameterType="CartVO" resultType="int">
-		SELECT count(*) FROM cart WHERE user_id=#{user_id} AND prod_code = #{prod_code}
-	</select>
-
 </mapper>
