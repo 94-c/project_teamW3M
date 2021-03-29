@@ -127,36 +127,36 @@
          <div class="section1">
             <ul id="left_menu">
                <!-- 카테고리 자동출력 -->
-               <li><a href="category.do" class="">W3M 미세먼지마스크</a>
+               <li><a href="category.do?prod_category1=MM">W3M 미세먼지마스크</a>
                   <ul class="sub1" style="display: none;">
-                     <li><a href="#" class="">- 프리미엄마스크</a></li>
-                     <li><a href="#">- 스마트마스크</a></li>
-                     <li><a href="#">- 리얼블랙마스크</a></li>
+                     <li><a href="category.do?prod_category1=MM&prod_category2=P">- 프리미엄</a></li>
+                     <li><a href="category.do?prod_category1=MM&prod_category2=N">- 일반</a></li>
+                     <li><a href="category.do?prod_category1=MM&prod_category2=B">- 블랙</a></li>
                   </ul>
                </li>
-               <li><a href="#" class="">W3M 비말차단마스크</a>
+               <li><a href="category.do?prod_category1=BB">W3M 비말차단마스크</a>
                   <ul class="sub1" style="display: none;">
-                     <li><a href="#">- 웰킵스언택트마스크</a></li>
+                     <li><a href="category.do?prod_category1=BB&prod_category2=N">- 일반</a></li>
                   </ul>
                </li>
-               <li><a href="#" class="">퓨렐손소독제</a>
+               <li><a href="category.do?prod_category1=SS">W3M 손소독제</a>
                   <ul class="sub1" style="display: none;">
-                     <li><a href="#" class="">- 퓨렐손소독제</a></li>
+                     <li><a href="category.do?prod_category1=SS&prod_category2=N">- 일반</a></li>
                   </ul>
                </li>
-               <li><a href="#" class="">원더블루 쿨패치</a>
+               <li><a href="#">W3M 쿨패치</a>
                   <ul class="sub1" style="display: none;">
-                     <li><a href="#">- 원더블루 쿨패치</a></li>
+                     <li><a href="#">- 일반</a></li>
                   </ul>
                </li>
-               <li><a href="#" class="">원더핫 핫팩</a>
+               <li><a href="#">W3M 핫팩</a>
                   <ul class="sub1" style="display: none;">
-                     <li><a href="#">- 원더핫 핫팩</a></li>
+                     <li><a href="#">- 일반</a></li>
                   </ul>
                </li>
-               <li><a href="#">체온계</a>
+               <li><a href="#">W3M 체온계</a>
                   <ul class="sub1">
-                     <li><a href="#">- 체온계</a></li>
+                     <li><a href="#">- 일반</a></li>
                   </ul>
                </li>
             </ul>
