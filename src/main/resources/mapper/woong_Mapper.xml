@@ -3,7 +3,14 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="UserDAO">
-
+	
+	<select id="getTos" resultType="com.spring.w3m.notice.admin.vo.TosVO">
+	select
+		*
+	from
+		tos
+	</select>
+	
 	<insert id="insertUser" parameterType="UserVO">
 	INSERT INTO user_member (user_seq, user_id, user_name, user_password, user_birthday, user_gender, user_email, user_zipcode, user_address1, user_address2, user_phone, user_marketing_mail, user_marketing_sms, user_sns_naver, user_sns_kakao)
 	VALUES (nextval('user_member_seq'), #{user_id}, #{user_name}, #{user_password}, #{user_birthday}, #{user_gender}, #{user_email}, #{user_zipcode}, #{user_address1}, #{user_address2}, #{user_phone}, #{user_marketing_mail}, #{user_marketing_sms}, #{user_sns_naver}, #{user_sns_kakao})

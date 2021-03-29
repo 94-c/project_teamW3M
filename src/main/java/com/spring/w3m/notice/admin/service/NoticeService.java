@@ -3,6 +3,7 @@ package com.spring.w3m.notice.admin.service;
 import java.util.List;
 
 import com.spring.w3m.notice.admin.vo.NoticeVO;
+import com.spring.w3m.notice.admin.vo.TosVO;
 import com.spring.w3m.paging.common.Pagination;
 import com.spring.w3m.paging.common.Search;
 
@@ -38,4 +39,7 @@ public interface NoticeService {
 	// 공지사항 상세보기
 	NoticeVO getNotice(NoticeVO vo);
 	
+	TosVO getTos(TosVO vo);
+	
+	void tosUpdate(TosVO vo);
 }

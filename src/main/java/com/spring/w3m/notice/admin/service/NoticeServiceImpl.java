@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.spring.w3m.notice.admin.dao.NoticeDAO;
 import com.spring.w3m.notice.admin.vo.NoticeVO;
+import com.spring.w3m.notice.admin.vo.TosVO;
 import com.spring.w3m.paging.common.Pagination;
 import com.spring.w3m.paging.common.Search;
 
@@ -85,6 +86,17 @@ public class NoticeServiceImpl implements NoticeService {
 	public void admin_notice_insert(NoticeVO vo) {
 		dao.admin_notice_insert(vo);
 
+	}
+
+	@Override
+	public TosVO getTos(TosVO vo) {
+		return dao.getTos(vo);
+	}
+
+	@Override
+	public void tosUpdate(TosVO vo) {
+		dao.tosUpdate(vo);
+		
 	}
 
 }

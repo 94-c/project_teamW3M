@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.spring.w3m.join.user.service.UserService;
 import com.spring.w3m.join.user.service.certificationSMS;
 import com.spring.w3m.join.user.vo.UserVO;
+import com.spring.w3m.notice.admin.vo.TosVO;
 
 @Controller
 public class UserController {
@@ -36,7 +37,8 @@ public class UserController {
 
 	}
 	@RequestMapping("/insertMember.do") //회원가입 페이지 진입
-	public String insert_member() {
+	public String insert_member(TosVO vo, Model model) {
+		model.addAttribute("tos", userService.getTos(vo));
 		return "join/insertMember";
 
 	}

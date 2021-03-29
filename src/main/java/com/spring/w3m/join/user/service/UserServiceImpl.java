@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.spring.w3m.join.user.dao.UserDAO;
 import com.spring.w3m.join.user.vo.UserVO;
+import com.spring.w3m.notice.admin.vo.TosVO;
 
 @Service("UserService")
 public class UserServiceImpl implements UserService {
@@ -55,6 +56,11 @@ public class UserServiceImpl implements UserService {
 	public void updateUserNoPass(UserVO vo) {
 		dao.updateUserNoPass(vo);
 		
+	}
+
+	@Override
+	public TosVO getTos(TosVO vo) {
+		return dao.getTos(vo);
 	}
 
 }

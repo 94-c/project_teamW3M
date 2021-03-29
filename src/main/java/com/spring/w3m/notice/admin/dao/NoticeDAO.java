@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.spring.w3m.notice.admin.vo.NoticeVO;
+import com.spring.w3m.notice.admin.vo.TosVO;
 import com.spring.w3m.paging.common.Pagination;
 import com.spring.w3m.paging.common.Search;
 
@@ -78,6 +79,14 @@ public class NoticeDAO {
 	// 공지사항 상세보기
 	public NoticeVO getNotice(NoticeVO vo) {
 		return sqlSessionTemplate.selectOne("NoticeDAO.getNotice", vo);
+	}
+	
+	public TosVO getTos(TosVO vo) {
+		return sqlSessionTemplate.selectOne("NoticeDAO.getTos", vo);
+	}
+	
+	public void tosUpdate(TosVO vo) {
+		sqlSessionTemplate.update("NoticeDAO.tosUpdate", vo);
 	}
 
 }

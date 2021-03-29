@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import com.spring.w3m.join.user.vo.UserVO;
+import com.spring.w3m.notice.admin.vo.TosVO;
 
 @Controller
 public class UserDAO { // DB 왔다갔다
@@ -44,5 +45,9 @@ public class UserDAO { // DB 왔다갔다
    }
    public void deleteUser(UserVO vo) {
 	   sqlSessionTemplate.update("UserDAO.deleteUser",vo);
+   }
+   
+   public TosVO getTos(TosVO vo) {
+	return sqlSessionTemplate.selectOne("UserDAO.getTos", vo);
    }
 }

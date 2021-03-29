@@ -127,5 +127,17 @@
 	<select id="getNoticeListCnt" resultType="int">
 		select count(*) from notice
 	</select>
+	<select id="getTos" resultType="com.spring.w3m.notice.admin.vo.TosVO">
+		select 
+			*
+		from
+			tos
+	</select>
 	
+	<update id="tosUpdate" parameterType="com.spring.w3m.notice.admin.vo.TosVO">
+		UPDATE tos
+		SET
+		tos_content=#{tos_content}
+		WHERE tos_writer = #{tos_writer}
+	</update>
 </mapper>

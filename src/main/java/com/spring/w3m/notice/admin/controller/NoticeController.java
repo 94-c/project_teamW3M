@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.spring.w3m.notice.admin.service.NoticeService;
 import com.spring.w3m.notice.admin.vo.NoticeVO;
+import com.spring.w3m.notice.admin.vo.TosVO;
 import com.spring.w3m.paging.common.Pagination;
 import com.spring.w3m.paging.common.Search;
 
@@ -199,7 +200,24 @@ public class NoticeController {
 		return "page/notice/admin_notice_content";
 	}
    
-   
-   
+	
+	@RequestMapping("/tos_content.mdo")
+	public String getTos(TosVO vo, Model model) {
+		model.addAttribute("tos", noticeService.getTos(vo));
+		return "page/notice/tos";
+	}
+	
+	@RequestMapping("/tos_update_view.mdo")
+	public String tos_update_view(TosVO vo, Model model) {
+		model.addAttribute("tos", noticeService.getTos(vo));
+		return "page/notice/tosUpdate";
+	}
+	
+	@RequestMapping("/tosUpdate.mdo")
+	public String tosUpdate(TosVO vo, Model model) {
+		noticeService.tosUpdate(vo);
+		model.addAttribute("tos", noticeService.getTos(vo));
+		return "redirect:/tos_content.mdo";
+	}
    
 }

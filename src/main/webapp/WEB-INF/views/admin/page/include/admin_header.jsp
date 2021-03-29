@@ -135,6 +135,7 @@
 								<nav class="sb-sidenav-menu-nested nav">
 									<a class="nav-link" href="admin_notice_list.mdo">글 상세보기</a> <a
 										class="nav-link" href="admin_notice_insert_view.mdo">글 등록</a>
+										<a class="nav-link" href="tos_content.mdo">이용약관</a>
 								</nav>
 							</nav>
 						</div>
