@@ -127,7 +127,7 @@
          <div class="section1">
             <ul id="left_menu">
                <!-- 카테고리 자동출력 -->
-               <li><a href="category.do" class="">W3M 미세먼지마스크</a>
+               <li><a href="category.do?prod_category1=MM" class="">W3M 미세먼지마스크</a>
                   <ul class="sub1" style="display: none;">
                      <li><a href="#" class="">- 프리미엄마스크</a></li>
                      <li><a href="#">- 스마트마스크</a></li>

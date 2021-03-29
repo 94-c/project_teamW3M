@@ -3,6 +3,7 @@
 <%@include file="/WEB-INF/views/include/header.jsp"%>
 
 <div id="productClass">
+	<!-- 
 	<div class="prd-class-hd">
 		<dl class="loc-navi">
 			<dt class="blind">현재 위치</dt>
@@ -12,6 +13,7 @@
 			</dd>
 		</dl>
 	</div>
+	 -->
 	<!-- .prd-class-hd -->
 
 	<h2 class="cboth bcate">웰킵스 미세먼지마스크</h2>
@@ -19,11 +21,11 @@
 	<div class="class-list">
 		<ul class="cboth">
 			<li><a
-				href="/shop/shopbrand.html?xcode=023&amp;type=M&amp;mcode=001">프리미엄마스크(4)</a></li>
+				href="#">프리미엄마스크(4)</a></li>
 			<li><a
-				href="/shop/shopbrand.html?xcode=023&amp;type=M&amp;mcode=002">스마트마스크(9)</a></li>
+				href="#">스마트마스크(9)</a></li>
 			<li><a
-				href="/shop/shopbrand.html?xcode=023&amp;type=M&amp;mcode=003">리얼블랙마스크(3)</a></li>
+				href="#">리얼블랙마스크(3)</a></li>
 		</ul>
 	</div>
 	<!-- .class-list -->
@@ -53,7 +55,7 @@
 			</dl>
 		</div>
 		<!-- .total-sort -->
-
+		
 		<div class="prd-list pdt30">
 			<table summary="상품이미지, 상품 설명, 가격">
 				<caption>상품 리스트</caption>
@@ -70,19 +72,52 @@
 						<td></td>
 						<td></td>
 					</tr>
+					<!-- ------------------------------------------------------------------------------------------- -->
+					<c:set var="i" value="0" />
+				<c:set var="j" value="4" />
+				<c:forEach var="product" items="${productList }">
+				<c:if test="${i%j==0}">
 					<tr>
+				</c:if>
+					<td>
+						<div class="tb-center">
+						<div class="box">
+							<div class="thumb salebox">
+								<a href="/getProduct?prod_code=${product.prod_code }"><img class="MS_prod_img_m" src="${product.prod_title_image }" alt="상품 섬네일" /></a>
+								<input type="hidden" name="custom_price" value="52400"/>
+								<input type="hidden" name="product_price" value="42000"/>
+								<span class="sale_text" style="display: block;">${product.prod_discount_rate }</span>
+							</div>
+							<ul class="info">
+								<li class="dsc">${product.prod_title }</li>
+								<li class="subname"></li>
+								<li class="consumer"><fmt:formatNumber value="${product.prod_price}" pattern="#,###" /></li>									
+								<li class="price"><fmt:formatNumber value="${product.prod_price_sale}" pattern="#,###" /></li>
+							</ul>
+						</div>
+						</div>
+					</td>
+				
+				<c:if test="${i%j==j-1}">
+					</tr>
+				</c:if>
+				<c:set var="i" value="${i+1 }" />
+				<c:if test="${i == 4 }">
+					<c:set var="i" value="0" />
+				</c:if>
+				</c:forEach>
+					<!-- ------------------------------------------------------------------------------------------- -->
+					<!-- <tr>
 						<td>
 							<div class="tb-center">
 								<div class="box">
 									<div class="thumb salebox">
-										<a
-											href="/shop/shopdetail.html?branduid=1007246&amp;xcode=023&amp;mcode=002&amp;scode=&amp;type=X&amp;sort=manual&amp;cur_code=023&amp;GfDT=bG53UQ%3D%3D"><img
-											class="MS_prod_img_m"
-											src="/shopimages/pgreen1364/0230020000502.jpg?1613553167"
-											alt="상품 섬네일"></a> <input type="hidden" name="custom_price"
-											value="52400"> <input type="hidden"
-											name="product_price" value="42000"> <span
-											class="sale_text" style="display: block;">20%</span>
+										<a href="/shop/shopdetail.html?branduid=1007246&amp;xcode=023&amp;mcode=002&amp;scode=&amp;type=X&amp;sort=manual&amp;cur_code=023&amp;GfDT=bG53UQ%3D%3D">
+											<img class="MS_prod_img_m" src="/shopimages/pgreen1364/0230020000502.jpg?1613553167" alt="상품 섬네일">
+										</a>
+										<input type="hidden" name="custom_price" value="52400">
+										<input type="hidden" name="product_price" value="42000">
+										<span class="sale_text" style="display: block;"></span>
 									</div>
 									<ul class="info">
 										<li class="dsc">웰킵스 황사방역마스크<br>KF94-대형 50개입
@@ -479,6 +514,7 @@
 							</div>
 						</td>
 					</tr>
+					 -->
 				</tbody>
 			</table>
 			<ol class="paging">
