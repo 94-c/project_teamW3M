@@ -127,7 +127,7 @@
          <div class="section1">
             <ul id="left_menu">
                <!-- 카테고리 자동출력 -->
-               <li><a href="productMask.do" class="">W3M 미세먼지마스크</a>
+               <li><a href="category.do" class="">W3M 미세먼지마스크</a>
                   <ul class="sub1" style="display: none;">
                      <li><a href="#" class="">- 프리미엄마스크</a></li>
                      <li><a href="#">- 스마트마스크</a></li>
@@ -201,7 +201,7 @@
 							style="cursor: pointer"></li>
 							
 						<li class="page_up">
-							<a href="#wrap" class="scroll" style="bottom: 1.63925px;">
+							<a href="#hdWrap" class="scroll" style="bottom: 1.63925px;">
 							<img src="resources/images/sideBar/r_quick_up.gif"></a></li>
 					</ul>
 				</div>
