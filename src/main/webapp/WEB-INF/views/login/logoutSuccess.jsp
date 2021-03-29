@@ -2,6 +2,7 @@
 <title>로그아웃 성공</title>
 <%@include file="/WEB-INF/views/include/header.jsp"%>
 <meta http-equiv="refresh" content="0.01; url=http://localhost:8080/">
+
 <link type="text/css" rel="stylesheet" href="resources/css/loginAfter.css?v=1">
 <div id="contentWrapper">
         <div id="contentWrap">

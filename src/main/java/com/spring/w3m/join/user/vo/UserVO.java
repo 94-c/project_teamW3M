@@ -25,6 +25,7 @@ public class UserVO {
 	private String user_sns_kakao;//kakao 회원가입
 	private String searchKeyword;
 	private String searchCondition;
+	private String returnURL; // test
 	@Override
 	public String toString() {
 		return "UserVO [user_id=" + user_id + ", user_password=" + user_password + ", user_name=" + user_name
@@ -168,6 +169,12 @@ public class UserVO {
 	}
 	public void setSearchCondition(String searchCondition) {
 		this.searchCondition = searchCondition;
+	}
+	public String getReturnURL() {
+		return returnURL;
+	}
+	public void setReturnURL(String returnURL) {
+		this.returnURL = returnURL;
 	}
 	
 	

@@ -1,5 +1,6 @@
 package com.spring.w3m.login.user.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,14 +21,9 @@ public class UserLoginController {
 	@Autowired
 	private CartService cartService;
 	
-	@RequestMapping("/loginForm.do")//로그인 폼으로 이동
-	public String loginView() {
-		System.out.println("로그인 폼으로 이동...");
-		return "login/login";
-	}
-	
+
 	@RequestMapping("/login.do")//로그인 유효성 검증
-	public ModelAndView userloginCheck(@ModelAttribute UserVO vo,CartVO cartvo, HttpSession session) {
+	public ModelAndView userloginCheck(@ModelAttribute UserVO vo,CartVO cartvo, HttpSession session,HttpServletRequest request) {
 		
 		int result = userLoginService.loginCheck(vo, session);
 		ModelAndView mav = new ModelAndView();
@@ -35,8 +31,16 @@ public class UserLoginController {
 		if(result == 1) {				// 로그인성공
 			System.out.println("장바구니 갯수 : "+cartService.cart_Cnt(cartvo));
 			session.setAttribute("cart", cartService.cart_Cnt(cartvo));
+			System.out.println(vo.getReturnURL());
+			
 			mav.setViewName("login/loginSuccess");
 			mav.addObject("msg", "success");
+			if(session.getAttribute("returnURL")!=null) {
+				
+				if(session.getAttribute("returnURL").equals("cart")) { // 비 로그인으로 장바구니 진입 시 로그인페이지 진입 후 성공하면 장바구니로 바로이동 
+					mav.setViewName("redirect:/GoCart.do");
+				}
+			}
 			
 		}else if(result == -1) {		// 정지된 계정
 			mav.setViewName("login/login");

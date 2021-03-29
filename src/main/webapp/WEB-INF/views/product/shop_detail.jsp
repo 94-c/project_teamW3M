@@ -3,8 +3,8 @@
 <%@include file="/WEB-INF/views/include/header.jsp"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <title>${product.prod_title }</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css?v=1" />
 <link href="resources/admin_css/pagination.css" rel="stylesheet" type="text/css">
 <link href="resources/admin_css/styles.css" rel="stylesheet" type="text/css">
 <link href="resources/css/notification.css" rel="stylesheet" 	type="text/css">
@@ -147,6 +147,14 @@ function send_cart(code){
 														</div>
 													</td>
 												</tr>
+												<tr>
+													<th scope="row"><div class="tb-left">적립금</div></th>
+													<td class="price">
+														<div class="tb-left">
+															${product.prod_point_rate}%
+														</div>
+													</td>
+												</tr>
 
 												<tr>
 													<td colspan="2" style="padding-top: 0;">
@@ -205,22 +213,24 @@ function send_cart(code){
 									</div>
 									<!-- .table-opt -->
 									<div class="prd-btns">
-										<a href="javascript:send_multi('', 'baro', '');"
-											class="btn_buy fe">바로 구매하기</a> 
+										
 											<c:if test="${login_state eq 'login' }" >
 											<a href="#cart_modal" rel ="modal:open" onclick="send_cart('${product.prod_code}');" class="btn_cart fe">장바구니 담기</a>
+											<a href="order_list.do" class="btn_buy fe">바로 구매하기</a>
 											</c:if>
 											<c:if test="${login_state ne 'login' }" >
-					                  		<a href="loginForm.do" onClick="alert('로그인이 필요합니다.')" class="btn_cart fe">장바구니 담기</a>
+					                  		<a href="loginForm.do?returnURL=cart" onClick="alert('로그인이 필요합니다.')" class="btn_cart fe">장바구니 담기</a>
+					                  		<a href="loginForm.do?returnURL=order" onClick="alert('로그인이 필요합니다.')" class="btn_buy fe">바로 구매하기</a>
 					              		    </c:if>
 									</div>
 									
 									<div id="cart_modal" class="modal">
-									<p align="center">1개의 (${product.prod_title})장바구니에 담겼습니다. 같은 상품을 중복선택 하는 경우에는 적용되지 않습니다.<br><b>지금 확인하시겠습니까?</b><br><br>  
+									<p align="center">(${product.prod_title})<br>1개의 물품이 장바구니에 담겼습니다.<br>같은 상품을 중복선택 하는 경우에는 적용되지 않습니다.<br><br><b>지금 확인하시겠습니까?</b><br><br>  
 									</p>
 									<a href="GoCart.do" rel=""><button>이동</button></a>&nbsp;&nbsp;&nbsp;
 									<a href="#" rel="modal:close"><button>계속쇼핑하기</button> </a>
 									</div>
+									
 									<div class="barotalk"></div>
 
 								</div>

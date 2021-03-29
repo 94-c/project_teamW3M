@@ -32,6 +32,16 @@ public class HomeController {
 
 		return "index";
 	}
+	@RequestMapping(value = "/orderList", method = { RequestMethod.GET, RequestMethod.POST })
+	public String order_list(Model model, ProductVO vo) {
+		System.out.println("메인홈으로 이동...");
+		
+		List<ProductVO> product = homeService.selectProduct(vo);
+		model.addAttribute("product", product);
+
+		return "order/OrderList";
+	}
+	
 
 	@RequestMapping("/getProduct")
 	public String getProduct(ProductVO vo, Model model, InquiryVO vo2,
@@ -58,7 +68,7 @@ public class HomeController {
 		model.addAttribute("inquiry", pageList);
 		model.addAttribute("cnt", cnt);
 		
-		return "shop_detail";
+		return "product/shop_detail";
 	}
 
 }
