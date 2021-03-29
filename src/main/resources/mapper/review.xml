@@ -11,6 +11,7 @@
 	
 	<resultMap type="ReviewVO" id="reviewResult">
 		<id property="review_seq " column="review_seq " />
+		<result property="prod_code" column="prod_code"/>
 		<result property="user_id" column="user_id"/>
 		<result property="prod_url" column="prod_url"/>
 		<result property="user_name" column="user_name"/>
@@ -22,10 +23,32 @@
 		<result property="review_cnt" column="review_cnt"/>
 	</resultMap>
  
-  <!-- 후기 작성 -->
+  	<!-- 후기 작성 -->
 	<insert id="insertReview" parameterType="ReviewVO">
-		INSERT INTO review (prod_code, user_id, prod_url, user_name, review_pass, review_seq, review_title, review_content, review_image, review_date, review_cnt)
-		VALUES(#{prod_code}, #{user_id}, #{user_name}, #{review_pass}, nextval('review_seq'), #{review_title}, #{review_content}, #{review_date}, #{review_cnt}) 
+		INSERT INTO review (prod_code, user_id, user_name, review_pass, review_seq, review_title, review_content, review_image, review_date, review_cnt)
+		VALUES(#{prod_code}, #{user_id}, #{user_name}, #{review_pass}, nextval('review_seq'), #{review_title}, #{review_content}, #{review_image}, #{review_date}, #{review_cnt}) 
 	</insert>
 	
+	<!-- 후기 상세보기 -->
+	<select id="getReview" resultType="ReviewVO">
+		SELECT * FROM review WHERE review_seq = #{review_seq}
+	</select>
+	
+	<!-- 후기 수정하기 -->
+	<update id="updateReview" parameterType="ReviewVO">
+		UPDATE review SET review_title = #{review_title}, review_content = #{review_content} WHERE review_seq=#{review_seq}
+	</update>
+	
+	<!-- 후기 삭제하기 -->
+	<delete id="deleteReview" parameterType="ReviewVO">
+		DELETE FROM review WHERE review_seq = #{review_seq}
+	</delete>
+	
+	<select id="getProduct" resultType="com.spring.w3m.product.admin.vo.ProductVO">
+		SELECT * FROM product WHERE prod_code = #{prod_code}
+	</select>
+	
+	<select id="getUser" resultType="com.spring.w3m.join.user.vo.UserVO">
+		SELECT * FROM user_member WHERE user_id = #{user_id} and user_name = #{user_name}
+	</select>
 </mapper>

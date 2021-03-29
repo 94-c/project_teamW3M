@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.spring.w3m.join.user.vo.UserVO;
+import com.spring.w3m.product.admin.vo.ProductVO;
 import com.spring.w3m.review.user.dao.ReviewDAO;
 import com.spring.w3m.review.user.vo.ReviewVO;
 
@@ -28,6 +30,36 @@ public class ReviewServiceImpl implements ReviewService {
 		reviewDAO.insertReview(vo);
 	}
 
+	@Override
+	public ReviewVO getReview(ReviewVO vo) {
+		System.out.println("Review 상세보기");
+		return reviewDAO.getReview(vo);
+	}
+
+	@Override
+	public void updateReview(ReviewVO vo) {
+		System.out.println("Review 수정하기");
+		reviewDAO.updateReview(vo);
+	}
+
+	@Override
+	public void deleteReview(ReviewVO vo) {
+		System.out.println("Review 삭제하기");
+		reviewDAO.deleteReview(vo);
+	}
+
+	@Override
+	public ProductVO getProduct(ProductVO vo) {
+		System.out.println("상품 등록");
+		return reviewDAO.getProduct(vo);
+	}
+
+	@Override
+	public UserVO getUser(UserVO vo) {
+		return reviewDAO.getUser(vo);
+	}
+
+	
 	
 
 }
