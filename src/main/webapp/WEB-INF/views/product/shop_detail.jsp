@@ -3,8 +3,9 @@
 <%@include file="/WEB-INF/views/include/header.jsp"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <title>${product.prod_title }</title>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
-<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css?v=1" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 <link href="resources/admin_css/pagination.css" rel="stylesheet" type="text/css">
 <link href="resources/admin_css/styles.css" rel="stylesheet" type="text/css">
 <link href="resources/css/notification.css" rel="stylesheet" 	type="text/css">
@@ -82,7 +83,25 @@ function send_cart(code){
 	
 	});
 }
-
+function send_oder(code){
+	var prod_code=code;
+	var prod_amount=$("#amount_val").val();
+	alldata={prod_code:prod_code , prod_amount: prod_amount};
+	$.ajax({
+		url : "/send_order.do",
+		type : "POST",
+		data : JSON.stringify(alldata),
+		dataType : "json",
+		contentType: "application/json; charset=UTF-8",
+		success:function(aa){
+			console.log("성공");
+		},
+		error:function(data){
+			console.log(data+"에러?");
+		}
+	
+	});
+}
 
 
 </script>
@@ -216,7 +235,7 @@ function send_cart(code){
 										
 											<c:if test="${login_state eq 'login' }" >
 											<a href="#cart_modal" rel ="modal:open" onclick="send_cart('${product.prod_code}');" class="btn_cart fe">장바구니 담기</a>
-											<a href="order_list.do" class="btn_buy fe">바로 구매하기</a>
+											<a href="#" onclick="send_oder('${product.prod_code}');" class="btn_buy fe">바로 구매하기</a>
 											</c:if>
 											<c:if test="${login_state ne 'login' }" >
 					                  		<a href="loginForm.do?returnURL=cart" onClick="alert('로그인이 필요합니다.')" class="btn_cart fe">장바구니 담기</a>
@@ -225,7 +244,7 @@ function send_cart(code){
 									</div>
 									
 									<div id="cart_modal" class="modal">
-									<p align="center">(${product.prod_title})<br>1개의 물품이 장바구니에 담겼습니다.<br>같은 상품을 중복선택 하는 경우에는 적용되지 않습니다.<br><br><b>지금 확인하시겠습니까?</b><br><br>  
+									<p align="center"><br><br><br><br><br><br><br>(${product.prod_title})<br>1개의 물품이 장바구니에 담겼습니다.<br>같은 상품을 중복선택 하는 경우에는 적용되지 않습니다.<br><br><b>지금 확인하시겠습니까?</b><br><br>  
 									</p>
 									<a href="GoCart.do" rel=""><button>이동</button></a>&nbsp;&nbsp;&nbsp;
 									<a href="#" rel="modal:close"><button>계속쇼핑하기</button> </a>
