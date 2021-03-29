@@ -125,7 +125,7 @@
                                           <div class="tb-center"> <c:if test="${reviewVO.review_writer ne null && reviewVO.review_writer!=''}">${fn:substring(reviewVO.review_writer,0,fn:length(reviewVO.review_writer)-1)}*</c:if></div>
 	                            		</td>
 	                                        <td><div class="tb-center"><fmt:formatDate value="${reviewVO.review_date}" pattern="yyyy-MM-dd" /></div></td>
-	                                        <td><div class="tb-center">${reviewVO.review_cnt}</div></td>
+	                                        <td scope="col"><div class="tb-center">${reviewVO.review_cnt}</div></td>
                                     </tr>
 									</c:forEach>
 								</tbody>

@@ -35,7 +35,7 @@ function userexit(){
 							<li><a href="#">쿠폰내역</a></li>
 							<li><a href="#">적립금내역</a></li>
 							<li><a href="#">오늘본상품</a></li>
-							<li><a href="#">상품 보관함</a></li>
+							<li><a href="GoCart.do">상품 보관함</a></li>
 						</ul>
 					</div>
 				</div>

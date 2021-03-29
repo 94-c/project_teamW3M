@@ -34,9 +34,9 @@ public class ReviewController {
 	// 후기 게시글
 	@RequestMapping("/review.do")
 	public String getReviewList(Model model, @RequestParam(required = false, defaultValue = "1") int page,
-			@RequestParam(required = false, defaultValue = "1") int range,
-			@RequestParam(required = false, defaultValue = "title") String searchType,
-			@RequestParam(required = false) String keyword) throws PSQLException, IOException {
+										@RequestParam(required = false, defaultValue = "1") int range,
+										@RequestParam(required = false, defaultValue = "title") String searchType,
+										@RequestParam(required = false) String keyword) throws PSQLException, IOException {
 		System.out.println("후기게시글 리스트");
 
 		Search search = new Search();
@@ -133,59 +133,6 @@ public class ReviewController {
 	}
 
 	/*
-	 * // 문의사항 리스트
-	 * 
-	 * @RequestMapping("/adminReview.mdo") public String adminReview(Model
-	 * model, @RequestParam(required = false, defaultValue = "1") int page,
-	 * 
-	 * @RequestParam(required = false, defaultValue = "1") int range,
-	 * 
-	 * @RequestParam(required = false, defaultValue = "title") String searchType,
-	 * 
-	 * @RequestParam(required = false) String keyword) throws PSQLException,
-	 * IOException { System.out.println("후기게시판 리스트");
-	 * 
-	 * Search search = new Search(); search.setSearchType(searchType);
-	 * search.setKeyword(keyword);
-	 * 
-	 * int cnt = reviewService.getReviewListCnt(search);
-	 * 
-	 * search.pageInfo(page, range, cnt);
-	 * 
-	 * // Pagination Pagination pagination = new Pagination();
-	 * pagination.pageInfo(page, range, cnt);
-	 * 
-	 * List<ReviewVO> pageList = reviewService.getPageList(search);
-	 * 
-	 * model.addAttribute("pagination", search); model.addAttribute("inquiryList",
-	 * pageList); model.addAttribute("cnt", cnt);
-	 * 
-	 * return ""; }
-	 * 
-	 * // 관리자 문의사항 상세보기
-	 * 
-	 * @RequestMapping("/admin_inquiry_content.mdo") public String
-	 * getAdminInquiry(InquiryVO vo, Model model) { model.addAttribute("inquiryVO",
-	 * inquiryService.getInquiry(vo));
-	 * 
-	 * // 댓글 조회 List<ReplyVO> replyList =
-	 * replyService.getReplyList(vo.getInq_seq()); model.addAttribute("replyList",
-	 * replyList);
-	 * 
-	 * return "page/inquiry/admin_inquiry_content"; }
-	 * 
-	 * // 관리자 문의사항 삭제
-	 * 
-	 * @RequestMapping("/deleteInquiry.mdo") public String
-	 * deleteAdminInquiry(InquiryVO vo, Model model) {
-	 * inquiryService.deleteInquiry(vo); model.addAttribute("inquiryList",
-	 * inquiryService.getInquiryList(vo)); return "redirect:/adminInquiry.mdo"; }
-	 *
-	 */
-	
-	/*
-	 * // 댓글 쓰기
-	 * 
 	 * @RequestMapping("/insertReply.mdo") public String insetReply(ReplyVO
 	 * rvo, @RequestParam("reply_text") String re_content) {
 	 * rvo.setRe_content(re_content); replyService.insertReply(rvo); return
@@ -205,5 +152,4 @@ public class ReviewController {
 	 * replyService.updateReply(rvo); return
 	 * "redirect:/admin_inquiry_content.mdo?inq_seq=" + seq; }
 	 */
-	
 }
