@@ -48,7 +48,7 @@
 	<div class="cboth main_section02">
 		<div class="fleft main_ban01">
 			<div class="cboth"><a href="getUserNoticeList.do"><IMG SRC="resources/images/m_mask/center_left1.jpg"></a></div>
-			<div class="cboth"><a href="#"><IMG SRC="resources/images/m_mask/center_left2.jpg"></a></div>
+			<div class="cboth"><a href="https://corona-live.com/"><IMG SRC="resources/images/m_mask/center_left2.jpg"></a></div>
 		</div>
 		
 	<!-- 중앙 배너 슬라이드  -->
