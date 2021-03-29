@@ -114,11 +114,11 @@
                      	<c:if test="${login_state ne 'login' }">
                      	<li><a href="loginForm.do" style="text-align: center;" onClick="alert('로그인이 필요합니다.')">문의게시판</a></li>
                      	</c:if>         
-						<li><a href="#" style="text-align: center;">상품후기</a></li>
+						<li><a href="review.do" style="text-align: center;">상품후기</a></li>
 						<li><a href="#" style="text-align: center;">이벤트</a></li>
-						<li><a href="#" style="text-align: center;">웰콤의 드림랜드</a></li>
+						<li><a href="https://corona-live.com/" style="text-align: center;">코로나-19</a></li>
 						<li><a href="#" style="text-align: center;">웰키의 다이어리</a></li>
-						<li><a href="#" style="text-align: center;">미디어룸</a></li>
+						<li><a href="https://www.welkeepsmall.com/board/board.html?code=pgreen1364_image2" style="text-align: center;">미디어룸</a></li>
 					</ul>
 				</div>
 			</div>
