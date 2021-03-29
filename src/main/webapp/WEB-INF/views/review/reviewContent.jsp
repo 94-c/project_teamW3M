@@ -21,7 +21,9 @@
                      <caption>게시글 보기</caption>
                      <thead>
                         <tr>
-                           <th><div class="tb-center">
+                           <th>
+                           <input type="hidden" name="review_seq" value="${reviewVO.review_seq }"/>
+                           <div class="tb-center">
                                  <font size="2">
                                     ${reviewVO.review_title }
                                  </font>
@@ -36,8 +38,10 @@
                                     <span><em>Date :</em><fmt:formatDate value="${reviewVO.review_date }" pattern="yyyy-MM-dd HH:mm:ss"/></span>
                                  </div>
                                  <div class align="right">
-                                    <span><em>Name :</em> <c:if test="${reviewVO.user_name ne null && reviewVO.user_name!=''}">${fn:substring(reviewVO.user_name,0,fn:length(reviewVO.user_name)-1)}*</c:if>
-                                    </span> 
+                                    <span><em>Name :</em>
+                                    	<c:if test="${reviewVO.review_writer ne null && reviewVO.review_writer!=''}">${fn:substring(reviewVO.review_writer,0,fn:length(reviewVO.review_writer)-1)}*</c:if></div>
+                                    </span>
+                                 <div class align="right">
                                     <span><em>Hits :</em> ${reviewVO.review_cnt }</span>
                                  </div>
                               </div>
@@ -48,8 +52,8 @@
                            <div class="data-bd-cont">
 							<div class align="left">
 							<pre><p style="font-size:10px; Line-height:200%; align:left; color:#5f5f5f;">${reviewVO.review_content }</p></pre>
-                                 <c:if test="${inquiryVO.inq_image eq '파일없음'}"></c:if>
-								 <c:if test="${inquiryVO.inq_image ne '파일없음'}"><img src="${inquiryVO.inq_image }"/></c:if>
+                                 <c:if test="${reviewVO.review_image eq '파일없음'}"></c:if>
+								 <c:if test="${reviewVO.review_image ne '파일없음'}"><img src="${reviewVO.review_image }"/></c:if>
 								</div>
                             </div>
                            </td>
@@ -99,7 +103,7 @@
                                             <td class="com-wrt-box">
                                                 <div>
                                                     <div class="wrt">
-                                                        <label>NAME</label><span><input type="text" name="user_name" class="MS_input_txt input-style input-style2" value="" onclick="CheckLogin()" onkeypress="CheckLogin()" placeholder="이름"></span>
+                                                        <label>NAME</label><span><input type="text" name="user_name" class="MS_input_txt input-style input-style2" value="${userVO.user_id }" onclick="CheckLogin()" onkeypress="CheckLogin()" placeholder="이름"></span>
                                                         <label>PASSWORD</label><span><input type="password" name="user_pass" class="MS_input_txt input-style input-style2" value="" onclick="CheckLogin()" onkeypress="CheckLogin()" placeholder="패스워드"> </span>
                                                     </div>
                                                     <div class="wrt wrt_write"><textarea name="comment" onchange="Checklength(this);" onkeyup="Checklength(this);" onclick="CheckLogin()" placeholder="내용"></textarea><a href="javascript:comment_save('');" class="CSSbuttonBlack">댓글쓰기</a></div>
@@ -151,7 +155,7 @@ function updateCheck()
 		alert("비밀번호가 일치하지 않습니다.");
 		return false;
 	}else{
-		location.href='./reviewUpdate_view.do?review_seq=${reviewVO.review_seq}'
+		location.href='./review_update_view.do?review_seq=${reviewVO.review_seq}'
 
 	}
 }

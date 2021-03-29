@@ -96,7 +96,9 @@ public class InquiryController {
 
 	@RequestMapping("/inquiry_update_view.do")
 	public String inquiryUpdateView(InquiryVO vo, Model model) {
+		System.out.println(vo.toString() + "4번");
 		model.addAttribute("getInquiry", inquiryService.getInquiry(vo));
+		System.out.println(vo.toString() + "5번");
 		return "/list/inquiry_update";
 	}
 
@@ -122,8 +124,11 @@ public class InquiryController {
 	// 게시글 수정 하기
 	@RequestMapping("/updateInquiry.do")
 	public String updateInquiry(InquiryVO vo, Model model) {
+		System.out.println(vo.toString() + "1번");
 		inquiryService.updateInquiry(vo);
+		System.out.println(vo.toString() + "2번");
 		model.addAttribute("inquiryList", inquiryService.getInquiryList(vo));
+		System.out.println(vo.toString() + "3번");
 		return "/list/inquiry";
 	}
 

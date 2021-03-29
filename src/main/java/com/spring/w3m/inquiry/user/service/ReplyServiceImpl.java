@@ -37,4 +37,9 @@ public class ReplyServiceImpl implements ReplyService {
 		
 	}
 
+	@Override
+	public List<ReplyVO> getReplyList_review(int review_seq) {
+		return replyDAO.getReplyList(review_seq);
+	}
+
 }

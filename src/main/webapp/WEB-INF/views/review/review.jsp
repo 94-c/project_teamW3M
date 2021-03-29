@@ -18,18 +18,17 @@
 				<div class="page-body">
 						<div class="bbs-tit">
 							<h3>후기게시판</h3>
-								<button type="submit" class="CSSbuttonBlack" id="submitbutton">글쓰기</button>
 						</div>
-						<!-- 게시판 목록 -->
-						<div class="bbs-table-list">
-					<a href="review.do"> 
-					<img src="resources/images/title/review_title.jpg"></a>
-						<form role="form" method="post" action="review_write_view.do">
-					<div class="bbs-tit">
-						<h3>상품후기</h3>
-						<td colspan="6" align="right">
-							<button type="submit" class="CSSbuttonBlack" id="submitbutton">글쓰기</button>
-						</td>
+					<!-- 게시판 목록 -->
+					<div class="bbs-table-list">
+						<a href="review.do"> 
+						<img src="resources/images/title/review_title.jpg"></a>
+							<form role="form" method="post" action="review_write_view.do">
+						<div class="bbs-tit">
+							<h3>상품후기</h3>
+							<td colspan="6" align="right">
+								<button type="submit" class="CSSbuttonBlack" id="submitbutton">글쓰기</button>
+							</td>
 					</div>
 					
 					<!-- 게시판 목록 -->
@@ -37,13 +36,14 @@
 							<table border="1" summary="No, content,Name,Date,Hits">
 								<caption>후기게시판 게시글</caption>
 								<colgroup>
-									<col width="70">
-									<col width="35">
-									<col width="*">
-									<col width="110">
-									<col width="110">
-									<col width="75">
-								</colgroup>
+                                    <col width="70">
+                                    <col width="35">
+                                    <col width="85">
+                                    <col width="*">
+                                    <col width="110">
+                                    <col width="110">
+                                    <col width="75">
+                                </colgroup>
 								<thead>
 									<tr>
                                         <th scope="col"><div class="tb-center">NO.</div></th>
@@ -61,41 +61,15 @@
 										<tr>
                                         <td><div class="tb-center">${reviewVO.review_seq}</div></td>
                                         <td><div class="tb-left"><img src="resources/images/icons/neo_lock.gif"></div></td>
-                                       	<td><div class="tb-left"><!--  <img src="#" width="60" height="60" align="middle">--></div></td> 
-                                        <td><div class="tb-left"><a href='<c:url value='/reviewContent.do?review_seq=${reviewVO.review_seq}'/>'class="text-dark">${reviewVO.review_title}</a></div>
+                                       	<td><div class="tb-left"><img src="${product.prod_title_image}" width="60" height="60" align="middle"></div></td> 
+                                        <td><div class="tb-left"><a href='<c:url value='/reviewContent.do?review_seq=${reviewVO.review_seq}'/>'class="text-dark">[${product.prod_title}]${reviewVO.review_title}</a></div>
                                         </td>
                                         <td>
-                                          <div class="tb-center"> <c:if test="${reviewVO.user_name ne null && reviewVO.user_name!=''}">${fn:substring(reviewVO.user_name,0,fn:length(reviewVO.user_name)-1)}*</c:if></div>
+                                          <div class="tb-center"> <c:if test="${reviewVO.review_writer ne null && reviewVO.review_writer!=''}">${fn:substring(reviewVO.review_writer,0,fn:length(reviewVO.review_writer)-1)}*</c:if></div>
 	                            		</td>
 	                                        <td><div class="tb-center"><fmt:formatDate value="${reviewVO.review_date}" pattern="yyyy-MM-dd" /></div></td>
 	                                        <td><div class="tb-center">${reviewVO.review_cnt}</div></td>
                                     </tr>
-									
-										
-										<%-- <tr>
-											<td scope="col"><div class="tb-center">${reviewVO.review_seq}</div></td>
-											<td scope="col"><div class="tb-center">&nbsp;</div></td>
-											<td scope="col"><div class="tb-center">
-													<a
-														href='<c:url value='/inquiryContent.do?inq_seq=${inquiryVO.inq_seq}'/>'
-														class="text-dark">${inquiryVO.inq_title}</a>
-												</div></td>
-											<td scope="col"><div class="tb-center">
-													<c:if
-														test="${inquiryVO.inq_writer ne null && inquiryVO.inq_writer!=''}"></c:if>
-												</div></td>
-											<td scope="col"><div class="tb-center">
-													<fmt:formatDate value="${inquiryVO.inq_date}"
-														pattern="yyyy-MM-dd" />
-											<td scope="col"><div class="tb-center"><a href='<c:url value='/reviewContent.do?review_seq=${reviewVO.review_seq}'/>'class="text-dark">${reviewVO.review_title}</div></td>
-											<td scope="col"><div class="tb-center">
-													<c:if test="${reviewVO.user_name ne null && reviewVO.user_name!=''}">${fn:substring(reviewVO.user_name,0,fn:length(reviewVO.user_name)-1)}*</c:if>
-											</div></td>
-											<td scope="col"><div class="tb-center">
-													<fmt:formatDate value="${reviewVO.review_date}" pattern="yyyy-MM-dd" />
-												</div></td>
-											<td scope="col"><div class="tb-center">${reviewVO.review_cnt}</div></td>
-										</tr> --%>
 									</c:forEach>
 								</tbody>
 							</table>
@@ -154,4 +128,6 @@
 			</div>
 		</div>
 	</div>
+</div>
+</div>
 <%@include file="/WEB-INF/views/include/footer.jsp"%>

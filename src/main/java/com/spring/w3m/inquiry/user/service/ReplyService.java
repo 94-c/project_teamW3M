@@ -16,4 +16,7 @@ public interface ReplyService {
 	
 	//댓글 수정
 	void updateReply(ReplyVO vo);
+	
+	
+	List<ReplyVO> getReplyList_review(int review_seq);
 }

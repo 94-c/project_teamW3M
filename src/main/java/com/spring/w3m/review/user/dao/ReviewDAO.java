@@ -6,57 +6,71 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.spring.w3m.join.user.vo.UserVO;
-import com.spring.w3m.product.admin.vo.ProductVO;
+import com.spring.w3m.paging.common.Pagination;
+import com.spring.w3m.paging.common.Search;
 import com.spring.w3m.review.user.vo.ReviewVO;
 
 @Repository
 public class ReviewDAO {
 	
 	@Autowired
-	private SqlSessionTemplate sqlsessionTemplate;
-	
-	//후기 게시판 목록 보기
+	private SqlSessionTemplate sqlSessionTemplate;
+
+	public void insertReview(ReviewVO vo) {
+		sqlSessionTemplate.insert("ReviewDAO.insertReview", vo);
+		System.out.println("후기게시판 글쓰기");
+
+	}
+
+	public void updateReview(ReviewVO vo) {
+		sqlSessionTemplate.update("ReviewDAO.updateReview", vo);
+		System.out.println("후기게시판 글수정");
+
+	}
+
+	public void deleteReview(ReviewVO vo) {
+		sqlSessionTemplate.delete("ReviewDAO.deleteReview", vo);
+		System.out.println("후기게시판 글삭제");
+
+	}
+
+	public ReviewVO getReview(ReviewVO vo) {
+		System.out.println("후기게시판 글 상세보기");
+		// 조회수 증가
+		/* sqlSessionTemplate.update("ReviewCntUpdate", vo); */
+		return sqlSessionTemplate.selectOne("ReviewDAO.getReview", vo);
+	}
+
+
 	public List<ReviewVO> getReviewList(ReviewVO vo) {
 		System.out.println("후기게시판 글목록 보기");
-		return sqlsessionTemplate.selectList("ReviewDAO.getReviewList", vo);
+		return sqlSessionTemplate.selectList("ReviewDAO.getReviewList", vo);
 	}
 	
-	//후기 글 작성
-	public void insertReview(ReviewVO vo) {
-		System.out.println("후기게시판 후기 작성");
-		sqlsessionTemplate.insert("ReviewDAO.insertReview", vo);
+	public int getReviewListCnt(Search search) {
+		System.out.println("getReviewListCnt() 실행");
+		return sqlSessionTemplate.selectOne("ReviewDAO.getReviewListCnt");
 	}
 	
-	//후기 글 상세보기
-	public ReviewVO getReview(ReviewVO vo) {
-		System.out.println("후기게시판 글 상세 보기");
-		return sqlsessionTemplate.selectOne("ReviewDAO.getReview", vo);
+	public List<ReviewVO> getPageList(Search search){
+		System.out.println("getPageList() 실행");
+		return sqlSessionTemplate.selectList("ReviewDAO.getPageList", search);
 	}
 	
-	//후기 글 수정하기
-	public void updateReview(ReviewVO vo) {
-		System.out.println("후기게시판 글 수정 하기");
-		sqlsessionTemplate.update("ReviewDAO.updateReview", vo);
+	public int getSearchCnt(String searchKeyword) {
+		System.out.println("getSearchCnt() 실헹");
+		return sqlSessionTemplate.selectOne("ReviewDAO.getSearchKeyword");
 	}
 	
-	//후기 글 삭제하기
-	public void deleteReview(ReviewVO vo) {
-		System.out.println("후기게시판 글 삭제 하기");
-		sqlsessionTemplate.delete("ReviewDAO.deleteReview", vo);
+	public List<ReviewVO> getSearchPagingList(Pagination pagination){
+		System.out.println("getSearchPagingList() 실행");
+		return sqlSessionTemplate.selectList("ReviewDAO.getSearchPagingList");
 	}
-	
-	//상품 정보
-	public ProductVO getProduct(ProductVO vo) {
-		System.out.println("상품정보 보기");
-		return sqlsessionTemplate.selectOne("ReviewDAO.getProduct", vo);
-	}
-	
-	//회원정보
-	public UserVO getUser(UserVO vo) {
-		System.out.println("회원정보 보기");
-		return sqlsessionTemplate.selectOne("ReviewDAO.getUser", vo);
-	}
+
+	/*
+	 * public ProductVO getProduct(ProductVO vo) { return
+	 * sqlSessionTemplate.selectOne("ReviewDAO.getProduct", vo); }
+	 */
 	
 }
 

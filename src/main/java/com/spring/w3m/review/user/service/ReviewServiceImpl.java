@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.spring.w3m.join.user.vo.UserVO;
-import com.spring.w3m.product.admin.vo.ProductVO;
+import com.spring.w3m.paging.common.Pagination;
+import com.spring.w3m.paging.common.Search;
 import com.spring.w3m.review.user.dao.ReviewDAO;
 import com.spring.w3m.review.user.vo.ReviewVO;
 
@@ -15,51 +15,59 @@ public class ReviewServiceImpl implements ReviewService {
 	
 	@Autowired
 	private ReviewDAO reviewDAO;
-	
-	//후기 목록 보기
-	@Override
-	public List<ReviewVO> getReviewList(ReviewVO vo) {
-		System.out.println("Review 목록 보기");
-		return reviewDAO.getReviewList(vo);
-	}
-	
-	//후기 작성
+
 	@Override
 	public void insertReview(ReviewVO vo) {
-		System.out.println("Review 작성");
+		System.out.println("후기 게시글 작성");
 		reviewDAO.insertReview(vo);
 	}
 
 	@Override
-	public ReviewVO getReview(ReviewVO vo) {
-		System.out.println("Review 상세보기");
-		return reviewDAO.getReview(vo);
-	}
-
-	@Override
 	public void updateReview(ReviewVO vo) {
-		System.out.println("Review 수정하기");
+		System.out.println("후기 게시글 수정");
 		reviewDAO.updateReview(vo);
 	}
 
 	@Override
 	public void deleteReview(ReviewVO vo) {
-		System.out.println("Review 삭제하기");
+		System.out.println("후기 게시글 삭제");
 		reviewDAO.deleteReview(vo);
 	}
 
 	@Override
-	public ProductVO getProduct(ProductVO vo) {
-		System.out.println("상품 등록");
-		return reviewDAO.getProduct(vo);
+	public ReviewVO getReview(ReviewVO vo) {
+		System.out.println("후기 게시글 가져오기");
+		return reviewDAO.getReview(vo);
 	}
 
 	@Override
-	public UserVO getUser(UserVO vo) {
-		return reviewDAO.getUser(vo);
+	public List<ReviewVO> getReviewList(ReviewVO vo) {
+		System.out.println("후기 리스트 가져오기");
+		return reviewDAO.getReviewList(vo);
 	}
 
-	
-	
+	/*
+	 * @Override public ProductVO getProduct(ProductVO vo) { return
+	 * reviewDAO.getProduct(vo); }
+	 */
+	@Override
+	public int getReviewListCnt(Search search) {
+		return reviewDAO.getReviewListCnt(search);
+	}
+
+	@Override
+	public List<ReviewVO> getPageList(Search search) {
+		return reviewDAO.getPageList(search);
+	}
+
+	@Override
+	public int getSearchCnt(String searchKeyword) {
+		return reviewDAO.getSearchCnt(searchKeyword);
+	}
+
+	@Override
+	public List<ReviewVO> getSearchPagingList(Pagination pagination) {
+		return reviewDAO.getSearchPagingList(pagination);
+	}
 
 }
