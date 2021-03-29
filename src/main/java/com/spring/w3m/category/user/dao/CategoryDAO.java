@@ -13,8 +13,12 @@ public class CategoryDAO {
 	@Autowired
 	private SqlSessionTemplate template;
 	
-	public List<ProductVO> classify(ProductVO vo){
-		return template.selectList("category.classify", vo);		
+	public List<ProductVO> classify1(ProductVO vo){
+		return template.selectList("category.classify1", vo);		
+	}
+	
+	public List<ProductVO> classify2(ProductVO vo){
+		return template.selectList("category.classify2", vo);		
 	}
 	
 	

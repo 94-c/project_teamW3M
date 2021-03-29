@@ -3,9 +3,12 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="category">
-	<select id="classify" resultType="ProductVO">
-		SELECT * FROM product WHERE prod_category1 = #{prod_category1}
+	<select id="classify1" resultType="ProductVO">
+		SELECT * FROM product WHERE	prod_category1 = #{prod_category1}
 	</select>
-	
-	
+
+	<select id="classify2" resultType="ProductVO">
+		SELECT * FROM product WHERE prod_category1 = #{prod_category1} AND prod_category2 = #{prod_category2}
+	</select>
+
 </mapper>

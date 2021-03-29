@@ -6,6 +6,7 @@ import com.spring.w3m.product.admin.vo.ProductVO;
 
 public interface CategoryService {
 
-	public List<ProductVO> classify(ProductVO vo);
+	public List<ProductVO> classify1(ProductVO vo);
 	
+	public List<ProductVO> classify2(ProductVO vo);
 }

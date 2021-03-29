@@ -14,8 +14,13 @@ public class CategoryServiceImpl implements CategoryService {
 	private CategoryDAO dao;
 
 	@Override
-	public List<ProductVO> classify(ProductVO vo) {
-		return dao.classify(vo);
+	public List<ProductVO> classify1(ProductVO vo) {
+		return dao.classify1(vo);
+	}
+
+	@Override
+	public List<ProductVO> classify2(ProductVO vo) {
+		return dao.classify2(vo);
 	}
 	
 	
