@@ -52,6 +52,7 @@ public class ProductServiceImpl implements ProductService {
 		vo.setProd_image9(singleUpload(image9));
 		vo.setProd_image10(singleUpload(image10));
 
+		System.out.println("===================insert : " + vo.getProd_title_image());
 		String prod_code = vo.getProd_code(); // 상품코드 받아서 카테고리분류하는 작업
 		sortCategory(vo, prod_code);
 		dao.insertProduct(vo);
@@ -81,26 +82,36 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	public String singleUpload(MultipartFile file) throws IOException {
+		if (file != null) {
+			InputStream ism = file.getInputStream();
+			String fileName = file.getOriginalFilename();
+			String contentType = file.getContentType();
+			long contentLength = file.getSize();
 
-		InputStream ism = file.getInputStream();
-		String fileName = file.getOriginalFilename();
-		String contentType = file.getContentType();
-		long contentLength = file.getSize();
-
-		awsS3.uploadProduct(ism, fileName, contentType, contentLength); // 상품이미지 업로드
-		if (fileName == "") {
-			return "이미지없음";
+			awsS3.uploadProduct(ism, fileName, contentType, contentLength); // 상품이미지 업로드
+			if (fileName == "") {
+				return "https://imageup.s3.ap-northeast-2.amazonaws.com/product/maskcat.jpg";
+			} else {
+				return "https://imageup.s3.ap-northeast-2.amazonaws.com/product/" + fileName;
+			}
 		} else {
-			return "https://imageup.s3.ap-northeast-2.amazonaws.com/product/" + fileName;
+			return "https://imageup.s3.ap-northeast-2.amazonaws.com/product/maskcat.jpg";
 		}
-
 	}
 
 	public void sortCategory(ProductVO vo, String prod_code) { // 카테고리분류작업
 		String[] category = prod_code.split("-");
-
-		for (int i = 0; i < category.length; i++) {
-			vo.setProd_category1(category[i]);
+		try {
+			vo.setProd_category1(category[0]); // MM
+			vo.setProd_category2(category[1]); // P
+			vo.setProd_category3(category[2]); // L
+			vo.setProd_category4(category[3]); // 94
+		} catch (Exception e) {
+			System.err.println("상품코드를 형식에 맞게 작성해주세요!!!");
+			vo.setProd_category1("temp"); // MM
+			vo.setProd_category2("temp"); // P
+			vo.setProd_category3("temp"); // L
+			vo.setProd_category4("temp"); // 94
 		}
 	}
 
