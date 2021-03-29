@@ -46,24 +46,24 @@
 										<td>
 											<div class="tb-center">
 												<div class="thumb">
-													<img src="#<!-- 섬네일 이미지 -->" width="40">
+													<img src="${OrderVO.prod_title_image }" width="40">
 												</div>
 											</div>
 										</td>
 										<td>
 											<div class="tb-left">
-												<a href="#<!--상품 상세페이지 이동(상품명이나 상품코드값 넘겨줘야함)-->"><!-- 장바구니테이블에서  상품명 -->
+												<a href="/getProduct?prod_code=${CartVO.prod_code }">${OrderVO.prod_title}
 												</a>
 											</div>
 										</td>
 										<td>
-											<div class="tb-center"><!-- 장바구니테이블에서 총 주문 갯수 --></div>
+											<div class="tb-center">${OrderVO.prod_amount}</div>
 										</td>
 										<td>
-											<div class="tb-center tb-bold"><!-- 장바구니테이블에서 총 주문가격--></div>
+											<div class="tb-center tb-bold">${OrderVO.prod_total_price}</div>
 										</td>
 										<td>
-											<div class="tb-center"><!-- 장바구니 테이블 적립 포인트 --></div>
+											<div class="tb-center">${OrderVO.prod_total_point}</div>
 										</td>
 									</tr>
 								</tbody>
@@ -86,8 +86,8 @@
 											<div class="txt-l">이름</div>
 										</th>
 										<td> 
-											<input type="hidden" name="sender" form="order_form" 
-											id="sender" class="MS_input_txt" value="하승우">
+											<input type="text" name="sender" form="order_form" 
+											id="sender" class="MS_input_txt" value="${OrderVO.user_name}">
 										</td>
 									</tr>
 									<tr>

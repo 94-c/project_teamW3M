@@ -150,7 +150,7 @@
 											<td>
 												<div class="tb-center">
 													<div class="thumb">
-														<a href="/getProduct?prod_seq=${CartVO.prod_seq }"><img src="${CartVO.prod_title_image }"></a>
+														<a href="/getProduct?prod_code=${CartVO.prod_code }"><img src="${CartVO.prod_title_image }"></a>
 														<!--  <a href=""> 여기 안에 상품 주소가 들어가 있었다.-->
 														<!--  <img alt="상품 섬네일" title="상품 섬네일"></a> -->
 													</div>
@@ -159,7 +159,7 @@
 
 											<td>
 												<div class="tb-left">
-													<a href="/getProduct?prod_seq=${CartVO.prod_seq }" class="#">${CartVO.prod_title }<!-- 상품명 들어가야 한다. -->
+													<a href="/getProduct?prod_code=${CartVO.prod_code }" class="#">${CartVO.prod_title }<!-- 상품명 들어가야 한다. -->
 													</a>
 													<div id="1001500_1" class="tb-opt"></div>
 												</div>
