@@ -7,15 +7,16 @@
      <h1 class="mt-4">상품평 관리</h1>              
      <ol class="breadcrumb mb-4"><li class="breadcrumb-item active">상품평 상세보기 </li></ol>
 		<div class="card mb-4">
-        <div class="card-header"><i class="fas fa-table mr-1"></i>${reviewVO.review_title }</div>
+        <div class="card-header" align="center">${reviewVO.review_title }</div>
         <div class="card-body">
         <div class="table-responsive">                    
-			<table>
+			<tr>
 				<thead>
 					<tr>
 						<th><div class="tb-center"><font size="2"></font></div></th>
 					</tr>
 				</thead>
+			</tr>	
 				<tbody>
 					<tr>
 						<td class="line">
@@ -32,49 +33,61 @@
 							</div>
 						</td>
 					</tr>
+					<tr>
 						<td>
 							<div class="data-bd-cont">
 								<div align="left">
-								<p style="font-size: 15px; Line-height: 200%; align: left; color: #5f5f5f;">${reviewVO.review_content }</p>
+									<p style="font-size: 20px; Line-height: 200%; align: left; color: #5f5f5f;">${reviewVO.review_content }</p>
+									<br>
+									<c:if test="${reviewVO.review_image eq '파일없음'}"></c:if>
+									<c:if test="${reviewVO.review_image ne '파일없음'}"><img src="${reviewVO.review_image }" /></c:if>
 								</div>
 							</div>
 						</td>
+					</tr>	
 				</tbody>
-				</table>
-
+				<br>
+				<br>
+				<div align="right">
+					<tr>
+					 	<td>
+					 		<button type="button" class="btn btn-info " onclick="location.href = '/reviewContent.do?review_seq=${reviewVO.review_seq}' ">원본으로 넘어가기</button>
+					 	</td>
+					 </tr>	
+				</div>					
 				<!-- 댓글 -->
-							<br>
-							<div id="reply">
-							<form name="updateform" action="updateReply.mdo?inq_seq=${inquiryVO.inq_seq}" method="post">
-							<h5>댓글</h5>
-							<table id="re_table">							
-									<c:forEach items="${replyList}" var="replyList" varStatus="status">
-											<input type="hidden" id="re_seq" name="re_seq" value="${replyList.re_seq}" />
-											<fmt:formatDate value="${replyList.re_date}" pattern="yyyy-MM-dd HH:mm" /><br>									
-											<pre>${replyList.re_content}</pre>
-											<div><a href="deleteReply.mdo?re_seq=${replyList.re_seq}&inq_seq=${inquiryVO.inq_seq}">삭제</a>
-											<a onclick="this.nextSibling.style.display=(this.nextSibling.style.display=='none')?'block':'none';" href="#">수정</a><div style="DISPLAY: none">											
-											<input type="hidden" id="re_seq" name="re_seq" value="${replyList.re_seq}" />
-											<input type="hidden" id="inq_seq" name="inq_seq" value="${inquiryVO.inq_seq}" />
-											<textarea id="reply_text" name="re_content_up" style="font-family: 굴림체;">${replyList.re_content}</textarea>											
-											<input type="button" value="수정" class="CSSbuttonBlack" id="replybutton" onclick="update()"/>														
-											</div>							
-											</div>	
-									</c:forEach>
-						  </table>
-						  </form>
-							</div>			 							 
-				  <div>
-				   <form name="insertform" action="insertReply.mdo" method="post">
-				    <input type="hidden" id="inq_seq" name="inq_seq" value="${inquiryVO.inq_seq}" />
-				    <input type="hidden" id="re_writer" name="re_writer" value="관리자" />
-				    <br/>
-				    <textarea id="reply_text" name="reply_txt" placeholder="댓글을 입력하세요" onfocus="this.placeholder=''" onblur="this.placeholder='댓글을 입력하세요'" style="font-family: 굴림체;"></textarea><br>		  	
-				 	<input type="button" value="등록" class="CSSbuttonBlack" id="replybutton" onclick="insert()"/>
-				  </form>
-				  </div>							
-						<button type="button" class="btn btn-info " onclick="location.href = 'deleteInquiry.mdo?inq_seq=${inquiryVO.inq_seq}' ">삭제하기</button>
-						<button type="button" class="btn btn-info " onclick="location.href = 'inquiry.do' ">목록으로</button>
+				<form id="comment_form" name="comment" action="#" method="post" autocomplete="off">
+					<fieldset>
+						<legend>코멘트 쓰기</legend>
+						<table summary="코멘트 쓰기" class="comment-box comment-write">
+							<colgroup>
+								<col width="*">
+							</colgroup>
+							<tbody>
+								<tr>
+									<td class="com-wrt-box01">
+										<div>
+											<div class="wrt">
+												<label>NAME</label>
+												<span>
+												<input type="text" name="user_name" class="MS_input_txt input-style input-style2" value="" onclick="CheckLogin()"
+													onkeypress="CheckLogin()" placeholder="이름"></span>
+												<label>PASSWORD</label>
+												<span>
+												<input type="password" name="user_pass" class="MS_input_txt input-style input-style2" value="" onclick="CheckLogin()" onkeypress="CheckLogin()" placeholder="패스워드">
+												</span>
+											</div>
+											<div class="wrt wrt_write">
+												<textarea name="comment" onchange="Checklength(this);" onkeyup="Checklength(this);" onclick="CheckLogin()" placeholder="내용"></textarea>
+												<a href="javascript:comment_save('');" class="CSSbuttonBlack01">댓글쓰기</a>
+											</div>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</fieldset>
+				</form>
 					</div>
 				</div>
 			</div>		

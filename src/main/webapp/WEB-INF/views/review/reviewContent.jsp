@@ -55,11 +55,14 @@
 										<div class="data-bd-cont">
 											<div align="left">
 												<p style="font-size: 15px; Line-height: 200%; align: left; color: #5f5f5f;">${reviewVO.review_content }</p>
-
+											<div class = "image_box">
+												<p style="width: 100%">
 												<c:if test="${reviewVO.review_image eq '파일없음'}"></c:if>
 												<c:if test="${reviewVO.review_image ne '파일없음'}">
 													<img src="${reviewVO.review_image }" />
 												</c:if>
+												</p>
+											</div>	
 											</div>
 										</div>
 									</td>
