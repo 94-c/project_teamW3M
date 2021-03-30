@@ -81,16 +81,17 @@
 							<div class="tb-center">
 								<div class="box">
 									<div class="thumb salebox">
-										<a href="/getProduct?prod_code=${product.prod_code }">
-										<img class="MS_prod_img_m" src="${product.prod_title_image }" alt="상품 섬네일" /></a>
-										<input type="hidden" name="custom_price" value="52400" />
-										<input type="hidden" name="product_price" value="42000" />
+										<a href="/getProduct?prod_code=${product.prod_code}">
+										<img class="MS_prod_img_m" src="${product.prod_title_image}" alt="상품 섬네일" /></a>
+										<input type="hidden" name="custom_price" value="${product.prod_price}" />
+										<input type="hidden" name="product_price" value="${product.prod_price_sale}" />
+										<span class="sale_text" style="display: block;"></span>
 									</div>
 									<ul class="info">
-										<li class="dsc">${product.prod_title }</li>
+										<li class="dsc">${product.prod_title}</li>
 										<li class="subname"></li>
-										<li class="consumer"><fmt:formatNumber value="${product.prod_price}" pattern="#,###" /></li>
-										<li class="price"><fmt:formatNumber value="${product.prod_price_sale}" pattern="#,###" /></li>
+										<li class="consumer"><fmt:formatNumber value="${product.prod_price}" pattern="#,###" />원</li>
+										<li class="price"><fmt:formatNumber value="${product.prod_price_sale}" pattern="#,###" />원</li>
 									</ul>
 								</div>
 							</div>
