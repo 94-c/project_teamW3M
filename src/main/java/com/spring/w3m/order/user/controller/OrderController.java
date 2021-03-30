@@ -1,9 +1,12 @@
 package com.spring.w3m.order.user.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -19,58 +22,77 @@ public class OrderController {
 
 	@Autowired
 	private OrderService orderService;
-	
+
+//	@RequestMapping("/send_order.do")
+//	@ResponseBody
+//	public OrderVO send_order(@RequestBody ProductVO productvo, @SessionAttribute("userVO") UserVO vo,HttpSession session) { //단일 주문
+//		System.out.println("주문 리스트");
+//		System.out.println("코드 : "+productvo.getProd_code()+"/수량: "+productvo.getProd_amount() +"/이름 :"+vo.getUser_id() );
+//		
+//		OrderVO oVO = new OrderVO();
+//		oVO.setUser_id(vo.getUser_id());
+//		oVO.setProd_code(productvo.getProd_code());
+//		oVO.setProd_amount(productvo.getProd_amount());
+//		System.out.println("ovo :"+oVO.toString());
+//		OrderVO orderVO = orderService.order_page_go(oVO);		
+//		
+////		int totalPoint = (oVO.getProd_point()*oVO.getProd_amount());
+////		int totalPrice = (oVO.getProd_point()*oVO.getProd_amount());
+//		
+//
+////		System.out.println(totalPoint);
+////		System.out.println(totalPrice);
+////		orderVO.setProd_total_price(totalPrice);
+////		orderVO.setProd_total_point(totalPoint);
+//		
+//		
+//		session.setAttribute("OrderVO", orderVO);
+//		System.out.println(orderVO.toString());
+//		return orderVO;
+////		return "order/OrderList";
+//		
+//	}
+	@RequestMapping("/send_order_go.do")
+	public String OrderList(@SessionAttribute("userVO") UserVO vo, HttpSession session) { // 단일
+																														// 주문
+		System.out.println("주문 리스트 -" + vo.getUser_id());
+
+
+
+		List<OrderVO> OrderVO = orderService.order_List(vo.getUser_id());
+		for (OrderVO orderList : OrderVO) {
+			int point = orderList.getProd_point();
+			int price = orderList.getProd_price_sale();
+			int amount = orderList.getProd_amount();
+			orderList.setProd_total_point(point * amount);
+			orderList.setProd_total_price(price * amount);
+
+		}
+		System.out.println(OrderVO.toString());
+		session.setAttribute("OrderVO", OrderVO);
+		return "order/OrderList";
+
+	}
+
 	@RequestMapping("/send_order.do")
 	@ResponseBody
-	public OrderVO send_order(@RequestBody ProductVO productvo, @SessionAttribute("userVO") UserVO vo,HttpSession session) { //단일 주문
-		System.out.println("주문 리스트");
-		System.out.println("코드 : "+productvo.getProd_code()+"/수량: "+productvo.getProd_amount() +"/이름 :"+vo.getUser_id() );
-		
-		OrderVO oVO = new OrderVO();
-		oVO.setUser_id(vo.getUser_id());
-		oVO.setProd_code(productvo.getProd_code());
-		oVO.setProd_amount(productvo.getProd_amount());
-		System.out.println("ovo :"+oVO.toString());
-		OrderVO orderVO = orderService.order_page_go(oVO);		
-		
-//		int totalPoint = (oVO.getProd_point()*oVO.getProd_amount());
-//		int totalPrice = (oVO.getProd_point()*oVO.getProd_amount());
-		
-
-//		System.out.println(totalPoint);
-//		System.out.println(totalPrice);
-//		orderVO.setProd_total_price(totalPrice);
-//		orderVO.setProd_total_point(totalPoint);
-		
-		
-		session.setAttribute("OrderVO", orderVO);
-		System.out.println(orderVO.toString());
-		return orderVO;
-//		return "order/OrderList";
-		
-	}
-	@RequestMapping("/send_order_go.do")
-	public String OrderList() { //단일 주문
-		System.out.println("주문 리스트");
-	
-		
-		return "order/OrderList";
-		
-	}
-	
-	public int order_Pord_List(@RequestBody ProductVO productvo, @SessionAttribute("userVO") UserVO vo,HttpSession session) { //제품들 주문 리스트에 등록
+	public int order_Pord_List(@RequestBody ProductVO productvo, @SessionAttribute("userVO") UserVO vo,
+			HttpSession session) { // 제품들 주문 리스트에 등록
 		System.out.println("주문 리스트 제품 등록");
-	
-		
-		System.out.println("코드 : "+productvo.getProd_code()+"/수량: "+productvo.getProd_amount() +"/이름 :"+vo.getUser_id() );
-		
+
+		orderService.order_drop_List(vo.getUser_id());
+		System.out.println(
+				"코드 : " + productvo.getProd_code() + "/수량: " + productvo.getProd_amount() + "/이름 :" + vo.getUser_id());
+
 		OrderVO orderVO = new OrderVO();
 		orderVO.setUser_id(vo.getUser_id());
 		orderVO.setProd_code(productvo.getProd_code());
 		orderVO.setProd_amount(productvo.getProd_amount());
-		//orderService.order_inser_prod(orderVO);
-		
-		return 1;
-		
+
+		int aa = orderService.order_inser_prod(orderVO);
+		System.out.println(aa);
+
+		return aa;
+
 	}
 }

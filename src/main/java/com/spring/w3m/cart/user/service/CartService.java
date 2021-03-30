@@ -13,4 +13,5 @@ public interface CartService {
 	public int Send_cart_alldelete(String user_id);
 	public void Cart_insert(CartVO vo);
 	public int Cart_distinct(CartVO vo);
+	public int multi_Order_List(String user_id);
 }

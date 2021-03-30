@@ -14,6 +14,7 @@ public class CartVO {
 	private int prod_price; // product 테이블에 prod_price
 	private int total_point; // 적립금 * 수량 
 	private int total_price; // 가격 * 수량 
+	private int cart_retrun; // gg 
 	
 	
 	
@@ -96,6 +97,12 @@ public class CartVO {
 	}
 	public void setProd_seq(int prod_seq) {
 		this.prod_seq = prod_seq;
+	}
+	public int getCart_retrun() {
+		return cart_retrun;
+	}
+	public void setCart_retrun(int cart_retrun) {
+		this.cart_retrun = cart_retrun;
 	}
 	
 	

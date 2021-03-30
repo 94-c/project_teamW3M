@@ -81,7 +81,23 @@
 			}
 		}
 			
-			
+	function multi_order_List(id){
+		var user_id = id;
+		console.log(id);
+		$.ajax({
+			async : true,
+			url : "/multi_Order_List.do",
+			type:"POST",
+			data: JSON.stringify(user_id),
+			dataType:"json",
+			contentType:"application/json; charset=UTF-8",
+			success:function(aa){
+				console.log(aa);
+				location.href= "send_order_go.do?returnURL=cartlist"
+			}
+		});
+		
+	}	
 	
 
 
@@ -208,7 +224,7 @@
 						</div>
 						<!-- .table-fill-prd -->
 						<div class="btn-order-ctrl">
-							<a href="javascript:multi_order()" class="CSSbuttonBlack">주문하기</a>
+							<a href="javascript:multi_order_List(${userVO.user_id})" class="CSSbuttonBlack">주문하기</a>
 							<a href="/" class="CSSbuttonWhite">계속 쇼핑하기</a> <a
 								href="javascript:send_basket_Alldelete();" class="CSSbuttonWhite">장바구니
 								비우기</a>

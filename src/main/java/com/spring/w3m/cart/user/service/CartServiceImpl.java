@@ -57,4 +57,10 @@ public class CartServiceImpl implements CartService{
 		return dao.Cart_distinct(vo);
 	}
 
+	@Override
+	public int multi_Order_List(String user_id) {
+		
+		return dao.multi_Order_List(user_id);
+	}
+
 }
