@@ -42,4 +42,17 @@ public class ReplyServiceImpl implements ReplyService {
 		return replyDAO.getReplyList(review_seq);
 	}
 
+	// 후기 댓글 영역
+	
+	@Override
+	public List<ReplyVO> getReviewReplyList(int review_seq) {
+		return replyDAO.getReviewReplyList(review_seq);
+	}
+
+	@Override
+	public void insertReviewReply(ReplyVO vo) {
+		replyDAO.insertReviewReply(vo);
+		
+	}
+
 }

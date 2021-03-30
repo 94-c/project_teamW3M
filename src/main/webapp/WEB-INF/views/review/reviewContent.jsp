@@ -9,6 +9,15 @@
 <link type="text/css" rel="stylesheet" href="resources/css/menu.css">
 <link type="text/css" rel="stylesheet" href="resources/css/soo.css">
 <link type="text/css" rel="stylesheet" href="resources/css/notification.css">
+<script type="text/javascript">
+function submitForm()
+{
+	var updateReply = document.comment;
+	
+	updateReply.submit();
+
+	}
+</script>
 <div id="contentWrapper">
 	<div id="contentWrap">
 		<div id="content">
@@ -97,10 +106,24 @@
 					</div>
 					<br> <br> <br> <br>
 				</div>
+				
+				<div id="reply">
+							<h5>댓글</h5><br>
+							<table id="re_table">							
+									<c:forEach items="${reviewReplyList}" var="reviewList">
+											<input type="hidden" id="review_seq" name="review_seq" value="${reviewList.review_seq}" />
+											<input type="hidden" id="review_re_seq" name="review_re_seq" value="${reviewList.review_re_seq}" />
+											<label><i>${reviewList.review_re_writer}</i></label>
+											<font id="commentDate"><fmt:formatDate value="${reviewList.review_re_date}" pattern="yyyy-MM-dd HH:mm" /></font><br>									
+											<pre>${reviewList.review_re_content}</pre><br>
+									</c:forEach>
+						  </table>
+							</div>			 	
+				
+				
 				<!-- .page-body -->
-				<form id="comment_form" name="comment"
-					action="board.html?code=pgreen1364_board2&amp;page=1&amp;type=v&amp;board_cate=&amp;num1=941603&amp;num2=00000&amp;number=34752&amp;lock=N"
-					method="post" autocomplete="off">
+				<form id="comment_form" name="comment" action="insertReviewReply.do" method="post">
+				<input type="hidden" name="review_seq" class="MS_input_txt input-style input-style2" value="${reviewVO.review_seq }">
 					<fieldset>
 						<legend>코멘트 쓰기</legend>
 						<table summary="코멘트 쓰기" class="comment-box comment-write">
@@ -113,19 +136,19 @@
 									<td class="com-wrt-box">
 										<div>
 											<div class="wrt">
-												<label>NAME</label>
+												<label>아이디</label>
 												<span>
-												<input type="text" name="user_name" class="MS_input_txt input-style input-style2" value="${userVO.user_id }" onclick="CheckLogin()"
-													onkeypress="CheckLogin()" placeholder="이름"></span>
-												<label>PASSWORD</label>
+												<input type="text" name="review_re_writer" class="MS_input_txt input-style input-style2" value="${userVO.user_id }" onclick="CheckLogin()"
+													onkeypress="CheckLogin()" placeholder="아이디"></span>
+												<label>비밀번호</label>
 												<span>
-												<input type="password" name="user_pass" class="MS_input_txt input-style input-style2" value=""
+												<input type="password" name="review_re_pass" class="MS_input_txt input-style input-style2" value=""
 													onclick="CheckLogin()" onkeypress="CheckLogin()" placeholder="패스워드">
 												</span>
 											</div>
 											<div class="wrt wrt_write">
-												<textarea name="comment" onchange="Checklength(this);" onkeyup="Checklength(this);" onclick="CheckLogin()" placeholder="내용"></textarea>
-												<a href="javascript:comment_save('');" class="CSSbuttonBlack">댓글쓰기</a>
+												<textarea name="review_re_content" onchange="Checklength(this);" onkeyup="Checklength(this);" onclick="CheckLogin()" placeholder="내용"></textarea>
+												<a href="javascript:submitForm()" class="CSSbuttonBlack">댓글쓰기</a>
 											</div>
 										</div>
 									</td>
@@ -178,6 +201,7 @@ function updateCheck()
 		location.href='./review_update_view.do?review_seq=${reviewVO.review_seq}'
 
 	}
+
 }
 </script>
 <%@include file="/WEB-INF/views/include/footer.jsp"%>

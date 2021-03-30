@@ -6,7 +6,6 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import com.spring.w3m.inquiry.user.vo.InquiryVO;
 import com.spring.w3m.inquiry.user.vo.ReplyVO;
 
 @Controller
@@ -20,9 +19,21 @@ public class ReplyDAO {
 		return sqlSessionTemplate.selectList("ReplyDAO.getReplyList", inq_seq);
 	}
 	
+	// 후기 댓글 조회
+	public List<ReplyVO> getReviewReplyList(int review_seq){
+		System.out.println("후기 댓글 보기");
+		return sqlSessionTemplate.selectList("ReplyDAO.getReviewReplyList", review_seq);
+	}
+	
 	// 댓글 등록
 	public void insertReply(ReplyVO vo) {
 		sqlSessionTemplate.insert("ReplyDAO.insertReply", vo);
+		System.out.println("댓글 등록");
+	}
+	
+	// 후기 댓글 등록
+	public void insertReviewReply(ReplyVO vo) {
+		sqlSessionTemplate.insert("ReplyDAO.insertReviewReply", vo);
 		System.out.println("댓글 등록");
 	}
 	

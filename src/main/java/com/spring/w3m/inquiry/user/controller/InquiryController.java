@@ -206,14 +206,11 @@ public class InquiryController {
 
 	// 댓글 수정
 	@RequestMapping("/updateReply.mdo")
-	public String updateReply(ReplyVO rvo, @RequestParam("re_content_up") String re_content, @RequestParam("re_seq") int num) {
+	public String updateReply(ReplyVO rvo) {
 		int seq = rvo.getInq_seq();
-		System.out.println(num);
-		System.out.println(re_content);
-		rvo.setRe_content(re_content);
-		System.out.println(re_content);
+		System.out.println(rvo.getRe_seq());
+		System.out.println(seq);
 		replyService.updateReply(rvo);
-
 		return "redirect:/admin_inquiry_content.mdo?inq_seq=" + seq;
 	}
 

@@ -8,8 +8,14 @@ public interface ReplyService {
 	//댓글 조회
 	List<ReplyVO> getReplyList(int inq_seq);
 	
+	// 후기 댓글 조회
+	List<ReplyVO> getReviewReplyList(int review_seq);
+	
 	//댓글 등록
 	void insertReply(ReplyVO vo);
+	
+	// 후기 댓글 등록
+	void insertReviewReply(ReplyVO vo);
 	
 	//댓글 삭제
 	void deleteReply(ReplyVO vo);
@@ -19,4 +25,5 @@ public interface ReplyService {
 	
 	
 	List<ReplyVO> getReplyList_review(int review_seq);
+
 }

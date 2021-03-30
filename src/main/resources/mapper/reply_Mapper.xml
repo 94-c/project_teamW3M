@@ -21,6 +21,17 @@
 
 <!-- 댓글 수정 -->
 	<update id="updateReply">
-		UPDATE reply SET re_content = #{re_content_up} WHERE re_seq = #{re_seq}
+		UPDATE reply SET re_content = #{re_content} WHERE re_seq = #{re_seq}
 	</update>
+	
+	
+<!-- 후기 댓글 조회 -->
+	<select id="getReviewReplyList" resultType="ReplyVO">
+		SELECT review_re_seq, review_re_content, review_re_writer, review_re_date FROM review_reply WHERE review_seq = #{review_seq}
+	</select>	
+	
+<!-- 후기 댓글 작성 -->
+	<insert id="insertReviewReply">
+		INSERT INTO review_reply (review_seq, review_re_seq, review_re_content, review_re_writer) values(#{review_seq}, nextval('re_review_seq'), #{review_re_content}, #{review_re_writer})
+	</insert>	
 </mapper>

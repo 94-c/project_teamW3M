@@ -102,9 +102,10 @@ public class ReviewController {
 	public String getReview(ReviewVO vo, Model model) {
 		System.out.println("글 상세보기 처리");
 		model.addAttribute("reviewVO", reviewService.getReview(vo));
-
-		List<ReplyVO> replyList = replyService.getReplyList(vo.getReview_seq());
-		model.addAttribute("replyList", replyList);
+		
+		
+		List<ReplyVO> reviewReplyList = replyService.getReviewReplyList(vo.getReview_seq());
+		model.addAttribute("reviewReplyList", reviewReplyList);
 
 		return "review/reviewContent";
 	}
@@ -131,6 +132,19 @@ public class ReviewController {
 		model.addAttribute("reviewList", reviewService.getReviewList(vo));
 		return "redirect:/review.do";
 	}
+	
+	// 댓글 쓰기
+	@RequestMapping("/insertReviewReply.do")
+	public String insertReviewReply(ReplyVO rvo) {
+		replyService.insertReviewReply(rvo);
+		return "redirect:/reviewContent.do?review_seq=" + rvo.getReview_seq();
+		}
+	
+	// 댓글 수정
+ 	@RequestMapping("/review_re_update_view.do") 
+ 	public String updateReply(ReplyVO rvo) { 
+ 		return "page/reply/replyUpdate";
+ 	}
 
 	/*
 	 * @RequestMapping("/insertReply.mdo") public String insetReply(ReplyVO
@@ -144,12 +158,6 @@ public class ReviewController {
 	 * int seq = rvo.getInq_seq(); replyService.deleteReply(rvo); return
 	 * "redirect:/admin_inquiry_content.mdo?inq_seq=" + seq; }
 	 * 
-	 * // 댓글 수정
 	 * 
-	 * @RequestMapping("/updateReply.mdo") public String updateReply(ReplyVO
-	 * rvo, @RequestParam("re_content_up") String re_content) { int seq =
-	 * rvo.getInq_seq(); rvo.setRe_content(re_content);
-	 * replyService.updateReply(rvo); return
-	 * "redirect:/admin_inquiry_content.mdo?inq_seq=" + seq; }
 	 */
 }
