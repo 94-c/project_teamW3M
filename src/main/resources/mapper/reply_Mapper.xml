@@ -21,6 +21,6 @@
 
 <!-- 댓글 수정 -->
 	<update id="updateReply">
-		UPDATE reply SET re_content = #{re_content} WHERE re_seq =#{re_seq}
+		UPDATE reply SET re_content = #{re_content_up} WHERE re_seq = #{re_seq}
 	</update>
 </mapper>

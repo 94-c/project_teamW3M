@@ -208,6 +208,8 @@ public class InquiryController {
 	@RequestMapping("/updateReply.mdo")
 	public String updateReply(ReplyVO rvo, @RequestParam("re_content_up") String re_content, @RequestParam("re_seq") int num) {
 		int seq = rvo.getInq_seq();
+		System.out.println(num);
+		System.out.println(re_content);
 		rvo.setRe_content(re_content);
 		System.out.println(re_content);
 		replyService.updateReply(rvo);

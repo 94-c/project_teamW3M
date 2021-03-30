@@ -34,7 +34,7 @@
 							<form name="updateform" action="updateReply.mdo?inq_seq=${inquiryVO.inq_seq}" method="post">
 							<h5>댓글</h5>
 							<table id="re_table">							
-									<c:forEach items="${replyList}" var="replyList">
+									<c:forEach items="${replyList}" var="replyList" varStatus="status">
 											<input type="hidden" id="re_seq" name="re_seq" value="${replyList.re_seq}" />
 											<fmt:formatDate value="${replyList.re_date}" pattern="yyyy-MM-dd HH:mm" /><br>									
 											<pre>${replyList.re_content}</pre>
@@ -42,7 +42,7 @@
 											<a onclick="this.nextSibling.style.display=(this.nextSibling.style.display=='none')?'block':'none';" href="#">수정</a><div style="DISPLAY: none">											
 											<input type="hidden" id="re_seq" name="re_seq" value="${replyList.re_seq}" />
 											<input type="hidden" id="inq_seq" name="inq_seq" value="${inquiryVO.inq_seq}" />
-											<textarea id="reply_text" name="re_content_up" style="font-family: 굴림체;">${replyList.re_content}</textarea>							
+											<textarea id="reply_text" name="re_content_up" style="font-family: 굴림체;">${replyList.re_content}</textarea>											
 											<input type="button" value="수정" class="CSSbuttonBlack" id="replybutton" onclick="update()"/>														
 											</div>							
 											</div>	
@@ -79,9 +79,6 @@ function insert()
 function update()
 {
 	var updateReply = document.updateform;
-	var content = document.re_content_up;
-	
-	if(content == document.re.content_up)
 	
 	updateReply.submit();
 
