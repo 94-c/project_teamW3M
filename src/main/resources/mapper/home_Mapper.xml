@@ -37,4 +37,10 @@
   <select id="getInquiryListCnt" resultType="int">
 		select count(*) from inquiry where prod_code = #{prod_code}
 	</select>
+	
+	<update id="countUpdate" parameterType="com.spring.w3m.product.admin.vo.ProductVO"> 
+		update product set prod_count=prod_count+1 WHERE prod_code=#{prod_code} 
+	</update>
+	
+	
  </mapper>

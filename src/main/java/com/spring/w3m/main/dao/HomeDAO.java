@@ -22,6 +22,7 @@ public class HomeDAO {
 
 	public ProductVO getProduct(ProductVO vo) {
 		System.out.println("DAO 실행");
+		sqlSessionTemplate.update("HomeDAO.countUpdate",vo);
 		return sqlSessionTemplate.selectOne("HomeDAO.getProduct", vo);
 	}
 	
@@ -33,5 +34,9 @@ public class HomeDAO {
 	public int getInquiryListCnt(Search search) {
 		System.out.println("getInquiryListCnt() 실행");
 		return sqlSessionTemplate.selectOne("HomeDAO.getInquiryListCnt");
+	}
+	
+	public void countUpdate(ProductVO vo) {
+		
 	}
 }
