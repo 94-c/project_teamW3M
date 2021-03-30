@@ -23,42 +23,14 @@ public class OrderController {
 	@Autowired
 	private OrderService orderService;
 
-//	@RequestMapping("/send_order.do")
-//	@ResponseBody
-//	public OrderVO send_order(@RequestBody ProductVO productvo, @SessionAttribute("userVO") UserVO vo,HttpSession session) { //단일 주문
-//		System.out.println("주문 리스트");
-//		System.out.println("코드 : "+productvo.getProd_code()+"/수량: "+productvo.getProd_amount() +"/이름 :"+vo.getUser_id() );
-//		
-//		OrderVO oVO = new OrderVO();
-//		oVO.setUser_id(vo.getUser_id());
-//		oVO.setProd_code(productvo.getProd_code());
-//		oVO.setProd_amount(productvo.getProd_amount());
-//		System.out.println("ovo :"+oVO.toString());
-//		OrderVO orderVO = orderService.order_page_go(oVO);		
-//		
-////		int totalPoint = (oVO.getProd_point()*oVO.getProd_amount());
-////		int totalPrice = (oVO.getProd_point()*oVO.getProd_amount());
-//		
-//
-////		System.out.println(totalPoint);
-////		System.out.println(totalPrice);
-////		orderVO.setProd_total_price(totalPrice);
-////		orderVO.setProd_total_point(totalPoint);
-//		
-//		
-//		session.setAttribute("OrderVO", orderVO);
-//		System.out.println(orderVO.toString());
-//		return orderVO;
-////		return "order/OrderList";
-//		
-//	}
+
 	@RequestMapping("/send_order_go.do")
-	public String OrderList(@SessionAttribute("userVO") UserVO vo, HttpSession session) { // 단일
-																														// 주문
+	public String OrderList(@SessionAttribute("userVO") UserVO vo, HttpSession session) { //주문
 		System.out.println("주문 리스트 -" + vo.getUser_id());
 
-
-
+		int pay_total_price =0;
+		int pay_total_point =0;
+		int pay_Shipping_cost =0;
 		List<OrderVO> OrderVO = orderService.order_List(vo.getUser_id());
 		for (OrderVO orderList : OrderVO) {
 			int point = orderList.getProd_point();
@@ -66,10 +38,21 @@ public class OrderController {
 			int amount = orderList.getProd_amount();
 			orderList.setProd_total_point(point * amount);
 			orderList.setProd_total_price(price * amount);
-
+			pay_total_price = orderList.getProd_total_price();
+			pay_total_point = orderList.getProd_total_point();
 		}
+		if(pay_total_price >= 20000) {
+			pay_Shipping_cost = 0;
+
+		}else {
+			pay_Shipping_cost = 2500;
+		}
+		
 		System.out.println(OrderVO.toString());
 		session.setAttribute("OrderVO", OrderVO);
+		session.setAttribute("pay_total_price", pay_total_price);
+		session.setAttribute("pay_total_point", pay_total_point);
+		session.setAttribute("pay_Shipping_cost", pay_Shipping_cost);
 		return "order/OrderList";
 
 	}

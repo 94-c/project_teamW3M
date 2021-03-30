@@ -39,7 +39,9 @@ public class OrderVO {
 	private int prod_total_point;//제품 총 포인트
 	
 	//결제
+	private int pay_Shipping_cost;//배송비용
 	private int pay_total_price;//총 결제 금액
+	private int pay_total_point;//총 적립금
 	private String pay_tool;// 결제 수단
 	private String pay_status;//결제상태 
 	
@@ -237,6 +239,18 @@ public class OrderVO {
 	}
 	public void setProd_price_sale(int prod_price_sale) {
 		this.prod_price_sale = prod_price_sale;
+	}
+	public int getPay_total_point() {
+		return pay_total_point;
+	}
+	public void setPay_total_point(int pay_total_point) {
+		this.pay_total_point = pay_total_point;
+	}
+	public int getPay_Shipping_cost() {
+		return pay_Shipping_cost;
+	}
+	public void setPay_Shipping_cost(int pay_Shipping_cost) {
+		this.pay_Shipping_cost = pay_Shipping_cost;
 	}
 	
 	

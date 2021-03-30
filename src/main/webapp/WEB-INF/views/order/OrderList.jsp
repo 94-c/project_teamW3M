@@ -298,14 +298,13 @@ function OrderDaumPostcode() {
 										<td>
 											<div class="base">
 												<strong><em><span
-														class="op-total block-op-product-price" price="총 주문 금액"><!-- 총 주문금액 --></span></em>원</strong>
+														class="op-total block-op-product-price" price="총 주문 금액">${pay_total_price}</span></em>원</strong>
 											</div>
 										</td>
 										<td>
 											<div class="base">
-												<strong><em><span
-														class="op-total block-op-delivery-price" price="0">무료</span></em>
-														<span id="block_op_delivery_unit" style="display: none;">원</span></strong>
+												<strong><em>${pay_Shipping_cost}</em>
+												<span id="block_op_delivery_unit" style="display: none;">원</span></strong>
 												<!-- 총 가격에 +,- 적용 -->
 												<a class="plus">
 												<img src="resources/images/order/plus.png" alt="plus"></a>
