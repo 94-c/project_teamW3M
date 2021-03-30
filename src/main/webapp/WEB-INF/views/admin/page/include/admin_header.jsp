@@ -91,16 +91,15 @@
 						<div class="collapse" id="collapsePages"
 							aria-labelledby="headingOne" data-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="getProductList.mdo">상품 관리</a> <a class="nav-link"
-									href="#">상품 재고 관리</a> <a class="nav-link" href="#">상품평 관리</a> <a
-									class="nav-link" href="#">상품 문의 관리</a>
+								<a class="nav-link" href="getProductList.mdo">상품 관리</a> 
+								<a class="nav-link" href="#">상품 재고 관리</a> 
+								<a class="nav-link" href="adminReview.mdo">상품평 관리</a> 
+								<a class="nav-link" href="#">상품 문의 관리</a>
 							</nav>
 						</div>
 
 
-						<a class="nav-link collapsed" href="#" data-toggle="collapse"
-							data-target="#collapsePages" aria-expanded="false"
-							aria-controls="collapsePages">
+						<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-columns"></i>
 							</div> 주문
@@ -108,13 +107,12 @@
 								<i class="fas fa-angle-down"></i>
 							</div>
 						</a>
-						<div class="collapse" id="collapsePages"
-							aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
+						<div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav accordion"
 								id="sidenavAccordionPages">
 								<nav class="sb-sidenav-menu-nested nav">
-									<a class="nav-link" href="#">주문 관리</a> <a class="nav-link"
-										href="#">배송 현황</a>
+									<a class="nav-link" href="#">주문 관리</a> 
+									<a class="nav-link" href="#">배송 현황</a>
 								</nav>
 							</nav>
 						</div>
