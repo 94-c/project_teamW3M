@@ -5,15 +5,28 @@
 <mapper namespace="category">
 	<select id="classify1" resultType="ProductVO">
 		SELECT * FROM product WHERE	prod_category1 = #{prod_category1}
+		<if test="searchCondition == 'high_price'">
+			ORDER BY prod_price_sale DESC
+		</if>
+		<if test="searchCondition == 'low_price'">
+			ORDER BY prod_price_sale ASC
+		</if>
+		<if test="searchCondition == 'hit_cnt'">
+			ORDER BY prod_count DESC
+		</if>
 	</select>
 
 	<select id="classify2" resultType="ProductVO">
 		SELECT * FROM product WHERE prod_category1 = #{prod_category1} AND prod_category2 = #{prod_category2}
-	</select>
-	
-	<!-- 전체 상품수 -->
-	<select id="total_cnt" resultType="int">
-		SELECT count(*) FROM product
+		<if test="searchCondition == 'high_price'">
+			ORDER BY prod_price_sale DESC
+		</if>
+		<if test="searchCondition == 'low_price'">
+			ORDER BY prod_price_sale ASC
+		</if>
+		<if test="searchCondition == 'hit_cnt'">
+			ORDER BY prod_count DESC
+		</if>
 	</select>
 	
 	<!-- category1 상품수 -->
@@ -25,5 +38,26 @@
 	<select id="category2_cnt" resultType="int">
 		SELECT count(*) FROM product WHERE prod_category1 = #{prod_category1} AND prod_category2 = #{prod_category2}
 	</select>
-
+	
+	<!-- 세부 종류 개수(ex.프리미엄/일반/블랙 -> 3) -->
+	<select id="branch_cnt" resultType="int">
+		SELECT count(distinct prod_category2) FROM product WHERE prod_category1 = #{prod_category1};
+	</select>
+	
+	<select id="MMP_cnt" resultType="int">
+		SELECT count(*) FROM product WHERE prod_category1 = 'MM' AND prod_category2 = 'P'
+	</select>
+	<select id="MMN_cnt" resultType="int">
+		SELECT count(*) FROM product WHERE prod_category1 = 'MM' AND prod_category2 = 'N'
+	</select>
+	<select id="MMB_cnt" resultType="int">
+		SELECT count(*) FROM product WHERE prod_category1 = 'MM' AND prod_category2 = 'B'
+	</select>
+	<select id="BBN_cnt" resultType="int">
+		SELECT count(*) FROM product WHERE prod_category1 = 'BB' AND prod_category2 = 'N'
+	</select>
+	<select id="SSN_cnt" resultType="int">
+		SELECT count(*) FROM product WHERE prod_category1 = 'SS' AND prod_category2 = 'N'
+	</select>
+	
 </mapper>

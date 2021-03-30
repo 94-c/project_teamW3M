@@ -19,7 +19,14 @@ public class CategoryController {
 	public String category(Model model, ProductVO vo) {
 		List<ProductVO> productList =  service.category(vo);
 		model.addAttribute("productList", productList);
-		model.addAttribute("productName", service.getName(productList));
+		model.addAttribute("productName", service.getName(vo));
+		model.addAttribute("productCount", service.productCount(vo));
+		model.addAttribute("branchCount", service.branchCount(vo));
+		model.addAttribute("MMP_cnt", service.MMP_cnt(vo));
+		model.addAttribute("MMN_cnt", service.MMN_cnt(vo));
+		model.addAttribute("MMB_cnt", service.MMB_cnt(vo));
+		model.addAttribute("BBN_cnt", service.BBN_cnt(vo));
+		model.addAttribute("SSN_cnt", service.SSN_cnt(vo));
 		return "product/shop_category";
 	}
 
