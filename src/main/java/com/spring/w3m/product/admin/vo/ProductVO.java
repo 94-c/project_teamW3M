@@ -31,7 +31,14 @@ public class ProductVO {
 	private String prod_state;
 	private Date prod_regdate;
 	private int prod_count;
+	private String searchCondition;
 	
+	public String getSearchCondition() {
+		return searchCondition;
+	}
+	public void setSearchCondition(String searchCondition) {
+		this.searchCondition = searchCondition;
+	}
 	public int getProd_seq() {
 		return prod_seq;
 	}

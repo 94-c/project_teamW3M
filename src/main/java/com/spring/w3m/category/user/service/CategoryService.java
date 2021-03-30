@@ -12,5 +12,15 @@ public interface CategoryService {
 	
 	public List<ProductVO> category(ProductVO vo);
 	
-	public String getName(List<ProductVO> productList);
+	public String getName(ProductVO vo);
+	
+	public int productCount(ProductVO vo);
+	
+	public int branchCount(ProductVO vo);
+	
+	public int MMP_cnt(ProductVO vo);
+	public int MMN_cnt(ProductVO vo); 
+	public int MMB_cnt(ProductVO vo);
+	public int BBN_cnt(ProductVO vo);
+	public int SSN_cnt(ProductVO vo);
 }
