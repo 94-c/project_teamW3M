@@ -33,26 +33,17 @@
 		<a class="navbar-brand" href="loginIndex.mdo"><img
 			src="resources/images/h_design/top_w3m.gif"></a>
 
-		<!-- Navbar Search-->
+		<!-- 토글 오른쪽으로 붙이게 남겨뒀어요-->
 		<form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
 			<div class="input-group">
-				<input class="form-control" type="text" placeholder="검색창" aria-label="Search" aria-describedby="basic-addon2" />
-				<div class="input-group-append">
-					<button class="btn btn-primary" type="button">
-						<i class="fas fa-search"></i>
-					</button>
-				</div>
 			</div>
 		</form>
 		
 		<!-- Navbar-->
 		<ul class="navbar-nav ml-auto ml-md-0">
-			<li class="nav-item dropdown"><a
-				class="nav-link dropdown-toggle" id="userDropdown" href="#"
-				role="button" data-toggle="dropdown" aria-haspopup="true"
-				aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-				<div class="dropdown-menu dropdown-menu-right"
-					aria-labelledby="userDropdown">
+			<li class="nav-item dropdown">
+			<a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+				<div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
 					<a class="dropdown-item" href="adminLogout.mdo">로그아웃</a> <a
 						class="dropdown-item" href="/">메인 홈으로 나가기</a>
 				</div>
@@ -61,8 +52,7 @@
 	</nav>
 	<div id="layoutSidenav">
 		<div id="layoutSidenav_nav">
-			<nav class="sb-sidenav accordion sb-sidenav-dark"
-				id="sidenavAccordion">
+			<nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
 				<div class="sb-sidenav-menu">
 					<div class="nav">
 						<div class="sb-sidenav-menu-heading">홈</div>
@@ -78,9 +68,7 @@
 
 						<div class="sb-sidenav-menu-heading">관리자</div>
 
-						<a class="nav-link collapsed" href="#" data-toggle="collapse"
-							data-target="#collapsePages" aria-expanded="false"
-							aria-controls="collapsePages">
+						<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-columns"></i>
 							</div> 상품
@@ -88,13 +76,11 @@
 								<i class="fas fa-angle-down"></i>
 							</div>
 						</a>
-						<div class="collapse" id="collapsePages"
-							aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+						<div class="collapse" id="collapsePages" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
 								<a class="nav-link" href="getProductList.mdo">상품 관리</a> 
 								<a class="nav-link" href="#">상품 재고 관리</a> 
 								<a class="nav-link" href="adminReview.mdo">상품평 관리</a> 
-								<a class="nav-link" href="#">상품 문의 관리</a>
 							</nav>
 						</div>
 
@@ -117,9 +103,7 @@
 							</nav>
 						</div>
 
-						<a class="nav-link collapsed" href="#" data-toggle="collapse"
-							data-target="#collapsePages" aria-expanded="false"
-							aria-controls="collapsePages">
+						<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-book-open"></i>
 							</div> 공지사항
@@ -127,8 +111,7 @@
 								<i class="fas fa-angle-down"></i>
 							</div>
 						</a>
-						<div class="collapse" id="collapsePages"
-							aria-labelledby="headingThree" data-parent="#sidenavAccordion">
+						<div class="collapse" id="collapsePages" aria-labelledby="headingThree" data-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav accordion" id="notice">
 								<nav class="sb-sidenav-menu-nested nav">
 									<a class="nav-link" href="admin_notice_list.mdo">글 상세보기</a> <a
@@ -146,11 +129,11 @@
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-table"></i>
 							</div> 고객관리
-						</a> <a class="nav-link" href="#">
+						</a> <a class="nav-link" href="admin_Sales.mdo"">
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-chart-area"></i>
 							</div> 매출통계
-						</a> <a class="nav-link" href="#">
+						</a> <a class="nav-link" href="admin_Product_Sales.mdo">
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-table"></i>
 							</div> 상품통계
@@ -159,7 +142,7 @@
 				</div>
 
 				<div class="sb-sidenav-footer">
-					<div class="small">Logged in as:</div>
+					<div class="small">Logged in as:&nbsp;&nbsp;<strong>관리자</strong></div>
 					<!-- admin 로그인 했다는 거 표시를 해야한다. -->
 				</div>
 			</nav>
