@@ -19,6 +19,7 @@ public class CategoryController {
 	public String category(Model model, ProductVO vo) {
 		List<ProductVO> productList =  service.category(vo);
 		model.addAttribute("productList", productList);
+		model.addAttribute("productName", service.getName(productList));
 		return "product/shop_category";
 	}
 

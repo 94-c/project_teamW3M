@@ -11,4 +11,6 @@ public interface CategoryService {
 	public List<ProductVO> classify2(ProductVO vo);
 	
 	public List<ProductVO> category(ProductVO vo);
+	
+	public String getName(List<ProductVO> productList);
 }

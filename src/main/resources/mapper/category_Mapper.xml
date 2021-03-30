@@ -10,5 +10,20 @@
 	<select id="classify2" resultType="ProductVO">
 		SELECT * FROM product WHERE prod_category1 = #{prod_category1} AND prod_category2 = #{prod_category2}
 	</select>
+	
+	<!-- 전체 상품수 -->
+	<select id="total_cnt" resultType="int">
+		SELECT count(*) FROM product
+	</select>
+	
+	<!-- category1 상품수 -->
+	<select id="category1_cnt" resultType="int">
+		SELECT count(*) FROM product WHERE prod_category1 = #{prod_category1}
+	</select>
+	
+	<!-- category2 상품수 -->
+	<select id="category2_cnt" resultType="int">
+		SELECT count(*) FROM product WHERE prod_category1 = #{prod_category1} AND prod_category2 = #{prod_category2}
+	</select>
 
 </mapper>

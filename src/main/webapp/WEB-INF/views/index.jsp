@@ -99,8 +99,8 @@
 							<ul class="info">
 								<li class="dsc">${product.prod_title }</li>
 								<li class="subname"></li>
-								<li class="consumer"><fmt:formatNumber value="${product.prod_price}" pattern="#,###" /></li>									
-								<li class="price"><fmt:formatNumber value="${product.prod_price_sale}" pattern="#,###" /></li>
+								<li class="consumer"><fmt:formatNumber value="${product.prod_price}" pattern="#,###" />원</li>									
+								<li class="price"><fmt:formatNumber value="${product.prod_price_sale}" pattern="#,###" />원</li>
 							</ul>
 						</div>
 						</div>
