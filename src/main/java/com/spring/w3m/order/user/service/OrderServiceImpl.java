@@ -17,4 +17,10 @@ public class OrderServiceImpl implements OrderService{
 		
 	}
 
+	@Override
+	public OrderVO order_page_go(OrderVO vo) {
+		
+		return dao.order_page_go(vo);
+	}
+
 }

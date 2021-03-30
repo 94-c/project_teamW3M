@@ -93,11 +93,13 @@ function send_oder(code){
 		data : JSON.stringify(alldata),
 		dataType : "json",
 		contentType: "application/json; charset=UTF-8",
-		success:function(aa){
-			console.log("성공");
+		success:function(alldata){
+			
+			console.log(alldata+"성공");
+			
 		},
-		error:function(data){
-			console.log(data+"에러?");
+		error:function(alldata){
+			console.log(alldata+"에러?");
 		}
 	
 	});
@@ -235,7 +237,7 @@ function send_oder(code){
 										
 											<c:if test="${login_state eq 'login' }" >
 											<a href="#cart_modal" rel ="modal:open" onclick="send_cart('${product.prod_code}');" class="btn_cart fe">장바구니 담기</a>
-											<a href="#" onclick="send_oder('${product.prod_code}');" class="btn_buy fe">바로 구매하기</a>
+											<a href="send_order_go.do" onclick="send_oder('${product.prod_code}');" class="btn_buy fe">바로 구매하기</a>
 											</c:if>
 											<c:if test="${login_state ne 'login' }" >
 					                  		<a href="loginForm.do?returnURL=cart" onClick="alert('로그인이 필요합니다.')" class="btn_cart fe">장바구니 담기</a>
