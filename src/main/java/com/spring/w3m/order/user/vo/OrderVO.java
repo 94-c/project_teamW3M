@@ -41,6 +41,20 @@ public class OrderVO {
 	private int pay_total_price;//총 결제 금액
 	private String pay_tool;// 결제 수단
 	private String pay_status;//결제상태 
+	@Override
+	public String toString() {
+		return "OrderVO [order_seq=" + order_seq + ", order_date=" + order_date + ", order_status=" + order_status
+				+ ", user_id=" + user_id + ", user_name=" + user_name + ", user_email=" + user_email + ", user_phone="
+				+ user_phone + ", user_zipcode=" + user_zipcode + ", user_address1=" + user_address1
+				+ ", user_address2=" + user_address2 + ", receiver_name=" + receiver_name + ", receiver_phone1="
+				+ receiver_phone1 + ", receiver_phone2=" + receiver_phone2 + ", receiver_zipcode=" + receiver_zipcode
+				+ ", receiver_address1=" + receiver_address1 + ", receiver_address2=" + receiver_address2
+				+ ", receiver_memo=" + receiver_memo + ", prod_code=" + prod_code + ", prod_seq=" + prod_seq
+				+ ", prod_amount=" + prod_amount + ", prod_title=" + prod_title + ", prod_title_image="
+				+ prod_title_image + ", prod_price=" + prod_price + ", prod_point=" + prod_point + ", prod_total_price="
+				+ prod_total_price + ", prod_total_point=" + prod_total_point + ", pay_total_price=" + pay_total_price
+				+ ", pay_tool=" + pay_tool + ", pay_status=" + pay_status + "]";
+	}
 	public int getOrder_seq() {
 		return order_seq;
 	}
@@ -191,6 +205,12 @@ public class OrderVO {
 	public void setProd_total_price(int prod_total_price) {
 		this.prod_total_price = prod_total_price;
 	}
+	public int getProd_total_point() {
+		return prod_total_point;
+	}
+	public void setProd_total_point(int prod_total_point) {
+		this.prod_total_point = prod_total_point;
+	}
 	public int getPay_total_price() {
 		return pay_total_price;
 	}
@@ -210,25 +230,7 @@ public class OrderVO {
 		this.pay_status = pay_status;
 	}
 	
-	public int getProd_total_point() {
-		return prod_total_point;
-	}
-	public void setProd_total_point(int prod_total_point) {
-		this.prod_total_point = prod_total_point;
-	}
-	@Override
-	public String toString() {
-		return "OrderVO [order_seq=" + order_seq + ", order_date=" + order_date + ", order_status=" + order_status
-				+ ", user_id=" + user_id + ", user_name=" + user_name + ", user_email=" + user_email + ", user_phone="
-				+ user_phone + ", user_zipcode=" + user_zipcode + ", user_address1=" + user_address1
-				+ ", user_address2=" + user_address2 + ", receiver_name=" + receiver_name + ", receiver_phone1="
-				+ receiver_phone1 + ", receiver_phone2=" + receiver_phone2 + ", receiver_zipcode=" + receiver_zipcode
-				+ ", receiver_address1=" + receiver_address1 + ", receiver_address2=" + receiver_address2
-				+ ", receiver_memo=" + receiver_memo + ", prod_code=" + prod_code + ", prod_seq=" + prod_seq
-				+ ", prod_amount=" + prod_amount + ", prod_title=" + prod_title + ", prod_title_image="
-				+ prod_title_image + ", prod_price=" + prod_price + ", prod_point=" + prod_point + ", prod_total_price="
-				+ prod_total_price + ", prod_total_point=" + prod_total_point + ", pay_total_price=" + pay_total_price
-				+ ", pay_tool=" + pay_tool + ", pay_status=" + pay_status + "]";
-	}
+	
+	
 	
 }

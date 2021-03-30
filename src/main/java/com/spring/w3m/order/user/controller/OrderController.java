@@ -30,12 +30,17 @@ public class OrderController {
 		oVO.setUser_id(vo.getUser_id());
 		oVO.setProd_code(productvo.getProd_code());
 		oVO.setProd_amount(productvo.getProd_amount());
-		int totalPoint = (oVO.getProd_point()*oVO.getProd_amount());
-		int totalPrice = (oVO.getProd_point()*oVO.getProd_amount());
-		OrderVO orderVO = orderService.order_page_go(oVO);
+		System.out.println("ovo :"+oVO.toString());
+		OrderVO orderVO = orderService.order_page_go(oVO);		
 		
-		orderVO.setProd_total_price(totalPrice);
-		orderVO.setProd_total_point(totalPoint);
+//		int totalPoint = (oVO.getProd_point()*oVO.getProd_amount());
+//		int totalPrice = (oVO.getProd_point()*oVO.getProd_amount());
+		
+
+//		System.out.println(totalPoint);
+//		System.out.println(totalPrice);
+//		orderVO.setProd_total_price(totalPrice);
+//		orderVO.setProd_total_point(totalPoint);
 		
 		
 		session.setAttribute("OrderVO", orderVO);
