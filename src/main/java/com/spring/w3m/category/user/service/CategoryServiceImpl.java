@@ -23,5 +23,22 @@ public class CategoryServiceImpl implements CategoryService {
 		return dao.classify2(vo);
 	}
 	
+	@Override
+	public List<ProductVO> category(ProductVO vo) {
+		List<ProductVO> productList = null;
+		
+		if (vo.getProd_category1() != null && vo.getProd_category2() == null) {
+			productList = dao.classify1(vo);
+			return productList;
+			
+		} else if (vo.getProd_category1() != null && vo.getProd_category2() != null) {
+			productList = dao.classify2(vo);			
+			return productList;
+			
+		} else {			
+			return productList;
+		}
+
+	}// end category
 	
 }
