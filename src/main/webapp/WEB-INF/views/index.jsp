@@ -63,7 +63,7 @@
 	<!-- 우측 2단 배너 -->
 		<div class="fright main_ban02">
 			<div class="cboth"><a href="#"><img src="resources/images/m_mask/center_right1.jpg"></a></div>
-	        <div class="cboth"><a href="#"><img src="resources/images/m_mask/center_right2.jpg"></a></div>
+	        <div class="cboth"><a href="http://fba.kcforum.co.kr/2021/winner.php"><img src="resources/images/m_mask/center_right2.jpg"></a></div>
 		</div>
 	</div>
 	<!-- //main_section02 -->

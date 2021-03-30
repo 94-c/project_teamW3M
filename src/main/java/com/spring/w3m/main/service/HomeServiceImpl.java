@@ -18,19 +18,16 @@ public class HomeServiceImpl implements HomeService {
 
 	@Override
 	public List<ProductVO> selectProduct(ProductVO vo) {
-		System.out.println("Impl 실행");
 		return dao.selectProduct(vo);
 	}
 
 	@Override
 	public ProductVO getProduct(ProductVO vo) {
-		System.out.println("Impl 실행");
 		return dao.getProduct(vo);
 	}
 
 	@Override
 	public List<InquiryVO> productInq(Search search) {
-		System.out.println("inq impl");
 		return dao.productInq(search);
 	}
 	
