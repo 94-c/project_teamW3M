@@ -19,3 +19,28 @@ font#commentDate{
 	margin-left: 5px;
 
 }
+
+.comment-list { border-top:1px solid #000 }
+.comment-write { border-bottom:1px solid #e9e9e9 }
+.bbs-table-view .comment-box td { padding-top:20px; border-bottom:1px dashed #e9e9e9;  vertical-align:top }
+.comment-box .com-name { margin-right:20px; font-weight:bold; color:#000 }
+.comment-box .com-date { font-size:11px; color:#aeaeae }
+.comment-box .com-cont { padding:10px 20px 0 0; color:#828282; line-height:20px }
+.bbs-table-view td.com-wrt-box01 { border:0;}
+.com-wrt-box01 label { padding-left:12px; font-size:14px; color:#000; background: url('../../../../image.makeshop.co.kr/makeshop/d3/basic_simple/common/bu_4x4.gif') no-repeat 0 50%;}
+.com-wrt-box01 .input-style { margin:0 10px 0 7px; padding:0 0 0 5px; width:212px; height:27px; line-height:27px; border:1px solid #ddd }
+.com-wrt-box01 .wrt { margin-top:7px }
+.com-wrt-box01 .wrt span { margin:0 10px; font-size:14px; color:#828282 }
+.com-wrt-box01 .wrt textarea { padding:1px 0; width:1000px; height:118px; border:1px solid #ddd }
+.com-wrt-box01 .wrt_write { padding-bottom:15px; font-size:0 }
+.com-wrt-box01 .wrt_write .CSSbuttonBlack01 { width:118px; height:120px; font-size:16px; line-height:120px z-index: 3;
+  color: #fff;
+  background-color: #ff3399;
+  border-color: #ff3399; }
+
+.view-link { padding:20px 0; text-align:right }
+.view-link a { width:108px; height:38px; font-size:13px; line-height:38px }
+
+image_box {box-sizing: border-box;    display: block;
+    width: 100%;
+    overflow-x: auto;}
