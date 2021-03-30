@@ -119,13 +119,13 @@ function userexit(){
                     <div class="page-body">
                         <!-- 내가 쓴 게시판 목록 -->
                         <div class="tit-page-2">
-                            <h2>문의사항 게시판</h2>
+                            <h2>후기 게시판</h2>
                             <p class="dsc"><span class="fc-blue">${userVO.user_name}</span>님께서 작성하신 게시글 내역입니다.</p>
                         </div>
                        
                         <div class="table-d2-list">
                             <table summary="번호, 게시판, 제목, 날짜, hit수">
-                                <caption>내 문의사항 리스트</caption>
+                                <caption>내 후기 리스트</caption>
                                 <colgroup>
                                     <col width="75">
                                     <col width="125">
@@ -143,25 +143,25 @@ function userexit(){
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <c:forEach var="inquiryVO" items="${inquiryList}">
+                                    <c:forEach var="review" items="${ReviewList}">
 										<tr>
-											<td scope="col"><div class="tb-center">${inquiryVO.inq_seq}</div></td>
+											<td scope="col"><div class="tb-center">${review.review_seq}</div></td>
 											<td scope="col"><div class="tb-center">문의사항</div></td>
 											<td scope="col"><div class="tb-center">
 													<a
-														href='<c:url value='/inquiryContent.do?inq_seq=${inquiryVO.inq_seq}'/>'
-														class="text-dark">${inquiryVO.inq_title}</a>
+														href='<c:url value='/inquiryContent.do?inq_seq=${review.review_seq}'/>'
+														class="text-dark">${review.review_title}</a>
 												</div></td>
 											<td scope="col"><div class="tb-center">
-													<fmt:formatDate value="${inquiryVO.inq_date}"
+													<fmt:formatDate value="${review.review_date}"
 														pattern="yyyy-MM-dd" />
 												</div></td>
-											<td scope="col"><div class="tb-center">${inquiryVO.inq_cnt}</div></td>
+											<td scope="col"><div class="tb-center">${review.review_cnt}</div></td>
 										</tr>
 									</c:forEach>
                                 </tbody>
                             </table>
-                        	<!-- pagination -->
+                             <!-- pagination -->
 							<div id="paginationBox">
 								<ul class="pagination">
 									<c:if test="${pagination.prev}">

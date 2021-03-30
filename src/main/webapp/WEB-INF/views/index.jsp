@@ -44,7 +44,7 @@
 	<!-- 좌측 2단 배너 -->
 	<div class="cboth main_section02">
 		<div class="fleft main_ban01">
-			<div class="cboth"><a href="getUserNoticeList.do"><IMG SRC="resources/images/m_mask/center_left1.jpg"></a></div>
+			<div class="cboth"><a href="getUserNoticeList.do"><IMG SRC="resources/images/m_mask/Notice.jpg"></a></div>
 			<div class="cboth"><a href="https://corona-live.com/"><IMG SRC="resources/images/m_mask/center_left2.jpg"></a></div>
 		</div>
 		
@@ -62,8 +62,8 @@
 	
 	<!-- 우측 2단 배너 -->
 		<div class="fright main_ban02">
-			<div class="cboth"><a href="#"><img src="resources/images/m_mask/center_right1.jpg"></a></div>
-	        <div class="cboth"><a href="#"><img src="resources/images/m_mask/center_right2.jpg"></a></div>
+			<div class="cboth"><a href="inquiry.do"><img src="resources/images/m_mask/Questions.jpg"></a></div>
+	        <div class="cboth"><a href="http://fba.kcforum.co.kr/2021/winner.php"><img src="resources/images/m_mask/center_right2.jpg"></a></div>
 		</div>
 	</div>
 	<!-- //main_section02 -->
@@ -99,8 +99,8 @@
 							<ul class="info">
 								<li class="dsc">${product.prod_title }</li>
 								<li class="subname"></li>
-								<li class="consumer"><fmt:formatNumber value="${product.prod_price}" pattern="#,###" /></li>									
-								<li class="price"><fmt:formatNumber value="${product.prod_price_sale}" pattern="#,###" /></li>
+								<li class="consumer"><fmt:formatNumber value="${product.prod_price}" pattern="#,###" />원</li>									
+								<li class="price"><fmt:formatNumber value="${product.prod_price_sale}" pattern="#,###" />원</li>
 							</ul>
 						</div>
 						</div>

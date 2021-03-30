@@ -15,6 +15,7 @@ import com.spring.w3m.join.user.vo.UserVO;
 import com.spring.w3m.mypage.user.service.MyPageService;
 import com.spring.w3m.paging.common.Pagination;
 import com.spring.w3m.paging.common.Search;
+import com.spring.w3m.review.user.vo.ReviewVO;
 
 @Controller
 public class MyPageController {
@@ -31,7 +32,7 @@ public class MyPageController {
 		Search search = new Search();
 		search.setSearchType(searchType);
 		search.setKeyword(keyword);
-		search.setUser_name(vo1.getUser_name());
+		search.setUser_email(vo1.getUser_email());
 		search.setProd_code(vo.getProd_code());
 		int cnt = myPageService.myPageListCnt(search);
 		
@@ -48,5 +49,34 @@ public class MyPageController {
 		model.addAttribute("inquiryList", pageList);
 		model.addAttribute("cnt", cnt);
 		return "mypage/myWriteList";
+	}
+	
+	@RequestMapping("/myReviewList.do")
+	public String myReviewList(Model model,UserVO vo1, ReviewVO vo, @RequestParam(required = false, defaultValue = "1") int page,
+			@RequestParam(required = false, defaultValue = "1") int range,
+			@RequestParam(required = false, defaultValue = "title") String searchType,
+			@RequestParam(required = false) String keyword) throws PSQLException, IOException {
+		System.out.println("후기 리스트");
+
+		Search search = new Search();
+		search.setSearchType(searchType);
+		search.setKeyword(keyword);
+		search.setUser_email(vo1.getUser_email());
+		search.setProd_code(vo.getProd_code());
+		int cnt = myPageService.myReviewListCnt(search);
+		
+		search.pageInfo(page, range, cnt);
+
+		// Pagination
+		Pagination pagination = new Pagination();
+		pagination.pageInfo(page, range, cnt);
+
+		List<ReviewVO> pageList = myPageService.myReviewList(search);
+		
+		model.addAttribute("userVO", myPageService.myUser(vo1));
+		model.addAttribute("pagination", search);
+		model.addAttribute("ReviewList", pageList);
+		model.addAttribute("cnt", cnt);
+		return "mypage/myReviewList";
 	}
 }

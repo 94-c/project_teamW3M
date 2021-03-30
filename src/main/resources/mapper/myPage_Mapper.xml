@@ -9,7 +9,7 @@
 		from
 			inquiry
 		where
-			inq_writer = #{user_name}
+			inq_email = #{user_email}
 		order by inq_date desc
 	</select>
 	<select id="myPageListcnt" resultType="int">
@@ -18,7 +18,7 @@
 		from
 			inquiry
 		where
-			inq_writer = #{user_name}
+			inq_email = #{user_email}
 	</select>
 	
 	<select id="myUser" resultType="com.spring.w3m.join.user.vo.UserVO">
@@ -29,4 +29,25 @@
 		where
 			user_seq = #{user_seq}
 	</select>
+	
+	<select id="myReviewList" resultType="com.spring.w3m.review.user.vo.ReviewVO">
+		select
+			*
+		from
+			review
+		where
+			review_email = #{user_email}
+		order by review_date desc
+	</select>
+	<select id="myReviewListcnt" resultType="int">
+		select
+			count(*)
+		from
+			review
+		where
+			review_email = #{user_email}
+	</select>
+	
+	
+	
 </mapper>

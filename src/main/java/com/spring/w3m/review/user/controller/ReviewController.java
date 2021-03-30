@@ -9,10 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.spring.w3m.inquiry.user.service.ReplyService;
+import com.spring.w3m.inquiry.user.vo.InquiryVO;
 import com.spring.w3m.inquiry.user.vo.ReplyVO;
 import com.spring.w3m.paging.common.Pagination;
 import com.spring.w3m.paging.common.Search;
@@ -132,20 +134,62 @@ public class ReviewController {
 		model.addAttribute("reviewList", reviewService.getReviewList(vo));
 		return "redirect:/review.do";
 	}
-	
-	// 댓글 쓰기
-	@RequestMapping("/insertReviewReply.do")
-	public String insertReviewReply(ReplyVO rvo) {
-		replyService.insertReviewReply(rvo);
-		return "redirect:/reviewContent.do?review_seq=" + rvo.getReview_seq();
-		}
-	
-	// 댓글 수정
- 	@RequestMapping("/review_re_update_view.do") 
- 	public String updateReply(ReplyVO rvo) { 
- 		return "page/reply/replyUpdate";
- 	}
 
+	// 후기 게시글
+	@RequestMapping("/adminReview.mdo")
+	public String adminReviewList(Model model, @RequestParam(required = false, defaultValue = "1") int page,
+										@RequestParam(required = false, defaultValue = "1") int range,
+										@RequestParam(required = false, defaultValue = "title") String searchType,
+										@RequestParam(required = false) String keyword) throws PSQLException, IOException {
+			System.out.println("관리자 상품평 관리 리스트");
+
+			Search search = new Search();
+			search.setSearchType(searchType);
+			search.setKeyword(keyword);
+
+			int cnt = reviewService.getReviewListCnt(search);
+
+			search.pageInfo(page, range, cnt);
+
+			// Pagination
+			Pagination pagination = new Pagination();
+			pagination.pageInfo(page, range, cnt);
+
+			List<ReviewVO> pageList = reviewService.getPageList(search);
+
+			model.addAttribute("pagination", search);
+			model.addAttribute("reviewList", pageList);
+			model.addAttribute("cnt", cnt);
+
+			return "page/review/admin_review";
+		}
+
+	// 관리자 후기 상세보기
+		@RequestMapping("/adminReviewContent.mdo")
+		public String getAdminReview(ReviewVO vo, Model model) {
+			System.out.println("글 상세보기 처리");
+			model.addAttribute("reviewVO", reviewService.getReview(vo));
+	
+			List<ReplyVO> replyList = replyService.getReplyList(vo.getReview_seq());
+			model.addAttribute("replyList", replyList);
+	
+			return "page/review/admin_review_content";
+		}
+		
+		
+		// 댓글 쓰기
+		@RequestMapping("/insertReviewReply.do")
+		public String insertReviewReply(ReplyVO rvo) {
+			replyService.insertReviewReply(rvo);
+			return "redirect:/reviewContent.do?review_seq=" + rvo.getReview_seq();
+			}
+		
+		// 댓글 수정
+	 	@RequestMapping("/review_re_update_view.do") 
+	 	public String updateReply(ReplyVO rvo) { 
+	 		return "page/reply/replyUpdate";
+	 	}
+	
 	/*
 	 * @RequestMapping("/insertReply.mdo") public String insetReply(ReplyVO
 	 * rvo, @RequestParam("reply_text") String re_content) {

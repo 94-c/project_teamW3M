@@ -10,7 +10,8 @@
   FROM
   	product
   ORDER BY 
-  	prod_seq
+  	prod_count desc
+  LIMIT 8
  </select>	
  
  <select id="getProduct" resultType="com.spring.w3m.product.admin.vo.ProductVO">

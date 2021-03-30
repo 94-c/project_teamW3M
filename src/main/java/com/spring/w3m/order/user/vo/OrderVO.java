@@ -29,16 +29,32 @@ public class OrderVO {
 	//제품
 	private String prod_code;//제품코드 FK
 	private int prod_seq;//제품 시퀀스 
-	private String total_amount;//최종 제품 수량
+	private int prod_amount;//최종 제품 수량
 	private String prod_title;//제품 타이틀
 	private String prod_title_image;//제품 타이틀 이미지
-	private String prod_price;//제품 가격
-	private String prod_point;//제품 적립금
+	private int prod_price;//제품 가격
+	private int prod_point;//제품 적립금
+	private int prod_total_price;//제품 총 가격
+	private int prod_total_point;//제품 총 포인트
 	
 	//결제
-	private String pay_total_price;//총 결제 금액
+	private int pay_total_price;//총 결제 금액
 	private String pay_tool;// 결제 수단
 	private String pay_status;//결제상태 
+	@Override
+	public String toString() {
+		return "OrderVO [order_seq=" + order_seq + ", order_date=" + order_date + ", order_status=" + order_status
+				+ ", user_id=" + user_id + ", user_name=" + user_name + ", user_email=" + user_email + ", user_phone="
+				+ user_phone + ", user_zipcode=" + user_zipcode + ", user_address1=" + user_address1
+				+ ", user_address2=" + user_address2 + ", receiver_name=" + receiver_name + ", receiver_phone1="
+				+ receiver_phone1 + ", receiver_phone2=" + receiver_phone2 + ", receiver_zipcode=" + receiver_zipcode
+				+ ", receiver_address1=" + receiver_address1 + ", receiver_address2=" + receiver_address2
+				+ ", receiver_memo=" + receiver_memo + ", prod_code=" + prod_code + ", prod_seq=" + prod_seq
+				+ ", prod_amount=" + prod_amount + ", prod_title=" + prod_title + ", prod_title_image="
+				+ prod_title_image + ", prod_price=" + prod_price + ", prod_point=" + prod_point + ", prod_total_price="
+				+ prod_total_price + ", prod_total_point=" + prod_total_point + ", pay_total_price=" + pay_total_price
+				+ ", pay_tool=" + pay_tool + ", pay_status=" + pay_status + "]";
+	}
 	public int getOrder_seq() {
 		return order_seq;
 	}
@@ -153,11 +169,11 @@ public class OrderVO {
 	public void setProd_seq(int prod_seq) {
 		this.prod_seq = prod_seq;
 	}
-	public String getTotal_amount() {
-		return total_amount;
+	public int getProd_amount() {
+		return prod_amount;
 	}
-	public void setTotal_amount(String total_amount) {
-		this.total_amount = total_amount;
+	public void setProd_amount(int prod_amount) {
+		this.prod_amount = prod_amount;
 	}
 	public String getProd_title() {
 		return prod_title;
@@ -171,22 +187,34 @@ public class OrderVO {
 	public void setProd_title_image(String prod_title_image) {
 		this.prod_title_image = prod_title_image;
 	}
-	public String getProd_price() {
+	public int getProd_price() {
 		return prod_price;
 	}
-	public void setProd_price(String prod_price) {
+	public void setProd_price(int prod_price) {
 		this.prod_price = prod_price;
 	}
-	public String getProd_point() {
+	public int getProd_point() {
 		return prod_point;
 	}
-	public void setProd_point(String prod_point) {
+	public void setProd_point(int prod_point) {
 		this.prod_point = prod_point;
 	}
-	public String getPay_total_price() {
+	public int getProd_total_price() {
+		return prod_total_price;
+	}
+	public void setProd_total_price(int prod_total_price) {
+		this.prod_total_price = prod_total_price;
+	}
+	public int getProd_total_point() {
+		return prod_total_point;
+	}
+	public void setProd_total_point(int prod_total_point) {
+		this.prod_total_point = prod_total_point;
+	}
+	public int getPay_total_price() {
 		return pay_total_price;
 	}
-	public void setPay_total_price(String pay_total_price) {
+	public void setPay_total_price(int pay_total_price) {
 		this.pay_total_price = pay_total_price;
 	}
 	public String getPay_tool() {
@@ -201,5 +229,8 @@ public class OrderVO {
 	public void setPay_status(String pay_status) {
 		this.pay_status = pay_status;
 	}
-
+	
+	
+	
+	
 }

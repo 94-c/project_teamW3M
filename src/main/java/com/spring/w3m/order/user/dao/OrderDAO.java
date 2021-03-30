@@ -13,5 +13,9 @@ public class OrderDAO {
 		sqlSessionTemplate.insert("OrderDAO.order_inser_prod",vo);
 		
 	}
+	public OrderVO order_page_go(OrderVO vo) {
+		
+		return sqlSessionTemplate.selectOne("OrderDAO.order_page_go",vo);
+	}
 
 }
