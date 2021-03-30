@@ -138,6 +138,5 @@
 		UPDATE tos
 		SET
 		tos_content=#{tos_content}
-		WHERE tos_writer = #{tos_writer}
 	</update>
 </mapper>

@@ -10,9 +10,8 @@
 		</ol>
 	</div>
 </main>
-<input name="nt_seq" type="hidden" value="${getNotice.nt_seq}" />
 <form role="form" method="post" name="writeform"
-		action="tosUpdate.mdo?tos_writer=${tos.tos_writer }" onsubmit="return emptyCheck()">
+		action="tosUpdate.mdo" onsubmit="return emptyCheck()">
 	<div class="card-body">
 		
 		<div class="form-group">
