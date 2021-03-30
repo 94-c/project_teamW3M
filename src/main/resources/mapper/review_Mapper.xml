@@ -9,6 +9,7 @@
 	select * from review order by review_seq desc
 	</select>
 	
+	
 	<resultMap type="ReviewVO" id="reviewResult">
 		<id property="review_seq" column="review_seq" />
 		<result property="review_title" column="review_title" />
@@ -31,6 +32,9 @@
 	<select id="getReview" resultType="ReviewVO">
 		SELECT * FROM review WHERE review_seq = #{review_seq}
 	</select>
+	
+	<!-- 조회수 증가 -->
+	<update id="reviewCntUpdate" parameterType="ReviewVO"> update review set review_cnt=review_cnt+1 WHERE review_seq=#{review_seq} </update>
 	
 	<!-- 후기 수정하기 -->
 	<update id="updateReview" parameterType="ReviewVO">

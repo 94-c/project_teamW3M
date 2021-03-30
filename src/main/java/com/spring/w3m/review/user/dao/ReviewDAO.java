@@ -37,7 +37,7 @@ public class ReviewDAO {
 	public ReviewVO getReview(ReviewVO vo) {
 		System.out.println("후기게시판 글 상세보기");
 		// 조회수 증가
-		/* sqlSessionTemplate.update("ReviewCntUpdate", vo); */
+		sqlSessionTemplate.update("reviewCntUpdate", vo);
 		return sqlSessionTemplate.selectOne("ReviewDAO.getReview", vo);
 	}
 

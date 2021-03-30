@@ -93,7 +93,7 @@ public class NoticeController {
    
    
    
-// 공지 사항
+   // 공지 사항
 	@RequestMapping("/admin_notice_list.mdo")
 	public String getNoticeList(Model model, @RequestParam(required = false, defaultValue = "1") int page,
 			@RequestParam(required = false, defaultValue = "1") int range,

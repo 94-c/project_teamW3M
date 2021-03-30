@@ -54,9 +54,7 @@
 									<td>
 										<div class="data-bd-cont">
 											<div align="left">
-
-												<p
-													style="font-size: 15px; Line-height: 200%; align: left; color: #5f5f5f;">${reviewVO.review_content }</p>
+												<p style="font-size: 15px; Line-height: 200%; align: left; color: #5f5f5f;">${reviewVO.review_content }</p>
 
 												<c:if test="${reviewVO.review_image eq '파일없음'}"></c:if>
 												<c:if test="${reviewVO.review_image ne '파일없음'}">
