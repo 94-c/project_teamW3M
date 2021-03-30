@@ -44,8 +44,8 @@ function userexit(){
 					<div class="lnb">
 						<ul>
 							<li class="first"><a
-								href="myinquryList.do?user_name=${userVO.user_name}&user_seq=${userVO.user_seq}">내 문의사항 보기</a></li>
-							<li><a href="#">내 후기 보기</a></li>
+								href="myinquryList.do?user_email=${userVO.user_email}&user_seq=${userVO.user_seq}">내 문의사항 보기</a></li>
+							<li><a href="myReviewList.do?user_email=${userVO.user_email}&user_seq=${userVO.user_seq}">내 후기 보기</a></li>
 						</ul>
 					</div>
 				</div>
