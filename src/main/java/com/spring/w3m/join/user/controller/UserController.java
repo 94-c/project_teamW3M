@@ -125,8 +125,8 @@ public class UserController {
 
 		System.out.println(vo.toString());
 		userService.insertUser(vo);
-		System.out.println(vo.getUser_id());
-		System.out.println(vo.getUser_point());
+		
+		vo1.setPoint_content("회원가입 기념 적립금 지급");
 		vo1.setUser_id(vo.getUser_id());
 		vo1.setAdd_point(vo.getUser_point());
 		pointService.insertPoint(vo1);
@@ -176,6 +176,7 @@ public class UserController {
 		System.out.println(vo.toString());
 		userService.insertUser(vo);
 		
+		vo1.setPoint_content("회원가입 기념 적립금 지급");
 		vo1.setUser_id(vo.getUser_id());
 		vo1.setAdd_point(vo.getUser_point());
 		pointService.insertPoint(vo1);
@@ -228,6 +229,7 @@ public class UserController {
 		System.out.println(vo.toString());
 		userService.insertUser(vo);
 		
+		vo1.setPoint_content("회원가입 기념 적립금 지급");
 		vo1.setUser_id(vo.getUser_id());
 		vo1.setAdd_point(vo.getUser_point());
 		pointService.insertPoint(vo1);
