@@ -28,14 +28,7 @@ public class DeliveryVO {
 	private String receiver_phone;
 	private Date order_date;
 	private String delivery_state;
-	private String del_state;
-	
-	public String getDel_state() {
-		return del_state;
-	}
-	public void setDel_state(String del_state) {
-		this.del_state = del_state;
-	}
+
 	public int getDelivery_seq() {
 		return delivery_seq;
 	}

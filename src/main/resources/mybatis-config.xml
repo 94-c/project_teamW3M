@@ -4,31 +4,33 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 <typeAliases>
-     <typeAlias type="com.spring.w3m.join.user.vo.UserVO" alias="UserVO" />
-     <typeAlias type="com.spring.w3m.inquiry.user.vo.InquiryVO" alias="InquiryVO"  />
-     <typeAlias type="com.spring.w3m.notice.admin.vo.NoticeVO" alias="NoticeVO" />
+     <typeAlias type="com.spring.w3m.join.user.vo.UserVO" alias="UserVO"/>
+     <typeAlias type="com.spring.w3m.inquiry.user.vo.InquiryVO" alias="InquiryVO"/>
+     <typeAlias type="com.spring.w3m.notice.admin.vo.NoticeVO" alias="NoticeVO"/>
      <typeAlias type="com.spring.w3m.login.admin.vo.AdminVO" alias="AdminVO"/>
      <typeAlias type="com.spring.w3m.product.admin.vo.ProductVO" alias="ProductVO"/>
      <typeAlias type="com.spring.w3m.cart.user.vo.CartVO" alias="CartVO"/>
-     <typeAlias type="com.spring.w3m.inquiry.user.vo.ReplyVO" alias="ReplyVO"  />
+     <typeAlias type="com.spring.w3m.inquiry.user.vo.ReplyVO" alias="ReplyVO"/>
      <typeAlias type="com.spring.w3m.review.user.vo.ReviewVO" alias="ReviewVO"/>
      <typeAlias type="com.spring.w3m.order.user.vo.OrderVO" alias="OrderVO"/>
      <typeAlias type="com.spring.w3m.point.user.vo.PointVO" alias="PointVO"/>
+     <typeAlias type="com.spring.w3m.delivery.common.DeliveryVO" alias="DeliveryVO"/>
  </typeAliases>
 	<mappers>
-		<mapper resource="mapper/joe_Mapper.xml" />
-		<mapper resource="mapper/woong_Mapper.xml" />
-		<mapper resource="mapper/sw_Mapper.xml" />
-		<mapper resource="mapper/soo_Mapper.xml" />
-		<mapper resource="mapper/hyeong_Mapper.xml" />
-		<mapper resource="mapper/product_Mapper.xml" />	
-		<mapper resource="mapper/cart_Mapper.xml" />
-		<mapper resource="mapper/reply_Mapper.xml" />
-		<mapper resource="mapper/home_Mapper.xml" />	
-		<mapper resource="mapper/review_Mapper.xml" />
+		<mapper resource="mapper/joe_Mapper.xml"/>
+		<mapper resource="mapper/woong_Mapper.xml"/>
+		<mapper resource="mapper/sw_Mapper.xml"/>
+		<mapper resource="mapper/soo_Mapper.xml"/>
+		<mapper resource="mapper/hyeong_Mapper.xml"/>
+		<mapper resource="mapper/product_Mapper.xml"/>	
+		<mapper resource="mapper/cart_Mapper.xml"/>
+		<mapper resource="mapper/reply_Mapper.xml"/>
+		<mapper resource="mapper/home_Mapper.xml"/>	
+		<mapper resource="mapper/review_Mapper.xml"/>
 		<mapper resource="mapper/category_Mapper.xml"/>
-		<mapper resource="mapper/myPage_Mapper.xml" />
-		<mapper resource="mapper/order_Mapper.xml" />
-		<mapper resource="mapper/point_Mapper.xml" />
+		<mapper resource="mapper/myPage_Mapper.xml"/>
+		<mapper resource="mapper/order_Mapper.xml"/>
+		<mapper resource="mapper/point_Mapper.xml"/>
+		<mapper resource="mapper/delivery_Mapper.xml"/>
 	</mappers>
 </configuration>

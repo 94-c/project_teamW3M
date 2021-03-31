@@ -55,13 +55,13 @@ table, td, th {
 										<td class="text-center"><fmt:formatDate value="${del.order_date}" pattern="yyyy-MM-dd" /></td>
 										<td class="text-center">${del.delivery_state}</td>
 										<td>
-											<select name="del_state">
+											<select name="delivery_state">
 												<option selected="selected" value="before">배송전</option>
 												<option value="ing">배송중</option>
 												<option value="after">배송완료</option>
 												<option value="cancel">주문취소</option>
 											</select>
-											<a href="getDeliveryList.mdo?delivery_seq?${del.delivery_seq}">상태변경</a>
+											<a href="getDeliveryList.mdo?delivery_seq=${del.delivery_seq}">상태변경</a>
 										</td>
 									</tr>
 								</c:forEach>

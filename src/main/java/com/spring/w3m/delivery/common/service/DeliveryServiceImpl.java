@@ -21,11 +21,11 @@ public class DeliveryServiceImpl implements DeliveryService {
 	
 	@Override
 	public void updateDeliveryState(DeliveryVO vo) {
-		if(vo.getDel_state().equals("before")) {
+		if(vo.getDelivery_state().equals("before")) {
 			vo.setDelivery_state("배송전");
-		}else if(vo.getDel_state().equals("ing")) {
+		}else if(vo.getDelivery_state().equals("ing")) {
 			vo.setDelivery_state("배송중");
-		}else if(vo.getDel_state().equals("after")) {
+		}else if(vo.getDelivery_state().equals("after")) {
 			vo.setDelivery_state("배송완료");
 		}else {
 			vo.setDelivery_state("주문취소");
