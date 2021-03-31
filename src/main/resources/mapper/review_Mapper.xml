@@ -6,7 +6,9 @@
  
   <!-- 후기 보기 -->
 	<select id="getReviewList" resultMap="reviewResult">
-	select * from review order by review_seq desc
+	<![CDATA[
+	select * , (select count(*) as re_cnt from review_reply where review_seq=review_seq) from review
+	]]>
 	</select>
 	
 	

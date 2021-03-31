@@ -20,13 +20,12 @@
 				</div>
 				<div class="sliderkit-panels">
 					<!-- 메인 배너 스크립트 링크 수정하는곳 -->
-
 					<div class="sliderkit-panel sliderkit-panel-old" style="display: block;">
 						<a href="/shop/shopbrand.html?type=X&amp;xcode=023">
 						<div style="background-image: url(resources/images/m_mask/main_visual_mask.jpg)"></div></a>
 					</div>
 					<div class="sliderkit-panel sliderkit-panel-active" style="display: block; opacity: 0.00640887;">
-						<a href="/shop/shopbrand.html?type=X&amp;xcode=026">
+						<a href="/category.do?prod_category1=MM">
 						<div style="background-image: url(resources/images/m_mask/main_visual_purell.jpg)"></div></a>
 					</div>
 					<div class="sliderkit-panel" style="display: block;">

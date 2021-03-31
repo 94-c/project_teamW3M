@@ -24,9 +24,9 @@
 
 <insert id="insertPoint" parameterType="PointVO">
 	insert into
-		add_point(user_id, add_point)
+		add_point(user_id, add_point, point_content)
 	values
-		(#{user_id},#{add_point})
+		(#{user_id},#{add_point},#{point_content})
 </insert>
 
 <delete id="deletePoint" parameterType="PointVO">

@@ -41,7 +41,6 @@
 <!-- JS -->
 <script type="text/javascript" src="resources/js/jquery_option.js" ></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="resources/js/sliderKit.js"></script>
 <script type="text/javascript" src="resources/js/index.js"></script>
 <script type="text/javascript" src="resources/js/main.js" ></script> 
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
