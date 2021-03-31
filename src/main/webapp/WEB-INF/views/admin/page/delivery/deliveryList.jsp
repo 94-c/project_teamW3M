@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="/WEB-INF/views/admin/page/include/admin_header.jsp"%>
 
 <title>배송 현황</title>
@@ -18,12 +17,11 @@ table, td, th {
 	<div class="container-fluid">
 		<h1 class="mt-4">배송 현황 페이지</h1>
 		<ol class="breadcrumb mb-4">
-			<li class="breadcrumb-item active">배송!!!</li>
+			<li class="breadcrumb-item active">SHIPPING LIST</li>
 		</ol>
 		<div class="card mb-4">
 			<div class="card-header">
 				<i class="fas fa-table mr-1"></i> 배송 목록
-				
 			</div>
 			<form action="#">
 				<div class="card-body">
@@ -80,11 +78,11 @@ table, td, th {
 							</div>
 
 							<div>
-								<button class="btn btn-sm btn-primary" name="btnSearch" id="btnSearch">검색</button>
+								<button class="btn btn-sm btn-primary" name="btnSearch"
+									id="btnSearch">검색</button>
 							</div>
 						</div>
 					</div>
-					<a class="insertProduct" href="insertProductForm.mdo">상품 등록</a>
 				</div>
 			</form>
 		</div>
