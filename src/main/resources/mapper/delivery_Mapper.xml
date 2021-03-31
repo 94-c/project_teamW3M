@@ -5,7 +5,7 @@
 <mapper namespace="delivery">
 	
 	<select id="getDeliveryList" resultType="DeliveryVO">
-		SELECT * FROM delivery ORDER BY delivery_seq DESC
+		SELECT * FROM delivery
 	</select>
 	
 	<update id="updateDeliveryState">

@@ -21,7 +21,9 @@ public class DeliveryServiceImpl implements DeliveryService {
 	
 	@Override
 	public void updateDeliveryState(DeliveryVO vo) {
-		if(vo.getDelivery_state().equals("before")) {
+		if(vo.getDelivery_state() == null) {
+			vo.setDelivery_state("배송전");			
+		}else if(vo.getDelivery_state().equals("before")) {
 			vo.setDelivery_state("배송전");
 		}else if(vo.getDelivery_state().equals("ing")) {
 			vo.setDelivery_state("배송중");
@@ -29,7 +31,7 @@ public class DeliveryServiceImpl implements DeliveryService {
 			vo.setDelivery_state("배송완료");
 		}else {
 			vo.setDelivery_state("주문취소");
-		}			
+		}		
 		dao.updateDeliveryState(vo);
 	}
 	

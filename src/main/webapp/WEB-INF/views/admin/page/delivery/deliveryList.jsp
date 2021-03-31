@@ -13,6 +13,15 @@ table, td, th {
 	border: 1px solid black;
 }
 </style>
+<script>
+$(document).ready(function(){
+	$(".changeState").click(function(e){
+		e.preventDefault();
+		document.deliveryForm.submit();
+	});
+});
+</script>
+
 <main>
 	<div class="container-fluid">
 		<h1 class="mt-4">배송 현황 페이지</h1>
@@ -23,7 +32,7 @@ table, td, th {
 			<div class="card-header">
 				<i class="fas fa-table mr-1"></i> 배송 목록
 			</div>
-			<form action="#">
+			<form action="changeDeliveryState.mdo" name="deliveryForm">
 				<div class="card-body">
 					<div class="table-responsive">
 						<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -35,7 +44,8 @@ table, td, th {
 									<th class="text-center">회원ID</th>
 									<th class="text-center">수령인</th>
 									<th class="text-center">주소</th>
-									<th class="text-center">연락처</th>
+									<th class="text-center">연락처1/연락처2</th>
+									<th class="text-center">배송메모</th>
 									<th class="text-center">주문날짜</th>
 									<th class="text-center">배송상태</th>
 									<th class="text-center">배송상태 수정</th>
@@ -47,11 +57,12 @@ table, td, th {
 									<tr>
 										<td class="text-center">${del.delivery_seq}</td>
 										<td class="text-center">${del.order_seq}</td>
-										<td class="text-center">${del.order_product }</td>
+										<td class="text-center">${del.prod_title}</td>
 										<td class="text-center">${del.user_id}</td>
 										<td class="text-center">${del.receiver_name}</td>
-										<td class="text-center">${del.receiver_address}</td>
-										<td class="text-center">${del.receiver_phone}</td>
+										<td class="text-center">${del.receiver_zipcode} ${del.receiver_address1} ${del.receiver_address2}</td>
+										<td class="text-center">${del.receiver_phone1} / ${del.receiver_phone2}</td>
+										<td class="text-center">${del.receiver_memo}</td>
 										<td class="text-center"><fmt:formatDate value="${del.order_date}" pattern="yyyy-MM-dd" /></td>
 										<td class="text-center">${del.delivery_state}</td>
 										<td>
@@ -61,8 +72,9 @@ table, td, th {
 												<option value="after">배송완료</option>
 												<option value="cancel">주문취소</option>
 											</select>
-											<a href="getDeliveryList.mdo?delivery_seq=${del.delivery_seq}">상태변경</a>
-										</td>
+											<input type="hidden" name="delivery_seq" value="${del.delivery_seq}">
+											<a href="#" class="changeState">상태변경</a>
+										</td>										
 									</tr>
 								</c:forEach>
 							</tbody>

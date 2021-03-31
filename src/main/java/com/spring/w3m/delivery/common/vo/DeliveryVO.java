@@ -1,18 +1,23 @@
 package com.spring.w3m.delivery.common.vo;
 /*
-관련 테이블
+--배송현황 테이블--
 CREATE TABLE delivery(
-	delivery_seq INT, --송장번호(PK)
-	order_seq INT, --주문번호(FK)
-	order_product VARCHAR(200), --주문 상품명 & 품목수 (ex. W3M 프리미엄 미세먼지마스크 KF94 대형 25개입 외 3)
-	user_id VARCHAR(20), -- 회원ID
-	receiver_name VARCHAR(20) NOT NULL,-- 수령인
-	receiver_address VARCHAR(200) NOT NULL, -- 배송주소
-	receiver_phone VARCHAR(20) NOT NULL, -- 수령인 연락처
-	order_date TIMESTAMP WITH TIME ZONE DEFAULT current_timestamp, -- 주문날짜
-	delivery_state VARCHAR(20) DEFAULT '배송전', -- 배송상태 // 배송전 > 배송중 > 배송완료 ||주문취소
-	
-	CONSTRAINT PK_delivery_seq PRIMARY KEY (delivery_seq)
+   delivery_seq INT, --송장번호(PK)
+   order_seq INT, --주문번호(FK)
+   prod_title VARCHAR(200), --상품명 ex) 첫번쨰 타이틀 명 외 (총카운트에 -1)
+   user_id VARCHAR(20), -- 회원ID
+   receiver_name VARCHAR(20) NOT NULL,-- 수령인
+   receiver_zipcode VARCHAR(50) NOT NULL, -- 배송우편번호
+   receiver_address1 VARCHAR(100) NOT NULL, -- 배송주소1
+   receiver_address2 VARCHAR(100) NOT NULL, -- 배송주소2
+   receiver_phone1 VARCHAR(30) NOT NULL, -- 수령인 연락처1
+   receiver_phone2 VARCHAR(30) NOT NULL, -- 수령인 연락처2
+   receiver_memo VARCHAR(200) NOT NULL, -- 배송 메모
+   order_date TIMESTAMP WITH TIME ZONE DEFAULT current_timestamp, -- 주문날짜
+   delivery_state VARCHAR(20) DEFAULT '배송전', -- 배송상태 // 배송전 > 배송중 > 배송완료 ||주문취소
+   
+   CONSTRAINT PK_delivery_seq PRIMARY KEY (delivery_seq),
+   CONSTRAINT delivery_order_seq FOREIGN KEY (ORDER_SEQ) REFERENCES ORDER_LIST(ORDER_SEQ) on Delete set null
 );
 CREATE SEQUENCE delivery_seq START 1; --송장번호 시퀀스 생성
 */
@@ -21,14 +26,19 @@ import java.util.Date;
 public class DeliveryVO {
 	private int delivery_seq;
 	private int order_seq;
-	private String order_product;
+	private String prod_title;
 	private String user_id;
 	private String receiver_name;
-	private String receiver_address;
-	private String receiver_phone;
+	private String receiver_zipcode;	
+	private String receiver_address1;
+	private String receiver_address2;
+	private String receiver_phone1;
+	private String receiver_phone2;
+	private String receiver_memo;
 	private Date order_date;
 	private String delivery_state;
-
+	
+	
 	public int getDelivery_seq() {
 		return delivery_seq;
 	}
@@ -41,11 +51,11 @@ public class DeliveryVO {
 	public void setOrder_seq(int order_seq) {
 		this.order_seq = order_seq;
 	}
-	public String getOrder_product() {
-		return order_product;
+	public String getProd_title() {
+		return prod_title;
 	}
-	public void setOrder_product(String order_product) {
-		this.order_product = order_product;
+	public void setProd_title(String prod_title) {
+		this.prod_title = prod_title;
 	}
 	public String getUser_id() {
 		return user_id;
@@ -59,17 +69,41 @@ public class DeliveryVO {
 	public void setReceiver_name(String receiver_name) {
 		this.receiver_name = receiver_name;
 	}
-	public String getReceiver_address() {
-		return receiver_address;
+	public String getReceiver_zipcode() {
+		return receiver_zipcode;
 	}
-	public void setReceiver_address(String receiver_address) {
-		this.receiver_address = receiver_address;
+	public void setReceiver_zipcode(String receiver_zipcode) {
+		this.receiver_zipcode = receiver_zipcode;
 	}
-	public String getReceiver_phone() {
-		return receiver_phone;
+	public String getReceiver_address1() {
+		return receiver_address1;
 	}
-	public void setReceiver_phone(String receiver_phone) {
-		this.receiver_phone = receiver_phone;
+	public void setReceiver_address1(String receiver_address1) {
+		this.receiver_address1 = receiver_address1;
+	}
+	public String getReceiver_address2() {
+		return receiver_address2;
+	}
+	public void setReceiver_address2(String receiver_address2) {
+		this.receiver_address2 = receiver_address2;
+	}
+	public String getReceiver_phone1() {
+		return receiver_phone1;
+	}
+	public void setReceiver_phone1(String receiver_phone1) {
+		this.receiver_phone1 = receiver_phone1;
+	}
+	public String getReceiver_phone2() {
+		return receiver_phone2;
+	}
+	public void setReceiver_phone2(String receiver_phone2) {
+		this.receiver_phone2 = receiver_phone2;
+	}
+	public String getReceiver_memo() {
+		return receiver_memo;
+	}
+	public void setReceiver_memo(String receiver_memo) {
+		this.receiver_memo = receiver_memo;
 	}
 	public Date getOrder_date() {
 		return order_date;
@@ -85,10 +119,11 @@ public class DeliveryVO {
 	}
 	@Override
 	public String toString() {
-		return "DeliveryVO [delivery_seq=" + delivery_seq + ", order_seq=" + order_seq + ", order_product="
-				+ order_product + ", user_id=" + user_id + ", receiver_name=" + receiver_name + ", receiver_address="
-				+ receiver_address + ", receiver_phone=" + receiver_phone + ", order_date=" + order_date
-				+ ", delivery_state=" + delivery_state + "]";
+		return "DeliveryVO [delivery_seq=" + delivery_seq + ", order_seq=" + order_seq + ", prod_title=" + prod_title
+				+ ", user_id=" + user_id + ", receiver_name=" + receiver_name + ", receiver_zipcode=" + receiver_zipcode
+				+ ", receiver_address1=" + receiver_address1 + ", receiver_address2=" + receiver_address2
+				+ ", receiver_phone1=" + receiver_phone1 + ", receiver_phone2=" + receiver_phone2 + ", receiver_memo="
+				+ receiver_memo + ", order_date=" + order_date + ", delivery_state=" + delivery_state + "]";
 	}
 	
 }

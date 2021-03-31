@@ -17,12 +17,20 @@ public class DeliveryController {
 
 	@RequestMapping("/getDeliveryList.mdo")
 	public String delivery(DeliveryVO vo, Model model) {
-		System.out.println("배송정보 목록으로 이동...");
+		System.out.println("배송정보 목록으로 이동...");		
+		
 		List<DeliveryVO> deliveryList = service.getDeliveryList(vo);
-		service.updateDeliveryState(vo);
 		model.addAttribute("deliveryList", deliveryList);
 	
 		return "page/delivery/deliveryList";
-	}	
+	}
+	
+	@RequestMapping("/changeDeliveryState.mdo")
+	public String delivery(DeliveryVO vo) {
+		System.out.println("배송정보 수정하기 클릭!");
+		service.updateDeliveryState(vo);
+		
+		return "redirect:/getDeliveryList.mdo";
+	}
 	
 }

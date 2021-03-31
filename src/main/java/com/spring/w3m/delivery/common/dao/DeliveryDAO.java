@@ -12,15 +12,14 @@ import com.spring.w3m.delivery.common.vo.DeliveryVO;
 public class DeliveryDAO {
 	@Autowired
 	private SqlSessionTemplate template;
-	
-	public List<DeliveryVO> getDeliveryList(DeliveryVO vo){
-		
+
+	public List<DeliveryVO> getDeliveryList(DeliveryVO vo) {
+
 		return template.selectList("delivery.getDeliveryList", vo);
 	}
-	
+
 	public void updateDeliveryState(DeliveryVO vo) {
 		template.update("delivery.updateDeliveryState", vo);
 	}
-	
-	
+
 }
