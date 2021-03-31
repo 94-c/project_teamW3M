@@ -364,13 +364,14 @@ $('#charge_kakao').click(function () {
 										<td>
 											<div class="base">
 												<strong><em><span
-														class="op-total block-op-product-price" price="총 주문 금액">${payVO.pay_total_price}</span></em>원</strong>
+														class="op-total block-op-product-price" price="총 주문 금액">
+														<fmt:formatNumber value="${payVO.pay_total_price}" pattern="#,###"></fmt:formatNumber></span></em>원</strong>
 											</div>
 										</td>
 										<td>
 											<div class="base">
-												<strong><em>${payVO.pay_Shipping_cost}</em>
-												<span id="block_op_delivery_unit" style="display: none;">원</span></strong>
+												<strong><em><fmt:formatNumber value="${payVO.pay_Shipping_cost}" pattern="#,###"></fmt:formatNumber></em>
+												<span id="block_op_delivery_unit" >원</span></strong>
 												<!-- 총 가격에 +,- 적용 -->
 												<a class="plus">
 												<img src="resources/images/order/plus.png" alt="plus"></a>
@@ -411,7 +412,7 @@ $('#charge_kakao').click(function () {
 													<img src="resources/images/order/equal.png" alt="equal">
 												</a> 
 												<strong><em class="fc-red">
-													<span class="block-op-sum-price" price="최종 결제금액">${payVO.pay_total_money}</span>
+													<span class="block-op-sum-price" price="최종 결제금액"><fmt:formatNumber value="${payVO.pay_total_money}" pattern="#,###"></fmt:formatNumber></span>
 												</em>원</strong>
 											</div>
 										</td>
@@ -441,9 +442,8 @@ $('#charge_kakao').click(function () {
 							</colgroup>
 							<tbody>
 								<tr>
-									<td><img src="resources/images/h_design/top_w3m.gif"></td>
-									<td>고객님은 안전거래를 위해 현금으로 결제하실 때 저희 쇼핑몰에 가입한 토스페이먼츠의 구매안전서비스를
-										이용할 수 있습니다.</td>
+									<td><img src="resources/images/h_design/top_w3m.gif"></td>&nbsp;&nbsp;&nbsp;
+									 <td>현재 카카오페이만 결제 가능합니다. 양해 부탁드립니다.</td>
 								</tr>
 							</tbody>
 						</table>
@@ -459,7 +459,7 @@ $('#charge_kakao').click(function () {
 										<th scope="row"><div class="txt-l">결제방법</div></th>
 										<td>
 											<ul class="pay-method">
-												<li><input type="radio" class="chk-rdo"
+												<!-- <li><input type="radio" class="chk-rdo"
 													name="radio_paymethod" value="C" checked="checked">
 													신용카드 <em><span class="op-card-dc-price fc-red"></span></em>
 												</li>
@@ -480,17 +480,18 @@ $('#charge_kakao').click(function () {
 														<option value="20">우리은행</option>
 														<option value="32">부산은행</option>
 														<option value="07">수협은행</option>
-												</select></li>
+												</select></li> -->
 												<li><input type="radio" class="chk-rdo"
 													name="radio_paymethod" value="KAKAOPAY">
 													카카오페이(KAKAOPAY) <em><span
 														class="op-card-dc-price fc-red"></span></em></li>
-												<li><input type="radio" class="chk-rdo"
+											<!--	<li><input type="radio" class="chk-rdo"
 													name="radio_paymethod" value="PAYCO"> 페이코(PAYCO) <em><span
 														class="op-card-dc-price fc-red"></span></em></li>
 												<li><input type="radio" class="chk-rdo"
 													name="radio_paymethod" value="S"> 에스크로 <em><span
 														class="op-bank-dc-price fc-red"></span></em></li>
+														-->
 											</ul>
 										</td>
 									</tr>
@@ -837,8 +838,8 @@ $('#charge_kakao').click(function () {
 									<tr>
 										<th>최종 결제금액</th>
 										
-										<td><strong class="price"><span>${payVO.pay_total_money}<!-- 장바구니 총 가격 --></span>원</strong>
-											&nbsp; (적립예정: <span>${payVO.pay_total_point}<!-- 장바구니 총 적립금 --></span>원)
+										<td><strong class="price"><span><fmt:formatNumber value="${payVO.pay_total_money}" pattern="#,###"></fmt:formatNumber><!-- 장바구니 총 가격 --></span>원</strong>
+											&nbsp; (적립예정: <span><fmt:formatNumber value="${payVO.pay_total_point}" pattern="#,###"></fmt:formatNumber><!-- 장바구니 총 적립금 --></span>원)
 											<div class="reserve-msg">(적립 예정금액과 최종 적립금액은 상이할 수 있습니다.
 												주문 완료 시 지급되는 적립금을 확인해주시기 바랍니다.)</div></td>
 									</tr>

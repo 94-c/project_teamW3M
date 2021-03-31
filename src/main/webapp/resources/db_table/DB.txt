@@ -96,8 +96,12 @@ CREATE TABLE delivery(
 	prod_title VARCHAR(200), --상품명 ex) 첫번쨰 타이틀 명 외 (총카운트에 -1)
 	user_id VARCHAR(20), -- 회원ID
 	receiver_name VARCHAR(20) NOT NULL,-- 수령인
-	receiver_address VARCHAR(200) NOT NULL, -- 배송주소
-	receiver_phone VARCHAR(20) NOT NULL, -- 수령인 연락처
+	receiver_zipcode VARCHAR(50) NOT NULL, -- 배송우편번호
+	receiver_address1 VARCHAR(100) NOT NULL, -- 배송주소1
+	receiver_address2 VARCHAR(100) NOT NULL, -- 배송주소2
+	receiver_phone1 VARCHAR(30) NOT NULL, -- 수령인 연락처1
+	receiver_phone2 VARCHAR(30) NOT NULL, -- 수령인 연락처2
+	receiver_memo VARCHAR(200) NOT NULL, -- 배송 메모
 	order_date TIMESTAMP WITH TIME ZONE DEFAULT current_timestamp, -- 주문날짜
 	delivery_state VARCHAR(20) DEFAULT '배송전', -- 배송상태 // 배송전 > 배송중 > 배송완료 ||주문취소
 	
@@ -105,6 +109,16 @@ CREATE TABLE delivery(
 );
 CREATE SEQUENCE delivery_seq START 1; --송장번호 시퀀스 생성
 
+CREATE TABLE order_prod(
+		order_Prod_seq int Primary Key, -- 주문상품 번호 PK
+		user_id varchar(30),--유저id FK
+		order_date TIMESTAMP WITH TIME ZONE DEFAULT current_timestamp, -- 주문날짜
+		prod_code varchar(30),--FK 제품 코드
+		prod_amount int,--제품 수량
+		CONSTRAINT ORDER_LIST_USERID_FK FOREIGN KEY (USER_ID) REFERENCES USER_MEMBER(USER_ID) on Delete set null,
+		CONSTRAINT ORDER_LIST_PRODCODE_FK FOREIGN KEY(prod_code) REFERENCES product(prod_code) on Delete set null
+	);
+	create sequence order_Prod_seq start with 1 increment by 1;
 
 --주문 정보 테이블--
 CREATE TABLE ORDER_LIST(
@@ -115,15 +129,7 @@ CREATE TABLE ORDER_LIST(
 	total_amount int default 1,
     ORDER_PRICE INT NULL, -- 결제금액
     TOTAL_PRICE INT NULL, -- 주문 총금액 (배송비 / 할인금액 / 추가금액을 포함)
-    ORDER_PAYTOOL VARCHAR(20) NULL, -- 결제수단
     PAY_STATUS VARCHAR(50) default '정상' NULL, -- 결제상태 // 1 정상 / -1  결제 취소 
-	receiver VARCHAR(20) NOT NULL,-- 받는사람
-	receiver_phone1 VARCHAR(30), -- 받는사람 폰번호 1
-	receiver_phone2 VARCHAR(30), -- 받는사람 폰번호 2
-	receiver_post_num VARCHAR(30) NOT NULL, -- 배송지 우편번호
-	receiver_address1 VARCHAR(150) NOT NULL, -- 배송지 주소
-	receiver_address2 VARCHAR(50), --배송지 상세
-    ORDER_msg varchar(100), --주문 메세지
 	ORDER_STATUS VARCHAR(50) NULL, -- 주문상태 // 결제완료  > 배송 준비중 > 배송중 > 배송 완료
 	CONSTRAINT ORDER_LIST_USERID_FK FOREIGN KEY (USER_ID) REFERENCES USER_MEMBER(USER_ID) on Delete set null,
 	CONSTRAINT ORDER_LIST_PRODCODE_FK FOREIGN KEY (prod_code) REFERENCES PRODUCT(prod_code) on Delete set null																	
