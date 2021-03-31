@@ -90,7 +90,7 @@ public class ProductServiceImpl implements ProductService {
 
 			awsS3.uploadProduct(ism, fileName, contentType, contentLength); // 상품이미지 업로드
 			if (fileName == "") {
-				return "https://imageup.s3.ap-northeast-2.amazonaws.com/product/maskcat.jpg";
+				return "https://imageup.s3.ap-northeast-2.amazonaws.com/product/";
 			} else {
 				return "https://imageup.s3.ap-northeast-2.amazonaws.com/product/" + fileName;
 			}
