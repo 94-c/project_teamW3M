@@ -31,7 +31,7 @@ table, td, th {
 								<tr>
 									<th class="text-center">송장번호</th>
 									<th class="text-center">주문번호</th>
-									<th class="text-center">상품명</th>
+									<th class="text-center">주문상품명</th>
 									<th class="text-center">회원ID</th>
 									<th class="text-center">수령인</th>
 									<th class="text-center">주소</th>
@@ -43,24 +43,28 @@ table, td, th {
 							</thead>
 
 							<tbody>
-								<!--<c:forEach var="prod" items="${productList}">
+								<c:forEach var="del" items="${deliveryList}">
 									<tr>
-										<td class="text-center">${prod.prod_seq}</td>
-										<td class="text-center">${prod.prod_code}</td>
-										<td class="text-center">
-											<a href="/getProduct.mdo?prod_seq=${prod.prod_seq }" class="text-dark">${prod.prod_title }</a>
+										<td class="text-center">${del.delivery_seq}</td>
+										<td class="text-center">${del.order_seq}</td>
+										<td class="text-center">${del.order_product }</td>
+										<td class="text-center">${del.user_id}</td>
+										<td class="text-center">${del.receiver_name}</td>
+										<td class="text-center">${del.receiver_address}</td>
+										<td class="text-center">${del.receiver_phone}</td>
+										<td class="text-center"><fmt:formatDate value="${del.order_date}" pattern="yyyy-MM-dd" /></td>
+										<td class="text-center">${del.delivery_state}</td>
+										<td>
+											<select name="del_state">
+												<option selected="selected" value="before">배송전</option>
+												<option value="ing">배송중</option>
+												<option value="after">배송완료</option>
+												<option value="cancel">주문취소</option>
+											</select>
+											<a href="getDeliveryList.mdo?delivery_seq?${del.delivery_seq}">상태변경</a>
 										</td>
-										<td>						
-											<img src="${prod.prod_title_image}" width="50" height="50">
-										</td>
-										<td class="text-center">${prod.prod_price}</td>
-										<td class="text-center">${prod.prod_price_sale}</td>
-										<td class="text-center">${prod.prod_point}</td>
-										<td class="text-center">${prod.prod_amount}</td>
-										<td class="text-center"><fmt:formatDate value="${prod.prod_regdate}" pattern="yyyy-MM-dd" /></td>
-										<td class="text-center"><a class="deleteProduct" href="deleteProduct.mdo?prod_seq=${prod.prod_seq}" onclick="return confirm('정말로 삭제하시겠습니까?');">삭제</a></td>
 									</tr>
-								</c:forEach>-->
+								</c:forEach>
 							</tbody>
 						</table>
 						<div class="searchText">
