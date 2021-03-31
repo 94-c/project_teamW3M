@@ -2,6 +2,7 @@ package com.spring.w3m.review.user.service;
 
 import java.util.List;
 
+import com.spring.w3m.inquiry.user.vo.ReplyVO;
 import com.spring.w3m.paging.common.Pagination;
 import com.spring.w3m.paging.common.Search;
 import com.spring.w3m.review.user.vo.ReviewVO;
@@ -17,6 +18,7 @@ public interface ReviewService {
 	ReviewVO getReview(ReviewVO vo);
 
 	List<ReviewVO> getReviewList(ReviewVO vo);
+	
 	
 	/* ProductVO getProduct(ProductVO vo); */
 	

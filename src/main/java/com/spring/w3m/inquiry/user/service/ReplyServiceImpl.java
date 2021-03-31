@@ -55,4 +55,20 @@ public class ReplyServiceImpl implements ReplyService {
 		
 	}
 
+	@Override
+	public ReplyVO getReply(ReplyVO vo) {
+		return replyDAO.getReply(vo);
+	}
+
+	@Override
+	public void updateReviewReply(ReplyVO vo) {
+		replyDAO.updateReviewReply(vo);
+		
+	}
+
+	@Override
+	public int count(int review_re_seq) {
+		return 0;
+	}
+
 }

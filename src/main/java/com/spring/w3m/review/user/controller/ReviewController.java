@@ -9,12 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.spring.w3m.inquiry.user.service.ReplyService;
-import com.spring.w3m.inquiry.user.vo.InquiryVO;
 import com.spring.w3m.inquiry.user.vo.ReplyVO;
 import com.spring.w3m.paging.common.Pagination;
 import com.spring.w3m.paging.common.Search;
@@ -35,7 +33,7 @@ public class ReviewController {
 
 	// 후기 게시글
 	@RequestMapping("/review.do")
-	public String getReviewList(Model model, @RequestParam(required = false, defaultValue = "1") int page,
+	public String getReviewList(Model model, ReplyVO vo, @RequestParam(required = false, defaultValue = "1") int page,
 										@RequestParam(required = false, defaultValue = "1") int range,
 										@RequestParam(required = false, defaultValue = "title") String searchType,
 										@RequestParam(required = false) String keyword) throws PSQLException, IOException {
@@ -169,10 +167,10 @@ public class ReviewController {
 		public String getAdminReview(ReviewVO vo, Model model) {
 			System.out.println("글 상세보기 처리");
 			model.addAttribute("reviewVO", reviewService.getReview(vo));
-	
+			
 			List<ReplyVO> replyList = replyService.getReplyList(vo.getReview_seq());
 			model.addAttribute("replyList", replyList);
-	
+			
 			return "page/review/admin_review_content";
 		}
 		
@@ -185,9 +183,16 @@ public class ReviewController {
 			}
 		
 		// 댓글 수정
-	 	@RequestMapping("/review_re_update_view.do") 
-	 	public String updateReply(ReplyVO rvo) { 
-	 		return "page/reply/replyUpdate";
+	 	@RequestMapping("/replyUpdate_view.do") 
+	 	public String updateReviewReplyView(ReplyVO rvo, Model model) { 
+	 		model.addAttribute("replyVO", replyService.getReply(rvo));
+	 		return "/admin/page/reply/replyUpdate";
+	 	}
+	 	
+	 	@RequestMapping("/replyUpdate.do")
+		public String updateReviewReply(ReplyVO vo) {
+			replyService.updateReviewReply(vo);
+			return null;
 	 	}
 	
 	/*

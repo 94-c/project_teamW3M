@@ -34,4 +34,15 @@
 	<insert id="insertReviewReply">
 		INSERT INTO review_reply (review_seq, review_re_seq, review_re_content, review_re_writer) values(#{review_seq}, nextval('re_review_seq'), #{review_re_content}, #{review_re_writer})
 	</insert>	
+
+<!-- 후기 댓글 상세 -->
+	<select id="getReply" resultType="ReplyVO">
+		SELECT * FROM review_reply WHERE review_re_seq = #{review_re_seq}
+	</select>
+
+<!-- 후기 댓글 수정 -->
+	<update id="updateReviewReply">
+		UPDATE review_reply SET review_re_content = #{review_re_content} WHERE review_re_seq = #{review_re_seq}
+	</update>
+		
 </mapper>
