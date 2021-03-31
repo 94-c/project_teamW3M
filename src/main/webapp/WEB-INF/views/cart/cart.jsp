@@ -93,7 +93,7 @@
 			contentType:"application/json; charset=UTF-8",
 			success:function(aa){
 				console.log(aa);
-				location.href= "send_order_go.do?returnURL=cartlist"
+				location.href= "send_order_go.do"
 			}
 		});
 		

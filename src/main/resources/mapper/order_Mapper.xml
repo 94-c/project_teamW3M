@@ -19,6 +19,6 @@
 	</select>
 	
 	<delete id="order_drop_List" parameterType="String">
-	DELETE FROM order_prod WHERE user_id = #{user_id}
+	DELETE FROM order_prod WHERE user_id = #{user_id} and order_status ='구매대기'
 	</delete>
 </mapper>

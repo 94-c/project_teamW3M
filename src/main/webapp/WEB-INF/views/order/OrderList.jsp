@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/WEB-INF/views/include/header.jsp"%>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <title>고급형 주문서 작성</title>
 <script>
 function addrclick(){
@@ -63,7 +65,65 @@ function OrderDaumPostcode() {
 
         }
     }).open();
+	
+	
 }
+$(document).ready(function(){ 
+$('#charge_kakao').click(function () {
+	console.log("카카오 클릭");
+    // getter
+    var IMP = window.IMP;
+    IMP.init('imp72616382');
+    var pay_total_money = $("#pay_total_money_or").val();
+    var user_name =$("#user_name_or").val();
+    var user_email=$("#user_email_or").val();
+    var order_name=$("#user_orderName_or").val();
+    var user_phone=$("#user_phone_or").val();
+    var user_address=$("#user_address1_or").val()+$("#user_address2_or").val();
+    var user_zipcode=$("#user_zipcode_or").val();
+    console.log("머니:"+pay_total_money);
+    console.log("이름:"+user_name);
+    console.log("이멜:"+user_email);
+    console.log("상품명:"+order_name);
+    console.log("폰:"+user_phone);
+    console.log("주소:"+user_address + user_zipcode);
+	var alldata={"pay_total_money" : pay_total_money};
+    IMP.request_pay({
+        pg: 'kakao',
+        merchant_uid: 'merchant_' + new Date().getTime(),
+
+        name: order_name,
+        amount: pay_total_money,
+        buyer_email: user_email,
+        buyer_name:user_name,
+        buyer_tel: user_phone,
+        buyer_addr: user_address,
+        buyer_postcode: user_zipcode
+    }, function (rsp) {
+        console.log(rsp);
+        if (rsp.success) {
+            var msg = '결제가 완료되었습니다.';
+            msg += '고유ID : ' + rsp.imp_uid+'\n';
+            msg += '상점 거래ID : ' + rsp.merchant_uid+'\n';
+            msg += '결제 금액 : ' + rsp.paid_amount+'\n';
+            msg += '카드 승인번호 : ' + rsp.apply_num+'\n';
+            $.ajax({
+            	async : true,
+                type: "POST", 
+                url: "/request_pay.do", //충전 금액값을 보낼 url 설정
+                data: JSON.stringify(alldata),
+                dataType:"json",
+            	contentType: "application/json; charset=UTF-8",
+            });
+        } else {
+            var msg = '결제에 실패하였습니다.';
+            msg += '에러내용 : ' + rsp.error_msg;
+        }
+        alert(msg);
+        document.location.href="#"; //alert창 확인 후 이동할 url 설정
+    });
+});
+});
 </script>
 <link href="resources/css/order.css" rel="stylesheet" type="text/css">
 <div id="contentWrap">
@@ -219,9 +279,15 @@ function OrderDaumPostcode() {
 										</th>
 										
 										<td colspan="3">
+										<input type ="hidden" id="user_name_or" value ="${userVO.user_name}">
+										<input type ="hidden" id="user_email_or" value ="${userVO.user_email}">
+										<input type ="hidden" id="user_phone_or" value ="${userVO.user_phone}">
+										<input type ="hidden" id="user_orderName_or" value ="테스트 상품 외 3">
+										
 										<input type ="hidden" id="user_zipcode_or" value ="${userVO.user_zipcode}">
 										<input type ="hidden" id="user_address1_or" value ="${userVO.user_address1}">
 										<input type ="hidden" id="user_address2_or" value ="${userVO.user_address2}">
+										<input type="hidden" id="pay_total_money_or" value="${payVO.pay_total_money}">
 											<input type="radio" value="H" form="order_form" 
 											name="place" id="place" onclick="addrclick()">자택&nbsp;&nbsp; &nbsp;&nbsp;
 									
@@ -298,12 +364,12 @@ function OrderDaumPostcode() {
 										<td>
 											<div class="base">
 												<strong><em><span
-														class="op-total block-op-product-price" price="총 주문 금액">${pay_total_price}</span></em>원</strong>
+														class="op-total block-op-product-price" price="총 주문 금액">${payVO.pay_total_price}</span></em>원</strong>
 											</div>
 										</td>
 										<td>
 											<div class="base">
-												<strong><em>${pay_Shipping_cost}</em>
+												<strong><em>${payVO.pay_Shipping_cost}</em>
 												<span id="block_op_delivery_unit" style="display: none;">원</span></strong>
 												<!-- 총 가격에 +,- 적용 -->
 												<a class="plus">
@@ -345,7 +411,7 @@ function OrderDaumPostcode() {
 													<img src="resources/images/order/equal.png" alt="equal">
 												</a> 
 												<strong><em class="fc-red">
-													<span class="block-op-sum-price" price="최종 결제금액"><!-- 최종 결제금액 --></span>
+													<span class="block-op-sum-price" price="최종 결제금액">${payVO.pay_total_money}</span>
 												</em>원</strong>
 											</div>
 										</td>
@@ -353,10 +419,11 @@ function OrderDaumPostcode() {
 								</thead>
 								<tbody>
 									<tr>
-										<th class="txt-c">쿠폰 사용</th>
+										<th class="txt-c">적립금 사용</th>
 										<td colspan="4"><input type="text" name="couponnum" form="order_form"
 										 	id="couponnum" class="MS_input_txt" readonly=""> 
-										 	<a class="btn-darkgray" href="javascript:clickcoupon();">쿠폰선택</a> 
+										 	<a class="btn-darkgray" href="javascript:clickcoupon();">모두 사용하기</a>&nbsp;&nbsp;
+										 	<a class="btn-darkgray" href="javascript:clickcoupon();">적립금 확인</a><input type ="text" id="checkPoint" readonly="readonly" value="포인트가 나올꺼임">
 										 	<span class="coupon-description"></span>
 										</td>
 									</tr>
@@ -766,10 +833,12 @@ function OrderDaumPostcode() {
 									<col>
 								</colgroup>
 								<thead>
+								
 									<tr>
 										<th>최종 결제금액</th>
-										<td><strong class="price"><span><!-- 장바구니 총 가격 --></span>원</strong>
-											&nbsp; (적립예정: <span><!-- 장바구니 총 적립금 --></span>원)
+										
+										<td><strong class="price"><span>${payVO.pay_total_money}<!-- 장바구니 총 가격 --></span>원</strong>
+											&nbsp; (적립예정: <span>${payVO.pay_total_point}<!-- 장바구니 총 적립금 --></span>원)
 											<div class="reserve-msg">(적립 예정금액과 최종 적립금액은 상이할 수 있습니다.
 												주문 완료 시 지급되는 적립금을 확인해주시기 바랍니다.)</div></td>
 									</tr>
@@ -781,8 +850,8 @@ function OrderDaumPostcode() {
 
 						<div id="paybutton">
 							<!-- 주문자 동의가 있어야 주문하기 버튼 클릭 가능 -->
-							<a href="javascript:send();" class="CSSbuttonBlack">주문하기</a> 
-							<a href="javascript:orderCencle(); class="CSSbuttonWhite">주문취소</a>
+							<input type="button" id="charge_kakao" class="CSSbuttonBlack" value="주문하기">
+							<a href="javascript:orderCencle();" class="CSSbuttonWhite">주문취소</a>
 						</div>
 					</fieldset>
 				</form>
