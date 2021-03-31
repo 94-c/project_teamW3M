@@ -134,7 +134,7 @@ function send_oder(code){
 						<div class="thumb-info">
 							<div class="thumb-wrap">
 								<div class="thumb">
-									<img src="${product.prod_title_image}" class="detail_image">
+									<img src="${product.prod_title_image}" class="detail_image" alt="">
 								</div>
 							</div>
 							
@@ -294,17 +294,16 @@ function send_oder(code){
 							<div id="videotalk_area"></div>
 							<!-- [OPENEDITOR] -->
 							<center>
-							<img src="${product.prod_image1}">
-							<img src="${product.prod_image2}">
-							<img src="${product.prod_image3}">
-							<img src="${product.prod_image4}">
-							<img src="${product.prod_image5}">
-							<img src="${product.prod_image6}">
-							<img src="${product.prod_image7}">
-							<img src="${product.prod_image8}">
-							<img src="${product.prod_image9}">
-							<img src="${product.prod_image10}">
-
+							<img src="${product.prod_image1}" alt="">
+							<img src="${product.prod_image2}" alt="">
+							<img src="${product.prod_image3}" alt="">
+							<img src="${product.prod_image4}" alt="">
+							<img src="${product.prod_image5}" alt="">
+							<img src="${product.prod_image6}" alt="">
+							<img src="${product.prod_image7}" alt="">
+							<img src="${product.prod_image8}" alt="">
+							<img src="${product.prod_image9}" alt="">
+							<img src="${product.prod_image10}" alt="">
 							</center>
 
 
