@@ -95,7 +95,7 @@ public class ProductServiceImpl implements ProductService {
 				return "https://imageup.s3.ap-northeast-2.amazonaws.com/product/" + fileName;
 			}
 		} else {
-			return "https://imageup.s3.ap-northeast-2.amazonaws.com/product/maskcat.jpg";
+			return "https://imageup.s3.ap-northeast-2.amazonaws.com/product/";
 		}
 	}
 

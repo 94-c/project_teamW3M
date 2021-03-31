@@ -5,6 +5,7 @@ CREATE TABLE admin_member(
     CONSTRAINT admin_member_admin_id_pk PRIMARY KEY(admin_id)
   );
 
+
 --회원 테이블--
 CREATE TABLE user_member(
 	user_seq int NOT NULL, -- 시퀀스넘버
@@ -66,8 +67,8 @@ CREATE TABLE PRODUCT(
 	
 	CONSTRAINT product_prod_code_pk PRIMARY KEY (prod_code)
 );
-
 CREATE SEQUENCE product_seq START WITH 1 INCREMENT BY 1; -- 시퀀스 생성
+
 
 --장바구니--
 CREATE TABLE CART(
@@ -84,34 +85,28 @@ CREATE TABLE CART(
 	CONSTRAINT cart_id_fk_usermember_user_id FOREIGN KEY(user_id) REFERENCES user_member(user_id)	,
 	CONSTRAINT cart_id_fk_product_prod_num FOREIGN KEY(prod_code) REFERENCES product(prod_code) on Delete CASCADE,
 	
-);
-    
-	create sequence cart_seq start with 1 increment by 1;
+);    
+create sequence cart_seq start with 1 increment by 1;
 
 
-
-CREATE SEQUENCE notice_seq START WITH 1 INCREMENT BY 1; -- 시퀀스 생성
-
---배송지 테이블--
-CREATE TABLE prod_destination(
-	user_id VARCHAR2(30), -- 회원 아이디(PK)(FK)
-	receiver VARCHAR2(20) NOT NULL,-- 받는사람
-	receiver_phone1 NOT NULL, -- 받는사람 폰번호 1
-	receiver_phone2, -- 받는사람 폰번호 2
-	receiver_post_num VARCHAR2(30) NOT NULL, -- 배송지 우편번호
-	receiver_address1 VARCHAR2(150) NOT NULL, -- 배송지 주소
-	receiver_address2 VARCHAR2(50), --배송지 상세
+--배송현황 테이블--
+CREATE TABLE shipping_list(
+	invoice_seq INT, --배송번호(PK)
+	order_seq INT, --주문번호(FK)
+	prod_title VARCHAR(200), --상품명
+	user_id VARCHAR(20), -- 회원 아이디
+	receiver_name VARCHAR(20) NOT NULL,-- 수령인
+	receiver_address VARCHAR(200) NOT NULL, -- 배송주소
+	receiver_phone VARCHAR(20) NOT NULL, -- 수령인 연락처
+	order_date TIMESTAMP WITH TIME ZONE DEFAULT current_timestamp, --주문날짜
+	shipping_state VARCHAR(20) DEFAULT '배송전', -- 배송상태 // 배송전 > 배송중 > 배송완료 ||주문취소 
 	
-    	ORDER_STATUS VARCHAR(50) NULL, -- 주문상태 // 결제완료  > 배송 준비중 > 배송중 > 배송 완료
-	
-	CONSTRAINT prod_destination_user_id_pk PRIMARY KEY (user_id),
-	CONSTRAINT prod_destination_user_id_fk_user_member_user_id FOREIGN KEY (user_id), REFERENCES user_member(user_id)
+	CONSTRAINT shipping_list_invoice_seq PRIMARY KEY (invoice_seq)
 );
-
+CREATE SEQUENCE invoice_seq START 1; --송장번호 시퀀스 생성
 
 
 --주문 정보 테이블--
-
 CREATE TABLE ORDER_LIST(
     ORDER_SEQ INT PRIMARY KEY, -- 주문번호 (PK) EX) 10001 등
     USER_ID VARCHAR(30), -- 주문자 아이디 (FK)
@@ -151,7 +146,9 @@ CREATE TABLE QNABOARD(
     RESULT VARCHAR2(15) NOT NULL, -- 처리결과
     REPLYCONTENT VARCHAR2(4000) NULL -- 답변 내용
     );
-	--공지사항--
+    
+    
+--공지사항--
 CREATE TABLE notice(
    	nt_seq int not null, ---공지사항 시퀸스 넘버
    	nt_title varchar(200) not null, ---공지사항 제목
@@ -161,5 +158,6 @@ CREATE TABLE notice(
  	 nt_count int default 0 ---공지사항 조회수
 	
 	CONSTRAINT notice_seq_pk PRIMARY KEY (notice)
-
 );
+CREATE SEQUENCE notice_seq START WITH 1 INCREMENT BY 1; -- 시퀀스 생성
+

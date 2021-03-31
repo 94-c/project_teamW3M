@@ -70,7 +70,7 @@
 	
 	
 	<div class="cboth main_section03">
-		<div class="cboth main_title">웰킵스 마스크 BEST</div>
+		<div class="cboth main_title">W3M TOP 8</div>
 		<div class="cboth prd-list">
 		<table summary="상품이미지, 상품 설명, 가격">
 			<colgroup>

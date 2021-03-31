@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@include file="/WEB-INF/views/admin/page/include/admin_header.jsp"%>
 
-<title>등록된 상품 목록</title>
+<title>배송 현황</title>
 
 <style type="text/css">
 table {
@@ -16,13 +16,13 @@ table, td, th {
 </style>
 <main>
 	<div class="container-fluid">
-		<h1 class="mt-4">상품 관리 페이지</h1>
+		<h1 class="mt-4">배송 현황 페이지</h1>
 		<ol class="breadcrumb mb-4">
-			<li class="breadcrumb-item active">코로나 종식!!!</li>
+			<li class="breadcrumb-item active">배송!!!</li>
 		</ol>
 		<div class="card mb-4">
 			<div class="card-header">
-				<i class="fas fa-table mr-1"></i> 상품 목록
+				<i class="fas fa-table mr-1"></i> 배송 목록
 				
 			</div>
 			<form action="#">
@@ -31,10 +31,11 @@ table, td, th {
 						<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 							<thead>
 								<tr>
+									<th class="text-center">송장번호</th>
 									<th class="text-center">주문번호</th>
 									<th class="text-center">상품명</th>
 									<th class="text-center">회원ID</th>
-									<th class="text-center">회원명</th>
+									<th class="text-center">수령인</th>
 									<th class="text-center">주소</th>
 									<th class="text-center">연락처</th>
 									<th class="text-center">주문날짜</th>
