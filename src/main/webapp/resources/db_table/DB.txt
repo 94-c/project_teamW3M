@@ -93,7 +93,7 @@ create sequence cart_seq start with 1 increment by 1;
 CREATE TABLE delivery(
 	delivery_seq INT, --송장번호(PK)
 	order_seq INT, --주문번호(FK)
-	prod_title VARCHAR(200), --상품명
+	prod_title VARCHAR(200), --상품명 ex) 첫번쨰 타이틀 명 외 (총카운트에 -1)
 	user_id VARCHAR(20), -- 회원ID
 	receiver_name VARCHAR(20) NOT NULL,-- 수령인
 	receiver_address VARCHAR(200) NOT NULL, -- 배송주소
