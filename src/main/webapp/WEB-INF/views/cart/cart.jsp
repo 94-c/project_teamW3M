@@ -3,23 +3,7 @@
 <%@include file="/WEB-INF/views/include/header.jsp"%>
 <title>장바구니</title>
 <script>
-function multi_order_List(){
-	var user_id = $("#userid").val();
-	console.log(user_id);
-	$.ajax({
-		async : true,
-		url : "/multi_Order_List.do",
-		type:"POST",
-		data: JSON.stringify(user_id),
-		dataType:"json",
-		contentType:"application/json; charset=UTF-8",
-		success:function(aa){
-			console.log(aa);
-			location.href= "send_order_go.do"
-		}
-	});
-	
-};
+
 	function cntup(aa){
 		console.log("index : "+ aa);
 		var order_cnt='order_cnt'+aa;
@@ -98,8 +82,27 @@ function multi_order_List(){
 				return;
 			}
 		}
+		$(document).ready(function(){ 	
+			$("#order_send").click(function(){
+				var user_id = $("#userid").val();
+				Alldata ={ "user_id" : user_id};
+				//var user_id = id;
+				console.log(user_id);
+				$.ajax({
+					async : true,
+					url : "/multi_Order_List.do",
+					type:"POST",
+					data: JSON.stringify(Alldata),
+					dataType:"json",
+					contentType:"application/json; charset=UTF-8",
+					success:function(aa){
+						console.log(aa);
+						location.href= "/send_order_go.do"
+					}
+			});
+			});
+		});
 		
-	
 	
 
 
@@ -227,7 +230,7 @@ function multi_order_List(){
 						<!-- .table-fill-prd -->
 						<div class="btn-order-ctrl">
 						<input type="hidden" id="userid" value="${userVO.user_id}">
-							<a href="javascript:multi_order_List();" class="CSSbuttonBlack">주문하기</a>
+							<input type="button" id="order_send" class="CSSbuttonBlack" value="주문하기"/>
 							<a href="/" class="CSSbuttonWhite">계속 쇼핑하기</a> <a
 								href="javascript:send_basket_Alldelete();" class="CSSbuttonWhite">장바구니
 								비우기</a>
