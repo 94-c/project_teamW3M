@@ -14,7 +14,7 @@
      <typeAlias type="com.spring.w3m.review.user.vo.ReviewVO" alias="ReviewVO"/>
      <typeAlias type="com.spring.w3m.order.user.vo.OrderVO" alias="OrderVO"/>
      <typeAlias type="com.spring.w3m.point.user.vo.PointVO" alias="PointVO"/>
-     <typeAlias type="com.spring.w3m.delivery.common.DeliveryVO" alias="DeliveryVO"/>
+     <typeAlias type="com.spring.w3m.delivery.common.vo.DeliveryVO" alias="DeliveryVO"/>
  </typeAliases>
 	<mappers>
 		<mapper resource="mapper/joe_Mapper.xml"/>
