@@ -98,12 +98,12 @@ public class CartController {
 	public void Send_cart_Alldelete(HttpSession session,@SessionAttribute("userVO") UserVO vo) { // 장바구니 비우기 적용 
 		cartService.Send_cart_alldelete(vo.getUser_id());
 	}
-	@RequestMapping(value = "/multi_Order_List.do", method=RequestMethod.POST)
+	@RequestMapping(value = "/multi_Order_List.do", method= {RequestMethod.POST,RequestMethod.GET})
 	@ResponseBody
-	public int multi_Order_List(@RequestBody String user_id) { // 장바구니 제품 수량 수정 시 적용 
-		System.out.println("id = "+ user_id);
-		orderService.order_drop_List(user_id);
-	int a= cartService.multi_Order_List(user_id);
+	public int multi_Order_List(@RequestBody UserVO vo) { // 장바구니 제품 수량 수정 시 적용 
+		System.out.println("id = "+ vo.getUser_id());
+		orderService.order_drop_List(vo.getUser_id());
+	int a= cartService.multi_Order_List(vo.getUser_id());
 		System.out.println(a);
 		return a;
 		

@@ -61,9 +61,10 @@
 	<insert id="Cart_insert" parameterType="CartVO">
 	INSERT INTO cart (cart_id, user_id, prod_code, order_cnt) values(nextval('cart_seq'),#{user_id},#{prod_code},#{order_cnt}) 
 	</insert>
+	
 	<insert id="multi_Order_List" parameterType="String">
 	insert into order_prod(order_prod_seq, user_id, prod_code, prod_amount)
-	select nextval('order_prod_seq'),user_id,prod_code,order_cnt from cart where user_id =#{user_id}
+	select nextval('order_prod_seq'),user_id,prod_code,order_cnt from cart where user_id = #{user_id}
 	</insert>
 	
 	<select id="Cart_distinct" parameterType="CartVO" resultType="int">
