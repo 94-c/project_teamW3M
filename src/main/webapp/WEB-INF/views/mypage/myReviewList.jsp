@@ -149,7 +149,7 @@ function userexit(){
 											<td scope="col"><div class="tb-center">문의사항</div></td>
 											<td scope="col"><div class="tb-center">
 													<a
-														href='<c:url value='/inquiryContent.do?inq_seq=${review.review_seq}'/>'
+														href='<c:url value='/reviewContent.do?review_seq=${review.review_seq}'/>'
 														class="text-dark">${review.review_title}</a>
 												</div></td>
 											<td scope="col"><div class="tb-center">
