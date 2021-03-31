@@ -33,7 +33,7 @@ function userexit(){
 						<ul>
 							<li class="first"><a href="#">주문내역</a></li>
 							<li><a href="#">쿠폰내역</a></li>
-							<li><a href="#">적립금내역</a></li>
+							<li><a href="getPointList.do?user_id=${userVO.user_id }">적립금내역</a></li>
 							<li><a href="#">오늘본상품</a></li>
 							<li><a href="GoCart.do">상품 보관함</a></li>
 						</ul>
@@ -93,7 +93,7 @@ function userexit(){
 									</dl>
 									<dl>
 										<dt>주 &nbsp;&nbsp;&nbsp; 소</dt>
-										<dd>${userVO.user_zipcode } ${userVO.user_address1 } ${userVO.user_address2 }</dd>
+										<dd>[${userVO.user_zipcode }] ${userVO.user_address1 } ${userVO.user_address2 }</dd>
 									</dl>
 								</div>
 							</div>
@@ -105,7 +105,7 @@ function userexit(){
 							</dd>
 							<dt>적 립 금</dt>
 							<dd>
-								<a href="#"><strong>0</strong>원</a>
+								<strong><fmt:formatNumber value="${userVO.user_point}" pattern="#,###" /></strong>원
 							</dd>
 							<dt>쿠 &nbsp;&nbsp;&nbsp; 폰</dt>
 							<dd>

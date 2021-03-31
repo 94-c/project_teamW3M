@@ -15,12 +15,16 @@ import com.spring.w3m.join.user.vo.UserVO;
 import com.spring.w3m.mypage.user.service.MyPageService;
 import com.spring.w3m.paging.common.Pagination;
 import com.spring.w3m.paging.common.Search;
+import com.spring.w3m.point.user.service.PointService;
+import com.spring.w3m.point.user.vo.PointVO;
 import com.spring.w3m.review.user.vo.ReviewVO;
 
 @Controller
 public class MyPageController {
 	@Autowired
 	private MyPageService myPageService;
+	@Autowired
+	private PointService pointSetvice;
 	
 	@RequestMapping("/myinquryList.do")
 	public String myWriteList(Model model,UserVO vo1, InquiryVO vo, @RequestParam(required = false, defaultValue = "1") int page,
@@ -79,4 +83,35 @@ public class MyPageController {
 		model.addAttribute("cnt", cnt);
 		return "mypage/myReviewList";
 	}
+	
+	@RequestMapping("/getPointList.do")
+	public String getPointList(Model model,UserVO vo1, PointVO vo, @RequestParam(required = false, defaultValue = "1") int page,
+			@RequestParam(required = false, defaultValue = "1") int range,
+			@RequestParam(required = false, defaultValue = "title") String searchType,
+			@RequestParam(required = false) String keyword) throws PSQLException, IOException {
+		System.out.println("후기 리스트");
+
+		Search search = new Search();
+		search.setSearchType(searchType);
+		search.setKeyword(keyword);
+		search.setUser_id(vo1.getUser_id());
+		int cnt = pointSetvice.getPointListCnt(search);
+		
+		search.pageInfo(page, range, cnt);
+
+		// Pagination
+		Pagination pagination = new Pagination();
+		pagination.pageInfo(page, range, cnt);
+
+		List<PointVO> pageList = pointSetvice.getPointPageList(search);
+		
+		
+		model.addAttribute("userVO", myPageService.myUser(vo1));
+		model.addAttribute("pagination", search);
+		model.addAttribute("pointList", pageList);
+		model.addAttribute("cnt", cnt);
+		return "mypage/myPoint";
+	}
+	
+	
 }

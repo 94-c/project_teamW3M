@@ -221,6 +221,7 @@ var phone_ck = -1;
 
 					<form action="login_insert_kakao.do" method="post"
 						id="user_insert_kakao">
+						<input type="hidden" name="user_point" value="1000">
 						<input type="hidden" name="user_id" id="userid"
 							value="${userVO.user_id }"> <input type="hidden"
 							name="user_name" id="username" value="${userVO.user_name }">
