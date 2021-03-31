@@ -136,13 +136,6 @@ CREATE TABLE ORDER_LIST(
 	create sequence ORDER_SEQ start with 10000 increment by 1;
 
 
-
-
-
-
-
-
-
 -- 1:1 문의사항 테이블
 CREATE TABLE QNABOARD(
     SEQ NUMBER(7,0) PRIMARY KEY, -- 시퀀스 넘버 (PK)

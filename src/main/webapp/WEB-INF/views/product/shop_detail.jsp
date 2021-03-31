@@ -86,20 +86,31 @@ function send_cart(code){
 function send_oder(code){
 	var prod_code=code;
 	var prod_amount=$("#amount_val").val();
+	console.log(prod_code);
+	console.log(prod_amount);
 	alldata={prod_code:prod_code , prod_amount: prod_amount};
 	$.ajax({
-		url : "/send_order.do",
+		async : true,
+		url : "send_order.do",
 		type : "POST",
 		data : JSON.stringify(alldata),
 		dataType : "json",
 		contentType: "application/json; charset=UTF-8",
-		success:function(alldata){
-			
-			console.log(alldata+"성공");
-			
+		success:function(aa){
+			console.log("aa ="+aa);
+			if(aa==1){
+				console.log(aa+"성공");
+				location.href= "send_order_go.do"
+				return true;
+			}else{
+				console.log(aa+"실패");
+				return false;
+			}
+
 		},
-		error:function(alldata){
-			console.log(alldata+"에러?");
+		error:function(aa){
+			console.log(aa+"에러?");
+			return false;
 		}
 	
 	});
@@ -237,7 +248,7 @@ function send_oder(code){
 										
 											<c:if test="${login_state eq 'login' }" >
 											<a href="#cart_modal" rel ="modal:open" onclick="send_cart('${product.prod_code}');" class="btn_cart fe">장바구니 담기</a>
-											<a href="send_order_go.do" onclick="send_oder('${product.prod_code}');" class="btn_buy fe">바로 구매하기</a>
+											<a href="#" onclick="return send_oder('${product.prod_code}');" class="btn_buy fe">바로 구매하기</a>
 											</c:if>
 											<c:if test="${login_state ne 'login' }" >
 					                  		<a href="loginForm.do?returnURL=cart" onClick="alert('로그인이 필요합니다.')" class="btn_cart fe">장바구니 담기</a>

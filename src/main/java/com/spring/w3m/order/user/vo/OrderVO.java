@@ -33,14 +33,18 @@ public class OrderVO {
 	private String prod_title;//제품 타이틀
 	private String prod_title_image;//제품 타이틀 이미지
 	private int prod_price;//제품 가격
+	private int prod_price_sale;//제품 가격 세일가
 	private int prod_point;//제품 적립금
 	private int prod_total_price;//제품 총 가격
 	private int prod_total_point;//제품 총 포인트
 	
 	//결제
+	private int pay_Shipping_cost;//배송비용
 	private int pay_total_price;//총 결제 금액
+	private int pay_total_point;//총 적립금
 	private String pay_tool;// 결제 수단
 	private String pay_status;//결제상태 
+	
 	@Override
 	public String toString() {
 		return "OrderVO [order_seq=" + order_seq + ", order_date=" + order_date + ", order_status=" + order_status
@@ -51,9 +55,10 @@ public class OrderVO {
 				+ ", receiver_address1=" + receiver_address1 + ", receiver_address2=" + receiver_address2
 				+ ", receiver_memo=" + receiver_memo + ", prod_code=" + prod_code + ", prod_seq=" + prod_seq
 				+ ", prod_amount=" + prod_amount + ", prod_title=" + prod_title + ", prod_title_image="
-				+ prod_title_image + ", prod_price=" + prod_price + ", prod_point=" + prod_point + ", prod_total_price="
-				+ prod_total_price + ", prod_total_point=" + prod_total_point + ", pay_total_price=" + pay_total_price
-				+ ", pay_tool=" + pay_tool + ", pay_status=" + pay_status + "]";
+				+ prod_title_image + ", prod_price=" + prod_price + ", prod_price_sale=" + prod_price_sale
+				+ ", prod_point=" + prod_point + ", prod_total_price=" + prod_total_price + ", prod_total_point="
+				+ prod_total_point + ", pay_total_price=" + pay_total_price + ", pay_tool=" + pay_tool + ", pay_status="
+				+ pay_status + "]";
 	}
 	public int getOrder_seq() {
 		return order_seq;
@@ -228,6 +233,24 @@ public class OrderVO {
 	}
 	public void setPay_status(String pay_status) {
 		this.pay_status = pay_status;
+	}
+	public int getProd_price_sale() {
+		return prod_price_sale;
+	}
+	public void setProd_price_sale(int prod_price_sale) {
+		this.prod_price_sale = prod_price_sale;
+	}
+	public int getPay_total_point() {
+		return pay_total_point;
+	}
+	public void setPay_total_point(int pay_total_point) {
+		this.pay_total_point = pay_total_point;
+	}
+	public int getPay_Shipping_cost() {
+		return pay_Shipping_cost;
+	}
+	public void setPay_Shipping_cost(int pay_Shipping_cost) {
+		this.pay_Shipping_cost = pay_Shipping_cost;
 	}
 	
 	

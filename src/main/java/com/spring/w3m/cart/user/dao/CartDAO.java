@@ -48,4 +48,9 @@ public class CartDAO {
 		return sqlSessionTemplate.selectOne("CartDAO.Cart_distinct",vo);
 		
 	}
+
+	public int multi_Order_List(String user_id) {
+		
+		return sqlSessionTemplate.insert("CartDAO.multi_Order_List",user_id);
+	}
 }

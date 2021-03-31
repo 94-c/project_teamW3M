@@ -2,7 +2,69 @@
 	pageEncoding="UTF-8"%>
 <%@include file="/WEB-INF/views/include/header.jsp"%>
 <title>고급형 주문서 작성</title>
+<script>
+function addrclick(){
+	$("#receiver_zipcode").val($("#user_zipcode_or").val());
+	$("#receiver_address1").val($("#user_address1_or").val());
+	$("#receiver_address2").val($("#user_address2_or").val());
+	
+	
+}
+$(document).ready(function(){ 	
+$("#same").click(function(){
+	if($("#same").prop("checked")){
+		console.log("체크댐");
+		$("#receiver_name").val($("#user_name").val());
+		$("#receiver_phone1").val($("#user_phone").val());
+		$("#receiver_phone2").val($("#user_phone").val());
+	}else{
+		console.log("체크댐");
+		$("#receiver_name").val("");
+		$("#receiver_phone1").val("");
+		$("#receiver_phone2").val("");
+	}
+});
+});
+	
 
+
+function OrderDaumPostcode() {
+	new daum.Postcode({
+         oncomplete: function(data) {
+            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+            // 도로명 주소의 노출 규칙에 따라 주소를 조합한다.
+            // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+            var fullRoadAddr = data.roadAddress; // 도로명 주소 변수
+            var extraRoadAddr = ''; // 도로명 조합형 주소 변수
+
+            // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+            // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+            if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                extraRoadAddr += data.bname;
+            }
+            // 건물명이 있고, 공동주택일 경우 추가한다.
+            if(data.buildingName !== '' && data.apartment === 'Y'){
+               extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+            }
+            // 도로명, 지번 조합형 주소가 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+            if(extraRoadAddr !== ''){
+                extraRoadAddr = ' (' + extraRoadAddr + ')';
+            }
+            // 도로명, 지번 주소의 유무에 따라 해당 조합형 주소를 추가한다.
+            if(fullRoadAddr !== ''){
+                fullRoadAddr += extraRoadAddr;
+            }
+            $("#receiver_zipcode").val(data.zonecode);
+            $("#receiver_address1").val(fullRoadAddr);
+            $("#receiver_address2").val("");
+            $("#receiver_address2").focus();
+            adress_ck = 0;
+
+        }
+    }).open();
+}
+</script>
 <link href="resources/css/order.css" rel="stylesheet" type="text/css">
 <div id="contentWrap">
 
@@ -41,35 +103,36 @@
 									</tr>
 								</thead>
 								<tbody>
-									<!-- foreach문으로 작성해줘야함  -->
+									<c:forEach var="orderVO" items="${OrderVO }">
 									<tr class="nbg">
 										<td>
 											<div class="tb-center">
 												<div class="thumb">
-													<img src="${OrderVO.prod_title_image }" width="40">
+													<img src="${orderVO.prod_title_image }" width="40">
 												</div>
 											</div>
 										</td>
 										<td>
 											<div class="tb-left">
-												<a href="/getProduct?prod_code=${CartVO.prod_code }">${OrderVO.prod_title}
+												<a href="/getProduct?prod_code=${orderVO.prod_code }">${orderVO.prod_title}
 												</a>
 											</div>
 										</td>
 										<td>
-											<div class="tb-center">${OrderVO.prod_amount}</div>
+											<div class="tb-center">${orderVO.prod_amount}</div>
 										</td>
 										<td>
-											<div class="tb-center tb-bold">${OrderVO.prod_total_price}</div>
+											<div class="tb-center tb-bold"><fmt:formatNumber value="${orderVO.prod_total_price}" pattern="#,###"/>원</div>
 										</td>
 										<td>
-											<div class="tb-center">${OrderVO.prod_total_point}</div>
+											<div class="tb-center"><fmt:formatNumber value="${orderVO.prod_total_point}" pattern="#,###"/></div>
 										</td>
 									</tr>
+									</c:forEach>
 								</tbody>
 							</table>
 						</div>
-						<!-- .table-order -->
+						
 
 
 						<h3>주문자정보</h3>
@@ -86,50 +149,22 @@
 											<div class="txt-l">이름</div>
 										</th>
 										<td> 
-											<input type="text" name="sender" form="order_form" 
-											id="sender" class="MS_input_txt" value="${OrderVO.user_name}">
+											<input type="text" name="user_name" form="order_form" 
+											id="user_name" class="MS_input_txt" value="${userVO.user_name }">
 										</td>
 									</tr>
 									<tr>
 										<th scope="row"><div class="txt-l">이메일</div></th>
 										<td>
-											<input type="hidden" name="oldemail" id="oldemail" value="haso1115@gmail.com"> 
-												<input type="hidden" name="email" id="email" value="haso1115@gmail.com"> 
-												<input type="text" name="email1" id="email1" class="MS_input_txt" maxlength="20" form="order_form"> 
-												
-												<span>@</span> 
-												
-												<span id="direct_email" style="margin-top: 3px; display: inline-block"> 
-													<input type="text" name="email3" id="email3" value="gmail.com" class="MS_input_txt" disabled="" maxlength="25"
-													form="order_form">
-												</span> 
-												
-											<select name="emailsel" id="emailsel" class="MS_select MS_email" style="margin-right: 5px;"
-												onchange="viewdirect()">
-													<option value="direct">직접입력</option>
-													<option value="naver.com">naver.com</option>
-													<option value="hotmail.com">hotmail.com</option>
-													<option value="hanmail.net">hanmail.net</option>
-													<option value="yahoo.com">yahoo.com</option>
-													<option value="nate.com">nate.com</option>
-													<option value="korea.com">korea.com</option>
-													<option value="chol.com">chol.com</option>
-													<option value="gmail.com" selected="selected">gmail.com</option>
-													<option value="netian.com">netian.com</option>
-											</select>
+												<input type="text" name="user_email" id="user_email" class="MS_input_txt" maxlength="20" form="order_form" value="${userVO.user_email }"
+													placeholder="이메일을 입력하세요." onfocus="this.placeholder=''" onblur="this.placeholder='이메일을 입력하세요.'" > 
 										</td>
 									</tr>
 									<tr>
 										<th scope="row"><div class="txt-l">연락처</div></th>
 										<td>
-											<input type="text" name="emergency11" form="order_form" id="emergency11" size="4" maxlength="4"
-											class="MS_input_txt w60" value=""> - 
-											
-											<input type="text" name="emergency12" form="order_form" id="emergency12" size="4" maxlength="4" 
-											class="MS_input_txt w60" value=""> - 
-											
-											<input type="text" name="emergency13" form="order_form" id="emergency13" size="4" maxlength="4" minlength="4"
-											class="MS_input_txt w60" value="">
+											<input type="text" name="user_phone" id="user_phone" size="12" maxlength="12" va
+											class="MS_input_txt" value="${userVO.user_phone }" placeholder="-를 포함한 연락처를 입력하세요." onfocus="this.placeholder=''" onblur="this.placeholder='-를 포함한 연락처를 입력하세요.'">
 										</td>
 									</tr>
 								</tbody>
@@ -141,7 +176,7 @@
 							<label> 
 							<!-- 체크박스 클릭시 주문자 정보에 이름과 연락처가 배송 정보 입력에 자동 작성 됨 -->
 								<input type="checkbox" name="same"
-								form="order_form" id="same" onclick="copydata()"> 위 정보와 같음
+								 id="same" > 위 정보와 같음
 							</label>
 						</h3>
 						<div class="tbl-order">
@@ -159,77 +194,57 @@
 											<div class="txt-l">이름</div>
 										</th>
 										<td colspan="3">
-											<input type="text" name="receiver"
-											form="order_form" id="receiver" class="MS_input_txt" value="">
+											<input type="text" name="receiver_name"
+											form="order_form" id="receiver_name" class="MS_input_txt" value="" >
 										</td>
 									</tr>
 									<tr>
 										<th scope="row"><div class="txt-l">연락처 1</div></th>
 										<td>
-											<input type="text" name="emergency21" form="order_form" id="emergency21" 
-											size="4" maxlength="4" value="" class="MS_input_txt w60"> - 
-											
-											<input type="text" name="emergency22" form="order_form" id="emergency22" 
-											size="4" maxlength="4" class="MS_input_txt w60" value=""> - 
-										
-											<input type="text" name="emergency23" form="order_form" id="emergency23" 
-											size="4" maxlength="4" minlength="4" class="MS_input_txt w60" value="">
+											<input type="text" name="receiver_phone1" form="order_form" id="receiver_phone1" 
+											size="15" maxlength="15" value="" class="MS_input_txt" placeholder="-를 포함한 연락처를 입력하세요." onfocus="this.placeholder=''" onblur="this.placeholder='-를 포함한 연락처를 입력하세요.'">
 										</td>
 										
 										<th scope="row" style="border: 1px solid #eee">
 											<div class="txt-c">연락처 2</div>
 										</th>
 											<td style="padding-left: 10px">
-												<input type="text" name="emergency31" form="order_form" id="emergency31"
-												size="4" maxlength="4" class="MS_input_txt w60" value=""> - 
-												
-												<input type="text" name="emergency32" form="order_form" id="emergency32" 
-												size="4" maxlength="4" class="MS_input_txt w60" value=""> - 
-												
-												<input type="text" name="emergency33" form="order_form" id="emergency33" 
-												size="4" maxlength="4" minlength="4" class="MS_input_txt w60" value="">
+												<input type="text" name="receiver_phone2" form="order_form" id="receiver_phone2"
+												size="12" maxlength="12" class="MS_input_txt" value="" placeholder="-를 포함한 연락처를 입력하세요." onfocus="this.placeholder=''" onblur="this.placeholder='-를 포함한 연락처를 입력하세요.'">
 											</td>
 									</tr>
 									<tr>
 										<th scope="row">
 											<div class="txt-l">배송지 선택</div>
 										</th>
+										
 										<td colspan="3">
+										<input type ="hidden" id="user_zipcode_or" value ="${userVO.user_zipcode}">
+										<input type ="hidden" id="user_address1_or" value ="${userVO.user_address1}">
+										<input type ="hidden" id="user_address2_or" value ="${userVO.user_address2}">
 											<input type="radio" value="H" form="order_form" 
-											name="place" onclick="addrclick()">자택&nbsp;&nbsp; &nbsp;&nbsp;
-											
-											<input type="radio" value="O" form="order_form" 
-											name="place" onclick="addrclick()">회사 &nbsp;&nbsp;
-											
+											name="place" id="place" onclick="addrclick()">자택&nbsp;&nbsp; &nbsp;&nbsp;
+									
 											<input type="radio" value="A" name="place" form="order_form">
 											최근 배송지&nbsp;<a href="javascript:;" class="past_list" 
 											style="display: inline-block; height: 23px; line-height: 25px; padding: 0px 5px; border: 1px solid rgb(221, 221, 221); color: rgb(0, 0, 0); font-weight: bold; letter-spacing: -1px; border-radius: 3px;">
 											배송지 목록</a> &nbsp;&nbsp;
-											<input type="radio" value="E" name="place" form="order_form" onclick="post();">신규 배송지</td>
+											<input type="radio" value="E" name="place" form="order_form" onclick="">신규 배송지</td>
 									</tr>
 									<tr>
 										<th scope="row">
 											<div class="txt-l">주소</div>
 										</th>
 										<td colspan="3">
-											<input name="post1" id="post1" form="order_form" size="6" class="MS_input_txt w60"
-											onclick="this.blur();post();"> 
-											<a href="javascript:post();" class="btn-white">우편번호</a>
+											<input name="receiver_zipcode" id="receiver_zipcode" size="6" class="MS_input_txt w60"
+											readonly=""> 
+											<a href="#" onclick="OrderDaumPostcode();" class="btn-white">우편번호</a>
 											<div class="mt-10">
-												<input type="text" name="address1" form="order_form"
-													id="address1" size="50" class="MS_input_txt w240"
+												<input type="text" name="receiver_address1" 
+													id="receiver_address1" size="50" class="MS_input_txt w240"
 													readonly=""> 
 													
-													<input type="hidden" name="old_address" form="order_form" 
-													id="old_address" value=""> 
-													
-													<input type="hidden" name="old_home_address" form="order_form"
-													id="old_home_address" value=""> 
-													
-													<input type="hidden" name="old_offi_address" form="order_form"
-													id="old_offi_address" value=""> 
-													
-													<input type="text" name="address2" form="order_form" id="address2" size="50"
+													<input type="text" name="receiver_address2" id="receiver_address2" size="50"
 													class="MS_input_txt w240">
 											</div>
 										</td>
@@ -239,7 +254,7 @@
 												주문메세지<br> <span>(100자내외)</span>
 											</div></th>
 										<td colspan="3">
-											<textarea name="message" form="order_form" id="message" cols="50" rows="5" class="MS_textarea"></textarea>
+											<textarea name="receiver_memo" form="order_form" id="receiver_memo" cols="50" rows="5" class="MS_textarea"></textarea>
 										</td>
 									</tr>
 									<tr>
@@ -283,14 +298,13 @@
 										<td>
 											<div class="base">
 												<strong><em><span
-														class="op-total block-op-product-price" price="총 주문 금액"><!-- 총 주문금액 --></span></em>원</strong>
+														class="op-total block-op-product-price" price="총 주문 금액">${pay_total_price}</span></em>원</strong>
 											</div>
 										</td>
 										<td>
 											<div class="base">
-												<strong><em><span
-														class="op-total block-op-delivery-price" price="0">무료</span></em>
-														<span id="block_op_delivery_unit" style="display: none;">원</span></strong>
+												<strong><em>${pay_Shipping_cost}</em>
+												<span id="block_op_delivery_unit" style="display: none;">원</span></strong>
 												<!-- 총 가격에 +,- 적용 -->
 												<a class="plus">
 												<img src="resources/images/order/plus.png" alt="plus"></a>
@@ -768,7 +782,7 @@
 						<div id="paybutton">
 							<!-- 주문자 동의가 있어야 주문하기 버튼 클릭 가능 -->
 							<a href="javascript:send();" class="CSSbuttonBlack">주문하기</a> 
-							<a href="<!--장바구니로 이동-->" class="CSSbuttonWhite">주문취소</a>
+							<a href="javascript:orderCencle(); class="CSSbuttonWhite">주문취소</a>
 						</div>
 					</fieldset>
 				</form>

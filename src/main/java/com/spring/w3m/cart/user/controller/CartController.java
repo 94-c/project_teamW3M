@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import com.spring.w3m.cart.user.service.CartService;
 import com.spring.w3m.cart.user.vo.CartVO;
 import com.spring.w3m.join.user.vo.UserVO;
+import com.spring.w3m.order.user.service.OrderService;
 import com.spring.w3m.product.admin.vo.ProductVO;
 
 @Controller
@@ -22,7 +23,8 @@ public class CartController {
 	
 	@Autowired
 	private CartService cartService;
-	
+	@Autowired
+	private OrderService orderService;
 	
 	@RequestMapping("/send_cart.do")
 	@ResponseBody
@@ -96,4 +98,15 @@ public class CartController {
 	public void Send_cart_Alldelete(HttpSession session,@SessionAttribute("userVO") UserVO vo) { // 장바구니 비우기 적용 
 		cartService.Send_cart_alldelete(vo.getUser_id());
 	}
+	@RequestMapping(value = "/multi_Order_List.do", method=RequestMethod.POST)
+	@ResponseBody
+	public int multi_Order_List(@RequestBody String user_id) { // 장바구니 제품 수량 수정 시 적용 
+		System.out.println("id = "+ user_id);
+		orderService.order_drop_List(user_id);
+	int a= cartService.multi_Order_List(user_id);
+		System.out.println(a);
+		return a;
+		
+	}
+	
 }
