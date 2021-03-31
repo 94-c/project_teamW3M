@@ -357,7 +357,7 @@ $('#charge_kakao').click(function () {
 										<th scope="col">상품금액</th>
 										<th scope="col">배송비</th>
 										<th scope="col">할인금액</th>
-										<th scope="col">추가금액</th>
+										<th scope="col">멤버쉽 할인</th>
 										<th scope="col">결제 예정금액</th>
 									</tr>
 									<tr>
@@ -381,8 +381,9 @@ $('#charge_kakao').click(function () {
 										</td>
 										<td>
 											<div class="base">
+											
 												<strong><em class="fc-red">
-												<span class="op-total block-op-sale-price" price="보유 적립금"><!-- 보유 적립금 --></span></em>원</strong>
+												<span class="op-total block-op-sale-price" price="보유 적립금"></span></em>원</strong>
 												
 												<a class="plus" style="display: none;">
 													<img src="resources/images/order/plus.png" alt="plus">
@@ -394,15 +395,18 @@ $('#charge_kakao').click(function () {
 										</td>
 										
 										<td>
-										<!-- 추가 금액 부분 살릴지 말지 고민 
 											<div class="base">
-												<strong><em><span
-														class="op-total block-op-add-price" price="0">0</span></em>원</strong> <a
-													class="plus"><img src="/images/order/plus.png"
-													alt="plus"></a><a class="minus" style="display: none;"><img
-													src="/images/order/minus.png" alt="minus"></a>
+												<strong><em>
+												<span class="op-total block-op-add-price" price="0">0</span></em>원</strong> 
+												
+												<a class="plus" style="display: none;">
+													<img src="resources/images/order/plus.png" alt="plus">
+												</a>
+												<a class="minus">
+													<img src="resources/images/order/minus.png" alt="minus">
+												</a>
 											</div>
-										-->
+										
 										</td>
 										
 										<td>

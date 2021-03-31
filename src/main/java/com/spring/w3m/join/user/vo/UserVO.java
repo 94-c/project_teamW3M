@@ -15,7 +15,7 @@ public class UserVO {
 	private Date user_join_date; //가입 날짜
 	private Date user_last_login; //마지막 접속 날짜
 	private String user_phone; //폰번호
-	private String user_point; //포인트
+	private int user_point; //포인트
 	private Boolean user_marketing_mail; //마케팅 메일 동의
 	private Boolean user_marketing_sms; //마케팅 문자 동의
 	private String user_level; //등급 DEFAULT 'Bronze', -- 회원등급 //Bronze , silver, gold, Platinum,dia
@@ -110,10 +110,10 @@ public class UserVO {
 	public void setUser_phone(String user_phone) {
 		this.user_phone = user_phone;
 	}
-	public String getUser_point() {
+	public int getUser_point() {
 		return user_point;
 	}
-	public void setUser_point(String user_point) {
+	public void setUser_point(int user_point) {
 		this.user_point = user_point;
 	}
 	public Boolean getUser_marketing_mail() {

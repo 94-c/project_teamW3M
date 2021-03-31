@@ -20,6 +20,8 @@ import com.spring.w3m.join.user.service.UserService;
 import com.spring.w3m.join.user.service.certificationSMS;
 import com.spring.w3m.join.user.vo.UserVO;
 import com.spring.w3m.notice.admin.vo.TosVO;
+import com.spring.w3m.point.user.service.PointService;
+import com.spring.w3m.point.user.vo.PointVO;
 
 @Controller
 public class UserController {
@@ -29,6 +31,8 @@ public class UserController {
 	private BCryptPasswordEncoder passEncoder;
 	@Autowired
 	private JavaMailSenderImpl mailSender;
+	@Autowired
+	private PointService pointService;
 	
 
 	@RequestMapping("/selectJoin.do") //회원가입 선택 페이지 진입
@@ -100,7 +104,7 @@ public class UserController {
 		
 	}
 	@RequestMapping("/login_insert.do")
-	public String insert_success(UserVO vo) { // insert member
+	public String insert_success(UserVO vo, PointVO vo1) { // insert member
 
 		if (vo.getUser_marketing_mail() == null) { // check box 가 Null 이면 false
 			vo.setUser_marketing_mail(false);
@@ -122,6 +126,10 @@ public class UserController {
 		System.out.println(vo.toString());
 		userService.insertUser(vo);
 		
+		vo1.setPoint_content("회원가입 기념 적립금 지급");
+		vo1.setUser_id(vo.getUser_id());
+		vo1.setAdd_point(vo.getUser_point());
+		pointService.insertPoint(vo1);
 		
 		// 이메일 보내기
 		
@@ -151,7 +159,7 @@ public class UserController {
 	}
 	
 	@RequestMapping("/login_insert_sns.do")
-	public String insert_success_sns(UserVO vo) { // SNS naver insert member
+	public String insert_success_sns(UserVO vo, PointVO vo1) { // SNS naver insert member
 
 		if (vo.getUser_marketing_mail() == null) { // check box 가 Null 이면 false
 			vo.setUser_marketing_mail(false);
@@ -167,6 +175,12 @@ public class UserController {
 
 		System.out.println(vo.toString());
 		userService.insertUser(vo);
+		
+		vo1.setPoint_content("회원가입 기념 적립금 지급");
+		vo1.setUser_id(vo.getUser_id());
+		vo1.setAdd_point(vo.getUser_point());
+		pointService.insertPoint(vo1);
+		
 		
 		
 		// 이메일 보내기
@@ -196,7 +210,7 @@ public class UserController {
 		return "join/insert_success";
 	}
 	@RequestMapping("/login_insert_kakao.do")
-	public String insert_success_kakao(UserVO vo) { // SNS kakao insert member
+	public String insert_success_kakao(UserVO vo, PointVO vo1) { // SNS kakao insert member
 
 		if (vo.getUser_marketing_mail() == null) { // check box 가 Null 이면 false
 			vo.setUser_marketing_mail(false);
@@ -214,6 +228,11 @@ public class UserController {
 
 		System.out.println(vo.toString());
 		userService.insertUser(vo);
+		
+		vo1.setPoint_content("회원가입 기념 적립금 지급");
+		vo1.setUser_id(vo.getUser_id());
+		vo1.setAdd_point(vo.getUser_point());
+		pointService.insertPoint(vo1);
 		
 		
 		// 이메일 보내기

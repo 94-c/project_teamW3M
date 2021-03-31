@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="PointDAO">
+
+<select id="getPointList" resultType="PointVO">
+	select 
+		*
+	from
+		add_point
+	where
+		user_id = #{user_id}
+	order by
+		use_date desc
+</select>
+
+<select id="getPointListCnt" resultType="int">
+	select 
+		count(*) 
+	from 
+		add_point
+</select>
+
+<insert id="insertPoint" parameterType="PointVO">
+	insert into
+		add_point(user_id, add_point)
+	values
+		(#{user_id},#{add_point})
+</insert>
+
+<delete id="deletePoint" parameterType="PointVO">
+	delete from 
+		add_point 
+	where 
+		user_id=#{user_id} 
+	and 
+		use_date=#{use_date};
+</delete>
+
+</mapper>
