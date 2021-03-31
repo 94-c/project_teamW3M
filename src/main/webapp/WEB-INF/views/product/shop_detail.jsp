@@ -197,7 +197,7 @@ function send_oder(code){
 																	<ul id="MK_innerOpt_01" class="MK_inner-opt-cm">
 																		<li id="basic_0"><input type="hidden"
 																			id="MS_keys_basic_0" value="0:0" class="basic_option"><span
-																			class="MK_p-name"><!-- 상품명 --></span>
+																			class="MK_p-name">${product.prod_title }</span>
 																		<div class="MK_qty-ctrl">
 																				<input type="text" name="amount" id="amount_val" value="1" onfocusout="cnt_amount('text');" size="4" style="text-align: right; float: left;"
 																					class="basic_option" maxlength="">
