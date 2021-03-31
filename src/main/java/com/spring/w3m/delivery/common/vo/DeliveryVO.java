@@ -1,4 +1,4 @@
-package com.spring.w3m.delivery.admin.vo;
+package com.spring.w3m.delivery.common.vo;
 /*
 관련 테이블
 CREATE TABLE delivery(
