@@ -15,6 +15,7 @@ public class ReviewVO {
 	private String prod_code;
 	private String searchType;
 	private String keyword;
+	
 	public int getReview_seq() {
 		return review_seq;
 	}

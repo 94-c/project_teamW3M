@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.spring.w3m.inquiry.user.vo.ReplyVO;
 import com.spring.w3m.paging.common.Pagination;
 import com.spring.w3m.paging.common.Search;
 import com.spring.w3m.review.user.vo.ReviewVO;
@@ -67,6 +68,10 @@ public class ReviewDAO {
 		return sqlSessionTemplate.selectList("ReviewDAO.getSearchPagingList");
 	}
 
+	public int reviewReplyTotal(ReplyVO vo) {
+		return sqlSessionTemplate.selectOne("reviewtotal.review_reply_total", vo);
+	}
+	
 	/*
 	 * public ProductVO getProduct(ProductVO vo) { return
 	 * sqlSessionTemplate.selectOne("ReviewDAO.getProduct", vo); }

@@ -115,7 +115,7 @@ function submitForm()
 											<input type="hidden" id="review_seq" name="review_seq" value="${reviewList.review_seq}" />
 											<input type="hidden" id="review_re_seq" name="review_re_seq" value="${reviewList.review_re_seq}" />
 											<label><i>${reviewList.review_re_writer}</i></label>
-											<font id="commentDate"><fmt:formatDate value="${reviewList.review_re_date}" pattern="yyyy-MM-dd HH:mm" /></font><br>									
+											<font id="commentDate"><fmt:formatDate value="${reviewList.review_re_date}" pattern="yyyy-MM-dd HH:mm" /></font><a href="javascript:void(window.open('replyUpdate_view.do?review_re_seq=${reviewList.review_re_seq}', '_blank','width=430px, height=340px, status=no, menubar=no, toolbar=no, resizable=no'))"> 수정</a><br>									
 											<pre>${reviewList.review_re_content}</pre><br>
 									</c:forEach>
 						  </table>

@@ -17,13 +17,21 @@ public interface ReplyService {
 	// 후기 댓글 등록
 	void insertReviewReply(ReplyVO vo);
 	
+	// 후기댓글 상세
+	ReplyVO getReply(ReplyVO vo);
+	
 	//댓글 삭제
 	void deleteReply(ReplyVO vo);
 	
 	//댓글 수정
 	void updateReply(ReplyVO vo);
 	
+	// 후기 댓글 수정
+	void updateReviewReply(ReplyVO vo);
 	
 	List<ReplyVO> getReplyList_review(int review_seq);
+	
+	// 후기 댓글 갯수
+	int count(int review_re_seq);
 
 }

@@ -25,6 +25,12 @@ public class ReplyDAO {
 		return sqlSessionTemplate.selectList("ReplyDAO.getReviewReplyList", review_seq);
 	}
 	
+	// 후기 댓글 상세
+	public ReplyVO getReply(ReplyVO vo) {
+		System.out.println("댓글 상세보기");
+		return sqlSessionTemplate.selectOne("ReplyDAO.getReply", vo);
+	}
+	
 	// 댓글 등록
 	public void insertReply(ReplyVO vo) {
 		sqlSessionTemplate.insert("ReplyDAO.insertReply", vo);
@@ -49,5 +55,16 @@ public class ReplyDAO {
 		sqlSessionTemplate.update("ReplyDAO.updateReply", vo);
 		System.out.println("댓글 수정");
 
+	}
+	
+	// 후기 댓글 수정
+	public void updateReviewReply(ReplyVO vo) {
+		sqlSessionTemplate.update("ReplyDAO.updateReviewReply", vo);
+		System.out.println("댓글 수정");
+	}
+	
+	// 후기 댓글 갯수
+	public int count(int review_re_seq) {
+		return 0;
 	}
 }
