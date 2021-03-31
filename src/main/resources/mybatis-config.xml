@@ -13,6 +13,7 @@
      <typeAlias type="com.spring.w3m.inquiry.user.vo.ReplyVO" alias="ReplyVO"  />
      <typeAlias type="com.spring.w3m.review.user.vo.ReviewVO" alias="ReviewVO"/>
      <typeAlias type="com.spring.w3m.order.user.vo.OrderVO" alias="OrderVO"/>
+     <typeAlias type="com.spring.w3m.point.user.vo.PointVO" alias="PointVO"/>
  </typeAliases>
 	<mappers>
 		<mapper resource="mapper/joe_Mapper.xml" />
@@ -28,5 +29,6 @@
 		<mapper resource="mapper/category_Mapper.xml"/>
 		<mapper resource="mapper/myPage_Mapper.xml" />
 		<mapper resource="mapper/order_Mapper.xml" />
+		<mapper resource="mapper/point_Mapper.xml" />
 	</mappers>
 </configuration>

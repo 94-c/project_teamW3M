@@ -14,6 +14,7 @@
 				<div class="page-body">
 
 					<form action="login_insert.do" method="post" id="user_insert">
+					<input type="hidden" name="user_point" value="1000">
 						<div id="personInfo">
 							<table class="person-tb">
 								<colgroup>
