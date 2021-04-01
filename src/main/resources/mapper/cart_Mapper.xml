@@ -68,7 +68,7 @@
 	</insert>
 	
 	<select id="Cart_distinct" parameterType="CartVO" resultType="int">
-		SELECT count(*) FROM cart WHERE user_id=#{user_id} AND prod_code = #{prod_code}
+		SELECT count(*) FROM cart WHERE user_id=#{user_id} AND prod_code = #{prod_code} AND order_status ='구매대기'
 	</select>
 
 </mapper>

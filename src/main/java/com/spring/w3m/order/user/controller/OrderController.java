@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
@@ -109,8 +108,14 @@ public class OrderController {
 			System.out.println("금액: "+ payVO.getPay_total_money());
 			
 			System.out.println(payVO.toString());
+			int a = orderService.insert_order_list(vo.getUser_id());
+			System.out.println(a +"- 0이면 실패");
 			
-			
+			int orVO = orderService.orderNum(vo.getUser_id());
+	
+			payVO.setOrder_seq(orVO);
+			int aaa = orderService.insert_pay(payVO);
+			System.out.println(aaa +"- 0이면 실패");
 			
 		}
 		@RequestMapping("order_Success.do")
@@ -133,6 +138,17 @@ public class OrderController {
 			System.out.println("주소 : " + receiver_address1_1);
 			System.out.println("상세 : " + receiver_address2_1);
 			System.out.println("메모 : " + receiver_memo_1);
+			
+			int orVO = orderService.orderNum(vo.getUser_id());
+				
+			ordervo.setOrder_seq(orVO);
+			ordervo.setUser_id(vo.getUser_id());
+			
+			System.out.println(ordervo.toString());
+			
+			int a =orderService.insert_delivery(ordervo);
+			
+			System.out.println(a +"- 0이면 실패");
 			
 			
 			

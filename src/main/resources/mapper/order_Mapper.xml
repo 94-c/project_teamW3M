@@ -25,4 +25,29 @@
 	<select id="Check_Point" resultType="int">
 	SELECT user_point FROM user_member WHERE user_id = #{user_id}
 	</select>
+	
+	<insert id="insert_order_list" parameterType="String">
+	INSERT INTO ORDER_LIST (order_seq,user_id) values(nextval('order_seq'),#{user_id})
+	</insert>
+	
+	<select id="orderNum" resultType="int">
+	SELECT order_seq from order_list where user_id = #{user_id} and order_status='결제완료'
+	</select>
+	
+	<update id="order_status_change" parameterType="String" >
+	update order_list set order_status='배송 준비중' where user_id ='#{user_id}'and order_status= '결제완료'
+	</update>
+
+	
+	<insert id="insert_pay" parameterType="PayVO">
+	insert into pay (pay_seq,pay_Shipping_cost,pay_total_price,pay_total_point,pay_total_money,pay_use_point,pay_tool,order_seq)
+	values (nextval('pay_seq'),#{pay_Shipping_cost},#{pay_total_price},#{pay_total_point},#{pay_total_money},#{pay_use_point},#{pay_tool},#{order_seq})
+	</insert>
+	
+	<insert id="insert_delivery">
+	INSERT INTO delivery (delivery_seq,order_seq,prod_title,user_id,receiver_name,receiver_zipcode,receiver_address1,receiver_address2,receiver_phone1,receiver_phone2,receiver_memo)
+	VALUES
+		(nextval('delivery_seq'),#{order_seq},#{prod_title},#{user_id},#{receiver_name},#{receiver_zipcode},#{receiver_address1},#{receiver_address2},#{receiver_phone1},#{receiver_phone2},#{receiver_memo})
+	</insert>
+	
 </mapper>
