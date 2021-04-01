@@ -52,7 +52,7 @@ public class ProductServiceImpl implements ProductService {
 		vo.setProd_image9(singleUpload(image9));
 		vo.setProd_image10(singleUpload(image10));
 
-		System.out.println("===================insert : " + vo.getProd_title_image());
+		floorPrice(vo); //1의 자리 0으로 내림하는 작업
 		String prod_code = vo.getProd_code(); // 상품코드 받아서 카테고리분류하는 작업
 		sortCategory(vo, prod_code);
 		dao.insertProduct(vo);
@@ -76,6 +76,7 @@ public class ProductServiceImpl implements ProductService {
 		vo.setProd_image9(singleUpload(image9));
 		vo.setProd_image10(singleUpload(image10));
 
+		floorPrice(vo); //1의 자리 0으로 내림하는 작업
 		String prod_code = vo.getProd_code(); // 상품코드 받아서 카테고리분류하는 작업
 		sortCategory(vo, prod_code);
 		dao.updateProduct(vo);
@@ -113,6 +114,22 @@ public class ProductServiceImpl implements ProductService {
 			vo.setProd_category3("temp"); // L
 			vo.setProd_category4("temp"); // 94
 		}
+	}
+	
+	public ProductVO floorPrice(ProductVO vo) { //1의 자리 0으로 내림하는 메서드
+		String stringSalePrice = String.valueOf(vo.getProd_price_sale());
+		String stringPoint = String.valueOf(vo.getProd_point());
+		
+		Double doubleSalePrice = Double.parseDouble(stringSalePrice);
+		Double doublePoint = Double.parseDouble(stringPoint);
+		
+		int salePrice = (int) ((Math.floor(doubleSalePrice*0.1))*10);
+		int point = (int) ((Math.floor(doublePoint*0.1))*10);		
+		
+		vo.setProd_price_sale(salePrice);
+		vo.setProd_point(point);
+		
+		return vo;
 	}
 
 }
