@@ -22,14 +22,14 @@
 					<c:choose>
 						<c:when test="${login eq 'adminLogin'}">
 							<li><a href="#">회사소개</a></li>
-							<li><a href="#">이용약관</a></li>
+							<li><a href="javascript:void(window.open('shopterms', '_blank', status=no, menubar=no, toolbar=no, resizable=no'))">이용약관</a></li>
 							<li><a href="#" class="black">개인정보처리방침</a></li>
 							<li><a href="info">이용안내</a></li>
 							<li><a href="loginIndex.mdo">관리자</a></li>
 						</c:when>
 						<c:when test="${login ne 'adminLogin'}">
 							<li><a href="#">회사소개</a></li>
-							<li><a href="#">이용약관</a></li>
+							<li><a href="javascript:void(window.open('shopterms', '_blank', status=no, menubar=no, toolbar=no, resizable=no'))">이용약관</a></li>
 							<li><a href="#" class="black">개인정보처리방침</a></li>
 							<li><a href="info">이용안내</a></li>
 							<li><a href="login.mdo">관리자</a></li>

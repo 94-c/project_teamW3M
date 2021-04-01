@@ -1,8 +1,17 @@
 package com.spring.w3m.notice.admin.vo;
 
+import java.util.Date;
+
 public class TosVO {
 	private String tos_writer;
 	private String tos_content;
+	private Date tos_date;
+	public Date getTos_date() {
+		return tos_date;
+	}
+	public void setTos_date(Date tos_date) {
+		this.tos_date = tos_date;
+	}
 	public String getTos_writer() {
 		return tos_writer;
 	}
