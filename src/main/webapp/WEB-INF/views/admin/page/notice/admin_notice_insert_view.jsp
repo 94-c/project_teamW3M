@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@include file="/WEB-INF/views/admin/page/include/admin_header.jsp"%>
 <title>공지사항 등록</title>
+<script type="text/javascript" src="resources/js/notice.js?v=7" ></script>
 <main>
 	<div class="container-fluid">
 		<h1 class="mt-4">공지 사항</h1>
@@ -52,24 +53,5 @@
 
 	</div>
 </form>
-<script>
-		window.onload = function(){
-		    console.log('checkedBox is ' + document.getElementById('checked').checked);
-		    console.log('uncheckedBox is ' + document.getElementById('unchecked').checked);
-		};
-		
-		function emptyCheck(){
-			
-			if(document.writeform.nt_title.value==""){
-				alert("제목을 입력하세요");
-				document.writeform.nt_title.focus();
-				return false;
-			}
-			if(document.writeform.nt_content.value==""){
-				alert("내용을 입력하세요");
-				document.writeform.nt_content.focus();
-				return false;
-			}
-		};
-</script>
+
 <%@include file="/WEB-INF/views/admin/page/include/admin_footer.jsp"%>
