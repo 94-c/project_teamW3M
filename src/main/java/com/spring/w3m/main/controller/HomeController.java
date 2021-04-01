@@ -71,4 +71,9 @@ public class HomeController {
 		return "product/shop_detail";
 	}
 
+	@RequestMapping("/info")
+	public String info() {
+		System.out.println("이용 안내");
+		return "include/info";
+	}
 }
