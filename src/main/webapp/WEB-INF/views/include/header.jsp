@@ -143,19 +143,19 @@
                      <li><a href="category.do?prod_category1=SS&prod_category2=N">- 일반</a></li>
                   </ul>
                </li>
-               <li><a href="#">W3M 쿨패치</a>
+               <li><a href="category.do?prod_category1=CC">W3M 쿨패치</a>
                   <ul class="sub1" style="display: none;">
-                     <li><a href="#">- 일반</a></li>
+                     <li><a href="category.do?prod_category1=CC&prod_category2=N">- 일반</a></li>
                   </ul>
                </li>
-               <li><a href="#">W3M 핫팩</a>
+               <li><a href="category.do?prod_category1=HH">W3M 핫팩</a>
                   <ul class="sub1" style="display: none;">
-                     <li><a href="#">- 일반</a></li>
+                     <li><a href="category.do?prod_category1=HH&prod_category2=N">- 일반</a></li>
                   </ul>
                </li>
-               <li><a href="#">W3M 체온계</a>
-                  <ul class="sub1">
-                     <li><a href="#">- 일반</a></li>
+               <li><a href="category.do?prod_category1=TT">W3M 체온계</a>
+                  <ul class="sub1" style="display: none;">
+                     <li><a href="category.do?prod_category1=TT&prod_category2=N">- 일반</a></li>
                   </ul>
                </li>
             </ul>

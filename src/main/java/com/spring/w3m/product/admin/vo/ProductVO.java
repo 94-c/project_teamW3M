@@ -2,6 +2,8 @@ package com.spring.w3m.product.admin.vo;
 
 import java.util.Date;
 
+import com.spring.w3m.paging.common.Pagination;
+
 public class ProductVO {
 	private int prod_seq;
 	private String prod_code;
@@ -32,6 +34,10 @@ public class ProductVO {
 	private Date prod_regdate;
 	private int prod_count;
 	private String searchCondition;
+	private String searchType;
+	private String keyword;
+	
+	Pagination p = new Pagination();
 	
 	public String getSearchCondition() {
 		return searchCondition;
@@ -207,6 +213,21 @@ public class ProductVO {
 	public void setProd_count(int prod_count) {
 		this.prod_count = prod_count;
 	}
+	
+	
+	public String getSearchType() {
+		return searchType;
+	}
+	public void setSearchType(String searchType) {
+		this.searchType = searchType;
+	}
+	public String getKeyword() {
+		return keyword;
+	}
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+	
 	@Override
 	public String toString() {
 		return "ProductVO [prod_seq=" + prod_seq + ", prod_code=" + prod_code + ", prod_title=" + prod_title
@@ -218,7 +239,8 @@ public class ProductVO {
 				+ ", prod_image2=" + prod_image2 + ", prod_image3=" + prod_image3 + ", prod_image4=" + prod_image4
 				+ ", prod_image5=" + prod_image5 + ", prod_image6=" + prod_image6 + ", prod_image7=" + prod_image7
 				+ ", prod_image8=" + prod_image8 + ", prod_image9=" + prod_image9 + ", prod_image10=" + prod_image10
-				+ ", prod_state=" + prod_state + ", prod_regdate=" + prod_regdate + ", prod_count=" + prod_count + "]";
+				+ ", prod_state=" + prod_state + ", prod_regdate=" + prod_regdate + ", prod_count=" + prod_count
+				+ ", searchCondition=" + searchCondition + ", searchType=" + searchType + ", keyword=" + keyword + "]";
 	}
 	
 }

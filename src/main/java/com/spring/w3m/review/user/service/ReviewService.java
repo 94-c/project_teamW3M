@@ -2,7 +2,6 @@ package com.spring.w3m.review.user.service;
 
 import java.util.List;
 
-import com.spring.w3m.inquiry.user.vo.ReplyVO;
 import com.spring.w3m.paging.common.Pagination;
 import com.spring.w3m.paging.common.Search;
 import com.spring.w3m.review.user.vo.ReviewVO;

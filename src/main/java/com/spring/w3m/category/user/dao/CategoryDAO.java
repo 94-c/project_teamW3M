@@ -48,4 +48,13 @@ public class CategoryDAO {
 	public int SSN_cnt(ProductVO vo) {
 		return template.selectOne("category.SSN_cnt", vo);
 	}
+	public int CCN_cnt(ProductVO vo) {
+		return template.selectOne("category.CCN_cnt", vo);
+	}
+	public int HHN_cnt(ProductVO vo) {
+		return template.selectOne("category.HHN_cnt", vo);
+	}
+	public int TTN_cnt(ProductVO vo) {
+		return template.selectOne("category.TTN_cnt", vo);
+	}
 }

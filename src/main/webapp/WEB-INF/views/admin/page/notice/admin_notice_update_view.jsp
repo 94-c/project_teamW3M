@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@include file="/WEB-INF/views/admin/page/include/admin_header.jsp"%>
 <title>공지사항 수정</title>
-
+<script type="text/javascript" src="resources/js/notice.js" ></script>
 <main>
 	<div class="container-fluid">
 		<h1 class="mt-4">공지 사항</h1>
@@ -76,21 +76,7 @@
 	</div>
 </form>
 
-<script>
-function emptyCheck(){
-	
-	if(document.writeform.nt_title.value==""){
-		alert("제목을 입력하세요");
-		document.writeform.nt_title.focus();
-		return false;
-	}
-	if(document.writeform.nt_content.value==""){
-		alert("내용을 입력하세요");
-		document.writeform.nt_content.focus();
-		return false;
-	}
-};
-</script>
+
 
 
 

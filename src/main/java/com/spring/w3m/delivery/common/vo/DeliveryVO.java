@@ -23,6 +23,8 @@ CREATE SEQUENCE delivery_seq START 1; --송장번호 시퀀스 생성
 */
 import java.util.Date;
 
+import com.spring.w3m.paging.common.Pagination;
+
 public class DeliveryVO {
 	private int delivery_seq;
 	private int order_seq;
@@ -37,6 +39,10 @@ public class DeliveryVO {
 	private String receiver_memo;
 	private Date order_date;
 	private String delivery_state;
+	private String searchType;
+	private String keyword;
+	
+	Pagination p = new Pagination();
 	
 	
 	public int getDelivery_seq() {
@@ -117,13 +123,28 @@ public class DeliveryVO {
 	public void setDelivery_state(String delivery_state) {
 		this.delivery_state = delivery_state;
 	}
+	
+	public String getSearchType() {
+		return searchType;
+	}
+	public void setSearchType(String searchType) {
+		this.searchType = searchType;
+	}
+	public String getKeyword() {
+		return keyword;
+	}
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+	
 	@Override
 	public String toString() {
 		return "DeliveryVO [delivery_seq=" + delivery_seq + ", order_seq=" + order_seq + ", prod_title=" + prod_title
 				+ ", user_id=" + user_id + ", receiver_name=" + receiver_name + ", receiver_zipcode=" + receiver_zipcode
 				+ ", receiver_address1=" + receiver_address1 + ", receiver_address2=" + receiver_address2
 				+ ", receiver_phone1=" + receiver_phone1 + ", receiver_phone2=" + receiver_phone2 + ", receiver_memo="
-				+ receiver_memo + ", order_date=" + order_date + ", delivery_state=" + delivery_state + "]";
+				+ receiver_memo + ", order_date=" + order_date + ", delivery_state=" + delivery_state + ", searchType="
+				+ searchType + ", keyword=" + keyword + "]";
 	}
 	
 }

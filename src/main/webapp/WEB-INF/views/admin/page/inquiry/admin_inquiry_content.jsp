@@ -4,8 +4,8 @@
 <link href="resources/css/reply.css" rel="stylesheet" type="text/css">
 <main>
 <div class="container-fluid">
-     <h1 class="mt-4">관리자 페이지</h1>              
-     <ol class="breadcrumb mb-4"><li class="breadcrumb-item active">문의사항</li></ol>
+     <h1 class="mt-4">문의사항 상세보기</h1>              
+     <ol class="breadcrumb mb-4"><li class="breadcrumb-item active">상세보기</li></ol>
 		<div class="card mb-4">
         <div class="card-header"><i class="fas fa-table mr-1"></i>${inquiryVO.inq_title }</div>
         <div class="card-body">

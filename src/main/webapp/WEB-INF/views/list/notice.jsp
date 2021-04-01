@@ -14,48 +14,7 @@
  .page-item{list-style-type: none; display:inline; margin-left:20px;}
  paginationBox { padding:15px 0; position:relative; *zoom:1 }
 </style>
-<script type="text/javascript">
-        	//이전 버튼 이벤트
-        	function fn_prev(page, range, rangSize, keyword){
-        		var page = ((range - 2) * rangeSize) + 1;
-        		var range = range - 1;
-        		var url = "${pagContext.request.contextPath}/getUserNoticeList.do";
-        		url = url + "?page=" + page;
-        		url = url + "&range=" + range;
-        		url = url + "&keyword" + keyword;
-        		location.href = url;
-        	}
-        	
-        
-        	//페이지 번호 클릭
-        	function fn_pagination(page, range, rangSize, keyword){
-        		var url = "${pagContext.request.contextPath}/getUserNoticeList.do";
-        		url = url + "?page=" + page;
-        		url = url + "&range=" + range;
-        		url = url + "&keyword" + keyword;
-        		location.href = url;
-        	}
-        	
-        	//다음 버튼 이벤트
-        	function fn_next(page, range, rangSize, keyword){
-        		var page = parseInt((range  * rangeSize)) + 1;
-        		var range = parseInt(range) + 1;
-        		var url = "${pagContext.request.contextPath}/getUserNoticeList.do";
-        		url = url + "?page=" + page;
-        		url = url + "&range=" + range;
-        		url = url + "&keyword" + keyword;
-        		location.href = url;
-        	}
-        	
-        	$(document).on('click', '#btnSearch', function(e){
-        		e.preventDefault();
-        		var url = "${pageContext.request.contextPath}/search.do";
-        		url = url + "?searchType=" + $('#searchType').val();
-        		url = url + "&keyword=" + $('#keyword').val();
-        		location.href = url;
-        		console.log(url);
-        	});
-        </script>
+
 
 <link rel="shortcut icon" href="resources/images/icons/favicon.ico" type="image/x-icon">
 <title>공지사항</title>
@@ -157,19 +116,45 @@
 	</div>
 </div>
 <script type="text/javascript">
-function checkOnlyOne(element) {
-	  
-	  const checkboxes 
-	      = document.getElementsByName("searchType");
-	  
-	  checkboxes.forEach((cb){
-	    cb.checked = false;
-	  })
-	  
-	  element.checked = true;
-	}
-</script>
-
-
-
+           //이전 버튼 이벤트
+           function fn_prev(page, range, rangSize, keyword){
+              var page = ((range - 2) * rangeSize) + 1;
+              var range = range - 1;
+              var url = "${pagContext.request.contextPath}/getUserNoticeList.do";
+              url = url + "?page=" + page;
+              url = url + "&range=" + range;
+              url = url + "&keyword" + keyword;
+              location.href = url;
+           }
+           
+        
+           //페이지 번호 클릭
+           function fn_pagination(page, range, rangSize, keyword){
+              var url = "${pagContext.request.contextPath}/getUserNoticeList.do";
+              url = url + "?page=" + page;
+              url = url + "&range=" + range;
+              url = url + "&keyword" + keyword;
+              location.href = url;
+           }
+           
+           //다음 버튼 이벤트
+           function fn_next(page, range, rangSize, keyword){
+              var page = parseInt((range  * rangeSize)) + 1;
+              var range = parseInt(range) + 1;
+              var url = "${pagContext.request.contextPath}/getUserNoticeList.do";
+              url = url + "?page=" + page;
+              url = url + "&range=" + range;
+              url = url + "&keyword" + keyword;
+              location.href = url;
+           }
+           
+           $(document).on('click', '#btnSearch', function(e){
+              e.preventDefault();
+              var url = "${pageContext.request.contextPath}/search.do";
+              url = url + "?searchType=" + $('#searchType').val();
+              url = url + "&keyword=" + $('#keyword').val();
+              location.href = url;
+              console.log(url);
+           });
+        </script>
 <%@include file="/WEB-INF/views/include/footer.jsp"%>
