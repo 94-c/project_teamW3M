@@ -79,7 +79,6 @@
 						<div class="collapse" id="collapsePages" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
 								<a class="nav-link" href="getProductList.mdo">상품 관리</a> 
-								<a class="nav-link" href="#">상품 재고 관리</a> 
 								<a class="nav-link" href="adminReview.mdo">상품평 관리</a> 
 							</nav>
 						</div>
@@ -142,8 +141,7 @@
 				</div>
 
 				<div class="sb-sidenav-footer">
-					<div class="small">Logged in as:&nbsp;&nbsp;<strong>관리자</strong></div>
-					<!-- admin 로그인 했다는 거 표시를 해야한다. -->
+					<div class="small">Logged in as&nbsp;:&nbsp;&nbsp;<strong>관리자</strong></div>
 				</div>
 			</nav>
 		</div>

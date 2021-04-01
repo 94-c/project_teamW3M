@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import com.spring.w3m.delivery.common.dao.DeliveryDAO;
 import com.spring.w3m.delivery.common.vo.DeliveryVO;
+import com.spring.w3m.paging.common.Pagination;
+import com.spring.w3m.paging.common.Search;
 
 @Service
 public class DeliveryServiceImpl implements DeliveryService {
@@ -33,6 +35,26 @@ public class DeliveryServiceImpl implements DeliveryService {
 			vo.setDelivery_state("주문취소");
 		}		
 		dao.updateDeliveryState(vo);
+	}
+
+	@Override
+	public int getDeliveryListCnt(Search search) {
+		return dao.getDeliveryListCnt(search);
+	}
+
+	@Override
+	public List<DeliveryVO> getPageList(Search search) {
+		return dao.getPageList(search);
+	}
+
+	@Override
+	public int getSearchCnt(String searchKeyword) {
+		return dao.getSearchCnt(searchKeyword);
+	}
+
+	@Override
+	public List<DeliveryVO> getSearchPagingList(Pagination pagination) {
+		return dao.getSearchPagingList(pagination);
 	}
 	
 	

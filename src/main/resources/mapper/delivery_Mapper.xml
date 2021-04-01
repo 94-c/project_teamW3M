@@ -12,4 +12,60 @@
 		UPDATE delivery SET delivery_state = #{delivery_state} WHERE delivery_seq = #{delivery_seq}
 	</update>
 	
+	<select id="getDeliveryListCnt" resultType="int">
+		select count(*) from delivery
+	</select>
+	
+	<select id="getPageList" resultType="DeliveryVO">
+		select 
+			delivery_seq,
+			order_seq, 
+			prod_title,
+			user_id,
+			receiver_name,
+			receiver_zipcode,
+			receiver_address1, 
+			receiver_address2, 
+			receiver_phone1, 
+			receiver_phone2, 
+			receiver_memo,
+			order_date, 
+			delivery_state 	
+		from delivery
+		where 1=1
+		<if test="searchType=='user_id' and keyword != null and keyword != '' ">
+			AND user_id like CONCAT('%', #{keyword}, '%')
+		</if>
+		<if test="searchType=='order_seq' and keyword != null and keyword != '' ">
+			AND order_seq like CONCAT('%', #{keyword}, '%')
+		</if>
+		order by delivery_seq desc
+		limit #{listSize} offset #{startList}
+	</select>	
+	
+	<select id="getSearchCnt" parameterType="String" resultType="int">
+		select count(*) from delivery
+	<trim prefix="WHERE" prefixOverrides="AND|OR">
+	<if test="keyword != null and keyword != '' ">
+			<if test="searchType=='user_id'">
+				AND user_id like CONCAT('%', #{keyword}, '%')
+			</if>
+
+			<if test="searchType=='order_seq'">
+				AND order_seq like CONCAT('%', #{keyword}, '%')
+			</if>
+      </if>
+	</trim>
+	</select>
+	
+	<select id="getSearchPagingList" resultType="DeliveryVO">
+		SELECT * FROM delivery where 1=1
+		<if test="searchCondition == 'user_id'">
+			AND user_id LIKE '%'||#{searchKeyword}||'%'
+		</if>
+		<if test="searchCondition == 'order_seq'">
+			AND order_seq LIKE '%'||#{searchKeyword}||'%'
+		</if>
+		order by delivery_seq desc
+	</select>
 </mapper>

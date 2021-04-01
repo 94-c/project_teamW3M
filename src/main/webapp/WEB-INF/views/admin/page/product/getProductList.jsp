@@ -18,7 +18,7 @@ table, td, th {
 	<div class="container-fluid">
 		<h1 class="mt-4">상품 관리 페이지</h1>
 		<ol class="breadcrumb mb-4">
-			<li class="breadcrumb-item active">코로나 종식!!!</li>
+			<li class="breadcrumb-item active">상품 관리 페이지</li>
 		</ol>
 		<div class="card mb-4">
 			<div class="card-header">
