@@ -142,8 +142,13 @@
 									<ul class="info">
 										<li class="dsc">${product.prod_title}</li>
 										<li class="subname"></li>
-										<li class="consumer"><fmt:formatNumber value="${product.prod_price}" pattern="#,###" />원</li>
-										<li class="price"><fmt:formatNumber value="${product.prod_price_sale}" pattern="#,###" />원</li>
+										<c:if test="${product.prod_amount gt 0}">
+											<li class="consumer"><fmt:formatNumber value="${product.prod_price}" pattern="#,###" />원</li>
+											<li class="price"><fmt:formatNumber value="${product.prod_price_sale}" pattern="#,###" />원</li>
+										</c:if>
+										<c:if test="${product.prod_amount eq 0}">
+											<li class="soldout">SOLD OUT</li>
+										</c:if>
 									</ul>
 								</div>
 							</div>

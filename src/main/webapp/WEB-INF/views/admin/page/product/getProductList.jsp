@@ -49,7 +49,7 @@ table, td, th {
 								<c:forEach var="prod" items="${productList}">
 									<tr>
 										<td class="text-center">${prod.prod_seq}</td>
-										<td class="text-center">${prod.prod_code}</td>
+										<td class="text-center"><b>${prod.prod_code}</b></td>
 										<td class="text-center">
 											<a href="/getProduct.mdo?prod_seq=${prod.prod_seq }" class="text-dark">${prod.prod_title }</a>
 										</td>
@@ -59,7 +59,15 @@ table, td, th {
 										<td class="text-center">${prod.prod_price}</td>
 										<td class="text-center">${prod.prod_price_sale}</td>
 										<td class="text-center">${prod.prod_point}</td>
-										<td class="text-center">${prod.prod_amount}</td>
+										<c:if test="${prod.prod_amount gt 10}">
+											<td class="text-center" style="color:blue">${prod.prod_amount}</td>
+										</c:if>
+										<c:if test="${prod.prod_amount le 10 and prod.prod_amount gt 0}">
+											<td class="text-center" style="color:red">${prod.prod_amount}</td>
+										</c:if>
+										<c:if test="${prod.prod_amount eq 0}">
+											<td class="text-center" style="color:red">SOLD OUT</td>
+										</c:if>
 										<td class="text-center"><fmt:formatDate value="${prod.prod_regdate}" pattern="yyyy-MM-dd" /></td>
 										<td class="text-center"><a class="deleteProduct" href="deleteProduct.mdo?prod_seq=${prod.prod_seq}" onclick="return confirm('정말로 삭제하시겠습니까?');">삭제</a></td>
 									</tr>

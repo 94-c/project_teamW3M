@@ -73,8 +73,7 @@ function send_cart(code){
 		success:function(aa){
 			if (aa==1){//실패 중복 물품
 			console.log("해당 물품은 이미 장바구니에 존재합니다.");
-			}
-			
+			}		
 			
 		},
 		error:function(data){
@@ -115,9 +114,8 @@ function send_oder(code){
 	
 	});
 }
-
-
 </script>
+
 <body>
 	<div id="contentWrapper">
 		<div id="contentWrap">
@@ -134,7 +132,12 @@ function send_oder(code){
 						<div class="thumb-info">
 							<div class="thumb-wrap">
 								<div class="thumb">
-									<img src="${product.prod_title_image}" class="detail_image" alt="">
+									<c:if test="${product.prod_amount ne 0}">
+										<img src="${product.prod_title_image}" class="detail_image" alt="">
+									</c:if>
+									<c:if test="${product.prod_amount eq 0}">
+										<img src="https://imageup.s3.ap-northeast-2.amazonaws.com/product/maskcat_thumb.jpg" alt="상품준비중">
+									</c:if>
 								</div>
 							</div>
 							
@@ -175,7 +178,7 @@ function send_oder(code){
 													<th scope="row"><div class="tb-left">소비자가격</div></th>
 													<td class="price">
 														<div class="tb-left">
-															<strike><fmt:formatNumber value="${product.prod_price}" pattern="#,###" /></strike>
+															<del><fmt:formatNumber value="${product.prod_price}" pattern="#,###"/>원</del>
 														</div>
 													</td>
 												</tr>
@@ -199,15 +202,17 @@ function send_oder(code){
 																			id="MS_keys_basic_0" value="0:0" class="basic_option"><span
 																			class="MK_p-name">${product.prod_title }</span>
 																		<div class="MK_qty-ctrl">
-																				<input type="text" name="amount" id="amount_val" value="1" onfocusout="cnt_amount('text');" size="4" style="text-align: right; float: left;"
-																					class="basic_option" maxlength="">
-																					<a href="javascript:cnt_amount('up');" class="MK_btn-up">
-																					<img src="/images/common/basket_up.gif" alt="수량증가" border="0"></a>
-																					<a href="javascript:cnt_amount('down');" class="MK_btn-dw">
-																					<img src="/images/common/basket_down.gif" alt="수량감소" border="0"></a>
-																			</div>
-																			<strong class="MK_price">
-																				<span id="totalPlace1"><fmt:formatNumber value="${product.prod_price_sale}" pattern="#,###" /></span>원</strong></li>
+																			<input type="text" name="amount" id="amount_val" value="1" onfocusout="cnt_amount('text');" size="4" style="text-align: right; float: left;"
+																				class="basic_option" maxlength="">
+																				<a href="javascript:cnt_amount('up');" class="MK_btn-up">
+																					<img src="/images/common/basket_up.gif" alt="수량증가" border="0">
+																				</a>
+																				<a href="javascript:cnt_amount('down');" class="MK_btn-dw">
+																					<img src="/images/common/basket_down.gif" alt="수량감소" border="0">
+																				</a>
+																		</div>
+																			<strong class="MK_price"><span id="totalPlace1"><fmt:formatNumber value="${product.prod_price_sale}" pattern="#,###" /></span>원</strong>
+																		</li>
 																	</ul>
 																	<ul id="MK_innerOpt_02" class="MK_inner-opt-cm"></ul>
 																</div>
@@ -244,15 +249,24 @@ function send_oder(code){
 										</table>
 									</div>
 									<!-- .table-opt -->
-									<div class="prd-btns">
-										
-											<c:if test="${login_state eq 'login' }" >
-											<a href="#cart_modal" rel ="modal:open" onclick="send_cart('${product.prod_code}');" class="btn_cart fe">장바구니 담기</a>
-											<a href="#" onclick="return send_oder('${product.prod_code}');" class="btn_buy fe">바로 구매하기</a>
+									<div class="prd-btns">										
+											<c:if test="${login_state eq 'login' }">
+												<c:if test="${product.prod_amount ne 0}">
+													<a href="#cart_modal" rel ="modal:open" onclick="send_cart('${product.prod_code}');" class="btn_cart fe">장바구니 담기</a>
+													<a href="#" onclick="return send_oder('${product.prod_code}');" class="btn_buy fe">바로 구매하기</a>
+												</c:if>
+												<c:if test="${product.prod_amount eq 0}">
+													<div class="soldout">품절</div>
+												</c:if>	
 											</c:if>
-											<c:if test="${login_state ne 'login' }" >
-					                  		<a href="loginForm.do?returnURL=cart" onClick="alert('로그인이 필요합니다.')" class="btn_cart fe">장바구니 담기</a>
-					                  		<a href="loginForm.do?returnURL=order" onClick="alert('로그인이 필요합니다.')" class="btn_buy fe">바로 구매하기</a>
+											<c:if test="${login_state ne 'login' }">
+												<c:if test="${product.prod_amount ne 0}">
+							                  		<a href="loginForm.do?returnURL=cart" onClick="alert('로그인이 필요합니다.')" class="btn_cart fe">장바구니 담기</a>
+							                  		<a href="loginForm.do?returnURL=order" onClick="alert('로그인이 필요합니다.')" class="btn_buy fe">바로 구매하기</a>
+						                  		</c:if>
+						                  		<c:if test="${product.prod_amount eq 0}">
+													<div class="soldout">품절</div>
+												</c:if>	
 					              		    </c:if>
 									</div>
 									
@@ -293,19 +307,23 @@ function send_oder(code){
 							</div>
 							<div id="videotalk_area"></div>
 							<!-- [OPENEDITOR] -->
-							<center>
-							<img src="${product.prod_image1}" alt="">
-							<img src="${product.prod_image2}" alt="">
-							<img src="${product.prod_image3}" alt="">
-							<img src="${product.prod_image4}" alt="">
-							<img src="${product.prod_image5}" alt="">
-							<img src="${product.prod_image6}" alt="">
-							<img src="${product.prod_image7}" alt="">
-							<img src="${product.prod_image8}" alt="">
-							<img src="${product.prod_image9}" alt="">
-							<img src="${product.prod_image10}" alt="">
-							</center>
-
+							<div align="center">
+								<c:if test="${product.prod_amount ne 0}">
+									<img src="${product.prod_image1}" alt="">
+									<img src="${product.prod_image2}" alt="">
+									<img src="${product.prod_image3}" alt="">
+									<img src="${product.prod_image4}" alt="">
+									<img src="${product.prod_image5}" alt="">
+									<img src="${product.prod_image6}" alt="">
+									<img src="${product.prod_image7}" alt="">
+									<img src="${product.prod_image8}" alt="">
+									<img src="${product.prod_image9}" alt="">
+									<img src="${product.prod_image10}" alt="">
+								</c:if>
+								<c:if test="${product.prod_amount eq 0}">
+									<img src="https://imageup.s3.ap-northeast-2.amazonaws.com/product/maskcat.jpg" alt="상품준비중">
+								</c:if>
+							</div>
 
 							<!-- s: 상품 일반정보(상품정보제공 고시) -->
 							<div id="productWrap">
