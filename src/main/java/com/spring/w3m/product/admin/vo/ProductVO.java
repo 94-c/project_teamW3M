@@ -2,6 +2,8 @@ package com.spring.w3m.product.admin.vo;
 
 import java.util.Date;
 
+import com.spring.w3m.paging.common.Pagination;
+
 public class ProductVO {
 	private int prod_seq;
 	private String prod_code;
@@ -34,6 +36,8 @@ public class ProductVO {
 	private String searchCondition;
 	private String searchType;
 	private String keyword;
+	
+	Pagination p = new Pagination();
 	
 	public String getSearchCondition() {
 		return searchCondition;

@@ -42,5 +42,8 @@
 		update product set prod_count=prod_count+1 WHERE prod_code=#{prod_code} 
 	</update>
 	
+	<select id="getTos" resultType="com.spring.w3m.notice.admin.vo.TosVO">
+	select * from tos
+	</select>
 	
  </mapper>
