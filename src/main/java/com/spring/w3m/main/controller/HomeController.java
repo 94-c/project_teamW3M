@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.spring.w3m.inquiry.user.vo.InquiryVO;
+import com.spring.w3m.join.user.service.UserService;
 import com.spring.w3m.main.service.HomeService;
+import com.spring.w3m.notice.admin.vo.TosVO;
 import com.spring.w3m.paging.common.Pagination;
 import com.spring.w3m.paging.common.Search;
 import com.spring.w3m.product.admin.vo.ProductVO;
@@ -20,7 +22,6 @@ public class HomeController {
 
 	@Autowired
 	private HomeService homeService;
-	
 
 	@RequestMapping(value = "/", method = { RequestMethod.GET, RequestMethod.POST })
 	public String index(Model model, ProductVO vo) {
@@ -75,5 +76,12 @@ public class HomeController {
 	public String info() {
 		System.out.println("이용 안내");
 		return "include/info";
+	}
+	
+	@RequestMapping("/shopterms")
+	public String shopterms(TosVO vo, Model model) {
+		model.addAttribute("tos", homeService.getTos(vo));
+		System.out.println("쇼핑몰 약관");
+		return "list/terms/shopterms";
 	}
 }

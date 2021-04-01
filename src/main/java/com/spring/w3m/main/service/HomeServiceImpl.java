@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.spring.w3m.inquiry.user.vo.InquiryVO;
 import com.spring.w3m.main.dao.HomeDAO;
+import com.spring.w3m.notice.admin.vo.TosVO;
 import com.spring.w3m.paging.common.Search;
 import com.spring.w3m.product.admin.vo.ProductVO;
 
@@ -34,6 +35,11 @@ public class HomeServiceImpl implements HomeService {
 	@Override
 	public int getInquiryListCnt(Search search) {
 		return dao.getInquiryListCnt(search);
+	}
+
+	@Override
+	public TosVO getTos(TosVO vo) {
+		return dao.getTos(vo);
 	}
 
 }

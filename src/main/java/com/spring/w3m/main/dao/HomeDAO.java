@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.spring.w3m.inquiry.user.vo.InquiryVO;
+import com.spring.w3m.notice.admin.vo.TosVO;
 import com.spring.w3m.paging.common.Search;
 import com.spring.w3m.product.admin.vo.ProductVO;
 
@@ -36,7 +37,10 @@ public class HomeDAO {
 		return sqlSessionTemplate.selectOne("HomeDAO.getInquiryListCnt");
 	}
 	
-	public void countUpdate(ProductVO vo) {
-		
+	public void countUpdate(ProductVO vo) {		
 	}
+	
+	public TosVO getTos(TosVO vo) {
+		return sqlSessionTemplate.selectOne("HomeDAO.getTos", vo);
+	   }
 }
