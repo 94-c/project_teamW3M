@@ -23,5 +23,9 @@ public class OrderDAO {
 		sqlSessionTemplate.delete("OrderDAO.order_drop_List",user_id);
 		
 	}
+	public int Check_Point(String user_id) {
+		
+		return sqlSessionTemplate.selectOne("OrderDAO.Check_Point",user_id);
+	}
 
 }

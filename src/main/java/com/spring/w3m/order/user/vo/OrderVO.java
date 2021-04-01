@@ -16,6 +16,7 @@ public class OrderVO {
 	private String user_zipcode;//유저 우펀번호
 	private String user_address1;//주소
 	private String user_address2;//상세주소
+	private String user_level; //등급
 	
 	//배송지 
 	private String receiver_name;// 받는 사람
