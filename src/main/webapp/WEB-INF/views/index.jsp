@@ -2,17 +2,23 @@
 <%@include file="/WEB-INF/views/include/header.jsp"%>
 <title>[Well3Mask] W3M 공식쇼핑물</title>
 
-
+<!-- bxSlider 관련 -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+<script type="text/javascript" src="resources/js/bxSlider.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+ 
 <div id="wrap">
 	<!-- 메인 배너 슬라이드 -->
 	<div id="contentWrapper">
 		<div class="cboth main_img">
 			<div class="sliderkit contentslider-main" style="display: block;">
-				<!-- 슬라이더1 -->
+			
+				<!-- 슬라이더1 -->				
 				<div class="sliderkit-panel1">
 					<div class="sliderkit-panel sliderkit-panel-old" style="display: block;">
 						<a href="#">
-							<div style="background-image: url(resources/images/m_mask/main_visual_mask.jpg)"></div>
+							<div style="background-image: url(resources/images/m_mask/main_visual_mask.jpg)"></div>							
 						</a>
 					</div>
 					<div class="sliderkit-panel sliderkit-panel-active" style="display: block;">
@@ -199,56 +205,5 @@
 		<!-- //contentslider-tab -->
 	</div>
 </div>
-
-<script type="text/javascript">
-	var scriptUrl = 'https:\/\/www.youtube.com\/s\/player\/38c5f870\/www-widgetapi.vflset\/www-widgetapi.js';
-	if (!window["YT"])
-		var YT = {
-			loading : 0,
-			loaded : 0
-		};
-	if (!window["YTConfig"])
-		var YTConfig = {
-			"host" : "https://www.youtube.com"
-		};
-	if (!YT.loading) {
-		YT.loading = 1;
-		(function() {
-			var l = [];
-			YT.ready = function(f) {
-				if (YT.loaded)
-					f();
-				else
-					l.push(f)
-			};
-			window.onYTReady = function() {
-				YT.loaded = 1;
-				for (var i = 0; i < l.length; i++)
-					try {
-						l[i]()
-					} catch (e) {
-					}
-			};
-			YT.setConfig = function(c) {
-				for ( var k in c)
-					if (c.hasOwnProperty(k))
-						YTConfig[k] = c[k]
-			};
-			var a = document.createElement("script");
-			a.type = "text/javascript";
-			a.id = "www-widgetapi-script";
-			a.src = scriptUrl;
-			a.async = true;
-			var c = document.currentScript;
-			if (c) {
-				var n = c.nonce || c.getAttribute("nonce");
-				if (n)
-					a.setAttribute("nonce", n)
-			}
-			var b = document.getElementsByTagName("script")[0];
-			b.parentNode.insertBefore(a, b)
-		})()
-	};
-</script>
 
 <%@include file="/WEB-INF/views/include/footer.jsp"%>

@@ -16,19 +16,16 @@
 <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700" rel="stylesheet">
 
-<!-- Image -->
-<link rel="shortcut icon" href="resources/images/icons/favicon.ico" type="image/x-icon">
-
 <!-- CSS -->
-<link href="resources/css/slider.css" rel="stylesheet" type="text/css">
 <link href="resources/css/common.css" rel="stylesheet" type="text/css">
 <link href="resources/css/main.css" rel="stylesheet" type="text/css">
 <link href="resources/css/header.css" rel="stylesheet" type="text/css">
 <link href="resources/css/footer.css" rel="stylesheet" type="text/css">
+<link href="resources/css/slider.css" rel="stylesheet" type="text/css">
+<link href="resources/css/join.css" rel="stylesheet" type="text/css">
 <link href="resources/css/login.css" rel="stylesheet" type="text/css">
 <link href="resources/css/findID.css" rel="stylesheet" type="text/css">
 <link href="resources/css/insertMember.css" rel="stylesheet" type="text/css">
-<link href="resources/css/join.css" rel="stylesheet" type="text/css">
 <link type="text/css" rel="stylesheet" href="resources/css/border.css">
 <link type="text/css" rel="stylesheet" href="resources/css/menu.css">
 <link type="text/css" rel="stylesheet" href="resources/css/lost.css">
@@ -38,22 +35,15 @@
 <link href="resources/css/soo.css" rel="stylesheet" type="text/css">
 <link href="resources/css/reply.css" rel="stylesheet" type="text/css">
 
-<!-- bxSlider 관련 -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
-<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
-<script type="text/javascript" src="resources/js/bxSlider.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <!-- JS -->
-<script type="text/javascript" src="resources/js/jquery_option.js" ></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="resources/js/index.js"></script>
-<script type="text/javascript" src="resources/js/main.js" ></script> 
-<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script type="text/javascript" src="resources/js/jquery_option.js" ></script>
 <script type="text/javascript" src="resources/js/basket.js" ></script>  
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <!-- 아래처럼 각자 JS파일 만들어서 링크 삽입하기 -->
 <script type="text/javascript" src="resources/js/joe.js"></script>
 <script type="text/javascript" src="resources/js/insertmember.js"></script>
-
 
 </head>
 <!-- head태그 끝 -->
