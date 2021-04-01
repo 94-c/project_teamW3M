@@ -9,7 +9,7 @@
 		<dl class="loc-navi">
 			<dt class="blind">현재 위치</dt>
 			<dd>
-				<a href="#">홈</a> &gt; 
+				<a href="/">홈</a> &gt; 
 				<a href="#">${productName}</a>
 			</dd>
 		</dl>
@@ -134,13 +134,13 @@
 							<!-- <li><a href="#">판매순</a></li> -->
 						</c:if>
 						
-						<c:if test="${productName eq 'W3M 핫팩'}">
+						<c:if test="${productName eq 'W3M 체온계'}">
 							<li><a href="category.do?prod_category1=TT&searchCondition=low_price">낮은가격순</a></li>
 							<li><a href="category.do?prod_category1=TT&searchCondition=high_price">높은가격순</a></li>
 							<li><a href="category.do?prod_category1=TT&searchCondition=hit_cnt">인기순</a></li>
 							<!-- <li><a href="#">판매순</a></li> -->
 						</c:if>
-						<c:if test="${productName eq '일반 핫팩'}">
+						<c:if test="${productName eq '일반 체온계'}">
 							<li><a href="category.do?prod_category1=TT&prod_category2=N&searchCondition=low_price">낮은가격순</a></li>
 							<li><a href="category.do?prod_category1=TT&prod_category2=N&searchCondition=high_price">높은가격순</a></li>
 							<li><a href="category.do?prod_category1=TT&prod_category2=N&searchCondition=hit_cnt">인기순</a></li>							
