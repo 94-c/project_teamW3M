@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.spring.w3m.paging.common.Pagination;
+import com.spring.w3m.paging.common.Search;
 import com.spring.w3m.product.admin.dao.ProductDAO;
 import com.spring.w3m.product.admin.vo.ProductVO;
 import com.spring.w3m.upload.common.AwsS3;
@@ -130,6 +132,26 @@ public class ProductServiceImpl implements ProductService {
 		vo.setProd_point(point);
 		
 		return vo;
+	}
+
+	@Override
+	public int getProductListCnt(Search search) {
+		return dao.getProductListCnt(search);
+	}
+
+	@Override
+	public List<ProductVO> getPageList(Search search) {
+		return dao.getPageList(search);
+	}
+
+	@Override
+	public int getSearchCnt(String searchKeyword) {
+		return dao.getSearchCnt(searchKeyword);
+	}
+
+	@Override
+	public List<ProductVO> getSearchPagingList(Pagination pagination) {
+		return dao.getSearchPagingList(pagination);
 	}
 
 }

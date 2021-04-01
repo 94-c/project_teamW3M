@@ -36,4 +36,58 @@
 		prod_seq = #{prod_seq}
 	</delete>
 	
+	
+	<select id="getProductListCnt" resultType="int">
+		select count(*) from product
+	</select>
+	
+	<select id="getPageList" resultType="ProductVO">
+		select 
+			prod_seq,
+			prod_code,
+			prod_title, 
+			prod_title_image,
+			prod_price,
+			prod_price_sale, 
+			prod_point, 
+			prod_amount,
+			prod_regdate
+		from product
+		where 1=1
+		<if test="searchType=='prod_title' and keyword != null and keyword != '' ">
+			AND prod_title like CONCAT('%', #{keyword}, '%')
+		</if>
+		<if test="searchType=='prod_code' and keyword != null and keyword != '' ">
+			AND prod_code like CONCAT('%', #{keyword}, '%')
+		</if>
+		order by prod_seq desc
+		limit #{listSize} offset #{startList}
+	</select>	
+	
+	<select id="getSearchCnt" parameterType="String" resultType="int">
+		select count(*) from product
+	<trim prefix="WHERE" prefixOverrides="AND|OR">
+	<if test="keyword != null and keyword != '' ">
+			<if test="searchType=='user_id'">
+				AND prod_title like CONCAT('%', #{keyword}, '%')
+			</if>
+
+			<if test="searchType=='order_seq'">
+				AND prod_code like CONCAT('%', #{keyword}, '%')
+			</if>
+      </if>
+	</trim>
+	</select>
+	
+	<select id="getSearchPagingList" resultType="DeliveryVO">
+		SELECT * FROM product where 1=1
+		<if test="searchCondition == 'prod_title'">
+			AND prod_title LIKE '%'||#{searchKeyword}||'%'
+		</if>
+		<if test="searchCondition == 'prod_code'">
+			AND prod_code LIKE '%'||#{searchKeyword}||'%'
+		</if>
+		order by prod_seq desc
+	</select>
+	
 </mapper>

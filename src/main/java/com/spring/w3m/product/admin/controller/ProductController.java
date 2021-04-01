@@ -3,12 +3,16 @@ package com.spring.w3m.product.admin.controller;
 import java.io.IOException;
 import java.util.List;
 
+import org.postgresql.util.PSQLException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.spring.w3m.paging.common.Pagination;
+import com.spring.w3m.paging.common.Search;
 import com.spring.w3m.product.admin.service.ProductService;
 import com.spring.w3m.product.admin.vo.ProductVO;
 
@@ -18,9 +22,29 @@ public class ProductController {
 	private ProductService service;
 	
 	@RequestMapping("/getProductList.mdo") //등록상품 목록보기
-	public String getProductList(ProductVO vo, Model model) {
-		List<ProductVO> productList = service.getProductList(vo);
+	public String getProductList(ProductVO vo, Model model, @RequestParam(required = false, defaultValue = "1")int page,
+														   @RequestParam(required = false, defaultValue = "1")int range,
+														   @RequestParam(required = false, defaultValue = "title") String searchType,
+														   @RequestParam(required = false)String keyword) throws PSQLException, IOException {
+		
+		Search search = new Search();
+		search.setSearchType(searchType);
+		search.setKeyword(keyword);
+		
+		int cnt = service.getProductListCnt(search);
+
+		search.pageInfo(page, range, cnt);
+		
+		Pagination pagination = new Pagination();
+		pagination.pageInfo(page, range, cnt);
+		
+		
+		List<ProductVO> productList = service.getPageList(search);
+		
+		model.addAttribute("pagination", search);
 		model.addAttribute("productList", productList);
+		model.addAttribute("cnt", cnt);
+		
 		return "page/product/getProductList";
 	}
 	

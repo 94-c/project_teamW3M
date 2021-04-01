@@ -13,7 +13,63 @@ table, td, th {
 	border-collapse: collapse;
 	border: 1px solid black;
 }
+#submitbutton {
+	margin: 10px;
+	float: right;
+	margin-left: 3px;
+	width: 108px;
+	height: 38px;
+	font-size: 13px;
+	line-height: 38px
+}
 </style>
+<script type="text/javascript">
+	//이전 버튼 이벤트
+	function fn_prev(page, range, rangSize, searchKeyword) {
+		var page = ((range - 2) * rangeSize) + 1;
+		var range = range - 1;
+		var url = "${pagContext.request.contextPath}/getProductList.mdo";
+		url = url + "?page=" + page;
+		url = url + "&range=" + range;
+		url = url + "&searchKeyword" + searchKeyword;
+		location.href = url;
+	}
+
+	//페이지 번호 클릭
+	function fn_pagination(page, range, rangSize, searchKeyword) {
+		var url = "${pagContext.request.contextPath}/getProductList.mdo";
+		url = url + "?page=" + page;
+		url = url + "&range=" + range;
+		url = url + "&searchKeyword" + searchKeyword;
+		location.href = url;
+	}
+
+	//다음 버튼 이벤트
+	function fn_next(page, range, rangSize, searchKeyword) {
+		var page = parseInt((range * rangeSize)) + 1;
+		var range = parseInt(range) + 1;
+		var url = "${pagContext.request.contextPath}/getProductList.mdo";
+		url = url + "?page=" + page;
+		url = url + "&range=" + range;
+		url = url + "&searchKeyword" + searchKeyword;
+		location.href = url;
+	}
+
+	$(document).on('click', '#btnSearch', function(e) {
+		e.preventDefault();
+		var url = "${pageContext.request.contextPath}/getProductList.mdo";
+		url = url + "?searchType=" + $('#searchType').val();
+		url = url + "&keyword=" + $('#keyword').val();
+		location.href = url;
+		console.log(url);
+	});
+</script>
+<c:url var="getProductList" value="getProductList.mdo">
+	<c:param name="page" value="${pagination.page }" />
+	<c:param name="range" value="${pagination.range }" />
+	<c:param name="rangeSize" value="${pagination.rangeSize}" />
+	<c:param name="searchKeyword" value="${pagination.searchKeyword}" />
+</c:url>
 <main>
 	<div class="container-fluid">
 		<h1 class="mt-4">상품 관리 페이지</h1>
@@ -74,24 +130,47 @@ table, td, th {
 								</c:forEach>
 							</tbody>
 						</table>
-						<div class="searchText">
-							<div class="w100" style="padding-right: 10px">
-								<select class="form-control form-control-sm" name="searchType"
-									id="searchType">
-									<option value="nt_title">제목</option>
-									<option value="nt_content">내용</option>
-								</select>
+							<!-- pagination -->
+							<div id="paginationBox">
+								<ul class="pagination">
+									<c:if test="${pagination.prev}">
+										<li class="page-item"><a class="page-link" href="#"
+											onClick="fn_prev('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}')">Previous</a></li>
+									</c:if>
 
-							</div>
-							<div class="w300" style="padding-right: 10px">
-								<input type="text" class="form-control form-control-sm"
-									name="keyword" id="keyword">
-							</div>
+									<c:forEach begin="${pagination.startPage}"
+										end="${pagination.endPage}" var="idx">
+										<li
+											class="page-item <c:out value="${pagination.page == idx ? 'active' : ''}"/> "><a
+											class="page-link" href="#"
+											onClick="fn_pagination('${idx}', '${pagination.range}', '${pagination.rangeSize}')">
+												${idx} </a></li>
+									</c:forEach>
 
-							<div>
-								<button class="btn btn-sm btn-primary" name="btnSearch" id="btnSearch">검색</button>
+									<c:if test="${pagination.next}">
+										<li class="page-item"><a class="page-link" href="#"
+											onClick="fn_next('${pagination.range}', '${pagination.range}', '${pagination.rangeSize}')">Next</a></li>
+									</c:if>
+								</ul>
 							</div>
-						</div>
+							<!-- search{s} -->
+							<div class="searchText">
+								<div class="w100" style="padding-right: 10px">
+									<select class="form-control form-control-sm" name="searchType" id="searchType">
+										<option value="prod_title">상품명</option>
+										<option value="prod_code">상품코드</option>
+									</select>
+
+								</div>
+								<div class="w300" style="padding-right: 10px">
+									<input type="text" class="form-control form-control-sm" name="keyword" id="keyword">
+								</div>
+
+								<div>
+									<button class="btn btn-sm btn-primary" name="btnSearch" id="btnSearch">검색</button>
+								</div>
+							</div>
+							<!-- search{e} -->
 					</div>
 					<a class="insertProduct" href="insertProductForm.mdo">상품 등록</a>
 				</div>

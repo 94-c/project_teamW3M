@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.spring.w3m.paging.common.Pagination;
+import com.spring.w3m.paging.common.Search;
 import com.spring.w3m.product.admin.vo.ProductVO;
 
 public interface ProductService {
@@ -22,5 +24,14 @@ public interface ProductService {
 			MultipartFile image9, MultipartFile image10) throws IOException;
 	
 	void deleteProduct(ProductVO vo);
+	
+	//페이징 및 검색
+	int getProductListCnt(Search search);
+	
+	 List<ProductVO> getPageList(Search search);
+	 
+	 int getSearchCnt(String searchKeyword);
+	 
+	 List<ProductVO> getSearchPagingList(Pagination pagination);
 	
 }
