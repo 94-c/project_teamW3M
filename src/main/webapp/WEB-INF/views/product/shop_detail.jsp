@@ -256,7 +256,7 @@ function send_oder(code){
 													<a href="#" onclick="return send_oder('${product.prod_code}');" class="btn_buy fe">바로 구매하기</a>
 												</c:if>
 												<c:if test="${product.prod_amount eq 0}">
-													<div class="soldout">품절</div>
+													<div class="soldout" style="color:red">품절 / SOLD OUT</div>
 												</c:if>	
 											</c:if>
 											<c:if test="${login_state ne 'login' }">
@@ -265,7 +265,7 @@ function send_oder(code){
 							                  		<a href="loginForm.do?returnURL=order" onClick="alert('로그인이 필요합니다.')" class="btn_buy fe">바로 구매하기</a>
 						                  		</c:if>
 						                  		<c:if test="${product.prod_amount eq 0}">
-													<div class="soldout">품절</div>
+													<div class="soldout" style="color:red">품절 / SOLD OUT</div>
 												</c:if>	
 					              		    </c:if>
 									</div>
