@@ -51,6 +51,12 @@ public class CategoryServiceImpl implements CategoryService {
 				return "W3M 비말차단마스크";
 			} else if (vo.getProd_category1().equals("SS")) {
 				return "W3M 손소독제";
+			} else if (vo.getProd_category1().equals("CC")) {
+				return "W3M 쿨패치";
+			} else if (vo.getProd_category1().equals("HH")) {
+				return "W3M 핫팩";
+			} else if (vo.getProd_category1().equals("TT")) {
+				return "W3M 체온계";
 			} else {
 				return "해당사항 없음";
 			}
@@ -71,6 +77,18 @@ public class CategoryServiceImpl implements CategoryService {
 			} else if (vo.getProd_category1().equals("SS")) {
 				if (vo.getProd_category2().equals("N")) {
 					return "일반 손소독제";
+				}
+			} else if (vo.getProd_category1().equals("CC")) {
+				if (vo.getProd_category2().equals("N")) {
+					return "일반 쿨패치";
+				}
+			} else if (vo.getProd_category1().equals("HH")) {
+				if (vo.getProd_category2().equals("N")) {
+					return "일반 핫팩";
+				}
+			} else if (vo.getProd_category1().equals("TT")) {
+				if (vo.getProd_category2().equals("N")) {
+					return "일반 체온계";
 				}
 			} else {
 				return "해당사항 없음";
@@ -118,6 +136,18 @@ public class CategoryServiceImpl implements CategoryService {
 	@Override
 	public int SSN_cnt(ProductVO vo) {
 		return dao.SSN_cnt(vo);
+	}
+	@Override
+	public int CCN_cnt(ProductVO vo) {
+		return dao.CCN_cnt(vo);
+	}
+	@Override
+	public int HHN_cnt(ProductVO vo) {
+		return dao.HHN_cnt(vo);
+	}
+	@Override
+	public int TTN_cnt(ProductVO vo) {
+		return dao.TTN_cnt(vo);
 	}
 	
 }

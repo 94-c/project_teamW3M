@@ -32,6 +32,15 @@
 		<c:if test="${productName eq 'W3M 손소독제' || productName eq '일반 손소독제'}">
 			<li><a href="category.do?prod_category1=SS&prod_category2=N">일반(${SSN_cnt})</a></li>
 		</c:if>
+		<c:if test="${productName eq 'W3M 쿨패치' || productName eq '일반 쿨패치'}">
+			<li><a href="category.do?prod_category1=CC&prod_category2=N">일반(${CCN_cnt})</a></li>
+		</c:if>
+		<c:if test="${productName eq 'W3M 핫팩' || productName eq '일반 핫팩'}">
+			<li><a href="category.do?prod_category1=HH&prod_category2=N">일반(${HHN_cnt})</a></li>
+		</c:if>
+		<c:if test="${productName eq 'W3M 체온계' || productName eq '일반 체온계'}">
+			<li><a href="category.do?prod_category1=TT&prod_category2=N">일반(${TTN_cnt})</a></li>
+		</c:if>
 		
 		</ul>
 	</div>
@@ -71,8 +80,7 @@
 							<li><a href="category.do?prod_category1=MM&prod_category2=B&searchCondition=high_price">높은가격순</a></li>
 							<li><a href="category.do?prod_category1=MM&prod_category2=B&searchCondition=hit_cnt">인기순</a></li>
 							<!-- <li><a href="#">판매순</a></li> -->
-						</c:if>
-										
+						</c:if>										
 						
 						<c:if test="${productName eq 'W3M 비말차단마스크'}">
 							<li><a href="category.do?prod_category1=BB&searchCondition=low_price">낮은가격순</a></li>
@@ -85,8 +93,7 @@
 							<li><a href="category.do?prod_category1=BB&prod_category2=N&searchCondition=high_price">높은가격순</a></li>
 							<li><a href="category.do?prod_category1=BB&prod_category2=N&searchCondition=hit_cnt">인기순</a></li>							
 							<!-- <li><a href="#">판매순</a></li> -->
-						</c:if>
-										
+						</c:if>										
 						
 						<c:if test="${productName eq 'W3M 손소독제'}">
 							<li><a href="category.do?prod_category1=SS&searchCondition=low_price">낮은가격순</a></li>
@@ -98,6 +105,45 @@
 							<li><a href="category.do?prod_category1=SS&prod_category2=N&searchCondition=low_price">낮은가격순</a></li>
 							<li><a href="category.do?prod_category1=SS&prod_category2=N&searchCondition=high_price">높은가격순</a></li>
 							<li><a href="category.do?prod_category1=SS&prod_category2=N&searchCondition=hit_cnt">인기순</a></li>							
+							<!-- <li><a href="#">판매순</a></li> -->
+						</c:if>
+						
+						<c:if test="${productName eq 'W3M 쿨패치'}">
+							<li><a href="category.do?prod_category1=CC&searchCondition=low_price">낮은가격순</a></li>
+							<li><a href="category.do?prod_category1=CC&searchCondition=high_price">높은가격순</a></li>
+							<li><a href="category.do?prod_category1=CC&searchCondition=hit_cnt">인기순</a></li>
+							<!-- <li><a href="#">판매순</a></li> -->
+						</c:if>
+						<c:if test="${productName eq '일반 쿨패치'}">
+							<li><a href="category.do?prod_category1=CC&prod_category2=N&searchCondition=low_price">낮은가격순</a></li>
+							<li><a href="category.do?prod_category1=CC&prod_category2=N&searchCondition=high_price">높은가격순</a></li>
+							<li><a href="category.do?prod_category1=CC&prod_category2=N&searchCondition=hit_cnt">인기순</a></li>							
+							<!-- <li><a href="#">판매순</a></li> -->
+						</c:if>
+						
+						<c:if test="${productName eq 'W3M 핫팩'}">
+							<li><a href="category.do?prod_category1=HH&searchCondition=low_price">낮은가격순</a></li>
+							<li><a href="category.do?prod_category1=HH&searchCondition=high_price">높은가격순</a></li>
+							<li><a href="category.do?prod_category1=HH&searchCondition=hit_cnt">인기순</a></li>
+							<!-- <li><a href="#">판매순</a></li> -->
+						</c:if>
+						<c:if test="${productName eq '일반 핫팩'}">
+							<li><a href="category.do?prod_category1=HH&prod_category2=N&searchCondition=low_price">낮은가격순</a></li>
+							<li><a href="category.do?prod_category1=HH&prod_category2=N&searchCondition=high_price">높은가격순</a></li>
+							<li><a href="category.do?prod_category1=HH&prod_category2=N&searchCondition=hit_cnt">인기순</a></li>							
+							<!-- <li><a href="#">판매순</a></li> -->
+						</c:if>
+						
+						<c:if test="${productName eq 'W3M 핫팩'}">
+							<li><a href="category.do?prod_category1=TT&searchCondition=low_price">낮은가격순</a></li>
+							<li><a href="category.do?prod_category1=TT&searchCondition=high_price">높은가격순</a></li>
+							<li><a href="category.do?prod_category1=TT&searchCondition=hit_cnt">인기순</a></li>
+							<!-- <li><a href="#">판매순</a></li> -->
+						</c:if>
+						<c:if test="${productName eq '일반 핫팩'}">
+							<li><a href="category.do?prod_category1=TT&prod_category2=N&searchCondition=low_price">낮은가격순</a></li>
+							<li><a href="category.do?prod_category1=TT&prod_category2=N&searchCondition=high_price">높은가격순</a></li>
+							<li><a href="category.do?prod_category1=TT&prod_category2=N&searchCondition=hit_cnt">인기순</a></li>							
 							<!-- <li><a href="#">판매순</a></li> -->
 						</c:if>
 					</ul>
@@ -164,31 +210,6 @@
 					</c:forEach>
 					<!-- c태그 끝 -->
 					
-					<!-- sold out 예시(td) 
-					<td>
-							<div class="tb-center">
-								<div class="box">
-									<div class="thumb salebox">
-										<a
-											href="/shop/shopdetail.html?branduid=1007205&amp;xcode=023&amp;mcode=001&amp;scode=&amp;type=X&amp;sort=manual&amp;cur_code=023&amp;GfDT=bmt8W11H"><img
-											class="MS_prod_img_m"
-											src="/shopimages/pgreen1364/0230010000142.jpg?1607654657"
-											alt="상품 섬네일"></a> <input type="hidden" name="custom_price"
-											value="29500"> <input type="hidden"
-											name="product_price" value="24800"> <span
-											class="sale_text" style="display: block;">16%</span>
-									</div>
-									<ul class="info">
-										<li class="dsc">웰킵스 프리미엄 미세먼지황사마스크 KF94 소형 25개입</li>
-										<li class="subname"></li>
-										<li class="soldout">SOLD OUT</li>
-										<li class="icon"><span class="MK-product-icons"></span></li>
-										<li class="cboth icon_option"></li>
-									</ul>
-								</div>
-							</div>
-						</td>
-					 	-->
 				</tbody>
 			</table>
 			<ol class="paging">

@@ -59,5 +59,14 @@
 	<select id="SSN_cnt" resultType="int">
 		SELECT count(*) FROM product WHERE prod_category1 = 'SS' AND prod_category2 = 'N'
 	</select>
+	<select id="CCN_cnt" resultType="int">
+		SELECT count(*) FROM product WHERE prod_category1 = 'CC' AND prod_category2 = 'N'
+	</select>
+	<select id="HHN_cnt" resultType="int">
+		SELECT count(*) FROM product WHERE prod_category1 = 'HH' AND prod_category2 = 'N'
+	</select>
+	<select id="TTN_cnt" resultType="int">
+		SELECT count(*) FROM product WHERE prod_category1 = 'TT' AND prod_category2 = 'N'
+	</select>
 	
 </mapper>
