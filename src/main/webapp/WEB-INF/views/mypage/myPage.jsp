@@ -5,21 +5,8 @@
 
 <%@include file="/WEB-INF/views/include/header.jsp"%>
 <link href="resources/css/menu.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="resources/js/myPage.js" ></script>
 
-<script type="text/javascript"> //회원탈퇴 js
-function userexit(){
-    
-            if (confirm('정말로 회원탈퇴를 하시겠습니까 ? \n탈퇴 후 동일 아이디로 재가입이 불가합니다.')) {
-            	$("#deleteSuccess").submit();
-            	console.log("yes");
-            	}
-            else{
-            	
-            	console.log("no");
-            }
-        
-}
-</script>
 
 
 <div id="contentWrapper">

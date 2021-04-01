@@ -32,4 +32,10 @@ public class OrderServiceImpl implements OrderService{
 		
 	}
 
+	@Override
+	public int Check_Point(String user_id) {
+	
+		return dao.Check_Point(user_id);
+	}
+
 }

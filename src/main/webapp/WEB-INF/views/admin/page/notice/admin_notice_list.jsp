@@ -8,6 +8,7 @@
 	<c:param name="rangeSize" value="${pagination.rangeSize}" />
 	<c:param name="searchKeyword" value="${pagination.searchKeyword}" />
 </c:url>
+<script type="text/javascript" src="resources/js/notice.js" ></script>
 <main>
 	<div class="container-fluid">
 		<h1 class="mt-4">관리자 페이지</h1>
@@ -98,8 +99,8 @@
 	</div>
 </main>
 <script type="text/javascript">
-        	//이전 버튼 이벤트
-        	function fn_prev(page, range, rangSize, searchKeyword){
+
+function fn_prev(page, range, rangSize, searchKeyword){
         		var page = ((range - 2) * rangeSize) + 1;
         		var range = range - 1;
         		var url = "${pagContext.request.contextPath}/admin_notice_list.mdo";
@@ -138,6 +139,6 @@
         		location.href = url;
         		console.log(url);
         	});
-        </script>
+        	</script>
 <%@include file="/WEB-INF/views/admin/page/include/admin_footer.jsp"%>
 

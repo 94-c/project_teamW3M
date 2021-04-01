@@ -5,6 +5,17 @@
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <title>고급형 주문서 작성</title>
 <script>
+//숫자만 
+var numberJ= RegExp(/^[0-9]/g);
+
+var agreeC =-1;
+var payC =-1;
+var nameC =-1;
+var phone1C=-1;
+var phone2C=-1;
+var addressC=-1;
+var memoC=-1;
+
 function addrclick(){
 	$("#receiver_zipcode").val($("#user_zipcode_or").val());
 	$("#receiver_address1").val($("#user_address1_or").val());
@@ -68,13 +79,80 @@ function OrderDaumPostcode() {
 	
 	
 }
-$(document).ready(function(){ 
+var agreeC =-1;
+var payC =-1;
+var nameC =-1;
+var phone1C=-1;
+var phone2C=-1;
+var addressC=-1;
+var memoC=-1;
+$(document).ready(function(){ 	
 $('#charge_kakao').click(function () {
-	console.log("카카오 클릭");
+	console.log("주문하기 클릭");
+	if(!$("#pay_agree").prop("checked")){
+		alert("주문동의 확인 해주세요.");
+		return;
+		
+	}else if(!$("#radio_paymethod").prop("checked")){
+		alert("결제방법을 선택 해주세요.");
+		return;
+		
+	}
+	else if($("#receiver_name").val()==""){
+		alert("이름 확인 해주세요.");
+		return;
+	}else if($("#receiver_phone1").val()==""){
+		alert("연락처 1 확인 해주세요.");
+		return;
+	}
+	else if($("#receiver_phone2").val()==""){
+		alert("연락처 2 확인 해주세요.");
+		return;
+	}
+	else if($("#receiver_zipcode").val()==""){
+		alert("우편번호 확인 해주세요.");
+		return;
+	}else if($("#receiver_adress1").val()==""){
+		alert("주소 확인 해주세요.");
+		return;
+	}	else if($("#receiver_memo").val()==""){
+		alert("메모 확인 해주세요.");
+		return;
+	}
     // getter
     var IMP = window.IMP;
     IMP.init('imp72616382');
-    var pay_total_money = $("#pay_total_money_or").val();
+    var pay_total_money = $("#pay_total_money").text().trim();
+    pay_total_money = pay_total_money.replace(",","");
+    pay_totla_money = parseInt(pay_total_money);
+    
+    var pay_total_price = $("#pay_total_price").text().trim();
+    pay_total_price = pay_total_price.replace(",","");
+    pay_total_price = parseInt(pay_total_price);
+   
+    var pay_total_point = $("#pay_total_point").text().trim();
+    pay_total_point = pay_total_point.replace(",","");
+    pay_total_point = parseInt(pay_total_point);
+    
+    var pay_Shipping_cost = $("#pay_Shipping_cost").text().trim();
+    pay_Shipping_cost = pay_Shipping_cost.replace(",","");
+    pay_Shipping_cost = parseInt(pay_Shipping_cost);
+    
+    var pay_point_use = $("#pay_point_use").text().trim();
+    pay_point_use = pay_point_use.replace(",","");
+    pay_point_use = parseInt(pay_point_use);
+    
+    var pay_Membership = $("#pay_Membership").text().trim();
+    pay_Membership = pay_Membership.replace(",","");
+    pay_Membership = parseInt(pay_Membership);
+    
+    
+    console.log("총머니:"+pay_total_money);
+    console.log("머니:"+pay_total_price);
+    console.log("총포인트:"+pay_total_point);
+    console.log("총배달비:"+pay_Shipping_cost);
+    console.log("사용 포인트:"+pay_point_use);
+    
     var user_name =$("#user_name_or").val();
     var user_email=$("#user_email_or").val();
     var order_name=$("#user_orderName_or").val();
@@ -87,7 +165,15 @@ $('#charge_kakao').click(function () {
     console.log("상품명:"+order_name);
     console.log("폰:"+user_phone);
     console.log("주소:"+user_address + user_zipcode);
-	var alldata={"pay_total_money" : pay_total_money};
+	var alldata={
+			"pay_total_money" : pay_total_money,
+			"pay_total_price" : pay_total_price,
+			"pay_total_point" : pay_total_point,
+			"pay_Shipping_cost": pay_Shipping_cost,
+			"pay_use_point" : pay_point_use,
+			"pay_Membership" : pay_Membership,
+			"pay_tool" : "카카오페이"
+			};
     IMP.request_pay({
         pg: 'kakao',
         merchant_uid: 'merchant_' + new Date().getTime(),
@@ -115,15 +201,120 @@ $('#charge_kakao').click(function () {
                 dataType:"json",
             	contentType: "application/json; charset=UTF-8",
             });
+            alert(msg);
+            $("#order_form").submit();
+            
         } else {
             var msg = '결제에 실패하였습니다.';
             msg += '에러내용 : ' + rsp.error_msg;
+            alert(msg);
+            document.location.href="#"; //alert창 확인 후 이동할 url 설정
         }
-        alert(msg);
-        document.location.href="#"; //alert창 확인 후 이동할 url 설정
+        
     });
 });
 });
+
+
+
+function AllPoint(){
+	
+	console.log("모두 사용 확인");
+	var point = $("#checkPoint").val();
+	$("#AllPoint").val(point);
+	$("#pay_point_use").text(point);
+	
+	var money = $("#pay_total_money_or").val();
+	var IntMoney = money.replace(",","");
+	$("#pay_total_money").text(number(IntMoney));
+	$("#pay_total_money2").text(number(IntMoney));
+	var total = parseInt(IntMoney) - parseInt(point);
+	console.log(IntMoney);
+	console.log(point);
+	$("#pay_total_money").text(number(total));
+	$("#pay_total_money2").text(number(total));
+
+	console.log(total);
+	
+}
+
+function clickPoint(){
+	
+	console.log("포인트 확인");
+	$.ajax({
+		async : true,
+		url : "/check_point.do",
+		type:"POST",
+		dataType:"json",
+		contentType:"application/json; charset=UTF-8",
+		success:function(aa){
+			console.log(aa);
+			$("#checkPoint").val(aa);
+		}
+	});
+	
+}
+
+function number(n){
+	
+	return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+
+
+$(document).ready(function(){ 
+$("#radio_paymethod").click(function(){
+	console.log("카카오페이 체크됨");
+	$("#payinfo_KAKAOPAY").css("display","inline-block");
+});
+
+	
+	
+});
+	
+
+
+$(document).ready(function(){ 
+	$('#AllPoint').blur(function () {
+	var point=$("#AllPoint").val();
+	point = parseInt(point);
+	var inputPoint=$("#checkPoint").val().trim();
+	inputPoint = parseInt(inputPoint);
+		if (!numberJ.test(point)) {
+			console.log("2입력한 point ="+point);
+			console.log("숫자가 아님");
+			return;
+		}else {
+		
+		if(point > inputPoint){
+			console.log("1입력한 point ="+point);
+			console.log("범위를 초과함");
+			//alert("보유하신 적립금보다 많은 적립금을 입력하셨습니다.\n적립금확인을 해주세요.");
+			$("#AllPoint").val("");
+			return;
+		}else{
+			
+			$("#pay_point_use").text(point);
+			var money = $("#pay_total_money_or").val();
+			var IntMoney = money.replace(",","");
+			$("#pay_total_money").text(number(IntMoney));
+			$("#pay_total_money2").text(number(IntMoney));
+			var total = parseInt(IntMoney) - parseInt(point);
+			
+			console.log(IntMoney);
+			console.log(point);
+			$("#pay_total_money").text(number(total));
+			$("#pay_total_money2").text(number(total));
+			console.log(total);
+			
+			return;
+			
+		}
+	}
+	
+    
+	});
+});
+
 </script>
 <link href="resources/css/order.css" rel="stylesheet" type="text/css">
 <div id="contentWrap">
@@ -138,7 +329,7 @@ $('#charge_kakao').click(function () {
 			</dl>
 			<div class="page-body">
 
-				<form name="form1" id="order_form" action="#" method="post">
+				<form name="form1" id="order_form" action="order_Success.do" method="post">
 
 					<fieldset>
 						<legend>주문 폼</legend>
@@ -364,13 +555,13 @@ $('#charge_kakao').click(function () {
 										<td>
 											<div class="base">
 												<strong><em><span
-														class="op-total block-op-product-price" price="총 주문 금액">
+														class="op-total block-op-product-price" price="총 주문 금액" id="pay_total_price">
 														<fmt:formatNumber value="${payVO.pay_total_price}" pattern="#,###"></fmt:formatNumber></span></em>원</strong>
 											</div>
 										</td>
 										<td>
 											<div class="base">
-												<strong><em><fmt:formatNumber value="${payVO.pay_Shipping_cost}" pattern="#,###"></fmt:formatNumber></em>
+												<strong id="pay_Shipping_cost"><em><fmt:formatNumber value="${payVO.pay_Shipping_cost}" pattern="#,###"></fmt:formatNumber></em>
 												<span id="block_op_delivery_unit" >원</span></strong>
 												<!-- 총 가격에 +,- 적용 -->
 												<a class="plus">
@@ -384,7 +575,7 @@ $('#charge_kakao').click(function () {
 											<div class="base">
 											
 												<strong><em class="fc-red">
-												<span class="op-total block-op-sale-price" price="보유 적립금"></span></em>원</strong>
+												<span class="op-total block-op-sale-price" price="보유 적립금" id="pay_point_use">0</span></em>원</strong>
 												
 												<a class="plus" style="display: none;">
 													<img src="resources/images/order/plus.png" alt="plus">
@@ -398,7 +589,7 @@ $('#charge_kakao').click(function () {
 										<td>
 											<div class="base">
 												<strong><em>
-												<span class="op-total block-op-add-price" price="0">0</span></em>원</strong> 
+												<span class="op-total block-op-add-price" id="pay_Membership" price=""><fmt:formatNumber value="${payVO.pay_Membership}" pattern="#,###"></fmt:formatNumber></span></em>원</strong> 
 												
 												<a class="plus" style="display: none;">
 													<img src="resources/images/order/plus.png" alt="plus">
@@ -416,7 +607,7 @@ $('#charge_kakao').click(function () {
 													<img src="resources/images/order/equal.png" alt="equal">
 												</a> 
 												<strong><em class="fc-red">
-													<span class="block-op-sum-price" price="최종 결제금액"><fmt:formatNumber value="${payVO.pay_total_money}" pattern="#,###"></fmt:formatNumber></span>
+													<span class="block-op-sum-price" price="최종 결제금액" id ="pay_total_money2"><fmt:formatNumber value="${payVO.pay_total_money}" pattern="#,###"></fmt:formatNumber></span>
 												</em>원</strong>
 											</div>
 										</td>
@@ -425,10 +616,10 @@ $('#charge_kakao').click(function () {
 								<tbody>
 									<tr>
 										<th class="txt-c">적립금 사용</th>
-										<td colspan="4"><input type="text" name="couponnum" form="order_form"
-										 	id="couponnum" class="MS_input_txt" readonly=""> 
-										 	<a class="btn-darkgray" href="javascript:clickcoupon();">모두 사용하기</a>&nbsp;&nbsp;
-										 	<a class="btn-darkgray" href="javascript:clickcoupon();">적립금 확인</a><input type ="text" id="checkPoint" readonly="readonly" value="포인트가 나올꺼임">
+										<td colspan="4"><input type="text" name="AllPoint" form="order_form"
+										 	id="AllPoint" class="MS_input_txt" value=""> 
+										 	<a class="btn-darkgray" href="javascript:AllPoint();">모두 사용하기</a>&nbsp;
+										 	<a class="btn-darkgray" href="javascript:clickPoint();">적립금 확인</a>&nbsp;<input type ="text" id="checkPoint" readonly="readonly" value="">
 										 	<span class="coupon-description"></span>
 										</td>
 									</tr>
@@ -486,7 +677,7 @@ $('#charge_kakao').click(function () {
 														<option value="07">수협은행</option>
 												</select></li> -->
 												<li><input type="radio" class="chk-rdo"
-													name="radio_paymethod" value="KAKAOPAY">
+													name="radio_paymethod" id="radio_paymethod" value="KAKAOPAY">
 													카카오페이(KAKAOPAY) <em><span
 														class="op-card-dc-price fc-red"></span></em></li>
 											<!--	<li><input type="radio" class="chk-rdo"
@@ -842,8 +1033,8 @@ $('#charge_kakao').click(function () {
 									<tr>
 										<th>최종 결제금액</th>
 										
-										<td><strong class="price"><span><fmt:formatNumber value="${payVO.pay_total_money}" pattern="#,###"></fmt:formatNumber><!-- 장바구니 총 가격 --></span>원</strong>
-											&nbsp; (적립예정: <span><fmt:formatNumber value="${payVO.pay_total_point}" pattern="#,###"></fmt:formatNumber><!-- 장바구니 총 적립금 --></span>원)
+										<td><strong class="price" id="pay_total_money"><span><fmt:formatNumber value="${payVO.pay_total_money}" pattern="#,###"></fmt:formatNumber><!-- 장바구니 총 가격 --></span></strong>원
+											&nbsp; (적립예정: <span id ="pay_total_point"><fmt:formatNumber value="${payVO.pay_total_point}" pattern="#,###"></fmt:formatNumber><!-- 장바구니 총 적립금 --></span>원)
 											<div class="reserve-msg">(적립 예정금액과 최종 적립금액은 상이할 수 있습니다.
 												주문 완료 시 지급되는 적립금을 확인해주시기 바랍니다.)</div></td>
 									</tr>
