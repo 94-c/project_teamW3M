@@ -1,7 +1,7 @@
 package com.spring.w3m.order.user.vo;
 
 public class PayVO {
-	
+	private int order_seq;
 	private int pay_seq;
 	private int pay_Shipping_cost;//배송비용
 	private int pay_Membership; //맴버쉽 할인
@@ -71,6 +71,12 @@ public class PayVO {
 	}
 	public void setPay_use_point(int pay_use_point) {
 		this.pay_use_point = pay_use_point;
+	}
+	public int getOrder_seq() {
+		return order_seq;
+	}
+	public void setOrder_seq(int order_seq) {
+		this.order_seq = order_seq;
 	}
 	
 	

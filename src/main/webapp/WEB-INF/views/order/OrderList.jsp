@@ -24,19 +24,19 @@ function addrclick(){
 	
 }
 $(document).ready(function(){ 	
-$("#same").click(function(){
+	$("#same").click(function(){
 	if($("#same").prop("checked")){
-		console.log("체크댐");
-		$("#receiver_name").val($("#user_name").val());
-		$("#receiver_phone1").val($("#user_phone").val());
-		$("#receiver_phone2").val($("#user_phone").val());
-	}else{
-		console.log("체크댐");
-		$("#receiver_name").val("");
-		$("#receiver_phone1").val("");
-		$("#receiver_phone2").val("");
-	}
-});
+			console.log("체크댐");
+			$("#receiver_name").val($("#user_name").val());
+			$("#receiver_phone1").val($("#user_phone").val());
+			$("#receiver_phone2").val($("#user_phone").val());
+		}else{
+			console.log("체크댐");
+			$("#receiver_name").val("");
+			$("#receiver_phone1").val("");
+			$("#receiver_phone2").val("");
+		}
+	});
 });
 	
 
@@ -145,6 +145,11 @@ $('#charge_kakao').click(function () {
     var pay_Membership = $("#pay_Membership").text().trim();
     pay_Membership = pay_Membership.replace(",","");
     pay_Membership = parseInt(pay_Membership);
+    
+    var prod_title = $("#prod_title").val();
+    var prod_title_count = $("#prod_title").val();
+    console.log(prod_title);
+    console.log(prod_title_count);
     
     
     console.log("총머니:"+pay_total_money);
@@ -354,7 +359,9 @@ $(document).ready(function(){
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach var="orderVO" items="${OrderVO }">
+									<c:forEach var="orderVO" items="${OrderVO }" varStatus="status">
+									<input type ="hidden" name="prod_title" id="prod_title" value ="${orderVO.prod_title}">
+									<input type ="hidden" name="prod_title_count" id="prod_title_count" value ="${status.count}">
 									<tr class="nbg">
 										<td>
 											<div class="tb-center">
@@ -401,21 +408,21 @@ $(document).ready(function(){
 										</th>
 										<td> 
 											<input type="text" name="user_name" form="order_form" 
-											id="user_name" class="MS_input_txt" value="${userVO.user_name }">
+											id="user_name" class="MS_input_txt" value="${userVO.user_name }" readonly="readonly">
 										</td>
 									</tr>
 									<tr>
 										<th scope="row"><div class="txt-l">이메일</div></th>
 										<td>
 												<input type="text" name="user_email" id="user_email" class="MS_input_txt" maxlength="20" form="order_form" value="${userVO.user_email }"
-													placeholder="이메일을 입력하세요." onfocus="this.placeholder=''" onblur="this.placeholder='이메일을 입력하세요.'" > 
+													placeholder="이메일을 입력하세요." onfocus="this.placeholder=''" onblur="this.placeholder='이메일을 입력하세요.'" readonly="readonly" > 
 										</td>
 									</tr>
 									<tr>
 										<th scope="row"><div class="txt-l">연락처</div></th>
 										<td>
 											<input type="text" name="user_phone" id="user_phone" size="12" maxlength="12" va
-											class="MS_input_txt" value="${userVO.user_phone }" placeholder="-를 포함한 연락처를 입력하세요." onfocus="this.placeholder=''" onblur="this.placeholder='-를 포함한 연락처를 입력하세요.'">
+											class="MS_input_txt" value="${userVO.user_phone }" placeholder="-를 포함한 연락처를 입력하세요." onfocus="this.placeholder=''" onblur="this.placeholder='-를 포함한 연락처를 입력하세요.'" readonly="readonly">
 										</td>
 									</tr>
 								</tbody>
@@ -461,7 +468,7 @@ $(document).ready(function(){
 										</th>
 											<td style="padding-left: 10px">
 												<input type="text" name="receiver_phone2" form="order_form" id="receiver_phone2"
-												size="12" maxlength="12" class="MS_input_txt" value="" placeholder="-를 포함한 연락처를 입력하세요." onfocus="this.placeholder=''" onblur="this.placeholder='-를 포함한 연락처를 입력하세요.'">
+												size="15" maxlength="15" class="MS_input_txt" value="" placeholder="-를 포함한 연락처를 입력하세요." onfocus="this.placeholder=''" onblur="this.placeholder='-를 포함한 연락처를 입력하세요.'">
 											</td>
 									</tr>
 									<tr>
@@ -473,7 +480,8 @@ $(document).ready(function(){
 										<input type ="hidden" id="user_name_or" value ="${userVO.user_name}">
 										<input type ="hidden" id="user_email_or" value ="${userVO.user_email}">
 										<input type ="hidden" id="user_phone_or" value ="${userVO.user_phone}">
-										<input type ="hidden" id="user_orderName_or" value ="테스트 상품 외 3">
+										<input type ="hidden" id="user_orderName_or" value ="상품">
+										
 										
 										<input type ="hidden" id="user_zipcode_or" value ="${userVO.user_zipcode}">
 										<input type ="hidden" id="user_address1_or" value ="${userVO.user_address1}">

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.spring.w3m.order.user.dao.OrderDAO;
 import com.spring.w3m.order.user.vo.OrderVO;
+import com.spring.w3m.order.user.vo.PayVO;
 @Service
 public class OrderServiceImpl implements OrderService{
 	
@@ -36,6 +37,30 @@ public class OrderServiceImpl implements OrderService{
 	public int Check_Point(String user_id) {
 	
 		return dao.Check_Point(user_id);
+	}
+
+	@Override
+	public int insert_order_list(String user_id) {
+		
+		return dao.insert_order_list(user_id);
+	}
+
+	@Override
+	public int orderNum(String user_id) {
+		
+		return dao.orderNum(user_id);
+	}
+
+	@Override
+	public int insert_pay(PayVO payvo) {
+		
+		return dao.insert_pay(payvo);
+	}
+
+	@Override
+	public int insert_delivery(OrderVO vo) {
+		
+		return dao.insert_delivery(vo);
 	}
 
 }
