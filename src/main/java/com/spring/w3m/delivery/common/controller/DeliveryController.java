@@ -14,8 +14,6 @@ import com.spring.w3m.delivery.common.service.DeliveryService;
 import com.spring.w3m.delivery.common.vo.DeliveryVO;
 import com.spring.w3m.paging.common.Pagination;
 import com.spring.w3m.paging.common.Search;
-import com.spring.w3m.point.user.service.PointService;
-import com.spring.w3m.point.user.vo.PointVO;
 
 @Controller
 public class DeliveryController {
@@ -52,10 +50,9 @@ public class DeliveryController {
 	
 	
 	@RequestMapping("/changeDeliveryState.mdo")
-	public String delivery(DeliveryVO vo, PointVO vo1) {
+	public String delivery(DeliveryVO vo) {
 		System.out.println("배송정보 수정하기 클릭!");
-		service.updateDeliveryState(vo);
-		
+		service.updateDeliveryState(vo);		
 		
 		return "redirect:/getDeliveryList.mdo";
 	}
