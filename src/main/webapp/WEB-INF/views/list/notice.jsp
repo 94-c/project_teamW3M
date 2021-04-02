@@ -10,10 +10,6 @@
 <link href="resources/admin_css/pagination.css" rel="stylesheet" type="text/css">
 <link href="resources/admin_css/styles.css" rel="stylesheet" type="text/css">
 <link href="resources/css/notification.css" rel="stylesheet" type="text/css">
-<style type="text/css">
- .page-item{list-style-type: none; display:inline; margin-left:20px;}
- paginationBox { padding:15px 0; position:relative; *zoom:1 }
-</style>
 <script type="text/javascript">
            //이전 버튼 이벤트
            function fn_prev(page, range, rangSize, keyword){
@@ -75,12 +71,12 @@
 						<table border="1" summary="No, content,Name,Date,Hits">
 							<caption>일반게시판 게시글</caption>
 							<colgroup>
-								<col width="70">
-								<col width="35">
-								<col width="*">
-								<col width="110">
-								<col width="110">
-								<col width="75">
+								<col width="100">
+									<col width="180">
+									<col width="*">
+									<col width="110">
+									<col width="110">
+									<col width="75">
 							</colgroup>
 							<thead>
 								<tr>
