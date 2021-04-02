@@ -38,7 +38,7 @@ public class HomeController {
 		List<ProductVO> product = homeService.selectProduct(vo);
 		model.addAttribute("product", product);
 
-		return "order/OrderList";
+		return "order/orderList";
 	}
 	
 

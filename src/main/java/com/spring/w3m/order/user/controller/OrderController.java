@@ -74,7 +74,7 @@ public class OrderController {
 		session.setAttribute("OrderVO", OrderVO);
 		session.setAttribute("payVO", payVO);
 
-		return "order/OrderList";
+		return "order/orderList";
 
 	}
 
