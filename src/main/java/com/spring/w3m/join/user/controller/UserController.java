@@ -47,13 +47,6 @@ public class UserController {
 
 	}
 
-
-	@RequestMapping("/mypage.do")
-	public String myPage() { //마이페이지 진입
-		System.out.println("마이페이지 진입");
-		return "mypage/myPage";
-	}
-
 	@RequestMapping("/memberInfoUpdate.do") 
 	public String memberInfoUpdate(HttpSession session,Model model) { //회원 정보 변경 페이지 진입
 		System.out.println("회원 정보 변경 진입");

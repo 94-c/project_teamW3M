@@ -24,8 +24,14 @@ public class MyPageController {
 	@Autowired
 	private MyPageService myPageService;
 	@Autowired
-	private PointService pointSetvice;
+	private PointService pointService;
 	
+	@RequestMapping("/mypage.do")
+	public String myPage() { //마이페이지 진입
+		System.out.println("마이페이지 진입");
+		return "mypage/myPage";
+	}
+
 	@RequestMapping("/myinquryList.do")
 	public String myWriteList(Model model,UserVO vo1, InquiryVO vo, @RequestParam(required = false, defaultValue = "1") int page,
 			@RequestParam(required = false, defaultValue = "1") int range,
@@ -95,7 +101,7 @@ public class MyPageController {
 		search.setSearchType(searchType);
 		search.setKeyword(keyword);
 		search.setUser_id(vo1.getUser_id());
-		int cnt = pointSetvice.getPointListCnt(search);
+		int cnt = pointService.getPointListCnt(search);
 		
 		search.pageInfo(page, range, cnt);
 
@@ -103,7 +109,7 @@ public class MyPageController {
 		Pagination pagination = new Pagination();
 		pagination.pageInfo(page, range, cnt);
 
-		List<PointVO> pageList = pointSetvice.getPointPageList(search);
+		List<PointVO> pageList = pointService.getPointPageList(search);
 		
 		
 		model.addAttribute("userVO", myPageService.myUser(vo1));
@@ -111,6 +117,14 @@ public class MyPageController {
 		model.addAttribute("pointList", pageList);
 		model.addAttribute("cnt", cnt);
 		return "mypage/myPoint";
+	}
+	
+	//주문내역
+	@RequestMapping("myOrderList.do")
+	public String getOrderList(Model model, UserVO user) {
+		
+		
+		return "mypage/myOrder";
 	}
 	
 	

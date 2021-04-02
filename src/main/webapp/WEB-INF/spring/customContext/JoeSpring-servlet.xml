@@ -23,6 +23,7 @@
 	<context:component-scan	base-package="com.spring.w3m.login.user" />
 	<context:component-scan	base-package="com.spring.w3m.find.user" />
 	<context:component-scan base-package="com.spring.w3m.category.user"/>
+	<context:component-scan base-package="com.spring.w3m.mypage.user"/>
 
 </beans:beans>
 
