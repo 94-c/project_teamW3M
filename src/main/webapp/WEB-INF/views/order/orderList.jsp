@@ -362,6 +362,7 @@ $(document).ready(function(){
 									<c:forEach var="orderVO" items="${OrderVO }" varStatus="status">
 									<input type ="hidden" name="prod_title" id="prod_title" value ="${orderVO.prod_title}">
 									<input type ="hidden" name="prod_title_count" id="prod_title_count" value ="${status.count}">
+									<input type="hidden" name="location_before" value="${orderVO.location_before}">
 									<tr class="nbg">
 										<td>
 											<div class="tb-center">
@@ -487,6 +488,9 @@ $(document).ready(function(){
 										<input type ="hidden" id="user_address1_or" value ="${userVO.user_address1}">
 										<input type ="hidden" id="user_address2_or" value ="${userVO.user_address2}">
 										<input type="hidden" id="pay_total_money_or" value="${payVO.pay_total_money}">
+										<input type="hidden" id="pay_total_money_or" value="${payVO.pay_total_money}">
+										
+										
 											<input type="radio" value="H" form="order_form" 
 											name="place" id="place" onclick="addrclick()">자택&nbsp;&nbsp; &nbsp;&nbsp;
 									

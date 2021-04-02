@@ -44,5 +44,15 @@ public class OrderDAO {
 	
 		return sqlSessionTemplate.insert("OrderDAO.insert_delivery",vo);
 	}
+	public int update_order_prod(String user_id) {
+		
+		return sqlSessionTemplate.update("OrderDAO.update_order_prod",user_id);
+	}
+	public int update_order_list_status(String user_id) {
+		return sqlSessionTemplate.update("OrderDAO.update_order_list_status",user_id);
+	}
+	public int delete_cart(String user_id) {
+		return sqlSessionTemplate.delete("OrderDAO.delete_cart",user_id);
+	}
 
 }

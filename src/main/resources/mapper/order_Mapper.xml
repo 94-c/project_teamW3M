@@ -6,13 +6,13 @@
 
 	
 	<insert id="order_inser_prod" parameterType="OrderVO">
-	INSERT INTO order_prod (order_prod_seq,user_id,prod_code,prod_amount ) values(nextval('order_prod_seq'),#{user_id},#{prod_code},#{prod_amount})
+	INSERT INTO order_prod (order_prod_seq,user_id,prod_code,prod_amount,location_before ) values(nextval('order_prod_seq'),#{user_id},#{prod_code},#{prod_amount},'바로구매')
 	</insert>
 	
 	<select id="order_List" parameterType="String" resultType="OrderVO">
 	SELECT 
 	p.prod_title_image, p.prod_title, p.prod_price, p.prod_point, p.prod_code,p.prod_price_sale,
-	o.prod_amount, order_status, order_date,
+	o.prod_amount, order_status, order_date, location_before,
 	u.user_id, user_name, u.user_email, u.user_phone, u.user_zipcode, u.user_address1, u.user_address2
 	from product p, user_member u ,order_prod o
 	where u.user_id = o.user_id and p.prod_code = o.prod_code and o.user_id = #{user_id} and order_status ='구매대기'
@@ -34,8 +34,8 @@
 	SELECT order_seq from order_list where user_id = #{user_id} and order_status='결제완료'
 	</select>
 	
-	<update id="order_status_change" parameterType="String" >
-	update order_list set order_status='배송 준비중' where user_id ='#{user_id}'and order_status= '결제완료'
+	<update id="update_order_list_status" parameterType="String" >
+	update order_list set order_status='배송전' where user_id =#{user_id} and order_status= '결제완료'
 	</update>
 
 	
@@ -49,5 +49,13 @@
 	VALUES
 		(nextval('delivery_seq'),#{order_seq},#{prod_title},#{user_id},#{receiver_name},#{receiver_zipcode},#{receiver_address1},#{receiver_address2},#{receiver_phone1},#{receiver_phone2},#{receiver_memo})
 	</insert>
+	
+	<update id="update_order_prod">
+	UPDATE order_prod set order_status = '배송전' where user_id = #{user_id} and order_status = '구매대기'
+	</update>
+	
+	<delete id="delete_cart">
+	DELETE FROM cart WHERE user_id = #{user_id}
+	</delete>
 	
 </mapper>

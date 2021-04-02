@@ -63,4 +63,22 @@ public class OrderServiceImpl implements OrderService{
 		return dao.insert_delivery(vo);
 	}
 
+	@Override
+	public int update_order_prod(String user_id) {
+		
+		return dao.update_order_prod(user_id);
+	}
+
+	@Override
+	public int update_order_list_status(String user_id) {
+		
+		return dao.update_order_list_status(user_id);
+	}
+
+	@Override
+	public int delete_cart(String user_id) {
+		
+		return dao.delete_cart(user_id);
+	}
+
 }

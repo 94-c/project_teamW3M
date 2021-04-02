@@ -14,4 +14,7 @@ public interface OrderService {
 	public int orderNum(String user_id); 
 	public int insert_pay(PayVO payvo);
 	public int insert_delivery(OrderVO vo);
+	public int update_order_prod(String user_id);
+	public int update_order_list_status(String user_id);
+	public int delete_cart(String user_id);
 }
