@@ -15,9 +15,7 @@
 					<div class="lnb">
 						<ul>
 							<li class="first"><a href="/myOrderList.do">주문내역</a></li>
-							<li><a href="#">쿠폰내역</a></li>
 							<li><a href="getPointList.do?user_id=${userVO.user_id }">적립금내역</a></li>
-							<li><a href="#">오늘본상품</a></li>
 							<li><a href="GoCart.do">상품 보관함</a></li>
 						</ul>
 					</div>
@@ -86,8 +84,8 @@
 									<td><div class="tb-center">${myOrder.order_date }</div></td>
 									<td><div class="tb-center">${myOrder.prod_title }</div></td>
 									<td><div class="tb-center">${myOrder.total_cost }원</div></td>
-									<td><div class="tb-center"></div></td>
-									<td><div class="tb-center"></div></td>
+									<td><div class="tb-center"><a href="#">VIEW</a></div></td>
+									<td><div class="tb-center"><a href="#">VIEW</a></div></td>
 								</tr>
 								</c:forEach>
 								<c:if test="${empty myOrderList}">
