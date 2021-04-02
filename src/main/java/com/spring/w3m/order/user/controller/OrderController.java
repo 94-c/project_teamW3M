@@ -143,15 +143,35 @@ public class OrderController {
 				
 			ordervo.setOrder_seq(orVO);
 			ordervo.setUser_id(vo.getUser_id());
+			String aaaaa = ordervo.getProd_title();
+			String title[] = aaaaa.split(",");
+			int bbb = title.length -1 ;
 			
+			String total_title = title[0] +" 외 " +String.valueOf(bbb)+"건"; 
+			System.out.println(total_title);
 			System.out.println(ordervo.toString());
-			
+			ordervo.setProd_title(total_title);
 			int a =orderService.insert_delivery(ordervo);
 			
 			System.out.println(a +"- 0이면 실패");
 			//order_prod 테이블 - 주문상태를 결제완료 업데이트
+			int aa=orderService.update_order_prod(vo.getUser_id());
+			System.out.println(aa +"- 0이면 실패");
+			//장바구니에서 결제완료 시 장바구니 비우기
+			String location=ordervo.getLocation_before();
+			String location_before[] = location.split(",");
+			System.out.println(location_before[0]);
+			if(location_before[0].equals("장바구니")) {
+				int aaaa=orderService.delete_cart(vo.getUser_id());
+				System.out.println(aaaa +"- 0이면 실패");
+			}
+			
+			
 			//order_list 테이블 - 주문생태를 배송전 업데이트
-			//order
+			int aaa=orderService.update_order_list_status(vo.getUser_id());
+			System.out.println(aaa +"- 0이면 실패");
+			
+			
 			
 			
 			return "order/order_success";

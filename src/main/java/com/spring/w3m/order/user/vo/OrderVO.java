@@ -7,6 +7,7 @@ public class OrderVO {
 	private int order_seq;//주문 번호 PK
 	private Date order_date;//주문날짜
 	private String order_status;// 주문상태  -- 결제완료 > 배송 준비중 > 배송중 > 배송완료
+	private String location_before;//장바구니에서 들어왔는지 제품에서 바로 구매했는지..?
 	
 	//유저 
 	private String user_id;//유저 아이디 FK
@@ -235,6 +236,16 @@ public class OrderVO {
 	}
 	public void setProd_total_point(int prod_total_point) {
 		this.prod_total_point = prod_total_point;
+	}
+
+
+	public String getLocation_before() {
+		return location_before;
+	}
+
+
+	public void setLocation_before(String location_before) {
+		this.location_before = location_before;
 	}
 	
 	//결제
