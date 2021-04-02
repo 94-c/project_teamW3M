@@ -81,11 +81,11 @@
 								<c:forEach var="myOrder" items="${myOrderList}" varStatus="index">
 								<tr>
 									<td><div class="tb-center">${index.count }</div></td>
-									<td><div class="tb-center">${myOrder.order_date }</div></td>
+									<td><div class="tb-center"><fmt:formatDate value="${myOrder.order_date }" pattern="yyyy-MM-dd HH:mm:ss"/></div></td>
 									<td><div class="tb-center">${myOrder.prod_title }</div></td>
-									<td><div class="tb-center">${myOrder.total_cost }원</div></td>
-									<td><div class="tb-center"><a href="#">VIEW</a></div></td>
-									<td><div class="tb-center"><a href="#">VIEW</a></div></td>
+									<td><div class="tb-center"><fmt:formatNumber value="${myOrder.total_cost}" pattern="#,###"/>원</div></td>
+									<td><div class="tb-center"><i><a href="#" style="color:#ff08a0; font-family: '나눔고딕'; font-size:13px; font-weight: bold;">상세보기</a></i></div></td>
+									<td><div class="tb-center"><i><a href="#" style="color:#ff08a0; font-family: '나눔고딕'; font-size:13px; font-weight: bold;">상세보기</a></i></div></td>
 								</tr>
 								</c:forEach>
 								<c:if test="${empty myOrderList}">
