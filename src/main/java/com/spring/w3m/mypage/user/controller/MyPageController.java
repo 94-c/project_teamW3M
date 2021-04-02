@@ -130,5 +130,11 @@ public class MyPageController {
 		return "mypage/myOrder";
 	}
 	
+	@RequestMapping("myOrderDetail.do")
+	public String getOrderDetail(Model model, @SessionAttribute("userVO") UserVO vo) {
+		
+		return "mypage/orderDetail";
+	}
+	
 	
 }
