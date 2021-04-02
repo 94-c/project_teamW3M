@@ -55,11 +55,21 @@ public class DeliveryController {
 	
 	
 	@RequestMapping("/changeDeliveryState.mdo")
-	public String delivery(DeliveryVO vo, PointVO vo1, PayVO vo2) {
+	public String delivery(DeliveryVO vo) {
 		System.out.println("배송정보 수정하기 클릭!");
+		
+		System.out.println("전" + vo.getDelivery_state());
+		
 		service.updateDeliveryState(vo);
 		
-		if(vo.getDelivery_state().equals("주문취소")&&vo1.getOrder_state().equals("구매확정"));{
+		System.out.println("후" + vo.getDelivery_state());
+		
+		DeliveryVO vvs = service.getDeliveryCont(vo);
+		
+		service.insertDelivery_state(vvs);
+		
+		/*if(vo.getDelivery_state() != null &&vo1.getOrder_state() != null) {
+			if(vo.getDelivery_state().equals("주문취소")&&vo1.getOrder_state().equals("구매확정"));{
 			vo2.setOrder_seq(vo.getOrder_seq());
 			pointSevice.getPayList(vo2);
 			
@@ -69,7 +79,9 @@ public class DeliveryController {
 			vo1.setPoint_content(vo.getProd_title() + "주문 취소");
 			pointSevice.insertPoint(vo1);
 			pointSevice.minusPoint(vo1);
+			}
 		}
+		*/
 		return "redirect:/getDeliveryList.mdo";
 	}
 	

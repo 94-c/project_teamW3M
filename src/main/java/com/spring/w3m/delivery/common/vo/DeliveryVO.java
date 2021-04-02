@@ -41,10 +41,17 @@ public class DeliveryVO {
 	private String delivery_state;
 	private String searchType;
 	private String keyword;
+	private Date state_date;
 	
 	Pagination p = new Pagination();
 	
 	
+	public Date getState_date() {
+		return state_date;
+	}
+	public void setState_date(Date state_date) {
+		this.state_date = state_date;
+	}
 	public int getDelivery_seq() {
 		return delivery_seq;
 	}

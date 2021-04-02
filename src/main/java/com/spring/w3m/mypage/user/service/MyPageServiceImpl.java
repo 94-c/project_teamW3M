@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.spring.w3m.delivery.common.vo.DeliveryVO;
 import com.spring.w3m.inquiry.user.vo.InquiryVO;
 import com.spring.w3m.join.user.vo.UserVO;
 import com.spring.w3m.mypage.user.dao.MyPageDAO;
@@ -45,5 +46,10 @@ public class MyPageServiceImpl implements MyPageService {
 	
 	public List<OrderVO> myOrderList(String user_id){
 		return dao.myOrderList(user_id);
+	}
+
+	@Override
+	public List<DeliveryVO> deliveryState(int order_seq) {
+		return dao.deliveryState(order_seq);
 	}
 }

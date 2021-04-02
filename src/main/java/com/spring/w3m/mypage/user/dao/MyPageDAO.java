@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import com.spring.w3m.delivery.common.vo.DeliveryVO;
 import com.spring.w3m.inquiry.user.vo.InquiryVO;
 import com.spring.w3m.join.user.vo.UserVO;
 import com.spring.w3m.order.user.vo.OrderVO;
@@ -44,5 +45,10 @@ public class MyPageDAO {
 	public List<OrderVO> myOrderList(String user_id){
 		System.out.println("myOrderList() 실행");
 		return sqlSessionTemplate.selectList("myPageDAO.myOrderList", user_id);
+	}
+	
+	public List<DeliveryVO> deliveryState(int order_seq){
+		System.out.println("deliveryState() 실행");
+		return sqlSessionTemplate.selectList("myPageDAO.deliveryState", order_seq);
 	}
 }

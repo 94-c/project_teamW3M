@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
+import com.spring.w3m.delivery.common.service.DeliveryService;
+import com.spring.w3m.delivery.common.vo.DeliveryVO;
 import com.spring.w3m.join.user.vo.UserVO;
 import com.spring.w3m.order.user.service.OrderService;
 import com.spring.w3m.order.user.vo.OrderVO;
@@ -22,6 +24,8 @@ public class OrderController {
 
 	@Autowired
 	private OrderService orderService;
+	@Autowired
+	private DeliveryService deliveryservice;
 
 
 	@RequestMapping("/send_order_go.do")
@@ -157,7 +161,15 @@ public class OrderController {
 			System.out.println(total_title);
 			System.out.println(ordervo.toString());
 			ordervo.setProd_title(total_title);
+			
 			int a =orderService.insert_delivery(ordervo);
+			System.out.println("111"+ordervo.getOrder_seq());
+			DeliveryVO vvs =  deliveryservice.getDelivery(ordervo);
+			
+			vvs.setOrder_seq(ordervo.getOrder_seq());
+			deliveryservice.insertDelivery_state(vvs);
+			System.out.println(vvs.toString());
+			
 			
 			System.out.println(a +"- 0이면 실패");
 			//order_prod 테이블 - 주문상태를 결제완료 업데이트
