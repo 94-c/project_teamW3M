@@ -1,0 +1,71 @@
+@charset "UTF-8";
+/* BASIC css start */
+#orderSt { padding-top:40px }
+#orderSt .tit-pop .txt .order_name { color:#0e67ec; font-weight:bold }
+#orderSt .tit-pop .txt .order_date { color:#343434; font-weight:bold }
+
+/* 후기등록 탭 */
+#orderSt .tab { margin-top: 10px; padding-left:1px; height:48px; border-bottom:1px solid #000; *zoom:1; overflow:hidden }
+#orderSt .tab:after { display:block; clear:both;content:'' }
+#orderSt .tab li { margin-left:-1px; float:left; width:33.33%; height:48px; border:1px solid #e4e4e5; border-bottom:none }
+#orderSt .tab li a { display:block; height:47px; font-size:15px; color:#7b7b7b; text-align:center; line-height:48px; border-bottom:1px solid #e4e4e5 }
+#orderSt .tab li a.active { color:#101010; height:45px; border-bottom:3px solid #231f20 }
+
+#orderSt .table-order { border: 1px solid #cdcdcd; }
+#orderSt .table-order th,
+#orderSt .table-order td { padding: 8px 0; }
+#orderSt .table-order th { font-weight: bold; color: #4b4b4b; background-color: #ededed; }
+
+#orderSt .btn-foot { zoom: 1; overflow: hidden; margin-top: 10px; font-size: 0; line-height: 0;}
+#orderSt .btn-foot .btn-l { float: left; width: auto; }
+#orderSt .btn-foot .btn-l a { margin-right: 5px; }
+#orderSt .btn-foot .btn-r { float: right; width: auto; }
+/* 주문상세 내역 */
+#tabDetail .msg { margin-top: 5px; }
+#tabDetail .total { margin-top: 10px; text-align: right; }
+#tabDetail .table-info { margin-top: 5px; }
+#tabDetail .table-info th,
+#tabDetail .table-info td { padding: 6px 0; border: 1px solid #cdcdcd; }
+#tabDetail .table-info th { color: #333; background-color: #ededed; }
+#tabDetail .table-info th { color: #333; background-color: #ededed; }
+
+/* 주문자정보, 배송지정보, 주문상품정보, 결제정보, 쿠폰사용/할인내역 */
+#orderInfo h2 { margin-top:20px; font-size:12px; font-weight: bold; color: #343434 }
+#orderInfo .table-w { margin-top:7px }
+#orderInfo .table-w th,
+#orderInfo .table-w td { padding:8px 0 7px; border: 1px solid #e4e4e5 }
+#orderInfo .table-w th { font-weight:normal; background:#f8f8f8 }
+#orderInfo .table-w td { color:#7f7f7f }
+#orderInfo .table-w td a { color:#7f7f7f }
+#orderInfo .table-w tfoot th,
+#orderInfo .table-w tfoot td { color:#000; font-weight:bold }
+#orderInfo .table-w .tb-price { color: #000 }
+#orderInfo .table-w .tb-nbold { font-weight:normal }
+#orderInfo .table-prdinfo .tb-thumb { padding:0 }
+#orderInfo .table-prdinfo .tb-center { padding:0 }
+/* etc */
+#pop_order_btn_group { margin-top:10px; text-align:left }
+#pop_order_btn_group a { padding:3px 10px; font-size:12px }
+
+.pop_order_btn_close { margin-top:10px; text-align:center }
+.pop_order_btn_close a { width:159px; height:48px; font-size:14px; line-height:48px }
+/* button common01 */
+.MK_btn-cm01,
+.MK_btn-cm01 * { display: inline-block; vertical-align: middle; white-space: nowrap; text-decoration: none; letter-spacing: -1px; background: url(/makeshop/oomanager/images/btn/btn_cmbg01.gif) no-repeat; }
+.MK_btn-cm01 { padding-left: 2px; overflow: hidden; }
+.MK_btn-cm01 * { overflow: visible; height: 100%; padding-right: 10px; padding-left: 8px; vertical-align: top; cursor: pointer; font-weight:800 }
+.MK_btn-cm01 A:link,
+.MK_btn-cm01 A:visited,
+.MK_btn-cm01 A:hover { color: #666; text-decoration:none; }
+/* btn-h22-white */
+.MK_btn-h22-white,
+.MK_btn-h22-white * { font-size: 11px; line-height: 22px; }
+.MK_btn-h22-white { height: 22px; background-position: left -376px; }
+.MK_btn-h22-white * { color: #666; background-position: right -398px; }
+
+/* 하이브리드 옵션 */
+.basket-option-detail { display:inline-block; vertical-align:top; padding-left:8px; }
+.basket-option-detail .basket-option-dlist li { margin-bottom:7px; word-break:break-all; word-wrap:break-word; }
+.basket-option-detail .basket-option-dlist li img { width:23px; height:23px; vertical-align:middle; }
+.basket-option-detail .basket-option-dlist li span { color:#ff6333; }
+

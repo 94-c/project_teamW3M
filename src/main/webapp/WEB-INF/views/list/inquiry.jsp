@@ -7,12 +7,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/WEB-INF/views/include/header.jsp"%>
-<link href="resources/admin_css/pagination.css" rel="stylesheet"
-	type="text/css">
-<link href="resources/admin_css/styles.css" rel="stylesheet"
-	type="text/css">
-<link href="resources/css/notification.css" rel="stylesheet"
-	type="text/css">
+<link href="resources/admin_css/pagination.css" rel="stylesheet" type="text/css">
+<link href="resources/admin_css/styles.css" rel="stylesheet" type="text/css">
+<link href="resources/css/notification.css" rel="stylesheet" type="text/css">
 <style type="text/css">
 #submitbutton {
 	margin: 10px;

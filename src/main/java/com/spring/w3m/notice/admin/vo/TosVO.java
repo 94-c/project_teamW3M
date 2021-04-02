@@ -6,6 +6,8 @@ public class TosVO {
 	private String tos_writer;
 	private String tos_content;
 	private Date tos_date;
+	
+	
 	public Date getTos_date() {
 		return tos_date;
 	}
@@ -24,4 +26,6 @@ public class TosVO {
 	public void setTos_content(String tos_content) {
 		this.tos_content = tos_content;
 	}
+	
+	
 }

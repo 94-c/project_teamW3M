@@ -1,0 +1,41 @@
+@charset "UTF-8";
+/* BASIC css start */
+#order .stit { margin-top:40px; font-size:18px; color:#202020; font-weight:bold; line-height:18px }
+#order .mem-lvl { margin-top: 45px; }
+#order .table-order-info li { padding: 3px 0; }
+#order .table-order-info dl dt { font-weight: bold; }
+#order .table-order-info dl dd { margin-top: 5px; }
+#order .cnt-box { *zoom:1; overflow:hidden }
+#order .cnt-box:after { display:block; clear:both; content:'' }
+#order .cnt-box .left-cnt { float:left; width:530px }
+#order .cnt-box .right-cnt { float:right; width:530px } 
+
+#order .pay-info th,
+#order .pay-info td { height:90px }
+
+#order .btn-foot { margin:40px 0; text-align: center }
+#order .btn-foot a { margin-left:3px; width:178px; height:58px; font-size:16px; line-height:58px }
+#order .admin-msg { margin:60px 0px; text-align:center }
+#order .bank_name { color: #0054a6 }
+
+#order .tb-ext { padding:20px 0; border-top:1px solid #000 }
+#order .tb-ext dl { padding:4px 15px 4px 680px; width:405px; *zoom:1 }
+#order .tb-ext dl:after { display:block; clear:both; content:'' }
+#order .tb-ext dl dt { float:left; width:300px; color:#7f7f7f }
+#order .tb-ext dl dd { float:right; width:105px; color:#343434; font-weight:bold; text-align:right }
+
+#order .table-cart { border-bottom:none }
+#order .table-cart tfoot td { padding:20px 5px; border-bottom:1px solid #000 }
+#order .table-cart tfoot .tb-totalTit { font-size:13px; color:#343434 }
+#order .table-cart tfoot .tb-totalPrice { font-size:13px }
+#order .table-cart tfoot strong { color:#343434 }
+#order .table-cart tfoot #mk_totalprice { color:#fe3333 }
+
+/* 窍捞宏府靛 可记 */
+.tb-opt { margin-top:7px; font-weight:normal; }
+.tb-opt .basket-option-detail { display:inline-block; vertical-align:top; }
+.tb-opt .basket-option-detail .basket-option-dlist li { margin-bottom:7px; word-break:break-all; word-wrap:break-word; }
+.tb-opt .basket-option-detail .basket-option-dlist li img { width:23px; height:23px; margin-right:8px; vertical-align:middle; }
+.tb-opt .basket-option-detail .basket-option-dlist li span { color:#ff6333; }
+/* BASIC css end */
+

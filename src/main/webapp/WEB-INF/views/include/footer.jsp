@@ -45,7 +45,7 @@
 					<a href="/"><img src="resources/images/f_design/ft_logo.gif"></a>
 				</div>
 				<div class="ft_copy">
-					법인명 : 웰킵스(주) | 대표 : 박종한<br> 고객센터 : 02-443-0999 | 팩스 :
+					법인명 : W3M(주) | 대표 : 박종한<br> 고객센터 : 02-443-0999 | 팩스 :
 					02-441-1764<br> 사업장소재지 : 서울시 송파구 위례성대로 10 에스타워 7층<br>
 					개인정보관리책임자 : 김성일<br> 사업자등록번호 : 215-87-45158 
 					<a href="http://www.ftc.go.kr/info/bizinfo/communicationList.jsp" target="_blank"><b>[사업자정보확인]</b></a><br> 통신판매업 신고번호 : 제2020-서울송파-4267호
