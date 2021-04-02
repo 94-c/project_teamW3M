@@ -63,8 +63,9 @@ public class ReplyDAO {
 		System.out.println("댓글 수정");
 	}
 	
-	// 후기 댓글 갯수
-	public int count(int review_re_seq) {
-		return 0;
+	// 댓글 삭제
+	public void deleteReviewReply(ReplyVO vo) {
+		sqlSessionTemplate.delete("ReplyDAO.deleteReviewReply", vo);
+		System.out.println("댓글 삭제");
 	}
 }

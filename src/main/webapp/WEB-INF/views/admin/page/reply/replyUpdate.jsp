@@ -7,37 +7,70 @@
 <link type="text/css" rel="stylesheet" href="resources/css/soo.css">
 <link type="text/css" rel="stylesheet" href="resources/css/notification.css">
 <link type="text/css" rel="stylesheet" href="resources/css/comment.css">
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+	$("#contentbutton").click(function(){
+		console.log("1");
+		var re_reply_data_id = $("#re_reply_data_id").val();
+		var re_reply_data_pw = $("#re_reply_data_pw").val();
+		var re_reply_data_con = $("#re_reply_data_con").val();
+		var re_reply_data_seq =  $('#re_reply_data_seq').val();
+		console.log(re_reply_data_id);
+		console.log(re_reply_data_pw);
+		console.log(re_reply_data_con);
+		console.log(re_reply_data_seq);
+		
+		var alldata ={
+				"review_re_writer" :re_reply_data_id,
+				"review_re_pass" : re_reply_data_pw,
+				"review_re_content" :re_reply_data_con,
+				"review_re_seq" :re_reply_data_seq
+		}
+		console.log(alldata);
+		
+		$.ajax({
+			url : "replyUpdate.do",
+			type : "POST",
+			data : JSON.stringify(alldata),
+			dataType : "json",
+			contentType: "application/json; charset=UTF-8",
+			success  : function(data){
+				console.log(data+ "성공");
+				opener.location.reload();
+				window.close();
+				}
+				
+			
+		});
+	
+	});
+});
+
+</script>
 </head>
 <body>
-<form id="comment_form" name="comment" action="replyUpdate.do" method="post">
-				<input type="hidden" name="review_re_seq" class="MS_input_txt input-style input-style2" value="${replyVO.review_re_seq }">
+
+				<input type="hidden" name="review_re_seq" id="re_reply_data_seq" class="MS_input_txt input-style input-style2" value="${replyVO.review_re_seq }">
 						<table>
-							<colgroup>
-								<col width="*">
-							</colgroup>
 							<tbody>
 								<tr>
 									<td class="com-wrt-box">
 										<div>
 											<div class="wrt">
-												<label>아이디</label>
 												<span>
-												<input type="text" name="review_re_writer" class="MS_input_txt input-style input-style2" value="${userVO.user_id }" onclick="CheckLogin()"
-													onkeypress="CheckLogin()" placeholder="아이디"></span>
-												<label>비밀번호</label>
-												<span>
-												<input type="password" name="review_re_pass" class="MS_input_txt input-style input-style2" value="" onclick="CheckLogin()" onkeypress="CheckLogin()" placeholder="패스워드">
-												</span>
+												<input type="hidden" name="review_re_writer" id="re_reply_data_id" class="MS_input_txt input-style input-style2" value="${userVO.user_id }"  placeholder="아이디">
+												<label>아이디 : ${userVO.user_id }</label></span>
 											</div>
 											<div class="wrt wrt_write">
-												<textarea name="review_re_content" onchange="Checklength(this);" onkeyup="Checklength(this);" onclick="CheckLogin()" placeholder="내용">${replyVO.review_re_content }</textarea><br>
+												<textarea name="review_re_content" id="re_reply_data_con"  placeholder="내용">${replyVO.review_re_content }</textarea><br>
 											</div>
 										</div>
-										<input type="submit" class="CSSbuttonBlack" id="contentbutton" value="수정">
+										<input type="button" class="CSSbuttonBlack" id="contentbutton"  value="수정"/>
 									</td>
 								</tr>
 							</tbody>
 						</table>
-				</form>
+			
 </body>
 </html>

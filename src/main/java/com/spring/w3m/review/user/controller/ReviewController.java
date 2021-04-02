@@ -8,8 +8,10 @@ import org.postgresql.util.PSQLException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.spring.w3m.inquiry.user.service.ReplyService;
@@ -190,23 +192,17 @@ public class ReviewController {
 	 	}
 	 	
 	 	@RequestMapping("/replyUpdate.do")
-		public String updateReviewReply(ReplyVO vo) {
-			replyService.updateReviewReply(vo);
-			return null;
+	 	@ResponseBody
+		public String updateReviewReply(@RequestBody ReplyVO vo, Model model) {
+	 		replyService.updateReviewReply(vo);
+			return "1";
 	 	}
 	
-	/*
-	 * @RequestMapping("/insertReply.mdo") public String insetReply(ReplyVO
-	 * rvo, @RequestParam("reply_text") String re_content) {
-	 * rvo.setRe_content(re_content); replyService.insertReply(rvo); return
-	 * "redirect:/admin_inquiry_content.mdo?inq_seq=" + rvo.getInq_seq(); }
-	 * 
-	 * // 댓글 삭제
-	 * 
-	 * @RequestMapping("/deleteReply.mdo") public String deleteReply(ReplyVO rvo) {
-	 * int seq = rvo.getInq_seq(); replyService.deleteReply(rvo); return
-	 * "redirect:/admin_inquiry_content.mdo?inq_seq=" + seq; }
-	 * 
-	 * 
-	 */
+	   @RequestMapping("/deleteReviewReply.do") 
+	   public String deleteReviewReply(ReplyVO rvo, Model model) {
+		  int seq = rvo.getReview_seq();
+		  System.out.println(seq);
+		  replyService.deleteRevireReply(rvo); 
+		  return "redirect:/reviewContent.do?review_seq=" + seq;
+	   }
 }

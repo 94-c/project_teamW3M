@@ -115,7 +115,14 @@ function submitForm()
 											<input type="hidden" id="review_seq" name="review_seq" value="${reviewList.review_seq}" />
 											<input type="hidden" id="review_re_seq" name="review_re_seq" value="${reviewList.review_re_seq}" />
 											<label><i>${reviewList.review_re_writer}</i></label>
-											<font id="commentDate"><fmt:formatDate value="${reviewList.review_re_date}" pattern="yyyy-MM-dd HH:mm" /></font><a href="javascript:void(window.open('replyUpdate_view.do?review_re_seq=${reviewList.review_re_seq}', '_blank','width=430px, height=340px, status=no, menubar=no, toolbar=no, resizable=no'))"> 수정</a><br>									
+											<font id="commentDate"><fmt:formatDate value="${reviewList.review_re_date}" pattern="yyyy-MM-dd HH:mm" /></font>
+											<c:set var="user_member_id" value="${userVO.user_id }" />
+											<c:set var="user_review_id" value="${reviewList.review_re_writer }" />
+										    <c:if test="${user_member_id eq user_review_id}">
+											<a href="javascript:void(window.open('replyUpdate_view.do?review_re_seq=${reviewList.review_re_seq}', '_blank','width=430px, height=340px, status=no, menubar=no, toolbar=no, resizable=no'))"> 수정</a>
+											<a href="deleteReviewReply.do?review_re_seq=${reviewList.review_re_seq}&review_seq=${reviewVO.review_seq}"> 삭제</a>
+											<br>									
+											</c:if>
 											<pre>${reviewList.review_re_content}</pre><br>
 									</c:forEach>
 						  </table>
@@ -141,11 +148,6 @@ function submitForm()
 												<span>
 												<input type="text" name="review_re_writer" class="MS_input_txt input-style input-style2" value="${userVO.user_id }" onclick="CheckLogin()"
 													onkeypress="CheckLogin()" placeholder="아이디"></span>
-												<label>비밀번호</label>
-												<span>
-												<input type="password" name="review_re_pass" class="MS_input_txt input-style input-style2" value=""
-													onclick="CheckLogin()" onkeypress="CheckLogin()" placeholder="패스워드">
-												</span>
 											</div>
 											<div class="wrt wrt_write">
 												<textarea name="review_re_content" onchange="Checklength(this);" onkeyup="Checklength(this);" onclick="CheckLogin()" placeholder="내용"></textarea>

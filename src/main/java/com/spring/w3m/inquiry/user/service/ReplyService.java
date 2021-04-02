@@ -23,6 +23,9 @@ public interface ReplyService {
 	//댓글 삭제
 	void deleteReply(ReplyVO vo);
 	
+	// 후기 댓글 삭제
+	void deleteRevireReply(ReplyVO vo);
+	
 	//댓글 수정
 	void updateReply(ReplyVO vo);
 	

@@ -44,5 +44,10 @@
 	<update id="updateReviewReply">
 		UPDATE review_reply SET review_re_content = #{review_re_content} WHERE review_re_seq = #{review_re_seq}
 	</update>
+
+<!-- 후기 댓글 삭제 -->
+	<delete id="deleteReviewReply">
+		DELETE FROM review_reply WHERE review_re_seq = #{review_re_seq}
+	</delete>	
 		
 </mapper>
