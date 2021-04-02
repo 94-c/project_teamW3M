@@ -80,10 +80,21 @@
 								</tr>
 							</thead>
 							<tbody>
-								<!-- 여기 다가 주문 목록 넣어주시면 됩니다! -->
+								<c:forEach var="myOrder" items="${myOrderList}" varStatus="index">
+								<tr>
+									<td><div class="tb-center">${index.count }</div></td>
+									<td><div class="tb-center">${myOrder.order_date }</div></td>
+									<td><div class="tb-center">${myOrder.prod_title }</div></td>
+									<td><div class="tb-center">${myOrder.total_cost }원</div></td>
+									<td><div class="tb-center"></div></td>
+									<td><div class="tb-center"></div></td>
+								</tr>
+								</c:forEach>
+								<c:if test="${empty myOrderList}">
 								<tr>
 									<td colspan="6"><div class="tb-center">주문내역이 없습니다.</div></td>
 								</tr>
+								</c:if>
 							</tbody>
 						</table>
 					</div>
