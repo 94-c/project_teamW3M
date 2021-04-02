@@ -34,7 +34,7 @@ public class UserLoginServiceImpl implements UserLoginService {
 		
 		if(result) {
 			if(user.getUser_state().equals("일반")) { //일반계정여부 검증
-				session.setMaxInactiveInterval(60*5); //세션만료시간 설정(초단위)
+				//session.setMaxInactiveInterval(60*5); //세션만료시간 설정(초단위)
 				session.setAttribute("login_state", "login");
 				session.setAttribute("userVO", user);
 				return 1; // 1 일반계정
