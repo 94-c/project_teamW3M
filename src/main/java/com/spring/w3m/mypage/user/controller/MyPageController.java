@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import com.spring.w3m.inquiry.user.vo.InquiryVO;
 import com.spring.w3m.join.user.vo.UserVO;
 import com.spring.w3m.mypage.user.service.MyPageService;
+import com.spring.w3m.order.user.vo.OrderVO;
 import com.spring.w3m.paging.common.Pagination;
 import com.spring.w3m.paging.common.Search;
 import com.spring.w3m.point.user.service.PointService;
@@ -122,9 +123,10 @@ public class MyPageController {
 	
 	//주문내역
 	@RequestMapping("myOrderList.do")
-	public String getOrderList(Model model, @SessionAttribute UserVO user) {
+	public String getOrderList(Model model, @SessionAttribute("userVO") UserVO vo) {
 		
-		
+		List<OrderVO> myOrderList =  myPageService.myOrderList(vo.getUser_id());
+		model.addAttribute("myOrderList", myOrderList);
 		return "mypage/myOrder";
 	}
 	

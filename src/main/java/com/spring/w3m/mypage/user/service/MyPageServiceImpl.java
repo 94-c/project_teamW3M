@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.spring.w3m.inquiry.user.vo.InquiryVO;
 import com.spring.w3m.join.user.vo.UserVO;
 import com.spring.w3m.mypage.user.dao.MyPageDAO;
+import com.spring.w3m.order.user.vo.OrderVO;
 import com.spring.w3m.paging.common.Search;
 import com.spring.w3m.review.user.vo.ReviewVO;
 
@@ -42,5 +43,7 @@ public class MyPageServiceImpl implements MyPageService {
 		return dao.myReviewList(search);
 	}
 	
-	
+	public List<OrderVO> myOrderList(String user_id){
+		return dao.myOrderList(user_id);
+	}
 }

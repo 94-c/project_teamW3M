@@ -48,6 +48,9 @@
 			review_email = #{user_email}
 	</select>
 	
-	
+	<select id="myOrderList" resultType="OrderVO">
+		SELECT o.order_date, d.prod_title, p.pay_total_money FROM pay as p, order_list as o , delivery as d
+		WHERE o.order_seq = p.order_seq AND o.order_seq = d.order_seq AND o.user_id = #{user_id}
+	</select>	
 	
 </mapper>

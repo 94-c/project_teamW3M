@@ -14,7 +14,7 @@
 					<h2 class="txt txt1">쇼핑정보</h2>
 					<div class="lnb">
 						<ul>
-							<li class="first"><a href="#">주문내역</a></li>
+							<li class="first"><a href="/myOrderList.do">주문내역</a></li>
 							<li><a href="#">쿠폰내역</a></li>
 							<li><a href="getPointList.do?user_id=${userVO.user_id }">적립금내역</a></li>
 							<li><a href="#">오늘본상품</a></li>

@@ -38,6 +38,12 @@ public class OrderVO {
 	private int prod_point;//제품 적립금
 	private int prod_total_price;//제품 총 가격
 	private int prod_total_point;//제품 총 포인트
+	
+	//주문내역
+	//위에 있는 order_date, prod_title 공유함
+	private int total_cost; //최종 결제금액
+	
+	
 	@Override
 	public String toString() {
 		return "OrderVO [order_seq=" + order_seq + ", order_date=" + order_date + ", order_status=" + order_status
@@ -52,6 +58,16 @@ public class OrderVO {
 				+ prod_price_sale + ", prod_point=" + prod_point + ", prod_total_price=" + prod_total_price
 				+ ", prod_total_point=" + prod_total_point + "]";
 	}
+	
+	
+	public int getTotal_cost() {
+		return total_cost;
+	}
+
+	public void setTotal_cost(int total_cost) {
+		this.total_cost = total_cost;
+	}
+
 	public int getOrder_seq() {
 		return order_seq;
 	}

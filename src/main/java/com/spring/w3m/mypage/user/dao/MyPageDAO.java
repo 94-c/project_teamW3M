@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 
 import com.spring.w3m.inquiry.user.vo.InquiryVO;
 import com.spring.w3m.join.user.vo.UserVO;
+import com.spring.w3m.order.user.vo.OrderVO;
 import com.spring.w3m.paging.common.Search;
 import com.spring.w3m.review.user.vo.ReviewVO;
 
@@ -38,5 +39,10 @@ public class MyPageDAO {
 	public List<ReviewVO> myReviewList(Search search){
 		System.out.println("getPageList() 실행");
 		return sqlSessionTemplate.selectList("myPageDAO.myReviewList", search);
+	}
+	
+	public List<OrderVO> myOrderList(String user_id){
+		System.out.println("myOrderList() 실행");
+		return sqlSessionTemplate.selectList("myPageDAO.myOrderList", user_id);
 	}
 }
