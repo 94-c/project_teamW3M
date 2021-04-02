@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.spring.w3m.join.user.vo.UserVO;
+import com.spring.w3m.order.user.vo.PayVO;
 import com.spring.w3m.paging.common.Search;
 import com.spring.w3m.point.user.dao.PointDAO;
 import com.spring.w3m.point.user.vo.PointVO;
@@ -33,6 +35,21 @@ public class PointServiceImpl implements PointService {
 	@Override
 	public List<PointVO> getPointPageList(Search search) {
 		return dao.getPointPageList(search);
+	}
+
+	@Override
+	public PayVO getPayList(PayVO vo) {
+		return dao.getPayList(vo);
+	}
+
+	@Override
+	public void plusPoint(PointVO vo) {
+		dao.plusPoint(vo);
+	}
+
+	@Override
+	public void minusPoint(PointVO vo) {
+		dao.minusPoint(vo);
 	}
 
 }

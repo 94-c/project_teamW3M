@@ -38,4 +38,24 @@
 		use_date=#{use_date};
 </delete>
 
+<select id="getPayList" resultType="com.spring.w3m.order.user.vo.PayVO">
+	select
+		*
+	from
+		pay
+	where
+		pay_seq = #{pay_seq}
+</select>
+
+<update id="plusPoint" parameterType="PointVO"> 
+	update user_member set user_point = user_point + #{add_point} WHERE user_id=#{user_id} 
+</update>
+	
+	
+<update id="minusPoint" parameterType="PointVO"> 
+	update user_member set user_point = user_point + #{add_point} WHERE user_id=#{user_id} 
+</update>
+
+
+
 </mapper>

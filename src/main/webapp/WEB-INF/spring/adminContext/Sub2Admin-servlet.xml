@@ -22,4 +22,5 @@
 		<context:component-scan base-package="com.spring.w3m.notice.admin" />
 		<context:component-scan base-package="com.spring.w3m.inquiry.user"/>
 		<context:component-scan base-package="com.spring.w3m.review.user"/>
+		<context:component-scan base-package="com.spring.w3m.point.user"/>
 </beans:beans>
