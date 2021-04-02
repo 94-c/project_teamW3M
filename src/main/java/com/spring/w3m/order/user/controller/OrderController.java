@@ -74,7 +74,7 @@ public class OrderController {
 		session.setAttribute("OrderVO", OrderVO);
 		session.setAttribute("payVO", payVO);
 
-		return "order/OrderList";
+		return "order/orderList";
 
 	}
 
@@ -149,7 +149,9 @@ public class OrderController {
 			int a =orderService.insert_delivery(ordervo);
 			
 			System.out.println(a +"- 0이면 실패");
-			
+			//order_prod 테이블 - 주문상태를 결제완료 업데이트
+			//order_list 테이블 - 주문생태를 배송전 업데이트
+			//order
 			
 			
 			return "order/order_success";
