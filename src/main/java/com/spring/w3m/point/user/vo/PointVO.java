@@ -8,7 +8,14 @@ public class PointVO {
 	private Date use_date;
 	private int order_seq;
 	private String point_content;
+	private String order_state;
 	
+	public String getOrder_state() {
+		return order_state;
+	}
+	public void setOrder_state(String order_state) {
+		this.order_state = order_state;
+	}
 	public String getPoint_content() {
 		return point_content;
 	}
