@@ -146,8 +146,14 @@ public class OrderController {
 			String aaaaa = ordervo.getProd_title();
 			String title[] = aaaaa.split(",");
 			int bbb = title.length -1 ;
+			String total_title;
+			if (bbb ==0) {
+				total_title = title[0]; 
+			}else {
+				total_title = title[0] +" 외 " +String.valueOf(bbb)+"건"; 
+			}
 			
-			String total_title = title[0] +" 외 " +String.valueOf(bbb)+"건"; 
+			
 			System.out.println(total_title);
 			System.out.println(ordervo.toString());
 			ordervo.setProd_title(total_title);
