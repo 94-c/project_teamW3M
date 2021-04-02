@@ -35,8 +35,6 @@
 <link href="resources/css/reply.css" rel="stylesheet" type="text/css">
 <link href="resources/css/tooltip.css" rel="stylesheet" type="text/css">
 <link href="resources/css/menu.css" rel="stylesheet" type="text/css">
-<link href="resources/admin_css/styles.css" rel="stylesheet" type="text/css">
-<link href="resources/admin_css/pagination.css" rel="stylesheet" type="text/css">
 <link href="resources/css/notification.css" rel="stylesheet" type="text/css">
 <link href="resources/css/point.css" rel="stylesheet" type="text/css">
 

@@ -4,7 +4,8 @@
 <title>적립금 내역</title>
 
 <%@include file="/WEB-INF/views/include/header.jsp"%>
-
+<link href="resources/admin_css/styles.css" rel="stylesheet" type="text/css"> 
+<link href="resources/admin_css/pagination.css" rel="stylesheet" type="text/css">
 <div id="contentWrapper">
 	<div id="contentWrap">
 		<%@include file="/WEB-INF/views/mypage/myPageCommon.jsp"%>

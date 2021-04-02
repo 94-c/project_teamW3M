@@ -2,7 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <title>내 문의사항 보기</title>
-
+<link href="resources/admin_css/styles.css" rel="stylesheet" type="text/css"> 
+<link href="resources/admin_css/pagination.css" rel="stylesheet" type="text/css">
 <%@include file="/WEB-INF/views/include/header.jsp"%>
 
 <div id="contentWrapper">
