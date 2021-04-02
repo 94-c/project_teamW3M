@@ -59,7 +59,7 @@
 													style="color: #ff08a0; font-family: '나눔고딕'; font-size: 13px; font-weight: bold;">상세보기</a></i>
 											</div></td>
 										<td><div class="tb-center">
-												<i><a href="#"
+												<i><a href="deliveryState.do?order_seq=${myOrder.order_seq }"
 													style="color: #ff08a0; font-family: '나눔고딕'; font-size: 13px; font-weight: bold;">상세보기</a></i>
 											</div></td>
 									</tr>

@@ -49,8 +49,13 @@
 	</select>
 	
 	<select id="myOrderList" resultType="OrderVO" parameterType="String">
-		SELECT o.order_date, d.prod_title, p.pay_total_money as total_cost FROM pay as p, order_list as o , delivery as d
+		SELECT o.order_seq, o.order_date, d.prod_title, p.pay_total_money as total_cost FROM pay as p, order_list as o , delivery as d
 		WHERE o.order_seq = p.order_seq AND o.order_seq = d.order_seq AND o.user_id = #{user_id}
 	</select>
+	
+	<select id="deliveryState" resultType="DeliveryVO" parameterType="int">
+	SELECT * FROM delivery_state where order_seq = #{order_seq}
+	</select>
+	
 	
 </mapper>

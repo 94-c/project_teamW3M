@@ -2,6 +2,7 @@ package com.spring.w3m.mypage.user.service;
 
 import java.util.List;
 
+import com.spring.w3m.delivery.common.vo.DeliveryVO;
 import com.spring.w3m.inquiry.user.vo.InquiryVO;
 import com.spring.w3m.join.user.vo.UserVO;
 import com.spring.w3m.order.user.vo.OrderVO;
@@ -21,4 +22,6 @@ public interface MyPageService {
 	List<ReviewVO> myReviewList(Search search);
 	
 	public List<OrderVO> myOrderList(String user_id); //마이페이지 주문내역
+	
+	List<DeliveryVO> deliveryState(int order_seq);
 }

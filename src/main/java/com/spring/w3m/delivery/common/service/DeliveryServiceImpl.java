@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.spring.w3m.delivery.common.dao.DeliveryDAO;
 import com.spring.w3m.delivery.common.vo.DeliveryVO;
+import com.spring.w3m.order.user.vo.OrderVO;
 import com.spring.w3m.paging.common.Pagination;
 import com.spring.w3m.paging.common.Search;
 
@@ -56,6 +57,19 @@ public class DeliveryServiceImpl implements DeliveryService {
 	public List<DeliveryVO> getSearchPagingList(Pagination pagination) {
 		return dao.getSearchPagingList(pagination);
 	}
-	
-	
+
+	@Override
+	public void insertDelivery_state(DeliveryVO vo) {
+		dao.insertDelivery_state(vo);
+	}
+
+	@Override
+	public DeliveryVO getDelivery(OrderVO vo) {
+		return dao.getDelivery(vo);
+	}
+
+	@Override
+	public DeliveryVO getDeliveryCont(DeliveryVO vo) {
+		return dao.getDeliverycont(vo);
+	}
 }

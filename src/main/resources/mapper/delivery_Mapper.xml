@@ -68,4 +68,18 @@
 		</if>
 		order by delivery_seq desc
 	</select>
+	
+	<insert id="insertDelivery_state" parameterType="DeliveryVO">
+		INSERT INTO 
+			delivery_state (delivery_seq, order_seq, prod_title, delivery_state)
+		VALUES 
+			(#{delivery_seq}, #{order_seq}, #{prod_title}, #{delivery_state})
+	</insert>
+	
+	<select id="getDelivery" resultType="DeliveryVO">
+		SELECT * FROM delivery where order_seq = #{order_seq}
+	</select>
+	<select id="getDeliverycont" resultType="DeliveryVO">
+		SELECT * FROM delivery where  delivery_seq = #{delivery_seq}
+	</select>
 </mapper>

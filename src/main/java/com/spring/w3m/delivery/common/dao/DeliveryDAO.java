@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.spring.w3m.delivery.common.vo.DeliveryVO;
+import com.spring.w3m.order.user.vo.OrderVO;
 import com.spring.w3m.paging.common.Pagination;
 import com.spring.w3m.paging.common.Search;
 
@@ -44,4 +45,15 @@ public class DeliveryDAO {
 		return template.selectList("delivery.getSearchPagingList");
 	}
 
+	public void insertDelivery_state(DeliveryVO vo) {
+		template.insert("delivery.insertDelivery_state", vo);
+	}
+	
+	public DeliveryVO getDelivery(OrderVO vo) {
+		return template.selectOne("delivery.getDelivery", vo);
+	}
+	
+	public DeliveryVO getDeliverycont(DeliveryVO vo) {
+		return template.selectOne("delivery.getDeliverycont", vo);
+	}
 }

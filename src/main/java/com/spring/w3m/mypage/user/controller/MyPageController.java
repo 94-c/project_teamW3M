@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
+import com.spring.w3m.delivery.common.vo.DeliveryVO;
 import com.spring.w3m.inquiry.user.vo.InquiryVO;
 import com.spring.w3m.join.user.vo.UserVO;
 import com.spring.w3m.mypage.user.service.MyPageService;
@@ -130,5 +131,13 @@ public class MyPageController {
 		return "mypage/myOrder";
 	}
 	
+	//주문내역
+		@RequestMapping("deliveryState.do")
+		public String deliveryState(Model model, @SessionAttribute("userVO") UserVO vo, DeliveryVO vo1) {
+			System.out.println(vo1.getOrder_seq());
+			List<DeliveryVO> deliveryState =  myPageService.deliveryState(vo1.getOrder_seq());
+			model.addAttribute("deliveryState", deliveryState);
+			return "mypage/deliveryState";
+		}
 	
 }
