@@ -171,14 +171,9 @@ public class OrderController {
 				int aaaa=orderService.delete_cart(vo.getUser_id());
 				System.out.println(aaaa +"- 0이면 실패");
 			}
-			
-			
-			//order_list 테이블 - 주문생태를 배송전 업데이트
+			//order_list 테이블 - 주문생태를 배송전 업데이트 
 			int aaa=orderService.update_order_list_status(vo.getUser_id());
 			System.out.println(aaa +"- 0이면 실패");
-			
-			
-			
 			
 			return "order/order_success";
 		}
