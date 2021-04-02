@@ -41,4 +41,6 @@ public class MyPageServiceImpl implements MyPageService {
 	public List<ReviewVO> myReviewList(Search search) {
 		return dao.myReviewList(search);
 	}
+	
+	
 }

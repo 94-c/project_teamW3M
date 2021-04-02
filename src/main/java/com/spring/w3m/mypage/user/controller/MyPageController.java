@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.spring.w3m.inquiry.user.vo.InquiryVO;
 import com.spring.w3m.join.user.vo.UserVO;
@@ -121,7 +122,7 @@ public class MyPageController {
 	
 	//주문내역
 	@RequestMapping("myOrderList.do")
-	public String getOrderList(Model model, UserVO user) {
+	public String getOrderList(Model model, @SessionAttribute UserVO user) {
 		
 		
 		return "mypage/myOrder";
