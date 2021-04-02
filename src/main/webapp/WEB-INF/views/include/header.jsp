@@ -34,6 +34,7 @@
 <link href="resources/css/shopdetail.css" rel="stylesheet" type="text/css">
 <link href="resources/css/soo.css" rel="stylesheet" type="text/css">
 <link href="resources/css/reply.css" rel="stylesheet" type="text/css">
+<link href="resources/css/tooltip.css" rel="stylesheet" type="text/css">
 
 <!-- JS -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

@@ -129,7 +129,7 @@
 									<col width="115">
 									<col width="95">
 									<col width="105">
-									<col width="95">
+									<col width="80">
 									<col width="95">
 								</colgroup>
 								<thead>
@@ -206,10 +206,12 @@
 												</div></td>
 
 											<!-- 배송비 -->
-											<td><div class="tb-center tb-delivery">
-													[기본 배송]
-													     조건
-												</div></td>
+											<td>
+												<div class="tooltip">[기본 배송]<br>조건
+											  <span class="tooltiptext">주문금액이 20,000원  미만시 <br>
+											  <br style="line-height:3px">배송비   2,500원이 청구됩니다.</span>
+											</div>
+											</td>
 											<td>
 												<div class="tb-center">
 													 <span class="d-block"> <a

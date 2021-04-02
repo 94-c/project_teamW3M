@@ -374,13 +374,11 @@ table img { vertical-align: middle; }
 .CSSbuttonBlack:hover { color:#231f20; background:#fff }
 .CSSbuttonBlack:active { position:relative; top:1px }
 
-.CSSbuttonWhite { display:inline-block;  color:#231f20; text-align:center;  border:1px solid #231f20; background:#fff; -webkit-transition:all 0.3s ease; transition:all 0.3s ease;
-				  width: 178px; height: 58px; font-size: 16px; line-height: 58px}
+.CSSbuttonWhite { display:inline-block;  color:#231f20; text-align:center;  border:1px solid #231f20; background:#fff; -webkit-transition:all 0.3s ease; transition:all 0.3s ease}
 .CSSbuttonWhite:hover { color:#fff; background:#231f20 }
 .CSSbuttonWhite:active { position: relative; top: 1px }
 
-.CSSbuttonGray { display:inline-block;  color:#231f20; text-align:center;  border:1px solid #e4e4e5; background:#fff; -webkit-transition:all 0.3s ease; transition:all 0.3s ease;
-				width: 178px; height: 58px; font-size: 16px; line-height: 58px}
+.CSSbuttonGray { display:inline-block;  color:#231f20; text-align:center;  border:1px solid #e4e4e5; background:#fff; -webkit-transition:all 0.3s ease; transition:all 0.3s ease}
 .CSSbuttonGray:hover { color:#fff; border:1px solid #231f20; background:#231f20 }
 .CSSbuttonGray:active { position: relative; top: 1px }
 
