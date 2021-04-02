@@ -15,7 +15,7 @@
 	o.prod_amount, order_status, order_date,
 	u.user_id, user_name, u.user_email, u.user_phone, u.user_zipcode, u.user_address1, u.user_address2
 	from product p, user_member u ,order_prod o
-	where u.user_id = o.user_id and p.prod_code = o.prod_code and o.user_id = #{user_id}
+	where u.user_id = o.user_id and p.prod_code = o.prod_code and o.user_id = #{user_id} and order_status ='구매대기'
 	</select>
 	
 	<delete id="order_drop_List" parameterType="String">
