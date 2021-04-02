@@ -4,54 +4,11 @@
 <title>마이페이지 메인</title>
 
 <%@include file="/WEB-INF/views/include/header.jsp"%>
-<link href="resources/css/menu.css" rel="stylesheet" type="text/css">
-<script type="text/javascript" src="resources/js/myPage.js" ></script>
-
-
-
+<link href="resources/admin_css/styles.css" rel="stylesheet" type="text/css"> 
+<link href="resources/admin_css/pagination.css" rel="stylesheet" type="text/css">
 <div id="contentWrapper">
 	<div id="contentWrap">
-		<div id="aside">
-			<h2 class="aside-tit">마이페이지</h2>
-			<div class="lnb-wrap">
-				<div class="lnb-bx">
-					<h2 class="txt txt1">쇼핑정보</h2>
-					<div class="lnb">
-						<ul>
-							<li class="first"><a href="/myOrderList.do">주문내역</a></li>
-							<li><a href="#">쿠폰내역</a></li>
-							<li><a href="getPointList.do?user_id=${userVO.user_id }">적립금내역</a></li>
-							<li><a href="#">오늘본상품</a></li>
-							<li><a href="GoCart.do">상품 보관함</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="lnb-bx">
-					<h2 class="txt txt2">쇼핑문의</h2>
-					<div class="lnb">
-						<ul>
-							<li class="first"><a
-								href="myinquryList.do?user_email=${userVO.user_email}&user_seq=${userVO.user_seq}">내 문의사항 보기</a></li>
-							<li><a href="myReviewList.do?user_email=${userVO.user_email}&user_seq=${userVO.user_seq}">내 후기 보기</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="lnb-bx">
-					<h2 class="txt txt3">개인정보</h2>
-					<div class="lnb">
-						<ul>
-							<li class="first"><a
-								href="memberInfoUpdate.do">회원정보변경</a></li>
-							<li><form action="memberInfoDelete.do" id = "deleteSuccess" method="POST">
-							<input type="hidden" name ="user_id" value="${userVO.user_id }">
-							<a href="javascript:userexit();" >회원정보탈퇴신청</a></form></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-			<!-- .lnb-wrap -->
-		</div>
-		<!-- #aside -->
+		<%@include file="/WEB-INF/views/mypage/myPageCommon.jsp"%>
 		<hr>
 		<div id="content">
 			<div id="mypage">
@@ -63,10 +20,10 @@
 							<div class="user-info">
 								<p>
 									<!-- 이런식으로 나와야 한다. 최형우[hyeognwoo26]님  -->
-									
-									<label>${userVO.user_name }[${userVO.user_id}]님</label>
-									<a href="memberInfoUpdate.do" class="CSSbuttonWhite CSSbuttonMin">수정</a>
-									
+
+									<label>${userVO.user_name }[${userVO.user_id}]님</label> <a
+										href="memberInfoUpdate.do" class="CSSbuttonWhite CSSbuttonMin">수정</a>
+
 								</p>
 								<div class="box">
 									<dl>
@@ -74,25 +31,27 @@
 										<dd>${userVO.user_phone }</dd>
 									</dl>
 									<dl>
-										<!-- 이메일 --> 
+										<!-- 이메일 -->
 										<dt>이 메 일</dt>
 										<dd>${userVO.user_email }</dd>
 									</dl>
 									<dl>
 										<dt>주 &nbsp;&nbsp;&nbsp; 소</dt>
-										<dd>[${userVO.user_zipcode }] ${userVO.user_address1 } ${userVO.user_address2 }</dd>
+										<dd>[${userVO.user_zipcode }] ${userVO.user_address1 }
+											${userVO.user_address2 }</dd>
 									</dl>
 								</div>
 							</div>
 						</div>
 						<dl class="order">
-							<dt class="tot">총 주문금액 :</dt>
+							<dt class="tot">총 주문금액</dt>
 							<dd class="tot">
 								<strong>0</strong>원
 							</dd>
 							<dt>적 립 금</dt>
 							<dd>
-								<strong><fmt:formatNumber value="${userVO.user_point}" pattern="#,###" /></strong>원
+								<strong><fmt:formatNumber value="${userVO.user_point}"
+										pattern="#,###" /></strong>원
 							</dd>
 							<dt>쿠 &nbsp;&nbsp;&nbsp; 폰</dt>
 							<dd>
@@ -108,8 +67,7 @@
 					<!-- 최근 주문 정보 -->
 					<div class="hd">
 						<h3>최근 주문 정보</h3>
-						<a class="view fe" href="#">+
-							더보기</a>
+						<a class="view fe" href="#">+ 더보기</a>
 					</div>
 					<div class="tbl">
 						<table summary="주문일자, 상품명, 결제금액, 주문상세">
@@ -159,7 +117,8 @@
 							</thead>
 							<tbody>
 								<tr>
-									<td colspan="3"><div class="tb-center">작성된 게시글이 없습니다.</div></td>
+									<td colspan="3"><div class="tb-center">작성된 게시글이
+											없습니다.</div></td>
 								</tr>
 							</tbody>
 						</table>

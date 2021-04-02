@@ -26,15 +26,18 @@
 <link href="resources/css/login.css" rel="stylesheet" type="text/css">
 <link href="resources/css/findID.css" rel="stylesheet" type="text/css">
 <link href="resources/css/insertMember.css" rel="stylesheet" type="text/css">
-<link type="text/css" rel="stylesheet" href="resources/css/border.css">
-<link type="text/css" rel="stylesheet" href="resources/css/menu.css">
-<link type="text/css" rel="stylesheet" href="resources/css/lost.css">
+<link href="resources/css/border.css" rel="stylesheet" type="text/css">
+<link href="resources/css/lost.css" rel="stylesheet" type="text/css" >
 <link href="resources/css/shopbrand.css" rel="stylesheet" type="text/css">
 <link href="resources/css/basket.css" rel="stylesheet" type="text/css">
 <link href="resources/css/shopdetail.css" rel="stylesheet" type="text/css">
 <link href="resources/css/soo.css" rel="stylesheet" type="text/css">
 <link href="resources/css/reply.css" rel="stylesheet" type="text/css">
 <link href="resources/css/tooltip.css" rel="stylesheet" type="text/css">
+<link href="resources/css/menu.css" rel="stylesheet" type="text/css">
+<link href="resources/css/notification.css" rel="stylesheet" type="text/css">
+<link href="resources/css/point.css" rel="stylesheet" type="text/css">
+
 
 <!-- JS -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -42,6 +45,7 @@
 <script type="text/javascript" src="resources/js/jquery_option.js" ></script>
 <script type="text/javascript" src="resources/js/basket.js" ></script>  
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script type="text/javascript" src="resources/js/myPage.js" ></script>
 <!-- 아래처럼 각자 JS파일 만들어서 링크 삽입하기 -->
 <script type="text/javascript" src="resources/js/joe.js"></script>
 <script type="text/javascript" src="resources/js/insertmember.js"></script>
@@ -186,12 +190,19 @@
 								src="resources/images/sideBar/r_quick02_off.gif" class="menuoff">
 								<img src="resources/images/sideBar/r_quick02_on.gif"
 								class="menuon" alt="배송조회"></a></li>
-
+							
+							<c:if test="${login_state eq 'login' }">
 						<li><a href="GoCart.do"> <img
 								src="resources/images/sideBar/r_quick03_off.gif" class="menuoff">
 								<img src="resources/images/sideBar/r_quick03_on.gif"
 								class="menuon" alt="장바구니"></a></li>
-
+							</c:if>
+							<c:if test="${login_state ne 'login' }">
+						<li><a href="loginForm.do"> <img
+								src="resources/images/sideBar/r_quick03_off.gif" class="menuoff">
+								<img src="resources/images/sideBar/r_quick03_on.gif"
+								class="menuon" alt="장바구니"></a></li>
+							</c:if>
 						<li><a href="#"> <img
 								src="resources/images/sideBar/r_quick04_off.gif" class="menuoff">
 								<img src="resources/images/sideBar/r_quick04_on.gif"

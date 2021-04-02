@@ -64,7 +64,7 @@
 			dataType:"json",
 			contentType:"application/json; charset=UTF-8",
 			success:function(aa){
-				alert("해당 뭎품이 삭제되었습니다.");
+				alert("해당 물품이 삭제되었습니다.");
 				history.go();
 			}
 		});
