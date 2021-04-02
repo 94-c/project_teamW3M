@@ -59,7 +59,7 @@ public class DeliveryController {
 		System.out.println("배송정보 수정하기 클릭!");
 		service.updateDeliveryState(vo);
 		
-		if(vo.getDelivery_state().equals("주문취소"));{
+		if(vo.getDelivery_state().equals("주문취소")&&vo1.getOrder_state().equals("구매확정"));{
 			vo2.setOrder_seq(vo.getOrder_seq());
 			pointSevice.getPayList(vo2);
 			
