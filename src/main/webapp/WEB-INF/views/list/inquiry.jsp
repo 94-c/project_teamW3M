@@ -10,17 +10,6 @@
 <link href="resources/admin_css/pagination.css" rel="stylesheet" type="text/css">
 <link href="resources/admin_css/styles.css" rel="stylesheet" type="text/css">
 <link href="resources/css/notification.css" rel="stylesheet" type="text/css">
-<style type="text/css">
-#submitbutton {
-	margin: 10px;
-	float: right;
-	margin-left: 3px;
-	width: 108px;
-	height: 38px;
-	font-size: 13px;
-	line-height: 38px
-}
-</style>
 <script type="text/javascript">
 	//이전 버튼 이벤트
 	function fn_prev(page, range, rangSize, searchKeyword) {
@@ -95,8 +84,8 @@
 							<table border="1" summary="No, content,Name,Date,Hits">
 								<caption>일반게시판 게시글</caption>
 								<colgroup>
-									<col width="70">
-									<col width="35">
+									<col width="100">
+									<col width="180">
 									<col width="*">
 									<col width="110">
 									<col width="110">

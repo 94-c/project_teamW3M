@@ -3,7 +3,6 @@
 <%@include file="/WEB-INF/views/include/header.jsp"%>
 <title>장바구니</title>
 <script>
-
 	function cntup(aa){
 		console.log("index : "+ aa);
 		var order_cnt='order_cnt'+aa;
@@ -102,10 +101,6 @@
 			});
 			});
 		});
-		
-	
-
-
 </script>
 <body>
 	<div id="contentWrapper">
@@ -189,9 +184,9 @@
 												<div class="tb-center">
 													<div class="opt-spin">
 														<input type="text" name="order_cnt" id="order_cnt${status.count}"
-															value="${CartVO.order_cnt }" class="txt-spin"> <span
-															class="btns"> <a
-															href="javascript:cntup(${status.count});" id="up"><img
+															value="${CartVO.order_cnt }" class="txt-spin"> 
+															<span class="btns"> 
+															<a href="javascript:cntup(${status.count});" id="up"><img
 																class="btn-up" src="resources/images/basket/spin_up.gif"></a>
 															<a href="javascript:cntdown(${status.count});" id="down"><img
 																class="btn-dw" src="resources/images/basket/spin_dw.gif"></a>
@@ -229,14 +224,12 @@
 						</div>
 						<!-- .table-fill-prd -->
 						<div class="btn-order-ctrl">
+						<input type="button" id="order_send" class="CSSbuttonBlack" value="주문하기"/>
 						<input type="hidden" id="userid" value="${userVO.user_id}">
-							<input type="button" id="order_send" class="CSSbuttonBlack" value="주문하기"/>
-							<a href="/" class="CSSbuttonWhite">계속 쇼핑하기</a> <a
-								href="javascript:send_basket_Alldelete();" class="CSSbuttonWhite">장바구니
-								비우기</a>
+						<a href="/" class="CSSbuttonWhite">계속 쇼핑하기</a> 
+						<a href="javascript:send_basket_Alldelete();" class="CSSbuttonWhite">장바구니 비우기</a>
 						</div>
 						<div class="cart-ft2"></div>
-
 					</div>
 					<!-- .page-body -->
 				</div>
