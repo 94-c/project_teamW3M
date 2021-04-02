@@ -5,10 +5,9 @@
 
 <%@include file="/WEB-INF/views/include/header.jsp"%>
 
-
 <div id="contentWrapper">
 	<div id="contentWrap">
-<%@include file="/WEB-INF/views/mypage/orderCommon.jsp"%>
+		<%@include file="/WEB-INF/views/mypage/myPageCommon.jsp"%>
 		<hr>
 		<div id="content">
 			<div id="mypage">
@@ -20,10 +19,10 @@
 							<div class="user-info">
 								<p>
 									<!-- 이런식으로 나와야 한다. 최형우[hyeognwoo26]님  -->
-									
-									<label>${userVO.user_name }[${userVO.user_id}]님</label>
-									<a href="memberInfoUpdate.do" class="CSSbuttonWhite CSSbuttonMin">수정</a>
-									
+
+									<label>${userVO.user_name }[${userVO.user_id}]님</label> <a
+										href="memberInfoUpdate.do" class="CSSbuttonWhite CSSbuttonMin">수정</a>
+
 								</p>
 								<div class="box">
 									<dl>
@@ -31,13 +30,14 @@
 										<dd>${userVO.user_phone }</dd>
 									</dl>
 									<dl>
-										<!-- 이메일 --> 
+										<!-- 이메일 -->
 										<dt>이 메 일</dt>
 										<dd>${userVO.user_email }</dd>
 									</dl>
 									<dl>
 										<dt>주 &nbsp;&nbsp;&nbsp; 소</dt>
-										<dd>${userVO.user_zipcode } ${userVO.user_address1 } ${userVO.user_address2 }</dd>
+										<dd>${userVO.user_zipcode }${userVO.user_address1 }
+											${userVO.user_address2 }</dd>
 									</dl>
 								</div>
 							</div>
@@ -49,7 +49,8 @@
 							</dd>
 							<dt>적 립 금</dt>
 							<dd>
-								<strong><fmt:formatNumber value="${userVO.user_point}" pattern="#,###" /></strong>원
+								<strong><fmt:formatNumber value="${userVO.user_point}"
+										pattern="#,###" /></strong>원
 							</dd>
 							<dt>쿠 &nbsp;&nbsp;&nbsp; 폰</dt>
 							<dd>
@@ -59,79 +60,83 @@
 					</div>
 					<!-- //회원 정보 -->
 					<div id="content">
-                	<div id="myHistory">
-                    <div class="page-body">
-                        <!-- 내가 쓴 게시판 목록 -->
-                        <div class="tit-page-2">
-                            <h2>문의사항 게시판</h2>
-                            <p class="dsc"><span class="fc-blue">${userVO.user_name}</span>님께서 작성하신 게시글 내역입니다.</p>
-                        </div>
-                       
-                        <div class="table-d2-list">
-                            <table summary="번호, 게시판, 제목, 날짜, hit수">
-                                <caption>내 문의사항 리스트</caption>
-                                <colgroup>
-                                    <col width="75">
-                                    <col width="125">
-                                    <col width="*">
-                                    <col width="115">
-                                    <col width="105">
-                                </colgroup>
-                                <thead>
-                                    <tr>
-                                        <th scope="row"><div class="tb-center">NO.</div></th>
-                                        <th scope="row"><div class="tb-center">BOARD</div></th>
-                                        <th scope="row"><div class="tb-center">SUBJECT</div></th>
-                                        <th scope="row"><div class="tb-center">DATE</div></th>
-                                        <th scope="row"><div class="tb-center">HITS</div></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <c:forEach var="inquiryVO" items="${inquiryList}">
-										<tr>
-											<td scope="col"><div class="tb-center">${inquiryVO.inq_seq}</div></td>
-											<td scope="col"><div class="tb-center">문의사항</div></td>
-											<td scope="col"><div class="tb-center">
-													<a
-														href='<c:url value='/inquiryContent.do?inq_seq=${inquiryVO.inq_seq}'/>'
-														class="text-dark">${inquiryVO.inq_title}</a>
-												</div></td>
-											<td scope="col"><div class="tb-center">
-													<fmt:formatDate value="${inquiryVO.inq_date}"
-														pattern="yyyy-MM-dd" />
-												</div></td>
-											<td scope="col"><div class="tb-center">${inquiryVO.inq_cnt}</div></td>
-										</tr>
-									</c:forEach>
-                                </tbody>
-                            </table>
-                        	<!-- pagination -->
-							<div id="paginationBox">
-								<ul class="pagination">
-									<c:if test="${pagination.prev}">
-										<li class="page-item"><a class="page-link" href="#"
-											onClick="fn_prev('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}')">Previous</a></li>
-									</c:if>
+						<div id="myHistory">
+							<div class="page-body">
+								<!-- 내가 쓴 게시판 목록 -->
+								<div class="tit-page-2">
+									<h2>문의사항 게시판</h2>
+									<p class="dsc">
+										<span class="fc-blue">${userVO.user_name}</span>님께서 작성하신 게시글
+										내역입니다.
+									</p>
+								</div>
 
-									<c:forEach begin="${pagination.startPage}"
-										end="${pagination.endPage}" var="idx">
-										<li
-											class="page-item <c:out value="${pagination.page == idx ? 'active' : ''}"/> "><a
-											class="page-link" href="#"
-											onClick="fn_pagination('${idx}', '${pagination.range}', '${pagination.rangeSize}')">
-												${idx} </a></li>
-									</c:forEach>
+								<div class="table-d2-list">
+									<table summary="번호, 게시판, 제목, 날짜, hit수">
+										<caption>내 문의사항 리스트</caption>
+										<colgroup>
+											<col width="75">
+											<col width="125">
+											<col width="*">
+											<col width="115">
+											<col width="105">
+										</colgroup>
+										<thead>
+											<tr>
+												<th scope="row"><div class="tb-center">NO.</div></th>
+												<th scope="row"><div class="tb-center">BOARD</div></th>
+												<th scope="row"><div class="tb-center">SUBJECT</div></th>
+												<th scope="row"><div class="tb-center">DATE</div></th>
+												<th scope="row"><div class="tb-center">HITS</div></th>
+											</tr>
+										</thead>
+										<tbody>
+											<c:forEach var="inquiryVO" items="${inquiryList}">
+												<tr>
+													<td scope="col"><div class="tb-center">${inquiryVO.inq_seq}</div></td>
+													<td scope="col"><div class="tb-center">문의사항</div></td>
+													<td scope="col"><div class="tb-center">
+															<a
+																href='<c:url value='/inquiryContent.do?inq_seq=${inquiryVO.inq_seq}'/>'
+																class="text-dark">${inquiryVO.inq_title}</a>
+														</div></td>
+													<td scope="col"><div class="tb-center">
+															<fmt:formatDate value="${inquiryVO.inq_date}"
+																pattern="yyyy-MM-dd" />
+														</div></td>
+													<td scope="col"><div class="tb-center">${inquiryVO.inq_cnt}</div></td>
+												</tr>
+											</c:forEach>
+										</tbody>
+									</table>
+									<!-- pagination -->
+									<div id="paginationBox">
+										<ul class="pagination">
+											<c:if test="${pagination.prev}">
+												<li class="page-item"><a class="page-link" href="#"
+													onClick="fn_prev('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}')">Previous</a></li>
+											</c:if>
 
-									<c:if test="${pagination.next}">
-										<li class="page-item"><a class="page-link" href="#"
-											onClick="fn_next('${pagination.range}', '${pagination.range}', '${pagination.rangeSize}')">Next</a></li>
-									</c:if>
-								</ul>
+											<c:forEach begin="${pagination.startPage}"
+												end="${pagination.endPage}" var="idx">
+												<li
+													class="page-item <c:out value="${pagination.page == idx ? 'active' : ''}"/> "><a
+													class="page-link" href="#"
+													onClick="fn_pagination('${idx}', '${pagination.range}', '${pagination.rangeSize}')">
+														${idx} </a></li>
+											</c:forEach>
+
+											<c:if test="${pagination.next}">
+												<li class="page-item"><a class="page-link" href="#"
+													onClick="fn_next('${pagination.range}', '${pagination.range}', '${pagination.rangeSize}')">Next</a></li>
+											</c:if>
+										</ul>
+									</div>
+								</div>
 							</div>
-                        </div>
-                        </div>
-                		</div>
-           			 </div><!-- #myHistory -->
+						</div>
+					</div>
+					<!-- #myHistory -->
 				</div>
 				<!-- .page-body -->
 			</div>
