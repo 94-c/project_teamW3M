@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<title>주문  내역</title>
+<title>주문 내역</title>
 
 <%@include file="/WEB-INF/views/include/header.jsp"%>
 
 <div id="contentWrapper">
 	<div id="contentWrap">
-<%@include file="/WEB-INF/views/mypage/orderCommon.jsp"%>		
+		<%@include file="/WEB-INF/views/mypage/myPageCommon.jsp"%>
 		<div id="content">
 			<div id="myOrder">
 				<div class="tit-page-2">
@@ -40,20 +40,34 @@
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach var="myOrder" items="${myOrderList}" varStatus="index">
-								<tr>
-									<td><div class="tb-center">${index.count }</div></td>
-									<td><div class="tb-center"><fmt:formatDate value="${myOrder.order_date }" pattern="yyyy-MM-dd HH:mm:ss"/></div></td>
-									<td><div class="tb-center">${myOrder.prod_title }</div></td>
-									<td><div class="tb-center"><fmt:formatNumber value="${myOrder.total_cost}" pattern="#,###"/>원</div></td>
-									<td><div class="tb-center"><i><a href="#" style="color:#ff08a0; font-family: '나눔고딕'; font-size:13px; font-weight: bold;">상세보기</a></i></div></td>
-									<td><div class="tb-center"><i><a href="#" style="color:#ff08a0; font-family: '나눔고딕'; font-size:13px; font-weight: bold;">상세보기</a></i></div></td>
-								</tr>
+								<c:forEach var="myOrder" items="${myOrderList}"
+									varStatus="index">
+									<tr>
+										<td><div class="tb-center">${index.count }</div></td>
+										<td><div class="tb-center">
+												<fmt:formatDate value="${myOrder.order_date }"
+													pattern="yyyy-MM-dd HH:mm:ss" />
+											</div></td>
+										<td><div class="tb-center">${myOrder.prod_title }</div></td>
+										<td><div class="tb-center">
+												<fmt:formatNumber value="${myOrder.total_cost}"
+													pattern="#,###" />
+												원
+											</div></td>
+										<td><div class="tb-center">
+												<i><a href="#"
+													style="color: #ff08a0; font-family: '나눔고딕'; font-size: 13px; font-weight: bold;">상세보기</a></i>
+											</div></td>
+										<td><div class="tb-center">
+												<i><a href="#"
+													style="color: #ff08a0; font-family: '나눔고딕'; font-size: 13px; font-weight: bold;">상세보기</a></i>
+											</div></td>
+									</tr>
 								</c:forEach>
 								<c:if test="${empty myOrderList}">
-								<tr>
-									<td colspan="6"><div class="tb-center">주문내역이 없습니다.</div></td>
-								</tr>
+									<tr>
+										<td colspan="6"><div class="tb-center">주문내역이 없습니다.</div></td>
+									</tr>
 								</c:if>
 							</tbody>
 						</table>
