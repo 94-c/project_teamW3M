@@ -1,0 +1,22 @@
+@charset "UTF-8";
+/* BASIC css start */
+/* »ç¿ë °¡´É Àû¸³±Ý */
+#myReserv .table-att { margin-top:10px }
+#myReserv .table-att table { border:1px solid #e9e9e9; border-top:1px solid #000 }
+#myReserv .table-att table th { background:#f8f8f8 }
+#myReserv .table-att table th,
+#myReserv .table-att table td { padding:16px 0; font-weight:bold }
+#myReserv .table-att td .tb-right { padding-right:35px }
+
+/* Àû¸³±Ý ³»¿ª */
+#myReserv .table-d2-list { margin-top:10px }
+
+/* À¯ÀÇ»çÇ× */
+#myReserv .foot-dsc{ margin-top:40px }
+#myReserv .foot-dsc li { padding-bottom: 5px; color:#797979 }
+
+/* Àû¸³±Ý °Ë»ö */
+#myReserv .search_reserve { float: right; margin-top: 20px; }
+#myReserv .search_reserve img { vertical-align: middle; }
+
+/* BASIC css end */
