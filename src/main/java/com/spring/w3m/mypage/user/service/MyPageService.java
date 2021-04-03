@@ -21,7 +21,11 @@ public interface MyPageService {
 
 	List<ReviewVO> myReviewList(Search search);
 	
-	public List<OrderVO> myOrderList(String user_id); //마이페이지 주문내역
+	List<OrderVO> myOrderList(String user_id); //마이페이지 주문내역
 	
 	List<DeliveryVO> deliveryState(int order_seq);
+	
+//	List<OrderVO> orderDetail(String user_id);
+	
+	OrderVO getReceiverInfo(OrderVO vo);
 }

@@ -44,6 +44,7 @@ public class MyPageServiceImpl implements MyPageService {
 		return dao.myReviewList(search);
 	}
 	
+	@Override
 	public List<OrderVO> myOrderList(String user_id){
 		return dao.myOrderList(user_id);
 	}
@@ -52,4 +53,16 @@ public class MyPageServiceImpl implements MyPageService {
 	public List<DeliveryVO> deliveryState(int order_seq) {
 		return dao.deliveryState(order_seq);
 	}
+
+	@Override
+	public OrderVO getReceiverInfo(OrderVO vo) {
+		return dao.getReceiverInfo(vo);
+	}
+	
+//	@Override
+//	public List<OrderVO> orderDetail(String user_id){
+//		return dao.orderDetail(user_id);
+//	}
+	
+	
 }

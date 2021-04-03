@@ -144,8 +144,10 @@ public class MyPageController {
 	
 	// 주문상세
 	@RequestMapping("myOrderDetail.do")
-	public String getOrderDetail(Model model, @SessionAttribute("userVO") UserVO vo) {
-
+	public String getOrderDetail(Model model, @SessionAttribute("userVO") UserVO vo, OrderVO vo1) {
+		vo1.setUser_id(vo.getUser_id());
+		OrderVO receiverInfo = myPageService.getReceiverInfo(vo1);
+		model.addAttribute("receiverInfo", receiverInfo);
 		return "mypage/orderDetail";
 	}
 

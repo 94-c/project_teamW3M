@@ -10,14 +10,14 @@
 
 <div id="contentWrapper">
 	<div id="contentWrap">
-		<!-- 마이페이지 공통부분 들어갈 곳 include  -->
+		<%@include file="/WEB-INF/views/mypage/myPageCommon.jsp"%>
 		<hr>
 		<div id="content">
 			<div id="orderSt">
 				<div class="tit-pop">
 					<h1>주문정보</h1>
-					<span class="txt"><em class="order_name">{userVO.user_name}</em>님께서 
-					<em class="order_date"><!-- 주문 날짜 --></em>에 주문하신 내역입니다.</span>
+					<span class="txt"><em class="order_name">${userVO.user_name}</em>님께서 
+					<em class="order_date">${receiverInfo.order_date}</em>에 주문하신 내역입니다.</span>
 				</div>
 				<!-- 후기등록 탭 -->
 				<ul class="tab">
@@ -40,13 +40,13 @@
 							<tbody>
 								<tr>
 									<th scope="row"><div class="tb-left">주문번호</div></th>
-									<td><div class="tb-left"><!-- 주문번호  데이터 --></div></td>
+									<td><div class="tb-left">${receiverInfo.order_seq}</div></td>
 									<th scope="row"><div class="tb-left">주문일자</div></th>
-									<td><div class="tb-left"><!-- 주문일자 데이터 --></div></td>
+									<td><div class="tb-left">${receiverInfo.order_date}</div></td>
 								</tr>
 								<tr>
 									<th scope="row"><div class="tb-left">주문자</div></th>
-									<td><div class="tb-left"><!-- 주문자 이름 --></div></td>
+									<td><div class="tb-left">${receiverInfo.receiver_name}</div></td>
 									<th scope="row"><div class="tb-left">주문서 입금현황</div></th>
 									<td><div class="tb-left"><!-- 입금 완료, 배송 완료 --></div></td>
 								</tr>

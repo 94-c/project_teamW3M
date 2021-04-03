@@ -57,5 +57,18 @@
 	SELECT * FROM delivery_state where order_seq = #{order_seq}
 	</select>
 	
+	<select id="orderDetail" resultType="OrderVO" parameterType="String">
+		SELECT o.order_date, o.order_status, o.order_seq, d.delivery_seq, d.receiver_name, d.receiver_phone1, d.receiver_phone2, 
+			d.receiver_zipcode, d.receiver_address1, d.receiver_address2, d.receiver_memo, p.prod_title_image, p.prod_title,
+			op.prod_amount, p.prod_price_sale, p.prod_point, d.delivery_state
+		FROM order_list AS o, delivery AS d, product AS p, order_prod AS op
+		WHERE o.order_seq = d.order_seq AND o.order_seq = op.order_seq AND op.prod_code = p.prod_code AND o.user_id = #{user_id}
+	</select>
+	
+	<select id="receiverInfo" resultType="OrderVO">
+		SELECT o.order_date, o.order_seq, d.receiver_name from order_list AS o, delivery AS d
+		WHERE  o.order_seq = d.order_seq AND o.order_seq = #{order_seq} AND o.user_id = #{user_id}
+	</select>
+	
 	
 </mapper>

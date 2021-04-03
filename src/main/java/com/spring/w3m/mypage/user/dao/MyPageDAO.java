@@ -51,4 +51,13 @@ public class MyPageDAO {
 		System.out.println("deliveryState() 실행");
 		return sqlSessionTemplate.selectList("myPageDAO.deliveryState", order_seq);
 	}
+	
+//	public List<OrderVO> orderDetail(String user_id){
+//		System.out.println("orderDetail() 실행");
+//		return sqlSessionTemplate.selectOne("myPageDAO.orderDetail", user_id);
+//	}
+	
+	public OrderVO getReceiverInfo(OrderVO vo) {
+		return sqlSessionTemplate.selectOne("myPageDAO.receiverInfo", vo);
+	}
 }
