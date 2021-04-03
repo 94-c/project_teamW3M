@@ -322,6 +322,47 @@ $(document).ready(function(){
 
 </script>
 <style>
+@charset "UTF-8";
+.tooltipBar
+{
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px ;
+    padding: 0 10px;
+    text-align: center;
+}
+.tooltipBar .tooltipBartext
+{
+    visibility: hidden;
+    width: 150px;
+    background-color: black;
+    color: #ffffff;
+    text-align: center;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    top: -5px;
+    left: 110%;
+    
+    
+}
+.tooltipBar .tooltipBartext::after
+{
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent black transparent transparent;
+}
+.tooltipBar:hover .tooltipBartext
+{
+    visibility: visible;
+}
+
+/* BASIC css end */
 
 </style>
 <link href="resources/css/order.css" rel="stylesheet" type="text/css">
@@ -529,18 +570,6 @@ $(document).ready(function(){
 											<textarea name="receiver_memo" form="order_form" id="receiver_memo" cols="50" rows="5" class="MS_textarea"></textarea>
 										</td>
 									</tr>
-									<tr>
-										<th scope="row">
-											<div class="txt-l">무통장 입금자명</div>
-										</th>
-										<td colspan="3">
-											<input type="text" name="bankname" form="order_form" class="MS_input_txt" size="10"
-											maxlength="40"> 
-											<span class="MS_bankname_message">
-												(주문자와 같을경우 생략 가능)
-											</span>
-										</td>
-									</tr>
 								</tbody>
 							</table>
 						</div>
@@ -563,7 +592,15 @@ $(document).ready(function(){
 										<th scope="col">상품금액</th>
 										<th scope="col">배송비</th>
 										<th scope="col">할인금액</th>
-										<th scope="col">멤버십 할인 </th>								
+										<th scope="col"><div class="tooltipBar">멤버십 할인 
+											<span class="tooltipBartext">멤버십 할인 금액 <br>
+											 <br style="line-height:3px">브론즈 1%
+											 <br style="line-height:3px">실	버 3%
+											 <br style="line-height:3px">골	드 5%
+											 <br style="line-height:3px">플래티넘 7%
+											 <br style="line-height:3px">다이아 9%
+											 </span>
+										</div></th>								
 										<th scope="col">결제 예정금액</th>
 									</tr>
 									<tr>
@@ -650,8 +687,8 @@ $(document).ready(function(){
 							</colgroup>
 							<tbody>
 								<tr>
-									<td><img src="resources/images/h_design/top_w3m.gif"></td>&nbsp;&nbsp;&nbsp;
-									 <td>현재 카카오페이만 결제 가능합니다. 양해 부탁드립니다.</td>
+									<td><img src="resources/images/h_design/top_w3m.gif"></td>
+									 <td>&nbsp;&nbsp;&nbsp;현재 <strong>카카오 페이</strong>만 결제 가능합니다. 양해 부탁드립니다.</td>
 								</tr>
 							</tbody>
 						</table>
