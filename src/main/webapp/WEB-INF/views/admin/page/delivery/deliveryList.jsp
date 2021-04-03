@@ -27,11 +27,12 @@ table, td, th {
 }
 </style>
 <script type="text/javascript">
-$(document).ready(function(){
-	$(".changeState").click(function(e){
+$(document).on('click','#changeState', function(e){
 		e.preventDefault();
-		document.deliveryForm.submit();
-	});
+		var url = "${pageContext.request.contextPath}/changeDeliveryState.mdo";
+		url = url + "?delivery_seq=" + $('#delivery_seq').val();
+		url = url + "&delivery_state=" + $('#delivery_state').val();
+		location.href=url;
 });
 	//이전 버튼 이벤트
 	function fn_prev(page, range, rangSize, searchKeyword) {
@@ -89,7 +90,6 @@ $(document).ready(function(){
 			<div class="card-header">
 				<i class="fas fa-table mr-1"></i> 배송 목록
 			</div>
-			<form action="changeDeliveryState.mdo" name="deliveryForm">
 				<div class="card-body">
 					<div class="table-responsive">
 						<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -123,14 +123,14 @@ $(document).ready(function(){
 										<td class="text-center"><fmt:formatDate value="${del.order_date}" pattern="yyyy-MM-dd" /></td>
 										<td class="text-center">${del.delivery_state}</td>
 										<td>
-											<select name="delivery_state">
+											<select name="delivery_state" id="delivery_state">
 												<option selected="selected" value="before">배송전</option>
 												<option value="ing">배송중</option>
 												<option value="after">배송완료</option>
 												<option value="cancel">주문취소</option>
 											</select>
-											<input type="hidden" name="delivery_seq" value="${del.delivery_seq}">
-											<a href="#" class="changeState">상태변경</a>
+											<input type="hidden" id="delivery_seq" name="delivery_seq" value="${del.delivery_seq}">
+											<button class="changeState" id="changeState" name="changeState">상태변경</button>
 										</td>										
 									</tr>
 								</c:forEach>
@@ -179,7 +179,7 @@ $(document).ready(function(){
 							<!-- search{e} -->
 					</div>
 				</div>
-			</form>
+		
 		</div>
 	</div>
 </main>
