@@ -53,14 +53,16 @@ public class ReviewController {
 		Pagination pagination = new Pagination();
 		pagination.pageInfo(page, range, cnt);
 		
+		System.out.println(vo.getReply_cnt());
 		int replycnt = reviewService.reviewReplyCount(vo);
+		vo.setReply_cnt(replycnt);
+		System.out.println(vo.getReply_cnt());
 		
 		List<ReviewVO> pageList = reviewService.getPageList(search);
 		
 		model.addAttribute("pagination", search);
 		model.addAttribute("reviewList", pageList);
 		model.addAttribute("cnt", cnt);
-		model.addAttribute("recnt", replycnt);
 
 		return "review/review";
 	}
