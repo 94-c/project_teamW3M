@@ -321,6 +321,9 @@ $(document).ready(function(){
 });
 
 </script>
+<style>
+
+</style>
 <link href="resources/css/order.css" rel="stylesheet" type="text/css">
 <div id="contentWrap">
 
@@ -560,7 +563,7 @@ $(document).ready(function(){
 										<th scope="col">상품금액</th>
 										<th scope="col">배송비</th>
 										<th scope="col">할인금액</th>
-										<th scope="col">멤버쉽 할인</th>
+										<th scope="col">멤버십 할인 </th>								
 										<th scope="col">결제 예정금액</th>
 									</tr>
 									<tr>
@@ -585,7 +588,6 @@ $(document).ready(function(){
 										</td>
 										<td>
 											<div class="base">
-											
 												<strong><em class="fc-red">
 												<span class="op-total block-op-sale-price" price="보유 적립금" id="pay_point_use">0</span></em>원</strong>
 												
@@ -602,7 +604,6 @@ $(document).ready(function(){
 											<div class="base">
 												<strong><em>
 												<span class="op-total block-op-add-price" id="pay_Membership" price=""><fmt:formatNumber value="${payVO.pay_Membership}" pattern="#,###"></fmt:formatNumber></span></em>원</strong> 
-												
 												<a class="plus" style="display: none;">
 													<img src="resources/images/order/plus.png" alt="plus">
 												</a>
