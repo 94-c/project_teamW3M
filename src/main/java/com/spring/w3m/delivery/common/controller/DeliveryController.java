@@ -65,6 +65,8 @@ public class DeliveryController {
 		DeliveryVO vvs = service.getDeliveryCont(vo);
 		
 		service.insertDelivery_state(vvs);
+		//구매확정 시  point 지급 기능 들어갈 자리-김웅기
+		
 		
 		/*if(vo.getDelivery_state() != null &&vo1.getOrder_state() != null) {
 			if(vo.getDelivery_state().equals("주문취소")&&vo1.getOrder_state().equals("구매확정"));{

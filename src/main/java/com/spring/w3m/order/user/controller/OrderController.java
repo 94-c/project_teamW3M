@@ -110,7 +110,7 @@ public class OrderController {
 		//@RequestMapping(value = "/request_pay.do",method = {RequestMethod.POST,RequestMethod.GET}) 
 		@RequestMapping("/request_pay.do") // Bronze 1%, silver 3%, gold 5%, Platinum 7%, dia 9%
 		@ResponseBody
-		public void order_request_pay(@RequestBody PayVO payVO,@SessionAttribute("userVO") UserVO vo) { // 제품들 주문 리스트에 등록
+		public void order_request_pay(@RequestBody PayVO payVO,@SessionAttribute("userVO") UserVO vo,HttpSession session) { // 제품들 주문 리스트에 등록
 			System.out.println("결제 성고옹");
 			System.out.println("금액: "+ payVO.getPay_total_money());
 			
@@ -123,7 +123,8 @@ public class OrderController {
 			payVO.setOrder_seq(orVO);
 			int aaa = orderService.insert_pay(payVO);
 			System.out.println(aaa +"- 0이면 실패");
-			
+			System.out.println("페이"+payVO.toString());
+			session.setAttribute("PayVO", payVO);
 		}
 		@RequestMapping("order_Success.do")
 		public String order_Success(@SessionAttribute("userVO") UserVO vo, HttpSession session,PayVO payvo, OrderVO ordervo) {
@@ -186,15 +187,20 @@ public class OrderController {
 				int aaaa=orderService.delete_cart(vo.getUser_id());
 				System.out.println(aaaa +"- 0이면 실패");
 			}
+			int use_point = payvo.getPay_use_point();
+			if(use_point != 0) {
+				
+			
 			//사용한 적립금 적립금테이블에 누적
 			PointVO pointvo_use = new PointVO();
 			pointvo_use.setUser_id(vo.getUser_id());
-			int use_point = payvo.getPay_use_point() *-1;
+			use_point = payvo.getPay_use_point() *-1;
 			pointvo_use.setAdd_point(use_point);
 			pointvo_use.setOrder_seq(ordervo.getOrder_seq());
 			pointvo_use.setPoint_content(total_title);
 			pointvo_use.setOrder_state("사용가능");// 결제 취소시 상태를 사용 불가로 바꿀꺼임
 			orderService.insert_Use_point(pointvo_use);
+			}
 			//구매할때 지급된 추가 적립급 누적 단,결제 취소시 상태를 사용 불가로 바꿈 
 			PointVO pointvo_add = new PointVO();
 			pointvo_add.setUser_id(vo.getUser_id());
@@ -209,10 +215,10 @@ public class OrderController {
 			//order_list 테이블 - 주문생태를 배송전 업데이트 
 			int aaa=orderService.update_order_list_status(vo.getUser_id());
 			System.out.println(aaa +"- 0이면 실패");
-			
+			System.out.println("페이"+payvo.toString());
 			UserVO user = userService.getUser(vo);
 			session.setAttribute("userVO", user);
-			
+			session.setAttribute("OrderVO1", ordervo);
 			return "order/order_success";
 		}
 		@RequestMapping("/check_point.do")

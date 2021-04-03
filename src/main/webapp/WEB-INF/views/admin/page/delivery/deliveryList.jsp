@@ -128,6 +128,7 @@ $(document).on('click','#changeState', function(e){
 												<option value="ing">배송중</option>
 												<option value="after">배송완료</option>
 												<option value="cancel">주문취소</option>
+												<option value="commit">구매확정</option>
 											</select>
 											<input type="hidden" id="delivery_seq" name="delivery_seq" value="${del.delivery_seq}">
 											<button class="changeState" id="changeState" name="changeState">상태변경</button>

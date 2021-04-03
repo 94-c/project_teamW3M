@@ -130,7 +130,7 @@ $('#charge_kakao').click(function () {
     pay_total_price = pay_total_price.replace(",","");
     pay_total_price = parseInt(pay_total_price);
    
-    var pay_total_point = $("#pay_total_point").text().trim();
+    var pay_total_point = $("#pay_total_point1").text().trim();
     pay_total_point = pay_total_point.replace(",","");
     pay_total_point = parseInt(pay_total_point);
     
@@ -138,9 +138,9 @@ $('#charge_kakao').click(function () {
     pay_Shipping_cost = pay_Shipping_cost.replace(",","");
     pay_Shipping_cost = parseInt(pay_Shipping_cost);
     
-    var pay_point_use = $("#pay_point_use").text().trim();
-    pay_point_use = pay_point_use.replace(",","");
-    pay_point_use = parseInt(pay_point_use);
+    var pay_use_point = $("#pay_use_point").text().trim();
+    pay_use_point = pay_use_point.replace(",","");
+    pay_use_point = parseInt(pay_use_point);
     
     var pay_Membership = $("#pay_Membership").text().trim();
     pay_Membership = pay_Membership.replace(",","");
@@ -156,7 +156,7 @@ $('#charge_kakao').click(function () {
     console.log("머니:"+pay_total_price);
     console.log("총포인트:"+pay_total_point);
     console.log("총배달비:"+pay_Shipping_cost);
-    console.log("사용 포인트:"+pay_point_use);
+    console.log("사용 포인트:"+pay_use_point);
     
     var user_name =$("#user_name_or").val();
     var user_email=$("#user_email_or").val();
@@ -175,7 +175,7 @@ $('#charge_kakao').click(function () {
 			"pay_total_price" : pay_total_price,
 			"pay_total_point" : pay_total_point,
 			"pay_Shipping_cost": pay_Shipping_cost,
-			"pay_use_point" : pay_point_use,
+			"pay_use_point" : pay_use_point,
 			"pay_Membership" : pay_Membership,
 			"pay_tool" : "카카오페이"
 			};
@@ -219,15 +219,82 @@ $('#charge_kakao').click(function () {
     });
 });
 });
+var pointcheck= -1;
+$(document).ready(function(){ 
+	$('#AllPoint').blur(function () {
+		if(pointcheck==-1){
+			alert("적립금 확인해주세요.");
+			$("#AllPoint").val(0);
+		}
+		if($("#AllPoint").val()==""){
+			$("#AllPoint").val(0);
+		}
+	var point=$("#AllPoint").val();
+	var totalMoney= $("#pay_total_price_or").val();
+	var use_point = totalMoney/2;
+	
+	if(point > use_point){
+		alert("적립금은 상품금액의 50%만 사용 가능합니다.");
+		$("#AllPoint").val(use_point);
+		$("#pay_use_point").text(use_point);
+	
+	}
+	point=$("#AllPoint").val();
+	
+	point = parseInt(point);
+	var inputPoint=$("#checkPoint").val().trim();
+	inputPoint = parseInt(inputPoint);
 
+		if(point > inputPoint){
+			console.log("1입력한 point ="+point);
+			console.log("범위를 초과함");
+			//alert("보유하신 적립금보다 많은 적립금을 입력하셨습니다.\n적립금확인을 해주세요.");
+			$("#AllPoint").val("");
+			return;
+		}else{
+			
+			$("#pay_use_point").text(point);
+			var money = $("#pay_total_money_or").val();
+			var IntMoney = money.replace(",","");
+			$("#pay_total_money").text(number(IntMoney));
+			$("#pay_total_money2").text(number(IntMoney));
+			var total = parseInt(IntMoney) - parseInt(point);
+			
+			
+			console.log("totalMoney:"+totalMoney);
+			console.log("use_point:"+use_point);
+			console.log("IntMoney:"+IntMoney);
+			console.log("point:"+point);
+			
+			
+			$("#pay_total_money").text(number(total));
+			$("#pay_total_money2").text(number(total));
+			console.log("total:"+total);
+			
+			return;
+			
+		}
 
+	
+    
+	});
+});
 
 function AllPoint(){
-	
 	console.log("모두 사용 확인");
 	var point = $("#checkPoint").val();
+	var totalMoney= $("#pay_total_price_or").val();
+	var use_point = totalMoney/2;
 	$("#AllPoint").val(point);
-	$("#pay_point_use").text(point);
+	if(point > use_point){
+		alert("적립금은 상품금액의 50%만 사용 가능합니다.");
+		$("#AllPoint").val(use_point);
+		$("#pay_use_point").text(use_point);
+	
+	}
+	point = $("#AllPoint").val();
+	$("#AllPoint").val(point);
+	$("#pay_use_point").text(point);
 	
 	var money = $("#pay_total_money_or").val();
 	var IntMoney = money.replace(",","");
@@ -255,6 +322,7 @@ function clickPoint(){
 		success:function(aa){
 			console.log(aa);
 			$("#checkPoint").val(aa);
+			pointcheck =0;
 		}
 	});
 	
@@ -278,47 +346,7 @@ $("#radio_paymethod").click(function(){
 	
 
 
-$(document).ready(function(){ 
-	$('#AllPoint').blur(function () {
-	var point=$("#AllPoint").val();
-	point = parseInt(point);
-	var inputPoint=$("#checkPoint").val().trim();
-	inputPoint = parseInt(inputPoint);
-		if (!numberJ.test(point)) {
-			console.log("2입력한 point ="+point);
-			console.log("숫자가 아님");
-			return;
-		}else {
-		
-		if(point > inputPoint){
-			console.log("1입력한 point ="+point);
-			console.log("범위를 초과함");
-			//alert("보유하신 적립금보다 많은 적립금을 입력하셨습니다.\n적립금확인을 해주세요.");
-			$("#AllPoint").val("");
-			return;
-		}else{
-			
-			$("#pay_point_use").text(point);
-			var money = $("#pay_total_money_or").val();
-			var IntMoney = money.replace(",","");
-			$("#pay_total_money").text(number(IntMoney));
-			$("#pay_total_money2").text(number(IntMoney));
-			var total = parseInt(IntMoney) - parseInt(point);
-			
-			console.log(IntMoney);
-			console.log(point);
-			$("#pay_total_money").text(number(total));
-			$("#pay_total_money2").text(number(total));
-			console.log(total);
-			
-			return;
-			
-		}
-	}
-	
-    
-	});
-});
+
 
 </script>
 <style>
@@ -407,7 +435,7 @@ $(document).ready(function(){
 									<input type ="hidden" name="prod_title" id="prod_title" value ="${orderVO.prod_title}">
 									<input type ="hidden" name="prod_title_count" id="prod_title_count" value ="${status.count}">
 									<input type="hidden" name="location_before" value="${orderVO.location_before}">
-									<input type="hidden" id="pay_total_point" value="${payVO.pay_total_point}">
+									<input type="hidden" id="pay_total_point" value="${orderVO.prod_total_point}">
 									<tr class="nbg">
 										<td>
 											<div class="tb-center">
@@ -533,7 +561,8 @@ $(document).ready(function(){
 										<input type ="hidden" id="user_address1_or" value ="${userVO.user_address1}">
 										<input type ="hidden" id="user_address2_or" value ="${userVO.user_address2}">
 										<input type="hidden" id="pay_total_money_or" value="${payVO.pay_total_money}">
-										<input type="hidden" id="pay_total_money_or" value="${payVO.pay_total_money}">
+										<input type="hidden" id="pay_total_price_or" value="${payVO.pay_total_price}">
+	
 										
 										
 										
@@ -604,6 +633,7 @@ $(document).ready(function(){
 											 </span>
 										</div></th>								
 										<th scope="col">결제 예정금액</th>
+									
 									</tr>
 									<tr>
 										<td>
@@ -628,7 +658,7 @@ $(document).ready(function(){
 										<td>
 											<div class="base">
 												<strong><em class="fc-red">
-												<span class="op-total block-op-sale-price" price="보유 적립금" id="pay_point_use">0</span></em>원</strong>
+												<span class="op-total block-op-sale-price" price="보유 적립금" id="pay_use_point">0</span></em>원</strong>
 												
 												<a class="plus" style="display: none;">
 													<img src="resources/images/order/plus.png" alt="plus">
@@ -668,7 +698,7 @@ $(document).ready(function(){
 								<tbody>
 									<tr>
 										<th class="txt-c">적립금 사용</th>
-										<td colspan="4"><input type="text" name="pay_use_point" form="order_form"
+										<td colspan="4"><input type="number" name="pay_use_point" form="order_form"
 										 	id="AllPoint" class="MS_input_txt" value=""> 
 										 	<a class="btn-darkgray" href="javascript:AllPoint();">모두 사용하기</a>&nbsp;
 										 	<a class="btn-darkgray" href="javascript:clickPoint();">적립금 확인</a>&nbsp;<input type ="text" id="checkPoint" readonly="readonly" value="">
@@ -1086,7 +1116,7 @@ $(document).ready(function(){
 										<th>최종 결제금액</th>
 										
 										<td><strong class="price" id="pay_total_money"><span><fmt:formatNumber value="${payVO.pay_total_money}" pattern="#,###"></fmt:formatNumber><!-- 장바구니 총 가격 --></span></strong>원
-											&nbsp; (적립예정: <span id ="pay_total_point"><fmt:formatNumber value="${payVO.pay_total_point}" pattern="#,###"></fmt:formatNumber><!-- 장바구니 총 적립금 --></span>원)
+											&nbsp; (적립예정: <span id ="pay_total_point1"><fmt:formatNumber value="${payVO.pay_total_point}" pattern="#,###"></fmt:formatNumber><!-- 장바구니 총 적립금 --></span>원)
 											<div class="reserve-msg">(적립 예정금액과 최종 적립금액은 상이할 수 있습니다.
 												주문 완료 시 지급되는 적립금을 확인해주시기 바랍니다.)</div></td>
 									</tr>
