@@ -407,6 +407,7 @@ $(document).ready(function(){
 									<input type ="hidden" name="prod_title" id="prod_title" value ="${orderVO.prod_title}">
 									<input type ="hidden" name="prod_title_count" id="prod_title_count" value ="${status.count}">
 									<input type="hidden" name="location_before" value="${orderVO.location_before}">
+									<input type="hidden" id="pay_total_point" value="${payVO.pay_total_point}">
 									<tr class="nbg">
 										<td>
 											<div class="tb-center">
@@ -533,6 +534,7 @@ $(document).ready(function(){
 										<input type ="hidden" id="user_address2_or" value ="${userVO.user_address2}">
 										<input type="hidden" id="pay_total_money_or" value="${payVO.pay_total_money}">
 										<input type="hidden" id="pay_total_money_or" value="${payVO.pay_total_money}">
+										
 										
 										
 											<input type="radio" value="H" form="order_form" 
@@ -666,7 +668,7 @@ $(document).ready(function(){
 								<tbody>
 									<tr>
 										<th class="txt-c">적립금 사용</th>
-										<td colspan="4"><input type="text" name="AllPoint" form="order_form"
+										<td colspan="4"><input type="text" name="pay_use_point" form="order_form"
 										 	id="AllPoint" class="MS_input_txt" value=""> 
 										 	<a class="btn-darkgray" href="javascript:AllPoint();">모두 사용하기</a>&nbsp;
 										 	<a class="btn-darkgray" href="javascript:clickPoint();">적립금 확인</a>&nbsp;<input type ="text" id="checkPoint" readonly="readonly" value="">

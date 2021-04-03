@@ -2,7 +2,6 @@ package com.spring.w3m.join.user.vo;
 
 import java.util.Date;
 
-import lombok.Data;
 
 public class UserVO {
 	private String user_id; // 아이디 PK

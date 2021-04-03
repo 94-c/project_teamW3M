@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.spring.w3m.order.user.vo.OrderVO;
 import com.spring.w3m.order.user.vo.PayVO;
+import com.spring.w3m.point.user.vo.PointVO;
 @Service
 public class OrderDAO {
 	@Autowired
@@ -44,15 +45,23 @@ public class OrderDAO {
 	
 		return sqlSessionTemplate.insert("OrderDAO.insert_delivery",vo);
 	}
-	public int update_order_prod(String user_id) {
+	public int update_order_prod(OrderVO ordervo) {
 		
-		return sqlSessionTemplate.update("OrderDAO.update_order_prod",user_id);
+		return sqlSessionTemplate.update("OrderDAO.update_order_prod",ordervo);
 	}
 	public int update_order_list_status(String user_id) {
 		return sqlSessionTemplate.update("OrderDAO.update_order_list_status",user_id);
 	}
 	public int delete_cart(String user_id) {
 		return sqlSessionTemplate.delete("OrderDAO.delete_cart",user_id);
+	}
+	public int insert_Use_point(PointVO pointvo) {
+		
+		return sqlSessionTemplate.insert("OrderDAO.insert_Use_point",pointvo) ;
+	}
+	public int update_user_point(String user_id) {
+	
+		return sqlSessionTemplate.update("OrderDAO.update_user_point",user_id);
 	}
 
 }

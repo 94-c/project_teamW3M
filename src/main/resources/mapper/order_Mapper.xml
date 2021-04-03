@@ -51,11 +51,22 @@
 	</insert>
 	
 	<update id="update_order_prod">
-	UPDATE order_prod set order_status = '배송전' where user_id = #{user_id} and order_status = '구매대기'
+	UPDATE order_prod set order_status = '배송전',order_seq = #{order_seq} where user_id = #{user_id} and order_status = '구매대기'
 	</update>
 	
-	<delete id="delete_cart">
+	<delete id="delete_cart" parameterType="PayVO">
 	DELETE FROM cart WHERE user_id = #{user_id}
 	</delete>
 	
+	<insert id="insert_Use_point">
+	INSERT INTO add_point (user_id, add_point, order_seq, point_content, order_state)
+	VALUES
+	(#{user_id},#{add_point},#{order_seq},#{point_content},#{order_state})
+	</insert>
+	
+	<select id="update_user_point" resultType="int">
+	update user_member 
+	set user_point = (select sum(add_point) from add_point where user_id =#{user_id} and order_state = '사용가능') 
+	where user_id =#{user_id}
+	</select>
 </mapper>

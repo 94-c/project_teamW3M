@@ -13,10 +13,12 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.spring.w3m.delivery.common.service.DeliveryService;
 import com.spring.w3m.delivery.common.vo.DeliveryVO;
+import com.spring.w3m.join.user.service.UserService;
 import com.spring.w3m.join.user.vo.UserVO;
 import com.spring.w3m.order.user.service.OrderService;
 import com.spring.w3m.order.user.vo.OrderVO;
 import com.spring.w3m.order.user.vo.PayVO;
+import com.spring.w3m.point.user.vo.PointVO;
 import com.spring.w3m.product.admin.vo.ProductVO;
 
 @Controller
@@ -26,7 +28,8 @@ public class OrderController {
 	private OrderService orderService;
 	@Autowired
 	private DeliveryService deliveryservice;
-
+	@Autowired
+	private UserService userService;
 
 	@RequestMapping("/send_order_go.do")
 	public String OrderList(@SessionAttribute("userVO") UserVO vo, HttpSession session) { //주문
@@ -116,7 +119,7 @@ public class OrderController {
 			System.out.println(a +"- 0이면 실패");
 			
 			int orVO = orderService.orderNum(vo.getUser_id());
-	
+			
 			payVO.setOrder_seq(orVO);
 			int aaa = orderService.insert_pay(payVO);
 			System.out.println(aaa +"- 0이면 실패");
@@ -172,8 +175,8 @@ public class OrderController {
 			
 			
 			System.out.println(a +"- 0이면 실패");
-			//order_prod 테이블 - 주문상태를 결제완료 업데이트
-			int aa=orderService.update_order_prod(vo.getUser_id());
+			//order_prod 테이블 - 주문상태를 결제완료 업데이트 + 주문번호 입력 
+			int aa=orderService.update_order_prod(ordervo);
 			System.out.println(aa +"- 0이면 실패");
 			//장바구니에서 결제완료 시 장바구니 비우기
 			String location=ordervo.getLocation_before();
@@ -183,9 +186,32 @@ public class OrderController {
 				int aaaa=orderService.delete_cart(vo.getUser_id());
 				System.out.println(aaaa +"- 0이면 실패");
 			}
+			//사용한 적립금 적립금테이블에 누적
+			PointVO pointvo_use = new PointVO();
+			pointvo_use.setUser_id(vo.getUser_id());
+			int use_point = payvo.getPay_use_point() *-1;
+			pointvo_use.setAdd_point(use_point);
+			pointvo_use.setOrder_seq(ordervo.getOrder_seq());
+			pointvo_use.setPoint_content(total_title);
+			pointvo_use.setOrder_state("사용가능");// 결제 취소시 상태를 사용 불가로 바꿀꺼임
+			orderService.insert_Use_point(pointvo_use);
+			//구매할때 지급된 추가 적립급 누적 단,결제 취소시 상태를 사용 불가로 바꿈 
+			PointVO pointvo_add = new PointVO();
+			pointvo_add.setUser_id(vo.getUser_id());
+			pointvo_add.setAdd_point(payvo.getPay_total_point());
+			pointvo_add.setOrder_seq(ordervo.getOrder_seq());
+			pointvo_add.setPoint_content(total_title);
+			pointvo_add.setOrder_state("사용불가");// 구매확정시 상태를 사용 가능로 바꿀꺼임
+			orderService.insert_Use_point(pointvo_add);
+			
+			orderService.update_user_point(vo.getUser_id());//사용한 적립금 업데이트!
+			
 			//order_list 테이블 - 주문생태를 배송전 업데이트 
 			int aaa=orderService.update_order_list_status(vo.getUser_id());
 			System.out.println(aaa +"- 0이면 실패");
+			
+			UserVO user = userService.getUser(vo);
+			session.setAttribute("userVO", user);
 			
 			return "order/order_success";
 		}

@@ -10,7 +10,7 @@
 	from
 		add_point
 	where
-		user_id = #{user_id}
+		user_id = #{user_id} and order_state='사용가능'
 	order by
 		use_date desc
 </select>
