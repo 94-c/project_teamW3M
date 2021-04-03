@@ -68,9 +68,10 @@ public class ReviewDAO {
 		return sqlSessionTemplate.selectList("ReviewDAO.getSearchPagingList");
 	}
 
-	public int reviewReplyTotal(ReplyVO vo) {
-		return sqlSessionTemplate.selectOne("reviewtotal.review_reply_total", vo);
+	  public int reviewReplyCount(ReviewVO vo) { 
+		 return sqlSessionTemplate.selectOne("ReviewDAO.reviewReplyCount", vo); 
 	}
+
 	
 	/*
 	 * public ProductVO getProduct(ProductVO vo) { return

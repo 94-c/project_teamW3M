@@ -31,4 +31,6 @@ public interface ReviewService {
 
 	List<ReviewVO> getSearchPagingList(Pagination pagination);
 	
+	int reviewReplyCount(ReviewVO vo);
+	
 }

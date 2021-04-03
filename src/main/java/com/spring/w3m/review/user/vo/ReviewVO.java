@@ -15,7 +15,14 @@ public class ReviewVO {
 	private String prod_code;
 	private String searchType;
 	private String keyword;
+	private int reply_cnt;
 	
+	public int getReply_cnt() {
+		return reply_cnt;
+	}
+	public void setReply_cnt(int reply_cnt) {
+		this.reply_cnt = reply_cnt;
+	}
 	public int getReview_seq() {
 		return review_seq;
 	}
@@ -95,7 +102,7 @@ public class ReviewVO {
 				+ review_writer + ", review_content=" + review_content + ", review_email=" + review_email
 				+ ", review_date=" + review_date + ", review_pass=" + review_pass + ", review_cnt=" + review_cnt
 				+ ", review_image=" + review_image + ", prod_code=" + prod_code + ", searchType=" + searchType
-				+ ", keyword=" + keyword + "]";
+				+ ", keyword=" + keyword + ", reply_cnt=" + reply_cnt + "]";
 	}
 	
 	

@@ -79,7 +79,9 @@ public class ReplyVO {
 	@Override
 	public String toString() {
 		return "ReplyVO [inq_seq=" + inq_seq + ", re_seq=" + re_seq + ", re_content=" + re_content + ", re_writer="
-				+ re_writer + ", re_date=" + re_date + "]";
+				+ re_writer + ", re_date=" + re_date + ", review_seq=" + review_seq + ", review_re_seq=" + review_re_seq
+				+ ", review_re_content=" + review_re_content + ", review_re_writer=" + review_re_writer
+				+ ", review_re_date=" + review_re_date + "]";
 	}
 	
 }

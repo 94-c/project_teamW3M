@@ -35,7 +35,7 @@ public class ReviewController {
 
 	// 후기 게시글
 	@RequestMapping("/review.do")
-	public String getReviewList(Model model, ReplyVO vo, @RequestParam(required = false, defaultValue = "1") int page,
+	public String getReviewList(Model model, ReplyVO rvo, ReviewVO vo, @RequestParam(required = false, defaultValue = "1") int page,
 										@RequestParam(required = false, defaultValue = "1") int range,
 										@RequestParam(required = false, defaultValue = "title") String searchType,
 										@RequestParam(required = false) String keyword) throws PSQLException, IOException {
@@ -52,12 +52,15 @@ public class ReviewController {
 		// Pagination
 		Pagination pagination = new Pagination();
 		pagination.pageInfo(page, range, cnt);
-
+		
+		int replycnt = reviewService.reviewReplyCount(vo);
+		
 		List<ReviewVO> pageList = reviewService.getPageList(search);
-
+		
 		model.addAttribute("pagination", search);
 		model.addAttribute("reviewList", pageList);
 		model.addAttribute("cnt", cnt);
+		model.addAttribute("recnt", replycnt);
 
 		return "review/review";
 	}
@@ -101,10 +104,10 @@ public class ReviewController {
 
 	// 게시글 상세 보기
 	@RequestMapping("/reviewContent.do")
-	public String getReview(ReviewVO vo, Model model) {
+	public String getReview(ReviewVO vo, ReplyVO rvo, Model model) {
 		System.out.println("글 상세보기 처리");
-		model.addAttribute("reviewVO", reviewService.getReview(vo));
 		
+		model.addAttribute("reviewVO", reviewService.getReview(vo));
 		
 		List<ReplyVO> reviewReplyList = replyService.getReviewReplyList(vo.getReview_seq());
 		model.addAttribute("reviewReplyList", reviewReplyList);
