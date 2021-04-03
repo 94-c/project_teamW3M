@@ -131,6 +131,7 @@ public class MyPageController {
 		return "mypage/myOrder";
 	}
 	
+<<<<<<< HEAD
 	//주문내역
 		@RequestMapping("deliveryState.do")
 		public String deliveryState(Model model, @SessionAttribute("userVO") UserVO vo, DeliveryVO vo1) {
@@ -139,5 +140,13 @@ public class MyPageController {
 			model.addAttribute("deliveryState", deliveryState);
 			return "mypage/deliveryState";
 		}
+=======
+	@RequestMapping("myOrderDetail.do")
+	public String getOrderDetail(Model model, @SessionAttribute("userVO") UserVO vo) {
+		
+		return "mypage/orderDetail";
+	}
+	
+>>>>>>> 5e658141e1d5e1d38fd0cc6d83c1cceeb48106b5
 	
 }
