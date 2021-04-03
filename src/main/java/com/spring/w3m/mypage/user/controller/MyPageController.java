@@ -144,10 +144,17 @@ public class MyPageController {
 	
 	// 주문상세
 	@RequestMapping("myOrderDetail.do")
-	public String getOrderDetail(Model model, @SessionAttribute("userVO") UserVO vo, OrderVO vo1) {
-		vo1.setUser_id(vo.getUser_id());
-		OrderVO receiverInfo = myPageService.getReceiverInfo(vo1);
-		model.addAttribute("receiverInfo", receiverInfo);
+	public String getOrderDetail(Model model, @SessionAttribute("userVO") UserVO vo, OrderVO oVO, DeliveryVO dVO) {
+		oVO.setUser_id(vo.getUser_id());
+		OrderVO receiverInfo = myPageService.getReceiverInfo(oVO);
+		
+		dVO.setUser_id(vo.getUser_id());
+		DeliveryVO deliveryInfo = myPageService.getDeliveryInfo(dVO);
+		String lotteRandomNum = myPageService.makeRandomNumber();
+		
+		model.addAttribute("receiverInfo", receiverInfo); //주문자정보
+		model.addAttribute("deliveryInfo", deliveryInfo); //배송지정보
+		model.addAttribute("lotteRandomNum", lotteRandomNum);
 		return "mypage/orderDetail";
 	}
 

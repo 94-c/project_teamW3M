@@ -58,11 +58,21 @@ public class MyPageServiceImpl implements MyPageService {
 	public OrderVO getReceiverInfo(OrderVO vo) {
 		return dao.getReceiverInfo(vo);
 	}
+
+	@Override
+	public DeliveryVO getDeliveryInfo(DeliveryVO vo) {
+		return dao.getDeliveryInfo(vo);
+	}
 	
-//	@Override
-//	public List<OrderVO> orderDetail(String user_id){
-//		return dao.orderDetail(user_id);
-//	}
-	
+	public String makeRandomNumber() { //롯데택배 송장번호 제조기ㅋㅋ
+		int[] randomNumbers = new int[12];
+		String strRd = "";
+		for(int i=0; i<randomNumbers.length; i++) {
+			randomNumbers[i] = (int) (Math.random()*10);
+			strRd += String.valueOf(randomNumbers[i]);
+		}		
+		System.out.println(strRd);		
+		return strRd;
+	}
 	
 }

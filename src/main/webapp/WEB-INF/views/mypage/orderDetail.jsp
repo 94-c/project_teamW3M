@@ -17,12 +17,13 @@
 				<div class="tit-pop">
 					<h1>주문정보</h1>
 					<span class="txt"><em class="order_name">${userVO.user_name}</em>님께서 
-					<em class="order_date">${receiverInfo.order_date}</em>에 주문하신 내역입니다.</span>
+					<em class="order_date"><fmt:formatDate value="${receiverInfo.order_date}" pattern="yyyy년 MM월 dd일 a h시 mm분"/></em>에 주문하신 내역입니다.</span>
 				</div>
 				<!-- 후기등록 탭 -->
+				
 				<ul class="tab">
-					<li></li>
-					<li><a href="javascript:order_view('brdreview', '20210402100008-52455989704');">상품후기등록</a>
+					<li><a href="#">주문상세</a></li>
+					<li><a href="#">상품후기등록</a>
 					</li>
 				</ul>
 				<!-- //후기등록 탭 -->
@@ -42,18 +43,15 @@
 									<th scope="row"><div class="tb-left">주문번호</div></th>
 									<td><div class="tb-left">${receiverInfo.order_seq}</div></td>
 									<th scope="row"><div class="tb-left">주문일자</div></th>
-									<td><div class="tb-left">${receiverInfo.order_date}</div></td>
+									<td><div class="tb-left"><fmt:formatDate value="${receiverInfo.order_date}" pattern="yyyy년 MM월 dd일"/></div></td>
 								</tr>
 								<tr>
 									<th scope="row"><div class="tb-left">주문자</div></th>
-									<td><div class="tb-left">${receiverInfo.receiver_name}</div></td>
+									<td><div class="tb-left">${receiverInfo.user_name}</div></td>
 									<th scope="row"><div class="tb-left">주문서 입금현황</div></th>
 									<td><div class="tb-left"><!-- 입금 완료, 배송 완료 --></div></td>
 								</tr>
-								<tr>
-									<th scope="row"><div class="tb-left">주문 메모</div></th>
-									<td colspan="3"><div class="tb-left"><!-- 주문 메모 --></div></td>
-								</tr>
+								
 							</tbody>
 						</table>
 					</div>
@@ -71,26 +69,31 @@
 								<tr>
 									<th scope="row"><div class="tb-left">배송번호</div></th>
 									<td>
-										<div class="tb-left"><!-- 배송 번호 --></div>
+										<div class="tb-left">${deliveryInfo.delivery_seq}</div>
 									</td>
+
 									<th scope="row"><div class="tb-left">송장번호</div></th>
 									<td>
-										<div class="tb-left"><!-- 송장 번호 --></div>
+										<div class="tb-left">롯데택배 ${lotteRandomNum}</div>
 									</td>
 								</tr>
 								<tr>
 									<th scope="row"><div class="tb-left">수취인</div></th>
-									<td><div class="tb-left"><!-- 수령인 --></div></td>
+									<td><div class="tb-left">${deliveryInfo.receiver_name}</div></td>
+
 									<th scope="row"><div class="tb-left">연락처</div></th>
-									<td><div class="tb-left"><!-- 수령인 번호 --></div></td>
+									<td><div class="tb-left">${deliveryInfo.receiver_phone1}
+											/ ${deliveryInfo.receiver_phone2}</div></td>
 								</tr>
 								<tr>
 									<th scope="row"><div class="tb-left">주소</div></th>
-									<td colspan="3"><div class="tb-left"><!-- 주소지(zipcod, address1, address2) --></div></td>
+									<td colspan="3"><div class="tb-left">(${deliveryInfo.receiver_zipcode})
+											${deliveryInfo.receiver_address1}
+											${deliveryInfo.receiver_address2}</div></td>
 								</tr>
 								<tr>
 									<th scope="row"><div class="tb-left">배송메세지</div></th>
-									<td colspan="3"><div class="tb-left"><!-- 배송 메세지 --></div></td>
+									<td colspan="3"><div class="tb-left">${deliveryInfo.receiver_memo}</div></td>
 								</tr>
 							</tbody>
 						</table>

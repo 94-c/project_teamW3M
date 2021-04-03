@@ -21,11 +21,13 @@ public interface MyPageService {
 
 	List<ReviewVO> myReviewList(Search search);
 	
-	List<OrderVO> myOrderList(String user_id); //마이페이지 주문내역
-	
 	List<DeliveryVO> deliveryState(int order_seq);
 	
-//	List<OrderVO> orderDetail(String user_id);
+	List<OrderVO> myOrderList(String user_id); //마이페이지 주문내역
 	
-	OrderVO getReceiverInfo(OrderVO vo);
+	OrderVO getReceiverInfo(OrderVO vo); //주문상세 주문자정보
+	
+	DeliveryVO getDeliveryInfo(DeliveryVO vo); //주문상세 배송지정보
+	
+	String makeRandomNumber(); //임의의 12자리 택배송장번호
 }

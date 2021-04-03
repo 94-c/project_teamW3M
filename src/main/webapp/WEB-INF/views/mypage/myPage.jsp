@@ -19,11 +19,8 @@
 							<div class="user-img"></div>
 							<div class="user-info">
 								<p>
-									<!-- 이런식으로 나와야 한다. 최형우[hyeognwoo26]님  -->
-
-									<label>${userVO.user_name }[${userVO.user_id}]님</label> <a
-										href="memberInfoUpdate.do" class="CSSbuttonWhite CSSbuttonMin">수정</a>
-
+									<label>${userVO.user_name }[${userVO.user_id}]님</label>
+									<a href="memberInfoUpdate.do" class="CSSbuttonWhite CSSbuttonMin">수정</a>
 								</p>
 								<div class="box">
 									<dl>

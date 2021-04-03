@@ -66,8 +66,12 @@
 	</select>
 	
 	<select id="receiverInfo" resultType="OrderVO">
-		SELECT o.order_date, o.order_seq, d.receiver_name from order_list AS o, delivery AS d
-		WHERE  o.order_seq = d.order_seq AND o.order_seq = #{order_seq} AND o.user_id = #{user_id}
+		SELECT o.order_date, o.order_seq, u.user_name FROM order_list AS o, user_member AS u
+		WHERE u.user_id = o.user_id AND o.order_seq = #{order_seq} AND o.user_id = #{user_id}
+	</select>
+	
+	<select id="deliveryInfo" resultType="DeliveryVO">
+		SELECT * FROM delivery WHERE order_seq = #{order_seq} AND user_id = #{user_id}
 	</select>
 	
 	
