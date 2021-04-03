@@ -12,11 +12,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.spring.w3m.delivery.common.service.DeliveryService;
 import com.spring.w3m.delivery.common.vo.DeliveryVO;
-import com.spring.w3m.order.user.vo.PayVO;
 import com.spring.w3m.paging.common.Pagination;
 import com.spring.w3m.paging.common.Search;
 import com.spring.w3m.point.user.service.PointService;
-import com.spring.w3m.point.user.vo.PointVO;
 
 @Controller
 public class DeliveryController {

@@ -28,15 +28,16 @@ public class MyPageController {
 	private MyPageService myPageService;
 	@Autowired
 	private PointService pointService;
-	
+
 	@RequestMapping("/mypage.do")
-	public String myPage() { //마이페이지 진입
+	public String myPage() { // 마이페이지 진입
 		System.out.println("마이페이지 진입");
 		return "mypage/myPage";
 	}
 
 	@RequestMapping("/myinquryList.do")
-	public String myWriteList(Model model,UserVO vo1, InquiryVO vo, @RequestParam(required = false, defaultValue = "1") int page,
+	public String myWriteList(Model model, UserVO vo1, InquiryVO vo,
+			@RequestParam(required = false, defaultValue = "1") int page,
 			@RequestParam(required = false, defaultValue = "1") int range,
 			@RequestParam(required = false, defaultValue = "title") String searchType,
 			@RequestParam(required = false) String keyword) throws PSQLException, IOException {
@@ -48,7 +49,7 @@ public class MyPageController {
 		search.setUser_email(vo1.getUser_email());
 		search.setProd_code(vo.getProd_code());
 		int cnt = myPageService.myPageListCnt(search);
-		
+
 		search.pageInfo(page, range, cnt);
 
 		// Pagination
@@ -56,16 +57,17 @@ public class MyPageController {
 		pagination.pageInfo(page, range, cnt);
 
 		List<InquiryVO> pageList = myPageService.myPageList(search);
-		
+
 		model.addAttribute("userVO", myPageService.myUser(vo1));
 		model.addAttribute("pagination", search);
 		model.addAttribute("inquiryList", pageList);
 		model.addAttribute("cnt", cnt);
 		return "mypage/myWriteList";
 	}
-	
+
 	@RequestMapping("/myReviewList.do")
-	public String myReviewList(Model model,UserVO vo1, ReviewVO vo, @RequestParam(required = false, defaultValue = "1") int page,
+	public String myReviewList(Model model, UserVO vo1, ReviewVO vo,
+			@RequestParam(required = false, defaultValue = "1") int page,
 			@RequestParam(required = false, defaultValue = "1") int range,
 			@RequestParam(required = false, defaultValue = "title") String searchType,
 			@RequestParam(required = false) String keyword) throws PSQLException, IOException {
@@ -77,7 +79,7 @@ public class MyPageController {
 		search.setUser_email(vo1.getUser_email());
 		search.setProd_code(vo.getProd_code());
 		int cnt = myPageService.myReviewListCnt(search);
-		
+
 		search.pageInfo(page, range, cnt);
 
 		// Pagination
@@ -85,16 +87,17 @@ public class MyPageController {
 		pagination.pageInfo(page, range, cnt);
 
 		List<ReviewVO> pageList = myPageService.myReviewList(search);
-		
+
 		model.addAttribute("userVO", myPageService.myUser(vo1));
 		model.addAttribute("pagination", search);
 		model.addAttribute("ReviewList", pageList);
 		model.addAttribute("cnt", cnt);
 		return "mypage/myReviewList";
 	}
-	
+
 	@RequestMapping("/getPointList.do")
-	public String getPointList(Model model,UserVO vo1, PointVO vo, @RequestParam(required = false, defaultValue = "1") int page,
+	public String getPointList(Model model, UserVO vo1, PointVO vo,
+			@RequestParam(required = false, defaultValue = "1") int page,
 			@RequestParam(required = false, defaultValue = "1") int range,
 			@RequestParam(required = false, defaultValue = "title") String searchType,
 			@RequestParam(required = false) String keyword) throws PSQLException, IOException {
@@ -105,7 +108,7 @@ public class MyPageController {
 		search.setKeyword(keyword);
 		search.setUser_id(vo1.getUser_id());
 		int cnt = pointService.getPointListCnt(search);
-		
+
 		search.pageInfo(page, range, cnt);
 
 		// Pagination
@@ -113,40 +116,37 @@ public class MyPageController {
 		pagination.pageInfo(page, range, cnt);
 
 		List<PointVO> pageList = pointService.getPointPageList(search);
-		
-		
+
 		model.addAttribute("userVO", myPageService.myUser(vo1));
 		model.addAttribute("pagination", search);
 		model.addAttribute("pointList", pageList);
 		model.addAttribute("cnt", cnt);
 		return "mypage/myPoint";
 	}
-	
-	//주문내역
+
+	// 주문내역
 	@RequestMapping("myOrderList.do")
 	public String getOrderList(Model model, @SessionAttribute("userVO") UserVO vo) {
-		
-		List<OrderVO> myOrderList =  myPageService.myOrderList(vo.getUser_id());
+
+		List<OrderVO> myOrderList = myPageService.myOrderList(vo.getUser_id());
 		model.addAttribute("myOrderList", myOrderList);
 		return "mypage/myOrder";
 	}
-	
-<<<<<<< HEAD
-	//주문내역
-		@RequestMapping("deliveryState.do")
-		public String deliveryState(Model model, @SessionAttribute("userVO") UserVO vo, DeliveryVO vo1) {
-			System.out.println(vo1.getOrder_seq());
-			List<DeliveryVO> deliveryState =  myPageService.deliveryState(vo1.getOrder_seq());
-			model.addAttribute("deliveryState", deliveryState);
-			return "mypage/deliveryState";
-		}
-=======
-	@RequestMapping("myOrderDetail.do")
-	public String getOrderDetail(Model model, @SessionAttribute("userVO") UserVO vo) {
-		
-		return "mypage/orderDetail";
+
+	// 배송상세
+	@RequestMapping("deliveryState.do")
+	public String deliveryState(Model model, @SessionAttribute("userVO") UserVO vo, DeliveryVO vo1) {
+		System.out.println(vo1.getOrder_seq());
+		List<DeliveryVO> deliveryState = myPageService.deliveryState(vo1.getOrder_seq());
+		model.addAttribute("deliveryState", deliveryState);
+		return "mypage/deliveryState";
 	}
 	
->>>>>>> 5e658141e1d5e1d38fd0cc6d83c1cceeb48106b5
-	
+	// 주문상세
+	@RequestMapping("myOrderDetail.do")
+	public String getOrderDetail(Model model, @SessionAttribute("userVO") UserVO vo) {
+
+		return "mypage/orderDetail";
+	}
+
 }
