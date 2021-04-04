@@ -22,8 +22,7 @@
 <!-- 댓글 수정 -->
 	<update id="updateReply">
 		UPDATE reply SET re_content = #{re_content} WHERE re_seq = #{re_seq}
-	</update>
-	
+	</update>	
 	
 <!-- 후기 댓글 조회 -->
 	<select id="getReviewReplyList" resultType="ReplyVO">
@@ -49,5 +48,8 @@
 	<delete id="deleteReviewReply">
 		DELETE FROM review_reply WHERE review_re_seq = #{review_re_seq}
 	</delete>	
+
+<!-- 후기 댓글 갯수 -->
+	<update id="replyCntUpdate" parameterType="int"> update review set review_cnt=review_cnt+1 WHERE review_seq=#{review_seq} from review_reply </update>
 		
 </mapper>

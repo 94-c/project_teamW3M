@@ -74,5 +74,9 @@
 		SELECT * FROM delivery WHERE order_seq = #{order_seq} AND user_id = #{user_id}
 	</select>
 	
+<!-- 최신 게시글 보기 -->
+	<select resultType="com.spring.w3m.mypage.user.vo.MyPageVO" id="recentList">
+		select * from (select inq_seq, inq_title, inq_date, inq_email, '문의사항' as table_name from inquiry union select review_seq, review_title, review_date, review_email, '후기' as table_name from review) as u where u.inq_email=#{user_email} order by u.inq_date desc limit 5;
+	</select>
 	
 </mapper>

@@ -34,6 +34,7 @@ public class ReplyDAO {
 	// 댓글 등록
 	public void insertReply(ReplyVO vo) {
 		sqlSessionTemplate.insert("ReplyDAO.insertReply", vo);
+		sqlSessionTemplate.update("replyCntUpdate", vo);
 		System.out.println("댓글 등록");
 	}
 	

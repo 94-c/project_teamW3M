@@ -15,6 +15,7 @@ import com.spring.w3m.delivery.common.vo.DeliveryVO;
 import com.spring.w3m.inquiry.user.vo.InquiryVO;
 import com.spring.w3m.join.user.vo.UserVO;
 import com.spring.w3m.mypage.user.service.MyPageService;
+import com.spring.w3m.mypage.user.vo.MyPageVO;
 import com.spring.w3m.order.user.vo.OrderVO;
 import com.spring.w3m.paging.common.Pagination;
 import com.spring.w3m.paging.common.Search;
@@ -30,8 +31,9 @@ public class MyPageController {
 	private PointService pointService;
 
 	@RequestMapping("/mypage.do")
-	public String myPage() { // 마이페이지 진입
+	public String myPage(MyPageVO vo, Model model) { // 마이페이지 진입
 		System.out.println("마이페이지 진입");
+		model.addAttribute("myRecent", myPageService.recentList(vo));
 		return "mypage/myPage";
 	}
 
