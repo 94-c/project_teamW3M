@@ -53,11 +53,6 @@ public class ReviewController {
 		Pagination pagination = new Pagination();
 		pagination.pageInfo(page, range, cnt);
 		
-		System.out.println(vo.getReply_cnt());
-		int replycnt = reviewService.reviewReplyCount(vo);
-		vo.setReply_cnt(replycnt);
-		System.out.println(vo.getReply_cnt());
-		
 		List<ReviewVO> pageList = reviewService.getPageList(search);
 		
 		model.addAttribute("pagination", search);
@@ -69,16 +64,19 @@ public class ReviewController {
 
 	// 게시판 글 작성하기(동작)
 	@RequestMapping("/review_write.do")
-	public String reviewWrite(ReviewVO vo, Model model, MultipartFile inq_mask) throws Exception {
-		
-		  InputStream ism = inq_mask.getInputStream(); String maskKey =
-		  inq_mask.getOriginalFilename(); System.out.println(maskKey); String
-		  contentType = inq_mask.getContentType(); long contentLength =
-		  inq_mask.getSize(); System.out.println(maskKey);
+	public String reviewWrite(ReviewVO vo, Model model, MultipartFile inq_mask) throws Exception {		
+		  InputStream ism = inq_mask.getInputStream(); 
+		  String maskKey = inq_mask.getOriginalFilename(); 
+		  System.out.println(maskKey); 
+		  String contentType = inq_mask.getContentType(); 
+		  long contentLength = inq_mask.getSize(); System.out.println(maskKey);
 		  
-		  if (maskKey == "") { vo.setReview_image("파일없음"); } else { String path =
-		  "https://imageup.s3.ap-northeast-2.amazonaws.com/inquiry/" + maskKey;
-		  vo.setReview_image(path); }
+		  if (maskKey == "") { 
+			  vo.setReview_image("파일없음"); 
+			  } else { 
+				  String path = "https://imageup.s3.ap-northeast-2.amazonaws.com/inquiry/" + maskKey;
+				  vo.setReview_image(path); 
+				  }
 		  
 		  awsS3.uploadInquiry(ism, maskKey, contentType, contentLength);
 		

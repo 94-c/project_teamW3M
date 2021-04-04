@@ -100,10 +100,4 @@
 	</select>
 	<!-- 여기까지 페이징 처리 -->
 
-<!-- 후기 댓글 갯수 -->
-	<select id="reviewReplyCount" resultType="int">
-		SELECT (SELECT count(*) FROM review_reply WHERE review_seq=#{review_seq}) as reply_cnt
-		FROM review WHERE review_seq=#{review_seq}
-	</select>
-
 </mapper>

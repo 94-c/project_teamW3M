@@ -71,10 +71,5 @@ public class ReviewDAO {
 		return sqlSessionTemplate.selectOne("ReviewDAO.reviewReplyCount", vo);
 	}
 	
-	/*
-	 * public ProductVO getProduct(ProductVO vo) { return
-	 * sqlSessionTemplate.selectOne("ReviewDAO.getProduct", vo); }
-	 */
-	
 }
 

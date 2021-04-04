@@ -113,10 +113,22 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td colspan="3"><div class="tb-center">작성된 게시글이
-											없습니다.</div></td>
-								</tr>
+								<c:forEach var="recent" items="${myRecent}">
+												<tr>
+													<td scope="col"><div class="tb-center"> <fmt:formatDate value="${recent.inq_date}" pattern="yyyy-MM-dd" /></div></td>
+													<c:if test="${recent.table_name eq '문의사항'}">
+													<td scope="col"><div class="tb-center"><a
+																href='<c:url value='/inquiryContent.do?inq_seq=${recent.inq_seq}'/>'
+																class="text-dark">${recent.inq_title}</a></div></td>
+													</c:if>
+													<c:if test="${recent.table_name eq '후기'}">
+													<td scope="col"><div class="tb-center"><a
+																href='<c:url value='/reviewContent.do?review_seq=${recent.inq_seq}'/>'
+																class="text-dark">${recent.inq_title}</a></div></td>
+													</c:if>
+													<td scope="col"><div class="tb-center">${recent.table_name}</div></td>
+												</tr>
+											</c:forEach>
 							</tbody>
 						</table>
 					</div>
