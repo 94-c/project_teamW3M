@@ -140,6 +140,17 @@ table, td, th {
 												<option value="cancel">주문취소</option>
 											</select>
 											<input type="hidden" name="delivery_seq" value="${del.delivery_seq}">
+											<input type="hidden" name="order_seq" value="${del.order_seq}">
+											<input type="hidden" name="prod_title" value="${del.prod_title}">
+											<input type="hidden" name="user_id" value="${del.user_id}">
+											<input type="hidden" name="receiver_name" value="${del.receiver_name}">
+											<input type="hidden" name="receiver_zipcode" value="${del.receiver_zipcode}">
+											<input type="hidden" name="receiver_address1" value="${del.receiver_address1}">
+											<input type="hidden" name="receiver_address2" value="${del.receiver_address2}">
+											<input type="hidden" name="receiver_phone1" value="${del.receiver_phone1}">
+											<input type="hidden" name="receiver_phone2" value="${del.receiver_phone2}">
+											<input type="hidden" name="receiver_memo" value="${del.receiver_memo}">
+											
 											<input type="submit" value="상태변경" style="color:#fc0377"> 
 										</form>
 									</td>
