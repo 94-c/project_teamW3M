@@ -47,6 +47,7 @@
                                         매출 통계
              </div>
           <div class="card-body">
+           <input type = "text"	id="testDatepicker">
            <div id="chart1" style="width: auto; height: 600px;"></div>
 			</div>
 		</div><!-- body end -->

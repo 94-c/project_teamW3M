@@ -55,7 +55,7 @@ public class AdminLoginController {
 		model.addAttribute("pagination", search);
 		model.addAttribute("userList", pageList);
 		model.addAttribute("cnt", cnt);		
-		return "page/index";
+		return "page/index/index";
 
 	}
 
@@ -83,7 +83,6 @@ public class AdminLoginController {
 		model.addAttribute("pagination", search);
 		model.addAttribute("userList", pageList);
 		model.addAttribute("cnt", cnt);
-		/* model.addAttribute("userList", adminService.getUserList()); */
 
 		// 관리자 로그인 유효성
 		AdminVO voo = adminService.getAdmin();
@@ -92,7 +91,7 @@ public class AdminLoginController {
 
 		if (vo.getAdmin_id().equals(voo.getAdmin_id())) {
 			if (vo.getAdmin_password().equals(voo.getAdmin_password())) {
-				return "page/index";
+				return "page/index/index";
 			} else {
 				System.out.println("아이디는 맞으나 비번이 틀림");
 				return "login";
@@ -141,7 +140,7 @@ public class AdminLoginController {
 		model.addAttribute("userList", pageList);
 		model.addAttribute("cnt", cnt);
 
-		return "page/userMemberList";
+		return "page/user/userMemberList";
 	}
 
 	

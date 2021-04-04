@@ -349,51 +349,9 @@ $("#radio_paymethod").click(function(){
 
 
 </script>
-<style>
-@charset "UTF-8";
-.tooltipBar
-{
-    position: relative;
-    display: inline-block;
-    border-bottom: 1px ;
-    padding: 0 10px;
-    text-align: center;
-}
-.tooltipBar .tooltipBartext
-{
-    visibility: hidden;
-    width: 150px;
-    background-color: black;
-    color: #ffffff;
-    text-align: center;
-    padding: 5px 0;
-    position: absolute;
-    z-index: 1;
-    top: -5px;
-    left: 110%;
-    
-    
-}
-.tooltipBar .tooltipBartext::after
-{
-    content: "";
-    position: absolute;
-    top: 50%;
-    right: 100%;
-    margin-top: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: transparent black transparent transparent;
-}
-.tooltipBar:hover .tooltipBartext
-{
-    visibility: visible;
-}
-
-/* BASIC css end */
-
-</style>
 <link href="resources/css/order.css" rel="stylesheet" type="text/css">
+<link href="resources/css/orderList.css" rel="stylesheet" type="text/css">
+
 <div id="contentWrap">
 
 	<div id="content">

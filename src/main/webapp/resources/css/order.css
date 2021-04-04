@@ -26,7 +26,7 @@
 #order .btn-darkgray { display: inline-block; height: 23px; line-height: 25px; padding: 0 10px; border: 1px solid #222; background: #555; color: #fff; font-size: 11px; font-weight: bold; border-radius: 3px; }
 #order .btn-white { display: inline-block; height: 23px; line-height: 25px; padding: 0 5px; border: 1px solid #ddd; color: #000; font-weight: bold; letter-spacing: -1px; border-radius: 3px; }
 #order #paybutton { margin-top: 40px; text-align: center }
-#order #paybutton a { width:162px; height:48px; font-size:16px; line-height:48px }
+#order #paybutton a { width:178px; height:58px; font-size:16px; line-height:58px }
 #order #paybutton img { margin: 0 5px; }
 #order .tbl-order { position: relative; border-top:1px solid #000 }
 #order .tbl-order .txt-l, 
