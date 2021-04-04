@@ -14,15 +14,11 @@ import com.spring.w3m.delivery.common.service.DeliveryService;
 import com.spring.w3m.delivery.common.vo.DeliveryVO;
 import com.spring.w3m.paging.common.Pagination;
 import com.spring.w3m.paging.common.Search;
-import com.spring.w3m.point.user.service.PointService;
 
 @Controller
 public class DeliveryController {
 	@Autowired
 	private DeliveryService service;
-	
-	@Autowired
-	private PointService pointSevice;
 
 	@RequestMapping("/getDeliveryList.mdo")
 	public String delivery(DeliveryVO vo, Model model, @RequestParam(required = false, defaultValue = "1")int page,
@@ -49,24 +45,18 @@ public class DeliveryController {
 		model.addAttribute("cnt", cnt);
 		
 		return "page/delivery/deliveryList";
-	}
+	}	
 	
-	
-	@RequestMapping("/changeDeliveryState.mdo")
+	@RequestMapping("/changeDeliveryState.mdo") //배송상태 변경버튼
 	public String delivery(DeliveryVO vo) {
-		System.out.println("배송정보 수정하기 클릭!");
+		System.out.println("배송정보 수정하기 클릭!");	
 		
-		System.out.println("전" + vo.getDelivery_state());
+		service.updateDeliveryState(vo);		
 		
-		service.updateDeliveryState(vo);
-		
-		System.out.println("후" + vo.getDelivery_state());
-		
-		DeliveryVO vvs = service.getDeliveryCont(vo);
-		
+		DeliveryVO vvs = service.getDeliveryCont(vo);		
 		service.insertDelivery_state(vvs);
-		//구매확정 시  point 지급 기능 들어갈 자리-김웅기
 		
+		//구매확정 시  point 지급 기능 들어갈 자리-김웅기		
 		
 		/*if(vo.getDelivery_state() != null &&vo1.getOrder_state() != null) {
 			if(vo.getDelivery_state().equals("주문취소")&&vo1.getOrder_state().equals("구매확정"));{

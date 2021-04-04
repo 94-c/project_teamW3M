@@ -2,9 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ page import="java.util.List"%>
-<%@page import="com.spring.w3m.notice.admin.vo.NoticeVO"%>
-<%@page import="com.spring.w3m.login.admin.dao.AdminDAO"%>
 <!-- 관리자 페이지 header파일입니다. -->
 
 <head>

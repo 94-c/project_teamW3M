@@ -14,15 +14,7 @@ import com.spring.w3m.paging.common.Search;
 @Repository
 public class DeliveryDAO {
 	@Autowired
-	private SqlSessionTemplate template;
-
-	public List<DeliveryVO> getDeliveryList(DeliveryVO vo) {
-		return template.selectList("delivery.getDeliveryList", vo);
-	}
-
-	public void updateDeliveryState(DeliveryVO vo) {
-		template.update("delivery.updateDeliveryState", vo);
-	}
+	private SqlSessionTemplate template;	
 	
 	//페이징 및 검색
 	public int getDeliveryListCnt(Search search) {
@@ -44,7 +36,16 @@ public class DeliveryDAO {
 		System.out.println("getSearchPagingList() 실행");
 		return template.selectList("delivery.getSearchPagingList");
 	}
+	//end 페이징 및 검색
+	
+	public List<DeliveryVO> getDeliveryList(DeliveryVO vo) {
+		return template.selectList("delivery.getDeliveryList", vo);
+	}
 
+	public void updateDeliveryState(DeliveryVO vo) {
+		template.update("delivery.updateDeliveryState", vo);
+	}
+	
 	public void insertDelivery_state(DeliveryVO vo) {
 		template.insert("delivery.insertDelivery_state", vo);
 	}
@@ -56,4 +57,5 @@ public class DeliveryDAO {
 	public DeliveryVO getDeliverycont(DeliveryVO vo) {
 		return template.selectOne("delivery.getDeliverycont", vo);
 	}
+	
 }

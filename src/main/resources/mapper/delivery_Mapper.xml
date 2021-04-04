@@ -41,21 +41,21 @@
 		</if>
 		order by delivery_seq desc
 		limit #{listSize} offset #{startList}
-	</select>	
+	</select>
 	
 	<select id="getSearchCnt" parameterType="String" resultType="int">
 		select count(*) from delivery
-	<trim prefix="WHERE" prefixOverrides="AND|OR">
-	<if test="keyword != null and keyword != '' ">
-			<if test="searchType=='user_id'">
-				AND user_id like CONCAT('%', #{keyword}, '%')
-			</if>
-
-			<if test="searchType=='order_seq'">
-				AND order_seq like CONCAT('%', #{keyword}, '%')
-			</if>
-      </if>
-	</trim>
+		<trim prefix="WHERE" prefixOverrides="AND|OR">
+		<if test="keyword != null and keyword != '' ">
+				<if test="searchType=='user_id'">
+					AND user_id like CONCAT('%', #{keyword}, '%')
+				</if>
+	
+				<if test="searchType=='order_seq'">
+					AND order_seq like CONCAT('%', #{keyword}, '%')
+				</if>
+	      </if>
+		</trim>
 	</select>
 	
 	<select id="getSearchPagingList" resultType="DeliveryVO">
@@ -80,6 +80,7 @@
 		SELECT * FROM delivery where order_seq = #{order_seq}
 	</select>
 	<select id="getDeliverycont" resultType="DeliveryVO">
-		SELECT * FROM delivery where  delivery_seq = #{delivery_seq}
+		SELECT * FROM delivery where delivery_seq = #{delivery_seq}
 	</select>
+	
 </mapper>

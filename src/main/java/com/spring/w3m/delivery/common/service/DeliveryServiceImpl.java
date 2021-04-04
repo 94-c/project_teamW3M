@@ -17,12 +17,11 @@ public class DeliveryServiceImpl implements DeliveryService {
 	private DeliveryDAO dao;
 	
 	@Override
-	public List<DeliveryVO> getDeliveryList(DeliveryVO vo){
-		
+	public List<DeliveryVO> getDeliveryList(DeliveryVO vo){		
 		return dao.getDeliveryList(vo);
 	}
 	
-	@Override
+	@Override //배송상태 변경이벤트 발생시 처리메서드
 	public void updateDeliveryState(DeliveryVO vo) {
 		if(vo.getDelivery_state() == null) {
 			vo.setDelivery_state("배송전");			
@@ -32,9 +31,11 @@ public class DeliveryServiceImpl implements DeliveryService {
 			vo.setDelivery_state("배송중");
 		}else if(vo.getDelivery_state().equals("after")) {
 			vo.setDelivery_state("배송완료");
+		}else if(vo.getDelivery_state().equals("commit")) {
+			vo.setDelivery_state("구매확정");
 		}else {
 			vo.setDelivery_state("주문취소");
-		}		
+		}
 		dao.updateDeliveryState(vo);
 	}
 
