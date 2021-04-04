@@ -36,7 +36,15 @@ public class ProductVO {
 	private String searchCondition;
 	private String searchType;
 	private String keyword;
+	private int addStock; //재고추가
 	
+	public int getAddStock() {
+		return addStock;
+	}
+	public void setAddStock(int addStock) {
+		this.addStock = addStock;
+	}
+
 	Pagination p = new Pagination();
 	
 	public String getSearchCondition() {

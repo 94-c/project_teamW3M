@@ -94,4 +94,11 @@ public class ProductController {
 		return "redirect:/getProductList.mdo";
 	}
 	
+	@RequestMapping("/addStock.mdo") //재고추가하기
+	public String addStock(ProductVO vo) {
+		System.out.println("재고추가 버튼 클릭");
+		service.addStock(vo);
+		return "redirect:/getProductList.mdo";
+	}
+	
 }

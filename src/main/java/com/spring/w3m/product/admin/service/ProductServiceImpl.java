@@ -133,6 +133,18 @@ public class ProductServiceImpl implements ProductService {
 		
 		return vo;
 	}
+	
+	@Override //재고추가하기
+	public void addStock(ProductVO vo) {
+		int stock = vo.getAddStock() + vo.getProd_amount();
+		if(stock < 0) {
+			System.out.println("재고는 음수가 될수 없으므로 0으로 설정하겠습니다.");
+			vo.setProd_amount(0);
+		}else {
+			vo.setProd_amount(stock);
+		}		
+		dao.addStock(vo);
+	}
 
 	@Override
 	public int getProductListCnt(Search search) {
@@ -153,5 +165,5 @@ public class ProductServiceImpl implements ProductService {
 	public List<ProductVO> getSearchPagingList(Pagination pagination) {
 		return dao.getSearchPagingList(pagination);
 	}
-
+	
 }

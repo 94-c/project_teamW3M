@@ -70,6 +70,7 @@ table, td, th {
 	<c:param name="rangeSize" value="${pagination.rangeSize}" />
 	<c:param name="searchKeyword" value="${pagination.searchKeyword}" />
 </c:url>
+
 <main>
 	<div class="container-fluid">
 		<h1 class="mt-4">상품 관리 페이지</h1>
@@ -79,102 +80,117 @@ table, td, th {
 		<div class="card mb-4">
 			<div class="card-header">
 				<i class="fas fa-table mr-1"></i> 상품 목록
-				
+
 			</div>
-			<form action="#">
-				<div class="card-body">
-					<div class="table-responsive">
-						<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-							<thead>
+
+			<div class="card-body">
+				<div class="table-responsive">
+					<table class="table table-bordered" id="dataTable" width="100%"
+						cellspacing="0">
+						<thead>
+							<tr>
+								<th class="text-center">NO.</th>
+								<th class="text-center">상품코드</th>
+								<th class="text-center">상품명</th>
+								<th class="text-center">상품 대표 이미지</th>
+								<th class="text-center">원가</th>
+								<th class="text-center">할인가</th>
+								<th class="text-center">적립금</th>
+								<th class="text-center">재고</th>
+								<th class="text-center">재고조정</th>
+								<th class="text-center">등록일</th>
+								<th class="text-center"></th>
+							</tr>
+						</thead>
+
+						<tbody>
+							<c:forEach var="prod" items="${productList}">
 								<tr>
-									<th class="text-center">NO.</th>
-									<th class="text-center">상품코드</th>
-									<th class="text-center">상품명</th>
-									<th class="text-center">상품 대표 이미지</th>
-									<th class="text-center">원가</th>
-									<th class="text-center">할인가</th>
-									<th class="text-center">적립금</th>
-									<th class="text-center">수량</th>
-									<th class="text-center">등록일</th>
-									<th class="text-center"></th>
-									
+									<td class="text-center">${prod.prod_seq}</td>
+									<td class="text-center"><b>${prod.prod_code}</b></td>
+									<td class="text-center"><a
+										href="/getProduct.mdo?prod_seq=${prod.prod_seq }"
+										class="text-dark">${prod.prod_title }</a></td>
+									<td><img src="${prod.prod_title_image}" width="50"
+										height="50"></td>
+									<td class="text-center">${prod.prod_price}</td>
+									<td class="text-center">${prod.prod_price_sale}</td>
+									<td class="text-center">${prod.prod_point}</td>
+									<c:if test="${prod.prod_amount gt 10}">
+										<td class="text-center" style="color: blue">${prod.prod_amount}</td>
+									</c:if>
+									<c:if
+										test="${prod.prod_amount le 10 and prod.prod_amount gt 0}">
+										<td class="text-center" style="color: red">${prod.prod_amount}</td>
+									</c:if>
+									<c:if test="${prod.prod_amount eq 0}">
+										<td class="text-center" style="color: red">SOLD OUT</td>
+									</c:if>
+									<td class="text-center">
+										<form action="addStock.mdo">
+											<input type="number" name="addStock" style="width: 70px" id="addStock">개
+											<input type="hidden" name="prod_seq" value="${prod.prod_seq}">
+											<input type="hidden" name="prod_amount" value="${prod.prod_amount}">
+											<input type="submit" value="추가">
+										</form>
+									</td>
+									<td class="text-center"><fmt:formatDate
+											value="${prod.prod_regdate}" pattern="yyyy-MM-dd" /></td>
+									<td class="text-center"><a class="deleteProduct"
+										href="deleteProduct.mdo?prod_seq=${prod.prod_seq}"
+										onclick="return confirm('정말로 삭제하시겠습니까?');">삭제</a></td>
 								</tr>
-							</thead>
+							</c:forEach>
+						</tbody>
+					</table>
+					<!-- pagination -->
+					<form action="#">
+						<div id="paginationBox">
+							<ul class="pagination">
+								<c:if test="${pagination.prev}">
+									<li class="page-item"><a class="page-link" href="#"
+										onClick="fn_prev('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}')">Previous</a></li>
+								</c:if>
 
-							<tbody>
-								<c:forEach var="prod" items="${productList}">
-									<tr>
-										<td class="text-center">${prod.prod_seq}</td>
-										<td class="text-center"><b>${prod.prod_code}</b></td>
-										<td class="text-center">
-											<a href="/getProduct.mdo?prod_seq=${prod.prod_seq }" class="text-dark">${prod.prod_title }</a>
-										</td>
-										<td>						
-											<img src="${prod.prod_title_image}" width="50" height="50">
-										</td>
-										<td class="text-center">${prod.prod_price}</td>
-										<td class="text-center">${prod.prod_price_sale}</td>
-										<td class="text-center">${prod.prod_point}</td>
-										<c:if test="${prod.prod_amount gt 10}">
-											<td class="text-center" style="color:blue">${prod.prod_amount}</td>
-										</c:if>
-										<c:if test="${prod.prod_amount le 10 and prod.prod_amount gt 0}">
-											<td class="text-center" style="color:red">${prod.prod_amount}</td>
-										</c:if>
-										<c:if test="${prod.prod_amount eq 0}">
-											<td class="text-center" style="color:red">SOLD OUT</td>
-										</c:if>
-										<td class="text-center"><fmt:formatDate value="${prod.prod_regdate}" pattern="yyyy-MM-dd" /></td>
-										<td class="text-center"><a class="deleteProduct" href="deleteProduct.mdo?prod_seq=${prod.prod_seq}" onclick="return confirm('정말로 삭제하시겠습니까?');">삭제</a></td>
-									</tr>
+								<c:forEach begin="${pagination.startPage}"
+									end="${pagination.endPage}" var="idx">
+									<li
+										class="page-item <c:out value="${pagination.page == idx ? 'active' : ''}"/> "><a
+										class="page-link" href="#"
+										onClick="fn_pagination('${idx}', '${pagination.range}', '${pagination.rangeSize}')">
+											${idx} </a></li>
 								</c:forEach>
-							</tbody>
-						</table>
-							<!-- pagination -->
-							<div id="paginationBox">
-								<ul class="pagination">
-									<c:if test="${pagination.prev}">
-										<li class="page-item"><a class="page-link" href="#"
-											onClick="fn_prev('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}')">Previous</a></li>
-									</c:if>
 
-									<c:forEach begin="${pagination.startPage}"
-										end="${pagination.endPage}" var="idx">
-										<li
-											class="page-item <c:out value="${pagination.page == idx ? 'active' : ''}"/> "><a
-											class="page-link" href="#"
-											onClick="fn_pagination('${idx}', '${pagination.range}', '${pagination.rangeSize}')">
-												${idx} </a></li>
-									</c:forEach>
-
-									<c:if test="${pagination.next}">
-										<li class="page-item"><a class="page-link" href="#"
-											onClick="fn_next('${pagination.range}', '${pagination.range}', '${pagination.rangeSize}')">Next</a></li>
-									</c:if>
-								</ul>
+								<c:if test="${pagination.next}">
+									<li class="page-item"><a class="page-link" href="#"
+										onClick="fn_next('${pagination.range}', '${pagination.range}', '${pagination.rangeSize}')">Next</a></li>
+								</c:if>
+							</ul>
+						</div>
+						<!-- search{s} -->
+						<div class="searchText">
+							<div class="w100" style="padding-right: 10px">
+								<select class="form-control form-control-sm" name="searchType"
+									id="searchType">
+									<option value="prod_title">상품명</option>
+									<option value="prod_code">상품코드</option>
+								</select>
 							</div>
-							<!-- search{s} -->
-							<div class="searchText">
-								<div class="w100" style="padding-right: 10px">
-									<select class="form-control form-control-sm" name="searchType" id="searchType">
-										<option value="prod_title">상품명</option>
-										<option value="prod_code">상품코드</option>
-									</select>
-
-								</div>
-								<div class="w300" style="padding-right: 10px">
-									<input type="text" class="form-control form-control-sm" name="keyword" id="keyword">
-								</div>
-
-								<div>
-									<button class="btn btn-sm btn-primary" name="btnSearch" id="btnSearch">검색</button>
-								</div>
+							<div class="w300" style="padding-right: 10px">
+								<input type="text" class="form-control form-control-sm"
+									name="keyword" id="keyword">
 							</div>
-							<!-- search{e} -->
-					</div>
-					<a class="insertProduct" href="insertProductForm.mdo">상품 등록</a>
+
+							<div>
+								<button class="btn btn-sm btn-primary" name="btnSearch"
+									id="btnSearch">검색</button>
+							</div>
+						</div>
+						<!-- search{e} -->
+					</form>
 				</div>
-			</form>
+				<a class="insertProduct" href="insertProductForm.mdo">상품 등록</a>
+			</div>
 		</div>
 	</div>
 </main>

@@ -25,13 +25,15 @@ public interface ProductService {
 	
 	void deleteProduct(ProductVO vo);
 	
-	//페이징 및 검색
+	void addStock(ProductVO vo);
+	
+	// 페이징 및 검색
 	int getProductListCnt(Search search);
-	
-	 List<ProductVO> getPageList(Search search);
-	 
-	 int getSearchCnt(String searchKeyword);
-	 
-	 List<ProductVO> getSearchPagingList(Pagination pagination);
-	
+
+	List<ProductVO> getPageList(Search search);
+
+	int getSearchCnt(String searchKeyword);
+
+	List<ProductVO> getSearchPagingList(Pagination pagination);
+
 }

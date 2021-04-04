@@ -21,6 +21,10 @@
 				#{prod_image7}, #{prod_image8}, #{prod_image9}, #{prod_image10}, #{prod_category1}, #{prod_category2}, #{prod_category3}, #{prod_category4})
 	</insert>
 	
+	<update id="addStock">
+		UPDATE product SET prod_amount = #{prod_amount} WHERE prod_seq = #{prod_seq}
+	</update>
+	
 	<update id="update">
 		UPDATE product SET prod_code = #{prod_code}, prod_title = #{prod_title}, prod_price = #{prod_price}, prod_price_sale=#{prod_price_sale},
 						prod_amount = #{prod_amount}, prod_comment = #{prod_comment}, prod_point = #{prod_point}, prod_title_image = #{prod_title_image},

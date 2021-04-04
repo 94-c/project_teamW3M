@@ -33,7 +33,11 @@ public class ProductDAO {
 	
 	public void updateProduct(ProductVO vo) {
 		template.update("product.update", vo);
-	}	
+	}
+	
+	public void addStock(ProductVO vo) { //재고추가하기
+		template.update("product.addStock", vo);
+	}
 	
 	//페이징 및 검색
 	public int getProductListCnt(Search search) {
