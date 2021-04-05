@@ -20,6 +20,8 @@
 		count(*) 
 	from 
 		add_point
+	where 
+		user_id = #{user_id}
 </select>
 
 <insert id="insertPoint" parameterType="PointVO">
