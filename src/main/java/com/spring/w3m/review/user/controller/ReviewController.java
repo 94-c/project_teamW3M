@@ -87,9 +87,9 @@ public class ReviewController {
 
 	// 게시판 글 작성하기(화면)
 	@RequestMapping("/review_write_view.do")
-	public String inquiryWriteView(ProductVO vo, Model model) {
-		System.out.println(vo.getProd_seq());
-		/* model.addAttribute("product", reviewService.getProduct(vo)); */
+	public String reviewWriteView(ProductVO vo, Model model) {
+		System.out.println(vo.getProd_title());
+		model.addAttribute("product", reviewService.getProduct(vo));
 		System.out.println("---");
 		System.out.println(vo.getProd_seq());
 		return "/review/review_write";
