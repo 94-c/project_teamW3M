@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.spring.w3m.delivery.common.vo.DeliveryVO;
 import com.spring.w3m.order.user.vo.LastAddress;
 import com.spring.w3m.order.user.vo.OrderVO;
 import com.spring.w3m.order.user.vo.PayVO;
@@ -75,6 +76,14 @@ public class OrderDAO {
 	public List<LastAddress> get_Last_Address(String user_id) {
 
 		return sqlSessionTemplate.selectList("OrderDAO.get_Last_Address",user_id);
+	}
+	
+	public void updatePoint(DeliveryVO vo) {
+		sqlSessionTemplate.update("OrderDAO.updatePoint", vo);
+	}
+	
+	public void deletePoint(DeliveryVO vo) {
+		sqlSessionTemplate.delete("OrderDAO.deletePoint", vo);
 	}
 
 }

@@ -83,4 +83,13 @@
 	<select id="get_Last_Address" resultType="com.spring.w3m.order.user.vo.LastAddress">
 	SELECT * from last_address where user_id = #{user_id}
 	</select>
+	
+	
+	<update id="updatePoint" parameterType="com.spring.w3m.delivery.common.vo.DeliveryVO">
+		update add_point set order_state = '사용가능' where user_id = #{user_id} and order_seq = #{order_seq}
+	</update>
+		
+	<delete id="deletePoint" parameterType="com.spring.w3m.delivery.common.vo.DeliveryVO">
+		delete from add_point where user_id = #{user_id} and order_seq = #{order_seq}
+	</delete>
 </mapper>
