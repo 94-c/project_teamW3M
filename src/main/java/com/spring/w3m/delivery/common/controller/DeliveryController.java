@@ -23,9 +23,19 @@ import com.spring.w3m.paging.common.Search;
 
 @Controller
 public class DeliveryController {
+	
 	@Autowired
 	private DeliveryService service;
+<<<<<<< HEAD
 
+=======
+	
+	@Autowired
+	private OrderService orderService;
+	
+	@Autowired
+	private UserService userService;
+>>>>>>> 034918883cddcbe093761984d99bdaa7e4c9d80b
 	
 	
 	@RequestMapping("/getDeliveryList.mdo")

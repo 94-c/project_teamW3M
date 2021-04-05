@@ -2,7 +2,6 @@ package com.spring.w3m.point.user.service;
 
 import java.util.List;
 
-import com.spring.w3m.join.user.vo.UserVO;
 import com.spring.w3m.order.user.vo.PayVO;
 import com.spring.w3m.paging.common.Search;
 import com.spring.w3m.point.user.vo.PointVO;

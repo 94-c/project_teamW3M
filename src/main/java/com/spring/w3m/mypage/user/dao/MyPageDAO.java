@@ -12,6 +12,7 @@ import com.spring.w3m.join.user.vo.UserVO;
 import com.spring.w3m.mypage.user.vo.MyPageVO;
 import com.spring.w3m.order.user.vo.OrderVO;
 import com.spring.w3m.paging.common.Search;
+import com.spring.w3m.product.admin.vo.OrderProductInfoVO;
 import com.spring.w3m.review.user.vo.ReviewVO;
 
 @Controller
@@ -63,5 +64,9 @@ public class MyPageDAO {
 
 	public List<MyPageVO> recentList(MyPageVO vo) {
 		return sqlSessionTemplate.selectList("myPageDAO.recentList", vo);
+	}
+	
+	public List<OrderProductInfoVO> getOrderProductInfo(String userId){
+		return sqlSessionTemplate.selectList("myPageDAO.orderProductInfo", userId);
 	}
 }
