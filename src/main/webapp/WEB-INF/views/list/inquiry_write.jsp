@@ -12,7 +12,7 @@
 					<div class="bbs-tit">
 						<h3>문의게시판</h3>
 					</div>
-                     <c:if test="${product.prod_code != 'null'}">
+                     <c:if test="${product.prod_code != null}">
                      <dl class="prd-tinfo">
                             <dt>
                                 <a href="#qwer"><img src="${product.prod_title_image }"></a>
