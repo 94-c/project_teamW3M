@@ -16,6 +16,7 @@ import com.spring.w3m.delivery.common.vo.DeliveryVO;
 import com.spring.w3m.join.user.service.UserService;
 import com.spring.w3m.join.user.vo.UserVO;
 import com.spring.w3m.order.user.service.OrderService;
+import com.spring.w3m.order.user.vo.LastAddress;
 import com.spring.w3m.order.user.vo.OrderVO;
 import com.spring.w3m.order.user.vo.PayVO;
 import com.spring.w3m.point.user.vo.PointVO;
@@ -110,9 +111,20 @@ public class OrderController {
 		//@RequestMapping(value = "/request_pay.do",method = {RequestMethod.POST,RequestMethod.GET}) 
 		@RequestMapping("/request_pay.do") // Bronze 1%, silver 3%, gold 5%, Platinum 7%, dia 9%
 		@ResponseBody
-		public void order_request_pay(@RequestBody PayVO payVO,@SessionAttribute("userVO") UserVO vo,HttpSession session) { // 제품들 주문 리스트에 등록
+		public void order_request_pay(@RequestBody PayVO payVO,@SessionAttribute("userVO") UserVO vo,HttpSession session,@SessionAttribute("OrderVO") List<OrderVO> ordervo) { // 제품들 주문 리스트에 등록
 			System.out.println("결제 성고옹");
 			System.out.println("금액: "+ payVO.getPay_total_money());
+			
+			//제품 결제시 수량 -
+			for(OrderVO Orvo : ordervo) {
+				int am=Orvo.getProd_amount();
+				String code =Orvo.getProd_code();
+				
+				System.out.println(am);
+				System.out.println(code);
+				orderService.prod_decrease(Orvo);
+				
+			}
 			
 			System.out.println(payVO.toString());
 			int a = orderService.insert_order_list(vo.getUser_id());
@@ -212,6 +224,23 @@ public class OrderController {
 			
 			orderService.update_user_point(vo.getUser_id());//사용한 적립금 업데이트!
 			
+			//결제완료 시 최근 배송지에 추가
+			LastAddress ad = new LastAddress();
+			
+			
+			
+			ad.setReceiver_name(receiver_name_1);
+			ad.setUser_id(vo.getUser_id());
+			ad.setReceiver_zipcode(receiver_zipcode_1);
+			ad.setReceiver_address1(receiver_address1_1);
+			ad.setReceiver_address2(receiver_address2_1);
+			ad.setReceiver_phone1(receiver_phone1_1);
+			ad.setReceiver_phone2(receiver_phone2_1);
+		
+			
+			int b = orderService.insert_Last_Address(ad);
+			System.out.println(b +"- 0이면 실패");
+			
 			//order_list 테이블 - 주문생태를 배송전 업데이트 
 			int aaa=orderService.update_order_list_status(vo.getUser_id());
 			System.out.println(aaa +"- 0이면 실패");
@@ -219,8 +248,21 @@ public class OrderController {
 			UserVO user = userService.getUser(vo);
 			session.setAttribute("userVO", user);
 			session.setAttribute("OrderVO1", ordervo);
+			
+			
 			return "order/order_success";
 		}
+		@RequestMapping("last_address.do")
+		public String last_address(@SessionAttribute("userVO") UserVO vo, HttpSession session) {
+			List<LastAddress> la = orderService.get_Last_Address(vo.getUser_id());
+			for(LastAddress laa : la ) {
+				System.out.println(laa.toString());
+			}
+			session.setAttribute("LastAddress", la);
+			return "order/last_address";
+			
+		}
+		
 		@RequestMapping("/check_point.do")
 		@ResponseBody
 		public int order_request_pay(@SessionAttribute("userVO") UserVO vo) { // 제품들 주문 리스트에 등록

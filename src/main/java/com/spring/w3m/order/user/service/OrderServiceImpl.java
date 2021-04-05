@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.spring.w3m.order.user.dao.OrderDAO;
+import com.spring.w3m.order.user.vo.LastAddress;
 import com.spring.w3m.order.user.vo.OrderVO;
 import com.spring.w3m.order.user.vo.PayVO;
 import com.spring.w3m.point.user.vo.PointVO;
@@ -92,6 +93,24 @@ public class OrderServiceImpl implements OrderService{
 	public int update_user_point(String user_id) {
 		
 		return dao.update_user_point(user_id);
+	}
+
+	@Override
+	public int insert_Last_Address(LastAddress lastaddress) {
+		
+		return dao.insert_Last_Address(lastaddress);
+	}
+
+	@Override
+	public int prod_decrease(OrderVO ordervo) {
+		
+		return dao.prod_decrease(ordervo);
+	}
+
+	@Override
+	public List<LastAddress> get_Last_Address(String user_id) {
+
+		return dao.get_Last_Address(user_id);
 	}
 
 }

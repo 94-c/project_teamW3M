@@ -58,15 +58,29 @@
 	DELETE FROM cart WHERE user_id = #{user_id}
 	</delete>
 	
+	<insert id="insert_Last_Address">
+	INSERT INTO Last_address (user_id, receiver_name, receiver_zipcode, receiver_address1, receiver_address2,receiver_phone1,receiver_phone2,Last_address_seq)
+	VALUES
+	(#{user_id},#{receiver_name},#{receiver_zipcode},#{receiver_address1},#{receiver_address2},#{receiver_phone1},#{receiver_phone2},nextval('Last_address_seq'))
+	</insert>
+	
 	<insert id="insert_Use_point">
 	INSERT INTO add_point (user_id, add_point, order_seq, point_content, order_state)
 	VALUES
 	(#{user_id},#{add_point},#{order_seq},#{point_content},#{order_state})
 	</insert>
 	
-	<select id="update_user_point" resultType="int">
+	<update id="update_user_point">
 	update user_member 
 	set user_point = (select sum(add_point) from add_point where user_id =#{user_id} and order_state = '사용가능') 
 	where user_id =#{user_id}
+	</update>
+	
+	<update id="prod_decrease">
+	update product set prod_amount = (prod_amount - #{prod_amount}) where prod_code =#{prod_code};
+	</update>
+	
+	<select id="get_Last_Address" resultType="com.spring.w3m.order.user.vo.LastAddress">
+	SELECT * from last_address where user_id = #{user_id}
 	</select>
 </mapper>

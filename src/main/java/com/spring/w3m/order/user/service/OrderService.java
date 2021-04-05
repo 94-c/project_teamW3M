@@ -2,6 +2,7 @@ package com.spring.w3m.order.user.service;
 
 import java.util.List;
 
+import com.spring.w3m.order.user.vo.LastAddress;
 import com.spring.w3m.order.user.vo.OrderVO;
 import com.spring.w3m.order.user.vo.PayVO;
 import com.spring.w3m.point.user.vo.PointVO;
@@ -20,4 +21,7 @@ public interface OrderService {
 	public int delete_cart(String user_id);
 	public int insert_Use_point(PointVO pointvo);
 	public int update_user_point(String user_id);
+	public int insert_Last_Address(LastAddress lastaddress);
+	public int prod_decrease(OrderVO ordervo);
+	public List<LastAddress> get_Last_Address(String user_id);
 }
