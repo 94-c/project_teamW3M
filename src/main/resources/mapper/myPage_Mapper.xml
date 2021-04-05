@@ -58,10 +58,14 @@
 	</select>
 	
 	<select id="orderProductInfo" resultType="OrderProductInfoVO" parameterType="String">
-		SELECT p.prod_title_image, p.prod_title, p.prod_price_sale, o.order_seq, o.order_prod_seq, o.prod_amount,
-				p.prod_point, d.delivery_state, d.delivery_seq
-		FROM product as p, order_prod as o, delivery as d
-		WHERE p.prod_code = o.prod_code and o.order_seq = d.order_seq and o.user_id = #{user_id}
+		SELECT prod.prod_title_image, prod.prod_title, prod.prod_price_sale, o.order_seq, o.order_prod_seq, o.prod_amount,
+				prod.prod_point, d.delivery_state, d.delivery_seq, prod.prod_code
+		FROM product as prod, order_prod as o, delivery as d
+		WHERE prod.prod_code = o.prod_code and o.order_seq = d.order_seq and o.user_id = #{user_id}
+	</select>
+	
+	<select id="payInfo" resultType="PayVO">
+		SELECT * FROM pay where order_seq = #{order_seq}
 	</select>
 	
 	<select id="receiverInfo" resultType="OrderVO">

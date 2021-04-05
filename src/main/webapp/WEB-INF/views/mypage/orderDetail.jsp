@@ -44,7 +44,7 @@
 									<th scope="row"><div class="tb-left">주문자</div></th>
 									<td><div class="tb-left">${receiverInfo.user_name}</div></td>
 									<th scope="row"><div class="tb-left">주문서 입금현황</div></th>
-									<td><div class="tb-left"><!-- 입금 완료, 배송 완료 --></div></td>
+									<td><div class="tb-left">${payInfo.pay_status}</div></td>
 								</tr>
 								
 							</tbody>
@@ -123,7 +123,7 @@
 							<tfoot>
 								<tr>
 									<td colspan="9">
-										<div class="tb-right"><!-- 주문 결제 금액  -->42,200(상품구매금액) (할인/추가금액) = 42,200원
+										<div class="tb-right">(총 상품구매금액 + 배송비 - 사용한 적립금) = ${payInfo.pay_total_money}원
 										</div>
 									</td>
 								</tr>
@@ -138,20 +138,20 @@
 									</td>
 									<td>
 										<div class="tb-center">
-											<a href="javascript:go_brand('510581');">${opi.prod_title}</a>
+											<a href="/getProduct?prod_code=${opi.prod_code}">${opi.prod_title}</a>
 										</div>
 									</td>
 									<td><div class="tb-center">${opi.order_seq}</div></td>
 									<td><div class="tb-center">${opi.prod_amount}</div></td>
 									<td><div class="tb-center tb-price">
-											<strong>${opi.prod_price_sale }</strong>
+											<strong>${opi.prod_price_sale * opi.prod_amount}</strong>
 										</div></td>
 									<td><div class="tb-center">
-											<span class="style4">${opi.prod_point }</span>
+											<span class="style4">${opi.prod_point * opi.prod_amount}</span>
 										</div></td>
-									<td><div class="tb-center">${opi.delivery_state }</div></td>
-									<td><div class="tb-center">${opi.delivery_seq }</div></td>
-									<td><div class="tb-center"><a href="#" style="color:pink">후기작성</a></div></td>
+									<td><div class="tb-center">${opi.delivery_state}</div></td>
+									<td><div class="tb-center">${opi.delivery_seq}</div></td>
+									<td><div class="tb-center"><a href="#" style="color:#ff08a0">후기작성</a></div></td>
 								</tr>
 								</c:forEach>
 							</tbody>
@@ -168,32 +168,20 @@
 							</colgroup>
 							<thead>
 								<tr>
-									<th scope="row"><div class="tb-center">결제방법</div></th>
+									<th scope="row"><div class="tb-center">결제수단</div></th>
 									<th scope="row"><div class="tb-center">결제금액</div></th>
-									<th scope="row"><div class="tb-center">세부내역</div></th>
 								</tr>
 							</thead>
 							<tfoot>
 								<tr>
-									<td><div class="tb-center tb-nbold"><!-- 결제방법 -->카드</div></td>
-									<td><div class="tb-center"><!-- 결제금액 -->42,200원 (입금완료)</div></td>
-									<td><div class="tb-center tb-nbold">
-											WDA:XMEED2021040210012651128 
-											<a href="javascript:receipt('NEW', 'WDA');">
-											<img src="/images/common/print_cardtax.gif"></a>
-										</div></td>
+									<td><div class="tb-center tb-nbold">${payInfo.pay_tool }</div></td>
+									<td><div class="tb-center">${payInfo.pay_total_money}원 (${payInfo.pay_status})</div></td>
 								</tr>
 							</tfoot>
 							<tbody>
 								<tr>
 									<td><div class="tb-center">사용한 적립금</div></td>
-									<td><div class="tb-center">원</div></td>
-									<td><div class="tb-center"></div></td>
-								</tr>
-								<tr>
-									<td><div class="tb-center">사용한 예치금</div></td>
-									<td><div class="tb-center">원</div></td>
-									<td><div class="tb-center"></div></td>
+									<td><div class="tb-center">${payInfo.pay_use_point} point</div></td>
 								</tr>
 							</tbody>
 						</table>
@@ -204,7 +192,7 @@
 
 					</div>
 					<div class="pop_order_btn_close">
-						<a href="/shop/mypage.html?mypage_type=myorder" class="CSSbuttonWhite">목록보기</a>
+						<a href="/myOrderList.do" class="CSSbuttonWhite">목록보기</a>
 					</div>
 				</div>
 				<!-- #orderInfo-->

@@ -7,6 +7,7 @@ import com.spring.w3m.inquiry.user.vo.InquiryVO;
 import com.spring.w3m.join.user.vo.UserVO;
 import com.spring.w3m.mypage.user.vo.MyPageVO;
 import com.spring.w3m.order.user.vo.OrderVO;
+import com.spring.w3m.order.user.vo.PayVO;
 import com.spring.w3m.paging.common.Search;
 import com.spring.w3m.product.admin.vo.OrderProductInfoVO;
 import com.spring.w3m.review.user.vo.ReviewVO;
@@ -36,4 +37,6 @@ public interface MyPageService {
 	List<MyPageVO> recentList(MyPageVO vo);
 	
 	List<OrderProductInfoVO> getOrderProductInfo(String userId);
+	
+	PayVO getPayInfo(PayVO pVO);
 }
