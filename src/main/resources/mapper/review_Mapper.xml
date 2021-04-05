@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
- 
- <mapper namespace="ReviewDAO">
- <resultMap type="ReviewVO" id="reviewResult">
+
+<mapper namespace="ReviewDAO">
+
+	<resultMap type="ReviewVO" id="reviewResult">
 		<id property="review_seq" column="review_seq" />
 		<result property="review_title" column="review_title" />
 		<result property="review_writer" column="review_writer" />
@@ -13,72 +14,85 @@
 		<result property="review_pass" column="review_pass" />
 		<result property="review_cnt" column="review_cnt" />
 		<result property="review_image" column="inq_image" />
-		<result property="reply_cnt" column="reply_cnt" />
 	</resultMap>
-  <!-- 후기 보기 -->
+	
+	<!-- 후기 보기 -->
 	<select id="getReviewList" resultMap="reviewResult">
 		SELECT * FROM review
-	</select>	
- 
-  	<!-- 후기 작성 -->
+	</select>
+
+	<!-- 후기 작성 -->
 	<insert id="insertReview" parameterType="ReviewVO">
-		INSERT INTO review (review_seq, review_title, review_writer, review_content, review_email, review_pass, review_cnt, review_image)
-		VALUES(nextval('review_seq'), #{review_title}, #{review_writer}, #{review_content}, #{review_email}, #{review_pass}, #{review_cnt}, #{review_image}) 
+		INSERT INTO review
+		(review_seq, review_title, review_writer, review_content,
+		review_email, review_pass, review_cnt, review_image)
+		VALUES(nextval('review_seq'), #{review_title}, #{review_writer},
+		#{review_content}, #{review_email}, #{review_pass}, #{review_cnt},
+		#{review_image})
 	</insert>
-	
+
 	<!-- 후기 상세보기 -->
 	<select id="getReview" resultType="ReviewVO">
-		SELECT * FROM review WHERE review_seq = #{review_seq}
+		SELECT * FROM review WHERE
+		review_seq = #{review_seq}
 	</select>
-	
+
 	<!-- 조회수 증가 -->
-	<update id="reviewCntUpdate" parameterType="ReviewVO"> update review set review_cnt=review_cnt+1 WHERE review_seq=#{review_seq} </update>
-	
+	<update id="reviewCntUpdate" parameterType="ReviewVO"> update review set
+		review_cnt=review_cnt+1 WHERE review_seq=#{review_seq} </update>
+
 	<!-- 후기 수정하기 -->
 	<update id="updateReview" parameterType="ReviewVO">
-		UPDATE review SET review_title = #{review_title}, review_content = #{review_content} WHERE review_seq=#{review_seq}
+		UPDATE review SET
+		review_title = #{review_title}, review_content = #{review_content}
+		WHERE review_seq=#{review_seq}
 	</update>
-	
+
 	<!-- 후기 삭제하기 -->
 	<delete id="deleteReview" parameterType="ReviewVO">
-		DELETE FROM review WHERE review_seq = #{review_seq}
+		DELETE FROM review WHERE
+		review_seq = #{review_seq}
 	</delete>
-	
+
 	<select id="getReviewListCnt" resultType="int">
-		select count(*) from review
+		select count(*) from
+		review
 	</select>
-	
+
 	<!-- 페이징 처리 후 게시글 조회 -->
 	<select id="getPageList" resultType="ReviewVO">
 		select
-			*
+		*
 		from review
 		where 1=1
-		<if test="searchType=='review_title' and keyword != null and keyword != '' ">
+		<if
+			test="searchType=='review_title' and keyword != null and keyword != '' ">
 			AND review_title like CONCAT('%', #{keyword}, '%')
 		</if>
-		<if test="searchType=='review_content' and keyword != null and keyword != '' ">
+		<if
+			test="searchType=='review_content' and keyword != null and keyword != '' ">
 			AND review_content like CONCAT('%', #{keyword}, '%')
 		</if>
 		order by review_seq desc
 		limit #{listSize} offset #{startList}
-	</select>	
-	
-	<select id="getSearchCnt" parameterType="String" resultType="int">
-		select count(*) from review
-	<trim prefix="WHERE" prefixOverrides="AND|OR">
-	<if test="keyword != null and keyword != '' ">
-			<if test="searchType=='review_title'">
-				AND review_title like CONCAT('%', #{keyword}, '%')
-			</if>
-
-			<if test="searchType=='review_content'">
-				AND review_content like CONCAT('%', #{keyword}, '%')
-			</if>
-      </if>
-	</trim>
 	</select>
-	
+
+	<select id="getSearchCnt" parameterType="String"
+		resultType="int">
+		select count(*) from review
+		<trim prefix="WHERE" prefixOverrides="AND|OR">
+			<if test="keyword != null and keyword != '' ">
+				<if test="searchType=='review_title'">
+					AND review_title like CONCAT('%', #{keyword}, '%')
+				</if>
+
+				<if test="searchType=='review_content'">
+					AND review_content like CONCAT('%', #{keyword}, '%')
+				</if>
+			</if>
+		</trim>
+	</select>
+
 	<select id="getSearchPagingList" resultType="ReviewVO">
 		SELECT * FROM review where 1=1
 		<if test="searchCondition == 'review_title'">
@@ -90,8 +104,10 @@
 		order by review_seq desc
 	</select>
 	<!-- 여기까지 페이징 처리 -->
-	
-	<update id="reviewCnt" parameterType="ReviewVO"> update review set reply_cnt=reply_cnt+1 WHERE review_seq=#{review_seq} </update>
-	
-	<update id="deleteReviewCnt" parameterType="ReviewVO"> update review set reply_cnt=reply_cnt-1 WHERE review_seq=#{review_seq} </update>
+
+	<update id="reviewCnt" parameterType="ReviewVO"> update review set
+		reply_cnt=reply_cnt+1 WHERE review_seq=#{review_seq} </update>
+
+	<update id="deleteReviewCnt" parameterType="ReviewVO"> update review set
+		reply_cnt=reply_cnt-1 WHERE review_seq=#{review_seq} </update>
 </mapper>

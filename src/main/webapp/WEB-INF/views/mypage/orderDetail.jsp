@@ -19,14 +19,9 @@
 					<span class="txt"><em class="order_name">${userVO.user_name}</em>님께서 
 					<em class="order_date"><fmt:formatDate value="${receiverInfo.order_date}" pattern="yyyy년 MM월 dd일 a h시 mm분"/></em>에 주문하신 내역입니다.</span>
 				</div>
-				<!-- 후기등록 탭 -->
-				
 				<ul class="tab">
 					<li><a href="#">주문상세</a></li>
-					<li><a href="#">상품후기등록</a>
-					</li>
 				</ul>
-				<!-- //후기등록 탭 -->
 				<div id="orderInfo">
 					<h2>주문자정보</h2>
 					<div class="table-w table-orderinfo">
@@ -111,6 +106,7 @@
 								<col width="80">
 								<col width="100">
 								<col width="100">
+								<col width="100">
 							</colgroup>
 							<thead>
 								<tr>
@@ -121,11 +117,12 @@
 									<th scope="row"><div class="tb-center">적립금</div></th>
 									<th scope="row"><div class="tb-center">처리상태</div></th>
 									<th scope="row"><div class="tb-center">배송번호</div></th>
+									<th scope="row"><div class="tb-center">후기작성</div></th>
 								</tr>
 							</thead>
 							<tfoot>
 								<tr>
-									<td colspan="8">
+									<td colspan="9">
 										<div class="tb-right"><!-- 주문 결제 금액  -->42,200(상품구매금액) (할인/추가금액) = 42,200원
 										</div>
 									</td>
@@ -135,31 +132,25 @@
 								<tr>
 									<td>
 										<div class="tb-center">
-											<img src="" style="width: 82px; height: 82px">
+											<img src="" style="width: 82px; height: 82px"><!--상품 섬네일 -->
 										</div>
 									</td>
 									<td>
 										<div class="tb-center">
-											<a href="javascript:go_brand('510581');"><!-- 상품 상세보기 퓨렐 손소독제 236mL--><br>
-											<br></a> <span class="quantity order_table_Td style4"></span>
-
+											<a href="javascript:go_brand('510581');"><!-- 상품명 --></a>
 										</div>
 									</td>
 									<td><div class="tb-center"><!-- 주문번호 --></div></td>
-									<td><div class="tb-center">
-											<input type="hidden" name="MK_sel_basket_num[]" id="MK_sel_basket_num_[]" value="1"> 
-											<select name="MK_sel_basket_amount_1" id="MK_sel_basket_amount_1">
-												<option value="1"><!-- 상품 수량 --></option>
-											</select>
-										</div></td>
+									<td><div class="tb-center"><!-- 수량 --></div></td>
 									<td><div class="tb-center tb-price">
-											<strong><!-- 상품 가격 --></strong>
+											<strong><!-- 상품 할인 가격 --></strong>
 										</div></td>
 									<td><div class="tb-center">
 											<span class="style4"><!-- 적립금 --></span>
 										</div></td>
 									<td><div class="tb-center"><!-- 배송현황 --></div></td>
-									<td><div class="tb-center"><!-- 송장번호 --></div></td>
+									<td><div class="tb-center"><!-- 배송번호 --></div></td>
+									<td><div class="tb-center"><a href="#" style="color:pink">후기작성</a></div></td>
 								</tr>
 							</tbody>
 						</table>
