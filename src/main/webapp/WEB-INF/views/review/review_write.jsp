@@ -12,8 +12,7 @@
 					<div class="bbs-tit">
 						<h3>후기게시판</h3>
 					</div>
-					<input type="hidden" name="prod_code1" id="prod_code1" value="${product.prod_seq}" />
-                     <c:if test="${product.prod_seq > 0}">
+					 <c:if test="${product.prod_title != 'null'}">
                      <dl class="prd-tinfo">
                             <dt>
                                 <a href="#qwer"><img src="${product.prod_title_image }"></a>
@@ -26,8 +25,11 @@
                             </dd>
                       	</dl>
                       </c:if>
+					<input type="hidden" name="prod_code1" id="prod_code1" value="${product.prod_seq}" />
 					<div class="bbs-table-write">
 						    <form name="writeform" action="review_write.do" method="post" enctype="multipart/form-data">
+						    <input type="hidden" name="prod_title" id="prod_title" value="${product.prod_title }"/>
+						    <input type="hidden" name="prod_title_image" id="prod_title_image" value="${product.prod_title_image}"/>
 							<fieldset>
 								<legend>일반게시판 쓰기</legend>
 								<table summary="">

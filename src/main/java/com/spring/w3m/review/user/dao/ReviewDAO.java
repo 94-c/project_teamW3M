@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.spring.w3m.paging.common.Pagination;
 import com.spring.w3m.paging.common.Search;
+import com.spring.w3m.product.admin.vo.ProductVO;
 import com.spring.w3m.review.user.vo.ReviewVO;
 
 @Repository
@@ -32,6 +33,11 @@ public class ReviewDAO {
 		sqlSessionTemplate.delete("ReviewDAO.deleteReview", vo);
 		System.out.println("후기게시판 글삭제");
 
+	}
+	
+	public ProductVO getProduct(ProductVO vo) {
+		System.out.println("후기게시판 제품 가져오기");
+		return sqlSessionTemplate.selectOne("ReviewDAO.getProduct", vo);
 	}
 
 	public ReviewVO getReview(ReviewVO vo) {

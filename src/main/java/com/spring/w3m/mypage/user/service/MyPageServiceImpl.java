@@ -11,7 +11,9 @@ import com.spring.w3m.join.user.vo.UserVO;
 import com.spring.w3m.mypage.user.dao.MyPageDAO;
 import com.spring.w3m.mypage.user.vo.MyPageVO;
 import com.spring.w3m.order.user.vo.OrderVO;
+import com.spring.w3m.order.user.vo.PayVO;
 import com.spring.w3m.paging.common.Search;
+import com.spring.w3m.product.admin.vo.OrderProductInfoVO;
 import com.spring.w3m.review.user.vo.ReviewVO;
 
 @Service
@@ -65,7 +67,7 @@ public class MyPageServiceImpl implements MyPageService {
 		return dao.getDeliveryInfo(vo);
 	}
 	
-	public String makeRandomNumber() { //롯데택배 송장번호 제조기ㅋㅋ
+	public String makeRandomNumber() { //롯데택배 송장번호 제조기
 		int[] randomNumbers = new int[12];
 		String strRd = "";
 		for(int i=0; i<randomNumbers.length; i++) {
@@ -74,6 +76,15 @@ public class MyPageServiceImpl implements MyPageService {
 		}		
 		System.out.println(strRd);		
 		return strRd;
+	}
+	
+	@Override
+	public List<OrderProductInfoVO> getOrderProductInfo(String userId){
+		return dao.getOrderProductInfo(userId);
+	}
+	@Override
+	public PayVO getPayInfo(PayVO pVO) {
+		return dao.getPayInfo(pVO);
 	}
 
 	@Override

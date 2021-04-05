@@ -17,10 +17,12 @@ import com.spring.w3m.join.user.vo.UserVO;
 import com.spring.w3m.mypage.user.service.MyPageService;
 import com.spring.w3m.mypage.user.vo.MyPageVO;
 import com.spring.w3m.order.user.vo.OrderVO;
+import com.spring.w3m.order.user.vo.PayVO;
 import com.spring.w3m.paging.common.Pagination;
 import com.spring.w3m.paging.common.Search;
 import com.spring.w3m.point.user.service.PointService;
 import com.spring.w3m.point.user.vo.PointVO;
+import com.spring.w3m.product.admin.vo.OrderProductInfoVO;
 import com.spring.w3m.review.user.vo.ReviewVO;
 
 @Controller
@@ -146,7 +148,7 @@ public class MyPageController {
 	
 	// 주문상세
 	@RequestMapping("myOrderDetail.do")
-	public String getOrderDetail(Model model, @SessionAttribute("userVO") UserVO vo, OrderVO oVO, DeliveryVO dVO) {
+	public String getOrderDetail(Model model, @SessionAttribute("userVO") UserVO vo, OrderVO oVO, DeliveryVO dVO, PayVO pVO) {
 		oVO.setUser_id(vo.getUser_id());
 		OrderVO receiverInfo = myPageService.getReceiverInfo(oVO);
 		
@@ -154,9 +156,16 @@ public class MyPageController {
 		DeliveryVO deliveryInfo = myPageService.getDeliveryInfo(dVO);
 		String lotteRandomNum = myPageService.makeRandomNumber();
 		
+		String userId = vo.getUser_id();
+		List<OrderProductInfoVO> opiList = myPageService.getOrderProductInfo(userId);
+		
+		PayVO payInfo = myPageService.getPayInfo(pVO);		
+		
 		model.addAttribute("receiverInfo", receiverInfo); //주문자정보
 		model.addAttribute("deliveryInfo", deliveryInfo); //배송지정보
-		model.addAttribute("lotteRandomNum", lotteRandomNum);
+		model.addAttribute("orderProductInfo", opiList); //주문상품정보
+		model.addAttribute("payInfo", payInfo); //결제정보
+		model.addAttribute("lotteRandomNum", lotteRandomNum); //송장번호(12자리난수)
 		return "mypage/orderDetail";
 	}
 

@@ -10,7 +10,8 @@ public class PayVO {
 	private int pay_total_money;//결제 예정 금액 (결제금액에서 +배송비 -적립금 )
 	private String pay_tool;// 결제 수단
 	private String pay_status;//결제상태 
-	private int pay_use_point;//사용한 포인트s
+	private int pay_use_point;//사용한 포인트
+	
 	@Override
 	public String toString() {
 		return "PayVO [pay_seq=" + pay_seq + ", pay_Shipping_cost=" + pay_Shipping_cost + ", pay_Membership="

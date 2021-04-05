@@ -243,6 +243,7 @@ $('#charge_kakao').click(function () {
 var pointcheck= -1;
 $(document).ready(function(){ 
 	$('#AllPoint').blur(function () {
+		console.log("헤헤헤"+pointcheck);
 		if(pointcheck==-1){
 			alert("적립금 확인해주세요.");
 			$("#AllPoint").val(0);
@@ -303,6 +304,14 @@ $(document).ready(function(){
 
 function AllPoint(){
 	console.log("모두 사용 확인");
+	if(pointcheck==-1){
+		alert("적립금 확인해주세요.");
+		$("#AllPoint").val(0);
+		return;
+	}
+	if($("#AllPoint").val()==""){
+		$("#AllPoint").val(0);
+	}
 	var point = $("#checkPoint").val();
 	var totalMoney= $("#pay_total_price_or").val();
 	var use_point = totalMoney/2;
@@ -680,7 +689,7 @@ $("#radio_paymethod").click(function(){
 									<tr>
 										<th class="txt-c">적립금 사용</th>
 										<td colspan="4"><input type="number" name="pay_use_point" form="order_form"
-										 	id="AllPoint" class="MS_input_txt" value=""> 
+										 	id="AllPoint" class="MS_input_txt" value="0"> 
 										 	<a class="btn-darkgray" href="javascript:AllPoint();">모두 사용하기</a>&nbsp;
 										 	<a class="btn-darkgray" href="javascript:clickPoint();">적립금 확인</a>&nbsp;<input type ="text" id="checkPoint" readonly="readonly" value="">
 										 	<span class="coupon-description"></span>

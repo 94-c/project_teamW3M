@@ -6,7 +6,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.spring.w3m.join.user.vo.UserVO;
+import com.spring.w3m.delivery.common.vo.DeliveryVO;
+import com.spring.w3m.order.user.vo.OrderVO;
 import com.spring.w3m.order.user.vo.PayVO;
 import com.spring.w3m.paging.common.Search;
 import com.spring.w3m.point.user.vo.PointVO;
@@ -44,5 +45,20 @@ public class PointDAO {
 	
 	public void minusPoint(PointVO vo) {
 		sqlSessionTemplate.update("PointDAO.minusPoint", vo);
+	}
+
+	public int orderSuccessPoint(DeliveryVO vo) {
+		
+		return sqlSessionTemplate.update("PointDAO.orderSuccessPoint",vo);
+	}
+
+	public int orderDeletePoint(DeliveryVO vo) {
+		
+		return sqlSessionTemplate.delete("PointDAO.orderDeletePoint",vo);
+	}
+
+	public int update_point(String user_id) {
+		
+		return sqlSessionTemplate.update("PointDAO.update_point",user_id);
 	}
 }

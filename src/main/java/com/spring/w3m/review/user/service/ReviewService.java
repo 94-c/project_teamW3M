@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.spring.w3m.paging.common.Pagination;
 import com.spring.w3m.paging.common.Search;
+import com.spring.w3m.product.admin.vo.ProductVO;
 import com.spring.w3m.review.user.vo.ReviewVO;
 
 public interface ReviewService {
@@ -18,6 +19,7 @@ public interface ReviewService {
 
 	List<ReviewVO> getReviewList(ReviewVO vo);
 	
+	ProductVO getProduct(ProductVO vo);
 	
 	// 검색 ,페이징
 	int getReviewListCnt(Search search);

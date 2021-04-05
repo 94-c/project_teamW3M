@@ -58,6 +58,18 @@
 	update user_member set user_point = user_point + #{add_point} WHERE user_id=#{user_id} 
 </update>
 
+<update id="orderSuccessPoint" parameterType="com.spring.w3m.delivery.common.vo.DeliveryVO"> 
+	update add_point set order_state ='사용가능' WHERE user_id= #{user_id} and order_seq = #{order_seq} 
+</update>
 
+<delete id="orderDeletePoint" parameterType="com.spring.w3m.delivery.common.vo.DeliveryVO" > 
+	delete from add_point WHERE user_id=#{user_id} and order_seq = #{order_seq} 
+</delete>
+
+<update id="update_point">
+	update user_member 
+	set user_point = (select sum(add_point) from add_point where user_id =#{user_id} and order_state = '사용가능') 
+	where user_id =#{user_id}
+	</update>
 
 </mapper>

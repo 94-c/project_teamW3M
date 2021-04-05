@@ -14,7 +14,7 @@
 function click(index){ 	
 	var lastadd = 'lastAddress_seq'+index;
 	
-	if($('#'+lastadd).prop("checked")){		
+	if($('#'+lastadd).prop("checked",true)){		
 			var seq = $('#'+lastadd).val();
 			console.log(seq);
 			console.log(index);

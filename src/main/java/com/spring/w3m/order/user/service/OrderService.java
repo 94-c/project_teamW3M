@@ -2,6 +2,7 @@ package com.spring.w3m.order.user.service;
 
 import java.util.List;
 
+import com.spring.w3m.delivery.common.vo.DeliveryVO;
 import com.spring.w3m.order.user.vo.LastAddress;
 import com.spring.w3m.order.user.vo.OrderVO;
 import com.spring.w3m.order.user.vo.PayVO;
@@ -24,4 +25,6 @@ public interface OrderService {
 	public int insert_Last_Address(LastAddress lastaddress);
 	public int prod_decrease(OrderVO ordervo);
 	public List<LastAddress> get_Last_Address(String user_id);
+	public void updatePoint(DeliveryVO vo);
+	public void deletePoint(DeliveryVO vo);
 }

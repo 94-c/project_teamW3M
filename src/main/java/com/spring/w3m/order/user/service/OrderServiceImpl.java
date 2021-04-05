@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.spring.w3m.delivery.common.vo.DeliveryVO;
 import com.spring.w3m.order.user.dao.OrderDAO;
 import com.spring.w3m.order.user.vo.LastAddress;
 import com.spring.w3m.order.user.vo.OrderVO;
@@ -111,6 +112,16 @@ public class OrderServiceImpl implements OrderService{
 	public List<LastAddress> get_Last_Address(String user_id) {
 
 		return dao.get_Last_Address(user_id);
+	}
+
+	@Override
+	public void updatePoint(DeliveryVO vo) {
+		dao.updatePoint(vo);
+	}
+
+	@Override
+	public void deletePoint(DeliveryVO vo) {
+		dao.deletePoint(vo);
 	}
 
 }
