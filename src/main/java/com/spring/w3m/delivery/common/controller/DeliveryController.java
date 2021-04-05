@@ -30,7 +30,6 @@ public class DeliveryController {
 	@Autowired
 	private PointService pointService;
 	
-	
 	@RequestMapping("/getDeliveryList.mdo")
 	public String delivery(DeliveryVO vo, Model model, @RequestParam(required = false, defaultValue = "1")int page,
 													   @RequestParam(required = false, defaultValue = "1")int range,
@@ -60,7 +59,7 @@ public class DeliveryController {
 	}	
 	
 	@RequestMapping("/changeDeliveryState.mdo") //배송상태 변경버튼
-	public String delivery(DeliveryVO vo,HttpSession session,@SessionAttribute("userVO")UserVO vo1) {
+	public String delivery(DeliveryVO vo,HttpSession session) {
 		System.out.println("배송정보 수정하기 클릭!");	
 		
 		service.updateDeliveryState(vo);		
@@ -85,10 +84,11 @@ public class DeliveryController {
 		if(DeliveryState.equals("주문취소")) {
 			System.out.println("주문취소입니다.");
 			System.out.println(vo.toString());
+			pointService.orderDeletePoint(vo);
 
 		}
 //		//여기서 포인트 업데이트
-
+		pointService.update_point(vo.getUser_id());//사용한 적립금 업데이트!
 //		//세션 초기화
 //		UserVO user = userService.getUser(vo1);
 

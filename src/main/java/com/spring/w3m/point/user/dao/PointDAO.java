@@ -51,4 +51,14 @@ public class PointDAO {
 		
 		return sqlSessionTemplate.update("PointDAO.orderSuccessPoint",vo);
 	}
+
+	public int orderDeletePoint(DeliveryVO vo) {
+		
+		return sqlSessionTemplate.delete("PointDAO.orderDeletePoint",vo);
+	}
+
+	public int update_point(String user_id) {
+		
+		return sqlSessionTemplate.update("PointDAO.update_point",user_id);
+	}
 }

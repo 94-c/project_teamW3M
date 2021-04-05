@@ -58,4 +58,16 @@ public class PointServiceImpl implements PointService {
 		return dao.orderSuccessPoint(vo);
 	}
 
+	@Override
+	public int orderDeletePoint(DeliveryVO vo) {
+		
+		return dao.orderDeletePoint(vo);
+	}
+
+	@Override
+	public int update_point(String user_id) {
+		
+		return dao.update_point(user_id);
+	}
+
 }

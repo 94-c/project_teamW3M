@@ -24,4 +24,6 @@ public interface PointService {
 	void minusPoint(PointVO vo);
 	
 	public int orderSuccessPoint(DeliveryVO vo);
+	public int orderDeletePoint(DeliveryVO vo);
+	public int update_point(String user_id);
 }

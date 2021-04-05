@@ -133,6 +133,7 @@ public class OrderController {
 			int orVO = orderService.orderNum(vo.getUser_id());
 			
 			payVO.setOrder_seq(orVO);
+			
 			int aaa = orderService.insert_pay(payVO);
 			System.out.println(aaa +"- 0이면 실패");
 			System.out.println("페이"+payVO.toString());
