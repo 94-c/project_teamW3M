@@ -4,6 +4,7 @@ public class OrderProductInfoVO {
 	private String prod_title_image;
 	private String prod_title;
 	private int prod_price_sale;
+	private String prod_code;
 	private int order_seq;
 	private int order_prod_seq;
 	private int prod_amount;
@@ -29,6 +30,12 @@ public class OrderProductInfoVO {
 	}
 	public void setProd_price_sale(int prod_price_sale) {
 		this.prod_price_sale = prod_price_sale;
+	}
+	public String getProd_code() {
+		return prod_code;
+	}
+	public void setProd_code(String prod_code) {
+		this.prod_code = prod_code;
 	}
 	public int getOrder_seq() {
 		return order_seq;
@@ -69,9 +76,9 @@ public class OrderProductInfoVO {
 	@Override
 	public String toString() {
 		return "OrderProductInfoVO [prod_title_image=" + prod_title_image + ", prod_title=" + prod_title
-				+ ", prod_price_sale=" + prod_price_sale + ", order_seq=" + order_seq + ", order_prod_seq="
-				+ order_prod_seq + ", prod_amount=" + prod_amount + ", prod_point=" + prod_point + ", delivery_state="
-				+ delivery_state + ", delivery_seq=" + delivery_seq + "]";
-	}
+				+ ", prod_price_sale=" + prod_price_sale + ", prod_code=" + prod_code + ", order_seq=" + order_seq
+				+ ", order_prod_seq=" + order_prod_seq + ", prod_amount=" + prod_amount + ", prod_point=" + prod_point
+				+ ", delivery_state=" + delivery_state + ", delivery_seq=" + delivery_seq + "]";
+	}	
 	
 }
