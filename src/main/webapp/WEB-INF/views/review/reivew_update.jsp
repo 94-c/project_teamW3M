@@ -52,8 +52,7 @@
 											<th><div>파일</div></th>
 											<td colspan="3">
 												<div>
-													<input id="bw_input_file" type="text" class="MS_input_txt input_style2" name="file_name1" value="" onfocus="this.blur();upalert()"> 
-													<a href="javascript:upload('file_name1');" class="btn_file">첨부</a>
+													<input type="file" name="inq_mask" value="파일추가">
 												</div>
 											</td>
 										</tr>
