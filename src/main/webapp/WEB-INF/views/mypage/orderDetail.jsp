@@ -129,29 +129,31 @@
 								</tr>
 							</tfoot>
 							<tbody>
+								<c:forEach items="${orderProductInfo}" var="opi">
 								<tr>
 									<td>
 										<div class="tb-center">
-											<img src="" style="width: 82px; height: 82px"><!--상품 섬네일 -->
+											<img src="${opi.prod_title_image}" style="width: 82px; height: 82px">
 										</div>
 									</td>
 									<td>
 										<div class="tb-center">
-											<a href="javascript:go_brand('510581');"><!-- 상품명 --></a>
+											<a href="javascript:go_brand('510581');">${opi.prod_title}</a>
 										</div>
 									</td>
-									<td><div class="tb-center"><!-- 주문번호 --></div></td>
-									<td><div class="tb-center"><!-- 수량 --></div></td>
+									<td><div class="tb-center">${opi.order_seq}</div></td>
+									<td><div class="tb-center">${opi.prod_amount}</div></td>
 									<td><div class="tb-center tb-price">
-											<strong><!-- 상품 할인 가격 --></strong>
+											<strong>${opi.prod_price_sale }</strong>
 										</div></td>
 									<td><div class="tb-center">
-											<span class="style4"><!-- 적립금 --></span>
+											<span class="style4">${opi.prod_point }</span>
 										</div></td>
-									<td><div class="tb-center"><!-- 배송현황 --></div></td>
-									<td><div class="tb-center"><!-- 배송번호 --></div></td>
+									<td><div class="tb-center">${opi.delivery_state }</div></td>
+									<td><div class="tb-center">${opi.delivery_seq }</div></td>
 									<td><div class="tb-center"><a href="#" style="color:pink">후기작성</a></div></td>
 								</tr>
+								</c:forEach>
 							</tbody>
 						</table>
 					</div>
