@@ -20,13 +20,15 @@ import com.spring.w3m.join.user.vo.UserVO;
 import com.spring.w3m.order.user.service.OrderService;
 import com.spring.w3m.paging.common.Pagination;
 import com.spring.w3m.paging.common.Search;
+import com.spring.w3m.point.user.service.PointService;
 
 @Controller
 public class DeliveryController {
 	
 	@Autowired
 	private DeliveryService service;
-
+	@Autowired
+	private PointService pointService;
 	
 	
 	@RequestMapping("/getDeliveryList.mdo")
@@ -72,7 +74,13 @@ public class DeliveryController {
 		if(DeliveryState.equals("구매확정")) {
 			System.out.println("구매확정입니다.");
 			System.out.println(vo.toString());
-
+			int orderSeq = vo.getOrder_seq();
+			String user_id = vo.getUser_id();
+			System.out.println(orderSeq);
+			System.out.println(user_id);
+			pointService.orderSuccessPoint(vo);
+			
+			
 		}
 		if(DeliveryState.equals("주문취소")) {
 			System.out.println("주문취소입니다.");

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.spring.w3m.delivery.common.vo.DeliveryVO;
 import com.spring.w3m.order.user.vo.PayVO;
 import com.spring.w3m.paging.common.Search;
 import com.spring.w3m.point.user.dao.PointDAO;
@@ -49,6 +50,12 @@ public class PointServiceImpl implements PointService {
 	@Override
 	public void minusPoint(PointVO vo) {
 		dao.minusPoint(vo);
+	}
+
+	@Override
+	public int orderSuccessPoint(DeliveryVO vo) {
+		
+		return dao.orderSuccessPoint(vo);
 	}
 
 }
