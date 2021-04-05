@@ -87,10 +87,10 @@
 					<div class="sns-area">
 						<a href="https://kauth.kakao.com/oauth/authorize?client_id=cd6fd139e4c5a14b7e6272d000e94c30&redirect_uri=http://localhost:8080/kakaoCallback.do&response_type=code"
 							class="link kakao">
-							<img src="resources/images/sns/kakao_join.png" alt="카카오톡으로 로그인">
+							<img src="resources/images/sns/kakao_login.png" alt="카카오톡으로 로그인">
 						</a>
 						<a href="${url}" class="link naver">
-							<img src="resources/images/sns/naver_join.png" alt="네이버로 로그인">
+							<img src="resources/images/sns/naver_login.png" alt="네이버로 로그인">
 						</a>
 					</div>
 				</div>

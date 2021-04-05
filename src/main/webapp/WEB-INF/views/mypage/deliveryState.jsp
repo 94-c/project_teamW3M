@@ -48,7 +48,7 @@
 							</div>
 						</div>
 						<dl class="order">
-							<dt class="tot">총 주문금액: </dt>
+							<dt class="tot">총 주문금액 </dt>
 							<dd class="tot">
 								<strong>0</strong>원
 							</dd>

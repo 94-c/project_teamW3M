@@ -14,7 +14,7 @@
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
           ['Month', '월 매출 '],
-          ['1월', 3231],
+          ['1월', 12312],
           ['2월', 1170],
           ['3월', 6600],
           ['4월', 12314],
@@ -54,23 +54,9 @@
     });
 
     $(function() {
-        $("#datepicker1").datepicker();
-    });
-    $.datepicker.setDefaults({
-        dateFormat: 'yymmdd',
-        prevText: '이전 달',
-        nextText: '다음 달',
-        monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-        monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
-        dayNames: ['일', '월', '화', '수', '목', '금', '토'],
-        dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
-        dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
-        showMonthAfterYear: true,
-        yearSuffix: '년'
-    });
-
-    $(function() {
-        $("#datepicker2").datepicker();
+        $("#datepicker1, #datepicker2").datepicker({
+            dateFormat: 'yy.mm.dd'
+        });
     });
 </script>
 <div class="container-fluid">
@@ -84,9 +70,9 @@
                                         매출 통계
              </div>
           <div class="card-body">
-		    일자: <input type="text" id="datepicker1"  > - <input type="text" id="datepicker2"  >
-		  <br>
-		  <br>
+		  	  일자: <input type="text" id="datepicker1"  > - <input type="text" id="datepicker2"  >
+		   <br>
+		   <br>
            <div id="chart1" style="width: auto; height: 600px;"></div>
 			</div>
 		</div><!-- body end -->
