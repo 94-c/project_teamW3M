@@ -8,27 +8,18 @@
 		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
 	<!-- 어노테이션 사용 -->
-	<!-- js, css, img 등 파일을 넘기고 필요할 때 꺼내 쓸수 잇게 매핑 해준다. -->
+	<!-- js, css, img 등 파일을 넝ㅎ고 필요할 때 꺼내 쓸수 잇게 매핑 해준다. -->
 	<annotation-driven/>
 	<resources location="/resources/" mapping="/resources/**"></resources>
 	
 	
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<beans:property name="prefix" value="/WEB-INF/views/admin/" />
+		<beans:property name="prefix" value="/WEB-INF/views" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<!-- 컴포넌트 스캔 -->
-	<context:component-scan base-package="com.spring.w3m.login.admin" />
-	<context:component-scan base-package="com.spring.w3m.product.admin"/>
-	
-	<!-- file Upload -->
-	<beans:bean id="multipartResolver"
-		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-		<!-- max upload size in bytes -->
-		<beans:property name="maxUploadSize" value="7242880" /> <!-- 변경하지 말것 -->
-		<!-- max size of file in memory (in bytes) -->
-		<beans:property name="maxInMemorySize" value="1048576" /> <!-- 1MB -->
-	</beans:bean>
-
+	<!-- 홈 컨트롤러 -->
+	<context:component-scan base-package="com.spring.w3m.order.user" />
+	<context:component-scan base-package="com.spring.w3m.join.user" />
+	<context:component-scan base-package="com.spring.w3m.cart.user" />
 </beans:beans>
