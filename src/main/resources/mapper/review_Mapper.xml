@@ -3,13 +3,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
  <mapper namespace="ReviewDAO">
- 
-  <!-- 후기 보기 -->
-	<select id="getReviewList" resultMap="reviewResult">
-		SELECT *,(SELECT count(*) FROM review_reply WHERE review_seq=#{review_seq}) as reply_cnt FROM review
-	</select>	
-	
-	<resultMap type="ReviewVO" id="reviewResult">
+ <resultMap type="ReviewVO" id="reviewResult">
 		<id property="review_seq" column="review_seq" />
 		<result property="review_title" column="review_title" />
 		<result property="review_writer" column="review_writer" />
@@ -21,6 +15,10 @@
 		<result property="review_image" column="inq_image" />
 		<result property="reply_cnt" column="reply_cnt" />
 	</resultMap>
+  <!-- 후기 보기 -->
+	<select id="getReviewList" resultMap="reviewResult">
+		SELECT * FROM review
+	</select>	
  
   	<!-- 후기 작성 -->
 	<insert id="insertReview" parameterType="ReviewVO">
@@ -53,14 +51,7 @@
 	<!-- 페이징 처리 후 게시글 조회 -->
 	<select id="getPageList" resultType="ReviewVO">
 		select
-			review_seq,
-			review_title,
-			review_writer,
-			review_content,
-			review_email,
-			review_date,
-			review_pass,
-			review_cnt
+			*
 		from review
 		where 1=1
 		<if test="searchType=='review_title' and keyword != null and keyword != '' ">
@@ -99,5 +90,8 @@
 		order by review_seq desc
 	</select>
 	<!-- 여기까지 페이징 처리 -->
-
+	
+	<update id="reviewCnt" parameterType="ReviewVO"> update review set reply_cnt=reply_cnt+1 WHERE review_seq=#{review_seq} </update>
+	
+	<update id="deleteReviewCnt" parameterType="ReviewVO"> update review set reply_cnt=reply_cnt-1 WHERE review_seq=#{review_seq} </update>
 </mapper>

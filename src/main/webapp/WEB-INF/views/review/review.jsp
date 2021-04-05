@@ -114,7 +114,7 @@
 								</thead>
 									
 								<tbody>
-									<c:forEach var="reviewVO" items="${reviewList }">
+									<c:forEach var="reviewVO" items="${reviewList}">
 										<tr>
                                         <td><div class="tb-center">${reviewVO.review_seq}</div></td>
                                         <td><div class="tb-left"><img src="resources/images/icons/neo_lock.gif"></div></td>

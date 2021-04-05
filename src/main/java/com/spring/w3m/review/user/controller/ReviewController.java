@@ -182,8 +182,9 @@ public class ReviewController {
 		
 		// 댓글 쓰기
 		@RequestMapping("/insertReviewReply.do")
-		public String insertReviewReply(ReplyVO rvo) {
+		public String insertReviewReply(ReplyVO rvo,ReviewVO vo) {
 			replyService.insertReviewReply(rvo);
+			replyService.reviewCnt(vo);
 			return "redirect:/reviewContent.do?review_seq=" + rvo.getReview_seq();
 			}
 		
@@ -202,9 +203,10 @@ public class ReviewController {
 	 	}
 	
 	   @RequestMapping("/deleteReviewReply.do") 
-	   public String deleteReviewReply(ReplyVO rvo, Model model) {
+	   public String deleteReviewReply(ReviewVO vo,ReplyVO rvo, Model model) {
 		  int seq = rvo.getReview_seq();
 		  System.out.println(seq);
+		  replyService.deleteReviewCnt(vo);
 		  replyService.deleteRevireReply(rvo); 
 		  return "redirect:/reviewContent.do?review_seq=" + seq;
 	   }

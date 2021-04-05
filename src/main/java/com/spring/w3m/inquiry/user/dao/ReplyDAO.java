@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import com.spring.w3m.inquiry.user.vo.ReplyVO;
+import com.spring.w3m.review.user.vo.ReviewVO;
 
 @Controller
 public class ReplyDAO {
@@ -68,5 +69,13 @@ public class ReplyDAO {
 	public void deleteReviewReply(ReplyVO vo) {
 		sqlSessionTemplate.delete("ReplyDAO.deleteReviewReply", vo);
 		System.out.println("댓글 삭제");
+	}
+	
+	public void reviewCnt(ReviewVO vo) {
+		sqlSessionTemplate.update("ReviewDAO.reviewCnt", vo);
+	}
+	
+	public void deleteReviewCnt(ReviewVO vo) {
+		sqlSessionTemplate.update("ReviewDAO.deleteReviewCnt", vo);
 	}
 }

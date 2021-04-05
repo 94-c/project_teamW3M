@@ -3,6 +3,7 @@ package com.spring.w3m.inquiry.user.service;
 import java.util.List;
 
 import com.spring.w3m.inquiry.user.vo.ReplyVO;
+import com.spring.w3m.review.user.vo.ReviewVO;
 
 public interface ReplyService {
 	//댓글 조회
@@ -36,5 +37,9 @@ public interface ReplyService {
 	
 	// 후기 댓글 갯수
 	int count(int review_re_seq);
+	
+	void reviewCnt(ReviewVO vo);
+	
+	void deleteReviewCnt(ReviewVO vo);
 
 }

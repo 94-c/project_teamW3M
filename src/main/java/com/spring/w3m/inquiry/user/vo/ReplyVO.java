@@ -15,7 +15,16 @@ public class ReplyVO {
 	private String review_re_content;
 	private String review_re_writer;
 	private Date review_re_date;
+	private int reply_cnt;
 	
+	
+	
+	public int getReply_cnt() {
+		return reply_cnt;
+	}
+	public void setReply_cnt(int reply_cnt) {
+		this.reply_cnt = reply_cnt;
+	}
 	public String getReview_re_writer() {
 		return review_re_writer;
 	}

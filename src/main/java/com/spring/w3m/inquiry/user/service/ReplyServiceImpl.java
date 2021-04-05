@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.spring.w3m.inquiry.user.dao.ReplyDAO;
 import com.spring.w3m.inquiry.user.vo.ReplyVO;
+import com.spring.w3m.review.user.vo.ReviewVO;
 
 @Service
 public class ReplyServiceImpl implements ReplyService {
@@ -75,6 +76,16 @@ public class ReplyServiceImpl implements ReplyService {
 	public void deleteRevireReply(ReplyVO vo) {
 		replyDAO.deleteReviewReply(vo);	
 		
+	}
+
+	@Override
+	public void reviewCnt(ReviewVO vo) {
+		replyDAO.reviewCnt(vo);
+	}
+
+	@Override
+	public void deleteReviewCnt(ReviewVO vo) {
+		replyDAO.deleteReviewCnt(vo);
 	}
 
 }
