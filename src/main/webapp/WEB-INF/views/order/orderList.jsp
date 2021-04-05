@@ -3,6 +3,9 @@
 <%@include file="/WEB-INF/views/include/header.jsp"%>
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 <title>고급형 주문서 작성</title>
 <script>
 //숫자만 
@@ -16,6 +19,24 @@ var phone2C=-1;
 var addressC=-1;
 var memoC=-1;
 
+function last_address(){
+	console.log("최근 배송지");
+	 var openWin;
+	    
+    
+         // window.name = "부모창 이름"; 
+         window.name = "orderList";
+         // window.open("open할 window", "자식창 이름", "팝업창 옵션");
+         openWin = window.open("last_address.do",
+                 "last_address", "width=570, height=600");   
+ 
+     
+    
+
+}
+function setChildText(){
+    openWin.document.getElementById("cInput").value = document.getElementById("pInput").value;
+}
 function addrclick(){
 	$("#receiver_zipcode").val($("#user_zipcode_or").val());
 	$("#receiver_address1").val($("#user_address1_or").val());
@@ -393,7 +414,7 @@ $("#radio_paymethod").click(function(){
 									<input type ="hidden" name="prod_title" id="prod_title" value ="${orderVO.prod_title}">
 									<input type ="hidden" name="prod_title_count" id="prod_title_count" value ="${status.count}">
 									<input type="hidden" name="location_before" value="${orderVO.location_before}">
-									<input type="hidden" id="pay_total_point" value="${orderVO.prod_total_point}">
+									<input type="hidden" name="pay_total_point" id="pay_total_point" value="${orderVO.prod_total_point}">
 									<tr class="nbg">
 										<td>
 											<div class="tb-center">
@@ -503,6 +524,7 @@ $("#radio_paymethod").click(function(){
 												size="15" maxlength="15" class="MS_input_txt" value="" placeholder="-를 포함한 연락처를 입력하세요." onfocus="this.placeholder=''" onblur="this.placeholder='-를 포함한 연락처를 입력하세요.'">
 											</td>
 									</tr>
+									
 									<tr>
 										<th scope="row">
 											<div class="txt-l">배송지 선택</div>
@@ -528,11 +550,12 @@ $("#radio_paymethod").click(function(){
 											name="place" id="place" onclick="addrclick()">자택&nbsp;&nbsp; &nbsp;&nbsp;
 									
 											<input type="radio" value="A" name="place" form="order_form">
-											최근 배송지&nbsp;<a href="javascript:;" class="past_list" 
+											최근 배송지&nbsp;<a href="javascript:last_address();" class="past_list" 
 											style="display: inline-block; height: 23px; line-height: 25px; padding: 0px 5px; border: 1px solid rgb(221, 221, 221); color: rgb(0, 0, 0); font-weight: bold; letter-spacing: -1px; border-radius: 3px;">
 											배송지 목록</a> &nbsp;&nbsp;
 											<input type="radio" value="E" name="place" form="order_form" onclick="">신규 배송지</td>
 									</tr>
+									
 									<tr>
 										<th scope="row">
 											<div class="txt-l">주소</div>
@@ -1081,7 +1104,8 @@ $("#radio_paymethod").click(function(){
 
 								</thead>
 							</table>
-						</div>
+						</div>		
+						 
 						<!-- .tbl-pay -->
 
 						<div id="paybutton">
