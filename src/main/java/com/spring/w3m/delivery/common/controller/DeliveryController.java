@@ -25,10 +25,7 @@ import com.spring.w3m.paging.common.Search;
 public class DeliveryController {
 	@Autowired
 	private DeliveryService service;
-	@Autowired
-	private OrderService orderService;
-	@Autowired
-	private UserService userService;
+
 	
 	
 	@RequestMapping("/getDeliveryList.mdo")
@@ -74,18 +71,18 @@ public class DeliveryController {
 		if(DeliveryState.equals("구매확정")) {
 			System.out.println("구매확정입니다.");
 			System.out.println(vo.toString());
-			orderService.updatePoint(vo);
+
 		}
 		if(DeliveryState.equals("주문취소")) {
 			System.out.println("주문취소입니다.");
 			System.out.println(vo.toString());
-			orderService.deletePoint(vo);
+
 		}
-		//여기서 포인트 업데이트
-		orderService.update_user_point(vo.getUser_id());//사용한 적립금 업데이트!
-		//세션 초기화
-		UserVO user = userService.getUser(vo1);
-		session.setAttribute("userVO", user);
+//		//여기서 포인트 업데이트
+
+//		//세션 초기화
+//		UserVO user = userService.getUser(vo1);
+
 		/*if(vo.getDelivery_state() != null &&vo1.getOrder_state() != null) {
 			if(vo.getDelivery_state().equals("주문취소")&&vo1.getOrder_state().equals("구매확정"));{
 			vo2.setOrder_seq(vo.getOrder_seq());
