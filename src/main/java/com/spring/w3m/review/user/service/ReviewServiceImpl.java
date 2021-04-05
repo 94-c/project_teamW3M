@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.spring.w3m.paging.common.Pagination;
 import com.spring.w3m.paging.common.Search;
+import com.spring.w3m.product.admin.vo.ProductVO;
 import com.spring.w3m.review.user.dao.ReviewDAO;
 import com.spring.w3m.review.user.vo.ReviewVO;
 
@@ -69,5 +70,10 @@ public class ReviewServiceImpl implements ReviewService {
 	@Override
 	public int reviewReplyCount(ReviewVO vo) {
 		return reviewDAO.reviewReplyCount(vo);
+	}
+
+	@Override
+	public ProductVO getProduct(ProductVO vo) {
+		return reviewDAO.getProduct(vo);
 	}
 }

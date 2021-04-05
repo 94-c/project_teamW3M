@@ -26,6 +26,7 @@ function submitForm()
 					<div class="bbs-tit">
 						<h3>후기게시판</h3>
 					</div>
+					
 					<div class="bbs-table-view">
 						<table summary="게시글 보기">
 							<caption>게시글 보기</caption>

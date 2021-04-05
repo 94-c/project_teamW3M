@@ -151,7 +151,7 @@
 										</div></td>
 									<td><div class="tb-center">${opi.delivery_state }</div></td>
 									<td><div class="tb-center">${opi.delivery_seq }</div></td>
-									<td><div class="tb-center"><a href="#" style="color:pink">후기작성</a></div></td>
+									<td><div class="tb-center"><a href="review_write_view.do?prod_title=${opi.prod_title }" style="color:pink">후기작성</a></div></td>
 								</tr>
 								</c:forEach>
 							</tbody>
