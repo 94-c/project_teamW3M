@@ -12,7 +12,7 @@ import com.spring.w3m.review.user.vo.ReviewVO;
 
 @Service
 public class ReviewServiceImpl implements ReviewService {
-	
+
 	@Autowired
 	private ReviewDAO reviewDAO;
 
@@ -46,10 +46,6 @@ public class ReviewServiceImpl implements ReviewService {
 		return reviewDAO.getReviewList(vo);
 	}
 
-	/*
-	 * @Override public ProductVO getProduct(ProductVO vo) { return
-	 * reviewDAO.getProduct(vo); }
-	 */
 	@Override
 	public int getReviewListCnt(Search search) {
 		return reviewDAO.getReviewListCnt(search);
@@ -69,9 +65,9 @@ public class ReviewServiceImpl implements ReviewService {
 	public List<ReviewVO> getSearchPagingList(Pagination pagination) {
 		return reviewDAO.getSearchPagingList(pagination);
 	}
-	
-	 @Override
-	 public int reviewReplyCount(ReviewVO vo) { 
-		 return reviewDAO.reviewReplyCount(vo); 
+
+	@Override
+	public int reviewReplyCount(ReviewVO vo) {
+		return reviewDAO.reviewReplyCount(vo);
 	}
 }

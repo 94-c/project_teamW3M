@@ -19,9 +19,6 @@ public interface ReviewService {
 	List<ReviewVO> getReviewList(ReviewVO vo);
 	
 	
-	/* ProductVO getProduct(ProductVO vo); */
-	
-	
 	// 검색 ,페이징
 	int getReviewListCnt(Search search);
 

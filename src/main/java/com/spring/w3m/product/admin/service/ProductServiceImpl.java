@@ -138,7 +138,7 @@ public class ProductServiceImpl implements ProductService {
 	public void addStock(ProductVO vo) {
 		int stock = vo.getAddStock() + vo.getProd_amount();
 		if(stock < 0) {
-			System.out.println("재고는 음수가 될수 없으므로 0으로 설정하겠습니다.");
+			System.out.println("재고는 음수가 될수 없으므로 0으로 설정합니다.");
 			vo.setProd_amount(0);
 		}else {
 			vo.setProd_amount(stock);
