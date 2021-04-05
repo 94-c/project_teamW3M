@@ -12,7 +12,7 @@ import com.spring.w3m.review.user.vo.ReviewVO;
 
 @Repository
 public class ReviewDAO {
-	
+
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
 
@@ -41,28 +41,27 @@ public class ReviewDAO {
 		return sqlSessionTemplate.selectOne("ReviewDAO.getReview", vo);
 	}
 
-
 	public List<ReviewVO> getReviewList(ReviewVO vo) {
 		System.out.println("후기게시판 글목록 보기");
 		return sqlSessionTemplate.selectList("ReviewDAO.getReviewList", vo);
 	}
-	
+
 	public int getReviewListCnt(Search search) {
 		System.out.println("getReviewListCnt() 실행");
 		return sqlSessionTemplate.selectOne("ReviewDAO.getReviewListCnt");
 	}
-	
-	public List<ReviewVO> getPageList(Search search){
+
+	public List<ReviewVO> getPageList(Search search) {
 		System.out.println("getPageList() 실행");
 		return sqlSessionTemplate.selectList("ReviewDAO.getPageList", search);
 	}
-	
+
 	public int getSearchCnt(String searchKeyword) {
 		System.out.println("getSearchCnt() 실헹");
 		return sqlSessionTemplate.selectOne("ReviewDAO.getSearchKeyword");
 	}
-	
-	public List<ReviewVO> getSearchPagingList(Pagination pagination){
+
+	public List<ReviewVO> getSearchPagingList(Pagination pagination) {
 		System.out.println("getSearchPagingList() 실행");
 		return sqlSessionTemplate.selectList("ReviewDAO.getSearchPagingList");
 	}
@@ -70,6 +69,5 @@ public class ReviewDAO {
 	public int reviewReplyCount(ReviewVO vo) {
 		return sqlSessionTemplate.selectOne("ReviewDAO.reviewReplyCount", vo);
 	}
-	
-}
 
+}

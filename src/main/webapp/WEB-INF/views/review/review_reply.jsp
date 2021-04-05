@@ -27,6 +27,6 @@
 											<pre>${reviewList.review_re_content}</pre><br>
 									</c:forEach>
 						  </table>
-							</div>			 	
+							</div>			 		 	
 </body>
 </html>

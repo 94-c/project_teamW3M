@@ -120,7 +120,7 @@ public class ReviewController {
 	public String updateReview(ReviewVO vo, Model model) {
 		reviewService.updateReview(vo);
 		model.addAttribute("reviewList", reviewService.getReviewList(vo));
-		return "/review/review";
+		return "redirect:/review.do";
 	}
 	
 	@RequestMapping("/review_update_view.do")
@@ -207,7 +207,15 @@ public class ReviewController {
 		  int seq = rvo.getReview_seq();
 		  System.out.println(seq);
 		  replyService.deleteReviewCnt(vo);
-		  replyService.deleteRevireReply(rvo); 
+		  replyService.deleteReviewReply(rvo); 
 		  return "redirect:/reviewContent.do?review_seq=" + seq;
 	   }
+	   
+	  // 후기 댓글 보기(새 창 띄우기)
+	  @RequestMapping("/review_reply.do")
+	  public String reviewReplyNew(Model model, ReviewVO vo) {
+		  List<ReplyVO> reviewReplyList = replyService.getReviewReplyList(vo.getReview_seq());
+			model.addAttribute("reviewReplyList", reviewReplyList);
+		return "/review/review_reply";
+	}
 }

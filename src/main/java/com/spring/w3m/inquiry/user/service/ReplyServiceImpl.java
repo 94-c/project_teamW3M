@@ -73,7 +73,7 @@ public class ReplyServiceImpl implements ReplyService {
 	}
 
 	@Override
-	public void deleteRevireReply(ReplyVO vo) {
+	public void deleteReviewReply(ReplyVO vo) {
 		replyDAO.deleteReviewReply(vo);	
 		
 	}

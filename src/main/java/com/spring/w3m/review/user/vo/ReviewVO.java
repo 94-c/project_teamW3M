@@ -103,9 +103,6 @@ public class ReviewVO {
 				+ ", review_date=" + review_date + ", review_pass=" + review_pass + ", review_cnt=" + review_cnt
 				+ ", review_image=" + review_image + ", prod_code=" + prod_code + ", searchType=" + searchType
 				+ ", keyword=" + keyword + ", reply_cnt=" + reply_cnt + "]";
-	}
-	
-	
-	
+	}	
 	
 }
