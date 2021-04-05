@@ -21,6 +21,7 @@ import com.spring.w3m.paging.common.Pagination;
 import com.spring.w3m.paging.common.Search;
 import com.spring.w3m.point.user.service.PointService;
 import com.spring.w3m.point.user.vo.PointVO;
+import com.spring.w3m.product.admin.vo.OrderProductInfoVO;
 import com.spring.w3m.review.user.vo.ReviewVO;
 
 @Controller
@@ -154,8 +155,12 @@ public class MyPageController {
 		DeliveryVO deliveryInfo = myPageService.getDeliveryInfo(dVO);
 		String lotteRandomNum = myPageService.makeRandomNumber();
 		
+		String userId = vo.getUser_id();
+		List<OrderProductInfoVO> opiList = myPageService.getOrderProductInfo(userId);
+		
 		model.addAttribute("receiverInfo", receiverInfo); //주문자정보
 		model.addAttribute("deliveryInfo", deliveryInfo); //배송지정보
+		model.addAttribute("orderProductInfo", opiList);
 		model.addAttribute("lotteRandomNum", lotteRandomNum);
 		return "mypage/orderDetail";
 	}
