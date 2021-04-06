@@ -13,44 +13,45 @@ public class CartDAO {
 
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
-	
+
 	public List<CartVO> CartList(String user_id) {
 		System.out.println("장바구니 리스트");
-		return sqlSessionTemplate.selectList("CartDAO.CartList",user_id);
+		return sqlSessionTemplate.selectList("CartDAO.CartList", user_id);
 	}
 
 	public int Cart_Order_Cnt_Update(CartVO vo) {
 		System.out.println("물품 수량 변경");
-		return sqlSessionTemplate.update("CartDAO.Cart_Order_Cnt_Update",vo);
-		
+		return sqlSessionTemplate.update("CartDAO.Cart_Order_Cnt_Update", vo);
+
 	}
 
 	public int Cart_Cnt(CartVO vo) {
 		System.out.println("장바구니 수량 체크");
-		return sqlSessionTemplate.selectOne("CartDAO.Cart_Cnt",vo);
+		return sqlSessionTemplate.selectOne("CartDAO.Cart_Cnt", vo);
 	}
 
 	public int Cart_delete(int cart_id) {
 		System.out.println("장바구니 삭제");
-		return sqlSessionTemplate.delete("CartDAO.Cart_Delete",cart_id);
+		return sqlSessionTemplate.delete("CartDAO.Cart_Delete", cart_id);
 	}
 
 	public int Cart_alldelete(String user_id) {
 		System.out.println("장바구니 비우기");
-		return sqlSessionTemplate.delete("CartDAO.Cart_AllDelete",user_id);
+		return sqlSessionTemplate.delete("CartDAO.Cart_AllDelete", user_id);
 	}
 
 	public void Cart_insert(CartVO vo) {
-		sqlSessionTemplate.insert("CartDAO.Cart_insert",vo);
-		
+		sqlSessionTemplate.insert("CartDAO.Cart_insert", vo);
+
 	}
+
 	public int Cart_distinct(CartVO vo) {
-		return sqlSessionTemplate.selectOne("CartDAO.Cart_distinct",vo);
-		
+		return sqlSessionTemplate.selectOne("CartDAO.Cart_distinct", vo);
+
 	}
 
 	public int multi_Order_List(String user_id) {
-		
-		return sqlSessionTemplate.insert("CartDAO.multi_Order_List",user_id);
+
+		return sqlSessionTemplate.insert("CartDAO.multi_Order_List", user_id);
 	}
 }

@@ -150,34 +150,34 @@ public class MyPageController {
 		model.addAttribute("deliveryState", deliveryState);
 		return "mypage/myDeliveryDetail";
 	}
-	
+
 	// 주문상세
 	@RequestMapping("myOrderDetail.do")
-	public String getOrderDetail(Model model, @SessionAttribute("userVO") UserVO vo, OrderVO oVO, DeliveryVO dVO, PayVO pVO) {
+	public String getOrderDetail(Model model, @SessionAttribute("userVO") UserVO vo, OrderVO oVO, DeliveryVO dVO,
+			PayVO pVO) {
 		oVO.setUser_id(vo.getUser_id());
 		OrderVO receiverInfo = myPageService.getReceiverInfo(oVO);
-		
+
 		dVO.setUser_id(vo.getUser_id());
 		DeliveryVO deliveryInfo = myPageService.getDeliveryInfo(dVO);
 		String lotteRandomNum = myPageService.makeRandomNumber();
-		
-		
+
 		List<OrderProductInfoVO> opiList = myPageService.getOrderProductInfo(oVO);
-		
+
 		PayVO payInfo = myPageService.getPayInfo(pVO);
-		
+
 		String userId = vo.getUser_id();
 		String salePercent = myPageService.getUserLevel(userId);
-		
-		model.addAttribute("receiverInfo", receiverInfo); //주문자정보
-		model.addAttribute("deliveryInfo", deliveryInfo); //배송지정보
-		model.addAttribute("orderProductInfo", opiList); //주문상품정보
-		model.addAttribute("payInfo", payInfo); //결제정보
-		model.addAttribute("lotteRandomNum", lotteRandomNum); //송장번호(12자리난수)
-		model.addAttribute("salePercent", salePercent); //회원등급에 따른 추가할인율
+
+		model.addAttribute("receiverInfo", receiverInfo); // 주문자정보
+		model.addAttribute("deliveryInfo", deliveryInfo); // 배송지정보
+		model.addAttribute("orderProductInfo", opiList); // 주문상품정보
+		model.addAttribute("payInfo", payInfo); // 결제정보
+		model.addAttribute("lotteRandomNum", lotteRandomNum); // 송장번호(12자리난수)
+		model.addAttribute("salePercent", salePercent); // 회원등급에 따른 추가할인율
 		return "mypage/myOrderDetail";
 	}
-	
+
 	@RequestMapping("orderCancel.do")
 	public String cancelOrder(Model model, DeliveryVO dVO, PointVO pVO, PayVO payVO, OrderVO oVO) {
 		myPageService.deletePoint(pVO); // 포인트 회수

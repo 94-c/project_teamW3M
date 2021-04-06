@@ -25,7 +25,6 @@ public class TosVO {
 	}
 	public void setTos_content(String tos_content) {
 		this.tos_content = tos_content;
-	}
-	
+	}	
 	
 }

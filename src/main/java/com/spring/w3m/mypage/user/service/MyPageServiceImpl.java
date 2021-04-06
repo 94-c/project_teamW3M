@@ -128,8 +128,7 @@ public class MyPageServiceImpl implements MyPageService {
 	@Override
 	public void changeDeliveryState(DeliveryVO vo) {
 		dao.changeDeliveryState(vo);
-	}
-	
+	}	
 	/*-----------------------------------------*/	
 	
 }
