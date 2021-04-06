@@ -25,7 +25,7 @@ public class HomeController {
 
 	@RequestMapping(value = "/", method = { RequestMethod.GET, RequestMethod.POST })
 	public String index(Model model, ProductVO vo) {
-		System.out.println("메인홈으로 이동...");
+		System.out.println("홈페이지로 이동...");
 
 		List<ProductVO> product = homeService.selectProduct(vo);
 		model.addAttribute("product", product);
@@ -35,7 +35,7 @@ public class HomeController {
 
 	@RequestMapping(value = "/orderList", method = { RequestMethod.GET, RequestMethod.POST })
 	public String order_list(Model model, ProductVO vo) {
-		System.out.println("메인홈으로 이동...");
+		System.out.println("홈페이지로 이동...");
 
 		List<ProductVO> product = homeService.selectProduct(vo);
 		model.addAttribute("product", product);
@@ -49,7 +49,7 @@ public class HomeController {
 			@RequestParam(required = false, defaultValue = "1") int range,
 			@RequestParam(required = false, defaultValue = "title") String searchType,
 			@RequestParam(required = false) String keyword) {
-		System.out.println("shop");
+		System.out.println("상품상세보기");
 
 		ProductVO vvs = homeService.getProduct(vo);
 
