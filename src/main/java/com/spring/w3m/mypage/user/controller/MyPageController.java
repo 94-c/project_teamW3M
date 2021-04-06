@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
+import com.spring.w3m.delivery.common.service.DeliveryService;
 import com.spring.w3m.delivery.common.vo.DeliveryVO;
 import com.spring.w3m.inquiry.user.vo.InquiryVO;
 import com.spring.w3m.join.user.vo.UserVO;
@@ -31,6 +32,8 @@ public class MyPageController {
 	private MyPageService myPageService;
 	@Autowired
 	private PointService pointService;
+	@Autowired
+	private DeliveryService deliveryService;
 
 	@RequestMapping("/mypage.do")
 	public String myPage(MyPageVO vo, Model model) { // 마이페이지 진입
@@ -159,14 +162,29 @@ public class MyPageController {
 		String userId = vo.getUser_id();
 		List<OrderProductInfoVO> opiList = myPageService.getOrderProductInfo(userId);
 		
-		PayVO payInfo = myPageService.getPayInfo(pVO);		
+		PayVO payInfo = myPageService.getPayInfo(pVO);
+		
+		String salePercent = myPageService.getUserLevel(userId);
 		
 		model.addAttribute("receiverInfo", receiverInfo); //주문자정보
 		model.addAttribute("deliveryInfo", deliveryInfo); //배송지정보
 		model.addAttribute("orderProductInfo", opiList); //주문상품정보
 		model.addAttribute("payInfo", payInfo); //결제정보
 		model.addAttribute("lotteRandomNum", lotteRandomNum); //송장번호(12자리난수)
+		model.addAttribute("salePercent", salePercent);
 		return "mypage/myOrderDetail";
+	}
+	
+	@RequestMapping("orderCancel.do")
+	public String cancelOrder(Model model, DeliveryVO dVO, PointVO pVO, PayVO payVO, OrderVO oVO) {
+		myPageService.deletePoint(pVO); // 포인트 회수
+		myPageService.changePayState(payVO); // 결제정보 변경
+		myPageService.changeOrderState(oVO); // 주문상태 변경
+		myPageService.changeOrderProductState(oVO); // 주문상품상태 변경
+		myPageService.changeDeliveryState(dVO); // 배송상태 변경
+		dVO.setDelivery_state("주문취소");
+		deliveryService.insertDelivery_state(deliveryService.getDeliveryCont(dVO)); // 배송상세내역에 넣어줌
+		return "redirect:myOrderList.do";
 	}
 
 }
