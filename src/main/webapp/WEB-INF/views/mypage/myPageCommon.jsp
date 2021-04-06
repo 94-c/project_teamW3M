@@ -32,11 +32,11 @@
 			<h2 class="txt txt3">개인정보</h2>
 			<div class="lnb">
 				<ul>
-					<li class="first"><a href="memberInfoUpdate.do">회원정보변경</a></li>
+					<li class="first"><a href="memberInfoUpdate.do">회원정보수정</a></li>
 					<li><form action="memberInfoDelete.do" id="deleteSuccess"
 							method="POST">
 							<input type="hidden" name="user_id" value="${userVO.user_id }">
-							<a href="javascript:userexit();">회원정보탈퇴신청</a>
+							<a href="javascript:userexit();">회원탈퇴신청</a>
 						</form></li>
 				</ul>
 			</div>

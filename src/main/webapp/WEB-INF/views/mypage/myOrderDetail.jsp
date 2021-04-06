@@ -196,7 +196,7 @@ $(document).ready(function(){
 							<tbody>
 								<tr>
 									<td><div class="tb-center">사용한 적립금</div></td>
-									<td><div class="tb-center">${payInfo.pay_use_point} point</div></td>
+									<td><div class="tb-center"><fmt:formatNumber value="${payInfo.pay_use_point}" pattern="#,###"/> point</div></td>
 								</tr>
 								<tr>
 									<td><div class="tb-center">회원 등급별 할인(%)</div></td>

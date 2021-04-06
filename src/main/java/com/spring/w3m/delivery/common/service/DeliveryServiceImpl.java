@@ -10,6 +10,7 @@ import com.spring.w3m.delivery.common.vo.DeliveryVO;
 import com.spring.w3m.order.user.vo.OrderVO;
 import com.spring.w3m.paging.common.Pagination;
 import com.spring.w3m.paging.common.Search;
+import com.spring.w3m.product.admin.vo.OrderProductInfoVO;
 
 @Service
 public class DeliveryServiceImpl implements DeliveryService {
@@ -91,4 +92,18 @@ public class DeliveryServiceImpl implements DeliveryService {
 	
 		return dao.pay_state_change(order_seq);
 	}
+	
+	@Override //주문상품 개수 얻어옴
+	public void getOrderAmount(int order_seq, OrderProductInfoVO opiVO) {
+		List<Integer> amountList = dao.getOrderAmount(order_seq);
+		for(int i=0; i<amountList.size(); i++) {
+			opiVO.setProd_amount(amountList.get(i));
+			addSalesRate(opiVO);
+		}
+	}
+	@Override //얻어온 상품 개수만큼 판매량 플러스시킴
+	public void addSalesRate(OrderProductInfoVO opiVO) {
+		dao.addSalesRate(opiVO);
+	}
+	
 }

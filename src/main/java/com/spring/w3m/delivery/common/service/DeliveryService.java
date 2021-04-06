@@ -6,6 +6,7 @@ import com.spring.w3m.delivery.common.vo.DeliveryVO;
 import com.spring.w3m.order.user.vo.OrderVO;
 import com.spring.w3m.paging.common.Pagination;
 import com.spring.w3m.paging.common.Search;
+import com.spring.w3m.product.admin.vo.OrderProductInfoVO;
 
 public interface DeliveryService {
 
@@ -29,5 +30,8 @@ public interface DeliveryService {
 	int order_state_change(int order_seq);
 	int Prod_state_change(int order_seq);
 	int pay_state_change(int order_seq);
+	
+	void getOrderAmount(int order_seq, OrderProductInfoVO opiVO);
+	void addSalesRate(OrderProductInfoVO opiVO);
 
 }

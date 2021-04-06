@@ -10,6 +10,7 @@ import com.spring.w3m.delivery.common.vo.DeliveryVO;
 import com.spring.w3m.order.user.vo.OrderVO;
 import com.spring.w3m.paging.common.Pagination;
 import com.spring.w3m.paging.common.Search;
+import com.spring.w3m.product.admin.vo.OrderProductInfoVO;
 
 @Repository
 public class DeliveryDAO {
@@ -71,6 +72,13 @@ public class DeliveryDAO {
 	public int pay_state_change(int order_seq) {
 
 		return template.update("delivery.pay_state_change",order_seq);
+	}
+	
+	public List<Integer> getOrderAmount(int order_seq){
+		return template.selectList("delivery.getOrderAmount", order_seq);
+	}
+	public int addSalesRate(OrderProductInfoVO opiVO) {
+		return template.update("delivery.addSalesRate", opiVO);
 	}
 	
 }
