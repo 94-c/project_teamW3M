@@ -206,7 +206,7 @@
 						<br>
 					</div>
 					<div class="btn-foot">
-						<a href="/html/mainm.html" class="CSSbuttonWhite">주문확인</a>
+						<a href="/myOrderList.do" class="CSSbuttonWhite">주문확인</a>
 					</div>
 
 				</div>
