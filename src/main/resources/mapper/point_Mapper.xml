@@ -63,7 +63,7 @@
 </update>
 
 <delete id="orderDeletePoint" parameterType="com.spring.w3m.delivery.common.vo.DeliveryVO" > 
-	delete from add_point WHERE user_id=#{user_id} and order_seq = #{order_seq} 
+	delete from add_point WHERE user_id=#{user_id} and order_seq = #{order_seq} and order_state ='사용불가'
 </delete>
 
 <update id="update_point">

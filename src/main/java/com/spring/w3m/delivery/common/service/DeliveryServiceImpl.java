@@ -73,4 +73,22 @@ public class DeliveryServiceImpl implements DeliveryService {
 	public DeliveryVO getDeliveryCont(DeliveryVO vo) {
 		return dao.getDeliverycont(vo);
 	}
+
+	@Override
+	public int order_state_change(int order_seq) {
+
+		return dao.order_state_change(order_seq);
+	}
+
+	@Override
+	public int Prod_state_change(int order_seq) {
+
+		return dao.Prod_state_change(order_seq);
+	}
+
+	@Override
+	public int pay_state_change(int order_seq) {
+	
+		return dao.pay_state_change(order_seq);
+	}
 }

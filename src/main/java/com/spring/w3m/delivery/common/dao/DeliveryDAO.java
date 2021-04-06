@@ -57,5 +57,20 @@ public class DeliveryDAO {
 	public DeliveryVO getDeliverycont(DeliveryVO vo) {
 		return template.selectOne("delivery.getDeliverycont", vo);
 	}
+
+	public int order_state_change(int order_seq) {
+
+		return template.update("delivery.order_state_change",order_seq);
+	}
+
+	public int Prod_state_change(int order_seq) {
+
+		return template.update("delivery.Prod_state_change",order_seq);
+	}
+
+	public int pay_state_change(int order_seq) {
+
+		return template.update("delivery.pay_state_change",order_seq);
+	}
 	
 }
