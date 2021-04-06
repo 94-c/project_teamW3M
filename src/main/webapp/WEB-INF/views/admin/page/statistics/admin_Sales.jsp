@@ -70,12 +70,34 @@
                                         매출 통계
              </div>
           <div class="card-body">
+          	
           	<div class="date">
           	<Strong>기간 설정</Strong>&nbsp;&nbsp;
-          	<input type="text" id="datepicker1" > 
+          		<input type="text" id="datepicker1" >
           	<Strong>-</Strong>
-          	<input type="text" id="datepicker2">
+          		<input type="text" id="datepicker2">
+			</div>
+			<br>
+			<div class="product" >
+			<Strong>카테 고리</Strong>&nbsp;&nbsp;
+			<select name="product_1" id="product_1">
+				<option value="2017">2017</option>
+				<option value="2018">2018</option>
+				<option value="2019">2019</option>
+			</select>
+			<select name="product_2" id="product_2">
+				<option value="2017">2017</option>
+				<option value="2018">2018</option>
+				<option value="2019">2019</option>
+			</select>
+			<select name="product_3" id="product_3">
+				<option value="2017">2017</option>
+				<option value="2018">2018</option>
+				<option value="2019">2019</option>
+			</select>
+			<button type="button" class="">조회</button>
 			</div>		 
+			
 		   <br>
 		   <br>
            <div id="chart1" style="width: auto; height: 600px;"></div>
