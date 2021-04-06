@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="PurchaseDAO">
+
+	<select id="getPurchaseList" resultType="PurchaseVO">
+	SELECT u.user_name, u.user_id, d.order_seq, d.prod_title, d.user_id,
+	d.order_date, d.delivery_state, p.pay_total_money 
+	
+	FROM user_member as u
+	join delivery as d on u.user_id = d.user_id join pay as p on
+	d.order_seq = p.order_seq order by d.order_date desc
+	</select>
+	
+	<select id="getPurchaseListCnt" resultType="int">
+		SELECT count(*) FROM order_list
+	</select>
+	
+	<!-- 페이징 처리 후 게시글 조회 -->
+	<select id="getPageList" resultType="PurchaseVO">
+	SELECT u.user_name, u.user_id, d.order_seq, d.prod_title, d.user_id,
+	d.order_date, d.delivery_state, p.pay_total_money 
+	
+	FROM user_member as u
+	join delivery as d on u.user_id = d.user_id join pay as p on
+	d.order_seq = p.order_seq
+	
+	WHERE 1=1
+		<if test="searchType=='u.user_name' and keyword != null and keyword != '' ">
+			AND u.user_name like CONCAT('%', #{keyword}, '%')
+		</if>
+		<if test="searchType=='d.order_seq' and keyword != null and keyword != '' ">
+			AND CAST(d.order_seq AS TEXT) like CONCAT('%', #{keyword}, '%')
+		</if>
+		order by d.order_date desc
+		limit #{listSize} offset #{startList}
+	</select>	
+	
+	<select id="getSearchCnt" parameterType="String" resultType="int">
+		select count(*) from user_member
+	<trim prefix="WHERE" prefixOverrides="AND|OR">
+	<if test="keyword != null and keyword != '' ">
+			<if test="searchType=='u.user_name'">
+				AND u.user_name like CONCAT('%', #{keyword}, '%')
+			</if>
+
+			<if test="searchType=='d.order_seq'" >
+				AND CAST(d.order_seq AS TEXT) like CONCAT('%', #{keyword}, '%')
+			</if>
+      </if>
+	</trim>
+	</select>
+	
+	<select id="getSearchPagingList" resultType="PurchaseVO">
+		SELECT * FROM user_member where 1=1
+		<if test="searchCondition == 'u.user_name'">
+			AND u.user_name LIKE '%'||#{searchKeyword}||'%'
+		</if>
+		<if test="searchCondition == 'd.order_seq'">
+			AND CAST(d.order_seq AS TEXT) LIKE '%'||#{searchKeyword}||'%'
+		</if>
+		order by d.order_date desc
+	</select>
+	<!-- 여기까지 페이징 처리 -->
+	
+	
+	
+</mapper>

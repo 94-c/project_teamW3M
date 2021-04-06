@@ -67,24 +67,5 @@ public class AdminDAO {
 		sqlSessionTemplate.update("AdminDAO.updateUserPause", vo);
 	}
 	
-	public List<AdminVO> getPurchaseList(AdminVO vo) {
-		return sqlSessionTemplate.selectList("AdminDAO.getPurchaseList");
-	}
-	
-	// 페이징
-	public int getPurchaseListCnt(Search search) {
-		System.out.println("getPurchaseListCnt() 실행");
-		return sqlSessionTemplate.selectOne("AdminDAO.getPurchaseListCnt");
-	}
-
-	public List<AdminVO> getPurchasePageList(Search search) {
-		System.out.println("getPurchasePageList() 실행");
-		return sqlSessionTemplate.selectList("AdminDAO.getPurchasePageList", search);
-	}
-
-	public List<AdminVO> getPurchaseSearchPagingList(Pagination pagination) {
-		System.out.println("getPurchaseSearchPagingList() 실행");
-		return sqlSessionTemplate.selectList("AdminDAO.getPurchaseSearchPagingList");
-	}	
 
 }
