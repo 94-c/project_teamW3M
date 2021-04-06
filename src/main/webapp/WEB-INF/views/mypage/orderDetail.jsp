@@ -149,9 +149,9 @@
 									<td><div class="tb-center">
 											<span class="style4">${opi.prod_point * opi.prod_amount}</span>
 										</div></td>
-									<td><div class="tb-center">${opi.delivery_state}</div></td>
-									<td><div class="tb-center">${opi.delivery_seq}</div></td>
-									<td><div class="tb-center"><a href="#" style="color:#ff08a0">후기작성</a></div></td>
+									<td><div class="tb-center">${opi.delivery_state }</div></td>
+									<td><div class="tb-center">${opi.delivery_seq }</div></td>
+									<td><div class="tb-center"><a href="review_write_view.do?prod_title=${opi.prod_title }" style="color:#ff08a0">후기작성</a></div></td>
 								</tr>
 								</c:forEach>
 							</tbody>

@@ -70,7 +70,7 @@
                                         매출 통계
              </div>
           <div class="card-body">
-		  	  일자: <input type="text" id="datepicker1"  > - <input type="text" id="datepicker2"  >
+		  	  일자: <input type="text" id="datepicker1" style = "text-align:right;"  > - <input type="text" id="datepicker2" style = "text-align:right;"  >
 		   <br>
 		   <br>
            <div id="chart1" style="width: auto; height: 600px;"></div>

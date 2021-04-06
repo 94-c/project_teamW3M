@@ -13,16 +13,11 @@ public class ReviewVO {
 	private int review_cnt;
 	private String review_image;
 	private String prod_code;
+	private String prod_title;
+	private String prod_title_image;
 	private String searchType;
 	private String keyword;
 	private int reply_cnt;
-	
-	public int getReply_cnt() {
-		return reply_cnt;
-	}
-	public void setReply_cnt(int reply_cnt) {
-		this.reply_cnt = reply_cnt;
-	}
 	public int getReview_seq() {
 		return review_seq;
 	}
@@ -71,7 +66,6 @@ public class ReviewVO {
 	public void setReview_cnt(int review_cnt) {
 		this.review_cnt = review_cnt;
 	}
-	
 	public String getReview_image() {
 		return review_image;
 	}
@@ -83,6 +77,12 @@ public class ReviewVO {
 	}
 	public void setProd_code(String prod_code) {
 		this.prod_code = prod_code;
+	}
+	public String getProd_title() {
+		return prod_title;
+	}
+	public void setProd_title(String prod_title) {
+		this.prod_title = prod_title;
 	}
 	public String getSearchType() {
 		return searchType;
@@ -96,13 +96,28 @@ public class ReviewVO {
 	public void setKeyword(String keyword) {
 		this.keyword = keyword;
 	}
+	public int getReply_cnt() {
+		return reply_cnt;
+	}
+	public void setReply_cnt(int reply_cnt) {
+		this.reply_cnt = reply_cnt;
+	}
+	public String getProd_title_image() {
+		return prod_title_image;
+	}
+	public void setProd_title_image(String prod_title_image) {
+		this.prod_title_image = prod_title_image;
+	}
+	
 	@Override
 	public String toString() {
 		return "ReviewVO [review_seq=" + review_seq + ", review_title=" + review_title + ", review_writer="
 				+ review_writer + ", review_content=" + review_content + ", review_email=" + review_email
 				+ ", review_date=" + review_date + ", review_pass=" + review_pass + ", review_cnt=" + review_cnt
-				+ ", review_image=" + review_image + ", prod_code=" + prod_code + ", searchType=" + searchType
-				+ ", keyword=" + keyword + ", reply_cnt=" + reply_cnt + "]";
-	}	
+				+ ", review_image=" + review_image + ", prod_code=" + prod_code + ", prod_title=" + prod_title
+				+ ", prod_title_image=" + prod_title_image + ", searchType=" + searchType + ", keyword=" + keyword
+				+ ", reply_cnt=" + reply_cnt + "]";
+	}
+	
 	
 }

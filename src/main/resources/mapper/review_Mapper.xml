@@ -25,10 +25,10 @@
 	<insert id="insertReview" parameterType="ReviewVO">
 		INSERT INTO review
 		(review_seq, review_title, review_writer, review_content,
-		review_email, review_pass, review_cnt, review_image)
+		review_email, review_pass, review_cnt, review_image, prod_title, prod_title_image)
 		VALUES(nextval('review_seq'), #{review_title}, #{review_writer},
 		#{review_content}, #{review_email}, #{review_pass}, #{review_cnt},
-		#{review_image})
+		#{review_image}, #{prod_title}, #{prod_title_image})
 	</insert>
 
 	<!-- 후기 상세보기 -->
@@ -110,4 +110,9 @@
 
 	<update id="deleteReviewCnt" parameterType="ReviewVO"> update review set
 		reply_cnt=reply_cnt-1 WHERE review_seq=#{review_seq} </update>
+		
+	<select id="getProduct" resultType="com.spring.w3m.product.admin.vo.ProductVO">
+		SELECT * FROM product WHERE prod_title = #{prod_title}
+	</select>
+		
 </mapper>
