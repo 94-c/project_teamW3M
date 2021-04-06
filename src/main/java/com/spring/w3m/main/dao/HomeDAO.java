@@ -10,6 +10,7 @@ import com.spring.w3m.inquiry.user.vo.InquiryVO;
 import com.spring.w3m.notice.admin.vo.TosVO;
 import com.spring.w3m.paging.common.Search;
 import com.spring.w3m.product.admin.vo.ProductVO;
+import com.spring.w3m.review.user.vo.ReviewVO;
 
 @Repository
 public class HomeDAO {
@@ -42,5 +43,13 @@ public class HomeDAO {
 	
 	public TosVO getTos(TosVO vo) {
 		return sqlSessionTemplate.selectOne("HomeDAO.getTos", vo);
-	   }
+	}
+	
+	public List<ReviewVO> productRe(Search search1){
+		return sqlSessionTemplate.selectList("HomeDAO.productRe",search1);
+	}
+	
+	public int getReviewListCnt(Search search1) {
+		return sqlSessionTemplate.selectOne("HomeDAO.getReviewListCnt");
+	}
 }

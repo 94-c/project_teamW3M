@@ -1,49 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
- <mapper namespace="HomeDAO">
- 
- <select id="selectProduct" resultType="com.spring.w3m.product.admin.vo.ProductVO">
-  SELECT
- 	*
-  FROM
-  	product
-  ORDER BY 
-  	prod_count desc
-  LIMIT 8
- </select>	
- 
- <select id="getProduct" resultType="com.spring.w3m.product.admin.vo.ProductVO">
- SELECT
- 	*
-  FROM
-  	product
-  WHERE
-   prod_code=#{prod_code}
-  </select>
-  
-  <select id="productInq" resultType="com.spring.w3m.inquiry.user.vo.InquiryVO">
-  select
-	*
-  from 
-  	inquiry
-  where  
-  	prod_code = #{prod_code}
-	order by inq_seq desc
-	limit #{listSize} offset #{startList}
-  </select>
-  
-  <select id="getInquiryListCnt" resultType="int">
-		select count(*) from inquiry where prod_code = #{prod_code}
+
+<mapper namespace="HomeDAO">
+
+	<select id="selectProduct"
+		resultType="com.spring.w3m.product.admin.vo.ProductVO">
+		SELECT
+		*
+		FROM
+		product
+		ORDER BY
+		prod_count desc
+		LIMIT 8
 	</select>
-	
-	<update id="countUpdate" parameterType="com.spring.w3m.product.admin.vo.ProductVO"> 
-		update product set prod_count=prod_count+1 WHERE prod_code=#{prod_code} 
+
+	<select id="getProduct"
+		resultType="com.spring.w3m.product.admin.vo.ProductVO">
+		SELECT
+		*
+		FROM
+		product
+		WHERE
+		prod_code=#{prod_code}
+	</select>
+
+	<select id="productInq" resultType="com.spring.w3m.inquiry.user.vo.InquiryVO">
+		select
+		*
+		from
+		inquiry
+		where
+		prod_code = #{prod_code}
+		order by inq_seq desc
+		limit #{listSize} offset #{startList}
+	</select>
+
+	<select id="getInquiryListCnt" resultType="int">
+		select count(*) from
+		inquiry where prod_code = #{prod_code}
+	</select>
+
+	<update id="countUpdate"
+		parameterType="com.spring.w3m.product.admin.vo.ProductVO">
+		update product set prod_count=prod_count+1 WHERE prod_code=#{prod_code}
 	</update>
-	
-	<select id="getTos" resultType="com.spring.w3m.notice.admin.vo.TosVO">
-	select * from tos
+
+	<select id="getTos"
+		resultType="com.spring.w3m.notice.admin.vo.TosVO">
+		select * from tos
 	</select>
-	
- </mapper>
+
+	<select id="productRe" resultType="com.spring.w3m.review.user.vo.ReviewVO">
+		select
+		*
+		from
+		review
+		where
+		prod_title = #{prod_title}
+		order by review_seq desc
+		limit #{listSize} offset #{startList}
+	</select>
+
+	<select id="getReviewListCnt" resultType="int">
+		select count(*) from
+		review where prod_title = #{prod_title}
+	</select>
+</mapper>

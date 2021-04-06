@@ -15,6 +15,7 @@ import com.spring.w3m.notice.admin.vo.TosVO;
 import com.spring.w3m.paging.common.Pagination;
 import com.spring.w3m.paging.common.Search;
 import com.spring.w3m.product.admin.vo.ProductVO;
+import com.spring.w3m.review.user.vo.ReviewVO;
 
 @Controller
 public class HomeController {
@@ -43,12 +44,14 @@ public class HomeController {
 	
 
 	@RequestMapping("/getProduct")
-	public String getProduct(ProductVO vo, Model model, InquiryVO vo2,
+	public String getProduct(ProductVO vo, Model model, InquiryVO vo2,ReviewVO vo3,
 			@RequestParam(required = false, defaultValue = "1") int page,
 			@RequestParam(required = false, defaultValue = "1") int range,
 			@RequestParam(required = false, defaultValue = "title") String searchType,
 			@RequestParam(required = false) String keyword) {
 		System.out.println("shop");
+		
+		ProductVO vvs = homeService.getProduct(vo);
 		
 		Search search = new Search();
 		search.setSearchType(searchType);
@@ -63,10 +66,30 @@ public class HomeController {
 		
 		List<InquiryVO> pageList = homeService.productInq(search);
 		
+		
+		
+		Search search1 = new Search();
+		search1.setSearchType(searchType);
+		search1.setKeyword(keyword);
+		search1.setProd_title(vvs.getProd_title());
+		
+		int cnt1 = homeService.getReviewListCnt(search1);
+		search1.pageInfo(page, range, cnt1);
+		
+		Pagination pagination1 = new Pagination();
+		pagination1.pageInfo(page, range, cnt1);
+		
+		List<ReviewVO> pageList1 = homeService.productRe(search1);
+		
+		
+		
 		model.addAttribute("pagination", search);
-		model.addAttribute("product", homeService.getProduct(vo));
+		model.addAttribute("pagination1", search1);
+		model.addAttribute("product", vvs);
 		model.addAttribute("inquiry", pageList);
+		model.addAttribute("review", pageList1);
 		model.addAttribute("cnt", cnt);
+		model.addAttribute("cnt", cnt1);
 		
 		return "product/shop_detail";
 	}

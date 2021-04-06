@@ -403,6 +403,26 @@ function send_oder(code){
 									</tr>
 								</thead>
 								<tbody>
+									<c:forEach var="re" items="${review}">
+										<tr>
+											<td scope="col"><div class="tb-center">${re.review_seq}</div></td>
+											<td scope="col"><div class="tb-center">&nbsp;</div></td>
+											<td scope="col"><div class="tb-center">
+													<a
+														href='<c:url value='/reviewContent.do?review_seq=${re.review_seq}&prod_title=${re.prod_title }'/>'
+														class="text-dark">${re.review_title}</a>
+												</div></td>
+											<td scope="col"><div class="tb-center">
+													<c:if
+														test="${re.review_writer ne null && re.review_writer!=''}">${fn:substring(re.review_writer,0,fn:length(re.review_writer)-1)}*</c:if>
+												</div></td>
+											<td scope="col"><div class="tb-center">
+													<fmt:formatDate value="${re.review_date}"
+														pattern="yyyy-MM-dd" />
+												</div></td>
+											<td scope="col"><div class="tb-center">${re.review_cnt}</div></td>
+										</tr>
+									</c:forEach>
 								</tbody>
 							</table>
 							<div class="detailTab">
@@ -418,10 +438,29 @@ function send_oder(code){
 							<div class="list-btm">
 								<div class="paging-wrap">
 									<div class="paging"> <!-- 페이징 -->
+										<div id="paginationBox">
+								<ul class="pagination">
+									<c:if test="${pagination1.prev}">
+										<li class="page-item"><a class="page-link" href="#"
+											onClick="fn_prev('${product.prod_seq }','${pagination1.page}', '${pagination1.range}', '${pagination1.rangeSize}')">Previous</a></li>
+									</c:if>
+
+									<c:forEach begin="${pagination1.startPage}"
+										end="${pagination1.endPage}" var="idx">
+										<li
+											class="page-item <c:out value="${pagination1.page == idx ? 'active' : ''}"/> "><a
+											class="page-link" href="#"
+											onClick="fn_pagination('${product.prod_seq }','${idx}', '${pagination1.range}', '${pagination1.rangeSize}')">
+												${idx} </a></li>
+									</c:forEach>
+
+									<c:if test="${pagination1.next}">
+										<li class="page-item"><a class="page-link" href="#"
+											onClick="fn_next('${product.prod_seq }','${pagination1.range}', '${pagination1.range}', '${pagination1.rangeSize}')">Next</a></li>
+									</c:if>
+								</ul>
+							</div>
 									</div>
-								</div>
-								<div class="btm_write">
-									<a href="JavaScript:alert('배송완료&nbsp;후&nbsp;작성&nbsp;가능합니다.')">후기쓰기</a>
 								</div>
 
 							</div>
@@ -481,7 +520,10 @@ function send_oder(code){
 									</c:forEach>
 								</tbody>
 							</table>
-							<div id="paginationBox">
+							<div class="list-btm">
+								<div class="paging-wrap">
+									<div class="paging">
+										<div id="paginationBox">
 								<ul class="pagination">
 									<c:if test="${pagination.prev}">
 										<li class="page-item"><a class="page-link" href="#"
@@ -503,9 +545,6 @@ function send_oder(code){
 									</c:if>
 								</ul>
 							</div>
-							<div class="list-btm">
-								<div class="paging-wrap">
-									<div class="paging">
 									</div>
 								</div>
 								<div class="btm_write">

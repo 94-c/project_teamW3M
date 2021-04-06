@@ -10,6 +10,7 @@ import com.spring.w3m.main.dao.HomeDAO;
 import com.spring.w3m.notice.admin.vo.TosVO;
 import com.spring.w3m.paging.common.Search;
 import com.spring.w3m.product.admin.vo.ProductVO;
+import com.spring.w3m.review.user.vo.ReviewVO;
 
 @Service("HomeService")
 public class HomeServiceImpl implements HomeService {
@@ -40,6 +41,16 @@ public class HomeServiceImpl implements HomeService {
 	@Override
 	public TosVO getTos(TosVO vo) {
 		return dao.getTos(vo);
+	}
+
+	@Override
+	public List<ReviewVO> productRe(Search search1) {
+		return dao.productRe(search1);
+	}
+
+	@Override
+	public int getReviewListCnt(Search search1) {
+		return dao.getReviewListCnt(search1);
 	}
 
 }
