@@ -67,8 +67,8 @@ public class MyPageDAO {
 	public DeliveryVO getDeliveryInfo(DeliveryVO vo) {
 		return sqlSessionTemplate.selectOne("myPageDAO.deliveryInfo", vo);
 	}	
-	public List<OrderProductInfoVO> getOrderProductInfo(String userId){
-		return sqlSessionTemplate.selectList("myPageDAO.orderProductInfo", userId);
+	public List<OrderProductInfoVO> getOrderProductInfo(OrderVO vo){
+		return sqlSessionTemplate.selectList("myPageDAO.orderProductInfo", vo);
 	}	
 	public PayVO getPayInfo(PayVO pVO) {
 		return sqlSessionTemplate.selectOne("myPageDAO.payInfo", pVO);

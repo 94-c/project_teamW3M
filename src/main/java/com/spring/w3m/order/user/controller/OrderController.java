@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.spring.w3m.delivery.common.service.DeliveryService;
 import com.spring.w3m.delivery.common.vo.DeliveryVO;
-import com.spring.w3m.inquiry.user.vo.ReplyVO;
 import com.spring.w3m.join.user.service.UserService;
 import com.spring.w3m.join.user.vo.UserVO;
 import com.spring.w3m.order.user.service.OrderService;

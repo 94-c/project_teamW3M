@@ -83,8 +83,8 @@ public class MyPageServiceImpl implements MyPageService {
 		return strRd;
 	}	
 	@Override
-	public List<OrderProductInfoVO> getOrderProductInfo(String userId){
-		return dao.getOrderProductInfo(userId);
+	public List<OrderProductInfoVO> getOrderProductInfo(OrderVO vo){
+		return dao.getOrderProductInfo(vo);
 	}
 	@Override
 	public PayVO getPayInfo(PayVO pVO) {
@@ -92,15 +92,15 @@ public class MyPageServiceImpl implements MyPageService {
 	}
 	@Override
 	public String getUserLevel(String userId) {
-		if(dao.getUserLevel(userId) == "Bronze") {
+		if(dao.getUserLevel(userId).equals("Bronze")) {
 			return "1";
-		}else if(dao.getUserLevel(userId) == "Silver") {
+		}else if(dao.getUserLevel(userId).equals("Silver")) {
 			return "3";
-		}else if(dao.getUserLevel(userId) == "Gold") {
+		}else if(dao.getUserLevel(userId).equals("Gold")) {
 			return "5";
-		}else if(dao.getUserLevel(userId) == "Platinum") {
+		}else if(dao.getUserLevel(userId).equals("Platinum")) {
 			return "7";
-		}else if(dao.getUserLevel(userId) == "Dia") {
+		}else if(dao.getUserLevel(userId).equals("Dia")) {
 			return "9";
 		}else {
 			return "-1";

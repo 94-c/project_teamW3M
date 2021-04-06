@@ -138,7 +138,7 @@ $(document).ready(function(){
 							<tfoot>
 								<tr>
 									<td colspan="9">
-										<div class="tb-right">(총 상품구매금액 + 배송비) - (사용한 적립금 + 멤버십 추가할인) = <fmt:formatNumber value="${payInfo.pay_total_money}" pattern="#,###"/>원
+										<div class="tb-right">(총 상품구매금액 + 배송비) - (사용한 적립금(${payInfo.pay_use_point} point) + 멤버십 추가할인(${salePercent}%)) = <fmt:formatNumber value="${payInfo.pay_total_money}" pattern="#,###"/>원
 										</div>
 									</td>
 								</tr>
@@ -159,14 +159,14 @@ $(document).ready(function(){
 									<td><div class="tb-center">${opi.order_seq}</div></td>
 									<td><div class="tb-center">${opi.prod_amount}</div></td>
 									<td><div class="tb-center tb-price">
-											<strong>${opi.prod_price_sale * opi.prod_amount}</strong>
+											<strong><fmt:formatNumber value="${opi.prod_price_sale * opi.prod_amount}" pattern="#,###"/></strong>
 										</div></td>
 									<td><div class="tb-center">
-											<span class="style4">${opi.prod_point * opi.prod_amount}</span>
+											<span class="style4"><fmt:formatNumber value="${opi.prod_point * opi.prod_amount}" pattern="#,###"/></span>
 										</div></td>
-									<td><div class="tb-center">${opi.delivery_state }</div></td>
-									<td><div class="tb-center">${opi.delivery_seq }</div></td>
-									<td><div class="tb-center"><a href="review_write_view.do?prod_title=${opi.prod_title }" style="color:#ff08a0">후기작성</a></div></td>
+									<td><div class="tb-center">${opi.delivery_state}</div></td>
+									<td><div class="tb-center">${opi.delivery_seq}</div></td>
+									<td><div class="tb-center"><a href="review_write_view.do?prod_title=${opi.prod_title}" style="color:#ff08a0">후기작성</a></div></td>
 								</tr>
 								</c:forEach>
 							</tbody>
@@ -189,7 +189,7 @@ $(document).ready(function(){
 							</thead>
 							<tfoot>
 								<tr>
-									<td><div class="tb-center tb-nbold">${payInfo.pay_tool }</div></td>
+									<td><div class="tb-center tb-nbold">${payInfo.pay_tool}</div></td>
 									<td><div class="tb-center"><fmt:formatNumber value="${payInfo.pay_total_money}" pattern="#,###"/>원 (${payInfo.pay_status})</div></td>
 								</tr>
 							</tfoot>
