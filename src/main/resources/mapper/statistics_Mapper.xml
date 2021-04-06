@@ -4,13 +4,19 @@
 
 <mapper namespace="StatisticsDAO">
 	
-	<select id="Gender_Money" resultType="StatisticsVO">
-	select um.user_gender, count(*) as user_count, sum(pa.pay_total_money) 
+	<select id="salesByGender" resultType="StatisticsVO">
+	select um.user_gender, count(*) as user_count, sum(pa.pay_total_money) as total_sum
 	from order_list ol , pay pa ,user_member um
 	where ol.order_seq = pa.order_seq and ol.user_id = um.user_id and ol.order_status = '구매확정' 
 	
 	group by um.user_gender ;
 	</select>
 	
+	<select id="salesByMonth" resultType="StatisticsVO">
+	select  sum(pa.pay_total_money) as total_sum,to_char(ol.order_date,'YYYY-MM-DD') as date_total
+	from order_list ol , pay pa ,user_member um
+	where ol.order_seq = pa.order_seq and ol.user_id = um.user_id and ol.order_status = '구매확정' and ol.order_date between #{StartDate} and #{endDate}
+	group by date_total;
+	</select>
 	
 </mapper>

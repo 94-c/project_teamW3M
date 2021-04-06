@@ -18,5 +18,11 @@ public class StatisticsServiceImpl implements StatisticsService{
 		
 		return dao.Gender_Money();
 	}
+
+	@Override
+	public List<StatisticsVO> salesByMonth() {
+		
+		return dao.salesByMonth();
+	}
 	
 }

@@ -4,10 +4,57 @@
 
 <title>매출통계</title>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+
 <script type="text/javascript">
+	var date1 = new Date();
+	var date2 = new Date();
+	var date3 = new Date(date1.setMonth(date1.getMonth()-1));
+	console.log(date1);
+	$(document).ready(function(){
+		
+		$("#datepicker1").val(getFormatDate(date3));
+		$("#datepicker2").val(getFormatDate(date2));
+		
+	});
+	
+	function getFormatDate(date){
+	    var year = date.getFullYear();              //yyyy
+	    var month = (1 + date.getMonth());          //M
+	    month = month >= 10 ? month : '0' + month;  //month 두자리로 저장
+	    var day = date.getDate();                   //d
+	    day = day >= 10 ? day : '0' + day;          //day 두자리로 저장
+	    return  year + '-' + month + '-' + day;       //'-' 추가하여 yyyy-mm-dd 형태 생성 가능
+	}
+
+$(document).ready(function(){
+		$("#Seach").click(function(){
+			console.log("들어옴");
+			var StartDate =$("#datepicker1").val();
+			var EndDate = $("#datepicker2").val();
+			console.log($("#datepicker1").val());
+			console.log($("#datepicker2").val());
+			var alldata={
+					"startDate" :StartDate,
+					"endDate" : EndDate
+			};
+			$.ajax({
+				async : true,
+				url : "/seach.mdo",
+				type:"POST",
+				data: JSON.stringify(alldata),
+				dataType:"json",
+				contentType:"application/json; charset=UTF-8",
+				success:function(data){
+					alert("갔다옴");
+				
+				}
+			});
+		});
+	});
       google.charts.load('current', {'packages':['bar']});
       google.charts.setOnLoadCallback(drawChart);
 
@@ -55,9 +102,10 @@
 
     $(function() {
         $("#datepicker1, #datepicker2").datepicker({
-            dateFormat: 'yy.mm.dd'
+            dateFormat: 'yy-mm-dd'
         });
     });
+   
 </script>
 <div class="container-fluid">
 		<h1 class="mt-4">매출 통계</h1>
@@ -73,13 +121,13 @@
           	
           	<div class="date">
           	<Strong>기간 설정</Strong>&nbsp;&nbsp;
-          		<input type="text" id="datepicker1" >
+          		<input type="text" id="datepicker1" value="" >
           	<Strong>-</Strong>
-          		<input type="text" id="datepicker2">
+          		<input type="text" id="datepicker2" value="">
 			</div>
 			<br>
 			<div class="product" >
-			<Strong>카테 고리</Strong>&nbsp;&nbsp;
+	<!-- 		<Strong>카테 고리</Strong>&nbsp;&nbsp;
 			<select name="product_1" id="product_1">
 				<option value="2017">2017</option>
 				<option value="2018">2018</option>
@@ -95,7 +143,8 @@
 				<option value="2018">2018</option>
 				<option value="2019">2019</option>
 			</select>
-			<button type="button" class="">조회</button>
+			 -->
+			<input type="button" class="" value="조회" id = "Seach">
 			</div>		 
 			
 		   <br>
