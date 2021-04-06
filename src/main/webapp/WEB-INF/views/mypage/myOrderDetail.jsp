@@ -7,7 +7,22 @@
 <link href="resources/css/menu.css" rel="stylesheet" type="text/css">
 <link href="resources/css/orderDetail.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="resources/js/myPage.js" ></script>
-
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#orderCancel").click(function(e){
+		e.preventDefault();
+		if(${payInfo.pay_status eq '주문취소'}){
+			alert("이미 주문취소 상태입니다.");
+		}else{
+			if(confirm("정말 취소하시겠습니까?")){
+				location.href = "orderCancel.do?order_seq=${payInfo.order_seq}&delivery_seq=${deliveryInfo.delivery_seq}";
+			}else{
+				return;
+			}			
+		}
+	});
+});
+</script>
 <div id="contentWrapper">
 	<div id="contentWrap">
 		<%@include file="/WEB-INF/views/mypage/myPageCommon.jsp"%>
@@ -123,7 +138,7 @@
 							<tfoot>
 								<tr>
 									<td colspan="9">
-										<div class="tb-right">(총 상품구매금액 + 배송비 - 사용한 적립금) = ${payInfo.pay_total_money}원
+										<div class="tb-right">(총 상품구매금액 + 배송비) - (사용한 적립금 + 멤버십 추가할인) = <fmt:formatNumber value="${payInfo.pay_total_money}" pattern="#,###"/>원
 										</div>
 									</td>
 								</tr>
@@ -175,7 +190,7 @@
 							<tfoot>
 								<tr>
 									<td><div class="tb-center tb-nbold">${payInfo.pay_tool }</div></td>
-									<td><div class="tb-center">${payInfo.pay_total_money}원 (${payInfo.pay_status})</div></td>
+									<td><div class="tb-center"><fmt:formatNumber value="${payInfo.pay_total_money}" pattern="#,###"/>원 (${payInfo.pay_status})</div></td>
 								</tr>
 							</tfoot>
 							<tbody>
@@ -183,16 +198,20 @@
 									<td><div class="tb-center">사용한 적립금</div></td>
 									<td><div class="tb-center">${payInfo.pay_use_point} point</div></td>
 								</tr>
+								<tr>
+									<td><div class="tb-center">회원 등급별 할인(%)</div></td>
+									<td><div class="tb-center">${salePercent}%</div></td>
+								</tr>
 							</tbody>
 						</table>
 					</div>
 
 					<div id="pop_order_btn_group">
-						<a href="JavaScript:alert('주문취소가 되지 않습니다.\n쇼핑몰에 문의하세요.')" class="CSSbuttonWhite">주문취소</a>
+						<a href="#" class="CSSbuttonWhite" id="orderCancel">주문취소</a>
 
 					</div>
 					<div class="pop_order_btn_close">
-						<a href="/myOrderList.do" class="CSSbuttonWhite">목록보기</a>
+						<a href="myOrderList.do" class="CSSbuttonWhite">목록보기</a>
 					</div>
 				</div>
 				<!-- #orderInfo-->
@@ -204,3 +223,4 @@
 	<!-- #contentWrap -->
 </div>
 <%@include file="/WEB-INF/views/include/footer.jsp"%>
+

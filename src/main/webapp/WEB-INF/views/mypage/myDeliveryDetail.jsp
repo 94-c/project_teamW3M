@@ -85,7 +85,7 @@
                                 <thead>
                                     <tr>
                                         <th scope="row"><div class="tb-center">DATE</div></th>
-                                        <th scope="row"><div class="tb-center">송장번호</div></th>
+                                        <th scope="row"><div class="tb-center">배송번호</div></th>
                                         <th scope="row"><div class="tb-center">주문번호</div></th>
                                         <th scope="row"><div class="tb-center">상품명</div></th>
                                         <th scope="row"><div class="tb-center">배송상태</div></th>

@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.spring.w3m.delivery.common.vo.DeliveryVO;
-import com.spring.w3m.order.user.vo.OrderVO;
 import com.spring.w3m.order.user.vo.PayVO;
 import com.spring.w3m.paging.common.Search;
 import com.spring.w3m.point.user.vo.PointVO;

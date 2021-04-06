@@ -13,6 +13,7 @@ import com.spring.w3m.mypage.user.vo.MyPageVO;
 import com.spring.w3m.order.user.vo.OrderVO;
 import com.spring.w3m.order.user.vo.PayVO;
 import com.spring.w3m.paging.common.Search;
+import com.spring.w3m.point.user.vo.PointVO;
 import com.spring.w3m.product.admin.vo.OrderProductInfoVO;
 import com.spring.w3m.review.user.vo.ReviewVO;
 
@@ -58,15 +59,19 @@ public class MyPageServiceImpl implements MyPageService {
 	}
 
 	@Override
+	public List<MyPageVO> recentList(MyPageVO vo) {
+		return dao.recentList(vo);
+	}
+	
+	/* 주문상세 관련*/
+	@Override
 	public OrderVO getReceiverInfo(OrderVO vo) {
 		return dao.getReceiverInfo(vo);
 	}
-
 	@Override
 	public DeliveryVO getDeliveryInfo(DeliveryVO vo) {
 		return dao.getDeliveryInfo(vo);
-	}
-	
+	}	
 	public String makeRandomNumber() { //롯데택배 송장번호 제조기
 		int[] randomNumbers = new int[12];
 		String strRd = "";
@@ -76,8 +81,7 @@ public class MyPageServiceImpl implements MyPageService {
 		}		
 		System.out.println(strRd);		
 		return strRd;
-	}
-	
+	}	
 	@Override
 	public List<OrderProductInfoVO> getOrderProductInfo(String userId){
 		return dao.getOrderProductInfo(userId);
@@ -86,10 +90,46 @@ public class MyPageServiceImpl implements MyPageService {
 	public PayVO getPayInfo(PayVO pVO) {
 		return dao.getPayInfo(pVO);
 	}
-
 	@Override
-	public List<MyPageVO> recentList(MyPageVO vo) {
-		return dao.recentList(vo);
+	public String getUserLevel(String userId) {
+		if(dao.getUserLevel(userId) == "Bronze") {
+			return "1";
+		}else if(dao.getUserLevel(userId) == "Silver") {
+			return "3";
+		}else if(dao.getUserLevel(userId) == "Gold") {
+			return "5";
+		}else if(dao.getUserLevel(userId) == "Platinum") {
+			return "7";
+		}else if(dao.getUserLevel(userId) == "Dia") {
+			return "9";
+		}else {
+			return "-1";
+		}
 	}
+	/*-----------------------------------------*/
+	
+	/* 주문 취소 관련 */
+	@Override
+	public void deletePoint(PointVO vo) {
+		dao.deletePoint(vo);
+	}
+	@Override
+	public void changePayState(PayVO vo) {
+		dao.changePayState(vo);
+	}
+	@Override
+	public void changeOrderState(OrderVO vo) {
+		dao.changeOrderState(vo);
+	}
+	@Override
+	public void changeOrderProductState(OrderVO vo) {
+		dao.changeOrderProductState(vo);
+	}
+	@Override
+	public void changeDeliveryState(DeliveryVO vo) {
+		dao.changeDeliveryState(vo);
+	}
+	
+	/*-----------------------------------------*/	
 	
 }
