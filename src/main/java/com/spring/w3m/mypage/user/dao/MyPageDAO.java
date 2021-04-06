@@ -13,6 +13,7 @@ import com.spring.w3m.mypage.user.vo.MyPageVO;
 import com.spring.w3m.order.user.vo.OrderVO;
 import com.spring.w3m.order.user.vo.PayVO;
 import com.spring.w3m.paging.common.Search;
+import com.spring.w3m.point.user.vo.PointVO;
 import com.spring.w3m.product.admin.vo.OrderProductInfoVO;
 import com.spring.w3m.review.user.vo.ReviewVO;
 
@@ -55,23 +56,42 @@ public class MyPageDAO {
 		return sqlSessionTemplate.selectList("myPageDAO.deliveryState", order_seq);
 	}
 	
-	public OrderVO getReceiverInfo(OrderVO vo) {
-		return sqlSessionTemplate.selectOne("myPageDAO.receiverInfo", vo);
-	}
-	
-	public DeliveryVO getDeliveryInfo(DeliveryVO vo) {
-		return sqlSessionTemplate.selectOne("myPageDAO.deliveryInfo", vo);
-	}
-
 	public List<MyPageVO> recentList(MyPageVO vo) {
 		return sqlSessionTemplate.selectList("myPageDAO.recentList", vo);
 	}
 	
+	/* 주문상세 */
+	public OrderVO getReceiverInfo(OrderVO vo) {
+		return sqlSessionTemplate.selectOne("myPageDAO.receiverInfo", vo);
+	}	
+	public DeliveryVO getDeliveryInfo(DeliveryVO vo) {
+		return sqlSessionTemplate.selectOne("myPageDAO.deliveryInfo", vo);
+	}	
 	public List<OrderProductInfoVO> getOrderProductInfo(String userId){
 		return sqlSessionTemplate.selectList("myPageDAO.orderProductInfo", userId);
-	}
-	
+	}	
 	public PayVO getPayInfo(PayVO pVO) {
 		return sqlSessionTemplate.selectOne("myPageDAO.payInfo", pVO);
 	}
+	public String getUserLevel(String userId) {
+		return sqlSessionTemplate.selectOne("myPageDAO.getUserLevel", userId);
+	}
+	
+	/* 주문 취소 */
+	public void deletePoint(PointVO vo) {
+		sqlSessionTemplate.delete("myPageDAO.deletePoint", vo);
+	}
+	public void changePayState(PayVO vo) {
+		sqlSessionTemplate.update("myPageDAO.changePayState", vo);
+	}
+	public void changeOrderState(OrderVO vo) {
+		sqlSessionTemplate.update("myPageDAO.changeOrderState", vo);
+	}
+	public void changeOrderProductState(OrderVO vo) {
+		sqlSessionTemplate.update("myPageDAO.changeOrderProductState", vo);
+	}
+	public void changeDeliveryState(DeliveryVO vo) {
+		sqlSessionTemplate.update("myPageDAO.changeDeliveryState", vo);
+	}
+	
 }

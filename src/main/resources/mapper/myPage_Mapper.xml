@@ -57,29 +57,47 @@
 	SELECT * FROM delivery_state where order_seq = #{order_seq}
 	</select>
 	
+<!-- 주문상세 -->
 	<select id="orderProductInfo" resultType="OrderProductInfoVO" parameterType="String">
 		SELECT prod.prod_title_image, prod.prod_title, prod.prod_price_sale, o.order_seq, o.order_prod_seq, o.prod_amount,
 				prod.prod_point, d.delivery_state, d.delivery_seq, prod.prod_code
 		FROM product as prod, order_prod as o, delivery as d
 		WHERE prod.prod_code = o.prod_code and o.order_seq = d.order_seq and o.user_id = #{user_id}
-	</select>
-	
+	</select>	
 	<select id="payInfo" resultType="PayVO">
 		SELECT * FROM pay where order_seq = #{order_seq}
-	</select>
-	
+	</select>	
 	<select id="receiverInfo" resultType="OrderVO">
 		SELECT o.order_date, o.order_seq, u.user_name FROM order_list AS o, user_member AS u
 		WHERE u.user_id = o.user_id AND o.order_seq = #{order_seq} AND o.user_id = #{user_id}
-	</select>
-	
+	</select>	
 	<select id="deliveryInfo" resultType="DeliveryVO">
 		SELECT * FROM delivery WHERE order_seq = #{order_seq} AND user_id = #{user_id}
+	</select>	
+	<select id="getUserLevel" resultType="String">
+		SELECT user_level FROM user_member WHERE user_id = #{user_id}
 	</select>
 	
 <!-- 최신 게시글 보기 -->
 	<select resultType="com.spring.w3m.mypage.user.vo.MyPageVO" id="recentList">
 		select * from (select inq_seq, inq_title, inq_date, inq_email, '문의사항' as table_name from inquiry union select review_seq, review_title, review_date, review_email, '후기' as table_name from review) as u where u.inq_email=#{user_email} order by u.inq_date desc limit 5;
 	</select>
+	
+<!-- 주문취소 -->
+	<delete id="deletePoint">
+		DELETE FROM add_point WHERE order_state = '사용불가' AND order_seq = #{order_seq}
+	</delete>
+	<update id="changePayState">
+		UPDATE pay SET pay_status = '주문취소' WHERE order_seq = #{order_seq}
+	</update>
+	<update id="changeOrderState">
+		UPDATE order_list SET order_status = '주문취소' WHERE order_seq = #{order_seq}
+	</update>
+	<update id="changeOrderProductState">
+		UPDATE order_prod SET order_status = '주문취소' WHERE order_seq = #{order_seq}
+	</update>
+	<update id="changeDeliveryState">
+		UPDATE delivery SET delivery_state = '주문취소' WHERE order_seq = #{order_seq}
+	</update>
 	
 </mapper>
