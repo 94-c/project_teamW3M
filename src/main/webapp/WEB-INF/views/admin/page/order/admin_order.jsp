@@ -32,15 +32,28 @@
 							</thead>
 
 							<tbody>
+							<c:forEach var="purch" items="${purchase}">
 								<tr>
-									<td class="text-center">#</td>
-									<td class="text-center">#</td>
-									<td class="text-center">#</td>
-									<td class="text-center">#</td>
-									<td class="text-center">#</td>
-									<td class="text-center">#</td>
-									<td class="text-center">#</td>
+									<td class="text-center">${purch.order_seq }</td>
+									<td class="text-center">${purch.prod_title }</td>
+									<td class="text-center">${purch.user_id }</td>
+									<td class="text-center">${purch.user_name }</td>
+									<td class="text-center"><fmt:formatDate value="${purch.order_date }" pattern="yyyy-MM-dd" /></td>
+									<td class="text-center"><fmt:formatNumber value="${purch.pay_total_money }" pattern="#,###" />원</td>
+									<c:if test="${purch.delivery_state eq '배송전' or purch.delivery_state eq '배송중'}">
+										<td class="text-center" style="color:black">${purch.delivery_state }</td>
+									</c:if>
+									<c:if test="${purch.delivery_state eq '배송완료'}">
+										<td class="text-center" style="color:black"><b>${purch.delivery_state }</b></td>
+									</c:if>
+									<c:if test="${purch.delivery_state eq '구매확정' }">
+										<td class="text-center" style="color:blue"><b>${purch.delivery_state }</b></td>
+									</c:if>
+									<c:if test="${purch.delivery_state eq '주문취소' }">
+										<td class="text-center" style="color:red"><b>${purch.delivery_state }</b></td>
+									</c:if>
 								</tr>
+							</c:forEach>
 							</tbody>
 						</table>
 						

@@ -93,5 +93,24 @@ public class AdminServiceImpl implements AdminService {
 		System.out.println("impl"+vo.getUser_state());
 		dao.updateUserPause(vo);
 	}
+
+	@Override
+	public List<AdminVO> getPurchaseList(AdminVO vo) {
+		return dao.getPurchaseList(vo);
+	}
 	
+	@Override
+	public int getPurchaseListCnt(Search search) {
+		return dao.getPurchaseListCnt(search);
+	}
+
+	@Override
+	public List<AdminVO> getPurchasePageList(Search search) {
+		return dao.getPurchasePageList(search);
+	}
+	
+	@Override
+	public List<AdminVO> getPurchaseSearchPagingList(Pagination pagination) {
+		return dao.getPurchaseSearchPagingList(pagination);
+	}
 }
