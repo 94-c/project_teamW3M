@@ -64,7 +64,9 @@
 					<!-- 최근 주문 정보 -->
 					<div class="hd">
 						<h3>최근 주문 정보</h3>
-						<a class="view fe" href="#">+ 더보기</a>
+						<p class="view fe">
+								<span class="fc-blue">[${userVO.user_name }]</span>님께서 주문하신 내역 입니다.
+						</p>
 					</div>
 					<div class="tbl">
 						<table summary="주문일자, 상품명, 결제금액, 주문상세">
@@ -116,7 +118,9 @@
 					<!-- 최근 등록 게시글 -->
 					<div class="hd">
 						<h3>최근 등록 게시글</h3>
-						<a class="view fe" href="#">+더보기</a>
+						<p class="view fe">
+								<span class="fc-blue">[${userVO.user_name }]</span>님께서 작성하신 게시글 입니다.
+						</p>
 					</div>
 					<div class="tbl">
 						<table summary="등록일자, 제목, 게시판">
