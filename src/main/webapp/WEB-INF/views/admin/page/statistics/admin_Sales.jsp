@@ -70,11 +70,12 @@
                                         매출 통계
              </div>
           <div class="card-body">
-          <table border="1" width="480">
-          <tr>
-          	<td>기간 설정</td><td>&nbsp;&nbsp;<input type="text" id="datepicker1" > - <input type="text" id="datepicker2"></td>
-          </tr>
-		   </table>
+          	<div class="date">
+          	<Strong>기간 설정</Strong>&nbsp;&nbsp;
+          	<input type="text" id="datepicker1" > 
+          	<Strong>-</Strong>
+          	<input type="text" id="datepicker2">
+			</div>		 
 		   <br>
 		   <br>
            <div id="chart1" style="width: auto; height: 600px;"></div>
