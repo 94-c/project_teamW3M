@@ -161,11 +161,12 @@ public class MyPageController {
 		DeliveryVO deliveryInfo = myPageService.getDeliveryInfo(dVO);
 		String lotteRandomNum = myPageService.makeRandomNumber();
 		
-		String userId = vo.getUser_id();
-		List<OrderProductInfoVO> opiList = myPageService.getOrderProductInfo(userId);
+		
+		List<OrderProductInfoVO> opiList = myPageService.getOrderProductInfo(oVO);
 		
 		PayVO payInfo = myPageService.getPayInfo(pVO);
 		
+		String userId = vo.getUser_id();
 		String salePercent = myPageService.getUserLevel(userId);
 		
 		model.addAttribute("receiverInfo", receiverInfo); //주문자정보
@@ -173,7 +174,7 @@ public class MyPageController {
 		model.addAttribute("orderProductInfo", opiList); //주문상품정보
 		model.addAttribute("payInfo", payInfo); //결제정보
 		model.addAttribute("lotteRandomNum", lotteRandomNum); //송장번호(12자리난수)
-		model.addAttribute("salePercent", salePercent);
+		model.addAttribute("salePercent", salePercent); //회원등급에 따른 추가할인율
 		return "mypage/myOrderDetail";
 	}
 	

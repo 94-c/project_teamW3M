@@ -31,7 +31,7 @@ public interface MyPageService {
 	
 	List<MyPageVO> recentList(MyPageVO vo);
 	/* 주문 상세 */
-	List<OrderProductInfoVO> getOrderProductInfo(String userId); //주문상품정보
+	List<OrderProductInfoVO> getOrderProductInfo(OrderVO vo); //주문상품정보
 	OrderVO getReceiverInfo(OrderVO vo); //주문상세 주문자정보	
 	DeliveryVO getDeliveryInfo(DeliveryVO vo); //주문상세 배송지정보
 	PayVO getPayInfo(PayVO pVO); //결제정보

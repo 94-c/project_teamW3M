@@ -58,11 +58,11 @@
 	</select>
 	
 <!-- 주문상세 -->
-	<select id="orderProductInfo" resultType="OrderProductInfoVO" parameterType="String">
+	<select id="orderProductInfo" resultType="OrderProductInfoVO">
 		SELECT prod.prod_title_image, prod.prod_title, prod.prod_price_sale, o.order_seq, o.order_prod_seq, o.prod_amount,
 				prod.prod_point, d.delivery_state, d.delivery_seq, prod.prod_code
 		FROM product as prod, order_prod as o, delivery as d
-		WHERE prod.prod_code = o.prod_code and o.order_seq = d.order_seq and o.user_id = #{user_id}
+		WHERE prod.prod_code = o.prod_code and o.order_seq = d.order_seq and o.order_seq = #{order_seq} and o.user_id = #{user_id}
 	</select>	
 	<select id="payInfo" resultType="PayVO">
 		SELECT * FROM pay where order_seq = #{order_seq}
