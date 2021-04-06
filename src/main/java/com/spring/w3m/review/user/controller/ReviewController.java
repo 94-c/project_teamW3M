@@ -43,8 +43,7 @@ public class ReviewController {
 
 		Search search = new Search();
 		search.setSearchType(searchType);
-		search.setKeyword(keyword);
-
+		search.setKeyword(keyword);	
 		int cnt = reviewService.getReviewListCnt(search);
 
 		search.pageInfo(page, range, cnt);
@@ -104,11 +103,11 @@ public class ReviewController {
 
 	// 게시글 상세 보기
 	@RequestMapping("/reviewContent.do")
-	public String getReview(ReviewVO vo, ReplyVO rvo, Model model) {
+	public String getReview(ReviewVO vo, ReplyVO rvo, ProductVO pvo,Model model) {
 		System.out.println("글 상세보기 처리");
 		
 		model.addAttribute("reviewVO", reviewService.getReview(vo));
-		
+		model.addAttribute("product", reviewService.getProduct(pvo));
 		List<ReplyVO> reviewReplyList = replyService.getReviewReplyList(vo.getReview_seq());
 		model.addAttribute("reviewReplyList", reviewReplyList);
 

@@ -66,6 +66,7 @@
 		*
 		from review
 		where 1=1
+		
 		<if
 			test="searchType=='review_title' and keyword != null and keyword != '' ">
 			AND review_title like CONCAT('%', #{keyword}, '%')

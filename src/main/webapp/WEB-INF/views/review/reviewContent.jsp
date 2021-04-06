@@ -26,7 +26,19 @@ function submitForm()
 					<div class="bbs-tit">
 						<h3>후기게시판</h3>
 					</div>
-					
+					<c:if test="${product.prod_title != 'null'}">
+                     <dl class="prd-tinfo">
+                            <dt>
+                                <a href="getProduct?prod_code=${product.prod_code }"><img src="${product.prod_title_image }"></a>
+                            </dt>
+                            <dd>
+                                <ul>
+                                    <li class="name"><span class="tit">상품명 : </span> <a href="	#qwer">${product.prod_title }</a> <span class="MK-product-icons"></span></li>
+                                    <li class="price"><span class="tit">상품가 : &nbsp;</span><fmt:formatNumber value="${product.prod_price_sale}" pattern="#,###" /></li>
+                                </ul>
+                            </dd>
+                      	</dl>
+                      </c:if>
 					<div class="bbs-table-view">
 						<table summary="게시글 보기">
 							<caption>게시글 보기</caption>
