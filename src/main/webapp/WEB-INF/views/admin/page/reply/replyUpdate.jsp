@@ -37,8 +37,8 @@ $(document).ready(function(){
 			contentType: "application/json; charset=UTF-8",
 			success  : function(data){
 				console.log(data+ "성공");
-				opener.location.reload();
-				window.close();
+/* 				opener.location.reload();
+				window.close(); */
 				}
 				
 			

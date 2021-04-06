@@ -233,24 +233,30 @@ body #comment_password .contents .form-wrap2 p:last-child a {display:block; back
 			<form name="form_past_list" method="post">
 				<ul class="adress check-type" >
 					<li >
-						<c:forEach var="lastAddress" items="${LastAddress}" varStatus="status">
-						<input type="hidden" id="state_check" value="${status.count}">
+						<c:forEach var="lastAddress" items="${LastAddress}" varStatus="status">						
+						<input type="hidden" id="last_address_seq" value="${lastAddress.last_address_seq} ">
+						<input type="hidden" id="ad_receiver_name" value="${lastAddress.receiver_name} ">
+						<input type="hidden" id="ad_receiver_zipcode" value="${lastAddress.receiver_zipcode }">
+						<input type="hidden" id="ad_receiver_address1" value="${lastAddress.receiver_address1 }">
+						<input type="hidden" id="ad_receiver_address2" value="${lastAddress.receiver_address2 }">
+						<input type="hidden" id="ad_receiver_phone1" value="${lastAddress.receiver_phone1 }">
+						<input type="hidden" id="ad_receiver_phone2" value="${lastAddress.receiver_phone2 }">
                        
                   
 							<div class="text" >
-								 <input type="checkbox" name="lastAddress_seq" id="lastAddress_seq${status.count}"  value="${lastAddress.last_address_seq }" onclick="javacript:click(${status.count})"  />
 								<p>${state.count}</p>
-								<p class="name">${lastAddress.receiver_name }</p>
-								<p class="ad">${lastAddress.receiver_zipcode } :
-									${lastAddress.receiver_address1 }
-									${lastAddress.receiver_address2 }</p>
-								<p class="tell">${lastAddress.receiver_phone1 } /
-									${lastAddress.receiver_phone2 }</p>
+								<p class="name" id="ad_receiver_name">${lastAddress.receiver_name }</p>
+								<p class="ad" id="ad_receiver_zipcode">${lastAddress.receiver_zipcode } :</p>
+									<p class="ad" id="ad_receiver_address1">${lastAddress.receiver_address1 }</p>
+									<p class="ad" id="ad_receiver_address2">${lastAddress.receiver_address2 }</p>
+								<p class="tell" id="ad_receiver_phone1">${lastAddress.receiver_phone1 } /</p>
+									<p class="tell" id="ad_receiver_phone2">${lastAddress.receiver_phone2 }</p>
 
 								<div class="btn-select">
-									<a href="#" class="select btn-apply-past"
+									<a id="delete" href="#" onclick="" class="select btn-apply-past"
+										data-addr="">삭제</a>
+									<a href="#" class="select btn-apply-past" onclick="setParentText()"
 										data-addr="">선택</a>
-									
 								</div>
 								<br>
 								<hr>
@@ -260,11 +266,40 @@ body #comment_password .contents .form-wrap2 p:last-child a {display:block; back
 				</ul>
 			</form>
 		</div>
-                <div class="btn-area adress-btn">
-                        <div>
-                <a href="#" class="btn40 black btn-multi-delete-past">선택 삭제</a>
-            </div>
-                    </div>
-                </div>
+    </div>
 </body>
+<script type="text/javascript">
+        function setParentText(){
+             opener.document.getElementById("receiver_name").value = document.getElementById("ad_receiver_name").value
+             opener.document.getElementById("receiver_zipcode").value = document.getElementById("ad_receiver_zipcode").value
+             opener.document.getElementById("receiver_address1").value = document.getElementById("ad_receiver_address1").value
+             opener.document.getElementById("receiver_address2").value = document.getElementById("ad_receiver_address2").value
+             opener.document.getElementById("receiver_phone1").value = document.getElementById("ad_receiver_phone1").value
+             opener.document.getElementById("receiver_phone2").value = document.getElementById("ad_receiver_phone2").value
+             window.close();
+        }
+        
+        $(document).ready(function(){ 
+        	$("#delete").click(function(){
+        		var last_address_seq = $("#last_address_seq").val();
+        		
+        		var alldata ={
+        				"last_address_seq" :last_address_seq
+        		}
+        		
+        		$.ajax({
+        			url : "delete_last_address.do",
+        			type : "POST",
+        			data : JSON.stringify(alldata),
+        			dataType : "json",
+        			contentType: "application/json; charset=UTF-8",
+        			success  : function(data){
+         				location.reload();
+        				}
+        			
+        		});
+        	
+        	});
+        });
+</script>
 </html>

@@ -124,4 +124,9 @@ public class OrderServiceImpl implements OrderService{
 		dao.deletePoint(vo);
 	}
 
+	@Override
+	public void delete_last_address(LastAddress vo) {
+		dao.delete_last_address(vo);
+	}
+
 }
