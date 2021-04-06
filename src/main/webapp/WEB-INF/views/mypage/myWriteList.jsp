@@ -53,10 +53,6 @@
 								<strong><fmt:formatNumber value="${userVO.user_point}"
 										pattern="#,###" /></strong>원
 							</dd>
-							<dt>쿠 &nbsp;&nbsp;&nbsp; 폰</dt>
-							<dd>
-								<a href="#"><strong>0</strong>개</a>
-							</dd>
 						</dl>
 					</div>
 					<!-- //회원 정보 -->

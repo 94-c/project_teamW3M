@@ -42,7 +42,7 @@
 		<div class="section1 cboth">
 			<div class="ft_info01 fleft">
 				<div class="ft_logo">
-					<a href="/"><img src="resources/images/f_design/ft_logo.gif"></a>
+					<a href="/"><img src="resources/images/f_design/ft_logo.jpg"></a>
 				</div>
 				<div class="ft_copy">
 					법인명 : W3M(주) | 대표 : 박종한<br> 고객센터 : 02-443-0999 | 팩스 :

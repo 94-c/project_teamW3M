@@ -187,10 +187,6 @@
 
 				<div class="fixed_quick">
 					<ul>
-						<li><a href="#"> <img
-								src="resources/images/sideBar/r_quick02_off.gif" class="menuoff">
-								<img src="resources/images/sideBar/r_quick02_on.gif"
-								class="menuon" alt="배송조회"></a></li>
 							
 							<c:if test="${login_state eq 'login' }">
 						<li><a href="GoCart.do"> <img
@@ -204,10 +200,6 @@
 								<img src="resources/images/sideBar/r_quick03_on.gif"
 								class="menuon" alt="장바구니"></a></li>
 							</c:if>
-						<li><a href="#"> <img
-								src="resources/images/sideBar/r_quick04_off.gif" class="menuoff">
-								<img src="resources/images/sideBar/r_quick04_on.gif"
-								class="menuon" alt="최근본상품"></a></li>
 
 						<li><img src="resources/images/sideBar/r_quick05_on.gif"
 							onclick="javascript:window.open('https://lc1.lunasoft.co.kr/lunachat/api-connect/@welkeeps/main', 'lunachat', 'width=1024, height=800');"

@@ -6,12 +6,41 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>댓글</title>
+<link rel="shortcut icon" href="resources/images/icons/favicon.ico" type="image/x-icon">
+<link type="text/css" rel="stylesheet" href="resources/css/soo.css">
+<link type="text/css" rel="stylesheet" href="resources/css/reply.css">
+<style type="text/css">
+.popup_bbs {
+    display: block;
+    overflow: hidden;
+    position: relative;
+    padding: 32px 0 16px;
+    font-size: 18px;
+    font-weight: 500;
+    color: #000;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+ }
+ 
+ .comment_view{
+    display: table;
+    width: 100%;
+    position: relative;
+    padding: 19px 0 16px;
+    table-layout: fixed;
+    box-sizing: border-box;
+}
+
+</style>
 </head>
 <body>
 <div id="reply">
-							<h5>댓글</h5><br>
-							<table id="re_table">							
+							<div class="tab-area">
+                  			  <div class="title-box">댓글</div>
+               				 </div>
+							<div class = "comment_view">
+								<table id="re_table">							
 									<c:forEach items="${reviewReplyList}" var="reviewList">
 											<input type="hidden" id="review_seq" name="review_seq" value="${reviewList.review_seq}" />
 											<input type="hidden" id="review_re_seq" name="review_re_seq" value="${reviewList.review_re_seq}" />
@@ -26,7 +55,8 @@
 											</c:if>
 											<pre>${reviewList.review_re_content}</pre><br>
 									</c:forEach>
-						  </table>
-							</div>			 		 	
+						  	</table>
+						  	</div>
+					</div>			 		 	
 </body>
 </html>

@@ -6,7 +6,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>최근 주문 배송지</title>
+<link rel="shortcut icon" href="resources/images/icons/favicon.ico" type="image/x-icon">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 
