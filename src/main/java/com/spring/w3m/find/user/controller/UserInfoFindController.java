@@ -34,7 +34,7 @@ public class UserInfoFindController {
 		return "login/findID_result";
 	}
 	
-	@RequestMapping("/findPW.do")
+	@RequestMapping("/findPW.do") //비번찾기
 	public String findPwByPhone(UserVO vo, Model model) {
 		UserVO userInfo = service.selectEmail(vo);
 		if(userInfo != null) {

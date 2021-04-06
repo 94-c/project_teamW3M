@@ -8,7 +8,7 @@ import com.spring.w3m.join.user.vo.UserVO;
 import com.spring.w3m.notice.admin.vo.TosVO;
 
 @Controller
-public class UserDAO { // DB 왔다갔다
+public class UserDAO {
 
    @Autowired
    private SqlSessionTemplate sqlSessionTemplate;

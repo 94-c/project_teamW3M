@@ -237,28 +237,11 @@ public class OrderVO {
 	public void setProd_total_point(int prod_total_point) {
 		this.prod_total_point = prod_total_point;
 	}
-
-
 	public String getLocation_before() {
 		return location_before;
 	}
-
-
 	public void setLocation_before(String location_before) {
 		this.location_before = location_before;
 	}
-	
-	//결제
-//	private int pay_Shipping_cost;//배송비용
-//	private int pay_total_price;//결제 금액
-//	private int pay_total_point;//총 적립금
-//	private int pay_total_money;//결제 예정 금액 (결제금액에서 +배송비 -적립금 )
-//	private String pay_tool;// 결제 수단
-//	private String pay_status;//결제상태 
-//	
-	
-	
-	
-	
-	
+
 }

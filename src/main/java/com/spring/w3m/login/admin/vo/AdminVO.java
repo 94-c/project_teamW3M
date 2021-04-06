@@ -36,7 +36,6 @@ public class AdminVO {
 	public String toString() {
 		return "AdminVO [admin_id=" + admin_id + ", admin_password=" + admin_password + ", admin_name=" + admin_name
 				+ ", admin_role=" + admin_role + "]";
-	}
-	
+	}	
 	
 }

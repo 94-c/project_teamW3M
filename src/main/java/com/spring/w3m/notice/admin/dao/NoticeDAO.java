@@ -25,7 +25,7 @@ public class NoticeDAO {
 	public List<NoticeVO> getUserNoticeList(NoticeVO vo) {
 		return sqlSessionTemplate.selectList("NoticeDAO.getUserNoticeList", vo);
 	}
-	
+
 	public List<NoticeVO> getUserNoticeSearchPagingList(Pagination pagination) {
 		System.out.println("getNoticeSearchPagingList() 실행");
 		System.out.println("dao List : " + pagination.getSearchType());
@@ -80,11 +80,11 @@ public class NoticeDAO {
 	public NoticeVO getNotice(NoticeVO vo) {
 		return sqlSessionTemplate.selectOne("NoticeDAO.getNotice", vo);
 	}
-	
+
 	public TosVO getTos(TosVO vo) {
 		return sqlSessionTemplate.selectOne("NoticeDAO.getTos", vo);
 	}
-	
+
 	public void tosUpdate(TosVO vo) {
 		sqlSessionTemplate.update("NoticeDAO.tosUpdate", vo);
 	}
