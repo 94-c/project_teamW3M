@@ -17,7 +17,7 @@
      <typeAlias type="com.spring.w3m.point.user.vo.PointVO" alias="PointVO"/>
      <typeAlias type="com.spring.w3m.delivery.common.vo.DeliveryVO" alias="DeliveryVO"/>
      <typeAlias type="com.spring.w3m.order.user.vo.PayVO" alias="PayVO"/>
-     
+     <typeAlias type="com.spring.w3m.statistics.admin.vo.StatisticsVO" alias="StatisticsVO"/>
  </typeAliases>
 	<mappers>
 		<mapper resource="mapper/joe_Mapper.xml"/>
@@ -35,5 +35,6 @@
 		<mapper resource="mapper/order_Mapper.xml"/>
 		<mapper resource="mapper/point_Mapper.xml"/>
 		<mapper resource="mapper/delivery_Mapper.xml"/>
+		<mapper resource="mapper/statistics_Mapper.xml"/>
 	</mappers>
 </configuration>

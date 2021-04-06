@@ -125,7 +125,7 @@
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-table"></i>
 							</div> 고객관리
-						</a> <a class="nav-link" href="admin_Sales.mdo"">
+						</a> <a class="nav-link" href="admin_Sales.mdo">
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-chart-area"></i>
 							</div> 매출통계
