@@ -33,28 +33,27 @@
 $(document).ready(function(){
 		$("#Seach").click(function(){
 			console.log("들어옴");
-			var start =$("#datepicker1").val();
-			var end = $("#datepicker2").val();
+			var StartDate =$("#datepicker1").val();
+			var EndDate = $("#datepicker2").val();
 			console.log($("#datepicker1").val());
 			console.log($("#datepicker2").val());
 			var alldata={
-					StartDate : start,
-					EndDate : end
+					"startDate" :StartDate,
+					"endDate" : EndDate
 			};
 			$.ajax({
 				async : true,
-				url : "/seach.do",
+				url : "/seach.mdo",
 				type:"POST",
 				data: JSON.stringify(alldata),
 				dataType:"json",
 				contentType:"application/json; charset=UTF-8",
-				success:function(aa){
-					alert(aa+ "갔다옴");
+				success:function(data){
+					alert("갔다옴");
 				
 				}
 			});
 		});
-		
 	});
       google.charts.load('current', {'packages':['bar']});
       google.charts.setOnLoadCallback(drawChart);
