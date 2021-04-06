@@ -107,5 +107,4 @@
 	<select id="getPurchaseList" resultType="AdminVO">
 		select u.user_name, u.user_id, d.order_seq, d.prod_title, d.user_id, d.order_date, d.delivery_state, p.pay_total_money from user_member as u join delivery as d on u.user_id = d.user_id join pay as p on d.order_seq = p.order_seq order by d.order_date desc;
 	</select>
-	
 </mapper>

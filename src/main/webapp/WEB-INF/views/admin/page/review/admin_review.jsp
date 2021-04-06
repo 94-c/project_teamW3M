@@ -138,8 +138,8 @@
 										<div class="searchText">
 											<div class="w100" style="padding-right: 10px">
 												<select class="form-control form-control-sm" name="searchType" id="searchType">
-													<option value="review_title">제목</option>
-													<option value="review_content">내용</option>
+													<option value="user_name">이름</option>
+													<option value="order_seq">주문번호</option>
 												</select>
 
 											</div>
