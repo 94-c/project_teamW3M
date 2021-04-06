@@ -6,4 +6,6 @@ import com.spring.w3m.statistics.admin.vo.StatisticsVO;
 
 public interface StatisticsService {
 	public List<StatisticsVO> Gender_Money();
+	public List<StatisticsVO> salesByMonth();
+	
 }
