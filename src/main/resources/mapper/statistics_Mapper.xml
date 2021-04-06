@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="StatisticsDAO">
+	
+	<select id="Gender_Money" resultType="StatisticsVO">
+	select um.user_gender, count(*) as user_count, sum(pa.pay_total_money) 
+	from order_list ol , pay pa ,user_member um
+	where ol.order_seq = pa.order_seq and ol.user_id = um.user_id and ol.order_status = '구매확정' 
+	
+	group by um.user_gender ;
+	</select>
+	
+	
+</mapper>

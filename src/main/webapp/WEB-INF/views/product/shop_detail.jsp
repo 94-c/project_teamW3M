@@ -271,7 +271,7 @@ function send_oder(code){
 									</div>
 									
 									<div id="cart_modal" class="modal">
-									<p align="center"><br><br><br><br><br><br><br>(${product.prod_title})<br>1개의 물품이 장바구니에 담겼습니다.<br>같은 상품을 중복선택 하는 경우에는 적용되지 않습니다.<br><br><b>지금 확인하시겠습니까?</b><br><br>  
+									<p align="center"><br><br><br><br><br><br><br>(${product.prod_title})<br> 물품이 장바구니에 담겼습니다.<br>같은 상품을 중복선택 하는 경우에는 적용되지 않습니다.<br><br><b>지금 확인하시겠습니까?</b><br><br>  
 									</p>
 									<a href="GoCart.do" rel=""><button>이동</button></a>&nbsp;&nbsp;&nbsp;
 									<a href="#" rel="modal:close"><button>계속쇼핑하기</button> </a>
