@@ -35,14 +35,12 @@ public class StatisticsController {
 
 		return "page/statistics/admin_Sales";
 	}
+	@RequestMapping(value="/seach.mdo", method= {RequestMethod.POST, RequestMethod.GET})
 	@ResponseBody
-	@RequestMapping(value = "/seach.do", method =RequestMethod.POST)
-	public ModelAndView seach(@RequestBody StatisticsVO vo, ModelAndView mv) {
+	public String seach(@RequestBody StatisticsVO vo) {
 		System.out.println(vo.getStartDate());
 		System.out.println(vo.getEndDate());
-		mv.setViewName("aa");
-		return mv;
-		
+		return "aa";
 	}
 	
 	
