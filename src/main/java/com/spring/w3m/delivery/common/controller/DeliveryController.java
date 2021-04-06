@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.postgresql.util.PSQLException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -78,6 +79,15 @@ public class DeliveryController {
 			System.out.println(orderSeq);
 			System.out.println(user_id);
 			pointService.orderSuccessPoint(vo);
+			// order_prod 상태 구매확정으로
+			int a = service.Prod_state_change(orderSeq);
+			System.out.println("prod상태 변경"+a);
+			// order_list 상태 구매확정으로
+			int aa = service.order_state_change(orderSeq);
+			System.out.println("오더 리스트상태 변경"+aa);
+			// pay 상태 구매확정으로
+			int aaa = service.pay_state_change(orderSeq);
+			System.out.println("페이 상태 변경"+aaa);
 			
 			
 		}

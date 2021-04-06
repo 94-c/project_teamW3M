@@ -26,5 +26,8 @@ public interface DeliveryService {
 	DeliveryVO getDelivery(OrderVO vo);
 	
 	DeliveryVO getDeliveryCont(DeliveryVO vo);
+	int order_state_change(int order_seq);
+	int Prod_state_change(int order_seq);
+	int pay_state_change(int order_seq);
 
 }

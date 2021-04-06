@@ -369,13 +369,19 @@ $("#radio_paymethod").click(function(){
 	console.log("카카오페이 체크됨");
 	$("#payinfo_KAKAOPAY").css("display","inline-block");
 });
-
-	
 	
 });
 	
 
-
+function clean() {
+	$("#same").prop("checked", false);
+    $('#receiver_name').val('');
+    $('#receiver_phone1').val('');
+    $('#receiver_phone2').val('');
+    $('#receiver_zipcode').val('');
+    $('#receiver_address1').val('');
+    $('#receiver_address2').val('');
+}
 
 
 </script>
@@ -500,7 +506,7 @@ $("#radio_paymethod").click(function(){
 							</label>
 						</h3>
 						<div class="tbl-order">
-							<table>
+							<table id="table1">
 								<caption>배송 정보 입력</caption>
 								<colgroup>
 									<col style="width: 130px">
@@ -508,7 +514,7 @@ $("#radio_paymethod").click(function(){
 									<col style="width: 100px">
 									<col>
 								</colgroup>
-								<tbody>
+								<tbody id="table2">
 									<tr>
 										<th scope="row">
 											<div class="txt-l">이름</div>
@@ -558,11 +564,10 @@ $("#radio_paymethod").click(function(){
 											<input type="radio" value="H" form="order_form" 
 											name="place" id="place" onclick="addrclick()">자택&nbsp;&nbsp; &nbsp;&nbsp;
 									
-											<input type="radio" value="A" name="place" form="order_form">
-											최근 배송지&nbsp;<a href="javascript:last_address();" class="past_list" 
-											style="display: inline-block; height: 23px; line-height: 25px; padding: 0px 5px; border: 1px solid rgb(221, 221, 221); color: rgb(0, 0, 0); font-weight: bold; letter-spacing: -1px; border-radius: 3px;">
-											배송지 목록</a> &nbsp;&nbsp;
-											<input type="radio" value="E" name="place" form="order_form" onclick="">신규 배송지</td>
+											<input type="radio" value="A" name="place" form="order_form" onclick="last_address()">
+											최근 배송지&nbsp;
+											
+											<input type="radio" value="E" name="place" form="order_form" onclick="clean()">신규 배송지</td>
 									</tr>
 									
 									<tr>

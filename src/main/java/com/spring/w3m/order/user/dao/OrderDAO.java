@@ -85,5 +85,9 @@ public class OrderDAO {
 	public void deletePoint(DeliveryVO vo) {
 		sqlSessionTemplate.delete("OrderDAO.deletePoint", vo);
 	}
+	
+	public void delete_last_address(LastAddress vo) {
+		sqlSessionTemplate.delete("OrderDAO.delete_last_address", vo);
+	}
 
 }

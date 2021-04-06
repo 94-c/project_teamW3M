@@ -82,5 +82,13 @@
 	<select id="getDeliverycont" resultType="DeliveryVO">
 		SELECT * FROM delivery where delivery_seq = #{delivery_seq}
 	</select>
-	
+	<update id="Prod_state_change">
+		UPDATE order_prod set order_status = '구매확정' where order_seq = #{order_seq}
+	</update>
+		<update id="order_state_change">
+		UPDATE order_list set order_status = '구매확정' where order_seq = #{order_seq}
+	</update>
+		<update id="pay_state_change">
+		UPDATE pay set pay_status = '구매확정' where order_seq = #{order_seq}
+	</update>
 </mapper>

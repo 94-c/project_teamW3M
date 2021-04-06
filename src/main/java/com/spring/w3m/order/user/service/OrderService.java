@@ -27,4 +27,6 @@ public interface OrderService {
 	public List<LastAddress> get_Last_Address(String user_id);
 	public void updatePoint(DeliveryVO vo);
 	public void deletePoint(DeliveryVO vo);
+	public void delete_last_address(LastAddress vo);
+	
 }

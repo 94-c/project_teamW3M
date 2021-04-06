@@ -92,4 +92,11 @@
 	<delete id="deletePoint" parameterType="com.spring.w3m.delivery.common.vo.DeliveryVO">
 		delete from add_point where user_id = #{user_id} and order_seq = #{order_seq}
 	</delete>
+	
+	<delete id="delete_last_address">
+		DELETE FROM
+			last_address
+		where
+			last_address_seq = #{last_address_seq}
+	</delete>
 </mapper>

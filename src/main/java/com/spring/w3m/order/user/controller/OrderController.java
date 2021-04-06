@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.spring.w3m.delivery.common.service.DeliveryService;
 import com.spring.w3m.delivery.common.vo.DeliveryVO;
+import com.spring.w3m.inquiry.user.vo.ReplyVO;
 import com.spring.w3m.join.user.service.UserService;
 import com.spring.w3m.join.user.vo.UserVO;
 import com.spring.w3m.order.user.service.OrderService;
@@ -273,4 +275,11 @@ public class OrderController {
 			return point;
 			
 		}
+		
+		@RequestMapping("/delete_last_address.do")
+	 	@ResponseBody
+		public String updateReviewReply(@RequestBody LastAddress vo, Model model) {
+			orderService.delete_last_address(vo);
+			return "1";
+	 	}
 }
