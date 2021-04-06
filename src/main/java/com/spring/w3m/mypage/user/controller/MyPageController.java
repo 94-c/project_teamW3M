@@ -143,7 +143,7 @@ public class MyPageController {
 		System.out.println(vo1.getOrder_seq());
 		List<DeliveryVO> deliveryState = myPageService.deliveryState(vo1.getOrder_seq());
 		model.addAttribute("deliveryState", deliveryState);
-		return "mypage/deliveryState";
+		return "mypage/myDeliveryDetail";
 	}
 	
 	// 주문상세
@@ -166,7 +166,7 @@ public class MyPageController {
 		model.addAttribute("orderProductInfo", opiList); //주문상품정보
 		model.addAttribute("payInfo", payInfo); //결제정보
 		model.addAttribute("lotteRandomNum", lotteRandomNum); //송장번호(12자리난수)
-		return "mypage/orderDetail";
+		return "mypage/myOrderDetail";
 	}
 
 }
