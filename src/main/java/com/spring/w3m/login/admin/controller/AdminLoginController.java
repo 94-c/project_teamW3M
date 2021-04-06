@@ -179,5 +179,14 @@ public class AdminLoginController {
 		return "page/statistics/admin_Product_Sales";
 	}
 	
+	@RequestMapping("/purchase.mdo")
+	public String adminPurchase(AdminVO vo, Model model){		
+		List<AdminVO> purchaseList = adminService.getPurchaseList(vo);
+		model.addAttribute("purchase", purchaseList);
+		System.out.println("주문내역");
+
+		return "page/order/admin_order";
+	}
+	
 
 }

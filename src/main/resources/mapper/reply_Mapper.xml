@@ -50,6 +50,8 @@
 	</delete>	
 
 <!-- 후기 댓글 갯수 -->
-	<update id="replyCntUpdate" parameterType="int"> update review set review_cnt=review_cnt+1 WHERE review_seq=#{review_seq} from review_reply </update>
+	<update id="replyCntUpdate" parameterType="int"> 
+		update review set review_cnt=review_cnt+1 WHERE review_seq=#{review_seq} 
+	</update>
 		
 </mapper>

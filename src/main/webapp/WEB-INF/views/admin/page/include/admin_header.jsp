@@ -93,7 +93,7 @@
 							<nav class="sb-sidenav-menu-nested nav accordion"
 								id="sidenavAccordionPages">
 								<nav class="sb-sidenav-menu-nested nav">
-									<a class="nav-link" href="#">주문 관리</a> 
+									<a class="nav-link" href="purchase.mdo">주문 관리</a> 
 									<a class="nav-link" href="getDeliveryList.mdo">배송 현황</a>
 								</nav>
 							</nav>

@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
+import com.spring.w3m.inquiry.user.vo.InquiryVO;
 import com.spring.w3m.join.user.vo.UserVO;
 import com.spring.w3m.login.admin.vo.AdminVO;
 import com.spring.w3m.paging.common.Pagination;
@@ -58,12 +59,32 @@ public class AdminDAO {
 	public List<UserVO> getSearchPagingList(Pagination pagination) {
 		System.out.println("getSearchPagingList() 실행");
 		return sqlSessionTemplate.selectList("AdminDAO.getSearchPagingList");
-	}
-	
+	}	
 
 	public void updateUserPause(UserVO vo) {
 		System.out.println("UserPause() 실행");
 		System.out.println("dao"+vo.getUser_state());
 		sqlSessionTemplate.update("AdminDAO.updateUserPause", vo);
 	}
+	
+	public List<AdminVO> getPurchaseList(AdminVO vo) {
+		return sqlSessionTemplate.selectList("AdminDAO.getPurchaseList");
+	}
+	
+	// 페이징
+	public int getPurchaseListCnt(Search search) {
+		System.out.println("getPurchaseListCnt() 실행");
+		return sqlSessionTemplate.selectOne("AdminDAO.getPurchaseListCnt");
+	}
+
+	public List<AdminVO> getPurchasePageList(Search search) {
+		System.out.println("getPurchasePageList() 실행");
+		return sqlSessionTemplate.selectList("AdminDAO.getPurchasePageList", search);
+	}
+
+	public List<AdminVO> getPurchaseSearchPagingList(Pagination pagination) {
+		System.out.println("getPurchaseSearchPagingList() 실행");
+		return sqlSessionTemplate.selectList("AdminDAO.getPurchaseSearchPagingList");
+	}	
+
 }
