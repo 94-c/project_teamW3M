@@ -14,11 +14,12 @@
 		<result property="review_pass" column="review_pass" />
 		<result property="review_cnt" column="review_cnt" />
 		<result property="review_image" column="inq_image" />
+		<result property="prod_code" column="prod_code" />
 	</resultMap>
 	
 	<!-- 후기 보기 -->
 	<select id="getReviewList" resultMap="reviewResult">
-		SELECT * FROM review
+		SELECT r.*, p.prod_code FROM product as p, review as r WHERE p.prod_title = r.prod_title
 	</select>
 
 	<!-- 후기 작성 -->

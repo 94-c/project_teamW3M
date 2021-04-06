@@ -74,37 +74,44 @@
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                       <colgroup>
-		                                    <col width="70">
-		                                    <col width="85">
-		                                    <col width="300">
-		                                    <col width="110">
-		                                    <col width="110">
-		                                    <col width="75">
-                                		</colgroup>
-                                       <thead>
-                                            <tr>
-		                                        <th scope="col"><div class="tb-center">NO.</div></th>
-		                                        <th scope="col"><div class="tb-center">제품</div></th>
-		                                        <th scope="col"><div class="tb-center">후기</div></th>
-		                                        <th scope="col"><div class="tb-center">작성자</div></th>
-		                                        <th scope="col"><div class="tb-center">날짜</div></th>
-		                                        <th scope="col"><div class="tb-center">조회수</div></th>
-                                   			 </tr>
-                                        </thead>
+                                      <colgroup>
+	                                    <col width="70">
+	                                    <col width="85">
+	                                    <col width="*">
+	                                    <col width="110">
+	                                    <col width="110">
+	                                    <col width="75">
+                               		 </colgroup>
+                                    <thead>
+									<tr>
+                                        <th scope="col"><div class="tb-center">NO.</div></th>
+                                        <th scope="col"><div class="tb-center">제품</div></th>
+                                        <th scope="col"><div class="tb-center">후기</div></th>
+                                        <th scope="col"><div class="tb-center">작성자</div></th>
+                                        <th scope="col"><div class="tb-center">날짜</div></th>
+                                        <th scope="col"><div class="tb-center">조회수</div></th>
+                                    </tr>
+								</thead>	
                                    
                                         <tbody>
-										<c:forEach var="reviewVO" items="${reviewList}">
+									<c:forEach var="reviewVO" items="${reviewList}">
 										<tr>
-	                                        <td><div class="tb-center">${reviewVO.review_seq}</div></td>
-	                                       	<td><div class="tb-left"><img src="${product.prod_title_image}" width="60" height="60" align="middle"></div></td> 
-	                                        <td><div class="tb-left"><a href='<c:url value='/adminReviewContent.mdo?review_seq=${reviewVO.review_seq}'/>'class="text-dark">[${product.prod_title}]${reviewVO.review_title}</a></div>
-                                       	 </td>
-                                        	<td><div class="tb-center"> <c:if test="${reviewVO.review_writer ne null && reviewVO.review_writer!=''}">${fn:substring(reviewVO.review_writer,0,fn:length(reviewVO.review_writer)-1)}*</c:if></div>
+                                        <td><div class="tb-center">${reviewVO.review_seq}</div></td>
+                                       	<td><div class="tb-left"><a href="getProduct?prod_code=${reviewVO.prod_code}"><img src="${reviewVO.prod_title_image}" width="60" height="60" align="middle"></a></div></td> 
+                                        <c:if test="${reviewVO.reply_cnt > 0}">
+                                        <td><div class="tb-left"><a href='<c:url value='/adminReviewContent.mdo?review_seq=${reviewVO.review_seq}'/>'class="text-dark">[${reviewVO.prod_title}]${reviewVO.review_title}</a><a href="javascript:void(window.open('review_reply.do?review_seq=${reviewVO.review_seq}', '_blank','width=430px, height=340px, status=no, menubar=no, toolbar=no, resizable=no'))">[${reviewVO.reply_cnt}]</a></div>
+                                        </td>
+                                        </c:if>
+                                        <c:if test="${reviewVO.reply_cnt <=0}">
+                                        <td><div class="tb-left"><a href='<c:url value='/adminReviewContent.mdo?review_seq=${reviewVO.review_seq}'/>'class="text-dark">[${reviewVO.prod_title}]${reviewVO.review_title}</a></div>
+                                        </td>
+                                        </c:if>
+                                        <td>
+                                          <div class="tb-center"> <c:if test="${reviewVO.review_writer ne null && reviewVO.review_writer!=''}">${fn:substring(reviewVO.review_writer,0,fn:length(reviewVO.review_writer)-1)}*</c:if></div>
 	                            		</td>
 	                                        <td><div class="tb-center"><fmt:formatDate value="${reviewVO.review_date}" pattern="yyyy-MM-dd" /></div></td>
 	                                        <td scope="col"><div class="tb-center">${reviewVO.review_cnt}</div></td>
-                                    	</tr>
+                                    </tr>
 									</c:forEach>
 								</tbody>
                                     </table>

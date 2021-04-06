@@ -115,7 +115,7 @@
 										<tr>
                                         <td><div class="tb-center">${reviewVO.review_seq}</div></td>
                                         <td><div class="tb-left">&nbsp;</div></td>
-                                       	<td><div class="tb-left"><a href="getProduct.do?prod_code"><img src="${reviewVO.prod_title_image}" width="60" height="60" align="middle"></a></div></td> 
+                                       	<td><div class="tb-left"><a href="getProduct?prod_code=${reviewVO.prod_code}"><img src="${reviewVO.prod_title_image}" width="60" height="60" align="middle"></a></div></td> 
                                         <c:if test="${reviewVO.reply_cnt > 0}">
                                         <td><div class="tb-left"><a href='<c:url value='/reviewContent.do?review_seq=${reviewVO.review_seq}'/>'class="text-dark">[${reviewVO.prod_title}]${reviewVO.review_title}</a><a href="javascript:void(window.open('review_reply.do?review_seq=${reviewVO.review_seq}', '_blank','width=430px, height=340px, status=no, menubar=no, toolbar=no, resizable=no'))">[${reviewVO.reply_cnt}]</a></div>
                                         </td>

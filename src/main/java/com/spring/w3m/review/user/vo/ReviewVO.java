@@ -18,6 +18,7 @@ public class ReviewVO {
 	private String searchType;
 	private String keyword;
 	private int reply_cnt;
+	
 	public int getReview_seq() {
 		return review_seq;
 	}

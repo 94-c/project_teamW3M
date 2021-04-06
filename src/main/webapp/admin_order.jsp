@@ -55,7 +55,6 @@
 												<option value="after">구매확정</option>
 												<option value="cancel">주문취소</option>
 											</select>
-									<%-- <input type="hidden" id="delivery_seq" name="delivery_seq" value="${del.delivery_seq}"> --%>
 									<button class="changeState" id="changeState" name="changeState">상태변경</button>
 									</td>
 								</tr>
