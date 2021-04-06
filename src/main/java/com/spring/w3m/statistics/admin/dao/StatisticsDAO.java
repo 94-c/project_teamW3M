@@ -16,7 +16,12 @@ public class StatisticsDAO {
 
 	public List<StatisticsVO> Gender_Money() {
 		
-		return sqlSessionTemplate.selectList("StatisDAO.Gender_Money");
+		return sqlSessionTemplate.selectList("StatisticsDAO.salesByGender");
+	}
+
+	public List<StatisticsVO> salesByMonth() {
+		
+		return sqlSessionTemplate.selectList("StatisticsDAO.salesByMonth");
 	}
 
 }
