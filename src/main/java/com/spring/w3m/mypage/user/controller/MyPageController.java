@@ -33,9 +33,11 @@ public class MyPageController {
 	private PointService pointService;
 
 	@RequestMapping("/mypage.do")
-	public String myPage(MyPageVO vo, Model model) { // 마이페이지 진입
+	public String myPage(MyPageVO vo, Model model, @SessionAttribute("userVO") UserVO uvo) { // 마이페이지 진입
 		System.out.println("마이페이지 진입");
 		model.addAttribute("myRecent", myPageService.recentList(vo));
+		List<OrderVO> myOrderList = myPageService.myOrderList(uvo.getUser_id());
+		model.addAttribute("myOrderList", myOrderList);
 		return "mypage/myPage";
 	}
 
