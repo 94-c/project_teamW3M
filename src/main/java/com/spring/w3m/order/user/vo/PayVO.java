@@ -78,8 +78,6 @@ public class PayVO {
 	}
 	public void setOrder_seq(int order_seq) {
 		this.order_seq = order_seq;
-	}
-	
-	
+	}	
 	
 }

@@ -2,8 +2,6 @@ package com.spring.w3m.point.user.vo;
 
 import java.util.Date;
 
-
-
 public class PointVO {
 	private String user_id;
 	private int add_point;
@@ -52,7 +50,5 @@ public class PointVO {
 	public void setOrder_state(String order_state) {
 		this.order_state = order_state;
 	}
-
-	
 	
 }

@@ -14,10 +14,7 @@ public class CartVO {
 	private int prod_price; // product 테이블에 prod_price
 	private int total_point; // 적립금 * 수량 
 	private int total_price; // 가격 * 수량 
-	private int cart_retrun; // gg 
-	
-	
-	
+	private int cart_retrun; // gg 	
 	
 	@Override
 	public String toString() {
@@ -104,6 +101,5 @@ public class CartVO {
 	public void setCart_retrun(int cart_retrun) {
 		this.cart_retrun = cart_retrun;
 	}
-	
-	
+		
 }

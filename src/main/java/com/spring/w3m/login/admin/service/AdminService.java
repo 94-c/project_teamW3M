@@ -35,15 +35,5 @@ public interface AdminService {
 
 	void updateUserPause(UserVO vo);
 	
-	List<AdminVO> getPurchaseList(AdminVO vo);
-
 	
-	// 구매내역 페이징	
-	int getPurchaseListCnt(Search search);
-
-	List<AdminVO> getPurchasePageList(Search search);
-
-	List<AdminVO> getPurchaseSearchPagingList(Pagination pagination);
-
-
 }

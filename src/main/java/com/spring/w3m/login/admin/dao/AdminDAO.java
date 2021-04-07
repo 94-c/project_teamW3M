@@ -19,7 +19,6 @@ public class AdminDAO {
 
 	public AdminVO getAdmin() {
 		return sqlSessionTemplate.selectOne("AdminDAO.getAdmin");
-
 	}
 
 	public boolean loginCheck(AdminVO vo) {
@@ -45,39 +44,23 @@ public class AdminDAO {
 	}
 
 	public int getUserListCnt(Search search) {
-		System.out.println("getUserListCnt() 실행");
 		return sqlSessionTemplate.selectOne("AdminDAO.getUserListCnt");
 	}
 
 	public List<UserVO> getPageList(Search search) {
-		System.out.println("getPageList() 실행");
 		return sqlSessionTemplate.selectList("AdminDAO.getPageList", search);
 	}
 
 	public int getSearchCnt(String searchKeyword) {
-		System.out.println("getSearchCnt() 실행");
 		return sqlSessionTemplate.selectOne("AdminDAO.getSearchKeyword");
 	}
 
 	public List<UserVO> getSearchPagingList(Pagination pagination) {
-		System.out.println("getSearchPagingList() 실행");
 		return sqlSessionTemplate.selectList("AdminDAO.getSearchPagingList");
-	}	
+	}
 
 	public void updateUserPause(UserVO vo) {
-		System.out.println("UserPause() 실행");
-		System.out.println("dao"+vo.getUser_state());
 		sqlSessionTemplate.update("AdminDAO.updateUserPause", vo);
-	}
-	
-	public List<AdminVO> getPurchaseList(AdminVO vo) {
-		return sqlSessionTemplate.selectList("AdminDAO.getPurchaseList");
-	}
-	
-	// 페이징
-	public int getPurchaseListCnt(Search search) {
-		System.out.println("getPurchaseListCnt() 실행");
-		return sqlSessionTemplate.selectOne("AdminDAO.getPurchaseListCnt");
 	}
 
 	public List<AdminVO> getPurchasePageList(Search search) {
@@ -93,5 +76,6 @@ public class AdminDAO {
 	public UserVO getUser(String user_id) {
 		return sqlSessionTemplate.selectOne(user_id);
 	}	
+
 
 }

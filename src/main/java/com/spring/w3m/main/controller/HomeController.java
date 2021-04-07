@@ -25,64 +25,60 @@ public class HomeController {
 
 	@RequestMapping(value = "/", method = { RequestMethod.GET, RequestMethod.POST })
 	public String index(Model model, ProductVO vo) {
-		System.out.println("메인홈으로 이동...");
-		
+		System.out.println("홈페이지로 이동...");
+
 		List<ProductVO> product = homeService.selectProduct(vo);
 		model.addAttribute("product", product);
 
 		return "index";
 	}
+
 	@RequestMapping(value = "/orderList", method = { RequestMethod.GET, RequestMethod.POST })
 	public String order_list(Model model, ProductVO vo) {
-		System.out.println("메인홈으로 이동...");
-		
+		System.out.println("홈페이지로 이동...");
+
 		List<ProductVO> product = homeService.selectProduct(vo);
 		model.addAttribute("product", product);
 
 		return "order/orderList";
 	}
-	
 
 	@RequestMapping("/getProduct")
-	public String getProduct(ProductVO vo, Model model, InquiryVO vo2,ReviewVO vo3,
+	public String getProduct(ProductVO vo, Model model, InquiryVO vo2, ReviewVO vo3,
 			@RequestParam(required = false, defaultValue = "1") int page,
 			@RequestParam(required = false, defaultValue = "1") int range,
 			@RequestParam(required = false, defaultValue = "title") String searchType,
 			@RequestParam(required = false) String keyword) {
-		System.out.println("shop");
-		
+		System.out.println("상품상세보기");
+
 		ProductVO vvs = homeService.getProduct(vo);
-		
+
 		Search search = new Search();
 		search.setSearchType(searchType);
 		search.setKeyword(keyword);
 		search.setProd_code(vo.getProd_code());
-		
+
 		int cnt = homeService.getInquiryListCnt(search);
 		search.pageInfo(page, range, cnt);
-		
+
 		Pagination pagination = new Pagination();
 		pagination.pageInfo(page, range, cnt);
-		
+
 		List<InquiryVO> pageList = homeService.productInq(search);
-		
-		
-		
+
 		Search search1 = new Search();
 		search1.setSearchType(searchType);
 		search1.setKeyword(keyword);
 		search1.setProd_title(vvs.getProd_title());
-		
+
 		int cnt1 = homeService.getReviewListCnt(search1);
 		search1.pageInfo(page, range, cnt1);
-		
+
 		Pagination pagination1 = new Pagination();
 		pagination1.pageInfo(page, range, cnt1);
-		
+
 		List<ReviewVO> pageList1 = homeService.productRe(search1);
-		
-		
-		
+
 		model.addAttribute("pagination", search);
 		model.addAttribute("pagination1", search1);
 		model.addAttribute("product", vvs);
@@ -90,7 +86,7 @@ public class HomeController {
 		model.addAttribute("review", pageList1);
 		model.addAttribute("cnt", cnt);
 		model.addAttribute("cnt", cnt1);
-		
+
 		return "product/shop_detail";
 	}
 
@@ -99,7 +95,7 @@ public class HomeController {
 		System.out.println("이용 안내");
 		return "include/info";
 	}
-	
+
 	@RequestMapping("/shopterms")
 	public String shopterms(TosVO vo, Model model) {
 		model.addAttribute("tos", homeService.getTos(vo));

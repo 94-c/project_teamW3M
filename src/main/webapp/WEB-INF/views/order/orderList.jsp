@@ -120,24 +120,24 @@ $('#charge_kakao').click(function () {
 		
 	}
 	else if($("#receiver_name").val()==""){
-		alert("이름 확인 해주세요.");
+		alert("이름을 확인 해주세요.");
 		return;
 	}else if($("#receiver_phone1").val()==""){
-		alert("연락처 1 확인 해주세요.");
+		alert("연락처 1을 확인 해주세요.");
 		return;
 	}
 	else if($("#receiver_phone2").val()==""){
-		alert("연락처 2 확인 해주세요.");
+		alert("연락처 2를 확인 해주세요.");
 		return;
 	}
 	else if($("#receiver_zipcode").val()==""){
-		alert("우편번호 확인 해주세요.");
+		alert("우편번호를 확인 해주세요.");
 		return;
 	}else if($("#receiver_adress1").val()==""){
-		alert("주소 확인 해주세요.");
+		alert("주소를 확인 해주세요.");
 		return;
 	}	else if($("#receiver_memo").val()==""){
-		alert("메모 확인 해주세요.");
+		alert("배송 메세지를 확인 해주세요.");
 		return;
 	}
     // getter
@@ -489,7 +489,7 @@ function clean() {
 									<tr>
 										<th scope="row"><div class="txt-l">연락처</div></th>
 										<td>
-											<input type="text" name="user_phone" id="user_phone" size="12" maxlength="12" va
+											<input type="text" name="user_phone" id="user_phone" size="12" maxlength="12"
 											class="MS_input_txt" value="${userVO.user_phone }" placeholder="-를 포함한 연락처를 입력하세요." onfocus="this.placeholder=''" onblur="this.placeholder='-를 포함한 연락처를 입력하세요.'" readonly="readonly">
 										</td>
 									</tr>
@@ -576,12 +576,12 @@ function clean() {
 										</th>
 										<td colspan="3">
 											<input name="receiver_zipcode" id="receiver_zipcode" size="6" class="MS_input_txt w60"
-											readonly=""> 
+											readonly> 
 											<a href="#" onclick="OrderDaumPostcode();" class="btn-white">우편번호</a>
 											<div class="mt-10">
 												<input type="text" name="receiver_address1" 
 													id="receiver_address1" size="50" class="MS_input_txt w240"
-													readonly=""> 
+													readonly> 
 													
 													<input type="text" name="receiver_address2" id="receiver_address2" size="50"
 													class="MS_input_txt w240">
@@ -590,7 +590,7 @@ function clean() {
 									</tr>
 									<tr>
 										<th scope="row"><div class="txt-l">
-												주문메세지<br> <span>(100자내외)</span>
+												배송메세지<br> <span>(100자내외)</span>
 											</div></th>
 										<td colspan="3">
 											<textarea name="receiver_memo" form="order_form" id="receiver_memo" cols="50" rows="5" class="MS_textarea"></textarea>
@@ -634,7 +634,7 @@ function clean() {
 										<td>
 											<div class="base">
 												<strong><em><span
-														class="op-total block-op-product-price" price="총 주문 금액" id="pay_total_price">
+														class="op-total block-op-product-price" id="pay_total_price">
 														<fmt:formatNumber value="${payVO.pay_total_price}" pattern="#,###"></fmt:formatNumber></span></em>원</strong>
 											</div>
 										</td>
@@ -653,7 +653,7 @@ function clean() {
 										<td>
 											<div class="base">
 												<strong><em class="fc-red">
-												<span class="op-total block-op-sale-price" price="보유 적립금" id="pay_use_point">0</span></em>원</strong>
+												<span class="op-total block-op-sale-price" id="pay_use_point">0</span></em>원</strong>
 												
 												<a class="plus" style="display: none;">
 													<img src="resources/images/order/plus.png" alt="plus">
@@ -667,7 +667,7 @@ function clean() {
 										<td>
 											<div class="base">
 												<strong><em>
-												<span class="op-total block-op-add-price" id="pay_Membership" price=""><fmt:formatNumber value="${payVO.pay_Membership}" pattern="#,###"></fmt:formatNumber></span></em>원</strong> 
+												<span class="op-total block-op-add-price" id="pay_Membership"><fmt:formatNumber value="${payVO.pay_Membership}" pattern="#,###"></fmt:formatNumber></span></em>원</strong> 
 												<a class="plus" style="display: none;">
 													<img src="resources/images/order/plus.png" alt="plus">
 												</a>
@@ -684,7 +684,7 @@ function clean() {
 													<img src="resources/images/order/equal.png" alt="equal">
 												</a> 
 												<strong><em class="fc-red">
-													<span class="block-op-sum-price" price="최종 결제금액" id ="pay_total_money2"><fmt:formatNumber value="${payVO.pay_total_money}" pattern="#,###"></fmt:formatNumber></span>
+													<span class="block-op-sum-price" id ="pay_total_money2"><fmt:formatNumber value="${payVO.pay_total_money}" pattern="#,###"></fmt:formatNumber></span>
 												</em>원</strong>
 											</div>
 										</td>
