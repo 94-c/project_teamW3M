@@ -221,11 +221,12 @@ public class NoticeController {
 		return "redirect:/tos_content.mdo";
 	}
 	
+	/*
 	@RequestMapping(value = "/excelDown.do")
 	public void excelDown(HttpServletResponse response) throws Exception {
 
 	    // 게시판 목록조회
-	    List<NoticeVO> list = noticeService.getNoticeListExcel();
+	    //List<NoticeVO> list = noticeService.getNoticeListExcel();
 	    
 	    // 워크북 생성
 	    Workbook wb = new HSSFWorkbook();
@@ -302,5 +303,6 @@ public class NoticeController {
 	    wb.write(response.getOutputStream());
 	    wb.close();
 	}
+	*/
 
 }
