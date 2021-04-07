@@ -20,6 +20,7 @@
      <typeAlias type="com.spring.w3m.statistics.admin.vo.StatisticsVO" alias="StatisticsVO"/>
      <typeAlias type="com.spring.w3m.order.admin.vo.PurchaseVO" alias="PurchaseVO"/>
  </typeAliases>
+ 
 	<mappers>
 		<mapper resource="mapper/joe_Mapper.xml"/>
 		<mapper resource="mapper/woong_Mapper.xml"/>
@@ -39,4 +40,5 @@
 		<mapper resource="mapper/statistics_Mapper.xml"/>
 		<mapper resource="mapper/purchase_Mapper.xml"/>
 	</mappers>
+	
 </configuration>

@@ -8,19 +8,16 @@
 		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
 	<!-- 어노테이션 사용 -->
-	<!-- js, css, img 등 파일을 넝ㅎ고 필요할 때 꺼내 쓸수 잇게 매핑 해준다. -->
+	<!-- js, css, img 등 파일을 넣고 필요할 때 꺼내 쓸수 있게 매핑 해준다. -->
 	<annotation-driven/>
-	<resources location="/resources/" mapping="/resources/**"></resources>
-	
+	<resources location="/resources/" mapping="/resources/**"></resources>	
 	
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<!-- 홈 컨트롤러 -->
-		<context:component-scan base-package="com.spring.w3m.mypage.user" />
-		<context:component-scan base-package="com.spring.w3m.notice.admin" />
-		<context:component-scan base-package="com.spring.w3m.point.user" />
-		<context:component-scan base-package="com.spring.w3m.delivery.common"/>
+	<!-- 컴포넌트 스캔 -->
+	<context:component-scan base-package="com.spring.w3m.main" />
+	
 </beans:beans>

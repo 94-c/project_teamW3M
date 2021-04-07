@@ -29,9 +29,7 @@ public class UserLoginController {
 		ModelAndView mav = new ModelAndView();
 
 		if (result == 1) { // 로그인성공
-			System.out.println("장바구니 갯수 : " + cartService.cart_Cnt(cartvo));
 			session.setAttribute("cart", cartService.cart_Cnt(cartvo));
-			System.out.println(vo.getReturnURL());
 
 			mav.setViewName("login/loginSuccess");
 			mav.addObject("msg", "success");
