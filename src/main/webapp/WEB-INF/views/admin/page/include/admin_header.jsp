@@ -27,37 +27,41 @@
 
 <body class="sb-nav-fixed">
 	<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-		<a class="navbar-brand" href="loginIndex.mdo"><img
-			src="resources/images/h_design/top_w3m.gif"></a>
+		<a class="navbar-brand" href="index.mdo">
+			<img src="resources/images/h_design/top_w3m.gif">
+		</a>
 
 		<!-- 토글 오른쪽으로 붙이게 남겨뒀어요-->
 		<form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-			<div class="input-group">
-			</div>
+			<div class="input-group"></div>
 		</form>
-		
+
 		<!-- Navbar-->
 		<ul class="navbar-nav ml-auto ml-md-0">
 			<li class="nav-item dropdown">
-			<a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+				<a class="nav-link dropdown-toggle" id="userDropdown" href="#" 
+				role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw"></i>
+				</a>
 				<div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-					<a class="dropdown-item" href="adminLogout.mdo">로그아웃</a> <a
-						class="dropdown-item" href="/">메인 홈으로 나가기</a>
+					<a class="dropdown-item" href="adminLogout.mdo">로그아웃</a>
+					<a class="dropdown-item" href="/">W3M 홈으로 이동</a>
 				</div>
 			</li>
 		</ul>
 	</nav>
 	<div id="layoutSidenav">
 		<div id="layoutSidenav_nav">
-			<nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+			<nav class="sb-sidenav accordion sb-sidenav-dark"
+				id="sidenavAccordion">
 				<div class="sb-sidenav-menu">
 					<div class="nav">
 						<div class="sb-sidenav-menu-heading">홈</div>
-						<a class="nav-link" href="loginIndex.mdo">
+						<a class="nav-link" href="index.mdo">
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-tachometer-alt"></i>
 							</div> 홈
-						</a> <a class="nav-link" href="adminLogout.mdo">
+						</a>
+						<a class="nav-link" href="adminLogout.mdo">
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-tachometer-alt"></i>
 							</div> 로그아웃
@@ -65,7 +69,8 @@
 
 						<div class="sb-sidenav-menu-heading">관리자</div>
 
-						<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+						<a class="nav-link collapsed" href="#" data-toggle="collapse" 
+						data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-columns"></i>
 							</div> 상품
@@ -73,15 +78,16 @@
 								<i class="fas fa-angle-down"></i>
 							</div>
 						</a>
-						<div class="collapse" id="collapsePages" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+						<div class="collapse" id="collapsePages"
+							aria-labelledby="headingOne" data-parent="#sidenavAccordion">
 							<nav class="sb-sidenav-menu-nested nav">
-								<a class="nav-link" href="getProductList.mdo">상품 관리</a> 
-								<a class="nav-link" href="adminReview.mdo">상품평 관리</a> 
+								<a class="nav-link" href="getProductList.mdo">상품 관리</a>
+								<a class="nav-link" href="adminReview.mdo">상품평 관리</a>
 							</nav>
 						</div>
 
-
-						<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+						<a class="nav-link collapsed" href="#" data-toggle="collapse"
+							data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-columns"></i>
 							</div> 주문
@@ -89,17 +95,16 @@
 								<i class="fas fa-angle-down"></i>
 							</div>
 						</a>
-						<div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
-							<nav class="sb-sidenav-menu-nested nav accordion"
-								id="sidenavAccordionPages">
-								<nav class="sb-sidenav-menu-nested nav">
+						<div class="collapse" id="collapsePages"
+							aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
+							<nav class="sb-sidenav-menu-nested nav">
 									<a class="nav-link" href="purchase.mdo">주문 관리</a> 
 									<a class="nav-link" href="getDeliveryList.mdo">배송 현황</a>
-								</nav>
-							</nav>
+							</nav>							
 						</div>
 
-						<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+						<a class="nav-link collapsed" href="#" data-toggle="collapse"
+							data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-book-open"></i>
 							</div> 공지사항
@@ -107,13 +112,12 @@
 								<i class="fas fa-angle-down"></i>
 							</div>
 						</a>
-						<div class="collapse" id="collapsePages" aria-labelledby="headingThree" data-parent="#sidenavAccordion">
-							<nav class="sb-sidenav-menu-nested nav accordion" id="notice">
-								<nav class="sb-sidenav-menu-nested nav">
-									<a class="nav-link" href="admin_notice_list.mdo">글 상세보기</a> <a
-										class="nav-link" href="admin_notice_insert_view.mdo">글 등록</a>
-										<a class="nav-link" href="tos_content.mdo">이용약관</a>
-								</nav>
+						<div class="collapse" id="collapsePages"
+							aria-labelledby="headingThree" data-parent="#sidenavAccordion">
+							<nav class="sb-sidenav-menu-nested nav">
+								<a class="nav-link" href="admin_notice_list.mdo">글 상세보기</a>
+								<a class="nav-link" href="admin_notice_insert_view.mdo">글 등록</a>
+								<a class="nav-link" href="tos_content.mdo">이용약관</a>
 							</nav>
 						</div>
 
@@ -121,15 +125,18 @@
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-table"></i>
 							</div> 문의사항
-						</a> <a class="nav-link" href="userMemberList.mdo">
+						</a> 
+						<a class="nav-link" href="userMemberList.mdo">
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-table"></i>
 							</div> 고객관리
-						</a> <a class="nav-link" href="admin_Sales.mdo">
+						</a> 
+						<a class="nav-link" href="admin_Sales.mdo">
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-chart-area"></i>
 							</div> 매출통계
-						</a> <a class="nav-link" href="admin_Product_Sales.mdo">
+						</a> 
+						<a class="nav-link" href="admin_Product_Sales.mdo">
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-table"></i>
 							</div> 상품통계
@@ -138,10 +145,13 @@
 				</div>
 
 				<div class="sb-sidenav-footer">
-					<div class="small">Logged in as&nbsp;:&nbsp;&nbsp;<strong>관리자</strong></div>
+					<div class="small">
+						Logged in as : <strong>관리자</strong>
+					</div>
 				</div>
 			</nav>
 		</div>
 		<!-- 메인 페이지 -->
+		
 		<div id="layoutSidenav_content">
 		<!-- 여기까지 헤더 -->

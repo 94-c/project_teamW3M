@@ -54,7 +54,7 @@
 									<h3 class="text-center font-weight-light my-4">관리자 로그인</h3>
 								</div>
 								<div class="card-body">
-									<form action="index.mdo" id="signform" method="post">
+									<form action="login.mdo" id="signform" method="post">
 										<div class="form-group">
 											<label class="small mb-1" for="inputAddress">아이디</label> <input
 												class="form-control py-4" onkeyup="enterkey();" type="text"
@@ -69,8 +69,7 @@
 
 										<div
 											class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
-											<input type="button" id="login_btn"
-												class="btn btn-primary center" value="로그인">
+											<input type="button" id="login_btn" class="btn btn-primary center" value="로그인">
 										</div>
 									</form>
 								</div>

@@ -78,7 +78,7 @@
 					<div class="card-body">30개</div>
 					<div
 						class="card-footer d-flex align-items-center justify-content-between">
-						<a class="small text-white stretched-link" href="purchase.mdo">금일 판매 수</a>
+						<a class="small text-white stretched-link" href="purchase.mdo">금일 판매량</a>
 						<div class="small text-white">
 							<i class="fas fa-angle-right"></i>
 						</div>
@@ -90,7 +90,7 @@
 					<div class="card-body">40명</div>
 					<div
 						class="card-footer d-flex align-items-center justify-content-between">
-						<a class="small text-white stretched-link" href="purchase.mdo">금일 회원가입 수</a>
+						<a class="small text-white stretched-link" href="purchase.mdo">금일 회원가입</a>
 						<div class="small text-white">
 							<i class="fas fa-angle-right"></i>
 						</div>
@@ -102,7 +102,7 @@
 					<div class="card-body">3건</div>
 					<div
 						class="card-footer d-flex align-items-center justify-content-between">
-						<a class="small text-white stretched-link" href="purchase.mdo">금일 주문취소 건</a>
+						<a class="small text-white stretched-link" href="purchase.mdo">금일 주문취소</a>
 						<div class="small text-white">
 							<i class="fas fa-angle-right"></i>
 						</div>
@@ -188,34 +188,33 @@
 							</c:forEach>
 						</tbody>
 					</table>
-					 <!-- pagination -->
-								<div id="paginationBox" >
-									<ul class="pagination">
-										<c:if test="${pagination.prev}">
-											<li class="page-item"><a class="page-link" href="#"
-												onClick="fn_prev('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}')">Previous</a></li>
-										</c:if>
+					<!-- pagination -->
+					<div id="paginationBox">
+						<ul class="pagination">
+							<c:if test="${pagination.prev}">
+								<li class="page-item"><a class="page-link" href="#"
+									onClick="fn_prev('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}')">Previous</a></li>
+							</c:if>
 
-										<c:forEach begin="${pagination.startPage}"
-											end="${pagination.endPage}" var="idx">
-											<li
-												class="page-item <c:out value="${pagination.page == idx ? 'active' : ''}"/> "><a
-												class="page-link" href="#"
-												onClick="fn_pagination('${idx}', '${pagination.range}', '${pagination.rangeSize}')">
-													${idx} </a></li>
-										</c:forEach>
+							<c:forEach begin="${pagination.startPage}"
+								end="${pagination.endPage}" var="idx">
+								<li
+									class="page-item <c:out value="${pagination.page == idx ? 'active' : ''}"/> "><a
+									class="page-link" href="#"
+									onClick="fn_pagination('${idx}', '${pagination.range}', '${pagination.rangeSize}')">
+										${idx} </a></li>
+							</c:forEach>
 
-										<c:if test="${pagination.next}">
-											<li class="page-item"><a class="page-link" href="#"
-												onClick="fn_next('${pagination.range}', '${pagination.range}', '${pagination.rangeSize}')">Next</a></li>
-										</c:if>
-										</ul>
-									</div>
+							<c:if test="${pagination.next}">
+								<li class="page-item"><a class="page-link" href="#"
+									onClick="fn_next('${pagination.range}', '${pagination.range}', '${pagination.rangeSize}')">Next</a></li>
+							</c:if>
+						</ul>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </main>
-
 
 <%@include file="/WEB-INF/views/admin/page/include/admin_footer.jsp"%>

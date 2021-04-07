@@ -6,14 +6,12 @@
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
-			/WEB-INF/spring/MainApplicationContext.xml 
-		
-			
+			/WEB-INF/spring/MainApplicationContext.xml
 		</param-value>
 	</context-param>
 
 	<listener>
-		<listener-class>	
+		<listener-class>
 			org.springframework.web.context.ContextLoaderListener
 		</listener-class>
 	</listener>
@@ -25,12 +23,12 @@
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
 			<param-value>
-				/WEB-INF/spring/customContext/JoeSpring-servlet.xml 
-				/WEB-INF/spring/customContext/SooSpring-servlet.xml 
-				/WEB-INF/spring/customContext/SwSpring-servlet.xml 
-				/WEB-INF/spring/customContext/hyeongSpring-servlet.xml 
+				/WEB-INF/spring/customContext/JoeSpring-servlet.xml
+				/WEB-INF/spring/customContext/SooSpring-servlet.xml
+				/WEB-INF/spring/customContext/SwSpring-servlet.xml
+				/WEB-INF/spring/customContext/hyeongSpring-servlet.xml
 				/WEB-INF/spring/customContext/WoongSpring-servlet.xml
-				<!-- 아래처럼 각 팀원들이 만들 컨텍스트를  등록하면 됩니다. /WEB-INF/spring/customContext/indexContext.xml -->
+				<!-- 아래처럼 각 팀원들이 만들 컨텍스트를 등록하면 됩니다. /WEB-INF/spring/customContext/indexContext.xml -->
 				/WEB-INF/spring/spring-security.xml
 			</param-value>
 		</init-param>
@@ -48,10 +46,8 @@
 		<init-param>
 			<param-name>contextConfigLocation</param-name>
 			<param-value>
-				/WEB-INF/spring/adminContext/MainAdmin-servlet.xml 
-				/WEB-INF/spring/adminContext/Sub1Admin-servlet.xml 
-				/WEB-INF/spring/adminContext/Sub2Admin-servlet.xml 
-				<!-- 아래와 같이 각 팀원들이 만들 컨텍스트를  등록하면 됩니다. /WEB-INF/spring/adminContext/adminPageContext.xml -->
+				/WEB-INF/spring/adminContext/Admin-servlet.xml
+				<!-- 아래와 같이 각 팀원들이 만들 컨텍스트를 등록하면 됩니다. /WEB-INF/spring/adminContext/adminPageContext.xml -->
 			</param-value>
 		</init-param>
 		<load-on-startup>2</load-on-startup>
@@ -71,13 +67,13 @@
 		</init-param>
 		<load-on-startup>0</load-on-startup>
 	</servlet>
-		
+
 	<servlet-mapping>
 		<servlet-name>index</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 
- <!-- utf-8 인코딩  -->
+	<!-- utf-8 인코딩 -->
 	<filter>
 		<filter-name>encodingFilter</filter-name>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter

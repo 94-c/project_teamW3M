@@ -32,7 +32,7 @@
 							<li><a href="javascript:void(window.open('shopterms', '_blank','width=430px, height=340px, status=no, menubar=no, toolbar=no, resizable=no'))">이용약관</a></li>
 							<li><a href="#" class="black">개인정보처리방침</a></li>
 							<li><a href="info">이용안내</a></li>
-							<li><a href="login.mdo">관리자</a></li>
+							<li><a href="loginForm.mdo">관리자</a></li>
 						</c:when>
 				</c:choose>
 			</ul>

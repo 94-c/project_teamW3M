@@ -18,40 +18,36 @@ import com.spring.w3m.product.admin.vo.OrderProductInfoVO;
 
 @Service("AdminSerivce")
 public class AdminServiceImpl implements AdminService {
-	
+
 	@Autowired
 	private AdminDAO dao;
 
 	@Override
 	public AdminVO getAdmin() {
-		return dao.getAdmin();		
+		return dao.getAdmin();
 	}
 
 	// 회원 데이터 가져오기
 	@Override
-	public List<UserVO> getUserList( ) {
+	public List<UserVO> getUserList() {
 		return dao.getUserList();
 	}
-	
+
 	@Override
 	public boolean loginCheck(AdminVO vo, HttpSession session) {
 		String dbPw = dao.pwCheck(vo);
 		boolean pwResult = vo.getAdmin_password().equals(dbPw);
-		
-		if(pwResult) {
-			System.out.println("비번 일치");
+
+		if (pwResult) {
 			vo.setAdmin_password(dbPw);
-		}else {
-			System.out.println("비번 불일치");
 		}
-		
+
 		boolean result = dao.loginCheck(vo);
-		if(result) { //true일 경우 세션에 등록
+		if (result) { // true일 경우 세션에 등록
 			AdminVO admin = viewAdmin(vo);
-			//세션 변수 등록
+			// 세션 변수 등록
 			session.setAttribute("adminId", admin.getAdmin_id());
 			session.setAttribute("adminName", admin.getAdmin_name());
-			session.setAttribute("adminLogin_state", "adminLogin");
 		}
 		return result;
 	}
@@ -61,16 +57,14 @@ public class AdminServiceImpl implements AdminService {
 		return dao.viewAdmin(vo);
 	}
 
-
 	@Override
 	public void logout(HttpSession session) {
-		//세션 변수 개별 삭제
-		//session.removeAttribute("userId");
-		
-		//세션 정보를 초기화 시킴
-		session.invalidate();
+		// 세션 변수 개별 삭제
+		System.out.println("로그아웃으로 인해 관리자 세션을 제거합니다.");
+		session.removeAttribute("adminId");
+		session.removeAttribute("adminName");
 	}
-	
+
 	@Override
 	public int getUserListCnt(Search search) {
 		return dao.getUserListCnt(search);
@@ -93,7 +87,6 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	public void updateUserPause(UserVO vo) {
-		System.out.println("impl"+vo.getUser_state());
 		dao.updateUserPause(vo);
 	}
 
@@ -116,20 +109,20 @@ public class AdminServiceImpl implements AdminService {
 	public PayVO getPay(int order_seq) {
 		return dao.getPay(order_seq);
 	}
-	
+
 	@Override
 	public String getUserLevel(String user_id) {
-		if(dao.getUserLevel(user_id).equals("Bronze")) {
+		if (dao.getUserLevel(user_id).equals("Bronze")) {
 			return "1";
-		}else if(dao.getUserLevel(user_id).equals("Silver")) {
+		} else if (dao.getUserLevel(user_id).equals("Silver")) {
 			return "3";
-		}else if(dao.getUserLevel(user_id).equals("Gold")) {
+		} else if (dao.getUserLevel(user_id).equals("Gold")) {
 			return "5";
-		}else if(dao.getUserLevel(user_id).equals("Platinum")) {
+		} else if (dao.getUserLevel(user_id).equals("Platinum")) {
 			return "7";
-		}else if(dao.getUserLevel(user_id).equals("Dia")) {
+		} else if (dao.getUserLevel(user_id).equals("Dia")) {
 			return "9";
-		}else {
+		} else {
 			return "-1";
 		}
 	}

@@ -49,7 +49,6 @@ public interface AdminService {
 
 	void logout(HttpSession session);
 
-	void updateUserPause(UserVO vo);
-	
+	void updateUserPause(UserVO vo);	
 	
 }
