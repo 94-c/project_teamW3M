@@ -74,8 +74,8 @@ public class DeliveryDAO {
 		return template.update("delivery.pay_state_change",order_seq);
 	}
 	
-	public List<Integer> getOrderAmount(int order_seq){
-		return template.selectList("delivery.getOrderAmount", order_seq);
+	public List<OrderProductInfoVO> getOrderInfo(int order_seq){
+		return template.selectList("delivery.getOrderInfo", order_seq);
 	}
 	public int addSalesRate(OrderProductInfoVO opiVO) {
 		return template.update("delivery.addSalesRate", opiVO);

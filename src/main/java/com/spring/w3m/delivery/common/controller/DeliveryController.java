@@ -16,7 +16,6 @@ import com.spring.w3m.paging.common.Pagination;
 import com.spring.w3m.paging.common.Search;
 import com.spring.w3m.point.user.service.PointService;
 import com.spring.w3m.product.admin.vo.OrderProductInfoVO;
-import com.spring.w3m.product.admin.vo.ProductVO;
 
 @Controller
 public class DeliveryController {
@@ -54,7 +53,7 @@ public class DeliveryController {
 	}
 
 	@RequestMapping("/changeDeliveryState.mdo") // 배송상태 변경버튼
-	public String delivery(DeliveryVO vo, ProductVO prodVO, OrderProductInfoVO opiVO) {
+	public String delivery(DeliveryVO vo, OrderProductInfoVO opiVO) {
 		System.out.println("배송정보 수정하기 클릭!");
 
 		service.updateDeliveryState(vo);
@@ -83,7 +82,7 @@ public class DeliveryController {
 			int aaa = service.pay_state_change(orderSeq);
 			System.out.println("페이 상태 변경" + aaa);
 			// 판매량 구입한 수량만큼 더해주기 (feat.김요셉)
-			service.getOrderAmount(orderSeq, opiVO);
+			service.getOrderInfo(orderSeq, opiVO);
 		}
 		if (DeliveryState.equals("주문취소")) {
 			System.out.println("주문취소입니다.");
