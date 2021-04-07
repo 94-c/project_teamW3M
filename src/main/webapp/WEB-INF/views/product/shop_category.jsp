@@ -61,90 +61,90 @@
 							<li><a href="category.do?prod_category1=MM&searchCondition=low_price">낮은가격순</a></li>
 							<li><a href="category.do?prod_category1=MM&searchCondition=high_price">높은가격순</a></li>
 							<li><a href="category.do?prod_category1=MM&searchCondition=hit_cnt">인기순</a></li>
-							<!-- <li><a href="#">판매순</a></li> -->
+							<li><a href="category.do?prod_category1=MM&searchCondition=sales_rate">판매량순</a></li>							
 						</c:if>	
 						<c:if test="${productName eq '프리미엄 미세먼지마스크' }">
 							<li><a href="category.do?prod_category1=MM&prod_category2=P&searchCondition=low_price">낮은가격순</a></li>
 							<li><a href="category.do?prod_category1=MM&prod_category2=P&searchCondition=high_price">높은가격순</a></li>
 							<li><a href="category.do?prod_category1=MM&prod_category2=P&searchCondition=hit_cnt">인기순</a></li>
-							<!-- <li><a href="#">판매순</a></li> -->
+							<li><a href="category.do?prod_category1=MM&prod_category2=P&searchCondition=sales_rate">판매량순</a></li>
 							</c:if>							
 						<c:if test="${productName eq '일반 미세먼지마스크' }">
 							<li><a href="category.do?prod_category1=MM&prod_category2=N&searchCondition=low_price">낮은가격순</a></li>
 							<li><a href="category.do?prod_category1=MM&prod_category2=N&searchCondition=high_price">높은가격순</a></li>
 							<li><a href="category.do?prod_category1=MM&prod_category2=N&searchCondition=hit_cnt">인기순</a></li>
-							<!-- <li><a href="#">판매순</a></li> -->
+							<li><a href="category.do?prod_category1=MM&prod_category2=N&searchCondition=sales_rate">판매량순</a></li>
 						</c:if>							
 						<c:if test="${productName eq '블랙 미세먼지마스크' }">
 							<li><a href="category.do?prod_category1=MM&prod_category2=B&searchCondition=low_price">낮은가격순</a></li>
 							<li><a href="category.do?prod_category1=MM&prod_category2=B&searchCondition=high_price">높은가격순</a></li>
 							<li><a href="category.do?prod_category1=MM&prod_category2=B&searchCondition=hit_cnt">인기순</a></li>
-							<!-- <li><a href="#">판매순</a></li> -->
+							<li><a href="category.do?prod_category1=MM&prod_category2=B&searchCondition=sales_rate">판매량순</a></li>
 						</c:if>										
 						
 						<c:if test="${productName eq 'W3M 비말차단마스크'}">
 							<li><a href="category.do?prod_category1=BB&searchCondition=low_price">낮은가격순</a></li>
 							<li><a href="category.do?prod_category1=BB&searchCondition=high_price">높은가격순</a></li>
 							<li><a href="category.do?prod_category1=BB&searchCondition=hit_cnt">인기순</a></li>
-							<!-- <li><a href="#">판매순</a></li> -->
+							<li><a href="category.do?prod_category1=BB&searchCondition=sales_rate">판매량순</a></li>
 						</c:if>
 						<c:if test="${productName eq '일반 비말차단마스크' }">
 							<li><a href="category.do?prod_category1=BB&prod_category2=N&searchCondition=low_price">낮은가격순</a></li>
 							<li><a href="category.do?prod_category1=BB&prod_category2=N&searchCondition=high_price">높은가격순</a></li>
-							<li><a href="category.do?prod_category1=BB&prod_category2=N&searchCondition=hit_cnt">인기순</a></li>							
-							<!-- <li><a href="#">판매순</a></li> -->
+							<li><a href="category.do?prod_category1=BB&prod_category2=N&searchCondition=hit_cnt">인기순</a></li>
+							<li><a href="category.do?prod_category1=BB&prod_category2=N&searchCondition=sales_rate">판매량순</a></li>
 						</c:if>										
 						
 						<c:if test="${productName eq 'W3M 손소독제'}">
 							<li><a href="category.do?prod_category1=SS&searchCondition=low_price">낮은가격순</a></li>
 							<li><a href="category.do?prod_category1=SS&searchCondition=high_price">높은가격순</a></li>
 							<li><a href="category.do?prod_category1=SS&searchCondition=hit_cnt">인기순</a></li>
-							<!-- <li><a href="#">판매순</a></li> -->
+							<li><a href="category.do?prod_category1=SS&searchCondition=sales_rate">판매량순</a></li>
 						</c:if>
 						<c:if test="${productName eq '일반 손소독제' }">
 							<li><a href="category.do?prod_category1=SS&prod_category2=N&searchCondition=low_price">낮은가격순</a></li>
 							<li><a href="category.do?prod_category1=SS&prod_category2=N&searchCondition=high_price">높은가격순</a></li>
 							<li><a href="category.do?prod_category1=SS&prod_category2=N&searchCondition=hit_cnt">인기순</a></li>							
-							<!-- <li><a href="#">판매순</a></li> -->
+							<li><a href="category.do?prod_category1=SS&prod_category2=N&searchCondition=sales_rate">판매량순</a></li>							
 						</c:if>
 						
 						<c:if test="${productName eq 'W3M 쿨패치'}">
 							<li><a href="category.do?prod_category1=CC&searchCondition=low_price">낮은가격순</a></li>
 							<li><a href="category.do?prod_category1=CC&searchCondition=high_price">높은가격순</a></li>
 							<li><a href="category.do?prod_category1=CC&searchCondition=hit_cnt">인기순</a></li>
-							<!-- <li><a href="#">판매순</a></li> -->
+							<li><a href="category.do?prod_category1=CC&searchCondition=sales_rate">판매량순</a></li>
 						</c:if>
 						<c:if test="${productName eq '일반 쿨패치'}">
 							<li><a href="category.do?prod_category1=CC&prod_category2=N&searchCondition=low_price">낮은가격순</a></li>
 							<li><a href="category.do?prod_category1=CC&prod_category2=N&searchCondition=high_price">높은가격순</a></li>
 							<li><a href="category.do?prod_category1=CC&prod_category2=N&searchCondition=hit_cnt">인기순</a></li>							
-							<!-- <li><a href="#">판매순</a></li> -->
+							<li><a href="category.do?prod_category1=CC&prod_category2=N&searchCondition=sales_rate">판매량순</a></li>							
 						</c:if>
 						
 						<c:if test="${productName eq 'W3M 핫팩'}">
 							<li><a href="category.do?prod_category1=HH&searchCondition=low_price">낮은가격순</a></li>
 							<li><a href="category.do?prod_category1=HH&searchCondition=high_price">높은가격순</a></li>
 							<li><a href="category.do?prod_category1=HH&searchCondition=hit_cnt">인기순</a></li>
-							<!-- <li><a href="#">판매순</a></li> -->
+							<li><a href="category.do?prod_category1=HH&searchCondition=sales_rate">판매량순</a></li>
 						</c:if>
 						<c:if test="${productName eq '일반 핫팩'}">
 							<li><a href="category.do?prod_category1=HH&prod_category2=N&searchCondition=low_price">낮은가격순</a></li>
 							<li><a href="category.do?prod_category1=HH&prod_category2=N&searchCondition=high_price">높은가격순</a></li>
 							<li><a href="category.do?prod_category1=HH&prod_category2=N&searchCondition=hit_cnt">인기순</a></li>							
-							<!-- <li><a href="#">판매순</a></li> -->
+							<li><a href="category.do?prod_category1=HH&prod_category2=N&searchCondition=sales_rate">판매량순</a></li>							
 						</c:if>
 						
 						<c:if test="${productName eq 'W3M 체온계'}">
 							<li><a href="category.do?prod_category1=TT&searchCondition=low_price">낮은가격순</a></li>
 							<li><a href="category.do?prod_category1=TT&searchCondition=high_price">높은가격순</a></li>
 							<li><a href="category.do?prod_category1=TT&searchCondition=hit_cnt">인기순</a></li>
-							<!-- <li><a href="#">판매순</a></li> -->
+							<li><a href="category.do?prod_category1=TT&searchCondition=sales_rate">판매량순</a></li>
 						</c:if>
 						<c:if test="${productName eq '일반 체온계'}">
 							<li><a href="category.do?prod_category1=TT&prod_category2=N&searchCondition=low_price">낮은가격순</a></li>
 							<li><a href="category.do?prod_category1=TT&prod_category2=N&searchCondition=high_price">높은가격순</a></li>
 							<li><a href="category.do?prod_category1=TT&prod_category2=N&searchCondition=hit_cnt">인기순</a></li>							
-							<!-- <li><a href="#">판매순</a></li> -->
+							<li><a href="category.do?prod_category1=TT&prod_category2=N&searchCondition=sales_rate">판매량순</a></li>							
 						</c:if>
 					</ul>
 				</dd>

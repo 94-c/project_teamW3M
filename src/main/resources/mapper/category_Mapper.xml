@@ -14,6 +14,9 @@
 		<if test="searchCondition == 'hit_cnt'">
 			ORDER BY prod_count DESC
 		</if>
+		<if test="searchCondition == 'sales_rate'">
+			ORDER BY sales_rate DESC
+		</if>
 	</select>
 
 	<select id="classify2" resultType="ProductVO">
@@ -26,6 +29,9 @@
 		</if>
 		<if test="searchCondition == 'hit_cnt'">
 			ORDER BY prod_count DESC
+		</if>
+		<if test="searchCondition == 'sales_rate'">
+			ORDER BY sales_rate DESC
 		</if>
 	</select>
 	

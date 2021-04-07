@@ -80,7 +80,7 @@
 	<!-- //main_section02 -->
 
 	<div class="cboth main_section03">
-		<div class="cboth main_title">W3M TOP8</div>
+		<div class="cboth main_title"><span style="color:#ff08a0; font-weight: bold; ">W3M</span> TOP8</div>
 		<div class="cboth prd-list">
 			<table summary="상품이미지, 상품 설명, 가격">
 				<colgroup>
