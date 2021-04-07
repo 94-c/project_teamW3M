@@ -24,4 +24,9 @@ public class StatisticsDAO {
 		return sqlSessionTemplate.selectList("StatisticsDAO.salesByMonth",vo);
 	}
 
+	public StatisticsVO todaySales() {
+		
+		return sqlSessionTemplate.selectOne("StatisticsDAO.todaySales");
+	}
+
 }

@@ -21,13 +21,16 @@ import com.spring.w3m.login.admin.vo.AdminVO;
 import com.spring.w3m.paging.common.Pagination;
 import com.spring.w3m.paging.common.Search;
 import com.spring.w3m.product.admin.vo.OrderProductInfoVO;
+import com.spring.w3m.statistics.admin.service.StatisticsService;
+import com.spring.w3m.statistics.admin.vo.StatisticsVO;
 
 @Controller
 public class AdminLoginController {
 
 	@Autowired
 	private AdminService adminService;
-	
+	@Autowired
+	private StatisticsService statisticsService;
 
 	// 관리자 페이지
 	@RequestMapping(value = "/login.mdo", method = RequestMethod.GET)
@@ -77,6 +80,7 @@ public class AdminLoginController {
 		
 		search.pageInfo(page, range, cnt);
 		
+		
 		//Pagination
 		Pagination pagination = new Pagination();
 		pagination.pageInfo(page, range, cnt);
@@ -85,6 +89,7 @@ public class AdminLoginController {
 		
 		model.addAttribute("pagination", search);
 		model.addAttribute("userList", pageList);
+	
 		model.addAttribute("cnt", cnt);
 
 		// 관리자 로그인 유효성
@@ -94,6 +99,11 @@ public class AdminLoginController {
 
 		if (vo.getAdmin_id().equals(voo.getAdmin_id())) {
 			if (vo.getAdmin_password().equals(voo.getAdmin_password())) {
+				//메인 카드들
+				StatisticsVO svo = statisticsService.todaySales();
+				int money = svo.getTotal_sum();
+				System.out.println(money);
+				model.addAttribute("todaySales",money );
 				return "page/index/index";
 			} else {
 				System.out.println("아이디는 맞으나 비번이 틀림");
@@ -120,7 +130,8 @@ public class AdminLoginController {
 		int cnt = adminService.getUserListCnt(search);
 
 		search.pageInfo(page, range, cnt);
-
+	
+		
 		// Pagination
 		Pagination pagination = new Pagination();
 		pagination.pageInfo(page, range, cnt);
@@ -141,6 +152,7 @@ public class AdminLoginController {
 		}
 		model.addAttribute("pagination", search);
 		model.addAttribute("userList", pageList);
+	
 		model.addAttribute("cnt", cnt);
 
 		return "page/user/userMemberList";

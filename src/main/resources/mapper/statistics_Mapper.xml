@@ -13,10 +13,17 @@
 	</select>
 	
 	<select id="salesByMonth" resultType="StatisticsVO">
-	select  sum(pa.pay_total_money) as total_sum,to_char(ol.order_date,'YYYY-MM-DD') as date_total
+	select  sum(pa.pay_total_money) as total_sum,sum(pa.pay_use_point) as total_use_point, to_char(ol.order_date,'YYYY-MM-DD') as date_total 
 	from order_list ol , pay pa ,user_member um
 	where ol.order_seq = pa.order_seq and ol.user_id = um.user_id and ol.order_status = '구매확정' and ol.order_date between #{StartDate} and #{endDate}
-	group by date_total;
+	group by date_total
+	order by date_total
 	</select>
 	
+	<select id="todaySales" resultType="StatisticsVO" >
+	select sum(pa.pay_total_money) as total_sum
+	from order_list ol , pay pa ,user_member um,to_char(ol.order_date,'YYYY-MM-DD') as date_total
+	where ol.order_seq = pa.order_seq and ol.user_id = um.user_id and ol.order_status = '구매확정' and date_total = to_char(now(),'YYYY-MM-DD')
+	</select>
+
 </mapper>

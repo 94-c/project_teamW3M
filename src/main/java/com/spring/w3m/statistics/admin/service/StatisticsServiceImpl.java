@@ -24,5 +24,11 @@ public class StatisticsServiceImpl implements StatisticsService{
 		
 		return dao.salesByMonth(vo);
 	}
+
+	@Override
+	public StatisticsVO todaySales() {
+		
+		return dao.todaySales();
+	}
 	
 }

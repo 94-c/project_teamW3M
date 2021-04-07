@@ -63,11 +63,10 @@
 		<div class="row">
 			<div class="col-xl-3 col-md-6">
 				<div class="card bg-primary text-white mb-4">
-					<div class="card-body">Primary Card</div>
+					<div class="card-body"><fmt:formatNumber value="${todaySales}" pattern="#,###"></fmt:formatNumber>원</div>
 					<div
 						class="card-footer d-flex align-items-center justify-content-between">
-						<a class="small text-white stretched-link" href="#">View
-							Details</a>
+						<a class="small text-white stretched-link" href="purchase.mdo">금일 매출</a>
 						<div class="small text-white">
 							<i class="fas fa-angle-right"></i>
 						</div>
@@ -76,11 +75,10 @@
 			</div>
 			<div class="col-xl-3 col-md-6">
 				<div class="card bg-warning text-white mb-4">
-					<div class="card-body">Warning Card</div>
+					<div class="card-body">30개</div>
 					<div
 						class="card-footer d-flex align-items-center justify-content-between">
-						<a class="small text-white stretched-link" href="#">View
-							Details</a>
+						<a class="small text-white stretched-link" href="purchase.mdo">금일 판매 수</a>
 						<div class="small text-white">
 							<i class="fas fa-angle-right"></i>
 						</div>
@@ -89,11 +87,10 @@
 			</div>
 			<div class="col-xl-3 col-md-6">
 				<div class="card bg-success text-white mb-4">
-					<div class="card-body">Success Card</div>
+					<div class="card-body">40명</div>
 					<div
 						class="card-footer d-flex align-items-center justify-content-between">
-						<a class="small text-white stretched-link" href="#">View
-							Details</a>
+						<a class="small text-white stretched-link" href="purchase.mdo">금일 회원가입 수</a>
 						<div class="small text-white">
 							<i class="fas fa-angle-right"></i>
 						</div>
@@ -102,11 +99,10 @@
 			</div>
 			<div class="col-xl-3 col-md-6">
 				<div class="card bg-danger text-white mb-4">
-					<div class="card-body">Danger Card</div>
+					<div class="card-body">3건</div>
 					<div
 						class="card-footer d-flex align-items-center justify-content-between">
-						<a class="small text-white stretched-link" href="#">View
-							Details</a>
+						<a class="small text-white stretched-link" href="purchase.mdo">금일 주문취소 건</a>
 						<div class="small text-white">
 							<i class="fas fa-angle-right"></i>
 						</div>

@@ -10,7 +10,7 @@
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 
 <script type="text/javascript">
-google.charts.load('current', {'packages':['bar']});
+google.charts.load('current', {'packages':['line']});
 google.charts.setOnLoadCallback(drawChart);
 	var date1 = new Date();
 	var date2 = new Date();
@@ -68,23 +68,33 @@ $(document).ready(function(){
 	});
      
 function drawChart() {
-    var data = google.visualization.arrayToDataTable([
-    	['Month', '일 매출 '],
-    <c:forEach var="dateSeach" items="${dateSeach}" varStatus="state">
-      ['<fmt:formatDate value="${dateSeach.date_total}" pattern="yyyy-MM-dd"/>',${dateSeach.total_sum}],     
-      </c:forEach>
-    ]);
+	var data = new google.visualization.DataTable();
+    data.addColumn('string', 'Day');
+    data.addColumn('number', '총 매출');
+    data.addColumn('number', '적립금 사용 금액');
+   
+   
+    data.addRows([
+    	 <c:forEach var="dateSeach" items="${dateSeach}" varStatus="state">
+        ['<fmt:formatDate value="${dateSeach.date_total}" pattern="yyyy-MM-dd"/>',
+        	${dateSeach.total_sum},
+        	${dateSeach.total_use_point}],
+	  	</c:forEach>
+        
+      ]);
 
     var options = {
-      chart: {
-        title: '일 매출 현황',
-        
-      }
-    };
+            chart: {
+              title: '일간 매출',
+              
+            },
+            width: 800,
+            height: 300
+          };
 
-    var chart = new google.charts.Bar(document.getElementById('chart1'));
+    var chart = new google.charts.Line(document.getElementById('linechart_material'));
 
-    chart.draw(data, google.charts.Bar.convertOptions(options));
+    chart.draw(data, google.charts.Line.convertOptions(options));
   }
       
 </script>
@@ -149,10 +159,8 @@ function drawChart() {
 			 -->
 			<input type="button" class="" value="조회" id = "Seach">
 			</div>		 
-			
-		   <br>
-		   <br>
-           <div id="chart1" style="width: 600px; height: 300px;"></div>
+		
+           <div id=linechart_material style="width: 800px; height: 400px;"></div>
 			</div>
 		</div><!-- body end -->
 </div> <!-- Main end -->

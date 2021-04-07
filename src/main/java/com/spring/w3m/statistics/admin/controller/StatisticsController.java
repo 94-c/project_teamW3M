@@ -46,6 +46,7 @@ public class StatisticsController {
 		}
 		session.setAttribute("dateSeach", vo1);
 		int aa=0;
+		
 		if(vo1.isEmpty()) {
 			aa = -1;
 		}else {

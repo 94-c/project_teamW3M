@@ -7,7 +7,7 @@ public class StatisticsVO {
 	private String user_gender;// 성별
 	private int user_count;//성별 회원수
 	private int total_sum;//총 구매 금액
-	
+	private int total_use_point;//사용한 적립금
 	//날짜별 매출 수
 	private Date date_total;//날짜
 	
@@ -15,10 +15,12 @@ public class StatisticsVO {
 	private Date StartDate;//시작 날짜
 	private Date EndDate;//끝 날짜
 	
+	
 	@Override
 	public String toString() {
 		return "StatisticsVO [user_gender=" + user_gender + ", user_count=" + user_count + ", total_sum=" + total_sum
-				+ ", date_total=" + date_total + ", StartDate=" + StartDate + ", EndDate=" + EndDate + "]";
+				+ ", total_use_point=" + total_use_point + ", date_total=" + date_total + ", StartDate=" + StartDate
+				+ ", EndDate=" + EndDate + "]";
 	}
 	public Date getStartDate() {
 		return StartDate;
@@ -55,6 +57,12 @@ public class StatisticsVO {
 	}
 	public void setDate_total(Date date_total) {
 		this.date_total = date_total;
+	}
+	public int getTotal_use_point() {
+		return total_use_point;
+	}
+	public void setTotal_use_point(int total_use_point) {
+		this.total_use_point = total_use_point;
 	}
 	
 }
