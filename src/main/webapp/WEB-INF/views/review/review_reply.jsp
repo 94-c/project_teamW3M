@@ -1,11 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
 <title>댓글</title>
 <link rel="shortcut icon" href="resources/images/icons/favicon.ico" type="image/x-icon">
 <link type="text/css" rel="stylesheet" href="resources/css/soo.css">

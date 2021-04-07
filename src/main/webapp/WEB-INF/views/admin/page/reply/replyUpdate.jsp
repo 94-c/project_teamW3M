@@ -10,8 +10,8 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){ 
-	$("#contentbutton").click(function(){
-		console.log("1");
+	$("#contentbutton").click(function(){		
+		
 		var re_reply_data_id = $("#re_reply_data_id").val();
 		var re_reply_data_pw = $("#re_reply_data_pw").val();
 		var re_reply_data_con = $("#re_reply_data_con").val();
@@ -21,6 +21,9 @@ $(document).ready(function(){
 		console.log(re_reply_data_con);
 		console.log(re_reply_data_seq);
 		
+		if(!re_reply_data_con){
+			alert("내용을 입력해 주세요")
+			}else {
 		var alldata ={
 				"review_re_writer" :re_reply_data_id,
 				"review_re_pass" : re_reply_data_pw,
@@ -43,7 +46,7 @@ $(document).ready(function(){
 				
 			
 		});
-	
+	}
 	});
 });
 
@@ -66,7 +69,7 @@ $(document).ready(function(){
 												<textarea name="review_re_content" id="re_reply_data_con"  placeholder="내용">${replyVO.review_re_content }</textarea><br>
 											</div>
 										</div>
-										<input type="button" class="CSSbuttonBlack" id="contentbutton"  value="수정"/>
+										<input type="button" class="CSSbuttonBlack" id="contentbutton" value="수정"/>
 									</td>
 								</tr>
 							</tbody>
