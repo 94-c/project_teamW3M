@@ -1,20 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<html>
+<head>
 <title>주문 상세</title>
 
 <link href="resources/css/menu.css" rel="stylesheet" type="text/css">
 <link href="resources/css/orderDetail.css" rel="stylesheet" type="text/css">
-
-
 <link href="resources/css/common.css" rel="stylesheet" type="text/css">
 <link href="resources/css/main.css" rel="stylesheet" type="text/css">
-<link href="resources/css/header.css" rel="stylesheet" type="text/css">
-
-
-
+<link href="resources/css/adminOrderDetail.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="resources/js/myPage.js" ></script>
+
+</head>
+<body>
 <div id="contentWrapper">
 	<div id="contentWrap">
 		<hr>
@@ -104,13 +103,14 @@
 						<table summary="">
 							<caption>주문상품정보</caption>
 							<colgroup>
-								<col width="84">
-								<col width="*">
-								<col width="150">
-								<col width="70">
-								<col width="100">
+								<col width="90">
+								<col width="350">
+								<col width="90">
+								<col width="50">
+								<col width="90">
+								<col width="50">
 								<col width="80">
-								<col width="100">
+								<col width="50">
 							</colgroup>
 							<thead>
 								<tr>
@@ -159,14 +159,14 @@
 							</tbody>
 						</table>
 					</div>
+					
 					<h2>결제정보</h2>
 					<div class="table-w table-payinfo">
-						<table summary="">
+						<table class="table_purchase">
 							<caption>결제정보</caption>
 							<colgroup>
 								<col width="180">
 								<col width="250">
-								<col width="*">
 							</colgroup>
 							<thead>
 								<tr>
@@ -201,4 +201,5 @@
 	</div>
 	<!-- #contentWrap -->
 </div>
-
+</body>
+</html>

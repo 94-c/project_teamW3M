@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+#header, #layerWrap, #contentWrap, #ftLink .link, #footer { width:940px; }
+#content { width:940px; min-height:700px;background-color:#fff;  margin-bottom:20px; clear:both}
+#wrap {background:url('') repeat-x;}
+#contentWrap {background-color:#fff;padding:0;}
+body {min-width:940px;font-family:Nanum Gothic,Arial,sans-serif}
+a {selector-dummy: expression(this.hideFocus=true);  text-decoration:none; -webkit-transition: all 0.3s; -moz-transition: all 0.3s; -ms-transition: all 0.3s; -o-transition: all 0.3s;  transition: all 0.3s;}
+body, h1, h2, h3, h4, h5, h6, table, input, select, textarea, a {font-family:Nanum Gothic,Arial,sans-serif}
+.width1260 {width:940px;margin:0 auto;}
