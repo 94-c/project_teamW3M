@@ -19,9 +19,9 @@ public class StatisticsDAO {
 		return sqlSessionTemplate.selectList("StatisticsDAO.salesByGender");
 	}
 
-	public List<StatisticsVO> salesByMonth() {
+	public List<StatisticsVO> salesByMonth(StatisticsVO vo) {
 		
-		return sqlSessionTemplate.selectList("StatisticsDAO.salesByMonth");
+		return sqlSessionTemplate.selectList("StatisticsDAO.salesByMonth",vo);
 	}
 
 }

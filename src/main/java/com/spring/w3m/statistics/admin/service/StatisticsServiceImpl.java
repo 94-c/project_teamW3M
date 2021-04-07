@@ -20,9 +20,9 @@ public class StatisticsServiceImpl implements StatisticsService{
 	}
 
 	@Override
-	public List<StatisticsVO> salesByMonth() {
+	public List<StatisticsVO> salesByMonth(StatisticsVO vo) {
 		
-		return dao.salesByMonth();
+		return dao.salesByMonth(vo);
 	}
 	
 }

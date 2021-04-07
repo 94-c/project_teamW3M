@@ -10,6 +10,8 @@
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 
 <script type="text/javascript">
+google.charts.load('current', {'packages':['bar']});
+google.charts.setOnLoadCallback(drawChart);
 	var date1 = new Date();
 	var date2 = new Date();
 	var date3 = new Date(date1.setMonth(date1.getMonth()-1));
@@ -49,42 +51,42 @@ $(document).ready(function(){
 				dataType:"json",
 				contentType:"application/json; charset=UTF-8",
 				success:function(data){
-					alert("갔다옴");
+					if(data == 1){
+						console.log("성공");
+						
+						location.reload();
+						drawChart();
+					}else{
+						console.log("실패");
+					}
+					
+					
 				
 				}
 			});
 		});
 	});
-      google.charts.load('current', {'packages':['bar']});
-      google.charts.setOnLoadCallback(drawChart);
+     
+function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+    	['Month', '일 매출 '],
+    <c:forEach var="dateSeach" items="${dateSeach}" varStatus="state">
+      ['<fmt:formatDate value="${dateSeach.date_total}" pattern="yyyy-MM-dd"/>',${dateSeach.total_sum}],     
+      </c:forEach>
+    ]);
 
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['Month', '월 매출 '],
-          ['1월', 12312],
-          ['2월', 1170],
-          ['3월', 6600],
-          ['4월', 12314],
-          ['5월', 87687],
-          ['6월', 1030],
-          ['7월', 1030],
-          ['8월', 1030],
-          ['9월', 1030],
-          ['10월', 1030],
-          ['11월', 1030],
-          ['12월', 1030]
-        ]);
-
-        var options = {
-          chart: {
-            title: '월 매출 현황',
-          }
-        };
-
-        var chart = new google.charts.Bar(document.getElementById('chart1'));
-
-        chart.draw(data, google.charts.Bar.convertOptions(options));
+    var options = {
+      chart: {
+        title: '일 매출 현황',
+        
       }
+    };
+
+    var chart = new google.charts.Bar(document.getElementById('chart1'));
+
+    chart.draw(data, google.charts.Bar.convertOptions(options));
+  }
+      
 </script>
 <script>
     $.datepicker.setDefaults({
@@ -107,6 +109,7 @@ $(document).ready(function(){
     });
    
 </script>
+
 <div class="container-fluid">
 		<h1 class="mt-4">매출 통계</h1>
 		<ol class="breadcrumb mb-4">
@@ -149,7 +152,7 @@ $(document).ready(function(){
 			
 		   <br>
 		   <br>
-           <div id="chart1" style="width: auto; height: 600px;"></div>
+           <div id="chart1" style="width: 600px; height: 300px;"></div>
 			</div>
 		</div><!-- body end -->
 </div> <!-- Main end -->

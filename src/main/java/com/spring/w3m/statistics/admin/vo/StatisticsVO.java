@@ -15,6 +15,11 @@ public class StatisticsVO {
 	private Date StartDate;//시작 날짜
 	private Date EndDate;//끝 날짜
 	
+	@Override
+	public String toString() {
+		return "StatisticsVO [user_gender=" + user_gender + ", user_count=" + user_count + ", total_sum=" + total_sum
+				+ ", date_total=" + date_total + ", StartDate=" + StartDate + ", EndDate=" + EndDate + "]";
+	}
 	public Date getStartDate() {
 		return StartDate;
 	}

@@ -1,17 +1,16 @@
 package com.spring.w3m.statistics.admin.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
-import org.apache.maven.model.Model;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.spring.w3m.statistics.admin.service.StatisticsService;
 import com.spring.w3m.statistics.admin.vo.StatisticsVO;
@@ -25,22 +24,34 @@ public class StatisticsController {
 	@RequestMapping("/admin_Sales.mdo")
 	public String adminSales(HttpSession session) {
 		System.out.println("매출 통계");
-		List<StatisticsVO> vo = service.salesByMonth();
-		for(StatisticsVO voo : vo) {
-			System.out.println(voo.getTotal_sum());
-			System.out.println(voo.getDate_total());
+		return "page/statistics/admin_Sales";
 			
 		}
-		session.setAttribute("adminSales", vo);
-
-		return "page/statistics/admin_Sales";
-	}
+		
+	
 	@RequestMapping(value="/seach.mdo", method= {RequestMethod.POST, RequestMethod.GET})
 	@ResponseBody
-	public String seach(@RequestBody StatisticsVO vo) {
+	public int seach(@RequestBody StatisticsVO vo,HttpSession session) {
 		System.out.println(vo.getStartDate());
 		System.out.println(vo.getEndDate());
-		return "aa";
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd"); //원하는 데이터 포맷 지정 
+		
+
+		
+		List<StatisticsVO> vo1 = service.salesByMonth(vo);
+		for(StatisticsVO svo : vo1) {
+			System.out.println(svo.toString());
+			String strNowDate = simpleDateFormat.format(svo.getDate_total()); //지정한 포맷으로 변환 
+			System.out.println("포맷 지정 후 : " + strNowDate);
+		}
+		session.setAttribute("dateSeach", vo1);
+		int aa=0;
+		if(vo1.isEmpty()) {
+			aa = -1;
+		}else {
+			aa= 1;
+		}
+		return aa;
 	}
 	
 	
