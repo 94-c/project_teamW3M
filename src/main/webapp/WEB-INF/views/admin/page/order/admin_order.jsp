@@ -35,7 +35,7 @@
 							<c:forEach var="purch" items="${purchase}">
 								<tr>
 									<td class="text-center">${purch.order_seq }</td>
-									<td class="text-center">${purch.prod_title }</td>
+									<td class="text-center"><a href='<c:url value='/purchaseDetail.mdo?user_id=${purch.user_id}'/>'class="text-dark">${purch.prod_title }</td>
 									<td class="text-center">${purch.user_id }</td>
 									<td class="text-center">${purch.user_name }</td>
 									<td class="text-center"><fmt:formatDate value="${purch.order_date }" pattern="yyyy-MM-dd" /></td>

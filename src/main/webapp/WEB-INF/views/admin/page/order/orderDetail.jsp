@@ -120,8 +120,6 @@ $(document).ready(function(){
 								<col width="100">
 								<col width="80">
 								<col width="100">
-								<col width="100">
-								<col width="100">
 							</colgroup>
 							<thead>
 								<tr>
@@ -132,12 +130,11 @@ $(document).ready(function(){
 									<th scope="row"><div class="tb-center">적립금</div></th>
 									<th scope="row"><div class="tb-center">처리상태</div></th>
 									<th scope="row"><div class="tb-center">배송번호</div></th>
-									<th scope="row"><div class="tb-center">후기작성</div></th>
 								</tr>
 							</thead>
 							<tfoot>
 								<tr>
-									<td colspan="9">
+									<td colspan="7">
 										<div class="tb-right">(총 상품구매금액 + 배송비) - (사용한 적립금(${payInfo.pay_use_point} point) + 멤버십 추가할인(${salePercent}%)) = <fmt:formatNumber value="${payInfo.pay_total_money}" pattern="#,###"/>원
 										</div>
 									</td>
@@ -205,7 +202,7 @@ $(document).ready(function(){
 							</tbody>
 						</table>
 					</div>
-					
+
 					<div id="pop_order_btn_group">
 						<a href="#" class="CSSbuttonWhite" id="orderCancel">주문취소</a>
 

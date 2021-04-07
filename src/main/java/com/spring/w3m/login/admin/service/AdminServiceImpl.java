@@ -113,4 +113,9 @@ public class AdminServiceImpl implements AdminService {
 	public List<AdminVO> getPurchaseSearchPagingList(Pagination pagination) {
 		return dao.getPurchaseSearchPagingList(pagination);
 	}
+
+	@Override
+	public UserVO getUser(String user_id) {
+		return dao.getUser(user_id);
+	}
 }

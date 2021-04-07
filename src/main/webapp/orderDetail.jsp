@@ -2,30 +2,12 @@
 	pageEncoding="UTF-8"%>
 
 <title>주문 상세</title>
-
-<%@include file="/WEB-INF/views/include/header.jsp"%>
-<link href="resources/css/menu.css" rel="stylesheet" type="text/css">
+<link href="resources/css/common.css" rel="stylesheet" type="text/css">
+<link href="resources/css/header.css" rel="stylesheet" type="text/css">
 <link href="resources/css/orderDetail.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="resources/js/myPage.js" ></script>
-<script type="text/javascript">
-$(document).ready(function(){
-	$("#orderCancel").click(function(e){
-		e.preventDefault();
-		if(${payInfo.pay_status eq '주문취소'}){
-			alert("이미 주문취소 상태입니다.");
-		}else{
-			if(confirm("정말 취소하시겠습니까?")){
-				location.href = "orderCancel.do?order_seq=${payInfo.order_seq}&delivery_seq=${deliveryInfo.delivery_seq}";
-			}else{
-				return;
-			}			
-		}
-	});
-});
-</script>
 <div id="contentWrapper">
 	<div id="contentWrap">
-		<%@include file="/WEB-INF/views/mypage/myPageCommon.jsp"%>
 		<hr>
 		<div id="content">
 			<div id="orderSt">
@@ -120,8 +102,6 @@ $(document).ready(function(){
 								<col width="100">
 								<col width="80">
 								<col width="100">
-								<col width="100">
-								<col width="100">
 							</colgroup>
 							<thead>
 								<tr>
@@ -132,12 +112,11 @@ $(document).ready(function(){
 									<th scope="row"><div class="tb-center">적립금</div></th>
 									<th scope="row"><div class="tb-center">처리상태</div></th>
 									<th scope="row"><div class="tb-center">배송번호</div></th>
-									<th scope="row"><div class="tb-center">후기작성</div></th>
 								</tr>
 							</thead>
 							<tfoot>
 								<tr>
-									<td colspan="9">
+									<td colspan="8">
 										<div class="tb-right">(총 상품구매금액 + 배송비) - (사용한 적립금(${payInfo.pay_use_point} point) + 멤버십 추가할인(${salePercent}%)) = <fmt:formatNumber value="${payInfo.pay_total_money}" pattern="#,###"/>원
 										</div>
 									</td>
@@ -166,7 +145,6 @@ $(document).ready(function(){
 										</div></td>
 									<td><div class="tb-center">${opi.delivery_state}</div></td>
 									<td><div class="tb-center">${opi.delivery_seq}</div></td>
-									<td><div class="tb-center"><a href="review_write_view.do?prod_title=${opi.prod_title}" style="color:#ff08a0">후기작성</a></div></td>
 								</tr>
 								</c:forEach>
 							</tbody>
@@ -205,14 +183,6 @@ $(document).ready(function(){
 							</tbody>
 						</table>
 					</div>
-					
-					<div id="pop_order_btn_group">
-						<a href="#" class="CSSbuttonWhite" id="orderCancel">주문취소</a>
-
-					</div>
-					<div class="pop_order_btn_close">
-						<a href="myOrderList.do" class="CSSbuttonWhite">목록보기</a>
-					</div>
 				</div>
 				<!-- #orderInfo-->
 			</div>
@@ -222,5 +192,4 @@ $(document).ready(function(){
 	</div>
 	<!-- #contentWrap -->
 </div>
-<%@include file="/WEB-INF/views/include/footer.jsp"%>
 

@@ -14,9 +14,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.spring.w3m.delivery.common.vo.DeliveryVO;
 import com.spring.w3m.join.user.vo.UserVO;
 import com.spring.w3m.login.admin.service.AdminService;
 import com.spring.w3m.login.admin.vo.AdminVO;
+import com.spring.w3m.order.user.vo.OrderVO;
+import com.spring.w3m.order.user.vo.PayVO;
 import com.spring.w3m.paging.common.Pagination;
 import com.spring.w3m.paging.common.Search;
 
@@ -25,6 +28,7 @@ public class AdminLoginController {
 
 	@Autowired
 	private AdminService adminService;
+	
 
 	// 관리자 페이지
 	@RequestMapping(value = "/login.mdo", method = RequestMethod.GET)
@@ -166,9 +170,6 @@ public class AdminLoginController {
 		return mav;
 	}
 	
-	
-	
-	
 	@RequestMapping("/purchase.mdo")
 	public String adminPurchase(AdminVO vo, Model model){		
 		List<AdminVO> purchaseList = adminService.getPurchaseList(vo);
@@ -178,5 +179,11 @@ public class AdminLoginController {
 		return "page/order/admin_order";
 	}
 	
+	@RequestMapping("/purchaseDetail.mdo")
+	public String adminPurchaseDetail(Model model, @RequestParam("user_id") String user_id, UserVO vo) {
 
+		model.addAttribute("userVO", adminService.getUser(user_id));
+
+		return "page/order/orderDetail";
+	}
 }

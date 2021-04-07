@@ -15,6 +15,8 @@ public interface AdminService {
 
 	// 회원 목록 리스트
 	List<UserVO> getUserList();
+	
+	UserVO getUser(String user_id);
 
 	// 회원 관리 - 검색 ,페이징
 	int getUserListCnt(Search search);

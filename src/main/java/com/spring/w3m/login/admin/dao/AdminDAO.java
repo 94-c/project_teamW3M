@@ -6,7 +6,6 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import com.spring.w3m.inquiry.user.vo.InquiryVO;
 import com.spring.w3m.join.user.vo.UserVO;
 import com.spring.w3m.login.admin.vo.AdminVO;
 import com.spring.w3m.paging.common.Pagination;
@@ -38,6 +37,10 @@ public class AdminDAO {
 
 	// 회원 목록 가져오기
 	public List<UserVO> getUserList() {
+		return sqlSessionTemplate.selectList("AdminDAO.getUserList");
+	}
+	
+	public List<UserVO> getUserList(String user_id) {
 		return sqlSessionTemplate.selectList("AdminDAO.getUserList");
 	}
 
@@ -85,6 +88,10 @@ public class AdminDAO {
 	public List<AdminVO> getPurchaseSearchPagingList(Pagination pagination) {
 		System.out.println("getPurchaseSearchPagingList() 실행");
 		return sqlSessionTemplate.selectList("AdminDAO.getPurchaseSearchPagingList");
+	}
+
+	public UserVO getUser(String user_id) {
+		return sqlSessionTemplate.selectOne(user_id);
 	}	
 
 }
