@@ -18,10 +18,9 @@ import com.spring.w3m.delivery.common.vo.DeliveryVO;
 import com.spring.w3m.join.user.vo.UserVO;
 import com.spring.w3m.login.admin.service.AdminService;
 import com.spring.w3m.login.admin.vo.AdminVO;
-import com.spring.w3m.order.user.vo.OrderVO;
-import com.spring.w3m.order.user.vo.PayVO;
 import com.spring.w3m.paging.common.Pagination;
 import com.spring.w3m.paging.common.Search;
+import com.spring.w3m.product.admin.vo.OrderProductInfoVO;
 
 @Controller
 public class AdminLoginController {
@@ -171,9 +170,16 @@ public class AdminLoginController {
 	}
 	
 	@RequestMapping("/purchaseDetail.mdo")
-	public String adminPurchaseDetail(Model model, @RequestParam("user_id") String user_id, UserVO vo) {
+	public String adminPurchaseDetail(Model model, @RequestParam("user_id") String user_id, @RequestParam("order_seq") int order_seq, DeliveryVO vo) {
 
-		model.addAttribute("userVO", adminService.getUser(user_id));
+		List<OrderProductInfoVO> opiList = adminService.getOrderProductList(vo);
+		
+		model.addAttribute("userInfo", adminService.getUser(user_id));
+		model.addAttribute("deliveryInfo", adminService.getDelivery(order_seq));
+		model.addAttribute("orderProductInfo", opiList); // 주문상품정보
+		model.addAttribute("payInfo", adminService.getPay(order_seq));
+		model.addAttribute("salePercent", adminService.getUserLevel(user_id));
+		
 
 		return "page/order/orderDetail";
 	}

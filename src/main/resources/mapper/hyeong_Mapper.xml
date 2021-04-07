@@ -104,7 +104,31 @@
 		UPDATE user_member SET user_state=#{user_state} where user_id=#{user_id}
 	</update>
 	
-	<select id="getPurchaseList" resultType="AdminVO">
-		select u.user_name, u.user_id, d.order_seq, d.prod_title, d.user_id, d.order_date, d.delivery_state, p.pay_total_money from user_member as u join delivery as d on u.user_id = d.user_id join pay as p on d.order_seq = p.order_seq order by d.order_date desc;
+	<!-- 유저정보 가져오기 -->
+	<select id="getUser" resultType="UserVO">
+		SELECT * FROM user_member WHERE user_id = #{user_id}
 	</select>
+	
+	<!-- 배송정보 가져오기 -->
+	<select id="getDelivery" resultType="DeliveryVO">
+		SELECT * FROM delivery WHERE order_seq = #{order_seq}
+	</select>
+	
+	<!-- 상품정보 가져오기 -->
+	<select id="getOrderProductList" resultType="OrderProductInfoVO">
+		SELECT prod.prod_title_image, prod.prod_title, prod.prod_price_sale, o.order_seq, o.order_prod_seq, o.prod_amount,
+				prod.prod_point, d.delivery_state, d.delivery_seq, prod.prod_code
+		FROM product as prod, order_prod as o, delivery as d
+		WHERE prod.prod_code = o.prod_code and o.order_seq = d.order_seq and o.order_seq = #{order_seq} and o.user_id = #{user_id}
+	</select>
+	
+	<!-- 결제정보 가져오기 -->
+	<select id="getPay" resultType="PayVO">
+		SELECT * FROM pay WHERE order_seq = #{order_seq}
+	</select>
+	
+	<!-- 회원등급 가져오기 -->
+	<select id="getUserLevel" resultType="String">
+		SELECT user_level FROM user_member WHERE user_id = #{user_id}
+	</select>	
 </mapper>

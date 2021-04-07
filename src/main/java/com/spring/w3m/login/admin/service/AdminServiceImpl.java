@@ -7,11 +7,14 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.spring.w3m.delivery.common.vo.DeliveryVO;
 import com.spring.w3m.join.user.vo.UserVO;
 import com.spring.w3m.login.admin.dao.AdminDAO;
 import com.spring.w3m.login.admin.vo.AdminVO;
+import com.spring.w3m.order.user.vo.PayVO;
 import com.spring.w3m.paging.common.Pagination;
 import com.spring.w3m.paging.common.Search;
+import com.spring.w3m.product.admin.vo.OrderProductInfoVO;
 
 @Service("AdminSerivce")
 public class AdminServiceImpl implements AdminService {
@@ -97,6 +100,38 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public UserVO getUser(String user_id) {
 		return dao.getUser(user_id);
+	}
+
+	@Override
+	public DeliveryVO getDelivery(int order_seq) {
+		return dao.getDelivery(order_seq);
+	}
+
+	@Override
+	public List<OrderProductInfoVO> getOrderProductList(DeliveryVO vo) {
+		return dao.getOrderProductList(vo);
+	}
+
+	@Override
+	public PayVO getPay(int order_seq) {
+		return dao.getPay(order_seq);
+	}
+	
+	@Override
+	public String getUserLevel(String user_id) {
+		if(dao.getUserLevel(user_id).equals("Bronze")) {
+			return "1";
+		}else if(dao.getUserLevel(user_id).equals("Silver")) {
+			return "3";
+		}else if(dao.getUserLevel(user_id).equals("Gold")) {
+			return "5";
+		}else if(dao.getUserLevel(user_id).equals("Platinum")) {
+			return "7";
+		}else if(dao.getUserLevel(user_id).equals("Dia")) {
+			return "9";
+		}else {
+			return "-1";
+		}
 	}
 
 }

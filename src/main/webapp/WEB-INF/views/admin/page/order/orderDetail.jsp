@@ -1,38 +1,29 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <title>주문 상세</title>
 
-<%@include file="/WEB-INF/views/include/header.jsp"%>
 <link href="resources/css/menu.css" rel="stylesheet" type="text/css">
 <link href="resources/css/orderDetail.css" rel="stylesheet" type="text/css">
+
+
+<link href="resources/css/common.css" rel="stylesheet" type="text/css">
+<link href="resources/css/main.css" rel="stylesheet" type="text/css">
+<link href="resources/css/header.css" rel="stylesheet" type="text/css">
+
+
+
 <script type="text/javascript" src="resources/js/myPage.js" ></script>
-<script type="text/javascript">
-$(document).ready(function(){
-	$("#orderCancel").click(function(e){
-		e.preventDefault();
-		if(${payInfo.pay_status eq '주문취소'}){
-			alert("이미 주문취소 상태입니다.");
-		}else{
-			if(confirm("정말 취소하시겠습니까?")){
-				location.href = "orderCancel.do?order_seq=${payInfo.order_seq}&delivery_seq=${deliveryInfo.delivery_seq}";
-			}else{
-				return;
-			}			
-		}
-	});
-});
-</script>
 <div id="contentWrapper">
 	<div id="contentWrap">
-		<%@include file="/WEB-INF/views/mypage/myPageCommon.jsp"%>
 		<hr>
 		<div id="content">
 			<div id="orderSt">
 				<div class="tit-pop">
 					<h1>주문정보</h1>
-					<span class="txt"><em class="order_name">${userVO.user_name}</em>님께서 
-					<em class="order_date"><fmt:formatDate value="${receiverInfo.order_date}" pattern="yyyy년 MM월 dd일 a h시 mm분"/></em>에 주문하신 내역입니다.</span>
+					<span class="txt"><em class="order_name">${userInfo.user_name}</em>님께서 
+					<em class="order_date"><fmt:formatDate value="${deliveryInfo.order_date}" pattern="yyyy년 MM월 dd일 a h시 mm분"/></em>에 주문하신 내역입니다.</span>
 				</div>
 				<ul class="tab">
 					<li><a href="#">주문상세</a></li>
@@ -51,15 +42,15 @@ $(document).ready(function(){
 							<tbody>
 								<tr>
 									<th scope="row"><div class="tb-left">주문번호</div></th>
-									<td><div class="tb-left">${receiverInfo.order_seq}</div></td>
+									<td><div class="tb-left">${deliveryInfo.order_seq}</div></td>
 									<th scope="row"><div class="tb-left">주문일자</div></th>
-									<td><div class="tb-left"><fmt:formatDate value="${receiverInfo.order_date}" pattern="yyyy년 MM월 dd일"/></div></td>
+									<td><div class="tb-left"><fmt:formatDate value="${deliveryInfo.order_date}" pattern="yyyy년 MM월 dd일"/></div></td>
 								</tr>
 								<tr>
 									<th scope="row"><div class="tb-left">주문자</div></th>
-									<td><div class="tb-left">${receiverInfo.user_name}</div></td>
-									<th scope="row"><div class="tb-left">주문서 입금현황</div></th>
-									<td><div class="tb-left">${payInfo.pay_status}</div></td>
+									<td><div class="tb-left">${userInfo.user_name}</div></td>
+									<th scope="row"><div class="tb-left">진행현황</div></th>
+									<td><div class="tb-left">${deliveryInfo.delivery_state}</div></td>
 								</tr>
 								
 							</tbody>
@@ -134,7 +125,7 @@ $(document).ready(function(){
 							</thead>
 							<tfoot>
 								<tr>
-									<td colspan="7">
+									<td colspan="8">
 										<div class="tb-right">(총 상품구매금액 + 배송비) - (사용한 적립금(${payInfo.pay_use_point} point) + 멤버십 추가할인(${salePercent}%)) = <fmt:formatNumber value="${payInfo.pay_total_money}" pattern="#,###"/>원
 										</div>
 									</td>
@@ -163,7 +154,6 @@ $(document).ready(function(){
 										</div></td>
 									<td><div class="tb-center">${opi.delivery_state}</div></td>
 									<td><div class="tb-center">${opi.delivery_seq}</div></td>
-									<td><div class="tb-center"><a href="review_write_view.do?prod_title=${opi.prod_title}" style="color:#ff08a0">후기작성</a></div></td>
 								</tr>
 								</c:forEach>
 							</tbody>
@@ -202,14 +192,6 @@ $(document).ready(function(){
 							</tbody>
 						</table>
 					</div>
-
-					<div id="pop_order_btn_group">
-						<a href="#" class="CSSbuttonWhite" id="orderCancel">주문취소</a>
-
-					</div>
-					<div class="pop_order_btn_close">
-						<a href="myOrderList.do" class="CSSbuttonWhite">목록보기</a>
-					</div>
 				</div>
 				<!-- #orderInfo-->
 			</div>
@@ -219,5 +201,4 @@ $(document).ready(function(){
 	</div>
 	<!-- #contentWrap -->
 </div>
-<%@include file="/WEB-INF/views/include/footer.jsp"%>
 
