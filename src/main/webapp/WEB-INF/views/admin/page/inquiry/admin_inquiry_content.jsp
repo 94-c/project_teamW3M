@@ -70,9 +70,13 @@
 function insert()
 {
 	var insertform = document.insertform;
-
+	var txt = insertform.reply_text.value;
+	
+	if(!txt){
+		alert("내용을 입력하세요")
+	} else{
 	insertform.submit();
-
+		}
 	}
 	
 function update(re_seq)
