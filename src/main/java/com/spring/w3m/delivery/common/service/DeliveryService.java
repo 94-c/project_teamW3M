@@ -31,7 +31,7 @@ public interface DeliveryService {
 	int Prod_state_change(int order_seq);
 	int pay_state_change(int order_seq);
 	
-	void getOrderAmount(int order_seq, OrderProductInfoVO opiVO);
+	void getOrderInfo(int order_seq, OrderProductInfoVO opiVO);
 	void addSalesRate(OrderProductInfoVO opiVO);
 
 }

@@ -93,15 +93,17 @@ public class DeliveryServiceImpl implements DeliveryService {
 		return dao.pay_state_change(order_seq);
 	}
 	
-	@Override //주문상품 개수 얻어옴
-	public void getOrderAmount(int order_seq, OrderProductInfoVO opiVO) {
-		List<Integer> amountList = dao.getOrderAmount(order_seq);
-		for(int i=0; i<amountList.size(); i++) {
-			opiVO.setProd_amount(amountList.get(i));
+	@Override // 한번주문시 구매한 상품품목을 리스트로 얻어옴(ex. 소독제 대형, 쿨패치)
+	public void getOrderInfo(int order_seq, OrderProductInfoVO opiVO) {
+		List<OrderProductInfoVO> orderProductList = dao.getOrderInfo(order_seq);
+		for (int i = 0; i < orderProductList.size(); i++) {
+			opiVO.setProd_amount(orderProductList.get(i).getProd_amount());
+			opiVO.setProd_code(orderProductList.get(i).getProd_code());
+			opiVO.setOrder_seq(order_seq);
 			addSalesRate(opiVO);
 		}
 	}
-	@Override //얻어온 상품 개수만큼 판매량 플러스시킴
+	@Override // 얻어온 상품 개수만큼 판매량 플러스시킴(ex. 소독제 대형, 쿨패치)
 	public void addSalesRate(OrderProductInfoVO opiVO) {
 		dao.addSalesRate(opiVO);
 	}

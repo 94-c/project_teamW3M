@@ -11,7 +11,7 @@
 		FROM
 		product
 		ORDER BY
-		prod_count desc
+		sales_rate desc
 		LIMIT 8
 	</select>
 

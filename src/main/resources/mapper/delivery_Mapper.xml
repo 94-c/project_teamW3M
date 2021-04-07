@@ -92,8 +92,8 @@
 		UPDATE pay set pay_status = '구매확정' where order_seq = #{order_seq}
 	</update>
 	
-	<select id="getOrderAmount" resultType="int">
-		select prod_amount from order_prod where order_seq = #{order_seq}
+	<select id="getOrderInfo" resultType="OrderProductInfoVO">
+		select * from order_prod where order_seq = #{order_seq}
 	</select>
 	<update id="addSalesRate">
 		UPDATE product as p SET sales_rate =
@@ -101,6 +101,6 @@
 			WHEN o.prod_amount = #{prod_amount} THEN sales_rate + #{prod_amount}
 			ELSE sales_rate + 0
 			END
-		FROM order_prod as o WHERE p.prod_code = o.prod_code and o.order_seq = #{order_seq}
+		FROM order_prod as o WHERE p.prod_code = o.prod_code and p.prod_code = #{prod_code} and o.order_seq = #{order_seq}
 	</update>
 </mapper>
