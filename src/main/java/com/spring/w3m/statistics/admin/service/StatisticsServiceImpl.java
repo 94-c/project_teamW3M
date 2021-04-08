@@ -30,5 +30,20 @@ public class StatisticsServiceImpl implements StatisticsService{
 		
 		return dao.todaySales();
 	}
+
+	@Override
+	public StatisticsVO todayJoin() {
+		return dao.todayJoin();
+	}
+
+	@Override
+	public StatisticsVO todayProdAmount() {
+		return dao.todayProdAmount();
+	}
+
+	@Override
+	public StatisticsVO todayCencle() {
+		return dao.todayCencle();
+	}
 	
 }

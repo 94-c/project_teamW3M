@@ -8,5 +8,8 @@ public interface StatisticsService {
 	public List<StatisticsVO> Gender_Money();
 	public List<StatisticsVO> salesByMonth(StatisticsVO vo);
 	public StatisticsVO todaySales();
+	public StatisticsVO todayJoin();
+	public StatisticsVO todayProdAmount();
+	public StatisticsVO todayCencle();
 	
 }

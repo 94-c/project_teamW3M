@@ -83,13 +83,22 @@ public class AdminLoginController {
 
 		// 메인 카드들
 		StatisticsVO svo = statisticsService.todaySales();
+		StatisticsVO svo1 = statisticsService.todayJoin();
+		StatisticsVO svo2 = statisticsService.todayCencle();
+		StatisticsVO svo3 = statisticsService.todayProdAmount();
 		int money;
+		int join_count= svo1.getJoin_count();
+		int cencle_count = svo2.getProd_cencle();
+		int prod_count = svo3.getProd_count();
 		if(svo == null) {
 			money = 0;
 		}else {
 			money = svo.getTotal_sum(); //매출 하나도 없으면 svo에 null 들어가서 널포인터exception 뜨길래 일단 이렇게 해놨어!
 		}
 		model.addAttribute("todaySales", money);
+		model.addAttribute("todayJoin", join_count);
+		model.addAttribute("todayCencle", cencle_count);
+		model.addAttribute("todayProdAmount", prod_count);
 		
 		
 		return "admin_index";

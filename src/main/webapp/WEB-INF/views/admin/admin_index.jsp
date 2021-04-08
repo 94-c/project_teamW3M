@@ -75,7 +75,7 @@
 			</div>
 			<div class="col-xl-3 col-md-6">
 				<div class="card bg-warning text-black mb-4">
-					<div class="card-body">30개</div>
+					<div class="card-body">${todayProdAmount}개</div>
 					<div
 						class="card-footer d-flex align-items-center justify-content-between">
 						<a class="small text-black stretched-link" href="purchase.mdo"><Strong>금일 판매량</Strong></a>
@@ -87,7 +87,7 @@
 			</div>
 			<div class="col-xl-3 col-md-6">
 				<div class="card bg-success text-black mb-4">
-					<div class="card-body">40명</div>
+					<div class="card-body">${todayJoin }명</div>
 					<div
 						class="card-footer d-flex align-items-center justify-content-between">
 						<a class="small text-black stretched-link" href="purchase.mdo"><Strong>금일 회원가입</Strong></a>
@@ -99,7 +99,7 @@
 			</div>
 			<div class="col-xl-3 col-md-6">
 				<div class="card bg-danger text-red mb-4">
-					<div class="card-body">3건</div>
+					<div class="card-body">${todayCencle }건</div>
 					<div
 						class="card-footer d-flex align-items-center justify-content-between">
 						<a class="small text-red stretched-link" href="purchase.mdo"><Strong>금일 주문취소</Strong></a>

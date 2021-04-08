@@ -29,4 +29,16 @@ public class StatisticsDAO {
 		return sqlSessionTemplate.selectOne("StatisticsDAO.todaySales");
 	}
 
+	public StatisticsVO todayJoin() {
+		return sqlSessionTemplate.selectOne("StatisticsDAO.todayJoin");
+	}
+
+	public StatisticsVO todayProdAmount() {
+		return sqlSessionTemplate.selectOne("StatisticsDAO.todayProdAmount");
+	}
+
+	public StatisticsVO todayCencle() {
+		return sqlSessionTemplate.selectOne("StatisticsDAO.todayCencle");
+	}
+
 }

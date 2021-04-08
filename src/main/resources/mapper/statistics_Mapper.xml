@@ -25,5 +25,22 @@
 	from order_list ol , pay pa ,user_member um,to_char(ol.order_date,'YYYY-MM-DD') as date_total
 	where ol.order_seq = pa.order_seq and ol.user_id = um.user_id and ol.order_status = '구매확정' and date_total = to_char(now(),'YYYY-MM-DD')
 	</select>
-
+	
+	<select id="todayJoin" resultType="StatisticsVO">
+	select count(*) as join_count
+	from user_member 
+	where to_char(user_join_date,'YYYY-MM-DD') = to_char(now(),'YYYY-MM-DD');
+	</select>
+	<select id="todayProdAmount" resultType="StatisticsVO">
+	select sum(op.prod_amount) as prod_count
+	from order_list ol , pay pa,order_prod op ,user_member um,to_char(ol.order_date,'YYYY-MM-DD') as date_total
+	where ol.order_seq = pa.order_seq and ol.order_seq = op.order_seq and ol.user_id = um.user_id 
+	and ol.order_status = '구매확정' and date_total = to_char(now(),'YYYY-MM-DD');
+	</select>
+	<select id="todayCencle" resultType="StatisticsVO">
+	select sum(op.prod_amount) as prod_cencle
+	from order_list ol , pay pa,order_prod op ,user_member um,to_char(ol.order_date,'YYYY-MM-DD') as date_total
+	where ol.order_seq = pa.order_seq and ol.order_seq = op.order_seq and ol.user_id = um.user_id 
+	and ol.order_status = '주문취소' and date_total = to_char(now(),'YYYY-MM-DD');
+	</select>
 </mapper>
