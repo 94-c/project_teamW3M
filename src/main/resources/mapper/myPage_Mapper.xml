@@ -100,4 +100,13 @@
 		UPDATE delivery SET delivery_state = '주문취소' WHERE order_seq = #{order_seq}
 	</update>
 	
+<!-- 마이페이지 총주문금액 -->	
+	<select id="getTotalOrderMoney" resultType="int">
+		SELECT sum(pa.pay_total_money)
+		FROM order_list ol , pay pa
+		WHERE ol.order_seq = pa.order_seq AND ol.order_status = '구매확정' AND user_id = #{user_id}
+	</select>
+	<update id="changeUserLevel">
+		UPDATE user_member SET user_level = #{user_level} WHERE user_id = #{user_id}
+	</update>
 </mapper>

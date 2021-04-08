@@ -41,6 +41,11 @@ public class MyPageController {
 		model.addAttribute("myRecent", myPageService.recentList(vo));
 		List<OrderVO> myOrderList = myPageService.myOrderList(uvo.getUser_id());
 		model.addAttribute("myOrderList", myOrderList);
+		
+		//총 주문금액 찍기
+		int totalOrderMoney = myPageService.getTotalOrderMoney(uvo.getUser_id());
+		model.addAttribute("totalOrderMoney", totalOrderMoney);
+		
 		return "mypage/myPage";
 	}
 

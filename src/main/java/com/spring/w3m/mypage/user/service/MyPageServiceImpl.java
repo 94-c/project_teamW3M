@@ -129,6 +129,16 @@ public class MyPageServiceImpl implements MyPageService {
 	public void changeDeliveryState(DeliveryVO vo) {
 		dao.changeDeliveryState(vo);
 	}	
-	/*-----------------------------------------*/	
+	/*-----------------------------------------*/
+	
+	/* 회원의 총 주문금액 */
+	@Override
+	public int getTotalOrderMoney(String userId) {
+		return dao.getTotalOrderMoney(userId);
+	}
+	@Override
+	public void changeUserLevel(UserVO vo) {
+		dao.changeUserLevel(vo);
+	}	
 	
 }

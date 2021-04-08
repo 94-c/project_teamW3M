@@ -1,6 +1,5 @@
 package com.spring.w3m.login.user.controller;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +12,7 @@ import com.spring.w3m.cart.user.service.CartService;
 import com.spring.w3m.cart.user.vo.CartVO;
 import com.spring.w3m.join.user.vo.UserVO;
 import com.spring.w3m.login.user.service.UserLoginService;
+import com.spring.w3m.mypage.user.service.MyPageService;
 
 @Controller
 public class UserLoginController {
@@ -20,21 +20,42 @@ public class UserLoginController {
 	private UserLoginService userLoginService;
 	@Autowired
 	private CartService cartService;
+	@Autowired
+	private MyPageService myPageService;
 
 	@RequestMapping("/login.do") // 로그인 유효성 검증
-	public ModelAndView userloginCheck(@ModelAttribute UserVO vo, CartVO cartvo, HttpSession session,
-			HttpServletRequest request) {
+	public ModelAndView userloginCheck(@ModelAttribute UserVO vo, CartVO cartvo, HttpSession session) {
 
 		int result = userLoginService.loginCheck(vo, session);
 		ModelAndView mav = new ModelAndView();
 
 		if (result == 1) { // 로그인성공
 			session.setAttribute("cart", cartService.cart_Cnt(cartvo));
-
+			int totalOrderPage = myPageService.getTotalOrderMoney(vo.getUser_id());
+			if (totalOrderPage >= 700000) {
+				vo.setUser_level("Dia");
+				myPageService.changeUserLevel(vo);
+				session.setAttribute("userLevel", vo.getUser_level());
+			} else if (totalOrderPage >= 500000) {
+				vo.setUser_level("Platinum");
+				myPageService.changeUserLevel(vo);
+				session.setAttribute("userLevel", vo.getUser_level());
+			} else if (totalOrderPage >= 300000) {
+				vo.setUser_level("Gold");
+				myPageService.changeUserLevel(vo);
+				session.setAttribute("userLevel", vo.getUser_level());
+			} else if (totalOrderPage >= 100000) {
+				vo.setUser_level("Silver");
+				myPageService.changeUserLevel(vo);
+				session.setAttribute("userLevel", vo.getUser_level());
+			} else {
+				vo.setUser_level("Bronze");
+				myPageService.changeUserLevel(vo);
+				session.setAttribute("userLevel", vo.getUser_level());
+			}
 			mav.setViewName("login/loginSuccess");
 			mav.addObject("msg", "success");
 			if (session.getAttribute("returnURL") != null) {
-
 				if (session.getAttribute("returnURL").equals("cart")) { // 비 로그인으로 장바구니 진입 시 로그인페이지 진입 후 성공하면 장바구니로 바로이동
 					mav.setViewName("redirect:/GoCart.do");
 				}
