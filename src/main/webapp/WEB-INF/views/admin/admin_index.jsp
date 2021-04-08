@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="/WEB-INF/views/admin/page/include/admin_header.jsp"%>
 
-<c:url var = "getUserlist" value = "loginIndex.mdo">
+<c:url var = "getUserlist" value = "index.mdo">
 	<c:param name = "page" value = "${pagination.page }"/>
 	<c:param name = "range" value = "${pagination.range }"/>
 	<c:param name = "rangeSize" value = "${pagination.rangeSize}"/>
@@ -13,7 +13,7 @@
         	function fn_prev(page, range, rangSize, searchKeyword){
         		var page = ((range - 2) * rangeSize) + 1;
         		var range = range - 1;
-        		var url = "${pagContext.request.contextPath}/loginIndex.mdo";
+        		var url = "${pagContext.request.contextPath}/index.mdo";
         		url = url + "?page=" + page;
         		url = url + "&range=" + range;
         		url = url + "&searchKeyword" + searchKeyword;
@@ -23,7 +23,7 @@
         
         	//페이지 번호 클릭
         	function fn_pagination(page, range, rangSize, searchKeyword){
-        		var url = "${pagContext.request.contextPath}/loginIndex.mdo";
+        		var url = "${pagContext.request.contextPath}/index.mdo";
         		url = url + "?page=" + page;
         		url = url + "&range=" + range;
         		url = url + "&searchKeyword" + searchKeyword;
@@ -34,7 +34,7 @@
         	function fn_next(page, range, rangSize, searchKeyword){
         		var page = parseInt((range  * rangeSize)) + 1;
         		var range = parseInt(range) + 1;
-        		var url = "${pagContext.request.contextPath}/loginIndex.mdo";
+        		var url = "${pagContext.request.contextPath}/index.mdo";
         		url = url + "?page=" + page;
         		url = url + "&range=" + range;
         		url = url + "&searchKeyword" + searchKeyword;
@@ -43,7 +43,7 @@
         	
         	$(document).on('click', '#btnSearch', function(e){
         		e.preventDefault();
-        		var url = "${pageContext.request.contextPath}/loginIndex.mdo";
+        		var url = "${pageContext.request.contextPath}/index.mdo";
         		url = url + "?searchType=" + $('#searchType').val();
         		url = url + "&keyword=" + $('#keyword').val();
         		location.href = url;

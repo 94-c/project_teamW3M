@@ -119,7 +119,14 @@ function drawChart() {
     });
    
 </script>
-
+<style>
+.excel{
+	 background-image: url(/resources/images/icons/excel.png);
+	 height: 40px;
+	 width: 120px;
+	 
+}
+</style>
 <div class="container-fluid">
 		<h1 class="mt-4">매출 통계</h1>
 		<ol class="breadcrumb mb-4">
@@ -131,12 +138,16 @@ function drawChart() {
                                         매출 통계
              </div>
           <div class="card-body">
-          	
-          	<div class="date">
+          	<div class="button">
+          		<input type="button" class="excel">
+          	</div>
+          	<br>
+          	<div class="date" style="position:right; left:600px; top:170px;">
           	<Strong>기간 설정</Strong>&nbsp;&nbsp;
           		<input type="text" id="datepicker1" value="" >
           	<Strong>-</Strong>
           		<input type="text" id="datepicker2" value="">
+			<input type="button" value="조회" id = "Seach">
 			</div>
 			<br>
 			<div class="product" >
@@ -157,7 +168,6 @@ function drawChart() {
 				<option value="2019">2019</option>
 			</select>
 			 -->
-			<input type="button" class="" value="조회" id = "Seach">
 			</div>		 
 		
            <div id=linechart_material style="width: 800px; height: 400px;"></div>
