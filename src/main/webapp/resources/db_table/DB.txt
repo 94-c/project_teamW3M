@@ -68,7 +68,35 @@ CREATE TABLE PRODUCT(
 	CONSTRAINT product_prod_code_pk PRIMARY KEY (prod_code)
 );
 CREATE SEQUENCE product_seq START WITH 1 INCREMENT BY 1; -- 시퀀스 생성
-
+--주문 상품 정보
+CREATE TABLE order_prod(
+		order_Prod_seq int Primary Key, -- 주문상품 번호 PK
+		user_id varchar(30),--유저id FK
+		order_date TIMESTAMP WITHOUT TIME ZONE DEFAULT current_timestamp, -- 주문날짜
+		prod_code varchar(30),--FK 제품 코드
+		prod_amount int,--제품 수량
+		order_status varchar(20) default '구매대기',
+		location_before varchar(20) default '장바구니', -- 장바구니에서 들어왔는지 , 바로구매로 들어왔는지
+		order_seq int,
+	
+		CONSTRAINT ORDER_LIST_order_seq FOREIGN KEY (order_seq) REFERENCES order_list(order_seq) on Delete set null,
+		CONSTRAINT ORDER_LIST_USERID_FK FOREIGN KEY (USER_ID) REFERENCES USER_MEMBER(USER_ID) on Delete set null,
+		CONSTRAINT ORDER_LIST_PRODCODE_FK FOREIGN KEY(prod_code) REFERENCES product(prod_code) on Delete set null
+	);
+--주문
+CREATE TABLE pay(
+	pay_seq int PRIMARY KEY, --결제 번호
+	pay_shipping_cost int, --배송 비
+	pay_total_price int, -- 결제 금액
+	pay_total_point int, -- 결제 적립금
+	pay_total_money int, -- 최종 결제 금액
+	pay_use_point int, -- 사용된 적립금
+	pay_tool varchar(30), -- 결제 방법
+	pay_status varchar(30) Default '결제완료', -- 결제 상태
+	order_seq int, -- 주문번호(FK)
+	
+	CONSTRAINT pay_order_seq_FK FOREIGN KEY(order_seq) REFERENCES ORDER_LIST(order_seq) on Delete set null
+);	create sequence pay_seq start with 1 increment by 1;
 
 --장바구니--
 CREATE TABLE CART(
@@ -89,7 +117,6 @@ CREATE TABLE CART(
 create sequence cart_seq start with 1 increment by 1;
 
 
---배송현황 테이블--
 CREATE TABLE delivery(
 	delivery_seq INT, --송장번호(PK)
 	order_seq INT, --주문번호(FK)
@@ -120,50 +147,85 @@ CREATE TABLE order_prod(
 	);
 	create sequence order_Prod_seq start with 1 increment by 1;
 
---주문 정보 테이블--
 CREATE TABLE ORDER_LIST(
-    ORDER_SEQ INT PRIMARY KEY, -- 주문번호 (PK) EX) 10001 등
+    order_seq INT PRIMARY KEY, -- 주문번호 (PK) EX) 10001 등
     USER_ID VARCHAR(30), -- 주문자 아이디 (FK)
     ORDER_DATE TIMESTAMP WITH TIME ZONE DEFAULT current_timestamp, -- 주문날짜
-    prod_code VARCHAR(30) NULL, -- 주문메뉴 (prod_code) 제품 코드
 	total_amount int default 1,
-    ORDER_PRICE INT NULL, -- 결제금액
-    TOTAL_PRICE INT NULL, -- 주문 총금액 (배송비 / 할인금액 / 추가금액을 포함)
-    PAY_STATUS VARCHAR(50) default '정상' NULL, -- 결제상태 // 1 정상 / -1  결제 취소 
 	ORDER_STATUS VARCHAR(50) NULL, -- 주문상태 // 결제완료  > 배송 준비중 > 배송중 > 배송 완료
-	CONSTRAINT ORDER_LIST_USERID_FK FOREIGN KEY (USER_ID) REFERENCES USER_MEMBER(USER_ID) on Delete set null,
-	CONSTRAINT ORDER_LIST_PRODCODE_FK FOREIGN KEY (prod_code) REFERENCES PRODUCT(prod_code) on Delete set null																	
+	CONSTRAINT ORDER_LIST_USERID_FK FOREIGN KEY (USER_ID) REFERENCES USER_MEMBER(USER_ID) on Delete set null,																
     );
 	create sequence ORDER_SEQ start with 10000 increment by 1;
 
 
--- 1:1 문의사항 테이블
-CREATE TABLE QNABOARD(
-    SEQ NUMBER(7,0) PRIMARY KEY, -- 시퀀스 넘버 (PK)
-    WRITERID VARCHAR2(12) NOT NULL, -- 작성자 아이디 (FK)
-    TITLE VARCHAR2(100) NOT NULL, -- 제목
-    PHONE VARCHAR2(20) NOT NULL, -- 연락처
-    EMAIL VARCHAR2(30) NOT NULL, -- 이메일
-    QNATYPE VARCHAR2(40) NOT NULL, -- 질문 구분
-    REGDATE DATE NOT NULL, -- 작성일
-    CONTENT VARCHAR2(4000) NOT NULL, -- 내용
-    STOREREGION VARCHAR2(10) NOT NULL, -- 매장 지역구
-    STORENAME VARCHAR2(20) NOT NULL, -- 매장명
-    RESULT VARCHAR2(15) NOT NULL, -- 처리결과
-    REPLYCONTENT VARCHAR2(4000) NULL -- 답변 내용
-    );
-    
+-- 문의사항
+CREATE TABLE inquiry(
+   inq_seq int not null, --- 시퀀시 넘버
+   inq_title varchar(210),
+   inq_writer varchar(40),
+   inq_email varchar(70),
+   inq_pass int not null,
+   inq_content varchar(4000),
+   inq_date TIMESTAMP WITH TIME ZONE DEFAULT current_timestamp not null,
+   inq_cnt int default 0,
+   inq_image varchar(500)
+   prod_code varchar(50)    
+);
+
+CREATE SEQUENCE inq_user_seq START WITH 1 INCREMENT BY 1 ;
+
+-- 문의사항 관리자 댓글
+CREATE TABLE reply(
+   inq_seq int not null,
+   re_seq int not null,
+   re_content varchar(1000) not null,
+   re_writer varchar(50),
+   re_date TIMESTAMP WITH TIME ZONE DEFAULT current_timestamp not null,
+   primary key(inq_seq, re_seq)
+);
+
+alter table reply add constraint reply_inq_seq foreign key(inq_seq) references inquiry(inq_seq);
+alter table inquiry add constraint inq_seq primary key(inq_seq);
+--최근 배송지
+CREATE TABLE Last_address(
+	user_id VARCHAR(20), -- 회원ID
+	receiver_name VARCHAR(20) NOT NULL,-- 수령인
+	receiver_zipcode VARCHAR(50) NOT NULL, -- 배송우편번호
+	receiver_address1 VARCHAR(100) NOT NULL, -- 배송주소1
+	receiver_address2 VARCHAR(100) NOT NULL, -- 배송주소2
+	receiver_phone1 VARCHAR(30) NOT NULL, -- 수령인 연락처1
+	receiver_phone2 VARCHAR(30) NOT NULL, -- 수령인 연락처2
+	Last_address_seq INT PRIMARY KEY,
+		
+	CONSTRAINT Last_address_USERID_FK FOREIGN KEY (USER_ID) REFERENCES USER_MEMBER(USER_ID) on Delete cascade
+);
+
+--적립금--
+create table add_point(
+	user_id varchar(30) not null,
+	add_point int not null,
+	use_date TIMESTAMP WITHOUT TIME ZONE DEFAULT current_timestamp,
+	order_seq int, 
+	order_content varchar(1000),
+	order_state varchar(50),
+	
+	CONSTRAINT point_FK FOREIGN KEY(user_id) REFERENCES user_member(user_id)
+);
+
+CREATE SEQUENCE Last_address_seq START WITH 1 INCREMENT BY 1 ;
     
 --공지사항--
 CREATE TABLE notice(
-   	nt_seq int not null, ---공지사항 시퀸스 넘버
-   	nt_title varchar(200) not null, ---공지사항 제목
-  	 nt_write varchar(40) not null, ---공지사항 작성자
-  	 nt_content varchar(4000) not null, ---공지사항 내용
- 	 nt_date TIMESTAMP WITH TIME ZONE DEFAULT current_timestamp+'-3hours' not null,  ---공지사항 작성 시간
- 	 nt_count int default 0 ---공지사항 조회수
-	
-	CONSTRAINT notice_seq_pk PRIMARY KEY (notice)
+      nt_seq int not null, ---공지사항 시퀸스 넘버
+      nt_title varchar(200) not null, ---공지사항 제목
+      nt_write varchar(40) not null, ---공지사항 작성자
+      nt_content varchar(4000) not null, ---공지사항 내용
+     nt_date TIMESTAMP WITH TIME ZONE DEFAULT current_timestamp+'-3hours' not null,  ---공지사항 작성 시간
+     nt_count int default 0 ---공지사항 조회수
+   
+   CONSTRAINT notice_seq_pk PRIMARY KEY (notice)
+
 );
-CREATE SEQUENCE notice_seq START WITH 1 INCREMENT BY 1; -- 시퀀스 생성
+
+CREATE SEQUENCE nt_seq START WITH 1 INCREMENT BY 1; -- 시퀀스 생성
 

@@ -90,7 +90,7 @@
 					<div class="card-body">${todayJoin }명</div>
 					<div
 						class="card-footer d-flex align-items-center justify-content-between">
-						<a class="small text-black stretched-link" href="purchase.mdo"><Strong>금일 회원가입</Strong></a>
+						<a class="small text-black stretched-link" href="userMemberList.mdo"><Strong>금일 회원가입</Strong></a>
 						<div class="small text-black">
 							<i class="fas fa-angle-right"></i>
 						</div>

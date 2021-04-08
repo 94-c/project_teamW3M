@@ -10,8 +10,7 @@
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 
 <script type="text/javascript">
-google.charts.load('current', {'packages':['line']});
-google.charts.setOnLoadCallback(drawChart);
+
 	var date1 = new Date();
 	var date2 = new Date();
 	var date3 = new Date(date1.setMonth(date1.getMonth()-1));
@@ -55,7 +54,7 @@ $(document).ready(function(){
 						console.log("성공");
 						
 						location.reload();
-						drawChart();
+						//drawChart();
 					}else{
 						console.log("실패");
 					}
@@ -66,8 +65,10 @@ $(document).ready(function(){
 			});
 		});
 	});
-     
+google.charts.load('current', {'packages':['line']});
+google.charts.setOnLoadCallback(drawChart);
 function drawChart() {
+	
 	var data = new google.visualization.DataTable();
     data.addColumn('string', 'Day');
     data.addColumn('number', '총 매출');
@@ -97,8 +98,7 @@ function drawChart() {
     chart.draw(data, google.charts.Line.convertOptions(options));
   }
       
-</script>
-<script>
+
     $.datepicker.setDefaults({
         dateFormat: 'yymmdd',
         prevText: '이전 달',
@@ -116,7 +116,7 @@ function drawChart() {
         $("#datepicker1, #datepicker2").datepicker({
             dateFormat: 'yy-mm-dd'
         });
-    });
+    })
    
 </script>
 <style>
