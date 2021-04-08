@@ -17,12 +17,97 @@ public class StatisticsVO {
 	//날짜 범위
 	private Date StartDate;//시작 날짜
 	private Date EndDate;//끝 날짜
+	
+	//엑셀
+	private int order_seq;
+	private String user_id;
+	private String prod_code;
+	private String prod_title;
+	private int prod_amount;
+	private int pay_use_point;
+	private int pay_total_money;
+	private String pay_tool;
+	private String StartDate1;//시작 날짜
+	private Date order_date;
+	
+	
+	public Date getOrder_date() {
+		return order_date;
+	}
+	public void setOrder_date(Date order_date) {
+		this.order_date = order_date;
+	}
+	public String getStartDate1() {
+		return StartDate1;
+	}
+	public void setStartDate1(String startDate1) {
+		StartDate1 = startDate1;
+	}
+	private String EndDate1;//끝 날짜
+	
+	
+	public String getEndDate1() {
+		return EndDate1;
+	}
+	public void setEndDate1(String endDate1) {
+		EndDate1 = endDate1;
+	}
+	public int getOrder_seq() {
+		return order_seq;
+	}
+	public void setOrder_seq(int order_seq) {
+		this.order_seq = order_seq;
+	}
+	public String getUser_id() {
+		return user_id;
+	}
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
+	}
+	public String getProd_code() {
+		return prod_code;
+	}
+	public void setProd_code(String prod_code) {
+		this.prod_code = prod_code;
+	}
+	public String getProd_title() {
+		return prod_title;
+	}
+	public void setProd_title(String prod_title) {
+		this.prod_title = prod_title;
+	}
+	public int getProd_amount() {
+		return prod_amount;
+	}
+	public void setProd_amount(int prod_amount) {
+		this.prod_amount = prod_amount;
+	}
+	public int getPay_use_point() {
+		return pay_use_point;
+	}
+	public void setPay_use_point(int pay_use_point) {
+		this.pay_use_point = pay_use_point;
+	}
+	public int getPay_total_money() {
+		return pay_total_money;
+	}
+	public void setPay_total_money(int pay_total_money) {
+		this.pay_total_money = pay_total_money;
+	}
+	public String getPay_tool() {
+		return pay_tool;
+	}
+	public void setPay_tool(String pay_tool) {
+		this.pay_tool = pay_tool;
+	}
 	@Override
 	public String toString() {
 		return "StatisticsVO [user_gender=" + user_gender + ", user_count=" + user_count + ", total_sum=" + total_sum
 				+ ", total_use_point=" + total_use_point + ", prod_count=" + prod_count + ", prod_cencle=" + prod_cencle
 				+ ", join_count=" + join_count + ", date_total=" + date_total + ", StartDate=" + StartDate
-				+ ", EndDate=" + EndDate + "]";
+				+ ", EndDate=" + EndDate + ", order_seq=" + order_seq + ", user_id=" + user_id + ", prod_code="
+				+ prod_code + ", prod_title=" + prod_title + ", prod_amount=" + prod_amount + ", pay_use_point="
+				+ pay_use_point + ", pay_total_money=" + pay_total_money + ", pay_tool=" + pay_tool + "]";
 	}
 	public String getUser_gender() {
 		return user_gender;

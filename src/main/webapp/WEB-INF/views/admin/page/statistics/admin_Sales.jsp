@@ -116,8 +116,22 @@ function drawChart() {
         $("#datepicker1, #datepicker2").datepicker({
             dateFormat: 'yy-mm-dd'
         });
-    })
-   
+    }) 
+    
+    function url(){
+   		var url = "/excelDown.mdo";
+   			url = url + "?startDate1=" + $("#datepicker1").val();
+   			url = url +  "&endDate1=" + $("#datepicker2").val();
+   			location.href= url;
+    }
+    
+    function pdfurl(){
+   		var url = "/pdfDownload.mdo";
+   			url = url + "?startDate1=" + $("#datepicker1").val();
+   			url = url +  "&endDate1=" + $("#datepicker2").val();
+   			location.href= url;
+    }
+    
 </script>
 <style>
 .excel{
@@ -139,7 +153,10 @@ function drawChart() {
              </div>
           <div class="card-body">
           	<div class="button">
-          		<input type="button" class="excel">
+          		<input type="button" class="excel" id="downloadExcel" onclick="url();">
+          	</div>
+          	<div class="button">
+          		<input type="button" class="excel" id="downloadPdf" onclick="pdfurl();">
           	</div>
           	<br>
           	<div class="date" style="position:right; left:600px; top:170px;">

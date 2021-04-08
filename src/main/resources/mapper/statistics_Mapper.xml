@@ -45,4 +45,17 @@
 	where ol.order_seq = pa.order_seq and ol.order_seq = op.order_seq and ol.user_id = um.user_id 
 	and ol.order_status = '주문취소' and date_total = to_char(now(),'YYYY-MM-DD');
 	</select>
+	
+	
+	<select id="getExceldata" resultType="StatisticsVO">
+	<![CDATA[
+	select  ol.order_date,ol.order_seq, ol.user_id , op.prod_code, pd.prod_title, op.prod_amount, pa.pay_use_point, pa.pay_total_money, pa.pay_tool
+   	from order_list ol , pay pa ,user_member um , order_prod op, product pd
+   	where ol.order_seq = pa.order_seq and ol.user_id = um.user_id and ol.order_seq = op.order_seq and op.prod_code = pd.prod_code and
+   	ol.order_status = '구매확정' and ol.order_date >= #{startDate} and ol.order_date <= #{endDate} order by ol.order_date; 
+	]]>
+	</select>
+	
+	
+	
 </mapper>

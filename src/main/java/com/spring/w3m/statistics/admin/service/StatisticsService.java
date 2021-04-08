@@ -11,5 +11,5 @@ public interface StatisticsService {
 	public StatisticsVO todayJoin();
 	public StatisticsVO todayProdAmount();
 	public StatisticsVO todayCencle();
-	
+	public List<StatisticsVO> getExceldata(StatisticsVO vo);
 }

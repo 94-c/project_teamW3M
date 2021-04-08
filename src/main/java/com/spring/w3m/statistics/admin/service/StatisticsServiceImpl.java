@@ -45,5 +45,10 @@ public class StatisticsServiceImpl implements StatisticsService{
 	public StatisticsVO todayCencle() {
 		return dao.todayCencle();
 	}
+
+	@Override
+	public List<StatisticsVO> getExceldata(StatisticsVO vo) {
+		return dao.getExceldata(vo);
+	}
 	
 }

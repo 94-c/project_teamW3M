@@ -40,5 +40,9 @@ public class StatisticsDAO {
 	public StatisticsVO todayCencle() {
 		return sqlSessionTemplate.selectOne("StatisticsDAO.todayCencle");
 	}
+	
+	public List<StatisticsVO> getExceldata(StatisticsVO vo){
+		return sqlSessionTemplate.selectList("StatisticsDAO.getExceldata",vo);
+	}
 
 }
