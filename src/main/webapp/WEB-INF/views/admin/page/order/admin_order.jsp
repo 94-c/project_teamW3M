@@ -48,7 +48,6 @@
         		console.log(url);
         	});
 </script>
-
 <title>주문 관리</title>
 <main>
 	<div class="container-fluid">
@@ -63,7 +62,7 @@
 			<form action="changeDeliveryState.mdo" name="deliveryForm">
 				<div class="card-body">
 					<div class="table-responsive">
-						<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+						<table class="table table-bordered" id="dataTable" cellspacing="0">
 							<colgroup>
 									<col width="1px">
 								</colgroup>

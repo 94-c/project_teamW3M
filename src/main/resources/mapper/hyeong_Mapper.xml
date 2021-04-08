@@ -52,7 +52,7 @@
 		<if test="searchType=='user_name' and keyword != null and keyword != '' ">
 			AND user_name like CONCAT('%', #{keyword}, '%')
 		</if>
-		order by user_name
+		ORDER BY user_join_date DESC
 		limit #{listSize} offset #{startList}
 	</select>	
 	
@@ -79,7 +79,7 @@
 		<if test="searchCondition == 'user_name'">
 			AND user_name LIKE '%'||#{searchKeyword}||'%'
 		</if>
-		order by user_name desc
+		ORDER BY user_join_date DESC
 	</select>
 	<!-- 여기까지 페이징 처리 -->
 	

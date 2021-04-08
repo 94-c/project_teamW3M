@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="/WEB-INF/views/admin/page/include/admin_header.jsp"%>
 
-<c:url var = "getUserlist" value = "loginIndex.mdo">
+<c:url var = "getUserlist" value = "index.mdo">
 	<c:param name = "page" value = "${pagination.page }"/>
 	<c:param name = "range" value = "${pagination.range }"/>
 	<c:param name = "rangeSize" value = "${pagination.rangeSize}"/>
@@ -13,7 +13,7 @@
         	function fn_prev(page, range, rangSize, searchKeyword){
         		var page = ((range - 2) * rangeSize) + 1;
         		var range = range - 1;
-        		var url = "${pagContext.request.contextPath}/loginIndex.mdo";
+        		var url = "${pagContext.request.contextPath}/index.mdo";
         		url = url + "?page=" + page;
         		url = url + "&range=" + range;
         		url = url + "&searchKeyword" + searchKeyword;
@@ -23,7 +23,7 @@
         
         	//페이지 번호 클릭
         	function fn_pagination(page, range, rangSize, searchKeyword){
-        		var url = "${pagContext.request.contextPath}/loginIndex.mdo";
+        		var url = "${pagContext.request.contextPath}/index.mdo";
         		url = url + "?page=" + page;
         		url = url + "&range=" + range;
         		url = url + "&searchKeyword" + searchKeyword;
@@ -34,7 +34,7 @@
         	function fn_next(page, range, rangSize, searchKeyword){
         		var page = parseInt((range  * rangeSize)) + 1;
         		var range = parseInt(range) + 1;
-        		var url = "${pagContext.request.contextPath}/loginIndex.mdo";
+        		var url = "${pagContext.request.contextPath}/index.mdo";
         		url = url + "?page=" + page;
         		url = url + "&range=" + range;
         		url = url + "&searchKeyword" + searchKeyword;
@@ -43,7 +43,7 @@
         	
         	$(document).on('click', '#btnSearch', function(e){
         		e.preventDefault();
-        		var url = "${pageContext.request.contextPath}/loginIndex.mdo";
+        		var url = "${pageContext.request.contextPath}/index.mdo";
         		url = url + "?searchType=" + $('#searchType').val();
         		url = url + "&keyword=" + $('#keyword').val();
         		location.href = url;
@@ -62,48 +62,48 @@
 		</ol>
 		<div class="row">
 			<div class="col-xl-3 col-md-6">
-				<div class="card bg-primary text-white mb-4">
+				<div class="card bg-primary text-black mb-4">
 					<div class="card-body"><fmt:formatNumber value="${todaySales}" pattern="#,###"></fmt:formatNumber>원</div>
 					<div
 						class="card-footer d-flex align-items-center justify-content-between">
-						<a class="small text-white stretched-link" href="purchase.mdo">금일 매출</a>
-						<div class="small text-white">
+						<a class="small text-black stretched-link" href="purchase.mdo"><Strong>금일 매출</Strong></a>
+						<div class="small text-black">
 							<i class="fas fa-angle-right"></i>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="col-xl-3 col-md-6">
-				<div class="card bg-warning text-white mb-4">
+				<div class="card bg-warning text-black mb-4">
 					<div class="card-body">30개</div>
 					<div
 						class="card-footer d-flex align-items-center justify-content-between">
-						<a class="small text-white stretched-link" href="purchase.mdo">금일 판매량</a>
-						<div class="small text-white">
+						<a class="small text-black stretched-link" href="purchase.mdo"><Strong>금일 판매량</Strong></a>
+						<div class="small text-black">
 							<i class="fas fa-angle-right"></i>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="col-xl-3 col-md-6">
-				<div class="card bg-success text-white mb-4">
+				<div class="card bg-success text-black mb-4">
 					<div class="card-body">40명</div>
 					<div
 						class="card-footer d-flex align-items-center justify-content-between">
-						<a class="small text-white stretched-link" href="purchase.mdo">금일 회원가입</a>
-						<div class="small text-white">
+						<a class="small text-black stretched-link" href="purchase.mdo"><Strong>금일 회원가입</Strong></a>
+						<div class="small text-black">
 							<i class="fas fa-angle-right"></i>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="col-xl-3 col-md-6">
-				<div class="card bg-danger text-white mb-4">
+				<div class="card bg-danger text-red mb-4">
 					<div class="card-body">3건</div>
 					<div
 						class="card-footer d-flex align-items-center justify-content-between">
-						<a class="small text-white stretched-link" href="purchase.mdo">금일 주문취소</a>
-						<div class="small text-white">
+						<a class="small text-red stretched-link" href="purchase.mdo"><Strong>금일 주문취소</Strong></a>
+						<div class="small text-red">
 							<i class="fas fa-angle-right"></i>
 						</div>
 					</div>
