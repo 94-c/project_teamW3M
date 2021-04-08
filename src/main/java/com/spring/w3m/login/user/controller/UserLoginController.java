@@ -12,7 +12,6 @@ import com.spring.w3m.cart.user.service.CartService;
 import com.spring.w3m.cart.user.vo.CartVO;
 import com.spring.w3m.join.user.vo.UserVO;
 import com.spring.w3m.login.user.service.UserLoginService;
-import com.spring.w3m.mypage.user.service.MyPageService;
 
 @Controller
 public class UserLoginController {
@@ -20,8 +19,6 @@ public class UserLoginController {
 	private UserLoginService userLoginService;
 	@Autowired
 	private CartService cartService;
-	@Autowired
-	private MyPageService myPageService;
 
 	@RequestMapping("/login.do") // 로그인 유효성 검증
 	public ModelAndView userloginCheck(@ModelAttribute UserVO vo, CartVO cartvo, HttpSession session) {
@@ -31,28 +28,7 @@ public class UserLoginController {
 
 		if (result == 1) { // 로그인성공
 			session.setAttribute("cart", cartService.cart_Cnt(cartvo));
-			int totalOrderPage = myPageService.getTotalOrderMoney(vo.getUser_id());
-			if (totalOrderPage >= 700000) {
-				vo.setUser_level("Dia");
-				myPageService.changeUserLevel(vo);
-				session.setAttribute("userLevel", vo.getUser_level());
-			} else if (totalOrderPage >= 500000) {
-				vo.setUser_level("Platinum");
-				myPageService.changeUserLevel(vo);
-				session.setAttribute("userLevel", vo.getUser_level());
-			} else if (totalOrderPage >= 300000) {
-				vo.setUser_level("Gold");
-				myPageService.changeUserLevel(vo);
-				session.setAttribute("userLevel", vo.getUser_level());
-			} else if (totalOrderPage >= 100000) {
-				vo.setUser_level("Silver");
-				myPageService.changeUserLevel(vo);
-				session.setAttribute("userLevel", vo.getUser_level());
-			} else {
-				vo.setUser_level("Bronze");
-				myPageService.changeUserLevel(vo);
-				session.setAttribute("userLevel", vo.getUser_level());
-			}
+						
 			mav.setViewName("login/loginSuccess");
 			mav.addObject("msg", "success");
 			if (session.getAttribute("returnURL") != null) {

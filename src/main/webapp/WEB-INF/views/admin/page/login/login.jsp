@@ -39,7 +39,7 @@
 </script>
 </head>
 
-<body class="bg-primary">
+<body class="bg-primaryLogin">
 	<div id="layoutAuthentication">
 		<div id="layoutAuthentication_content">
 			<main>

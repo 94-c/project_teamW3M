@@ -3,6 +3,8 @@ package com.spring.w3m.mypage.user.controller;
 import java.io.IOException;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.postgresql.util.PSQLException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +17,7 @@ import com.spring.w3m.delivery.common.service.DeliveryService;
 import com.spring.w3m.delivery.common.vo.DeliveryVO;
 import com.spring.w3m.inquiry.user.vo.InquiryVO;
 import com.spring.w3m.join.user.vo.UserVO;
+import com.spring.w3m.login.user.service.UserLoginService;
 import com.spring.w3m.mypage.user.service.MyPageService;
 import com.spring.w3m.mypage.user.vo.MyPageVO;
 import com.spring.w3m.order.user.vo.OrderVO;
@@ -34,6 +37,8 @@ public class MyPageController {
 	private PointService pointService;
 	@Autowired
 	private DeliveryService deliveryService;
+	@Autowired
+	private UserLoginService userLoginService;
 
 	@RequestMapping("/mypage.do")
 	public String myPage(MyPageVO vo, Model model, @SessionAttribute("userVO") UserVO uvo) { // 마이페이지 진입
@@ -193,6 +198,49 @@ public class MyPageController {
 		dVO.setDelivery_state("주문취소");
 		deliveryService.insertDelivery_state(deliveryService.getDeliveryCont(dVO)); // 배송상세내역에 넣어줌
 		return "redirect:myOrderList.do";
+	}
+	
+	@RequestMapping("orderCommit.do")
+	public String commitOrder(@SessionAttribute("userVO") UserVO uVO, DeliveryVO dVO, OrderProductInfoVO opiVO, HttpSession session) {
+		
+		deliveryService.updateDeliveryState(dVO);
+		int orderSeq = dVO.getOrder_seq(); //주문번호
+		
+		//구매 확정시 적립금 지급
+		pointService.orderSuccessPoint(dVO);
+		pointService.update_point(dVO.getUser_id());
+		// order_prod 상태 구매확정으로
+		int a = deliveryService.Prod_state_change(orderSeq);
+		System.out.println("prod상태 변경" + a);
+		// order_list 상태 구매확정으로
+		int aa = deliveryService.order_state_change(orderSeq);
+		System.out.println("오더 리스트상태 변경" + aa);
+		// pay 상태 구매확정으로
+		int aaa = deliveryService.pay_state_change(orderSeq);
+		System.out.println("페이 상태 변경" + aaa);
+		// 판매량 구입한 수량만큼 더해주기 (feat.김요셉)
+		deliveryService.getOrderInfo(orderSeq, opiVO);
+		
+		int totalOrderPage = myPageService.getTotalOrderMoney(uVO.getUser_id());
+		if (totalOrderPage >= 700000) {
+			uVO.setUser_level("Dia");
+		} else if (totalOrderPage >= 500000) {
+			uVO.setUser_level("Platinum");
+		} else if (totalOrderPage >= 300000) {
+			uVO.setUser_level("Gold");
+		} else if (totalOrderPage >= 100000) {
+			uVO.setUser_level("Silver");
+		} else {
+			uVO.setUser_level("Bronze");
+		}
+		myPageService.changeUserLevel(uVO);
+		session.setAttribute("userLevel", uVO.getUser_level());
+		
+		//유저정보 동기화
+		UserVO user = userLoginService.viewUser(uVO);
+		session.setAttribute("userVO", user);
+		
+		return "redirect:/mypage.do";
 	}
 
 }

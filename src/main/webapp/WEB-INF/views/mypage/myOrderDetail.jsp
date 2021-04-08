@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <title>주문 상세</title>
 
@@ -7,20 +6,59 @@
 <link href="resources/css/menu.css" rel="stylesheet" type="text/css">
 <link href="resources/css/orderDetail.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="resources/js/myPage.js" ></script>
+
 <script type="text/javascript">
 $(document).ready(function(){
+	$("#orderCommit").click(function(e){
+		e.preventDefault();
+		if(${deliveryInfo.delivery_state eq '구매확정'}){
+			alert("이미 구매확정된 주문 건입니다.");
+			return;
+		}else if(${deliveryInfo.delivery_state eq '주문취소'}){
+			alert("주문취소된 건이므로 구매확정하실 수 없습니다.");
+			return;
+		}else if(${deliveryInfo.delivery_state ne '배송완료'}){
+			alert("배송완료후 구매확정이 가능합니다.");
+			return;
+		}else{
+			if(confirm("구매를 확정하시겠습니까?")){
+				alert("구매확정 처리되셨습니다.");
+				location.href = "orderCommit.do?delivery_state=commit&delivery_seq=${deliveryInfo.delivery_seq}&order_seq=${payInfo.order_seq}&user_id=${userVO.user_id}";
+			}else{
+				return;
+			}
+		}
+	});
+	
 	$("#orderCancel").click(function(e){
 		e.preventDefault();
 		if(${payInfo.pay_status eq '주문취소'}){
 			alert("이미 주문취소 상태입니다.");
-		}else{
-			if(confirm("정말 취소하시겠습니까?")){
+			return;
+		}else if(${deliveryInfo.delivery_state eq '배송중'}){
+			alert("배송중에는 주문취소가 되지 않습니다. 배송완료 후 다시 시도해주세요.");
+			return;
+		}else if(${payInfo.pay_status eq '구매확정'}){
+			alert("이미 구매확정된 주문건은 취소하실 수 없습니다. 고객센터로 문의바랍니다.");
+			return;
+		}else {
+			if(confirm("주문취소 하시겠습니까?")){
+				alert("주문취소 처리되셨습니다.");
 				location.href = "orderCancel.do?order_seq=${payInfo.order_seq}&delivery_seq=${deliveryInfo.delivery_seq}";
 			}else{
 				return;
-			}			
+			}
 		}
 	});
+	
+	$(".writeReview").click(function(e){
+		if(${deliveryInfo.delivery_state ne '구매확정'}){
+			alert("구매확정 후 상품후기를 작성하실 수 있습니다.");
+			e.preventDefault();
+			return;
+		}
+	});
+	
 });
 </script>
 <div id="contentWrapper">
@@ -144,7 +182,7 @@ $(document).ready(function(){
 								</tr>
 							</tfoot>
 							<tbody>
-								<c:forEach items="${orderProductInfo}" var="opi">
+								<c:forEach items="${orderProductInfo}" var="opi" varStatus="status">
 								<tr>
 									<td>
 										<div class="tb-center">
@@ -156,7 +194,7 @@ $(document).ready(function(){
 											<a href="/getProduct?prod_code=${opi.prod_code}">${opi.prod_title}</a>
 										</div>
 									</td>
-									<td><div class="tb-center">${opi.order_seq}</div></td>
+									<td><div class="tb-center">${opi.order_seq} [${status.count}]</div></td>
 									<td><div class="tb-center">${opi.prod_amount}</div></td>
 									<td><div class="tb-center tb-price">
 											<strong><fmt:formatNumber value="${opi.prod_price_sale * opi.prod_amount}" pattern="#,###"/></strong>
@@ -166,7 +204,7 @@ $(document).ready(function(){
 										</div></td>
 									<td><div class="tb-center">${opi.delivery_state}</div></td>
 									<td><div class="tb-center">${opi.delivery_seq}</div></td>
-									<td><div class="tb-center"><a href="review_write_view.do?prod_title=${opi.prod_title}" style="color:#ff08a0">후기작성</a></div></td>
+									<td><div class="tb-center"><a href="review_write_view.do?prod_title=${opi.prod_title}" style="color:#ff08a0" class="writeReview">후기작성</a></div></td>
 								</tr>
 								</c:forEach>
 							</tbody>
@@ -207,8 +245,8 @@ $(document).ready(function(){
 					</div>
 					
 					<div id="pop_order_btn_group">
-						<a href="#" class="CSSbuttonWhite" id="orderCancel">주문취소</a>
-
+						<a href="#" class="CSSbuttonWhite" id="orderCancel" style="color:red">주문취소</a>
+						<a href="#" class="CSSbuttonWhite" id="orderCommit" style="color:blue">구매확정</a>
 					</div>
 					<div class="pop_order_btn_close">
 						<a href="myOrderList.do" class="CSSbuttonWhite">목록보기</a>

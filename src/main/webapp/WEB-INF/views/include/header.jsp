@@ -93,17 +93,14 @@
 							<ul class="fleft">
 								<c:if test="${login_state eq 'login' }">
 									<li><a href="GoCart.do">장바구니</a></li>
-								</c:if>
-								<c:if test="${login_state ne 'login' }">
-									<li><a href="loginForm.do" onClick="alert('로그인이 필요합니다.')">장바구니</a></li>
-								</c:if>
-								<c:if test="${login_state eq 'login' }">
 									<li><a href="mypage.do?user_email=${userVO.user_email }">마이페이지</a></li>
+									<li><a href="myOrderList.do">주문내역</a></li>
 								</c:if>
 								<c:if test="${login_state ne 'login' }">
-									<li><a href="loginForm.do">마이페이지</a></li>
-								</c:if>
-								<li><a href="#">주문내역</a></li>
+									<li><a href="loginForm.do" onclick="alert('로그인이 필요합니다.')">장바구니</a></li>
+									<li><a href="loginForm.do" onclick="alert('로그인이 필요합니다.')">마이페이지</a></li>
+									<li><a href="loginForm.do" onclick="alert('로그인이 필요합니다.')">주문내역</a></li>
+								</c:if>								
 							</ul>
 							<ul class="fright">
 								<!-- 상단 커뮤니티 링크 수정 -->

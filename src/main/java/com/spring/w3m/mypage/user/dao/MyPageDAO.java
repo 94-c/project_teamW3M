@@ -96,7 +96,9 @@ public class MyPageDAO {
 	
 	/* 회원의 총 주문금액 */
 	public int getTotalOrderMoney(String userId) {
+
 		return sqlSessionTemplate.selectOne("myPageDAO.getTotalOrderMoney", userId);
+
 	}
 	public void changeUserLevel(UserVO vo) {
 		sqlSessionTemplate.update("myPageDAO.changeUserLevel", vo);
