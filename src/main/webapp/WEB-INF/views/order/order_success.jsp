@@ -49,7 +49,7 @@
 									</td>
 									<td>
 										<div class="tb-left">
-											<a href=/getProduct?prod_code=${orderVO.prod_code }" class="tb-bold">${orderVO.prod_title}<!-- 상품명 --><br></a>
+											<a href="/getProduct?prod_code=${orderVO.prod_code }" class="tb-bold">${orderVO.prod_title}<!-- 상품명 --><br></a>
 											<div class="tb-opt">
 												<li style="margin-left: 15px;"></li>
 											</div>
