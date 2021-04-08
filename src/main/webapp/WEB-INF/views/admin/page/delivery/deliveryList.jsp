@@ -22,6 +22,8 @@ table, td, th {
 	font-size: 13px;
 	line-height: 38px
 }
+.table-responsive {width:100%;overflow:auto; margin-bottom: 30px;}
+.table-responsive table {white-space:nowrap;border-collapse:collapse; margin-top: 50px;}
 </style>
 
 <script type="text/javascript">
@@ -202,6 +204,8 @@ table, td, th {
 						</div>
 					</div>
 					<!-- search{e} -->
+				<br>
+				<br>
 				</div>
 			</div>
 		</div>
