@@ -1,6 +1,7 @@
 package com.spring.w3m.statistics.admin.controller;
 
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -22,8 +23,19 @@ public class StatisticsController {
 	StatisticsService service;
 	
 	@RequestMapping("/admin_Sales.mdo")
-	public String adminSales(HttpSession session) {
+	public String adminSales(HttpSession session,StatisticsVO vo) {
 		System.out.println("매출 통계");
+		if(session.getAttribute("dateSeach")==null) {
+			Date today = new Date ();
+			
+//			vo.setStartDate();
+//			vo.setEndDate();
+			List<StatisticsVO> vo1 = service.salesByMonth(vo);
+			
+			session.setAttribute("dateSeach", vo1);
+		}
+
+		
 		return "page/statistics/admin_Sales";
 			
 		}
