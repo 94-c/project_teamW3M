@@ -30,6 +30,7 @@ public interface MyPageService {
 	List<OrderVO> myOrderList(String user_id); //마이페이지 주문내역	
 	
 	List<MyPageVO> recentList(MyPageVO vo);
+	List<OrderVO> recentOrderList(String user_id);
 	/* 주문 상세 */
 	List<OrderProductInfoVO> getOrderProductInfo(OrderVO vo); //주문상품정보
 	OrderVO getReceiverInfo(OrderVO vo); //주문상세 주문자정보	

@@ -86,14 +86,17 @@ public class AdminLoginController {
 		StatisticsVO svo1 = statisticsService.todayJoin();
 		StatisticsVO svo2 = statisticsService.todayCencle();
 		StatisticsVO svo3 = statisticsService.todayProdAmount();
-		int money;
-		int join_count= svo1.getJoin_count();
-		int cencle_count = svo2.getProd_cencle();
-		int prod_count = svo3.getProd_count();
+		int money=0;
+		int join_count=0;
+		int cencle_count=0;	
+		int prod_count=0;
 		if(svo == null) {
 			money = 0;
 		}else {
-			money = svo.getTotal_sum(); //매출 하나도 없으면 svo에 null 들어가서 널포인터exception 뜨길래 일단 이렇게 해놨어!
+			money = svo.getTotal_sum(); // 매출 하나도 없으면 svo에 null 들어가서 널포인터exception 뜨길래 일단 이렇게 해놨어!
+			join_count = svo1.getJoin_count();
+			cencle_count = svo2.getProd_cencle();
+			prod_count = svo3.getProd_count();
 		}
 		model.addAttribute("todaySales", money);
 		model.addAttribute("todayJoin", join_count);

@@ -139,6 +139,11 @@ public class MyPageServiceImpl implements MyPageService {
 	@Override
 	public void changeUserLevel(UserVO vo) {
 		dao.changeUserLevel(vo);
+	}
+
+	@Override
+	public List<OrderVO> recentOrderList(String user_id) {
+		return dao.recentOrderList(user_id);
 	}	
 	
 }

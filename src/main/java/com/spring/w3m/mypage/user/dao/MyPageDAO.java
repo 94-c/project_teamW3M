@@ -96,11 +96,19 @@ public class MyPageDAO {
 	
 	/* 회원의 총 주문금액 */
 	public int getTotalOrderMoney(String userId) {
-
-		return sqlSessionTemplate.selectOne("myPageDAO.getTotalOrderMoney", userId);
+		if(sqlSessionTemplate.selectOne("myPageDAO.getTotalOrderMoney", userId)==null) {
+			return 0;
+		}else {
+			return sqlSessionTemplate.selectOne("myPageDAO.getTotalOrderMoney", userId);	
+		}
 
 	}
 	public void changeUserLevel(UserVO vo) {
 		sqlSessionTemplate.update("myPageDAO.changeUserLevel", vo);
+	}
+
+	public List<OrderVO> recentOrderList(String user_id) {
+		
+		return sqlSessionTemplate.selectList("myPageDAO.recentOrderList",user_id);
 	}
 }

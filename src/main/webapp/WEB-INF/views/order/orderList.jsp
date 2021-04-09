@@ -1125,7 +1125,7 @@ function clean() {
 						<div id="paybutton">
 							<!-- 주문자 동의가 있어야 주문하기 버튼 클릭 가능 -->
 							<input type="button" id="charge_kakao" class="CSSbuttonBlack" value="주문하기">
-							<a href="javascript:orderCencle();" class="CSSbuttonWhite">주문취소</a>
+							<a href="/" onclick="return confirm('정말로 취소하시겠습니까?')" class="CSSbuttonWhite">주문취소</a>
 						</div>
 					</fieldset>
 				</form>

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.spring.w3m.join.user.vo.UserVO;
 import com.spring.w3m.login.user.dao.LoginDAO;
+import com.spring.w3m.mypage.user.service.MyPageService;
 
 @Service("UserLoginService")
 public class UserLoginServiceImpl implements UserLoginService {
@@ -30,8 +31,8 @@ public class UserLoginServiceImpl implements UserLoginService {
 		}
 		
 		boolean result = dao.loginCheck(vo);
-		UserVO user = viewUser(vo);
 		
+		UserVO user = viewUser(vo);
 		if(result) {
 			if(user.getUser_state().equals("일반")) { //일반계정여부 검증
 				//session.setMaxInactiveInterval(60*5); //세션만료시간 설정(초단위)

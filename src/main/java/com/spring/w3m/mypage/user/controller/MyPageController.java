@@ -43,8 +43,21 @@ public class MyPageController {
 	@RequestMapping("/mypage.do")
 	public String myPage(MyPageVO vo, Model model, @SessionAttribute("userVO") UserVO uvo) { // 마이페이지 진입
 		System.out.println("마이페이지 진입");
+		int totalOrderPage = myPageService.getTotalOrderMoney(uvo.getUser_id());
+		if (totalOrderPage >= 700000) {
+			uvo.setUser_level("Dia");
+		} else if (totalOrderPage >= 500000) {
+			uvo.setUser_level("Platinum");
+		} else if (totalOrderPage >= 300000) {
+			uvo.setUser_level("Gold");
+		} else if (totalOrderPage >= 100000) {
+			uvo.setUser_level("Silver");
+		} else {
+			uvo.setUser_level("Bronze");
+		}
+		myPageService.changeUserLevel(uvo); //등급 업데이트
 		model.addAttribute("myRecent", myPageService.recentList(vo));
-		List<OrderVO> myOrderList = myPageService.myOrderList(uvo.getUser_id());
+		List<OrderVO> myOrderList = myPageService.recentOrderList(uvo.getUser_id());
 		model.addAttribute("myOrderList", myOrderList);
 		
 		//총 주문금액 찍기
@@ -233,8 +246,8 @@ public class MyPageController {
 		} else {
 			uVO.setUser_level("Bronze");
 		}
-		myPageService.changeUserLevel(uVO);
-		session.setAttribute("userLevel", uVO.getUser_level());
+		myPageService.changeUserLevel(uVO); //등급 업데이트
+		
 		
 		//유저정보 동기화
 		UserVO user = userLoginService.viewUser(uVO);

@@ -53,6 +53,12 @@
 		WHERE o.order_seq = p.order_seq AND o.order_seq = d.order_seq AND o.user_id = #{user_id}
 	</select>
 	
+	<select id="recentOrderList" resultType="OrderVO" parameterType="String">
+		SELECT o.order_seq, o.order_date, d.prod_title, p.pay_total_money as total_cost FROM pay as p, order_list as o , delivery as d
+		WHERE o.order_seq = p.order_seq AND o.order_seq = d.order_seq AND o.user_id = #{user_id}
+		order by o.order_date desc limit 5;
+	</select>
+	
 	<select id="deliveryState" resultType="DeliveryVO" parameterType="int">
 	SELECT * FROM delivery_state where order_seq = #{order_seq}
 	</select>
@@ -80,7 +86,10 @@
 	
 <!-- 최신 게시글 보기 -->
 	<select resultType="com.spring.w3m.mypage.user.vo.MyPageVO" id="recentList">
-		select * from (select inq_seq, inq_title, inq_date, inq_email, '문의사항' as table_name from inquiry union select review_seq, review_title, review_date, review_email, '후기' as table_name from review) as u where u.inq_email=#{user_email} order by u.inq_date desc limit 5;
+		Select * 
+		from (select inq_seq, inq_title, inq_date, inq_email, '문의사항' as table_name from inquiry union select review_seq, review_title, review_date, review_email, '후기' as table_name from review) as u 
+		where u.inq_email=#{user_email} 
+		order by u.inq_date desc limit 5;
 	</select>
 	
 <!-- 주문취소 -->
