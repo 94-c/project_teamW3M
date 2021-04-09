@@ -28,8 +28,8 @@ function viewdetail(brandcode, is_unify_opt, is_cart_free) {
 var optionJsonData = null;
 var stockInfo = null;
 // 모바일과 PC의 경로설정
-var basket_url = MOBILE_USE === '1' ? '/m/basket.html' : '/shop/basket.html';
-var shopdetail_url = MOBILE_USE === '1' ? '/m/product.html' : '/shop/shopdetail.html';
+//var basket_url = MOBILE_USE === '1' ? '/m/basket.html' : '/shop/basket.html';
+//var shopdetail_url = MOBILE_USE === '1' ? '/m/product.html' : '/shop/shopdetail.html';
 
 function viewlayerbasket(visible, item, type) {
     var _basket = jQuery('#basketpage');
