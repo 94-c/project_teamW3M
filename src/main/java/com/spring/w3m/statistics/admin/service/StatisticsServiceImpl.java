@@ -50,5 +50,27 @@ public class StatisticsServiceImpl implements StatisticsService{
 	public List<StatisticsVO> getExceldata(StatisticsVO vo) {
 		return dao.getExceldata(vo);
 	}
+
+	@Override
+	public List<StatisticsVO> salesByLevel() {
+		
+		return dao.salesByLevel();
+	}
+
+	@Override
+	public List<StatisticsVO> salesByTOP() {
+		return dao.salesByTOP();
+	}
+
+	@Override
+	public List<StatisticsVO> salesByBOTTOM() {
+		return dao.salesByBOTTOM();
+	}
+
+	@Override
+	public List<StatisticsVO> salesByCategory(StatisticsVO vo) {
+		
+		return dao.salesByCategory(vo);
+	}
 	
 }

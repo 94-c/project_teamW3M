@@ -45,4 +45,21 @@ public class StatisticsDAO {
 		return sqlSessionTemplate.selectList("StatisticsDAO.getExceldata",vo);
 	}
 
+	public List<StatisticsVO> salesByLevel() {
+		return sqlSessionTemplate.selectList("StatisticsDAO.salesByLevel");
+	}
+
+	public List<StatisticsVO> salesByTOP() {
+		return sqlSessionTemplate.selectList("StatisticsDAO.salesByTOP");
+	}
+
+	public List<StatisticsVO> salesByBOTTOM() {
+		return sqlSessionTemplate.selectList("StatisticsDAO.salesByBOTTOM");
+	}
+
+	public List<StatisticsVO> salesByCategory(StatisticsVO vo) {
+
+		return sqlSessionTemplate.selectList("StatisticsDAO.salesByCategory",vo);
+	}
+
 }

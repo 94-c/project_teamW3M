@@ -2,6 +2,7 @@ package com.spring.w3m.statistics.admin.controller;
 
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -19,6 +20,7 @@ import org.apache.poi.ss.usermodel.HorizontalAlignment;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.util.CellRangeAddress;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -51,15 +53,29 @@ public class StatisticsController {
 	public String adminSales(HttpSession session,StatisticsVO vo) {
 		System.out.println("매출 통계");
 		if(session.getAttribute("dateSeach")==null) {
-			Date today = new Date ();
+			Calendar cal = Calendar.getInstance();
+	        cal.add(Calendar.MONTH, -12);
+	        Calendar ca2 = Calendar.getInstance();
+	        ca2.add(Calendar.DATE, +1);
+	        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd"); //원하는 데이터 포맷 지정 
 			
-//			vo.setStartDate();
-//			vo.setEndDate();
+			Date today = cal.getTime();
+			Date ttoday = ca2.getTime();
+			String strStartDate = simpleDateFormat.format(today); //지정한 포맷으로 변환 
+			String strEndDate = simpleDateFormat.format(ttoday); //지정한 포맷으로 변환 
+			
+			vo.setStartDate(today);
+			vo.setEndDate(ttoday);
 			List<StatisticsVO> vo1 = service.salesByMonth(vo);
-			
+			List<StatisticsVO> vo2 = service.salesByCategory(vo);
+			for(StatisticsVO vo3 : vo2) {
+				System.out.println(vo3.toString());
+			}
+			session.setAttribute("salesByCategory", vo2);
 			session.setAttribute("dateSeach", vo1);
+			session.setAttribute("strStartDate", strStartDate);
+			session.setAttribute("strEndDate", strEndDate);
 		}
-
 		
 		return "page/statistics/admin_Sales";
 			
@@ -72,16 +88,19 @@ public class StatisticsController {
 		System.out.println(vo.getStartDate());
 		System.out.println(vo.getEndDate());
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd"); //원하는 데이터 포맷 지정 
-		
+		String strStartDate = simpleDateFormat.format(vo.getStartDate()); //지정한 포맷으로 변환 
+		String strEndDate = simpleDateFormat.format(vo.getEndDate()); //지정한 포맷으로 변환 
+	
 
 		
 		List<StatisticsVO> vo1 = service.salesByMonth(vo);
 		for(StatisticsVO svo : vo1) {
 			System.out.println(svo.toString());
-			String strNowDate = simpleDateFormat.format(svo.getDate_total()); //지정한 포맷으로 변환 
-			System.out.println("포맷 지정 후 : " + strNowDate);
+			
 		}
 		session.setAttribute("dateSeach", vo1);
+		session.setAttribute("strStartDate", strStartDate);
+		session.setAttribute("strEndDate", strEndDate);
 		int aa=0;
 		
 		if(vo1.isEmpty()) {
@@ -97,7 +116,13 @@ public class StatisticsController {
 	public String adminProductSales(HttpSession session) {
 		System.out.println("상품 통계");
 		List<StatisticsVO> vo = service.Gender_Money();
+		List<StatisticsVO> vo_level = service.salesByLevel();
+		List<StatisticsVO> vo_top = service.salesByTOP();
+		List<StatisticsVO> vo_bottom = service.salesByBOTTOM();
 		session.setAttribute("Gender_Money", vo);
+		session.setAttribute("salesByLevel", vo_level);
+		session.setAttribute("salesByTOP", vo_top);
+		session.setAttribute("salesByBOTTOM", vo_bottom);
 		return "page/statistics/admin_Product_Sales";
 	}
 	
@@ -126,6 +151,7 @@ public class StatisticsController {
 	    // 워크북 생성
 	    Workbook wb = new HSSFWorkbook();
 	    Sheet sheet = wb.createSheet("매출통계");
+	    sheet.setAutoFilter (new CellRangeAddress(0, 3, 0, 8));
 	    Row row = null;
 	    Cell cell = null;
 	    int rowNo = 0;

@@ -11,6 +11,14 @@ public class StatisticsVO {
 	private int prod_count =0;//제품 수
 	private int prod_cencle =0;//취소 수
 	private int join_count=0;//회원가입수
+	private String user_level;//회원 레발
+	
+	private int fineDust_Mask;//미세먼지
+	private int splash_Mask;//비말
+	private int hand_Sanitizer;//손세정제
+	private int coolPatch;//쿨패치
+	private int hotPack;//핫팩
+	private int thermometer;//체온계
 	//날짜별 매출 수
 	private Date date_total;//날짜
 	
@@ -29,28 +37,119 @@ public class StatisticsVO {
 	private String pay_tool;
 	private String StartDate1;//시작 날짜
 	private Date order_date;
-	
-	
-	public Date getOrder_date() {
-		return order_date;
+	@Override
+	public String toString() {
+		return "StatisticsVO [user_gender=" + user_gender + ", user_count=" + user_count + ", total_sum=" + total_sum
+				+ ", total_use_point=" + total_use_point + ", prod_count=" + prod_count + ", prod_cencle=" + prod_cencle
+				+ ", join_count=" + join_count + ", user_level=" + user_level + ", fineDust_Mask=" + fineDust_Mask
+				+ ", splash_Mask=" + splash_Mask + ", hand_Sanitizer=" + hand_Sanitizer + ", coolPatch=" + coolPatch
+				+ ", hotPack=" + hotPack + ", thermometer=" + thermometer + ", date_total=" + date_total
+				+ ", StartDate=" + StartDate + ", EndDate=" + EndDate + ", order_seq=" + order_seq + ", user_id="
+				+ user_id + ", prod_code=" + prod_code + ", prod_title=" + prod_title + ", prod_amount=" + prod_amount
+				+ ", pay_use_point=" + pay_use_point + ", pay_total_money=" + pay_total_money + ", pay_tool=" + pay_tool
+				+ ", StartDate1=" + StartDate1 + ", order_date=" + order_date + "]";
 	}
-	public void setOrder_date(Date order_date) {
-		this.order_date = order_date;
+	public String getUser_gender() {
+		return user_gender;
 	}
-	public String getStartDate1() {
-		return StartDate1;
+	public void setUser_gender(String user_gender) {
+		this.user_gender = user_gender;
 	}
-	public void setStartDate1(String startDate1) {
-		StartDate1 = startDate1;
+	public int getUser_count() {
+		return user_count;
 	}
-	private String EndDate1;//끝 날짜
-	
-	
-	public String getEndDate1() {
-		return EndDate1;
+	public void setUser_count(int user_count) {
+		this.user_count = user_count;
 	}
-	public void setEndDate1(String endDate1) {
-		EndDate1 = endDate1;
+	public int getTotal_sum() {
+		return total_sum;
+	}
+	public void setTotal_sum(int total_sum) {
+		this.total_sum = total_sum;
+	}
+	public int getTotal_use_point() {
+		return total_use_point;
+	}
+	public void setTotal_use_point(int total_use_point) {
+		this.total_use_point = total_use_point;
+	}
+	public int getProd_count() {
+		return prod_count;
+	}
+	public void setProd_count(int prod_count) {
+		this.prod_count = prod_count;
+	}
+	public int getProd_cencle() {
+		return prod_cencle;
+	}
+	public void setProd_cencle(int prod_cencle) {
+		this.prod_cencle = prod_cencle;
+	}
+	public int getJoin_count() {
+		return join_count;
+	}
+	public void setJoin_count(int join_count) {
+		this.join_count = join_count;
+	}
+	public String getUser_level() {
+		return user_level;
+	}
+	public void setUser_level(String user_level) {
+		this.user_level = user_level;
+	}
+	public int getFineDust_Mask() {
+		return fineDust_Mask;
+	}
+	public void setFineDust_Mask(int fineDust_Mask) {
+		this.fineDust_Mask = fineDust_Mask;
+	}
+	public int getSplash_Mask() {
+		return splash_Mask;
+	}
+	public void setSplash_Mask(int splash_Mask) {
+		this.splash_Mask = splash_Mask;
+	}
+	public int getHand_Sanitizer() {
+		return hand_Sanitizer;
+	}
+	public void setHand_Sanitizer(int hand_Sanitizer) {
+		this.hand_Sanitizer = hand_Sanitizer;
+	}
+	public int getCoolPatch() {
+		return coolPatch;
+	}
+	public void setCoolPatch(int coolPatch) {
+		this.coolPatch = coolPatch;
+	}
+	public int getHotPack() {
+		return hotPack;
+	}
+	public void setHotPack(int hotPack) {
+		this.hotPack = hotPack;
+	}
+	public int getThermometer() {
+		return thermometer;
+	}
+	public void setThermometer(int thermometer) {
+		this.thermometer = thermometer;
+	}
+	public Date getDate_total() {
+		return date_total;
+	}
+	public void setDate_total(Date date_total) {
+		this.date_total = date_total;
+	}
+	public Date getStartDate() {
+		return StartDate;
+	}
+	public void setStartDate(Date startDate) {
+		StartDate = startDate;
+	}
+	public Date getEndDate() {
+		return EndDate;
+	}
+	public void setEndDate(Date endDate) {
+		EndDate = endDate;
 	}
 	public int getOrder_seq() {
 		return order_seq;
@@ -100,76 +199,18 @@ public class StatisticsVO {
 	public void setPay_tool(String pay_tool) {
 		this.pay_tool = pay_tool;
 	}
-	@Override
-	public String toString() {
-		return "StatisticsVO [user_gender=" + user_gender + ", user_count=" + user_count + ", total_sum=" + total_sum
-				+ ", total_use_point=" + total_use_point + ", prod_count=" + prod_count + ", prod_cencle=" + prod_cencle
-				+ ", join_count=" + join_count + ", date_total=" + date_total + ", StartDate=" + StartDate
-				+ ", EndDate=" + EndDate + ", order_seq=" + order_seq + ", user_id=" + user_id + ", prod_code="
-				+ prod_code + ", prod_title=" + prod_title + ", prod_amount=" + prod_amount + ", pay_use_point="
-				+ pay_use_point + ", pay_total_money=" + pay_total_money + ", pay_tool=" + pay_tool + "]";
+	public String getStartDate1() {
+		return StartDate1;
 	}
-	public String getUser_gender() {
-		return user_gender;
+	public void setStartDate1(String startDate1) {
+		StartDate1 = startDate1;
 	}
-	public void setUser_gender(String user_gender) {
-		this.user_gender = user_gender;
+	public Date getOrder_date() {
+		return order_date;
 	}
-	public int getUser_count() {
-		return user_count;
+	public void setOrder_date(Date order_date) {
+		this.order_date = order_date;
 	}
-	public void setUser_count(int user_count) {
-		this.user_count = user_count;
-	}
-	public int getTotal_sum() {
-		return total_sum;
-	}
-	public void setTotal_sum(int total_sum) {
-		this.total_sum = total_sum;
-	}
-	public int getTotal_use_point() {
-		return total_use_point;
-	}
-	public void setTotal_use_point(int total_use_point) {
-		this.total_use_point = total_use_point;
-	}
-	public int getProd_count() {
-		return prod_count;
-	}
-	public void setProd_count(int prod_count) {
-		this.prod_count = prod_count;
-	}
-	public int getProd_cencle() {
-		return prod_cencle;
-	}
-	public void setProd_cencle(int prod_cencle) {
-		this.prod_cencle = prod_cencle;
-	}
-	public int getJoin_count() {
-		return join_count;
-	}
-	public void setJoin_count(int join_count) {
-		this.join_count = join_count;
-	}
-	public Date getDate_total() {
-		return date_total;
-	}
-	public void setDate_total(Date date_total) {
-		this.date_total = date_total;
-	}
-	public Date getStartDate() {
-		return StartDate;
-	}
-	public void setStartDate(Date startDate) {
-		StartDate = startDate;
-	}
-	public Date getEndDate() {
-		return EndDate;
-	}
-	public void setEndDate(Date endDate) {
-		EndDate = endDate;
-	}
-	
 	
 	
 }

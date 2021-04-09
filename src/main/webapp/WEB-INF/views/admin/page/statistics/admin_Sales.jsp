@@ -11,16 +11,7 @@
 
 <script type="text/javascript">
 
-	var date1 = new Date();
-	var date2 = new Date();
-	var date3 = new Date(date1.setMonth(date1.getMonth()-1));
-	console.log(date1);
-	$(document).ready(function(){
-		
-		$("#datepicker1").val(getFormatDate(date3));
-		$("#datepicker2").val(getFormatDate(date2));
-		
-	});
+
 	
 	function getFormatDate(date){
 	    var year = date.getFullYear();              //yyyy
@@ -33,6 +24,13 @@
 
 $(document).ready(function(){
 		$("#Seach").click(function(){
+			if($("#datepicker1").val()==""){
+				alert("기간을 확인해 주세요.");
+				return;
+			}else if($("#datepicker2").val()==""){
+				alert("기간을 확인해 주세요.");
+				return;
+			}
 			console.log("들어옴");
 			var StartDate =$("#datepicker1").val();
 			var EndDate = $("#datepicker2").val();
@@ -51,39 +49,9 @@ $(document).ready(function(){
 				contentType:"application/json; charset=UTF-8",
 				success:function(data){
 					if(data == 1){
-						google.charts.load('current', {'packages':['line']});
-						google.charts.setOnLoadCallback(drawChart);
-							
-							var data = new google.visualization.DataTable();
-						    data.addColumn('string', 'Day');
-						    data.addColumn('number', '총 매출');
-						    data.addColumn('number', '적립금 사용 금액');
-						   
-						   
-						    data.addRows([
-						    	 <c:forEach var="dateSeach" items="${dateSeach}" varStatus="state">
-						        ['<fmt:formatDate value="${dateSeach.date_total}" pattern="yyyy-MM-dd"/>',
-						        	${dateSeach.total_sum},
-						        	${dateSeach.total_use_point}],
-							  	</c:forEach>
-						        
-						      ]);
-
-						    var options = {
-						            chart: {
-						              title: '일간 매출',
-						              
-						            },
-						            width: 800,
-						            height: 300
-						          };
-
-						    var chart = new google.charts.Line(document.getElementById('linechart_material'));
-
-						    chart.draw(data, google.charts.Line.convertOptions(options));
 						console.log("성공");
 						
-					//	location.reload();
+						location.reload();
 
 					}else{
 						console.log("실패");
@@ -95,8 +63,78 @@ $(document).ready(function(){
 			});
 		});
 	});
+google.charts.load('current', {'packages':['line']});
+google.charts.setOnLoadCallback(drawChart);
 function drawChart() {
+	
+	var data = new google.visualization.DataTable();
+    data.addColumn('string', 'Day');
+    data.addColumn('number', '총 매출');
+    data.addColumn('number', '적립금 사용 금액');
+   
+   
+    data.addRows([
+    	 <c:forEach var="dateSeach" items="${dateSeach}" varStatus="state">
+        ['<fmt:formatDate value="${dateSeach.date_total}" pattern="yyyy-MM-dd"/>',
+        	${dateSeach.total_sum},
+        	${dateSeach.total_use_point}],
+	  	</c:forEach>
+        
+      ]);
 
+    var options = {
+            chart: {
+              title: '<c:out value="${strStartDate}"/> ~ <c:out value="${strEndDate}"/>',
+              
+            },
+            width: 600,
+            height: 300
+          };
+
+    var chart = new google.charts.Line(document.getElementById('linechart_material'));
+
+    chart.draw(data, google.charts.Line.convertOptions(options));
+  }
+  
+google.charts.load('current', {'packages':['line']});
+google.charts.setOnLoadCallback(drawChart2);
+function drawChart2() {
+	
+	var data = new google.visualization.DataTable();
+    data.addColumn('string', 'Day');
+    data.addColumn('number', '미세먼지 마스크');
+    data.addColumn('number', '비말 마스크');
+    data.addColumn('number', '손소독제');
+    data.addColumn('number', '쿨패치');
+    data.addColumn('number', '핫팩');
+    data.addColumn('number', '체온계');
+   
+   
+    data.addRows([
+    	 <c:forEach var="salesByCategory" items="${salesByCategory}">
+        ['<fmt:formatDate value="${salesByCategory.date_total}" pattern="yyyy-MM-dd"/>',
+	       	${salesByCategory.fineDust_Mask},
+	       	${salesByCategory.splash_Mask},
+	       	${salesByCategory.hand_Sanitizer},
+	       	${salesByCategory.coolPatch},
+	       	${salesByCategory.hotPack},
+	       	${salesByCategory.thermometer}],
+	  	</c:forEach>
+        
+      ]);
+
+    var options = {
+            chart: {
+              title: '<c:out value="${strStartDate}"/> ~ <c:out value="${strEndDate}"/>',
+              
+            },
+            width: 600,
+            height: 300
+          };
+
+    var chart = new google.charts.Line(document.getElementById('linechart_category'));
+
+    chart.draw(data, google.charts.Line.convertOptions(options));
   }
       
 
@@ -121,15 +159,15 @@ function drawChart() {
     
     function url(){
    		var url = "/excelDown.mdo";
-   			url = url + "?startDate1=" + $("#datepicker1").val();
-   			url = url +  "&endDate1=" + $("#datepicker2").val();
+   			url = url + "?startDate1=" + $("#date1").val();
+   			url = url +  "&endDate1=" + $("#date2").val();
    			location.href= url;
     }
     
     function pdfurl(){
    		var url = "/pdfDownload.mdo";
-   			url = url + "?startDate1=" + $("#datepicker1").val();
-   			url = url +  "&endDate1=" + $("#datepicker2").val();
+   			url = url + "?startDate1=" + $("#date1").val();
+   			url = url +  "&endDate1=" + $("#date2").val();
    			location.href= url;
     }
     
@@ -162,9 +200,11 @@ function drawChart() {
           	<br>
           	<div class="date" style="position:right; left:600px; top:170px;">
           	<Strong>기간 설정</Strong>&nbsp;&nbsp;
-          		<input type="text" id="datepicker1" value="" >
+          		<input type="hidden" id= "date1" value="${strStartDate}" />
+          		<input type="text" id="datepicker1" value="" placeholder="날짜를 입력하세요">
           	<Strong>-</Strong>
-          		<input type="text" id="datepicker2" value="">
+          		<input type="text" id="datepicker2" value="" placeholder="날짜를 입력하세요">
+          		<input type="hidden" id= "date2" value="${strEndDate}" />
 			<input type="button" value="조회" id = "Seach">
 			</div>
 			<br>
@@ -188,7 +228,9 @@ function drawChart() {
 			 -->
 			</div>		 
 		
-           <div id=linechart_material style="width: 800px; height: 400px;"></div>
+           <div id=linechart_material style="width: 900px; height: 400px; display:inline-block;"></div>
+            <div id="linechart_category" style="width: 500px; height: 400px; display:inline-block; "></div>
+            
 			</div>
 		</div><!-- body end -->
 </div> <!-- Main end -->

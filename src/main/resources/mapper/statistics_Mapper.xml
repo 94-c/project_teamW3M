@@ -56,6 +56,58 @@
 	]]>
 	</select>
 	
+	<select id="salesByLevel" resultType="StatisticsVO">
+	<![CDATA[
+	select user_level, count(*) as join_count
+	from user_member
+	group by user_level;
+	]]>
+	</select>
 	
+	<select id="salesByTOP" resultType="StatisticsVO">
+	<![CDATA[
+	select e.*
+	from (select 
+		  sales_rate*prod_price_sale as total_sum,
+		  prod_title,
+		  rank() over (order by sales_rate*prod_price_sale desc) "rank"
+		  
+		  from product
+		) e
+	where e.rank <=5; 
+	]]>
+	</select>
+	
+	<select id="salesByBOTTOM" resultType="StatisticsVO">
+	<![CDATA[
+	select e.*
+	from (select
+		  sales_rate*prod_price_sale as total_sum,
+		  prod_title,
+		  rank() over (order by sales_rate*prod_price_sale asc) "rank"
+		  
+		  from product
+		) e
+	where e.rank <=5;
+	]]>
+	</select>
+	<select id="salesByCategory" resultType="StatisticsVO">
+	<![CDATA[
+	select
+  	   to_char(ol.order_date,'YYYY-MM-DD') as date_total, 
+	   COALESCE(sum(case when prod_category1='MM' then pa.pay_total_money end), 0)as fineDust_Mask,
+	   COALESCE(sum(case when prod_category1='BB' then pa.pay_total_money end), 0)as Splash_Mask,
+	   COALESCE(sum(case when prod_category1='SS' then pa.pay_total_money end), 0)as Hand_Sanitizer,
+	   COALESCE(sum(case when prod_category1='CC' then pa.pay_total_money end), 0)as CoolPatch,
+	   COALESCE(sum(case when prod_category1='HH' then pa.pay_total_money end), 0)as HotPack,
+	   COALESCE(sum(case when prod_category1='TT' then pa.pay_total_money end), 0)as thermometer
+	from order_list ol , pay pa ,user_member um, order_prod op, product pd
+	where ol.order_seq = pa.order_seq and ol.user_id = um.user_id and ol.order_seq = op.order_seq
+		and op.prod_code = pd.prod_code and ol.order_status = '구매확정' and ol.order_date >= #{StartDate} and ol.order_date <= #{endDate}
+	group by date_total
+	order by date_total
+	
+	]]>
+	</select>
 	
 </mapper>
