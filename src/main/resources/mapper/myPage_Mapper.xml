@@ -50,7 +50,7 @@
 	
 	<select id="myOrderList" resultType="OrderVO" parameterType="String">
 		SELECT o.order_seq, o.order_date, d.prod_title, p.pay_total_money as total_cost FROM pay as p, order_list as o , delivery as d
-		WHERE o.order_seq = p.order_seq AND o.order_seq = d.order_seq AND o.user_id = #{user_id}
+		WHERE o.order_seq = p.order_seq AND o.order_seq = d.order_seq AND o.user_id = #{user_id} order by o.order_date desc
 	</select>
 	
 	<select id="deliveryState" resultType="DeliveryVO" parameterType="int">

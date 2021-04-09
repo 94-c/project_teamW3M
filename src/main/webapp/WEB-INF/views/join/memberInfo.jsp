@@ -166,7 +166,7 @@
 											<div class="col-cell">
 												<input type="text" name="user_name" id="user_name"
 													class="MS_input_txt normal-input" size="15" maxlength="30"
-													value="${userVO.user_name }"><span
+													value="${userVO.user_name }" readonly="readonly"><span
 													class="check_font" id="name_check"></span>
 											</div>
 										</td>
