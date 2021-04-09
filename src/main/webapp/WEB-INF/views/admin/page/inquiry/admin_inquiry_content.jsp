@@ -2,6 +2,28 @@
 	pageEncoding="UTF-8"%>
 <%@include file="/WEB-INF/views/admin/page/include/admin_header.jsp"%>
 <link href="resources/css/reply.css" rel="stylesheet" type="text/css">
+<script type="text/javascript">
+function insert()
+{
+	var insertform = document.insertform;
+	var txt = insertform.reply_text.value;
+	
+	if(!txt){
+		alert("내용을 입력하세요")
+	} else{
+	insertform.submit();
+		}
+	}
+	
+function update(re_seq)
+{
+	var updateReply = document.updateform;
+	
+	updateReply.submit();
+
+	}
+</script>
+
 <main>
 <div class="container-fluid">
      <h1 class="mt-4">문의사항 상세보기</h1>              
@@ -66,24 +88,3 @@
 	</div>
 </main>
 <%@include file="/WEB-INF/views/admin/page/include/admin_footer.jsp"%>
-<script type="text/javascript">
-function insert()
-{
-	var insertform = document.insertform;
-	var txt = insertform.reply_text.value;
-	
-	if(!txt){
-		alert("내용을 입력하세요")
-	} else{
-	insertform.submit();
-		}
-	}
-	
-function update(re_seq)
-{
-	var updateReply = document.updateform;
-	
-	updateReply.submit();
-
-	}
-</script>

@@ -2,29 +2,7 @@
 
 <title>배송 현황</title>
 <%@include file="/WEB-INF/views/admin/page/include/admin_header.jsp"%>
-
-<style type="text/css">
-table {
-	margin: auto;
-}
-
-table, td, th {
-	border-collapse: collapse;
-	border: 1px solid black;
-}
-
-#submitbutton {
-	margin: 10px;
-	float: right;
-	margin-left: 3px;
-	width: 108px;
-	height: 38px;
-	font-size: 13px;
-	line-height: 38px
-}
-.table-responsive {width:100%;overflow:auto; margin-bottom: 30px;}
-.table-responsive table {white-space:nowrap;border-collapse:collapse; margin-top: 50px;}
-</style>
+<link type="text/css" rel="stylesheet" href="resources/admin_css/table.css">
 
 <script type="text/javascript">
 	//이전 버튼 이벤트

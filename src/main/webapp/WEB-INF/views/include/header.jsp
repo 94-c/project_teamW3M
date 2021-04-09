@@ -38,7 +38,8 @@
 <link href="resources/css/menu.css" rel="stylesheet" type="text/css">
 <link href="resources/css/notification.css" rel="stylesheet" type="text/css">
 <link href="resources/css/point.css" rel="stylesheet" type="text/css">
-
+<link href="resources/admin_css/pagination.css" rel="stylesheet" type="text/css">
+<link href="resources/admin_css/styles.css" rel="stylesheet" type="text/css">
 
 <!-- JS -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

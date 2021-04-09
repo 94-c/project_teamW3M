@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <title>아이디/패스워드 찾기</title>
 <%@include file="/WEB-INF/views/include/header.jsp"%>
 
@@ -7,7 +6,6 @@
 	<div id="contentWrap">
 		<div id="content">
 			<div id="findWrap">
-
 				<form class="findIdForm" method="post" action="findID.do">
 					<div id="find_id" class="find_idpw">
 						<h1 class="tit">아이디 찾기</h1>
@@ -23,10 +21,6 @@
 								<input type="radio" name="find_id_type" value="mobile" checked="checked">
 									 휴대폰 번호로 찾기
 							</label> 
-							<!-- <label> 
-								<input type="radio" name="find_id_type" value="email"> 
-									이메일로 찾기
-							</label> -->
 						</div>
 						<div class="find-info">
 							<ul class="frm-list">
@@ -64,10 +58,6 @@
 							<br>
 						</p>
 						<div class="radio-wrap">
-							<!-- <label> 
-								<input type="radio" name="find_pw_type" value="email"> 
-									이메일로 찾기
-							</label>  -->
 							<label> 
 								<input type="radio" name="find_pw_type" value="mobile" checked="checked"> 
 									휴대폰 번호로 찾기
@@ -79,10 +69,6 @@
 									<li id="find_pw_id_wrap">
 										<input type="text" name="user_id" placeholder="아이디" onfocus="this.placeholder=''" onblur="this.placeholder='아이디'" maxlength="20"/>
 									</li>
-									
-									<!-- <li id="find_pw_email_wrap">
-										<input type="text" name="user_email" placeholder="이메일" onfocus="this.placeholder=''" onblur="this.placeholder='이메일'" maxlength="40"/>
-									</li> -->
 									
 									<li id="find_pw_mobile_wrap">
 										<input type="text" name="user_phone" placeholder="휴대폰 번호 (ex.01012345678)" onfocus="this.placeholder=''" onblur="this.placeholder='휴대폰 번호(ex.01012345678)'" maxlength="11"/>

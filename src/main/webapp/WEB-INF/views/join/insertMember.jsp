@@ -227,8 +227,6 @@
 								</tbody>
 							</table>
 						</div>
-
-
 						<fieldset>
 							<legend>약관 동의 폼</legend>
 						</fieldset>
@@ -249,8 +247,6 @@
 												type="checkbox" name="user_privacy" id="user_privacy"
 												value="agree_uidB" class="input-cbox every_agree" checked>
 												개인정보 수집 및 이용 안내</label> <a href="#chk_cont2">내용보기</a></li>
-
-
 									</ul>
 									<div class="marketing pb-10">
 										<div class="mk-wrap">
@@ -277,7 +273,7 @@
 					</form>
 					<h4 class="tit" id="chk_cont1">이용약관</h4>
 					<div class="privercy-contract">
-						<pre><textarea cols="200" wrap="soft" rows="10" readonly="readonly" style="margin: 0px; width: 1245.5px; height: 188px;">${tos.tos_content } </textarea></pre>
+						<pre><textarea cols="200" wrap="soft" rows="10" readonly="readonly" style="margin: 0px; width: 1245.5px; height: 188px;">${tos.tos_content}</textarea></pre>
 					</div>
 
 					<h4 class="tit" id="chk_cont2">개인정보 수집·이용</h4>

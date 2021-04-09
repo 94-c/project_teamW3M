@@ -11,7 +11,8 @@
 					<thead>
 						<tr>
 							<th><div class="tb-center">
-									<strong><font size=2 ><font color="${notice.nt_color}">${notice.nt_title }</font></font></strong>
+									<strong><font size=2><font
+											color="${notice.nt_color}">${notice.nt_title }</font></font></strong>
 								</div></th>
 						</tr>
 					</thead>
@@ -45,6 +46,6 @@
 					onclick="location.href = 'admin_notice_list.mdo' ">목록으로</button>
 			</div>
 		</ol>
-		</div>
+	</div>
 </main>
 <%@include file="/WEB-INF/views/admin/page/include/admin_footer.jsp"%>

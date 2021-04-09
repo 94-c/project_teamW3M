@@ -1,43 +1,38 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<title>내 후기 보기</title>
-<link href="resources/admin_css/styles.css" rel="stylesheet" type="text/css"> 
-<link href="resources/admin_css/pagination.css" rel="stylesheet" type="text/css">
-<script type="text/javascript">
-function fn_prev(page, range, rangSize, searchKeyword){
-        		var page = ((range - 2) * rangeSize) + 1;
-        		var range = range - 1;
-        		var url = "${pagContext.request.contextPath}/myReviewList.do";
-        		url = url + "?page=" + page;
-        		url = url + "&range=" + range;
-        		url = url + "&searchKeyword" + searchKeyword;
-        		location.href = url;
-        	}
-        	
-        
-        	//페이지 번호 클릭
-        	function fn_pagination(page, range, rangSize, searchKeyword){
-        		var url = "${pagContext.request.contextPath}/myReviewList.do";
-        		url = url + "?page=" + page;
-        		url = url + "&range=" + range;
-        		url = url + "&searchKeyword" + searchKeyword;
-        		location.href = url;
-        	}
-        	
-        	//다음 버튼 이벤트
-        	function fn_next(page, range, rangSize, searchKeyword){
-        		var page = parseInt((range  * rangeSize)) + 1;
-        		var range = parseInt(range) + 1;
-        		var url = "${pagContext.request.contextPath}/myReviewList.do";
-        		url = url + "?page=" + page;
-        		url = url + "&range=" + range;
-        		url = url + "&searchKeyword" + searchKeyword;
-        		location.href = url;
-        	}
-</script>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%@include file="/WEB-INF/views/include/header.jsp"%>
+<title>내 후기 보기</title>
+<script type="text/javascript">
+	function fn_prev(page, range, rangSize, searchKeyword) {
+		var page = ((range - 2) * rangeSize) + 1;
+		var range = range - 1;
+		var url = "${pagContext.request.contextPath}/myReviewList.do";
+		url = url + "?page=" + page;
+		url = url + "&range=" + range;
+		url = url + "&searchKeyword" + searchKeyword;
+		location.href = url;
+	}
+
+	//페이지 번호 클릭
+	function fn_pagination(page, range, rangSize, searchKeyword) {
+		var url = "${pagContext.request.contextPath}/myReviewList.do";
+		url = url + "?page=" + page;
+		url = url + "&range=" + range;
+		url = url + "&searchKeyword" + searchKeyword;
+		location.href = url;
+	}
+
+	//다음 버튼 이벤트
+	function fn_next(page, range, rangSize, searchKeyword) {
+		var page = parseInt((range * rangeSize)) + 1;
+		var range = parseInt(range) + 1;
+		var url = "${pagContext.request.contextPath}/myReviewList.do";
+		url = url + "?page=" + page;
+		url = url + "&range=" + range;
+		url = url + "&searchKeyword" + searchKeyword;
+		location.href = url;
+	}
+</script>
 
 <div id="contentWrapper">
 	<div id="contentWrap">
@@ -176,4 +171,5 @@ function fn_prev(page, range, rangSize, searchKeyword){
 	</div>
 	<!-- #contentWrap -->
 </div>
+
 <%@include file="/WEB-INF/views/include/footer.jsp"%>

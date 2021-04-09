@@ -1,9 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"   pageEncoding="UTF-8"%>
 <title>문의 게시판</title>
 <%@include file="/WEB-INF/views/include/header.jsp"%>
-<link type="text/css" rel="stylesheet" href="resources/css/main.css">
-<link type="text/css" rel="stylesheet" href="resources/css/border.css">
-<link type="text/css" rel="stylesheet" href="resources/css/soo.css">
+<script type="text/javascript">
+function blankCheck()
+{
+	var writeform = document.writeform;
+	var pass = writeform.pass_check.value;
+	var title = writeform.title_check.value;
+	
+	if(!pass){
+		alert("비밀번호를 입력해주세요.")
+		document.getElementById('pass_check').focus();
+		} else if(!title){
+			document.getElementById('title_check').value = '제목없음';
+			writeform.submit();
+		}
+		else{
+			writeform.submit();
+	}
+}
+</script>
+
 <div id="contentWrapper">
 	<div id="contentWrap">
 		<div id="content">
@@ -68,8 +85,7 @@
 										<tr>
 											<th><div>내용</div></th>
 											<td colspan="3" class="text_content">
-												<div>
-												<textarea id="content_check" name="inq_content" wrap="off" onfocus="clear_content()" class="MS_input_txt" style="font-family: 굴림체;"></textarea>
+												<div><pre><textarea id="content_check" name="inq_content" wrap="off" onfocus="clear_content()" class="MS_input_txt" style="font-family: 굴림체;"></textarea></pre>
 													<input type="hidden" name="mobile_content_type" value="">
 												</div>
 											</td>
@@ -108,28 +124,5 @@
 	</div>
 	<!-- #contentWrap -->
 </div>
-<script type="text/javascript">
-
-function blankCheck()
-{
-	var writeform = document.writeform;
-	var pass = writeform.pass_check.value;
-	var title = writeform.title_check.value;
-	
-	if(!pass){
-		alert("비밀번호를 입력해주세요.")
-		document.getElementById('pass_check').focus();
-		} else if(!title){
-			document.getElementById('title_check').value = '제목없음';
-			writeform.submit();
-		}
-		else{
-			writeform.submit();
-
-	}
-}
-
-
-</script>
 
 <%@include file="/WEB-INF/views/include/footer.jsp"%>

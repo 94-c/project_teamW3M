@@ -6,7 +6,6 @@
 
 <div id="contentWrapper">
 	<div id="contentWrap">
-            
 			<div id="content">
 				<div id="findIdPwd_result">
 					<div class="tit-page">아이디/비밀번호 찾기 결과</div>

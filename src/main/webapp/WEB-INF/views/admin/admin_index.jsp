@@ -19,7 +19,6 @@
         		url = url + "&searchKeyword" + searchKeyword;
         		location.href = url;
         	}
-        	
         
         	//페이지 번호 클릭
         	function fn_pagination(page, range, rangSize, searchKeyword){
@@ -47,7 +46,6 @@
         		url = url + "?searchType=" + $('#searchType').val();
         		url = url + "&keyword=" + $('#keyword').val();
         		location.href = url;
-        		console.log(url);
         	});
 </script>
 

@@ -1,29 +1,18 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="/WEB-INF/views/include/header.jsp"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <title>${product.prod_title }</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
-<link href="resources/admin_css/pagination.css" rel="stylesheet" type="text/css">
-<link href="resources/admin_css/styles.css" rel="stylesheet" type="text/css">
-<link href="resources/css/notification.css" rel="stylesheet" 	type="text/css">
 
 <script type="text/javascript">
 function cnt_amount(button){
-	
 	var title=$("#prod_title").val();
 	var amount=$("#prod_amount").val();
 	var count=$("#amount_val").val();
 	var totalprice = $("#prod_price_sale").val();
-	console.log("button:"+ button);
-	console.log("title:"+title);
-	console.log("amount:"+amount);
-	console.log("count:"+count);
 	if(button =='text'){
 		if(count-amount > 0 ){
-		console.log("텍스트필드amoun "+amount);
 			alert("1("+title+ ") 상품의 재고가 현재"+amount+"개 입니다.\n수량/상품 체크를 다시하시기 바랍니다.\n\n감사합니다.");
 			count = amount;
 			$("#amount_val").val(count);
@@ -52,17 +41,13 @@ function cnt_amount(button){
 	
 	var aaa = count*totalprice;
 	var bbb = aaa.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-	console.log(aaa);
-	console.log(bbb);
 	$("#totalPlace1").text(bbb);
 	$("#totalPlace2").text(bbb);
-	
 }
+
 function send_cart(code){
 	var prod_code = code;
 	var prod_amount = $("#amount_val").val();
-	console.log("code :" +code);
-	console.log("prod_amount :" +prod_amount);
 	alldata={prod_code:prod_code , prod_amount: prod_amount};
 	$.ajax({
 		url : "/send_cart.do",
@@ -72,21 +57,15 @@ function send_cart(code){
 		contentType: "application/json; charset=UTF-8",
 		success:function(aa){
 			if (aa==1){//실패 중복 물품
-			console.log("해당 물품은 이미 장바구니에 존재합니다.");
 			}		
-			
 		},
 		error:function(data){
-			console.log(data+"에러?");
 		}
-	
 	});
 }
 function send_oder(code){
 	var prod_code=code;
 	var prod_amount=$("#amount_val").val();
-	console.log(prod_code);
-	console.log(prod_amount);
 	alldata={prod_code:prod_code , prod_amount: prod_amount};
 	$.ajax({
 		async : true,
@@ -98,22 +77,63 @@ function send_oder(code){
 		success:function(aa){
 			console.log("aa ="+aa);
 			if(aa==1){
-				console.log(aa+"성공");
 				location.href= "send_order_go.do"
 				return true;
 			}else{
-				console.log(aa+"실패");
 				return false;
 			}
 
 		},
 		error:function(aa){
-			console.log(aa+"에러?");
 			return false;
 		}
-	
 	});
 }
+//이전 버튼 이벤트
+function fn_prev(prod_seq,page, range, rangSize, searchKeyword) {
+	var page = ((range - 2) * rangeSize) + 1;
+	var range = range - 1;
+	var url = "${pagContext.request.contextPath}/getProduct";
+	url = url + "?prod_seq=" + prod_seq;
+	url = url + "&page=" + page;
+	url = url + "&range=" + range;
+	url = url + "&searchKeyword" + searchKeyword;
+	url = url + "#detailQna";
+	location.href = url;
+}
+
+//페이지 번호 클릭
+function fn_pagination(prod_seq,page, range, rangSize, searchKeyword) {
+	var url = "${pagContext.request.contextPath}/getProduct";
+	url = url + "?prod_seq=" + prod_seq;
+	url = url + "&page=" + page;
+	url = url + "&range=" + range;
+	url = url + "&searchKeyword" + searchKeyword;
+	url = url + "#detailQna";
+	location.href = url;
+}
+
+//다음 버튼 이벤트
+function fn_next(prod_seq,page, range, rangSize, searchKeyword) {
+	var page = parseInt((range * rangeSize)) + 1;
+	var range = parseInt(range) + 1;
+	var url = "${pagContext.request.contextPath}/getProduct";
+	url = url + "?prod_seq=" + prod_seq;
+	url = url + "&page=" + page;
+	url = url + "&range=" + range;
+	url = url + "&searchKeyword" + searchKeyword;
+	url = url + "#detailQna";
+	location.href = url;
+}
+
+$(document).on('click', '#btnSearch', function(e) {
+	e.preventDefault();
+	var url = "${pageContext.request.contextPath}/getProduct";
+	url = url + "&searchType=" + $('#searchType').val();
+	url = url + "&keyword=" + $('#keyword').val();
+	location.href = url;
+	console.log(url);
+});
 </script>
 
 <body>
@@ -123,10 +143,7 @@ function send_oder(code){
 				<div id="productDetail">
 					<!-- 배너 -->
 					<dl class="loc-navi">
-						
-						
 					</dl>
-					
 					<!-- 메인 이미지 -->
 					<div class="page-body">
 						<div class="thumb-info">
@@ -577,53 +594,6 @@ function send_oder(code){
 		</div>
 		<!-- #contentWrap -->
 	</div>
-
 </body>
-<script type="text/javascript">
-	//이전 버튼 이벤트
-	function fn_prev(prod_seq,page, range, rangSize, searchKeyword) {
-		var page = ((range - 2) * rangeSize) + 1;
-		var range = range - 1;
-		var url = "${pagContext.request.contextPath}/getProduct";
-		url = url + "?prod_seq=" + prod_seq;
-		url = url + "&page=" + page;
-		url = url + "&range=" + range;
-		url = url + "&searchKeyword" + searchKeyword;
-		url = url + "#detailQna";
-		location.href = url;
-	}
 
-	//페이지 번호 클릭
-	function fn_pagination(prod_seq,page, range, rangSize, searchKeyword) {
-		var url = "${pagContext.request.contextPath}/getProduct";
-		url = url + "?prod_seq=" + prod_seq;
-		url = url + "&page=" + page;
-		url = url + "&range=" + range;
-		url = url + "&searchKeyword" + searchKeyword;
-		url = url + "#detailQna";
-		location.href = url;
-	}
-
-	//다음 버튼 이벤트
-	function fn_next(prod_seq,page, range, rangSize, searchKeyword) {
-		var page = parseInt((range * rangeSize)) + 1;
-		var range = parseInt(range) + 1;
-		var url = "${pagContext.request.contextPath}/getProduct";
-		url = url + "?prod_seq=" + prod_seq;
-		url = url + "&page=" + page;
-		url = url + "&range=" + range;
-		url = url + "&searchKeyword" + searchKeyword;
-		url = url + "#detailQna";
-		location.href = url;
-	}
-
-	$(document).on('click', '#btnSearch', function(e) {
-		e.preventDefault();
-		var url = "${pageContext.request.contextPath}/getProduct";
-		url = url + "&searchType=" + $('#searchType').val();
-		url = url + "&keyword=" + $('#keyword').val();
-		location.href = url;
-		console.log(url);
-	});
-</script>
 <%@include file="/WEB-INF/views/include/footer.jsp"%>

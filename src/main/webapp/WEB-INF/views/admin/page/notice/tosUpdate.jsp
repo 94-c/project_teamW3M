@@ -1,7 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="/WEB-INF/views/admin/page/include/admin_header.jsp"%>
 <script type="text/javascript" src="resources/js/tos.js" ></script>
+
 <title>공지사항 수정</title>
 
 <main>
@@ -30,10 +30,5 @@
 			onclick="location.href = 'tos_content.mdo' ">목록으로</button>
 	</div>
 </form>
-
-
-
-
-
 
 <%@include file="/WEB-INF/views/admin/page/include/admin_footer.jsp"%>

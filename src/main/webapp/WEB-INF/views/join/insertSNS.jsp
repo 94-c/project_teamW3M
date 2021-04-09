@@ -10,29 +10,13 @@ var idJ = RegExp(/^[A-Za-z0-9_\-]{5,20}$/);
 var pwJ = RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^*()\-_=+\\\|\[\]{};:\'",.<>\/?]).{8,16}$/);
 //숫자만 
 var phoneJ= RegExp(/^([0-9]{4})$/);
-
 var pw_ck1 = -1;
 var pw_ck2 = -1;
 var adress_ck = -1;
 var phone_ck = -1;
 
 	$(document).ready(function() {
-		
 		$("#insert_success_sns").click(function() { // 회원가입 버튼
-			console.log("id - " + $("#userid").val() );
-			console.log("id - " + $("#username").val() );
-			console.log("id - " + $("#useremail").val() );
-			console.log("id - " + $("#usergender").val() );
-			console.log("id - " + $("#userbirthday").val() );
-			console.log("id - " + $("#usersnsnaver").val() );
-			console.log("pw - " + pw_ck1 );
-			console.log("repw - " + pw_ck2 );
-			console.log("주소 - " + adress_ck );
-			console.log("폰 - " + phone_ck );
-			console.log("약관 - " + $("#user_privacy_sns").val() );
-			console.log("개인정보 - " + $("#user_yaok_sns").val() );
-			
-		
 			if(!$("#user_yaok_sns").prop("checked")){
 				alert("약관 동의 확인해 주세요.")
 			}else if(!$("#user_privacy_sns").prop("checked")){
@@ -42,16 +26,10 @@ var phone_ck = -1;
 			}else if(phone_ck != 0){
 				alert("휴대폰을 확인해 주세요.")
 			}else{
-
 				  $("#user_insert_sns").submit();
-			}
-		
-			
-		});
-	
-	});
-
-		
+			}			
+		});	
+	});		
 		
 	$(document).ready(function(){ 	
 		$("#send_sms_sns").click(function(){
@@ -79,8 +57,6 @@ var phone_ck = -1;
 			
 		var allPhone2 = $("#user_phone1_sns").val() +"-"+ $("#user_phone2_sns").val() +"-"+ $("#user_phone3_sns").val();
 		var allPhone = $("#user_phone1_sns").val() + $("#user_phone2_sns").val() + $("#user_phone3_sns").val();
-		console.log("phone - "+allPhone);
-		console.log("phone2 - "+allPhone2);
 		
 		$.ajax({
 			url: "/check_sms.do",
@@ -114,14 +90,13 @@ var phone_ck = -1;
 								phone_ck = 1;
 								}	
 							})
-					}
-						})
+						}
+					})
 				}
 			}
 		});
 	});
 });
-
 
 	$(document).ready(function(){ 
 		$("#every_agree_sns").click(function() {
@@ -130,9 +105,7 @@ var phone_ck = -1;
 				
 			}else{
 				$("input[type=checkbox]").prop("checked",false);
-				
 			}
-			
 		});
 	});
 	$(document).ready(function(){ 
@@ -144,8 +117,6 @@ var phone_ck = -1;
 			}
 		});
 	});	
-	
-	
 	
 		function DaumPostcode_sns() {
 			new daum.Postcode({
@@ -178,7 +149,6 @@ var phone_ck = -1;
 	                $("#user_address1_sns").val(fullRoadAddr);
 	                $("#user_address2_sns").focus();
 	                adress_ck = 0;
-	
 	            }
 	        }).open();
 	    }

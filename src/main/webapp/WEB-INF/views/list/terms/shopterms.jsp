@@ -57,19 +57,24 @@
         window.resizeTo('550','590');
     </script>
 </head>
+
 <body>
 	<div id="hdr">
-		<h1>쇼핑몰 이용약관
-        <span id="date_end">등록일 : <fmt:formatDate value="${tos.tos_date }" pattern="yyyy년MM월dd일" /></span>
-        </h1>
-	</div><!-- #hd -->
+		<h1>
+			쇼핑몰 이용약관 <span id="date_end">등록일 : <fmt:formatDate
+					value="${tos.tos_date }" pattern="yyyy년MM월dd일" /></span>
+		</h1>
+	</div>
+	<!-- #hd -->
 	<div id="content">
-		<textarea name="contract" id="contract" cols="" rows="" readonly="readonly">${tos.tos_content }</textarea>
+		<textarea name="contract" id="contract" cols="" rows=""
+			readonly="readonly">${tos.tos_content }</textarea>
 	</div>
-    <form name="view_contract" method="post" action="join_terms.html">
-	<div id="ftr">
-		<span id="date_select"></span><a href="javascript:window.close();" class="btn">닫기</a>
-	</div>
-    </form>
+	<form name="view_contract" method="post" action="join_terms.html">
+		<div id="ftr">
+			<span id="date_select"></span><a href="javascript:window.close();"
+				class="btn">닫기</a>
+		</div>
+	</form>
 </body>
 </html>
