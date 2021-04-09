@@ -174,10 +174,46 @@ function drawChart2() {
 </script>
 <style>
 .excel{
-	 background-image: url(/resources/images/icons/excel.png);
-	 height: 40px;
-	 width: 120px;
-	 
+	background-image: url(/resources/images/icons/excel.png);
+	background-color: #ffffff;
+    background-color: rgba( 255, 255, 255, 0.5 );
+	height: 35px;
+	width: 100px;
+	padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    border-radius: 0.2rem;
+    align-content: right;
+    float: right;
+    margin-right: 5px;
+    border: 0;
+    outline: 0;
+}
+.pdf{
+	background-image: url(/resources/images/icons/pdf.png);
+	background-color: #ffffff;
+    background-color: rgba( 255, 255, 255, 0.5 );
+	height: 35px;
+	width: 100px;
+	padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    border-radius: 0.2rem;
+    align-content: right;
+    float: right;
+    margin-right: 5px;
+   	background-position: center;
+   	border: 0;
+    outline: 0;
+}
+#Seach{
+	padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    border-radius: 0.2rem;
+    color: #fff;
+    background-color: #ff3399;
+    border-color: #ff3399;
 }
 </style>
 <div class="container-fluid">
@@ -191,12 +227,6 @@ function drawChart2() {
                                         매출 통계
              </div>
           <div class="card-body">
-          	<div class="button">
-          		<input type="button" class="excel" id="downloadExcel" onclick="url();">
-          	</div>
-          	<div class="button">
-          		<input type="button" class="excel" id="downloadPdf" onclick="pdfurl();">
-          	</div>
           	<br>
           	<div class="date" style="position:right; left:600px; top:170px;">
           	<Strong>기간 설정</Strong>&nbsp;&nbsp;
@@ -206,27 +236,10 @@ function drawChart2() {
           		<input type="text" id="datepicker2" value="" placeholder="날짜를 입력하세요">
           		<input type="hidden" id= "date2" value="${strEndDate}" />
 			<input type="button" value="조회" id = "Seach">
+			<input type="button" class="excel" id="downloadExcel" onclick="url();">&nbsp;&nbsp;
+          	&nbsp;&nbsp;<input type="button" class="pdf" id="downloadPdf" onclick="pdfurl();">
 			</div>
 			<br>
-			<div class="product" >
-	<!-- 		<Strong>카테 고리</Strong>&nbsp;&nbsp;
-			<select name="product_1" id="product_1">
-				<option value="2017">2017</option>
-				<option value="2018">2018</option>
-				<option value="2019">2019</option>
-			</select>
-			<select name="product_2" id="product_2">
-				<option value="2017">2017</option>
-				<option value="2018">2018</option>
-				<option value="2019">2019</option>
-			</select>
-			<select name="product_3" id="product_3">
-				<option value="2017">2017</option>
-				<option value="2018">2018</option>
-				<option value="2019">2019</option>
-			</select>
-			 -->
-			</div>		 
 		
            <div id=linechart_material style="width: 900px; height: 400px; display:inline-block;"></div>
             <div id="linechart_category" style="width: 500px; height: 400px; display:inline-block; "></div>
