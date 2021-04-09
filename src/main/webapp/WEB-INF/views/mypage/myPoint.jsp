@@ -3,6 +3,8 @@
 <title>적립금 내역</title>
 
 <%@include file="/WEB-INF/views/include/header.jsp"%>
+<link href="resources/admin_css/pagination.css" rel="stylesheet" type="text/css">
+<link href="resources/admin_css/styles.css" rel="stylesheet" type="text/css">
 <script type="text/javascript">
 	function fn_prev(page, range, rangSize, searchKeyword) {
 		var page = ((range - 2) * rangeSize) + 1;

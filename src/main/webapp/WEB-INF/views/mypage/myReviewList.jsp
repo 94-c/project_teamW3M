@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%@include file="/WEB-INF/views/include/header.jsp"%>
+<link href="resources/admin_css/pagination.css" rel="stylesheet" type="text/css">
+<link href="resources/admin_css/styles.css" rel="stylesheet" type="text/css">
 <title>내 후기 보기</title>
 <script type="text/javascript">
 	function fn_prev(page, range, rangSize, searchKeyword) {
