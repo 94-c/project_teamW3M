@@ -37,13 +37,13 @@ public class UserInfoFindServiceImpl implements UserInfoFindService {
 
 	@Override // ID와 폰번호 입력받아서 이메일주소 리턴하는 메서드
 	public UserVO selectEmail(UserVO vo) {
-		String barNumber = addBarToNumber(vo.getUser_phone()); //010-1234-5678
+		String barNumber = addBarToNumber(vo.getUser_phone()); // 010-1234-5678
 		vo.setUser_phone(barNumber);
 		UserVO userInfo = findDAO.selectEmail(vo);
-		
+
 		if (userInfo != null) {
 			userInfo.setUser_password(getRamdomPassword(10)); // 임시비밀번호를 생성한 후 생성한 비번을 유저의 비밀번호로 설정해줌.
-			String starName = inputStarIntoName(userInfo.getUser_name()); //홍*동
+			String starName = inputStarIntoName(userInfo.getUser_name()); // 홍*동
 			updateTempPw(userInfo); // DB에 임시비밀번호 넣기(update 쿼리)
 			// 이메일 보내기
 			String from = "w3mmask@gmail.com";
@@ -114,22 +114,33 @@ public class UserInfoFindServiceImpl implements UserInfoFindService {
 		}
 		return sb.toString();
 	}
-	
-	@Override //이름 중간에 * 넣기(개인정보보호)
+
+	@Override // 이름 중간에 * 넣기(개인정보보호)
 	public String inputStarIntoName(String name) {
 		int nameSize = name.length();
 		String first = name.substring(0, 1);
-		String last = name.substring(nameSize-1);
+		String last = name.substring(nameSize - 1);
 		String star = "";
-		
-		switch (nameSize) { //이름글자수에 따라 *개수가 달라짐
-		case 3:	star = "*";	break;		
-		case 4:	star = "**"; break;
-		case 5:	star = "***"; break;
-		case 6: star = "****"; break;
-		default: star = "*"; last = ""; break; //이름이 2글자일때
+
+		switch (nameSize) { // 이름글자수에 따라 *개수가 달라짐
+		case 3:
+			star = "*";
+			break;
+		case 4:
+			star = "**";
+			break;
+		case 5:
+			star = "***";
+			break;
+		case 6:
+			star = "****";
+			break;
+		default:
+			star = "*";
+			last = "";
+			break; // 이름이 2글자일때
 		}
-		
+
 		String starName = first + star + last;
 		return starName;
 	}

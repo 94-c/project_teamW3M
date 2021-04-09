@@ -34,17 +34,17 @@ public class AdminLoginController {
 	// 관리자 로그인화면
 	@RequestMapping(value = "/loginForm.mdo", method = RequestMethod.GET)
 	public String adminLoginForm() {
-		System.out.println("=== 관리자 로그인 화면===");
+		System.out.println("=== 관리자 로그인 화면 ===");
 		return "page/login/login";
 	}
-	
+
 	// 관리자 로그인
 	@RequestMapping("/login.mdo")
 	public String adminLogin(AdminVO vo, HttpSession session) {
-		if(adminService.loginCheck(vo, session)){
+		if (adminService.loginCheck(vo, session)) {
 			System.out.println("관리자 로그인 성공!");
 			return "redirect:/index.mdo";
-		}else {
+		} else {
 			System.out.println("관리자 로그인 실패!");
 			return "page/login/login";
 		}
@@ -86,21 +86,23 @@ public class AdminLoginController {
 		StatisticsVO svo1 = statisticsService.todayJoin();
 		StatisticsVO svo2 = statisticsService.todayCencle();
 		StatisticsVO svo3 = statisticsService.todayProdAmount();
-		int money;
-		int join_count= svo1.getJoin_count();
-		int cencle_count = svo2.getProd_cencle();
-		int prod_count = svo3.getProd_count();
-		if(svo == null) {
+		int money = 0;
+		int join_count = 0;
+		int cencle_count = 0;
+		int prod_count = 0;
+		if (svo == null) {
 			money = 0;
-		}else {
-			money = svo.getTotal_sum(); //매출 하나도 없으면 svo에 null 들어가서 널포인터exception 뜨길래 일단 이렇게 해놨어!
+		} else {
+			money = svo.getTotal_sum(); // 매출 하나도 없으면 svo에 null 들어가서 널포인터exception 뜨길래 일단 이렇게 해놨어!
+			join_count = svo1.getJoin_count();
+			cencle_count = svo2.getProd_cencle();
+			prod_count = svo3.getProd_count();
 		}
 		model.addAttribute("todaySales", money);
 		model.addAttribute("todayJoin", join_count);
 		model.addAttribute("todayCencle", cencle_count);
 		model.addAttribute("todayProdAmount", prod_count);
-		
-		
+
 		return "admin_index";
 	}
 

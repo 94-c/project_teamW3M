@@ -15,33 +15,33 @@ import com.spring.w3m.join.user.vo.UserVO;
 public class UserInfoFindController {
 	@Autowired
 	private UserInfoFindService service;
-	
-	@RequestMapping("/findIDForm.do") //아이디찾기 폼으로 이동
+
+	@RequestMapping("/findIDForm.do") // 아이디찾기 폼으로 이동
 	public String findIdView() {
 		System.out.println("아이디찾기/비밀번호찾기 폼으로 이동...");
-		
-		return "login/findID";	
+
+		return "login/findID";
 	}
-	
-	@RequestMapping("/findID.do") //아이디찾기 결과페이지로 이동
+
+	@RequestMapping("/findID.do") // 아이디찾기 결과페이지로 이동
 	public String findIdByPhone(@ModelAttribute UserVO vo, Model model) {
 		System.out.println("아이디 찾기 결과창으로 이동...");
-		
+
 		List<String> encodedIdList = service.findIdByPhone(vo);
-		
+
 		model.addAttribute("userIdList", encodedIdList); // 모델객체에 보유중인 아이디리스트를 저장
-		System.out.println("검색된 아이디 개수 : "+ encodedIdList.size()+"개");
+		System.out.println("검색된 아이디 개수 : " + encodedIdList.size() + "개");
 		return "login/findID_result";
 	}
-	
-	@RequestMapping("/findPW.do") //비번찾기
+
+	@RequestMapping("/findPW.do") // 비번찾기
 	public String findPwByPhone(UserVO vo, Model model) {
 		UserVO userInfo = service.selectEmail(vo);
-		if(userInfo != null) {
-			model.addAttribute("findEmail","success");
-		}else {
-			model.addAttribute("findEmail","fail");
-		}		
+		if (userInfo != null) {
+			model.addAttribute("findEmail", "success");
+		} else {
+			model.addAttribute("findEmail", "fail");
+		}
 		return "login/findPW_result";
 	}
 }

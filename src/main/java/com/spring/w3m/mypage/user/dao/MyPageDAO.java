@@ -21,86 +21,96 @@ import com.spring.w3m.review.user.vo.ReviewVO;
 public class MyPageDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
-	
+
 	public int myPageListCnt(Search search) {
-		System.out.println("getInquiryListCnt() 실행");
 		return sqlSessionTemplate.selectOne("myPageDAO.myPageListcnt");
 	}
-	
-	public List<InquiryVO> myPageList(Search search){
-		System.out.println("getPageList() 실행");
+
+	public List<InquiryVO> myPageList(Search search) {
 		return sqlSessionTemplate.selectList("myPageDAO.myPageList", search);
 	}
-	
+
 	public UserVO myUser(UserVO vo) {
-		return sqlSessionTemplate.selectOne("myPageDAO.myUser" ,vo);
+		return sqlSessionTemplate.selectOne("myPageDAO.myUser", vo);
 	}
-	
+
 	public int myReviewListCnt(Search search) {
-		System.out.println("getInquiryListCnt() 실행");
 		return sqlSessionTemplate.selectOne("myPageDAO.myReviewListcnt");
 	}
-	
-	public List<ReviewVO> myReviewList(Search search){
-		System.out.println("getPageList() 실행");
+
+	public List<ReviewVO> myReviewList(Search search) {
 		return sqlSessionTemplate.selectList("myPageDAO.myReviewList", search);
 	}
-	
-	public List<OrderVO> myOrderList(String user_id){
-		System.out.println("myOrderList() 실행");
+
+	public List<OrderVO> myOrderList(String user_id) {
 		return sqlSessionTemplate.selectList("myPageDAO.myOrderList", user_id);
 	}
-	
-	public List<DeliveryVO> deliveryState(int order_seq){
-		System.out.println("deliveryState() 실행");
+
+	public List<DeliveryVO> deliveryState(int order_seq) {
 		return sqlSessionTemplate.selectList("myPageDAO.deliveryState", order_seq);
 	}
-	
+
 	public List<MyPageVO> recentList(MyPageVO vo) {
 		return sqlSessionTemplate.selectList("myPageDAO.recentList", vo);
 	}
-	
+
 	/* 주문상세 */
 	public OrderVO getReceiverInfo(OrderVO vo) {
 		return sqlSessionTemplate.selectOne("myPageDAO.receiverInfo", vo);
-	}	
+	}
+
 	public DeliveryVO getDeliveryInfo(DeliveryVO vo) {
 		return sqlSessionTemplate.selectOne("myPageDAO.deliveryInfo", vo);
-	}	
-	public List<OrderProductInfoVO> getOrderProductInfo(OrderVO vo){
+	}
+
+	public List<OrderProductInfoVO> getOrderProductInfo(OrderVO vo) {
 		return sqlSessionTemplate.selectList("myPageDAO.orderProductInfo", vo);
-	}	
+	}
+
 	public PayVO getPayInfo(PayVO pVO) {
 		return sqlSessionTemplate.selectOne("myPageDAO.payInfo", pVO);
 	}
+
 	public String getUserLevel(String userId) {
 		return sqlSessionTemplate.selectOne("myPageDAO.getUserLevel", userId);
 	}
-	
+
 	/* 주문 취소 */
 	public void deletePoint(PointVO vo) {
 		sqlSessionTemplate.delete("myPageDAO.deletePoint", vo);
 	}
+
 	public void changePayState(PayVO vo) {
 		sqlSessionTemplate.update("myPageDAO.changePayState", vo);
 	}
+
 	public void changeOrderState(OrderVO vo) {
 		sqlSessionTemplate.update("myPageDAO.changeOrderState", vo);
 	}
+
 	public void changeOrderProductState(OrderVO vo) {
 		sqlSessionTemplate.update("myPageDAO.changeOrderProductState", vo);
 	}
+
 	public void changeDeliveryState(DeliveryVO vo) {
 		sqlSessionTemplate.update("myPageDAO.changeDeliveryState", vo);
 	}
-	
+
 	/* 회원의 총 주문금액 */
 	public int getTotalOrderMoney(String userId) {
-
-		return sqlSessionTemplate.selectOne("myPageDAO.getTotalOrderMoney", userId);
+		if (sqlSessionTemplate.selectOne("myPageDAO.getTotalOrderMoney", userId) == null) {
+			return 0;
+		} else {
+			return sqlSessionTemplate.selectOne("myPageDAO.getTotalOrderMoney", userId);
+		}
 
 	}
+
 	public void changeUserLevel(UserVO vo) {
 		sqlSessionTemplate.update("myPageDAO.changeUserLevel", vo);
+	}
+
+	public List<OrderVO> recentOrderList(String user_id) {
+		return sqlSessionTemplate.selectList("myPageDAO.recentOrderList", user_id);
 	}
 }

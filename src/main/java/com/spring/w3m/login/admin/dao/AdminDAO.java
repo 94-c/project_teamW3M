@@ -41,7 +41,7 @@ public class AdminDAO {
 	public List<UserVO> getUserList() {
 		return sqlSessionTemplate.selectList("AdminDAO.getUserList");
 	}
-	
+
 	public List<UserVO> getUserList(String user_id) {
 		return sqlSessionTemplate.selectList("AdminDAO.getUserList");
 	}
@@ -67,35 +67,33 @@ public class AdminDAO {
 	}
 
 	public List<AdminVO> getPurchasePageList(Search search) {
-		System.out.println("getPurchasePageList() 실행");
 		return sqlSessionTemplate.selectList("AdminDAO.getPurchasePageList", search);
 	}
 
 	public List<AdminVO> getPurchaseSearchPagingList(Pagination pagination) {
-		System.out.println("getPurchaseSearchPagingList() 실행");
 		return sqlSessionTemplate.selectList("AdminDAO.getPurchaseSearchPagingList");
 	}
-	
+
 	// 회원 정보 가져오기
 	public UserVO getUser(String user_id) {
 		return sqlSessionTemplate.selectOne("AdminDAO.getUser", user_id);
 	}
-	
+
 	// 배송 정보 가져오기
 	public DeliveryVO getDelivery(int order_seq) {
 		return sqlSessionTemplate.selectOne("AdminDAO.getDelivery", order_seq);
-	}	
-	
+	}
+
 	// 상품 정보 가져오기
 	public List<OrderProductInfoVO> getOrderProductList(DeliveryVO vo) {
 		return sqlSessionTemplate.selectList("AdminDAO.getOrderProductList", vo);
 	}
-	
+
 	// 결제 정보 가져오기
 	public PayVO getPay(int order_seq) {
 		return sqlSessionTemplate.selectOne("AdminDAO.getPay", order_seq);
-	}	
-	
+	}
+
 	// 회원 등급 가져오기
 	public String getUserLevel(String user_id) {
 		return sqlSessionTemplate.selectOne("AdminDAO.getUserLevel", user_id);

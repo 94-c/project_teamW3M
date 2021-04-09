@@ -37,7 +37,6 @@ public class InquiryController {
 			@RequestParam(required = false, defaultValue = "1") int range,
 			@RequestParam(required = false, defaultValue = "title") String searchType,
 			@RequestParam(required = false) String keyword) throws PSQLException, IOException {
-		System.out.println("문의사항 리스트");
 
 		Search search = new Search();
 		search.setSearchType(searchType);
@@ -65,10 +64,8 @@ public class InquiryController {
 	public String inquiryWrite(InquiryVO vo, Model model, MultipartFile inq_mask) throws Exception {
 		InputStream ism = inq_mask.getInputStream();
 		String maskKey = inq_mask.getOriginalFilename();
-		System.out.println(maskKey);
 		String contentType = inq_mask.getContentType();
 		long contentLength = inq_mask.getSize();
-		System.out.println(maskKey);
 
 		if (maskKey == "") {
 			vo.setInq_image("파일없음");
@@ -86,18 +83,13 @@ public class InquiryController {
 	// 게시판 글 작성하기(화면)
 	@RequestMapping("/inquiry_write_view.do")
 	public String inquiryWriteView(ProductVO vo, Model model) {
-		System.out.println(vo.getProd_code());
 		model.addAttribute("product", inquiryService.getProduct(vo));
-		System.out.println("---");
-		System.out.println(vo.getProd_code());
 		return "/list/inquiry_write";
 	}
 
 	@RequestMapping("/inquiry_update_view.do")
 	public String inquiryUpdateView(InquiryVO vo, Model model) {
-		System.out.println(vo.toString() + "4번");
 		model.addAttribute("getInquiry", inquiryService.getInquiry(vo));
-		System.out.println(vo.toString() + "5번");
 		return "/list/inquiry_update";
 	}
 
@@ -111,7 +103,6 @@ public class InquiryController {
 	// 게시글 상세 보기
 	@RequestMapping("/inquiryContent.do")
 	public String getInquiry(InquiryVO vo, Model model) {
-		System.out.println("글 상세보기 처리");
 		model.addAttribute("inquiryVO", inquiryService.getInquiry(vo));
 
 		List<ReplyVO> replyList = replyService.getReplyList(vo.getInq_seq());
@@ -123,11 +114,8 @@ public class InquiryController {
 	// 게시글 수정 하기
 	@RequestMapping("/updateInquiry.do")
 	public String updateInquiry(InquiryVO vo, Model model) {
-		System.out.println(vo.toString() + "1번");
 		inquiryService.updateInquiry(vo);
-		System.out.println(vo.toString() + "2번");
 		model.addAttribute("inquiryList", inquiryService.getInquiryList(vo));
-		System.out.println(vo.toString() + "3번");
 		return "/list/inquiry";
 	}
 
@@ -145,7 +133,6 @@ public class InquiryController {
 			@RequestParam(required = false, defaultValue = "1") int range,
 			@RequestParam(required = false, defaultValue = "title") String searchType,
 			@RequestParam(required = false) String keyword) throws PSQLException, IOException {
-		System.out.println("문의사항 리스트");
 
 		Search search = new Search();
 		search.setSearchType(searchType);
@@ -208,8 +195,6 @@ public class InquiryController {
 	@RequestMapping("/updateReply.mdo")
 	public String updateReply(ReplyVO rvo) {
 		int seq = rvo.getInq_seq();
-		System.out.println(rvo.getRe_seq());
-		System.out.println(seq);
 		replyService.updateReply(rvo);
 		return "redirect:/admin_inquiry_content.mdo?inq_seq=" + seq;
 	}

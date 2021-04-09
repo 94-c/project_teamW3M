@@ -13,24 +13,23 @@ import com.spring.w3m.product.admin.vo.ProductVO;
 
 @Service
 public class InquiryServiceImpl implements InquiryService {
-	
+
 	@Autowired
 	private InquiryDAO inquiryDAO;
 
 	@Override
 	public void insertInquiry(InquiryVO vo) {
 		inquiryDAO.insertInquiry(vo);
-		
 	}
 
 	@Override
 	public void updateInquiry(InquiryVO vo) {
-		inquiryDAO.updateInquiry(vo);		
+		inquiryDAO.updateInquiry(vo);
 	}
 
 	@Override
 	public void deleteInquiry(InquiryVO vo) {
-		inquiryDAO.deleteInquiry(vo);		
+		inquiryDAO.deleteInquiry(vo);
 	}
 
 	@Override

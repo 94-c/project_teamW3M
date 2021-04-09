@@ -50,7 +50,15 @@
 	
 	<select id="myOrderList" resultType="OrderVO" parameterType="String">
 		SELECT o.order_seq, o.order_date, d.prod_title, p.pay_total_money as total_cost FROM pay as p, order_list as o , delivery as d
-		WHERE o.order_seq = p.order_seq AND o.order_seq = d.order_seq AND o.user_id = #{user_id} order by o.order_date desc
+		WHERE o.order_seq = p.order_seq AND o.order_seq = d.order_seq AND o.user_id = #{user_id}
+		order by o.order_date desc
+	</select>
+	
+	<select id="recentOrderList" resultType="OrderVO" parameterType="String">
+		SELECT o.order_seq, o.order_date, d.prod_title, p.pay_total_money as total_cost FROM pay as p, order_list as o , delivery as d
+		WHERE o.order_seq = p.order_seq AND o.order_seq = d.order_seq AND o.user_id = #{user_id}
+		order by o.order_date desc limit 5
+>>>>>>> a9b76b9c1242acbcd87ccd35541f1d2d957dac46
 	</select>
 	
 	<select id="deliveryState" resultType="DeliveryVO" parameterType="int">
@@ -80,7 +88,10 @@
 	
 <!-- 최신 게시글 보기 -->
 	<select resultType="com.spring.w3m.mypage.user.vo.MyPageVO" id="recentList">
-		select * from (select inq_seq, inq_title, inq_date, inq_email, '문의사항' as table_name from inquiry union select review_seq, review_title, review_date, review_email, '후기' as table_name from review) as u where u.inq_email=#{user_email} order by u.inq_date desc limit 5;
+		Select * 
+		from (select inq_seq, inq_title, inq_date, inq_email, '문의사항' as table_name from inquiry union select review_seq, review_title, review_date, review_email, '후기' as table_name from review) as u 
+		where u.inq_email=#{user_email} 
+		order by u.inq_date desc limit 5;
 	</select>
 	
 <!-- 주문취소 -->

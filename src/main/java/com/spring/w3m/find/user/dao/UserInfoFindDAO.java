@@ -12,17 +12,16 @@ import com.spring.w3m.join.user.vo.UserVO;
 public class UserInfoFindDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
-	
+
 	public List<String> findIdByPhone(UserVO vo) {
 		return sqlSessionTemplate.selectList("user.findIdByPhone", vo);
 	}
-	
+
 	public UserVO selectEmail(UserVO vo) {
 		return sqlSessionTemplate.selectOne("user.selectEmail", vo);
 	}
-	
+
 	public void updateTempPw(UserVO vo) {
 		sqlSessionTemplate.update("user.updateTempPw", vo);
-		System.out.println("DB에 배정받은 임시비밀번호 저장");
 	}
 }

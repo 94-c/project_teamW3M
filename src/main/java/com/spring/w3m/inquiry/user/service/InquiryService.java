@@ -29,6 +29,5 @@ public interface InquiryService {
 	int getSearchCnt(String searchKeyword);
 
 	List<InquiryVO> getSearchPagingList(Pagination pagination);
-
 	
 }

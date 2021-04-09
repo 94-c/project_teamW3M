@@ -51,10 +51,40 @@ $(document).ready(function(){
 				contentType:"application/json; charset=UTF-8",
 				success:function(data){
 					if(data == 1){
+						google.charts.load('current', {'packages':['line']});
+						google.charts.setOnLoadCallback(drawChart);
+							
+							var data = new google.visualization.DataTable();
+						    data.addColumn('string', 'Day');
+						    data.addColumn('number', '총 매출');
+						    data.addColumn('number', '적립금 사용 금액');
+						   
+						   
+						    data.addRows([
+						    	 <c:forEach var="dateSeach" items="${dateSeach}" varStatus="state">
+						        ['<fmt:formatDate value="${dateSeach.date_total}" pattern="yyyy-MM-dd"/>',
+						        	${dateSeach.total_sum},
+						        	${dateSeach.total_use_point}],
+							  	</c:forEach>
+						        
+						      ]);
+
+						    var options = {
+						            chart: {
+						              title: '일간 매출',
+						              
+						            },
+						            width: 800,
+						            height: 300
+						          };
+
+						    var chart = new google.charts.Line(document.getElementById('linechart_material'));
+
+						    chart.draw(data, google.charts.Line.convertOptions(options));
 						console.log("성공");
 						
-						location.reload();
-						//drawChart();
+					//	location.reload();
+
 					}else{
 						console.log("실패");
 					}
@@ -65,37 +95,8 @@ $(document).ready(function(){
 			});
 		});
 	});
-google.charts.load('current', {'packages':['line']});
-google.charts.setOnLoadCallback(drawChart);
 function drawChart() {
-	
-	var data = new google.visualization.DataTable();
-    data.addColumn('string', 'Day');
-    data.addColumn('number', '총 매출');
-    data.addColumn('number', '적립금 사용 금액');
-   
-   
-    data.addRows([
-    	 <c:forEach var="dateSeach" items="${dateSeach}" varStatus="state">
-        ['<fmt:formatDate value="${dateSeach.date_total}" pattern="yyyy-MM-dd"/>',
-        	${dateSeach.total_sum},
-        	${dateSeach.total_use_point}],
-	  	</c:forEach>
-        
-      ]);
 
-    var options = {
-            chart: {
-              title: '일간 매출',
-              
-            },
-            width: 800,
-            height: 300
-          };
-
-    var chart = new google.charts.Line(document.getElementById('linechart_material'));
-
-    chart.draw(data, google.charts.Line.convertOptions(options));
   }
       
 

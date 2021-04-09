@@ -18,19 +18,19 @@ public interface AdminService {
 
 	// 회원 목록 리스트
 	List<UserVO> getUserList();
-	
+
 	// 회원 정보 가져오기
 	UserVO getUser(String user_id);
 
 	// 배송 정보 가져오기
 	DeliveryVO getDelivery(int order_seq);
-	
+
 	// 상품 정보 가져오기
 	List<OrderProductInfoVO> getOrderProductList(DeliveryVO vo);
-	
+
 	// 결제 정보 가져오기
 	PayVO getPay(int order_seq);
-	
+
 	// 회원 등급 가져오기
 	String getUserLevel(String user_id);
 
@@ -49,6 +49,6 @@ public interface AdminService {
 
 	void logout(HttpSession session);
 
-	void updateUserPause(UserVO vo);	
-	
+	void updateUserPause(UserVO vo);
+
 }

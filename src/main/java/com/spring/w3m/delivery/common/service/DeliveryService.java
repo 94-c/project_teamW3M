@@ -10,9 +10,9 @@ import com.spring.w3m.product.admin.vo.OrderProductInfoVO;
 
 public interface DeliveryService {
 
-	public List<DeliveryVO> getDeliveryList(DeliveryVO vo);
+	List<DeliveryVO> getDeliveryList(DeliveryVO vo);
 	
-	public void updateDeliveryState(DeliveryVO vo);
+	void updateDeliveryState(DeliveryVO vo);
 	
 	int getDeliveryListCnt(Search search);
 	

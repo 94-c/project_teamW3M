@@ -34,9 +34,6 @@ public class HomeDAO {
 		return sqlSessionTemplate.selectOne("HomeDAO.getInquiryListCnt");
 	}
 
-	public void countUpdate(ProductVO vo) {
-	}
-
 	public TosVO getTos(TosVO vo) {
 		return sqlSessionTemplate.selectOne("HomeDAO.getTos", vo);
 	}

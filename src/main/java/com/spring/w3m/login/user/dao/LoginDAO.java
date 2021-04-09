@@ -10,16 +10,16 @@ import com.spring.w3m.join.user.vo.UserVO;
 public class LoginDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
-	
+
 	public boolean loginCheck(UserVO vo) {
 		String name = sqlSessionTemplate.selectOne("user.loginCheck", vo);
 		return (name == null) ? false : true;
 	}
-	
+
 	public UserVO viewUser(UserVO vo) {
 		return sqlSessionTemplate.selectOne("user.viewUser", vo);
 	}
-	
+
 	public String pwCheck(UserVO vo) {
 		return sqlSessionTemplate.selectOne("user.pwCheck", vo);
 	}

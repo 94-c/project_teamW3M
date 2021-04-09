@@ -43,14 +43,27 @@ public class MyPageController {
 	@RequestMapping("/mypage.do")
 	public String myPage(MyPageVO vo, Model model, @SessionAttribute("userVO") UserVO uvo) { // 마이페이지 진입
 		System.out.println("마이페이지 진입");
+		int totalOrderPage = myPageService.getTotalOrderMoney(uvo.getUser_id());
+		if (totalOrderPage >= 700000) {
+			uvo.setUser_level("Dia");
+		} else if (totalOrderPage >= 500000) {
+			uvo.setUser_level("Platinum");
+		} else if (totalOrderPage >= 300000) {
+			uvo.setUser_level("Gold");
+		} else if (totalOrderPage >= 100000) {
+			uvo.setUser_level("Silver");
+		} else {
+			uvo.setUser_level("Bronze");
+		}
+		myPageService.changeUserLevel(uvo); // 등급 업데이트
 		model.addAttribute("myRecent", myPageService.recentList(vo));
-		List<OrderVO> myOrderList = myPageService.myOrderList(uvo.getUser_id());
+		List<OrderVO> myOrderList = myPageService.recentOrderList(uvo.getUser_id());
 		model.addAttribute("myOrderList", myOrderList);
-		
-		//총 주문금액 찍기
+
+		// 총 주문금액 찍기
 		int totalOrderMoney = myPageService.getTotalOrderMoney(uvo.getUser_id());
 		model.addAttribute("totalOrderMoney", totalOrderMoney);
-		
+
 		return "mypage/myPage";
 	}
 
@@ -60,7 +73,6 @@ public class MyPageController {
 			@RequestParam(required = false, defaultValue = "1") int range,
 			@RequestParam(required = false, defaultValue = "title") String searchType,
 			@RequestParam(required = false) String keyword) throws PSQLException, IOException {
-		System.out.println("문의사항 리스트");
 
 		Search search = new Search();
 		search.setSearchType(searchType);
@@ -90,7 +102,6 @@ public class MyPageController {
 			@RequestParam(required = false, defaultValue = "1") int range,
 			@RequestParam(required = false, defaultValue = "title") String searchType,
 			@RequestParam(required = false) String keyword) throws PSQLException, IOException {
-		System.out.println("후기 리스트");
 
 		Search search = new Search();
 		search.setSearchType(searchType);
@@ -115,12 +126,10 @@ public class MyPageController {
 	}
 
 	@RequestMapping("/getPointList.do")
-	public String getPointList(Model model, UserVO vo1, PointVO vo,
-			@RequestParam(required = false, defaultValue = "1") int page,
+	public String getPointList(Model model, UserVO vo1, @RequestParam(required = false, defaultValue = "1") int page,
 			@RequestParam(required = false, defaultValue = "1") int range,
 			@RequestParam(required = false, defaultValue = "title") String searchType,
 			@RequestParam(required = false) String keyword) throws PSQLException, IOException {
-		System.out.println("후기 리스트");
 
 		Search search = new Search();
 		search.setSearchType(searchType);
@@ -146,7 +155,6 @@ public class MyPageController {
 	// 주문내역
 	@RequestMapping("myOrderList.do")
 	public String getOrderList(Model model, @SessionAttribute("userVO") UserVO vo) {
-
 		List<OrderVO> myOrderList = myPageService.myOrderList(vo.getUser_id());
 		model.addAttribute("myOrderList", myOrderList);
 		return "mypage/myOrder";
@@ -154,9 +162,12 @@ public class MyPageController {
 
 	// 배송상세
 	@RequestMapping("deliveryState.do")
-	public String deliveryState(Model model, @SessionAttribute("userVO") UserVO vo, DeliveryVO vo1) {
-		System.out.println(vo1.getOrder_seq());
+	public String deliveryState(Model model, DeliveryVO vo1, @SessionAttribute("userVO") UserVO uvo) {
+		// 배송내역
 		List<DeliveryVO> deliveryState = myPageService.deliveryState(vo1.getOrder_seq());
+		// 총 주문금액 찍기
+		int totalOrderMoney = myPageService.getTotalOrderMoney(uvo.getUser_id());
+		model.addAttribute("totalOrderMoney", totalOrderMoney);
 		model.addAttribute("deliveryState", deliveryState);
 		return "mypage/myDeliveryDetail";
 	}
@@ -190,6 +201,7 @@ public class MyPageController {
 
 	@RequestMapping("orderCancel.do")
 	public String cancelOrder(Model model, DeliveryVO dVO, PointVO pVO, PayVO payVO, OrderVO oVO) {
+		System.out.println("구매취소 버튼 클릭!");
 		myPageService.deletePoint(pVO); // 포인트 회수
 		myPageService.changePayState(payVO); // 결제정보 변경
 		myPageService.changeOrderState(oVO); // 주문상태 변경
@@ -199,28 +211,26 @@ public class MyPageController {
 		deliveryService.insertDelivery_state(deliveryService.getDeliveryCont(dVO)); // 배송상세내역에 넣어줌
 		return "redirect:myOrderList.do";
 	}
-	
+
 	@RequestMapping("orderCommit.do")
-	public String commitOrder(@SessionAttribute("userVO") UserVO uVO, DeliveryVO dVO, OrderProductInfoVO opiVO, HttpSession session) {
-		
+	public String commitOrder(@SessionAttribute("userVO") UserVO uVO, DeliveryVO dVO, OrderProductInfoVO opiVO,
+			HttpSession session) {
+		System.out.println("구매확정 버튼 클릭!");
+
 		deliveryService.updateDeliveryState(dVO);
-		int orderSeq = dVO.getOrder_seq(); //주문번호
-		
-		//구매 확정시 적립금 지급
+		int orderSeq = dVO.getOrder_seq(); // 주문번호
+		// 구매 확정시 적립금 지급
 		pointService.orderSuccessPoint(dVO);
 		pointService.update_point(dVO.getUser_id());
 		// order_prod 상태 구매확정으로
-		int a = deliveryService.Prod_state_change(orderSeq);
-		System.out.println("prod상태 변경" + a);
+		deliveryService.Prod_state_change(orderSeq);
 		// order_list 상태 구매확정으로
-		int aa = deliveryService.order_state_change(orderSeq);
-		System.out.println("오더 리스트상태 변경" + aa);
+		deliveryService.order_state_change(orderSeq);
 		// pay 상태 구매확정으로
-		int aaa = deliveryService.pay_state_change(orderSeq);
-		System.out.println("페이 상태 변경" + aaa);
+		deliveryService.pay_state_change(orderSeq);
 		// 판매량 구입한 수량만큼 더해주기 (feat.김요셉)
 		deliveryService.getOrderInfo(orderSeq, opiVO);
-		
+
 		int totalOrderPage = myPageService.getTotalOrderMoney(uVO.getUser_id());
 		if (totalOrderPage >= 700000) {
 			uVO.setUser_level("Dia");
@@ -233,13 +243,12 @@ public class MyPageController {
 		} else {
 			uVO.setUser_level("Bronze");
 		}
-		myPageService.changeUserLevel(uVO);
-		session.setAttribute("userLevel", uVO.getUser_level());
-		
-		//유저정보 동기화
+		myPageService.changeUserLevel(uVO); // 등급 업데이트
+
+		// 유저정보 동기화
 		UserVO user = userLoginService.viewUser(uVO);
 		session.setAttribute("userVO", user);
-		
+
 		return "redirect:/mypage.do";
 	}
 

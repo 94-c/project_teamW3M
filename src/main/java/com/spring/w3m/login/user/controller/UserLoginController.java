@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.spring.w3m.cart.user.service.CartService;
 import com.spring.w3m.cart.user.vo.CartVO;
 import com.spring.w3m.join.user.vo.UserVO;
 import com.spring.w3m.login.user.service.UserLoginService;
@@ -17,8 +16,6 @@ import com.spring.w3m.login.user.service.UserLoginService;
 public class UserLoginController {
 	@Autowired
 	private UserLoginService userLoginService;
-	@Autowired
-	private CartService cartService;
 
 	@RequestMapping("/login.do") // 로그인 유효성 검증
 	public ModelAndView userloginCheck(@ModelAttribute UserVO vo, CartVO cartvo, HttpSession session) {
@@ -27,8 +24,6 @@ public class UserLoginController {
 		ModelAndView mav = new ModelAndView();
 
 		if (result == 1) { // 로그인성공
-			session.setAttribute("cart", cartService.cart_Cnt(cartvo));
-						
 			mav.setViewName("login/loginSuccess");
 			mav.addObject("msg", "success");
 			if (session.getAttribute("returnURL") != null) {

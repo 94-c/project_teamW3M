@@ -48,13 +48,11 @@ public class LoginController {
 		String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
 		// https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=sE***************&
 		// redirect_uri=http%3A%2F%2F211.63.89.90%3A8090%2Flogin_project%2Fcallback&state=e68c269c-5ba9-4c31-85da-54c16c658125
-		System.out.println("네이버:" + naverAuthUrl);
 		// 네이버
 		if (vo.getReturnURL() != null) {
 			if (vo.getReturnURL().equals("cart")) { // 비 로그인으로 장바구니 진입 시 로그인페이지 진입 후 성공하면 장바구니로 바로이동
 				session.setAttribute("returnURL", "cart");
 			}
-
 		}
 		model.addAttribute("url", naverAuthUrl);
 		return "login/login";
@@ -66,7 +64,6 @@ public class LoginController {
 		String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
 		// https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=sE***************&
 		// redirect_uri=http%3A%2F%2F211.63.89.90%3A8090%2Flogin_project%2Fcallback&state=e68c269c-5ba9-4c31-85da-54c16c658125
-		System.out.println("네이버:" + naverAuthUrl);
 		// 네이버
 		model.addAttribute("url", naverAuthUrl);
 		return "join/selectJoin";
@@ -76,7 +73,6 @@ public class LoginController {
 	@RequestMapping(value = "/callback.do", method = { RequestMethod.GET, RequestMethod.POST })
 	public String callback(Model model, @RequestParam String code, @RequestParam String state, CartVO cartVO,
 			HttpSession session) throws IOException, ParseException {
-		System.out.println("여기는 callback");
 		OAuth2AccessToken oauthToken;
 		oauthToken = naverLoginBO.getAccessToken(session, code, state);
 		// 1. 로그인 사용자 정보를 읽어온다.
@@ -93,22 +89,13 @@ public class LoginController {
 		// Top레벨 단계 _response 파싱
 		JSONObject response_obj = (JSONObject) jsonObj.get("response");
 
-		System.out.println((String) response_obj.get("name"));
-		System.out.println((String) response_obj.get("id"));
-		System.out.println((String) response_obj.get("email"));
-		System.out.println((String) response_obj.get("gender"));
-		System.out.println((String) response_obj.get("nickname"));
-		System.out.println((String) response_obj.get("birthday"));
-		System.out.println((String) response_obj.get("birthyear"));
 		UserVO vo = new UserVO();
 		vo.setUser_id((String) response_obj.get("id"));
 		model.addAttribute("result", apiResult);
 		// 가입되어있는지 확인
 		int check = userService.SNSidCheck(vo.getUser_id());
 		if (check > 0) {
-			System.out.println("naver 아이디 존재합니다.");
 			UserVO user = userService.getUser(vo);
-			System.out.println(user.toString());
 			if (user.getUser_state().equals("정지")) {
 				session.setAttribute("msg", "suspended");
 				return "login/login";
@@ -137,7 +124,6 @@ public class LoginController {
 			String fullBirthday = (String) response_obj.get("birthyear") + "-" + (String) response_obj.get("birthday");
 			vo.setUser_gender(gender);
 			vo.setUser_birthday(fullBirthday);
-			System.out.println("naver 아이디 존재하지 않습니다.");
 			session.setAttribute("userVO", vo); // 세션 생성
 			return "join/insertSNS";
 		}
@@ -153,8 +139,6 @@ public class LoginController {
 		// 여러 json객체 중 access_token을 가져온다
 		accessToken = jsonToken.get("access_token");
 		session.setAttribute("token", jsonToken);
-
-		System.out.println("access_token : " + accessToken);
 
 		// access_token을 통해 사용자 정보 요청
 		JsonNode userInfo = KakaoUserInfo.getKakaoUserInfo(accessToken);
@@ -176,16 +160,10 @@ public class LoginController {
 			gender = "남자";
 		} else
 			gender = "여자";
-		System.out.println("id : " + id);
-		System.out.println("name : " + name);
-		System.out.println("email : " + email);
-		System.out.println("gender : " + gender);
 
 		int check = userService.SNSidCheck(vo.getUser_id());
 		if (check > 0) {
-			System.out.println("kakao 아이디 존재합니다.");
 			UserVO user = userService.getUser(vo);
-			System.out.println(user.toString());
 			if (user.getUser_state().equals("정지")) {
 				session.setAttribute("msg", "suspended");
 				return "login/login";
@@ -204,7 +182,6 @@ public class LoginController {
 			vo.setUser_email(email);
 			vo.setUser_gender(gender);
 			vo.setUser_sns_kakao("true");
-			System.out.println("kakao 아이디 존재하지 않습니다.");
 			session.setAttribute("userVO", vo); // 세션 생성
 			return "join/insertSNSkakao";
 		}
