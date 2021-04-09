@@ -2,8 +2,6 @@
 
 <title>회원로그인</title>
 <%@include file="/WEB-INF/views/include/header.jsp"%>
-<link href="resources/admin_css/pagination.css" rel="stylesheet" type="text/css">
-<link href="resources/admin_css/styles.css" rel="stylesheet" type="text/css">
 
 <!-- 로그인 -->
 <div id="contentWrapper">
