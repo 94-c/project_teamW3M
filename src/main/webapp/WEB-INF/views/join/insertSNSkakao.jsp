@@ -14,28 +14,15 @@ var nameJ = RegExp(/^[가-힣]{2,6}$/);
 var phoneJ= RegExp(/^([0-9]{4})$/);
 //이메일
 var emailJ = RegExp(/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i);
-
 var pw_ck1 = -1;
 var pw_ck2 = -1;
 var birth_ck = -1;
 var adress_ck = -1;
 var phone_ck = -1;
 
-
 	$(document).ready(function() {
-		
 		$("#insert_success_kakao").click(function() { // 회원가입 버튼
 
-			
-			console.log("pw - " + pw_ck1 );
-			console.log("repw - " + pw_ck2 );
-			console.log("생일 - " + birth_ck );
-			console.log("주소 - " + adress_ck );
-			console.log("폰 - " + phone_ck );
-			console.log("약관 - " + $("#user_privacy_kakao").val() );
-			console.log("개인정보 - " + $("#user_yaok_kakao").val() );
-			
-		
 			if(!$("#user_yaok_kakao").prop("checked")){
 				alert("약관 동의 확인해 주세요.")
 			}else if(!$("#user_privacy_kakao").prop("checked")){
@@ -47,20 +34,14 @@ var phone_ck = -1;
 			}else if(phone_ck != 0){
 				alert("휴대폰을 확인해 주세요.")
 			}else{
-
 				  $("#user_insert_kakao").submit();
 			}
-					
 		});
-	
 	});	
 	
 	$(document).ready(function(){ 
 
 		$("#user_birthday3_kakao").blur(function() { // 생일 확인
-			console.log("년 - " + $("#user_birthday1_kakao").val());
-			console.log("월 - " + $("#user_birthday2_kakao").val());
-			console.log("일 - " + $("#user_birthday3_kakao").val());
 			if($("#user_birthday1_kakao").val() == ""){
 				birth_ck = 1;
 			}else if ($("#user_birthday2_kakao").val() == ""){
@@ -70,8 +51,6 @@ var phone_ck = -1;
 			}else {
 				birth_ck = 0;
 			}
-				
-			
 		});
 	});
 		
@@ -87,7 +66,6 @@ var phone_ck = -1;
 				phone_ck = 1;
 				return;
 			}
-			
 			if($("#user_phone2_kakao").val() == ""){
 				alert("휴대폰 번호를 입력해 주세요.")
 				phone_ck = 1;
@@ -101,8 +79,6 @@ var phone_ck = -1;
 			
 		var allPhone2 = $("#user_phone1_kakao").val() +"-"+ $("#user_phone2_kakao").val() +"-"+ $("#user_phone3_kakao").val();
 		var allPhone = $("#user_phone1_kakao").val() + $("#user_phone2_kakao").val() + $("#user_phone3_kakao").val();
-		console.log("phone - "+allPhone);
-		console.log("phone2 - "+allPhone2);
 		
 		$.ajax({
 			url: "/check_sms.do",
@@ -136,30 +112,19 @@ var phone_ck = -1;
 								phone_ck = 1;
 								}	
 							})
-					}
-						})
-				
+						}
+					})
 				}
 			}
-		
 		});		
-			
-			
-		});
-	
-		});
-
-
-	
+	});
+});
 		$("#every_agree_kakao").click(function() {
 			if($("#every_agree_kakao").prop("checked")){
 				$("input[type=checkbox]").prop("checked",true);
-				
 			}else{
 				$("input[type=checkbox]").prop("checked",false);
-				
 			}
-			
 		});
 		
 		$("input[type=checkbox]").click(function(){
@@ -170,9 +135,6 @@ var phone_ck = -1;
 			}
 		});
 		
-
-	
-	
 		function DaumPostcode_kakao() {
 			new daum.Postcode({
 	             oncomplete: function(data) {
@@ -204,7 +166,6 @@ var phone_ck = -1;
 	                $("#user_address1_kakao").val(fullRoadAddr);
 	                $("#user_address2_kakao").focus();
 	                adress_ck = 0;
-	
 	            }
 	        }).open();
 	    }

@@ -1,8 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="/WEB-INF/views/admin/page/include/admin_header.jsp"%>
 
 <title>상품등록정보 상세보기</title>
+
 <main>
 	<div class="container-fluid">
 		<h1 class="mt-4">상품 관리 페이지</h1>

@@ -3,12 +3,10 @@
 
 <title>개인 정보 수정</title>
 <%@include file="/WEB-INF/views/include/header.jsp"%>
-
-
-<link href="resources/css/insertMember.css" rel="stylesheet"
-	type="text/css">
+<link href="resources/css/insertMember.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="resources/js/insertmember.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+
 <script>
 	var name_ck = -1;
 	var id_ck = -1;
@@ -21,15 +19,6 @@
 	$(document).ready(function() {
 
 		$("#update_success").click(function() { // 회원가입 버튼
-
-			console.log("이름 - " + name_ck);
-			console.log("아이디 - " + id_ck);
-			console.log("pw - " + pw_ck1);
-			console.log("repw - " + pw_ck2);
-			console.log("생일 - " + birth_ck);
-			console.log("주소 - " + adress_ck);
-			console.log("폰 - " + phone_ck);
-			console.log("이메일 - " + email_ck);
 
 			if (name_ck == 1) {
 				alert("이름을 확인해 주세요.")
@@ -48,13 +37,10 @@
 			} else if (email_ck == 1) {
 				alert("이메일을 확인해 주세요.")
 			} else {
-				alert("회원 정보 수정이 완료되었습니다.\n다시 로그인 해주십시오.")
-				
+				alert("회원 정보 수정이 완료되었습니다.\n다시 로그인 해주십시오.");				
 				$("#user_update").submit();
 			}
-
 		});
-
 	});
 	$(document).ready(function(){ 
 		$("#user_password1_uadate").blur(function() { // 비밀번호  확인
@@ -107,35 +93,25 @@
 		$("#user_birthday1").val(sp[0]);
 		$("#user_birthday2").val(sp[1]);
 		$("#user_birthday3").val(sp[2]);
-		console.log(sp);
 		if (gender == "남자") {
 			$("#user_gender").prop("checked", true);
-			console.log("남자이시네영");
 		} else {
 			$("#user_gender").prop("checked", false);
-			console.log("여자이시네영");
 		}
-		console.log(gender);
 		$("#user_phone1").val(sp2[0]);
 		$("#user_phone2").val(sp2[1]);
 		$("#user_phone3").val(sp2[2]);
-		console.log(phone);
 		$("#user_email1").val(sp3[0]);
 		$("#user_email2").val(sp3[1]);
-		console.log(email);
 		if (mmail == "true") {
 			$("#user_marketing_mail").prop("checked", true);
-			console.log("mail 승락");
 		}else{
 			$("#user_marketing_mail").prop("checked", false);
-			console.log("mail ㄴㄴㄴ");
 		} 
 		if (msms == "true") {
 			$("#user_marketing_sms").prop("checked", true);
-			console.log("sms 승락");
 		}else{
 			$("#user_marketing_sms").prop("checked", false);
-			console.log("sms ㄴㄴㄴ");
 		} 
 	});
 </script>
@@ -361,11 +337,8 @@
 										</td>
 									</tr>
 									<tr>
-
 										<th>
-
 											<div class="head-cell">마케팅 수신동의</div>
-
 										</th>
 										<td>
 										<input type="hidden" value="${userVO.user_marketing_mail}" id = user_marketing_m>
@@ -377,9 +350,7 @@
 												name="user_marketing_sms" id="user_marketing_sms"
 												class="input-cbox every_agree ad_every_agree" checked>
 												SMS</label></td>
-
 									</tr>
-									
 								</tbody>
 							</table>
 						</div>
@@ -389,9 +360,7 @@
 								class="cbtn form">취소하기</a>
 						</div>
 					</form>
-
 				</div>
-
 				<!-- use_contract -->
 			</div>
 		</div>

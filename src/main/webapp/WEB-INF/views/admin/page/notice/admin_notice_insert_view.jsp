@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="/WEB-INF/views/admin/page/include/admin_header.jsp"%>
 <title>공지사항 등록</title>
 <script type="text/javascript" src="resources/js/notice.js?v=7" ></script>
@@ -10,13 +9,13 @@
 		</ol>
 	</div>
 </main>
-<form role="form" method="post" name="writeform" action="admin_notice_insert.mdo" onsubmit="return emptyCheck()" >
+<form role="form" method="post" name="writeform"
+	action="admin_notice_insert.mdo" onsubmit="return emptyCheck()">
 	<div class="card-body">
 		<div class="form-group">
 			<label for="checked">중요 <input type="checkbox" id="nt_imp"
 				name="nt_imp" value="1" />
-			</label>
-			<select id="nt_color" name="nt_color">
+			</label> <select id="nt_color" name="nt_color">
 				<optgroup label="색상을 선택하세요">
 					<option value="#000000">Black</option>
 					<option value="#FF0000">Red</option>
@@ -44,13 +43,13 @@
 
 		<div class="form-group">
 			<label for="exampleFormControlTextarea1">내용</label>
-			<pre><textarea class="form-control" id="nt_content" name="nt_content" rows="10"></textarea></pre>
+			<pre>
+				<textarea class="form-control" id="nt_content" name="nt_content" rows="10"></textarea>
+			</pre>
 		</div>
 
 		<button type="submit" class="btn btn-info">등록하기</button>
-		<button type="button" class="btn btn-secondary"
-			onclick="location.href = 'admin_notice_list.mdo'">목록으로</button>
-
+		<button type="button" class="btn btn-secondary" onclick="location.href = 'admin_notice_list.mdo'">목록으로</button>
 	</div>
 </form>
 

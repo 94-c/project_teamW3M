@@ -61,7 +61,6 @@ table, td, th {
 		url = url + "?searchType=" + $('#searchType').val();
 		url = url + "&keyword=" + $('#keyword').val();
 		location.href = url;
-		console.log(url);
 	});
 </script>
 <c:url var="getProductList" value="getProductList.mdo">
@@ -85,8 +84,7 @@ table, td, th {
 
 			<div class="card-body">
 				<div class="table-responsive">
-					<table class="table table-bordered" id="dataTable" width="100%"
-						cellspacing="0">
+					<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 						<thead>
 							<tr>
 								<th class="text-center">NO.</th>

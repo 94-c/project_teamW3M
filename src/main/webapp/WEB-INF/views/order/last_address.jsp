@@ -1,6 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
@@ -10,26 +9,46 @@
 <link rel="shortcut icon" href="resources/images/icons/favicon.ico" type="image/x-icon">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
-
-
 function click(index){ 	
 	var lastadd = 'lastAddress_seq'+index;
 	
 	if($('#'+lastadd).prop("checked",true)){		
 			var seq = $('#'+lastadd).val();
-			console.log(seq);
-			console.log(index);
-			console.log(lastadd);
-			console.log("체크댐");
-
-		}else{
-			console.log("체크안댐");
-		}
-	
+		}else{}
 }
 
+function setParentText(){
+    opener.document.getElementById("receiver_name").value = document.getElementById("ad_receiver_name").value
+    opener.document.getElementById("receiver_zipcode").value = document.getElementById("ad_receiver_zipcode").value
+    opener.document.getElementById("receiver_address1").value = document.getElementById("ad_receiver_address1").value
+    opener.document.getElementById("receiver_address2").value = document.getElementById("ad_receiver_address2").value
+    opener.document.getElementById("receiver_phone1").value = document.getElementById("ad_receiver_phone1").value
+    opener.document.getElementById("receiver_phone2").value = document.getElementById("ad_receiver_phone2").value
+    window.close();
+}
+
+$(document).ready(function(){ 
+	$("#delete").click(function(){
+		var last_address_seq = $("#last_address_seq").val();
+		
+		var alldata ={
+				"last_address_seq" :last_address_seq
+		}
+		
+		$.ajax({
+			url : "delete_last_address.do",
+			type : "POST",
+			data : JSON.stringify(alldata),
+			dataType : "json",
+			contentType: "application/json; charset=UTF-8",
+			success  : function(data){
+				location.reload();
+				}
+		});
+	});
+});
 </script>
-<style text="text/css">
+<style type="text/css">
 input[type="text"], input[type="date"], input[type="tel"], input[type="number"], input[type="email"], input[type="password"], select {
     height: 35px;
     border: 1px solid #bbb;
@@ -224,12 +243,12 @@ body #comment_password .contents .form-wrap2 p:last-child a {display:block; back
 .btn_Black {width:100%; height:35px; line-height:35px; background-color:#393939; color:#fff; text-align:center; display:block; border:1px solid #393939; box-sizing: border-box; vertical-align: middle;}
 </style>
 </head>
+
 <body  style="width: 700px; height: 500px">
     <div class="address-pop">
         <div class="tab-area">
                     <div class="title-box">최근 배송지</div>
                 </div>
-
             <div class="tab-cnt" >
 			<form name="form_past_list" method="post">
 				<ul class="adress check-type" >
@@ -242,8 +261,6 @@ body #comment_password .contents .form-wrap2 p:last-child a {display:block; back
 						<input type="hidden" id="ad_receiver_address2" value="${lastAddress.receiver_address2 }">
 						<input type="hidden" id="ad_receiver_phone1" value="${lastAddress.receiver_phone1 }">
 						<input type="hidden" id="ad_receiver_phone2" value="${lastAddress.receiver_phone2 }">
-                       
-                  
 							<div class="text" >
 								<p>${state.count}</p>
 								<p class="name" id="ad_receiver_name">${lastAddress.receiver_name }</p>
@@ -269,38 +286,4 @@ body #comment_password .contents .form-wrap2 p:last-child a {display:block; back
 		</div>
     </div>
 </body>
-<script type="text/javascript">
-        function setParentText(){
-             opener.document.getElementById("receiver_name").value = document.getElementById("ad_receiver_name").value
-             opener.document.getElementById("receiver_zipcode").value = document.getElementById("ad_receiver_zipcode").value
-             opener.document.getElementById("receiver_address1").value = document.getElementById("ad_receiver_address1").value
-             opener.document.getElementById("receiver_address2").value = document.getElementById("ad_receiver_address2").value
-             opener.document.getElementById("receiver_phone1").value = document.getElementById("ad_receiver_phone1").value
-             opener.document.getElementById("receiver_phone2").value = document.getElementById("ad_receiver_phone2").value
-             window.close();
-        }
-        
-        $(document).ready(function(){ 
-        	$("#delete").click(function(){
-        		var last_address_seq = $("#last_address_seq").val();
-        		
-        		var alldata ={
-        				"last_address_seq" :last_address_seq
-        		}
-        		
-        		$.ajax({
-        			url : "delete_last_address.do",
-        			type : "POST",
-        			data : JSON.stringify(alldata),
-        			dataType : "json",
-        			contentType: "application/json; charset=UTF-8",
-        			success  : function(data){
-         				location.reload();
-        				}
-        			
-        		});
-        	
-        	});
-        });
-</script>
 </html>

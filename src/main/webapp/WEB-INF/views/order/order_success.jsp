@@ -1,10 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <title>주문 내역</title>
 
 <%@include file="/WEB-INF/views/include/header.jsp"%>
-<link href="resources/css/menu.css" rel="stylesheet" type="text/css">
 <link href="resources/css/orderSuccess.css" rel="stylesheet" type="text/css">
 <script type="text/javascript" src="resources/js/myPage.js"></script>
 
@@ -218,6 +216,5 @@
 	</div>
 	<!-- #contentWrap -->
 </div>
-
 
 <%@include file="/WEB-INF/views/include/footer.jsp"%>

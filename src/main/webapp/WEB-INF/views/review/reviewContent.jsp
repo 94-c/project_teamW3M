@@ -1,23 +1,51 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="java.util.List"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@include file="/WEB-INF/views/include/header.jsp"%>
 
 <title>상품후기 - ${reviewVO.review_title }</title>
-<%@include file="/WEB-INF/views/include/header.jsp"%>
-<link type="text/css" rel="stylesheet" href="resources/css/menu.css">
-<link type="text/css" rel="stylesheet" href="resources/css/soo.css">
-<link type="text/css" rel="stylesheet" href="resources/css/notification.css">
+
 <script type="text/javascript">
 function submitForm()
 {
 	var updateReply = document.comment;
-	
 	updateReply.submit();
-
+}
+function deleteCheck()
+{
+	var p1 = document.getElementById('pass1').value;
+	var p2 = document.getElementById('pass2').value;
+	
+	if(p1==""){
+		alert("비밀번호를 입력해주세요.")
+		document.getElementById('pass1').focus();
+		return;
+		}
+	else if(p1!=p2){
+		alert("비밀번호가 일치하지 않습니다.");
+		return false;
+	}else{
+		location.href='./deleteReview.do?review_seq=${reviewVO.review_seq}'
 	}
+}
+
+function updateCheck()
+{
+	var p1 = document.getElementById('pass1').value;
+	var p2 = document.getElementById('pass2').value;
+	
+	if(p1==""){
+		alert("비밀번호를 입력해주세요.")
+		document.getElementById('pass1').focus();
+		return;
+		}
+	else if(p1!=p2){
+		alert("비밀번호가 일치하지 않습니다.");
+		return false;
+	}else{
+		location.href='./review_update_view.do?review_seq=${reviewVO.review_seq}'
+	}
+}
 </script>
+
 <div id="contentWrapper">
 	<div id="contentWrap">
 		<div id="content">
@@ -180,44 +208,5 @@ function submitForm()
 	</div>
 	<!-- #contentWrap -->
 </div>
-<script type="text/javascript">
-function deleteCheck()
-{
-	var p1 = document.getElementById('pass1').value;
-	var p2 = document.getElementById('pass2').value;
-	
-	if(p1==""){
-		alert("비밀번호를 입력해주세요.")
-		document.getElementById('pass1').focus();
-		return;
-		}
-	else if(p1!=p2){
-		alert("비밀번호가 일치하지 않습니다.");
-		return false;
-	}else{
-		location.href='./deleteReview.do?review_seq=${reviewVO.review_seq}'
 
-	}
-}
-
-function updateCheck()
-{
-	var p1 = document.getElementById('pass1').value;
-	var p2 = document.getElementById('pass2').value;
-	
-	if(p1==""){
-		alert("비밀번호를 입력해주세요.")
-		document.getElementById('pass1').focus();
-		return;
-		}
-	else if(p1!=p2){
-		alert("비밀번호가 일치하지 않습니다.");
-		return false;
-	}else{
-		location.href='./review_update_view.do?review_seq=${reviewVO.review_seq}'
-
-	}
-
-}
-</script>
 <%@include file="/WEB-INF/views/include/footer.jsp"%>

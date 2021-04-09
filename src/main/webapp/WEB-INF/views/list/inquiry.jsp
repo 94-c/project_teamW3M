@@ -1,15 +1,6 @@
-<%@page import="java.util.List"%>
-<%@page import="com.spring.w3m.inquiry.user.dao.InquiryDAO"%>
-<%@page import="com.spring.w3m.inquiry.user.vo.InquiryVO"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="/WEB-INF/views/include/header.jsp"%>
-<link href="resources/admin_css/pagination.css" rel="stylesheet" type="text/css">
-<link href="resources/admin_css/styles.css" rel="stylesheet" type="text/css">
-<link href="resources/css/notification.css" rel="stylesheet" type="text/css">
+
 <script type="text/javascript">
 	//이전 버튼 이벤트
 	function fn_prev(page, range, rangSize, searchKeyword) {
@@ -48,10 +39,8 @@
 		url = url + "?searchType=" + $('#searchType').val();
 		url = url + "&keyword=" + $('#keyword').val();
 		location.href = url;
-		console.log(url);
 	});
 </script>
-
 
 <c:url var="getInquirylist" value="inquiry.do">
 	<c:param name="page" value="${pagination.page }" />
@@ -64,7 +53,6 @@
 
 <div id="contentWrapper">
 	<div id="contentWrap">
-
 		<div id="content">
 			<div id="bbsData">
 				<div class="page-body">
@@ -73,11 +61,8 @@
 					<form role="form" method="post" action="inquiry_write_view.do">
 						<div class="bbs-tit">
 							<h3>문의게시판</h3>
-							
 								<button type="submit" class="CSSbuttonBlack" id="submitbutton">글쓰기</button>
-							
 						</div>
-
 						<!-- 게시판 목록 -->
 						<div class="bbs-table-list">
 
@@ -174,11 +159,11 @@
 							<!-- search{e} -->
 						</div>
 					</form>
-
 				</div>
 				<!-- //게시판 목록 -->
 			</div>
 		</div>
 	</div>
 </div>
+
 <%@include file="/WEB-INF/views/include/footer.jsp"%>

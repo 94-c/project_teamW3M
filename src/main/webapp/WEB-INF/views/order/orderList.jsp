@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="/WEB-INF/views/include/header.jsp"%>
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
@@ -10,7 +9,6 @@
 <script>
 //숫자만 
 var numberJ= RegExp(/^[0-9]/g);
-
 var agreeC =-1;
 var payC =-1;
 var nameC =-1;
@@ -20,47 +18,37 @@ var addressC=-1;
 var memoC=-1;
 
 function last_address(){
-	console.log("최근 배송지");
 	 var openWin;
-	    
-    
          // window.name = "부모창 이름"; 
          window.name = "orderList";
          // window.open("open할 window", "자식창 이름", "팝업창 옵션");
          openWin = window.open("last_address.do",
                  "last_address", "width=570, height=600");   
- 
-     
-    
-
 }
+
 function setChildText(){
     openWin.document.getElementById("cInput").value = document.getElementById("pInput").value;
 }
+
 function addrclick(){
 	$("#receiver_zipcode").val($("#user_zipcode_or").val());
 	$("#receiver_address1").val($("#user_address1_or").val());
 	$("#receiver_address2").val($("#user_address2_or").val());
-	
-	
 }
+
 $(document).ready(function(){ 	
 	$("#same").click(function(){
 	if($("#same").prop("checked")){
-			console.log("체크댐");
 			$("#receiver_name").val($("#user_name").val());
 			$("#receiver_phone1").val($("#user_phone").val());
 			$("#receiver_phone2").val($("#user_phone").val());
 		}else{
-			console.log("체크댐");
 			$("#receiver_name").val("");
 			$("#receiver_phone1").val("");
 			$("#receiver_phone2").val("");
 		}
 	});
 });
-	
-
 
 function OrderDaumPostcode() {
 	new daum.Postcode({
@@ -94,11 +82,8 @@ function OrderDaumPostcode() {
             $("#receiver_address2").val("");
             $("#receiver_address2").focus();
             adress_ck = 0;
-
         }
     }).open();
-	
-	
 }
 var agreeC =-1;
 var payC =-1;
@@ -109,15 +94,12 @@ var addressC=-1;
 var memoC=-1;
 $(document).ready(function(){ 	
 $('#charge_kakao').click(function () {
-	console.log("주문하기 클릭");
 	if(!$("#pay_agree").prop("checked")){
 		alert("주문동의 확인 해주세요.");
 		return;
-		
 	}else if(!$("#radio_paymethod").prop("checked")){
 		alert("결제방법을 선택 해주세요.");
 		return;
-		
 	}
 	else if($("#receiver_name").val()==""){
 		alert("이름을 확인 해주세요.");
@@ -169,15 +151,6 @@ $('#charge_kakao').click(function () {
     
     var prod_title = $("#prod_title").val();
     var prod_title_count = $("#prod_title").val();
-    console.log(prod_title);
-    console.log(prod_title_count);
-    
-    
-    console.log("총머니:"+pay_total_money);
-    console.log("머니:"+pay_total_price);
-    console.log("총포인트:"+pay_total_point);
-    console.log("총배달비:"+pay_Shipping_cost);
-    console.log("사용 포인트:"+pay_use_point);
     
     var user_name =$("#user_name_or").val();
     var user_email=$("#user_email_or").val();
@@ -185,12 +158,6 @@ $('#charge_kakao').click(function () {
     var user_phone=$("#user_phone_or").val();
     var user_address=$("#user_address1_or").val()+$("#user_address2_or").val();
     var user_zipcode=$("#user_zipcode_or").val();
-    console.log("머니:"+pay_total_money);
-    console.log("이름:"+user_name);
-    console.log("이멜:"+user_email);
-    console.log("상품명:"+order_name);
-    console.log("폰:"+user_phone);
-    console.log("주소:"+user_address + user_zipcode);
 	var alldata={
 			"pay_total_money" : pay_total_money,
 			"pay_total_price" : pay_total_price,
@@ -212,7 +179,6 @@ $('#charge_kakao').click(function () {
         buyer_addr: user_address,
         buyer_postcode: user_zipcode
     }, function (rsp) {
-        console.log(rsp);
         if (rsp.success) {
             var msg = '결제가 완료되었습니다.';
             msg += '고유ID : ' + rsp.imp_uid+'\n';
@@ -236,14 +202,12 @@ $('#charge_kakao').click(function () {
             alert(msg);
             document.location.href="#"; //alert창 확인 후 이동할 url 설정
         }
-        
     });
 });
 });
 var pointcheck= -1;
 $(document).ready(function(){ 
 	$('#AllPoint').blur(function () {
-		console.log("헤헤헤"+pointcheck);
 		if(pointcheck==-1){
 			alert("적립금 확인해주세요.");
 			$("#AllPoint").val(0);
@@ -268,42 +232,24 @@ $(document).ready(function(){
 	inputPoint = parseInt(inputPoint);
 
 		if(point > inputPoint){
-			console.log("1입력한 point ="+point);
-			console.log("범위를 초과함");
 			//alert("보유하신 적립금보다 많은 적립금을 입력하셨습니다.\n적립금확인을 해주세요.");
 			$("#AllPoint").val("");
 			return;
 		}else{
-			
 			$("#pay_use_point").text(point);
 			var money = $("#pay_total_money_or").val();
 			var IntMoney = money.replace(",","");
 			$("#pay_total_money").text(number(IntMoney));
 			$("#pay_total_money2").text(number(IntMoney));
 			var total = parseInt(IntMoney) - parseInt(point);
-			
-			
-			console.log("totalMoney:"+totalMoney);
-			console.log("use_point:"+use_point);
-			console.log("IntMoney:"+IntMoney);
-			console.log("point:"+point);
-			
-			
 			$("#pay_total_money").text(number(total));
 			$("#pay_total_money2").text(number(total));
-			console.log("total:"+total);
-			
 			return;
-			
 		}
-
-	
-    
 	});
 });
 
 function AllPoint(){
-	console.log("모두 사용 확인");
 	if(pointcheck==-1){
 		alert("적립금 확인해주세요.");
 		$("#AllPoint").val(0);
@@ -320,7 +266,6 @@ function AllPoint(){
 		alert("적립금은 상품금액의 50%만 사용 가능합니다.");
 		$("#AllPoint").val(use_point);
 		$("#pay_use_point").text(use_point);
-	
 	}
 	point = $("#AllPoint").val();
 	$("#AllPoint").val(point);
@@ -331,18 +276,12 @@ function AllPoint(){
 	$("#pay_total_money").text(number(IntMoney));
 	$("#pay_total_money2").text(number(IntMoney));
 	var total = parseInt(IntMoney) - parseInt(point);
-	console.log(IntMoney);
-	console.log(point);
 	$("#pay_total_money").text(number(total));
 	$("#pay_total_money2").text(number(total));
-
-	console.log(total);
-	
 }
 
 function clickPoint(){
 	
-	console.log("포인트 확인");
 	$.ajax({
 		async : true,
 		url : "/check_point.do",
@@ -350,29 +289,21 @@ function clickPoint(){
 		dataType:"json",
 		contentType:"application/json; charset=UTF-8",
 		success:function(aa){
-			console.log(aa);
 			$("#checkPoint").val(aa);
 			pointcheck =0;
 		}
 	});
-	
 }
 
 function number(n){
-	
 	return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }
 
-
 $(document).ready(function(){ 
 $("#radio_paymethod").click(function(){
-	console.log("카카오페이 체크됨");
 	$("#payinfo_KAKAOPAY").css("display","inline-block");
 });
-	
 });
-	
-
 function clean() {
 	$("#same").prop("checked", false);
     $('#receiver_name').val('');
@@ -382,14 +313,12 @@ function clean() {
     $('#receiver_address1').val('');
     $('#receiver_address2').val('');
 }
-
-
 </script>
+
 <link href="resources/css/order.css" rel="stylesheet" type="text/css">
 <link href="resources/css/orderList.css" rel="stylesheet" type="text/css">
 
 <div id="contentWrap">
-
 	<div id="content">
 		<div id="order">
 			<dl class="loc-navi">
@@ -458,9 +387,6 @@ function clean() {
 								</tbody>
 							</table>
 						</div>
-						
-
-
 						<h3>주문자정보</h3>
 						<div class="tbl-order">
 							<table>
@@ -544,22 +470,16 @@ function clean() {
 										<th scope="row">
 											<div class="txt-l">배송지 선택</div>
 										</th>
-										
 										<td colspan="3">
 										<input type ="hidden" id="user_name_or" value ="${userVO.user_name}">
 										<input type ="hidden" id="user_email_or" value ="${userVO.user_email}">
 										<input type ="hidden" id="user_phone_or" value ="${userVO.user_phone}">
 										<input type ="hidden" id="user_orderName_or" value ="상품">
-										
-										
 										<input type ="hidden" id="user_zipcode_or" value ="${userVO.user_zipcode}">
 										<input type ="hidden" id="user_address1_or" value ="${userVO.user_address1}">
 										<input type ="hidden" id="user_address2_or" value ="${userVO.user_address2}">
 										<input type="hidden" id="pay_total_money_or" value="${payVO.pay_total_money}">
 										<input type="hidden" id="pay_total_price_or" value="${payVO.pay_total_price}">
-	
-										
-										
 										
 											<input type="radio" value="H" form="order_form" 
 											name="place" id="place" onclick="addrclick()">자택&nbsp;&nbsp; &nbsp;&nbsp;
@@ -600,7 +520,6 @@ function clean() {
 							</table>
 						</div>
 						<!-- .tbl-order -->
-
 
 						<h3>주문상품 할인적용</h3>
 						<div class="tbl-pay">

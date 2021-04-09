@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"   pageEncoding="UTF-8"%>
 <title>문의 게시판</title>
 <%@include file="/WEB-INF/views/include/header.jsp"%>
-<link type="text/css" rel="stylesheet" href="resources/css/main.css">
-<link type="text/css" rel="stylesheet" href="resources/css/border.css">
-<link type="text/css" rel="stylesheet" href="resources/css/soo.css">
 <div id="contentWrapper">
 	<div id="contentWrap">
 		<div id="content">
@@ -48,7 +45,7 @@
 											<th><div>내용</div></th>
 											<td colspan="3" class="text_content">
 												<div>
-													<textarea id="MS_text_content" name="inq_content" wrap="soft" onfocus="clear_content()" class="MS_input_txt" style="font-family: 굴림체;">${getInquiry.inq_content}</textarea>
+												<pre><textarea id="MS_text_content" name="inq_content" wrap="soft" onfocus="clear_content()" class="MS_input_txt" style="font-family: 굴림체;">${getInquiry.inq_content}</textarea></pre>
 													<input type="hidden" name="mobile_content_type" value="">
 												</div>
 											</td>

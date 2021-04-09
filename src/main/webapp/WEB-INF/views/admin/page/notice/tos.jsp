@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@include file="/WEB-INF/views/admin/page/include/admin_header.jsp"%>
 <title>공지사항</title>
+
 <main>
 	<div class="container-fluid">
 		<h1 class="mt-4">이용약관</h1>
@@ -20,7 +21,7 @@
 						</tr>
 						<tr>
 							<td>
-								<pre><div class="data-bd-cont">${tos.tos_content }</div></pre>	
+								<pre><div class="data-bd-cont">${tos.tos_content }</div></pre>
 							</td>
 						</tr>
 					</tbody>
@@ -29,6 +30,7 @@
 					onclick="location.href = 'tos_update_view.mdo?tos_writer=${tos.tos_writer}' ">수정하기</button>
 			</div>
 		</ol>
-		</div>
+	</div>
 </main>
+
 <%@include file="/WEB-INF/views/admin/page/include/admin_footer.jsp"%>
