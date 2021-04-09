@@ -27,9 +27,6 @@ public class NoticeDAO {
 	}
 
 	public List<NoticeVO> getUserNoticeSearchPagingList(Pagination pagination) {
-		System.out.println("getNoticeSearchPagingList() 실행");
-		System.out.println("dao List : " + pagination.getSearchType());
-		System.out.println("dao List : " + pagination.getKeyword());
 		return sqlSessionTemplate.selectList("NoticeDAO.getNoticeSearchPagingList", pagination);
 	}
 
@@ -39,25 +36,18 @@ public class NoticeDAO {
 	}
 
 	public int getNoticeSearchCnt(String keyword) {
-		System.out.println("getNoticeSearchCnt() 실행");
-		System.out.println("dao Cnt : " + keyword);
 		return sqlSessionTemplate.selectOne("NoticeDAO.getNoticeSearchCnt");
 	}
 
 	public int getNoticeListCnt(Search search) {
-		System.out.println("getNoticeListCnt() 실행");
 		return sqlSessionTemplate.selectOne("NoticeDAO.getNoticeListCnt");
 	}
 
 	public List<NoticeVO> getNoticePageList(Search search) {
-		System.out.println("getNoticePageList() 실행");
 		return sqlSessionTemplate.selectList("NoticeDAO.getNoticePageList", search);
 	}
 
 	public List<NoticeVO> getNoticeSearchPagingList(Pagination pagination) {
-		System.out.println("getNoticeSearchPagingList() 실행");
-		System.out.println("dao List : " + pagination.getSearchType());
-		System.out.println("dao List : " + pagination.getKeyword());
 		return sqlSessionTemplate.selectList("NoticeDAO.getNoticeSearchPagingList", pagination);
 	}
 

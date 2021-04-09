@@ -18,36 +18,34 @@ import com.spring.w3m.paging.common.Search;
 @Controller
 public class PurchaseController {
 
-	
 	@Autowired
 	private PurchaseService purchaseService;
-	
+
 	@RequestMapping("/purchase.mdo")
-	public String adminPurchase(PurchaseVO vo, Model model, @RequestParam(required = false, defaultValue = "1") int page,
-															@RequestParam(required = false, defaultValue = "1") int range,
-					   									 @RequestParam(required = false, defaultValue = "title") String searchType,
-					   									 @RequestParam(required = false) String keyword) throws PSQLException, IOException {
-				
-		System.out.println("주문목록 리스트");
-		
+	public String adminPurchase(PurchaseVO vo, Model model,
+			@RequestParam(required = false, defaultValue = "1") int page,
+			@RequestParam(required = false, defaultValue = "1") int range,
+			@RequestParam(required = false, defaultValue = "title") String searchType,
+			@RequestParam(required = false) String keyword) throws PSQLException, IOException {
+
 		Search search = new Search();
 		search.setSearchType(searchType);
 		search.setKeyword(keyword);
-		
+
 		int cnt = purchaseService.getPurchaseListCnt(search);
-		
+
 		search.pageInfo(page, range, cnt);
-		
+
 		Pagination pagination = new Pagination();
 		pagination.pageInfo(page, range, cnt);
-		
+
 		List<PurchaseVO> purchaseList = purchaseService.getPageList(search);
 
 		model.addAttribute("pagination", search);
 		model.addAttribute("purchaseList", purchaseList);
 		model.addAttribute("cnt", cnt);
-		
+
 		return "page/order/admin_order";
 	}
-	
+
 }

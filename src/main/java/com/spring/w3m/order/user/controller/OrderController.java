@@ -35,7 +35,6 @@ public class OrderController {
 
 	@RequestMapping("/send_order_go.do")
 	public String OrderList(@SessionAttribute("userVO") UserVO vo, HttpSession session) { // 주문
-		System.out.println("주문 리스트 -" + vo.getUser_id() + "등급 :" + vo.getUser_level());
 		PayVO payVO = new PayVO();
 		int pay_total_price = 0;
 		int pay_total_point = 0;
@@ -51,8 +50,6 @@ public class OrderController {
 			pay_total_point = pay_total_point + orderList.getProd_total_point();
 
 		}
-		System.out.println("총 가격 : " + pay_total_price);
-		System.out.println("총 적립금 : " + pay_total_point);
 
 		double level = 0;
 		// Bronze 1%, silver 3%, gold 5%, Platinum 7%, dia 9%
@@ -94,18 +91,14 @@ public class OrderController {
 		session.setAttribute("payVO", payVO);
 
 		return "order/orderList";
-
 	}
 
 	@RequestMapping("/send_order.do")
 	@ResponseBody
-	public int order_Pord_List(@RequestBody ProductVO productvo, @SessionAttribute("userVO") UserVO vo,
-			HttpSession session) { // 제품들 주문 리스트에 등록
-		System.out.println("주문 리스트 제품 등록");
+	public int order_Pord_List(@RequestBody ProductVO productvo, @SessionAttribute("userVO") UserVO vo) { // 제품들 주문 리스트에
+																											// 등록
 
 		orderService.order_drop_List(vo.getUser_id());
-		System.out.println(
-				"코드 : " + productvo.getProd_code() + "/수량: " + productvo.getProd_amount() + "/이름 :" + vo.getUser_id());
 
 		OrderVO orderVO = new OrderVO();
 		orderVO.setUser_id(vo.getUser_id());
@@ -113,67 +106,39 @@ public class OrderController {
 		orderVO.setProd_amount(productvo.getProd_amount());
 
 		int aa = orderService.order_inser_prod(orderVO);
-		System.out.println(aa);
 
 		return aa;
-
 	}
 
-	// @RequestMapping(value = "/request_pay.do",method =
-	// {RequestMethod.POST,RequestMethod.GET})
 	@RequestMapping("/request_pay.do") // Bronze 1%, silver 3%, gold 5%, Platinum 7%, dia 9%
 	@ResponseBody
 	public void order_request_pay(@RequestBody PayVO payVO, @SessionAttribute("userVO") UserVO vo, HttpSession session,
 			@SessionAttribute("OrderVO") List<OrderVO> ordervo) { // 제품들 주문 리스트에 등록
-		System.out.println("결제 성고옹");
-		System.out.println("금액: " + payVO.getPay_total_money());
 
 		// 제품 결제시 수량 -
 		for (OrderVO Orvo : ordervo) {
-			int am = Orvo.getProd_amount();
-			String code = Orvo.getProd_code();
-
-			System.out.println(am);
-			System.out.println(code);
 			orderService.prod_decrease(Orvo);
-
 		}
 
-		System.out.println(payVO.toString());
-		int a = orderService.insert_order_list(vo.getUser_id());
-		System.out.println(a + "- 0이면 실패");
+		orderService.insert_order_list(vo.getUser_id());
 
 		int orVO = orderService.orderNum(vo.getUser_id());
 
 		payVO.setOrder_seq(orVO);
 
-		int aaa = orderService.insert_pay(payVO);
-		System.out.println(aaa + "- 0이면 실패");
-		System.out.println("페이" + payVO.toString());
+		orderService.insert_pay(payVO);
 		session.setAttribute("PayVO", payVO);
 	}
 
 	@RequestMapping("order_Success.do")
 	public String order_Success(@SessionAttribute("userVO") UserVO vo, HttpSession session, PayVO payvo,
 			OrderVO ordervo) {
-		System.out.println("userVO =" + vo.toString());
-		System.out.println("PayVO =" + payvo.toString());
-		System.out.println("OrderVO =" + ordervo.toString());
 		String receiver_name_1 = ordervo.getReceiver_name();
 		String receiver_phone1_1 = ordervo.getReceiver_phone1();
 		String receiver_phone2_1 = ordervo.getReceiver_phone2();
 		String receiver_zipcode_1 = ordervo.getReceiver_zipcode();
 		String receiver_address1_1 = ordervo.getReceiver_address1();
 		String receiver_address2_1 = ordervo.getReceiver_address2();
-		String receiver_memo_1 = ordervo.getReceiver_memo();
-
-		System.out.println("이름 : " + receiver_name_1);
-		System.out.println("폰1 : " + receiver_phone1_1);
-		System.out.println("폰2 : " + receiver_phone2_1);
-		System.out.println("우편번호 : " + receiver_zipcode_1);
-		System.out.println("주소 : " + receiver_address1_1);
-		System.out.println("상세 : " + receiver_address2_1);
-		System.out.println("메모 : " + receiver_memo_1);
 
 		int orVO = orderService.orderNum(vo.getUser_id());
 
@@ -189,29 +154,21 @@ public class OrderController {
 			total_title = title[0] + " 외 " + String.valueOf(bbb) + "건";
 		}
 
-		System.out.println(total_title);
-		System.out.println(ordervo.toString());
 		ordervo.setProd_title(total_title);
 
-		int a = orderService.insert_delivery(ordervo);
-		System.out.println("111" + ordervo.getOrder_seq());
+		orderService.insert_delivery(ordervo);
 		DeliveryVO vvs = deliveryservice.getDelivery(ordervo);
 
 		vvs.setOrder_seq(ordervo.getOrder_seq());
 		deliveryservice.insertDelivery_state(vvs);
-		System.out.println(vvs.toString());
 
-		System.out.println(a + "- 0이면 실패");
 		// order_prod 테이블 - 주문상태를 결제완료 업데이트 + 주문번호 입력
-		int aa = orderService.update_order_prod(ordervo);
-		System.out.println(aa + "- 0이면 실패");
+		orderService.update_order_prod(ordervo);
 		// 장바구니에서 결제완료 시 장바구니 비우기
 		String location = ordervo.getLocation_before();
 		String location_before[] = location.split(",");
-		System.out.println(location_before[0]);
 		if (location_before[0].equals("장바구니")) {
-			int aaaa = orderService.delete_cart(vo.getUser_id());
-			System.out.println(aaaa + "- 0이면 실패");
+			orderService.delete_cart(vo.getUser_id());
 		}
 		int use_point = payvo.getPay_use_point();
 		if (use_point != 0) {
@@ -248,13 +205,10 @@ public class OrderController {
 		ad.setReceiver_phone1(receiver_phone1_1);
 		ad.setReceiver_phone2(receiver_phone2_1);
 
-		int b = orderService.insert_Last_Address(ad);
-		System.out.println(b + "- 0이면 실패");
+		orderService.insert_Last_Address(ad);
 
 		// order_list 테이블 - 주문생태를 배송전 업데이트
-		int aaa = orderService.update_order_list_status(vo.getUser_id());
-		System.out.println(aaa + "- 0이면 실패");
-		System.out.println("페이" + payvo.toString());
+		orderService.update_order_list_status(vo.getUser_id());
 		UserVO user = userService.getUser(vo);
 		session.setAttribute("userVO", user);
 		session.setAttribute("OrderVO1", ordervo);
@@ -265,22 +219,17 @@ public class OrderController {
 	@RequestMapping("last_address.do")
 	public String last_address(@SessionAttribute("userVO") UserVO vo, HttpSession session) {
 		List<LastAddress> la = orderService.get_Last_Address(vo.getUser_id());
-		for (LastAddress laa : la) {
-			System.out.println(laa.toString());
-		}
+
 		session.setAttribute("LastAddress", la);
 		return "order/last_address";
-
 	}
 
 	@RequestMapping("/check_point.do")
 	@ResponseBody
 	public int order_request_pay(@SessionAttribute("userVO") UserVO vo) { // 제품들 주문 리스트에 등록
-		System.out.println("포인트 확인 - " + vo.getUser_id());
 		int point = orderService.Check_Point(vo.getUser_id());
 
 		return point;
-
 	}
 
 	@RequestMapping("/delete_last_address.do")

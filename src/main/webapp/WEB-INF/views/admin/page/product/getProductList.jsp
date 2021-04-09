@@ -128,7 +128,7 @@ table, td, th {
 									</c:if>
 									<td class="text-center">
 										<form action="addStock.mdo">
-											<input type="number" name="addStock" style="width: 70px" id="addStock">개
+											<input type="number" name="addStock" style="width: 70px" id="addStock" value="0">개
 											<input type="hidden" name="prod_seq" value="${prod.prod_seq}">
 											<input type="hidden" name="prod_amount" value="${prod.prod_amount}">
 											<input type="submit" value="추가">

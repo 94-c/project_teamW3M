@@ -1,34 +1,8 @@
 package com.spring.w3m.notice.admin.controller;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.hssf.util.HSSFColor.HSSFColorPredefined;
-import org.apache.poi.ss.SpreadsheetVersion;
-import org.apache.poi.ss.formula.udf.UDFFinder;
-import org.apache.poi.ss.usermodel.BorderStyle;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.CellStyle;
-import org.apache.poi.ss.usermodel.CreationHelper;
-import org.apache.poi.ss.usermodel.DataFormat;
-import org.apache.poi.ss.usermodel.FillPatternType;
-import org.apache.poi.ss.usermodel.Font;
-import org.apache.poi.ss.usermodel.HorizontalAlignment;
-import org.apache.poi.ss.usermodel.Name;
-import org.apache.poi.ss.usermodel.PictureData;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.SheetVisibility;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.ss.usermodel.Row.MissingCellPolicy;
-import org.apache.poi.ss.util.CellRangeAddress;
 import org.postgresql.util.PSQLException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -41,7 +15,6 @@ import com.spring.w3m.notice.admin.vo.NoticeVO;
 import com.spring.w3m.notice.admin.vo.TosVO;
 import com.spring.w3m.paging.common.Pagination;
 import com.spring.w3m.paging.common.Search;
-
 
 @Controller
 public class NoticeController {
@@ -84,7 +57,7 @@ public class NoticeController {
 	}
 
 	@RequestMapping("/search.do")
-	public String getUserNoticeSearchPagingList(Model model, NoticeVO vo,
+	public String getUserNoticeSearchPagingList(Model model,
 			@RequestParam(required = false, defaultValue = "1") int page,
 			@RequestParam(required = false, defaultValue = "1") int range,
 			@RequestParam(required = false, defaultValue = "title") String searchType,
@@ -92,19 +65,12 @@ public class NoticeController {
 
 		Pagination pagination = new Pagination();
 		int cnt = noticeService.getNoticeSearchCnt(keyword);
-		System.out.println("cont Cnt : " + cnt);
-		System.out.println(page);
-		System.out.println(range);
-		System.out.println(keyword);
 		pagination.pageInfo(page, range, cnt, keyword);
 
 		pagination.setKeyword(keyword);
 		pagination.setSearchType(searchType);
 
 		List<NoticeVO> pageList = noticeService.getUserNoticeSearchPagingList(pagination);
-
-		System.out.println("cont List " + pagination.getSearchType());
-		System.out.println("cont List " + pagination.getKeyword());
 
 		model.addAttribute("pagination", pagination);
 		model.addAttribute("NoticeList", pageList);
@@ -136,8 +102,6 @@ public class NoticeController {
 		model.addAttribute("NoticeList", pageList);
 		model.addAttribute("cnt", cnt);
 
-		System.out.println(search.getKeyword());
-
 		return "page/notice/admin_notice_list";
 	}
 
@@ -150,19 +114,12 @@ public class NoticeController {
 
 		Pagination pagination = new Pagination();
 		int cnt = noticeService.getNoticeSearchCnt(keyword);
-		System.out.println("cont Cnt : " + cnt);
-		System.out.println(page);
-		System.out.println(range);
-		System.out.println(keyword);
 		pagination.pageInfo(page, range, cnt, keyword);
 
 		pagination.setKeyword(keyword);
 		pagination.setSearchType(searchType);
 
 		List<NoticeVO> pageList = noticeService.getNoticeSearchPagingList(pagination);
-
-		System.out.println("cont List " + pagination.getSearchType());
-		System.out.println("cont List " + pagination.getKeyword());
 
 		model.addAttribute("pagination", pagination);
 		model.addAttribute("NoticeList", pageList);

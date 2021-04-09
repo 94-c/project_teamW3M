@@ -26,11 +26,10 @@ public class DeliveryController {
 	private PointService pointService;
 
 	@RequestMapping("/getDeliveryList.mdo")
-	public String delivery(DeliveryVO vo, Model model, @RequestParam(required = false, defaultValue = "1") int page,
+	public String delivery(Model model, @RequestParam(required = false, defaultValue = "1") int page,
 			@RequestParam(required = false, defaultValue = "1") int range,
 			@RequestParam(required = false, defaultValue = "title") String searchType,
 			@RequestParam(required = false) String keyword) throws PSQLException, IOException {
-		System.out.println("배송정보 목록으로 이동...");
 
 		Search search = new Search();
 		search.setSearchType(searchType);
@@ -54,7 +53,6 @@ public class DeliveryController {
 
 	@RequestMapping("/changeDeliveryState.mdo") // 배송상태 변경버튼
 	public String delivery(DeliveryVO vo, OrderProductInfoVO opiVO) {
-		System.out.println("배송정보 수정하기 클릭!");
 
 		service.updateDeliveryState(vo);
 
@@ -63,33 +61,22 @@ public class DeliveryController {
 
 		// 구매확정 시 point 지급 기능 들어갈 자리-김웅기
 		String DeliveryState = vo.getDelivery_state();
-		System.out.println(DeliveryState);
 		if (DeliveryState.equals("구매확정")) {
-			System.out.println("구매확정입니다.");
-			System.out.println(vo.toString());
 			int orderSeq = vo.getOrder_seq();
-			String user_id = vo.getUser_id();
-			System.out.println(orderSeq);
-			System.out.println(user_id);
 			pointService.orderSuccessPoint(vo);
 			// order_prod 상태 구매확정으로
-			int a = service.Prod_state_change(orderSeq);
-			System.out.println("prod상태 변경" + a);
+			service.Prod_state_change(orderSeq);
 			// order_list 상태 구매확정으로
-			int aa = service.order_state_change(orderSeq);
-			System.out.println("오더 리스트상태 변경" + aa);
+			service.order_state_change(orderSeq);
 			// pay 상태 구매확정으로
-			int aaa = service.pay_state_change(orderSeq);
-			System.out.println("페이 상태 변경" + aaa);
+			service.pay_state_change(orderSeq);
 			// 판매량 구입한 수량만큼 더해주기 (feat.김요셉)
 			service.getOrderInfo(orderSeq, opiVO);
 		}
 		if (DeliveryState.equals("주문취소")) {
-			System.out.println("주문취소입니다.");
-			System.out.println(vo.toString());
 			pointService.orderDeletePoint(vo);
 		}
-//		//여기서 포인트 업데이트
+		// 여기서 포인트 업데이트
 		pointService.update_point(vo.getUser_id());// 사용한 적립금 업데이트!
 
 		return "redirect:/getDeliveryList.mdo";

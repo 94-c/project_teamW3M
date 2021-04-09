@@ -48,14 +48,26 @@
 							</div>
 						</div>
 						<dl class="order">
-							<dt class="tot">총 주문금액 </dt>
-							<dd class="tot">
-								<strong>0</strong>원
-							</dd>
-							<dt>적 립 금</dt>
-							<dd>
-								<strong><fmt:formatNumber value="${userVO.user_point}" pattern="#,###" /></strong>원
-							</dd>
+							<dt class="tot">회원 등급</dt>
+								<c:if test="${userVO.user_level eq 'Dia'}">
+									<dd style="color: #6e0ccf">${userVO.user_level}<span style="color:black"> [다이아]</span></dd>
+								</c:if>
+								<c:if test="${userVO.user_level eq 'Platinum'}">
+									<dd style="color: #00e3ae">${userVO.user_level}<span style="color:black"> [플래티넘]</span></dd>
+								</c:if>
+								<c:if test="${userVO.user_level eq 'Gold'}">
+									<dd style="color: #ffd900">${userVO.user_level}<span style="color:black"> [골 드]</span></dd>
+								</c:if>
+								<c:if test="${userVO.user_level eq 'Silver'}">
+									<dd style="color: #e3e3e3">${userVO.user_level}<span style="color:black"> [실 버]</span></dd>
+								</c:if>
+								<c:if test="${userVO.user_level eq 'Bronze'}">
+									<dd style="color: #bd911a">${userVO.user_level}<span style="color:black"> [브론즈]</span></dd>
+								</c:if>
+							<dt class="tot">총 주문금액</dt>
+								<dd><fmt:formatNumber value="${totalOrderMoney}" pattern="#,###"/>원</dd>
+							<dt class="tot">적 립 금</dt>
+								<dd><fmt:formatNumber value="${userVO.user_point}" pattern="#,###"/>원</dd>
 						</dl>
 					</div>
 					<!-- //회원 정보 -->

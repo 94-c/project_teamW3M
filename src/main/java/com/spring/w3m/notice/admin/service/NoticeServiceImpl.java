@@ -29,8 +29,6 @@ public class NoticeServiceImpl implements NoticeService {
 
 	@Override
 	public List<NoticeVO> getUserNoticeSearchPagingList(Pagination pagination) {
-		System.out.println("service List : " + pagination.getSearchType());
-		System.out.println("service List : " + pagination.getKeyword());
 		return dao.getUserNoticeSearchPagingList(pagination);
 	}
 
@@ -41,14 +39,11 @@ public class NoticeServiceImpl implements NoticeService {
 
 	@Override
 	public List<NoticeVO> getNoticeSearchPagingList(Pagination pagination) {
-		System.out.println("service List : " + pagination.getSearchType());
-		System.out.println("service List : " + pagination.getKeyword());
 		return dao.getNoticeSearchPagingList(pagination);
 	}
 
 	@Override
 	public int getNoticeListCnt(Search search) {
-		System.out.println("service cnt : " + search.getKeyword());
 		return dao.getNoticeListCnt(search);
 	}
 
@@ -96,7 +91,7 @@ public class NoticeServiceImpl implements NoticeService {
 	@Override
 	public void tosUpdate(TosVO vo) {
 		dao.tosUpdate(vo);
-		
+
 	}
 
 }

@@ -19,10 +19,10 @@ import com.spring.w3m.review.user.vo.ReviewVO;
 
 @Service
 public class MyPageServiceImpl implements MyPageService {
-	
+
 	@Autowired
 	private MyPageDAO dao;
-	
+
 	@Override
 	public int myPageListCnt(Search search) {
 		return dao.myPageListCnt(search);
@@ -47,9 +47,9 @@ public class MyPageServiceImpl implements MyPageService {
 	public List<ReviewVO> myReviewList(Search search) {
 		return dao.myReviewList(search);
 	}
-	
+
 	@Override
-	public List<OrderVO> myOrderList(String user_id){
+	public List<OrderVO> myOrderList(String user_id) {
 		return dao.myOrderList(user_id);
 	}
 
@@ -62,80 +62,90 @@ public class MyPageServiceImpl implements MyPageService {
 	public List<MyPageVO> recentList(MyPageVO vo) {
 		return dao.recentList(vo);
 	}
-	
-	/* 주문상세 관련*/
+
+	/* 주문상세 관련 */
 	@Override
 	public OrderVO getReceiverInfo(OrderVO vo) {
 		return dao.getReceiverInfo(vo);
 	}
+
 	@Override
 	public DeliveryVO getDeliveryInfo(DeliveryVO vo) {
 		return dao.getDeliveryInfo(vo);
-	}	
-	public String makeRandomNumber() { //롯데택배 송장번호 제조기
+	}
+
+	public String makeRandomNumber() { // 롯데택배 송장번호 제조기
 		int[] randomNumbers = new int[12];
 		String strRd = "";
-		for(int i=0; i<randomNumbers.length; i++) {
-			randomNumbers[i] = (int) (Math.random()*10);
+		for (int i = 0; i < randomNumbers.length; i++) {
+			randomNumbers[i] = (int) (Math.random() * 10);
 			strRd += String.valueOf(randomNumbers[i]);
-		}		
-		System.out.println(strRd);		
+		}
+		System.out.println("송장번호 : " + strRd);
 		return strRd;
-	}	
+	}
+
 	@Override
-	public List<OrderProductInfoVO> getOrderProductInfo(OrderVO vo){
+	public List<OrderProductInfoVO> getOrderProductInfo(OrderVO vo) {
 		return dao.getOrderProductInfo(vo);
 	}
+
 	@Override
 	public PayVO getPayInfo(PayVO pVO) {
 		return dao.getPayInfo(pVO);
 	}
+
 	@Override
 	public String getUserLevel(String userId) {
-		if(dao.getUserLevel(userId).equals("Bronze")) {
+		if (dao.getUserLevel(userId).equals("Bronze")) {
 			return "1";
-		}else if(dao.getUserLevel(userId).equals("Silver")) {
+		} else if (dao.getUserLevel(userId).equals("Silver")) {
 			return "3";
-		}else if(dao.getUserLevel(userId).equals("Gold")) {
+		} else if (dao.getUserLevel(userId).equals("Gold")) {
 			return "5";
-		}else if(dao.getUserLevel(userId).equals("Platinum")) {
+		} else if (dao.getUserLevel(userId).equals("Platinum")) {
 			return "7";
-		}else if(dao.getUserLevel(userId).equals("Dia")) {
+		} else if (dao.getUserLevel(userId).equals("Dia")) {
 			return "9";
-		}else {
+		} else {
 			return "-1";
 		}
 	}
 	/*-----------------------------------------*/
-	
+
 	/* 주문 취소 관련 */
 	@Override
 	public void deletePoint(PointVO vo) {
 		dao.deletePoint(vo);
 	}
+
 	@Override
 	public void changePayState(PayVO vo) {
 		dao.changePayState(vo);
 	}
+
 	@Override
 	public void changeOrderState(OrderVO vo) {
 		dao.changeOrderState(vo);
 	}
+
 	@Override
 	public void changeOrderProductState(OrderVO vo) {
 		dao.changeOrderProductState(vo);
 	}
+
 	@Override
 	public void changeDeliveryState(DeliveryVO vo) {
 		dao.changeDeliveryState(vo);
-	}	
+	}
 	/*-----------------------------------------*/
-	
+
 	/* 회원의 총 주문금액 */
 	@Override
 	public int getTotalOrderMoney(String userId) {
 		return dao.getTotalOrderMoney(userId);
 	}
+
 	@Override
 	public void changeUserLevel(UserVO vo) {
 		dao.changeUserLevel(vo);
@@ -144,6 +154,6 @@ public class MyPageServiceImpl implements MyPageService {
 	@Override
 	public List<OrderVO> recentOrderList(String user_id) {
 		return dao.recentOrderList(user_id);
-	}	
-	
+	}
+
 }

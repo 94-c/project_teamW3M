@@ -7,9 +7,9 @@ import com.spring.w3m.paging.common.Pagination;
 import com.spring.w3m.paging.common.Search;
 
 public interface PurchaseService {
-	
+
 	List<PurchaseVO> getPurchaseList(PurchaseVO vo);
-	
+
 	int getPurchaseListCnt(Search search);
 
 	List<PurchaseVO> getPageList(Search search);
@@ -18,6 +18,4 @@ public interface PurchaseService {
 
 	List<PurchaseVO> getSearchPagingList(Pagination pagination);
 
-	
-	
 }

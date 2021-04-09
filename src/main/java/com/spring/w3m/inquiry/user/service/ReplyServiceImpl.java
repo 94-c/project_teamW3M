@@ -11,10 +11,10 @@ import com.spring.w3m.review.user.vo.ReviewVO;
 
 @Service
 public class ReplyServiceImpl implements ReplyService {
-	
+
 	@Autowired
 	private ReplyDAO replyDAO;
-	
+
 	@Override
 	public List<ReplyVO> getReplyList(int inq_seq) {
 		return replyDAO.getReplyList(inq_seq);
@@ -23,19 +23,16 @@ public class ReplyServiceImpl implements ReplyService {
 	@Override
 	public void insertReply(ReplyVO vo) {
 		replyDAO.insertReply(vo);
-		
 	}
 
 	@Override
 	public void deleteReply(ReplyVO vo) {
-		replyDAO.deleteReply(vo);	
-		
+		replyDAO.deleteReply(vo);
 	}
 
 	@Override
 	public void updateReply(ReplyVO vo) {
 		replyDAO.updateReply(vo);
-		
 	}
 
 	@Override
@@ -44,7 +41,6 @@ public class ReplyServiceImpl implements ReplyService {
 	}
 
 	// 후기 댓글 영역
-	
 	@Override
 	public List<ReplyVO> getReviewReplyList(int review_seq) {
 		return replyDAO.getReviewReplyList(review_seq);
@@ -53,7 +49,6 @@ public class ReplyServiceImpl implements ReplyService {
 	@Override
 	public void insertReviewReply(ReplyVO vo) {
 		replyDAO.insertReviewReply(vo);
-		
 	}
 
 	@Override
@@ -64,7 +59,6 @@ public class ReplyServiceImpl implements ReplyService {
 	@Override
 	public void updateReviewReply(ReplyVO vo) {
 		replyDAO.updateReviewReply(vo);
-		
 	}
 
 	@Override
@@ -74,8 +68,7 @@ public class ReplyServiceImpl implements ReplyService {
 
 	@Override
 	public void deleteReviewReply(ReplyVO vo) {
-		replyDAO.deleteReviewReply(vo);	
-		
+		replyDAO.deleteReviewReply(vo);
 	}
 
 	@Override

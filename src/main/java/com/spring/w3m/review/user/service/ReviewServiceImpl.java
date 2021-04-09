@@ -19,31 +19,26 @@ public class ReviewServiceImpl implements ReviewService {
 
 	@Override
 	public void insertReview(ReviewVO vo) {
-		System.out.println("후기 게시글 작성");
 		reviewDAO.insertReview(vo);
 	}
 
 	@Override
 	public void updateReview(ReviewVO vo) {
-		System.out.println("후기 게시글 수정");
 		reviewDAO.updateReview(vo);
 	}
 
 	@Override
 	public void deleteReview(ReviewVO vo) {
-		System.out.println("후기 게시글 삭제");
 		reviewDAO.deleteReview(vo);
 	}
 
 	@Override
 	public ReviewVO getReview(ReviewVO vo) {
-		System.out.println("후기 게시글 가져오기");
 		return reviewDAO.getReview(vo);
 	}
 
 	@Override
 	public List<ReviewVO> getReviewList(ReviewVO vo) {
-		System.out.println("후기 리스트 가져오기");
 		return reviewDAO.getReviewList(vo);
 	}
 

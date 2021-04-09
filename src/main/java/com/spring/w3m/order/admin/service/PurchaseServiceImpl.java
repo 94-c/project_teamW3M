@@ -17,7 +17,7 @@ public class PurchaseServiceImpl implements PurchaseService {
 	private PurchaseDAO purchaseDAO;
 
 	@Override
-	public List<PurchaseVO> getPurchaseList(PurchaseVO vo){
+	public List<PurchaseVO> getPurchaseList(PurchaseVO vo) {
 		return purchaseDAO.getPurchaseList(vo);
 	}
 

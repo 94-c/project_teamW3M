@@ -16,54 +16,41 @@ public class InquiryDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
 
-	public void insertInquiry(InquiryVO vo) {
+	public void insertInquiry(InquiryVO vo) { // 문의게시판 글쓰기
 		sqlSessionTemplate.insert("InquiryDAO.insertInquiry", vo);
-		System.out.println("문의게시판 글쓰기");
-
 	}
 
-	public void updateInquiry(InquiryVO vo) {
+	public void updateInquiry(InquiryVO vo) {// 문의게시판 글수정
 		sqlSessionTemplate.update("InquiryDAO.updateInquiry", vo);
-		System.out.println("문의게시판 글수정");
-
 	}
 
-	public void deleteInquiry(InquiryVO vo) {
+	public void deleteInquiry(InquiryVO vo) {// 문의게시판 글삭제
 		sqlSessionTemplate.delete("InquiryDAO.deleteInquiry", vo);
-		System.out.println("문의게시판 글삭제");
-
 	}
 
-	public InquiryVO getInquiry(InquiryVO vo) {
-		System.out.println("문의게시판 글 상세보기");
+	public InquiryVO getInquiry(InquiryVO vo) {// 문의게시판 글상세보기
 		// 조회수 증가
 		sqlSessionTemplate.update("inquiryCntUpdate", vo);
 		return sqlSessionTemplate.selectOne("InquiryDAO.getInquiry", vo);
 	}
 
-
-	public List<InquiryVO> getInquiryList(InquiryVO vo) {
-		System.out.println("문의게시판 글목록 보기");
+	public List<InquiryVO> getInquiryList(InquiryVO vo) {// 문의게시판 글목록보기
 		return sqlSessionTemplate.selectList("InquiryDAO.getInquiryList", vo);
 	}
-	
+
 	public int getInquiryListCnt(Search search) {
-		System.out.println("getInquiryListCnt() 실행");
 		return sqlSessionTemplate.selectOne("InquiryDAO.getInquiryListCnt");
 	}
-	
-	public List<InquiryVO> getPageList(Search search){
-		System.out.println("getPageList() 실행");
+
+	public List<InquiryVO> getPageList(Search search) {
 		return sqlSessionTemplate.selectList("InquiryDAO.getPageList", search);
 	}
-	
+
 	public int getSearchCnt(String searchKeyword) {
-		System.out.println("getSearchCnt() 실헹");
 		return sqlSessionTemplate.selectOne("InquiryDAO.getSearchKeyword");
 	}
-	
-	public List<InquiryVO> getSearchPagingList(Pagination pagination){
-		System.out.println("getSearchPagingList() 실행");
+
+	public List<InquiryVO> getSearchPagingList(Pagination pagination) {
 		return sqlSessionTemplate.selectList("InquiryDAO.getSearchPagingList");
 	}
 

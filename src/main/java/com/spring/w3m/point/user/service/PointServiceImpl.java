@@ -16,7 +16,7 @@ public class PointServiceImpl implements PointService {
 
 	@Autowired
 	private PointDAO dao;
-	
+
 	@Override
 	public void insertPoint(PointVO vo) {
 		dao.insertPoint(vo);
@@ -54,19 +54,19 @@ public class PointServiceImpl implements PointService {
 
 	@Override
 	public int orderSuccessPoint(DeliveryVO vo) {
-		
+
 		return dao.orderSuccessPoint(vo);
 	}
 
 	@Override
 	public int orderDeletePoint(DeliveryVO vo) {
-		
+
 		return dao.orderDeletePoint(vo);
 	}
 
 	@Override
 	public int update_point(String user_id) {
-		
+
 		return dao.update_point(user_id);
 	}
 

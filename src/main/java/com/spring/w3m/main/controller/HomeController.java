@@ -33,16 +33,6 @@ public class HomeController {
 		return "index";
 	}
 
-	@RequestMapping(value = "/orderList", method = { RequestMethod.GET, RequestMethod.POST })
-	public String order_list(Model model, ProductVO vo) {
-		System.out.println("홈페이지로 이동...");
-
-		List<ProductVO> product = homeService.selectProduct(vo);
-		model.addAttribute("product", product);
-
-		return "order/orderList";
-	}
-
 	@RequestMapping("/getProduct")
 	public String getProduct(ProductVO vo, Model model, InquiryVO vo2, ReviewVO vo3,
 			@RequestParam(required = false, defaultValue = "1") int page,

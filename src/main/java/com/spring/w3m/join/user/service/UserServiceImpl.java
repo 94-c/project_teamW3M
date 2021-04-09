@@ -12,9 +12,9 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserDAO dao;
+
 	@Override
 	public UserVO getUser(UserVO vo) {
-		
 		return dao.getUser(vo);
 	}
 
@@ -26,7 +26,6 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void updateUser(UserVO vo) {
 		dao.updateUser(vo);
-		
 	}
 
 	@Override
@@ -36,26 +35,22 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public int idCheck(String user_id) {
-		
 		return dao.idCheck(user_id);
 	}
 
 	@Override
 	public int phoneCheck(String user_phone) {
-		
 		return dao.phoneCheck(user_phone);
 	}
 
 	@Override
 	public int SNSidCheck(String user_id) {
-		
 		return dao.SNSidCheck(user_id);
 	}
 
 	@Override
 	public void updateUserNoPass(UserVO vo) {
 		dao.updateUserNoPass(vo);
-		
 	}
 
 	@Override

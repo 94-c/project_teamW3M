@@ -16,25 +16,25 @@ import com.spring.w3m.product.admin.vo.OrderProductInfoVO;
 public class DeliveryServiceImpl implements DeliveryService {
 	@Autowired
 	private DeliveryDAO dao;
-	
+
 	@Override
-	public List<DeliveryVO> getDeliveryList(DeliveryVO vo){		
+	public List<DeliveryVO> getDeliveryList(DeliveryVO vo) {
 		return dao.getDeliveryList(vo);
 	}
-	
-	@Override //배송상태 변경이벤트 발생시 처리메서드
+
+	@Override // 배송상태 변경이벤트 발생시 처리메서드
 	public void updateDeliveryState(DeliveryVO vo) {
-		if(vo.getDelivery_state() == null) {
-			vo.setDelivery_state("배송전");			
-		}else if(vo.getDelivery_state().equals("before")) {
+		if (vo.getDelivery_state() == null) {
 			vo.setDelivery_state("배송전");
-		}else if(vo.getDelivery_state().equals("ing")) {
+		} else if (vo.getDelivery_state().equals("before")) {
+			vo.setDelivery_state("배송전");
+		} else if (vo.getDelivery_state().equals("ing")) {
 			vo.setDelivery_state("배송중");
-		}else if(vo.getDelivery_state().equals("after")) {
+		} else if (vo.getDelivery_state().equals("after")) {
 			vo.setDelivery_state("배송완료");
-		}else if(vo.getDelivery_state().equals("commit")) {
+		} else if (vo.getDelivery_state().equals("commit")) {
 			vo.setDelivery_state("구매확정");
-		}else {
+		} else {
 			vo.setDelivery_state("주문취소");
 		}
 		dao.updateDeliveryState(vo);
@@ -89,11 +89,11 @@ public class DeliveryServiceImpl implements DeliveryService {
 
 	@Override
 	public int pay_state_change(int order_seq) {
-	
+
 		return dao.pay_state_change(order_seq);
 	}
-	
-	@Override // 한번주문시 구매한 상품품목을 리스트로 얻어옴(ex. 소독제 대형, 쿨패치)
+
+	@Override // 주문한 상품품목을 리스트로 얻어옴(ex. 소독제 대형, 쿨패치)
 	public void getOrderInfo(int order_seq, OrderProductInfoVO opiVO) {
 		List<OrderProductInfoVO> orderProductList = dao.getOrderInfo(order_seq);
 		for (int i = 0; i < orderProductList.size(); i++) {
@@ -103,9 +103,10 @@ public class DeliveryServiceImpl implements DeliveryService {
 			addSalesRate(opiVO);
 		}
 	}
+
 	@Override // 얻어온 상품 개수만큼 판매량 플러스시킴(ex. 소독제 대형, 쿨패치)
 	public void addSalesRate(OrderProductInfoVO opiVO) {
 		dao.addSalesRate(opiVO);
 	}
-	
+
 }
