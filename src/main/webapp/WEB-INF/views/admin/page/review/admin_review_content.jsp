@@ -71,9 +71,8 @@
 					<div align="right">
 						<tr>
 							<td>
-								<button type="button" class="btn btn-info "
-									onclick="location.href = '/reviewContent.do?review_seq=${reviewVO.review_seq}' ">원본으로
-									넘어가기</button>
+								<button type="button" class="btn btn-info " onclick="location.href = '/deleteReview.mdo?review_seq=${reviewVO.review_seq}' ">삭제하기</button>
+								<button type="button" class="btn btn-info " onclick="location.href = '/reviewContent.do?review_seq=${reviewVO.review_seq}' ">원본으로 넘어가기</button>								
 							</td>
 						</tr>
 					</div>

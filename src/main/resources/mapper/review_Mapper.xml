@@ -19,7 +19,7 @@
 	
 	<!-- 후기 보기 -->
 	<select id="getReviewList" resultMap="reviewResult">
-		SELECT r.*, p.prod_code FROM product as p, review as r WHERE p.prod_title = r.prod_title
+		SELECT r.*, p.prod_code FROM product as p, review as r WHERE p.prod_title = r.prod_title order by r.review_seq desc
 	</select>
 
 	<!-- 후기 작성 -->
