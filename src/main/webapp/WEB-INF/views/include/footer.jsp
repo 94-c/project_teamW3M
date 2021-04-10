@@ -47,7 +47,7 @@
 				<div class="ft_copy">
 					법인명 : W3M(주) | 대표 : 윤수경  김요셉 김웅기 최형우 하승우<br> 고객센터 : 02-000-0000 | 팩스 :
 					02-441-1764<br> 사업장소재지 : 서울특별시 종로구 묘동 56 단성사 4층(KGITBANK)<br>
-					개인정보관리책임자 : 김성일<br> 사업자등록번호 : 215-87-45158 
+					개인정보관리책임자 : <Strong>Tommy.Lee</Strong><br> 사업자등록번호 : 215-87-45158 
 					<a href="http://www.ftc.go.kr/info/bizinfo/communicationList.jsp" target="_blank"><b>[사업자정보확인]</b></a><br> 통신판매업 신고번호 : 제2020-서울송파-4267호
 				</div>
 			</div>
@@ -70,7 +70,7 @@
 						고객센터 연결이 어려우신 경우<br> 카카오톡 상담하기 또는<br> 이메일로 문의해주세요<br>
 						<br>
 
-						<div class="ft_title">이메일 : help@well3mask.com</div>
+						<div class="ft_title">이메일 : w3mmask@gmail.com</div>
 						<br>
 					</div>
 
@@ -103,7 +103,7 @@
 			</div>
 			
 			<div class="ft_info02 fleft mrl48">
-				<div class="ft_title">게시판</div>
+				<div class="ft_title">게시판</div>	
 				<div class="ft_comm">
 					<ul>
 						<!-- 하단 커뮤니티 링크 수정 -->
