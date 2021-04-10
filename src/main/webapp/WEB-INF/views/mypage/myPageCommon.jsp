@@ -30,7 +30,8 @@
 			<h2 class="txt txt3">개인정보</h2>
 			<div class="lnb">
 				<ul>
-					<li class="first"><a href="memberInfoUpdate.do">회원정보수정</a></li>
+					<li class="first"><a href="mypage.do?user_email=${userVO.user_email }">회원상태</a></li>
+					<li><a href="memberInfoUpdate.do">회원정보수정</a></li>
 					<li><form action="memberInfoDelete.do" id="deleteSuccess"
 							method="POST">
 							<input type="hidden" name="user_id" value="${userVO.user_id }">

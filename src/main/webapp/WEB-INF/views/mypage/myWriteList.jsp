@@ -51,48 +51,6 @@
 		<div id="content">
 			<div id="mypage">
 				<div class="page-body">
-					<!-- 회원 정보 -->
-					<div class="info">
-						<div class="user">
-							<div class="user-img"></div>
-							<div class="user-info">
-								<p>
-									<!-- 이런식으로 나와야 한다. 최형우[hyeognwoo26]님  -->
-									<label>${userVO.user_name }[${userVO.user_id}]님</label> <a
-										href="memberInfoUpdate.do" class="CSSbuttonWhite CSSbuttonMin">수정</a>
-
-								</p>
-								<div class="box">
-									<dl>
-										<dt>전 &nbsp;&nbsp;&nbsp; 화</dt>
-										<dd>${userVO.user_phone }</dd>
-									</dl>
-									<dl>
-										<!-- 이메일 -->
-										<dt>이 메 일</dt>
-										<dd>${userVO.user_email }</dd>
-									</dl>
-									<dl>
-										<dt>주 &nbsp;&nbsp;&nbsp; 소</dt>
-										<dd>${userVO.user_zipcode }${userVO.user_address1 }
-											${userVO.user_address2 }</dd>
-									</dl>
-								</div>
-							</div>
-						</div>
-						<dl class="order">
-							<dt class="tot">총 주문금액</dt>
-							<dd class="tot">
-								<strong>0</strong>원
-							</dd>
-							<dt>적 립 금</dt>
-							<dd>
-								<strong><fmt:formatNumber value="${userVO.user_point}"
-										pattern="#,###" /></strong>원
-							</dd>
-						</dl>
-					</div>
-					<!-- //회원 정보 -->
 					<div id="content">
 						<div id="myHistory">
 							<div class="page-body">
