@@ -8,43 +8,37 @@
 <link type="text/css" rel="stylesheet" href="resources/css/comment.css">
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
-$(document).ready(function(){ 
-	$("#contentbutton").click(function(){		
-		
-		var re_reply_data_id = $("#re_reply_data_id").val();
-		var re_reply_data_pw = $("#re_reply_data_pw").val();
-		var re_reply_data_con = $("#re_reply_data_con").val();
-		var re_reply_data_seq =  $('#re_reply_data_seq').val();
-		console.log(re_reply_data_id);
-		console.log(re_reply_data_pw);
-		console.log(re_reply_data_con);
-		console.log(re_reply_data_seq);
-		
-		if(!re_reply_data_con){
-			alert("내용을 입력해 주세요")
-			}else {
-		var alldata ={
-				"review_re_writer" :re_reply_data_id,
-				"review_re_pass" : re_reply_data_pw,
-				"review_re_content" :re_reply_data_con,
-				"review_re_seq" :re_reply_data_seq
-		}
-		console.log(alldata);
-		
-		$.ajax({
-			url : "replyUpdate.do",
-			type : "POST",
-			data : JSON.stringify(alldata),
-			dataType : "json",
-			contentType: "application/json; charset=UTF-8",
-			success  : function(data){
-				opener.location.reload();
-				window.close();			
+	$(document).ready(function() {
+		$("#contentbutton").click(function() {
+			var re_reply_data_id = $("#re_reply_data_id").val();
+			var re_reply_data_pw = $("#re_reply_data_pw").val();
+			var re_reply_data_con = $("#re_reply_data_con").val();
+			var re_reply_data_seq = $('#re_reply_data_seq').val();
+
+			if (!re_reply_data_con) {
+				alert("내용을 입력해 주세요")
+			} else {
+				var alldata = {
+					"review_re_writer" : re_reply_data_id,
+					"review_re_pass" : re_reply_data_pw,
+					"review_re_content" : re_reply_data_con,
+					"review_re_seq" : re_reply_data_seq
+				}
+
+				$.ajax({
+					url : "replyUpdate.do",
+					type : "POST",
+					data : JSON.stringify(alldata),
+					dataType : "json",
+					contentType : "application/json; charset=UTF-8",
+					success : function(data) {
+						opener.location.reload();
+						window.close();
+					}
+				});
 			}
 		});
-	}
 	});
-});
 </script>
 </head>
 
