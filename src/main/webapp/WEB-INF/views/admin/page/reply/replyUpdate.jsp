@@ -37,7 +37,10 @@ $(document).ready(function(){
 			data : JSON.stringify(alldata),
 			dataType : "json",
 			contentType: "application/json; charset=UTF-8",
-			success  : function(data){}			
+			success  : function(data){
+				opener.location.reload();
+				window.close();			
+			}
 		});
 	}
 	});

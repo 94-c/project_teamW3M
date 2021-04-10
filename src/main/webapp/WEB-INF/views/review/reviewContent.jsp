@@ -7,7 +7,9 @@
 function submitForm()
 {
 	var updateReply = document.comment;
-	updateReply.submit();
+	comment_form.submit();
+	
+	console.log(updateReply);
 }
 function deleteCheck()
 {
@@ -54,19 +56,6 @@ function updateCheck()
 					<div class="bbs-tit">
 						<h3>후기게시판</h3>
 					</div>
-					<c:if test="${product.prod_title != 'null'}">
-                     <dl class="prd-tinfo">
-                            <dt>
-                                <a href="getProduct?prod_code=${product.prod_code }"><img src="${product.prod_title_image }"></a>
-                            </dt>
-                            <dd>
-                                <ul>
-                                    <li class="name"><span class="tit">상품명 : </span> <a href="	#qwer">${product.prod_title }</a> <span class="MK-product-icons"></span></li>
-                                    <li class="price"><span class="tit">상품가 : &nbsp;</span><fmt:formatNumber value="${product.prod_price_sale}" pattern="#,###" /></li>
-                                </ul>
-                            </dd>
-                      	</dl>
-                      </c:if>
 					<div class="bbs-table-view">
 						<table summary="게시글 보기">
 							<caption>게시글 보기</caption>
@@ -171,7 +160,7 @@ function updateCheck()
 				
 				
 				<!-- .page-body -->
-				<form id="comment_form" name="comment" action="insertReviewReply.do" method="post">
+				<form id="comment_form" name="comment" action="insertReviewReply.do?prod_code=${reviewVO.prod_code}" method="post">
 				<input type="hidden" name="review_seq" class="MS_input_txt input-style input-style2" value="${reviewVO.review_seq }">
 					<fieldset>
 						<legend>코멘트 쓰기</legend>
@@ -187,11 +176,11 @@ function updateCheck()
 											<div class="wrt">
 												<label>아이디</label>
 												<span>
-												<input type="text" name="review_re_writer" class="MS_input_txt input-style input-style2" value="${userVO.user_id }" onclick="CheckLogin()"
-													onkeypress="CheckLogin()" placeholder="아이디"></span>
+												<input type="text" name="review_re_writer" class="MS_input_txt input-style input-style2" value="${userVO.user_id }"
+													 placeholder="아이디"></span>
 											</div>
 											<div class="wrt wrt_write">
-												<textarea name="review_re_content" onchange="Checklength(this);" onkeyup="Checklength(this);" onclick="CheckLogin()" placeholder="내용"></textarea>
+												<textarea name="review_re_content" placeholder="내용"></textarea>
 												<a href="javascript:submitForm()" class="CSSbuttonBlack">댓글쓰기</a>
 											</div>
 										</div>
