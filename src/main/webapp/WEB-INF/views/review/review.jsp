@@ -73,7 +73,7 @@
 					<!-- 게시판 목록 -->
 					<div class="bbs-table-list">
 						<a href="review.do"> 
-						<img src="resources/images/title/review_title.jpg"></a>
+						<img src="resources/images/title/review_title.png"></a>
 							<form role="form" method="post" action="review_write_view.do">
 						<div class="bbs-tit">
 							<h3>상품후기</h3>
