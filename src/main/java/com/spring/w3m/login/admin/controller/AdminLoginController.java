@@ -94,9 +94,26 @@ public class AdminLoginController {
 			money = 0;
 		} else {
 			money = svo.getTotal_sum(); // 매출 하나도 없으면 svo에 null 들어가서 널포인터exception 뜨길래 일단 이렇게 해놨어!
+			System.out.println("금일 판매량 입니다 -"+money);
+		}
+		if (svo1 == null) {
+			join_count = 0;
+		} else {
 			join_count = svo1.getJoin_count();
+			System.out.println("금일 회원가입수 입니다 -"+join_count);
+		}
+		if (svo2 == null) {
+			cencle_count = 0;
+		} else {
 			cencle_count = svo2.getProd_cencle();
+			System.out.println("금일 취소량 입니다 -"+cencle_count);
+		}
+		if (svo3 == null) {
+			prod_count = 0;
+		} else {
+			
 			prod_count = svo3.getProd_count();
+			System.out.println("금일 주문수량 입니다 -"+prod_count);
 		}
 		model.addAttribute("todaySales", money);
 		model.addAttribute("todayJoin", join_count);
