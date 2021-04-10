@@ -1,7 +1,9 @@
 -- 홈페이지관리자 테이블 --
-CREATE TABLE admin_member(
-    admin_id VARCHAR(20) not null, -- 홈페이지 관리자 아이디(PK)
-    admin_password VARCHAR(200) NOT NULL, -- 비밀번호
+CREATE TABLE admin_user(
+    admin_id VARCHAR(10) not null, -- 홈페이지 관리자 아이디(PK)
+    admin_password VARCHAR(12) NOT NULL, -- 비밀번호
+    admin_name VARCHAR(21)			--- 관리자 이름
+    admin_role VARCHAR(10)			--- 관리자 역할
     CONSTRAINT admin_member_admin_id_pk PRIMARY KEY(admin_id)
   );
 
@@ -136,17 +138,6 @@ CREATE TABLE delivery(
 );
 CREATE SEQUENCE delivery_seq START 1; --송장번호 시퀀스 생성
 
-CREATE TABLE order_prod(
-		order_Prod_seq int Primary Key, -- 주문상품 번호 PK
-		user_id varchar(30),--유저id FK
-		order_date TIMESTAMP WITH TIME ZONE DEFAULT current_timestamp, -- 주문날짜
-		prod_code varchar(30),--FK 제품 코드
-		prod_amount int,--제품 수량
-		CONSTRAINT ORDER_LIST_USERID_FK FOREIGN KEY (USER_ID) REFERENCES USER_MEMBER(USER_ID) on Delete set null,
-		CONSTRAINT ORDER_LIST_PRODCODE_FK FOREIGN KEY(prod_code) REFERENCES product(prod_code) on Delete set null
-	);
-	create sequence order_Prod_seq start with 1 increment by 1;
-
 CREATE TABLE ORDER_LIST(
     order_seq INT PRIMARY KEY, -- 주문번호 (PK) EX) 10001 등
     USER_ID VARCHAR(30), -- 주문자 아이디 (FK)
@@ -223,9 +214,69 @@ CREATE TABLE notice(
      nt_date TIMESTAMP WITH TIME ZONE DEFAULT current_timestamp+'-3hours' not null,  ---공지사항 작성 시간
      nt_count int default 0 ---공지사항 조회수
    
-   CONSTRAINT notice_seq_pk PRIMARY KEY (notice)
+   CONSTRAINT notice_seq_pk PRIMARY KEY (nt_seq)
 
 );
 
 CREATE SEQUENCE nt_seq START WITH 1 INCREMENT BY 1; -- 시퀀스 생성
+
+
+--배송현황
+CREATE TABLE delivery_state(
+	delivery_seq int not null,  --- 배송 번호
+	order_seq int,				--- 주문 번호
+	prod_title varchar(200),		--- 상품 이름
+	state_date	timestamp with time zone default current_timestamp,  ---배송 특이사항 날짜
+	delivery_state varchar(20)	--- 배송 상태
+);
+
+-- 이용약관
+CREATE TABLE tos(
+	tos_content varchar(80000) not null,	---이용약관 내용
+	tos_writer varchar(50) not null,		--- 작성자
+	tos_date timestamp with time zone default current_timestamp,	---이용약관 작성 날짜
+	tos_seq int			--- 시퀀스 넘버
+);
+CREATE SEQUENCE tos_seq START WITH 1 INCREMENT BY 1; -- 시퀀스 생성
+
+
+--후기
+CREATE TABLE review(
+	review_seq int not null,	--- 게시글 번호
+	review_title varchar(210), 	--- 게시글 제목
+	review_writer varchar(40),	--- 작성자
+	review_email varchar(70),	--- 작성자 이메일
+	review_pass int,			--- 게시글 비밀번호
+	review_content varchar(4000),	---게시글  내용
+	review_date timestamp with time zone default current_timestamp, --- 게시글 작성 날짜
+	review_cnt int,	--- 게시글 조회수
+	review_image varchar(500),	--- 첨부파일
+	reply_cnt int,	--- 댓글 개수
+	prod_title varchar(200) --- 제품 이름
+	prod_title image varchar(200)	--- 상품 등록 대표 이미지
+	review_id varchar(20)	--- 댓글 작성자
+
+	CONSTRAINT review_seq_pk PRIMARY KEY (review_seq)
+);
+
+-- 후기댓글
+CREATE TABLE review_reply(
+	review_seq int not null,	--- 후기 게시글 번호
+	review_re_seq int not null,	--- 댓글 번호
+	review_re_content varchar(1000),--- 댓글 내용
+	review_re_writer varchar(50),	--- 댓글 작성자
+	review_re_date timestamp with time zone default current_timestamp	--댓글 작성 날짜
+	
+	CONSTRAINT review_re_seq_pk PRIMARY KEY (review_re_seq)
+	CONSTRAINT review_seq_FK FOREIGN KEY(reivew_seq) REFERENCES reivew(review_seq)
+);
+CREATE SEQUENCE review_re_seq START WITH 1 INCREMENT BY 1; -- 시퀀스 생성
+
+
+
+
+
+
+
+
 
