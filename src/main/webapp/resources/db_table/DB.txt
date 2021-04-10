@@ -270,6 +270,7 @@ CREATE TABLE review_reply(
 	CONSTRAINT review_re_seq_pk PRIMARY KEY (review_re_seq)
 	CONSTRAINT review_seq_FK FOREIGN KEY(reivew_seq) REFERENCES reivew(review_seq)
 );
+
 CREATE SEQUENCE review_re_seq START WITH 1 INCREMENT BY 1; -- 시퀀스 생성
 
 
