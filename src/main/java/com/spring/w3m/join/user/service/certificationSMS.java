@@ -2,8 +2,6 @@ package com.spring.w3m.join.user.service;
 
 import java.util.HashMap;
 
-import org.json.simple.JSONObject;
-
 import net.nurigo.java_sdk.api.Message;
 import net.nurigo.java_sdk.exceptions.CoolsmsException;
 
@@ -23,7 +21,7 @@ public class certificationSMS {
 		params.put("app_version", "test app 1.2"); // application name and version
 
 		try {
-			JSONObject obj = (JSONObject) coolsms.send(params);
+			coolsms.send(params);
 		} catch (CoolsmsException e) {
 			e.printStackTrace();
 		}

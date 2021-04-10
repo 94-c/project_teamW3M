@@ -7,27 +7,25 @@ import org.springframework.stereotype.Service;
 
 import com.spring.w3m.statistics.admin.dao.StatisticsDAO;
 import com.spring.w3m.statistics.admin.vo.StatisticsVO;
+
 @Service
-public class StatisticsServiceImpl implements StatisticsService{
+public class StatisticsServiceImpl implements StatisticsService {
 
 	@Autowired
 	private StatisticsDAO dao;
-	
+
 	@Override
 	public List<StatisticsVO> Gender_Money() {
-		
 		return dao.Gender_Money();
 	}
 
 	@Override
 	public List<StatisticsVO> salesByMonth(StatisticsVO vo) {
-		
 		return dao.salesByMonth(vo);
 	}
 
 	@Override
 	public StatisticsVO todaySales() {
-		
 		return dao.todaySales();
 	}
 
@@ -53,7 +51,6 @@ public class StatisticsServiceImpl implements StatisticsService{
 
 	@Override
 	public List<StatisticsVO> salesByLevel() {
-		
 		return dao.salesByLevel();
 	}
 
@@ -69,8 +66,7 @@ public class StatisticsServiceImpl implements StatisticsService{
 
 	@Override
 	public List<StatisticsVO> salesByCategory(StatisticsVO vo) {
-		
 		return dao.salesByCategory(vo);
 	}
-	
+
 }

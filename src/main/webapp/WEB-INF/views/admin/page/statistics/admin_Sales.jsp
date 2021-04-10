@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="/WEB-INF/views/admin/page/include/admin_header.jsp"%>
 
 <title>매출통계</title>
@@ -8,11 +7,7 @@
 <link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
-
 <script type="text/javascript">
-
-
-	
 	function getFormatDate(date){
 	    var year = date.getFullYear();              //yyyy
 	    var month = (1 + date.getMonth());          //M
@@ -31,11 +26,8 @@ $(document).ready(function(){
 				alert("기간을 확인해 주세요.");
 				return;
 			}
-			console.log("들어옴");
 			var StartDate =$("#datepicker1").val();
 			var EndDate = $("#datepicker2").val();
-			console.log($("#datepicker1").val());
-			console.log($("#datepicker2").val());
 			var alldata={
 					"startDate" :StartDate,
 					"endDate" : EndDate
@@ -49,16 +41,8 @@ $(document).ready(function(){
 				contentType:"application/json; charset=UTF-8",
 				success:function(data){
 					if(data == 1){
-						console.log("성공");
-						
 						location.reload();
-
-					}else{
-						console.log("실패");
-					}
-					
-					
-				
+					}else{}
 				}
 			});
 		});
@@ -72,20 +56,17 @@ function drawChart() {
     data.addColumn('number', '총 매출');
     data.addColumn('number', '적립금 사용 금액');
    
-   
     data.addRows([
     	 <c:forEach var="dateSeach" items="${dateSeach}" varStatus="state">
         ['<fmt:formatDate value="${dateSeach.date_total}" pattern="yyyy-MM-dd"/>',
         	${dateSeach.total_sum},
         	${dateSeach.total_use_point}],
 	  	</c:forEach>
-        
       ]);
 
     var options = {
             chart: {
               title: '<c:out value="${strStartDate}"/> ~ <c:out value="${strEndDate}"/>',
-              
             },
             width: 600,
             height: 300
@@ -109,7 +90,6 @@ function drawChart2() {
     data.addColumn('number', '핫팩');
     data.addColumn('number', '체온계');
    
-   
     data.addRows([
     	 <c:forEach var="salesByCategory" items="${salesByCategory}">
         ['<fmt:formatDate value="${salesByCategory.date_total}" pattern="yyyy-MM-dd"/>',
@@ -120,13 +100,11 @@ function drawChart2() {
 	       	${salesByCategory.hotPack},
 	       	${salesByCategory.thermometer}],
 	  	</c:forEach>
-        
       ]);
 
     var options = {
             chart: {
               title: '<c:out value="${strStartDate}"/> ~ <c:out value="${strEndDate}"/>',
-              
             },
             width: 600,
             height: 300
@@ -136,8 +114,6 @@ function drawChart2() {
 
     chart.draw(data, google.charts.Line.convertOptions(options));
   }
-      
-
     $.datepicker.setDefaults({
         dateFormat: 'yymmdd',
         prevText: '이전 달',
@@ -170,7 +146,6 @@ function drawChart2() {
    			url = url +  "&endDate1=" + $("#date2").val();
    			location.href= url;
     }
-    
 </script>
 <style>
 .excel{
@@ -216,37 +191,38 @@ function drawChart2() {
     border-color: #ff3399;
 }
 </style>
+
 <div class="container-fluid">
-		<h1 class="mt-4">매출 통계</h1>
-		<ol class="breadcrumb mb-4">
-			<li></li>
-		</ol>
-		
-		<div class="card mb-4">
-           <div class="card-header">
-                                        매출 통계
-             </div>
-          <div class="card-body">
-          	<br>
-          	<div class="date" style="position:right; left:600px; top:170px;">
-          	<Strong>기간 설정</Strong>&nbsp;&nbsp;
-          		<input type="hidden" id= "date1" value="${strStartDate}" />
-          		<input type="text" id="datepicker1" value="" placeholder="날짜를 입력하세요">
-          	<Strong>-</Strong>
-          		<input type="text" id="datepicker2" value="" placeholder="날짜를 입력하세요">
-          		<input type="hidden" id= "date2" value="${strEndDate}" />
-			<input type="button" value="조회" id = "Seach">
-			<input type="button" class="excel" id="downloadExcel" onclick="url();">&nbsp;&nbsp;
-          	&nbsp;&nbsp;<input type="button" class="pdf" id="downloadPdf" onclick="pdfurl();">
+	<h1 class="mt-4">매출 통계</h1>
+	<ol class="breadcrumb mb-4">
+		<li></li>
+	</ol>
+
+	<div class="card mb-4">
+		<div class="card-header">매출 통계</div>
+		<div class="card-body">
+			<br>
+			<div class="date" style="position: right; left: 600px; top: 170px;">
+				<Strong>기간 설정</Strong>&nbsp;&nbsp; <input type="hidden" id="date1"
+					value="${strStartDate}" /> <input type="text" id="datepicker1"
+					value="" placeholder="날짜를 입력하세요"> <Strong>-</Strong> <input
+					type="text" id="datepicker2" value="" placeholder="날짜를 입력하세요">
+				<input type="hidden" id="date2" value="${strEndDate}" /> <input
+					type="button" value="조회" id="Seach"> <input type="button"
+					class="excel" id="downloadExcel" onclick="url();">&nbsp;&nbsp;
+				&nbsp;&nbsp;<input type="button" class="pdf" id="downloadPdf"
+					onclick="pdfurl();">
 			</div>
 			<br>
-		
-           <div id=linechart_material style="width: 900px; height: 400px; display:inline-block;"></div>
-            <div id="linechart_category" style="width: 500px; height: 400px; display:inline-block; "></div>
-            
-			</div>
-		</div><!-- body end -->
-</div> <!-- Main end -->
+
+			<div id=linechart_material
+				style="width: 900px; height: 400px; display: inline-block;"></div>
+			<div id="linechart_category"
+				style="width: 500px; height: 400px; display: inline-block;"></div>
+		</div>
+	</div>
+	<!-- body end -->
+</div>
+<!-- Main end -->
+
 <%@include file="/WEB-INF/views/admin/page/include/admin_footer.jsp"%>
-
-

@@ -1,6 +1,5 @@
 		
 function emptyCheck(){
-			
 	if(document.writeform.nt_title.value==""){
 		alert("제목을 입력하세요");
 		document.writeform.nt_title.focus();
@@ -12,5 +11,3 @@ function emptyCheck(){
 		return false;
 	}
 };
-        	
-        	

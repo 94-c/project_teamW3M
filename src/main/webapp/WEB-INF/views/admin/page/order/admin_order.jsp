@@ -85,7 +85,7 @@
 										<td class="text-center">${purch.order_seq }</td>
 										<td class="text-center"><a
 											href="javascript:void(window.open('purchaseDetail.mdo?user_id=${purch.user_id}&order_seq=${purch.order_seq}', '_blank','width=1000px, height=700px, status=no, menubar=no, toolbar=no, resizable=no'))"
-											class="text-dark">${purch.prod_title }</td>
+											class="text-dark">${purch.prod_title }</a></td>
 
 										<td class="text-center">${purch.user_id }</td>
 										<td class="text-center">${purch.user_name }</td>

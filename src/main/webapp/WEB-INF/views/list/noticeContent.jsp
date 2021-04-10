@@ -45,8 +45,7 @@
 										<div class="data-bd-cont">
 											<div align="left">
 												<pre>
-													<p
-														style="font-size: 8px; Line-height: 200%; align: left; color: #5f5f5f;">${notice.nt_content }</p>
+													<p style="font-size: 8px; Line-height: 200%; align: left; color: #5f5f5f;">${notice.nt_content }</p>
 												</pre>
 											</div>
 										</div>

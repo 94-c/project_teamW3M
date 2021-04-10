@@ -15,17 +15,14 @@ public class StatisticsDAO {
 	SqlSessionTemplate sqlSessionTemplate;
 
 	public List<StatisticsVO> Gender_Money() {
-		
 		return sqlSessionTemplate.selectList("StatisticsDAO.salesByGender");
 	}
 
 	public List<StatisticsVO> salesByMonth(StatisticsVO vo) {
-		
-		return sqlSessionTemplate.selectList("StatisticsDAO.salesByMonth",vo);
+		return sqlSessionTemplate.selectList("StatisticsDAO.salesByMonth", vo);
 	}
 
 	public StatisticsVO todaySales() {
-		
 		return sqlSessionTemplate.selectOne("StatisticsDAO.todaySales");
 	}
 
@@ -40,9 +37,9 @@ public class StatisticsDAO {
 	public StatisticsVO todayCencle() {
 		return sqlSessionTemplate.selectOne("StatisticsDAO.todayCencle");
 	}
-	
-	public List<StatisticsVO> getExceldata(StatisticsVO vo){
-		return sqlSessionTemplate.selectList("StatisticsDAO.getExceldata",vo);
+
+	public List<StatisticsVO> getExceldata(StatisticsVO vo) {
+		return sqlSessionTemplate.selectList("StatisticsDAO.getExceldata", vo);
 	}
 
 	public List<StatisticsVO> salesByLevel() {
@@ -58,8 +55,7 @@ public class StatisticsDAO {
 	}
 
 	public List<StatisticsVO> salesByCategory(StatisticsVO vo) {
-
-		return sqlSessionTemplate.selectList("StatisticsDAO.salesByCategory",vo);
+		return sqlSessionTemplate.selectList("StatisticsDAO.salesByCategory", vo);
 	}
 
 }

@@ -212,5 +212,4 @@ public class StatisticsVO {
 		this.order_date = order_date;
 	}
 	
-	
 }

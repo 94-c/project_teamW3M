@@ -8,8 +8,6 @@ var nameJ = RegExp(/^[가-힣]{2,6}$/);
 var phoneJ= RegExp(/^([0-9]{4})$/);
 //이메일
 var emailJ = RegExp(/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i);
-
-
 var name_ck = -1;
 var id_ck = -1;
 var pw_ck1 = -1;
@@ -19,23 +17,9 @@ var adress_ck = -1;
 var phone_ck = -1;
 var email_ck = -1;
 
-
 	$(document).ready(function() {
-		
 		$("#insert_success").click(function() { // 회원가입 버튼
 
-			console.log("이름 - " + name_ck );
-			console.log("아이디 - " + id_ck );
-			console.log("pw - " + pw_ck1 );
-			console.log("repw - " + pw_ck2 );
-			console.log("생일 - " + birth_ck );
-			console.log("주소 - " + adress_ck );
-			console.log("폰 - " + phone_ck );
-			console.log("이메일 - " + email_ck );
-			console.log("약관 - " + $("#user_privacy").val );
-			console.log("개인정보 - " + $("#user_yaok").val );
-			
-		
 			if(!$("#user_yaok").prop("checked")){
 				alert("약관 동의 확인해 주세요.")
 			}else if(!$("#user_privacy").prop("checked")){
@@ -57,27 +41,19 @@ var email_ck = -1;
 			}else if(email_ck != 0){
 				alert("이메일을 확인해 주세요.")
 			}else{
-
 				  $("#user_insert").submit();
 			}
-		
-			
 		});
-	
 	});
 
 	$(document).ready(function() {
 	$("#user_email2").blur(function(){
 		if($("#user_email3").val() == ""){
-			console.log("이메일 직접 입력");
 			var emailCheck =  $("#user_email1").val() +"@"+$("#user_email2").val();
-			console.log(emailCheck);
 			if (emailJ.test(emailCheck)){
-			console.log("email형식  OK");
 			email_ck = 0;
 			}
 			else{
-				console.log("email형식  NO");
 				email_ck = 1;
 			}
 		}
@@ -96,11 +72,9 @@ var email_ck = -1;
 			email_ck = 0;
 		}
 	});
-
 });
 	
 	$(document).ready(function(){ 
-
 		$("#user_name").blur(function() { // 이름  확인
 			if (nameJ.test($("#user_name").val())) {
 					$("#name_check").text(" OK");
@@ -130,8 +104,6 @@ var email_ck = -1;
 			}else {
 				birth_ck = 0;
 			}
-				
-			
 		});
 	});
 	
@@ -141,12 +113,10 @@ var email_ck = -1;
 			
 			if (idJ.test($("#user_id").val())){
 				$("#id_check").text("");
-				console.log("형식은 맞음 - "+user_id);
 				
 			}else if(!idJ.test($(this).val())){
 				$("#id_check").text("* 영문 대.소문자, 숫자 ,- 만 입력 가능하고 5~20자 입력하세요.");
 				$("#id_check").css("color","red");
-				console.log("형식이 틀림 - "+user_id);
 				id_ck = 1;
 				return;
 			}else return;
@@ -203,7 +173,6 @@ var email_ck = -1;
 			});
 		});
 		
-		
 	$(document).ready(function(){ 	
 		$("#send_sms").click(function(){
 			if (!phoneJ.test($("#user_phone2").val())){
@@ -230,8 +199,6 @@ var email_ck = -1;
 			
 		var allPhone2 = $("#user_phone1").val() +"-"+ $("#user_phone2").val() +"-"+ $("#user_phone3").val();
 		var allPhone = $("#user_phone1").val() + $("#user_phone2").val() + $("#user_phone3").val();
-		console.log("phone - "+allPhone);
-		console.log("phone2 - "+allPhone2);
 		
 		$.ajax({
 			url: "/check_sms.do",
@@ -272,25 +239,15 @@ var email_ck = -1;
 			}
 		
 		});
-		
-		
-			
-			
 		});
-	
 		});
-
-
-	
 		$("#every_agree").click(function() {
 			if($("#every_agree").prop("checked")){
 				$("input[type=checkbox]").prop("checked",true);
 				
 			}else{
 				$("input[type=checkbox]").prop("checked",false);
-				
 			}
-			
 		});
 		
 		$("input[type=checkbox]").click(function(){
@@ -302,8 +259,6 @@ var email_ck = -1;
 		});
 		
 	});
-	
-	
 		function DaumPostcode() {
 			new daum.Postcode({
 	             oncomplete: function(data) {
@@ -335,7 +290,6 @@ var email_ck = -1;
 	                $("#user_address1").val(fullRoadAddr);
 	                $("#user_address2").focus();
 	                adress_ck = 0;
-	
 	            }
 	        }).open();
 	    }

@@ -12,7 +12,7 @@
 					<thead>
 						<tr>
 							<th><div class="tb-center">
-									<strong>이용약관</font></font></strong>
+									<strong>이용약관</strong>
 								</div></th>
 						</tr>
 					</thead>
