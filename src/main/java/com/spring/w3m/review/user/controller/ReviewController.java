@@ -174,6 +174,14 @@ public class ReviewController {
 
 		return "page/review/admin_review_content";
 	}
+	
+	// 관리자 후기 삭제
+	@RequestMapping("/deleteReview.mdo")
+	public String deleteAdminReview(ReviewVO vo, Model model) {
+		reviewService.deleteReview(vo);
+		model.addAttribute("reviewList", reviewService.getReviewList(vo));
+		return "redirect:/adminReview.mdo";
+	}
 
 	// 댓글 쓰기
 	@RequestMapping("/insertReviewReply.do")
