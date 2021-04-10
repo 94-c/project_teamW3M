@@ -123,8 +123,7 @@
 													<td scope="col"><div class="tb-center">${review.review_seq}</div></td>
 													<td scope="col"><div class="tb-center">문의사항</div></td>
 													<td scope="col"><div class="tb-center">
-															<a
-																href='<c:url value='/reviewContent.do?review_seq=${review.review_seq}'/>'
+															<a href='<c:url value='/reviewContent.do?review_seq=${review.review_seq}&prod_title=${review.prod_title }'/>'
 																class="text-dark">${review.review_title}</a>
 														</div></td>
 													<td scope="col"><div class="tb-center">
