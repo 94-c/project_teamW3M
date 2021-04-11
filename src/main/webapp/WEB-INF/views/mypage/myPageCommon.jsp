@@ -9,7 +9,7 @@
 				<ul>
 					<li class="first"><a href="/myOrderList.do">주문내역</a></li>
 					<li><a href="getPointList.do?user_id=${userVO.user_id }">적립금내역</a></li>
-					<li><a href="GoCart.do">상품 보관함</a></li>
+					<li><a href="GoCart.do">장바구니</a></li>
 				</ul>
 			</div>
 		</div>

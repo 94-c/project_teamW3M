@@ -107,8 +107,8 @@
        
 		var data = new google.visualization.DataTable();
 		
-		data.addColumn('string','성별');
-		data.addColumn('number','수치');
+		data.addColumn('string','제품 이름');
+		data.addColumn('number','매출');
         
 		data.addRows([
 			<c:forEach var="salesByBOTTOM" items="${salesByBOTTOM}" varStatus="state">

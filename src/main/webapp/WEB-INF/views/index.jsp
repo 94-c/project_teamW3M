@@ -17,12 +17,12 @@
 				<!-- 슬라이더1 -->				
 				<div class="sliderkit-panel1">
 					<div class="sliderkit-panel sliderkit-panel-old" style="display: block;">
-						<a href="http://localhost:8080/category.do?prod_category1=MM">
+						<a href="./category.do?prod_category1=MM">
 							<div style="background-image: url(resources/images/m_mask/main_visual_mask.jpg)"></div>							
 						</a>
 					</div>
 					<div class="sliderkit-panel sliderkit-panel-active" style="display: block;">
-						<a href="http://localhost:8080/category.do?prod_category1=SS">
+						<a href="./category.do?prod_category1=SS">
 							<div style="background-image: url(resources/images/m_mask/main_visual_purell.jpg)"></div>
 						</a>
 					</div>
