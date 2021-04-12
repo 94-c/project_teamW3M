@@ -66,7 +66,7 @@ public class OrderController {
 		case "Platinum":
 			level = pay_total_price * 0.07;
 			break;
-		case "dia":
+		case "Dia":
 			level = pay_total_price * 0.09;
 			break;
 
