@@ -47,6 +47,7 @@ public interface MyPageService {
 	void changeOrderState(OrderVO vo);
 	void changeOrderProductState(OrderVO vo);
 	void changeDeliveryState(DeliveryVO vo);
+	void cancelPoint(PointVO vo);
 	
 	/* 회원의 총 주문금액 */
 	int getTotalOrderMoney(String userId);

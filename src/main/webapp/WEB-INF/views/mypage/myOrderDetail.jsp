@@ -42,7 +42,7 @@ $(document).ready(function(){
 		}else {
 			if(confirm("주문취소 하시겠습니까?")){
 				alert("주문취소 처리되셨습니다.");
-				location.href = "orderCancel.do?order_seq=${payInfo.order_seq}&delivery_seq=${deliveryInfo.delivery_seq}";
+				location.href = "orderCancel.do?order_seq=${payInfo.order_seq}&delivery_seq=${deliveryInfo.delivery_seq}&pay_use_point=${payInfo.pay_use_point}";
 			}else{
 				return;
 			}

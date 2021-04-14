@@ -95,6 +95,9 @@ public class MyPageDAO {
 	public void changeDeliveryState(DeliveryVO vo) {
 		sqlSessionTemplate.update("myPageDAO.changeDeliveryState", vo);
 	}
+	public void cancelPoint(PointVO vo) {
+		sqlSessionTemplate.insert("myPageDAO.cancelPoint", vo);
+	}
 
 	/* 회원의 총 주문금액 */
 	public int getTotalOrderMoney(String userId) {

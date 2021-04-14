@@ -200,15 +200,27 @@ public class MyPageController {
 	}
 
 	@RequestMapping("orderCancel.do")
-	public String cancelOrder(Model model, DeliveryVO dVO, PointVO pVO, PayVO payVO, OrderVO oVO) {
+	public String cancelOrder(Model model, DeliveryVO dVO, PointVO pVO, PayVO payVO, OrderVO oVO, @SessionAttribute("userVO") UserVO uVO, HttpSession session) {
 		System.out.println("구매취소 버튼 클릭!");
+		
 		myPageService.deletePoint(pVO); // 포인트 회수
 		myPageService.changePayState(payVO); // 결제정보 변경
 		myPageService.changeOrderState(oVO); // 주문상태 변경
 		myPageService.changeOrderProductState(oVO); // 주문상품상태 변경
-		myPageService.changeDeliveryState(dVO); // 배송상태 변경
+		myPageService.changeDeliveryState(dVO); // 배송상태 변경	
+		pVO.setAdd_point(payVO.getPay_use_point());
+		if (pVO.getAdd_point() != 0) {
+			pVO.setUser_id(uVO.getUser_id());
+			pVO.setAdd_point(pVO.getAdd_point());
+			pVO.setPoint_content("주문취소");
+			myPageService.cancelPoint(pVO); // 사용한 포인트 돌려주기(구매취소시)
+			pointService.update_point(uVO.getUser_id());
+		}		
 		dVO.setDelivery_state("주문취소");
 		deliveryService.insertDelivery_state(deliveryService.getDeliveryCont(dVO)); // 배송상세내역에 넣어줌
+		// 유저정보 동기화
+		UserVO user = userLoginService.viewUser(uVO);
+		session.setAttribute("userVO", user);
 		return "redirect:myOrderList.do";
 	}
 

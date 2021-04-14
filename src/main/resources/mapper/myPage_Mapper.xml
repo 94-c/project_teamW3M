@@ -92,6 +92,10 @@
 	<update id="changeDeliveryState">
 		UPDATE delivery SET delivery_state = '주문취소' WHERE order_seq = #{order_seq}
 	</update>
+	<insert id="cancelPoint">
+		INSERT INTO add_point (user_id, add_point, order_seq, point_content, order_state) 
+		values(#{user_id}, #{add_point}, #{order_seq}, #{point_content}, '사용가능')
+	</insert>
 
 	<!-- 마이페이지 총주문금액 -->
 	<select id="getTotalOrderMoney" resultType="int">

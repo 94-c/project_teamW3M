@@ -138,6 +138,11 @@ public class MyPageServiceImpl implements MyPageService {
 	public void changeDeliveryState(DeliveryVO vo) {
 		dao.changeDeliveryState(vo);
 	}
+	
+	@Override
+	public void cancelPoint(PointVO vo) {
+		dao.cancelPoint(vo);
+	}
 	/*-----------------------------------------*/
 
 	/* 회원의 총 주문금액 */
